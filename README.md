@@ -1,25 +1,26 @@
 ﻿# Kolay Dil Ogren
 
-Tek cekirdek uygulama, ayri dil paketleri mantigiyla kurulan genel dil ogrenme platformu.
+Birlesik giris noktasi — **orijinal** Kolay Tayca ve Kolay Ingilizce uygulamalarinin tam surumleri.
 
-## Yapi
+## Nasil calisir
 
-- `index.html`: Ortak uygulama motoru ve GitHub Pages girisi.
-- `languages/registry.js`: Uygulamanin bildigi diller ve ana diller.
-- `languages/en/manifest.js`: Ingilizce paket tanimi.
-- `languages/en/lessons/`: Ingilizce ders verileri.
-- `languages/th/manifest.js`: Tayca paket tanimi.
-- `languages/th/lessons/`: Tayca ders verileri.
-- `docs/roadmap.md`: Sonraki adimlar.
+1. `index.html` — arayuz dili + ogrenilecek dil secimi
+2. `tayca-v3.html` — Kolay Tayca (tv3 motoru, v3.56)
+3. `english-v3.html` — Kolay Ingilizce (en1 motoru, v1.6.0)
 
-## Mantik
+Menuler, ders kartlari, alistirma, SRS, test, ceviri — orijinal programlarla **birebir**.
 
-Uygulama ayarlardan once ogrenilecek dili, sonra ana dili secer. Her dil paketi kendi manifest dosyasinda ders listesini, ses dilini ve veri alanlarini tanimlar. Cekirdek arayuz dersleri ihtiyac oldukça ilgili paketten yukler.
+## Ders dosyalari
+
+- `languages/th/lessons/ders1.js` … `ders48.js` — Tayca
+- `languages/en/lessons/ders1.js` … `ders49.js` — Ingilizce
 
 ## GitHub Pages
 
-Bu klasor repo kok dizini olacak sekilde yayinlanabilir. Giris dosyasi `index.html`.
+Repo kokunden yayinlanir. Giris: `index.html`
+
+Canli: https://alid67-git.github.io/kolay-dil-ogren/
 
 ## Not
 
-Bu ilk platform surumu mevcut Kolay Ingilizce ve Kolay Tayca ders dosyalarini dil paketleri olarak kullanir. Eski uygulamalar ayrica kalabilir; yeni gelistirmeler bu platformda ortak cekirdek uzerinden ilerletilebilir.
+Eski ayri repolar (`tayca-v3`, `english-ogrenme`) ayri calismaya devam eder. Ilerleme anahtarlari (`tv3_*`, `en1_*`) korunur.
