@@ -1,0 +1,329 @@
+// Ders 5 verisi — tayca-v3
+// =================== VERİ: DERS 5 — Market ve Alışveriş ===================
+const L5 = {
+  tones:[],
+  words:[
+    {id:'w1',th:'ซื้อ',ro:'sue',tr:'Satın almak',
+     tip:'"Sue" = almak/satın almak. "Khaa" = satmak (farklı!)',
+     ctx:'Markette, mağazada her alışverişte.',
+     examples:[
+       {th:'ผมอยากซื้อครับ',ro:'pom yaak sue khrap',tr:'Satın almak istiyorum.',bd:[{ro:'pom yaak',tr:'istiyorum',role:'V - Yuklem'},{ro:'sue',tr:'satın almak',role:'O - Nesne'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ซื้อที่ไหนดีครับ',ro:'sue thii-nai dee khrap',tr:'Nereden alsam iyi olur?',bd:[{ro:'sue thii-nai dee',tr:'nereden alsam',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ซื้อยังไม่ได้ครับ',ro:'sue yang-mai-dai khrap',tr:'Henüz alamadım.',bd:[{ro:'sue yang-mai-dai',tr:'henüz alamadım',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ราคาถูกผมซื้อเลยครับ',ro:'raa-khaa thuuk pom sue loey khrap',tr:'Ucuz, hemen aldım.',bd:[{ro:'raa-khaa thuuk',tr:'fiyat ucuz',role:'Kelime'},{ro:'pom sue loey',tr:'hemen aldım',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {id:'w2',th:'ราคา',ro:'raa-khaa',tr:'Fiyat',
+     tip:'"Raa-khaa" = fiyat. "Thao-rai" ile soru: "raa-khaa thao-rai" = fiyat ne kadar?',
+     ctx:'Her alışverişin başlangıcı.',
+     examples:[
+       {th:'ราคาเท่าไรครับ',ro:'raa-khaa thao-rai khrap',tr:'Fiyat ne kadar?',bd:[{ro:'raa-khaa',tr:'fiyat',role:'S - Ozne'},{ro:'thao-rai',tr:'ne kadar',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ราคาถูกมากครับ',ro:'raa-khaa thuuk maak khrap',tr:'Fiyat çok ucuz.',bd:[{ro:'raa-khaa',tr:'fiyat',role:'S - Ozne'},{ro:'thuuk maak',tr:'çok ucuz',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ราคาแพงเกินไปครับ',ro:'raa-khaa phaeng koern-pai khrap',tr:'Fiyat çok pahalı.',bd:[{ro:'raa-khaa',tr:'fiyat',role:'S - Ozne'},{ro:'phaeng koern-pai',tr:'çok pahalı',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'รวมราคาเท่าไรครับ',ro:'ruam raa-khaa thao-rai khrap',tr:'Toplam fiyat ne kadar?',bd:[{ro:'ruam raa-khaa',tr:'toplam fiyat',role:'S - Ozne'},{ro:'thao-rai',tr:'ne kadar',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {id:'w3',th:'ลด',ro:'lot',tr:'İndirim / Düşürmek',
+     tip:'"Lot raa-khaa" = fiyat indir. "Lot" tek başına da indirim anlamı taşır.',
+     ctx:'Pazar yeri ve küçük dükkanlarda pazarlık yaparken.',
+     examples:[
+       {th:'ลดได้ไหมครับ',ro:'lot dai mai khrap',tr:'İndirim yapabilir misiniz?',bd:[{ro:'lot dai mai',tr:'indirim yapabilir misiniz',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ลดให้หน่อยได้ไหมครับ',ro:'lot hai noi dai mai khrap',tr:'Biraz indirim yapar mısınız?',bd:[{ro:'lot hai noi',tr:'biraz indirim yap',role:'V - Yuklem'},{ro:'dai mai',tr:'olur mu',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ลดแล้วครับ',ro:'lot laeo khrap',tr:'Zaten indirimde.',bd:[{ro:'lot laeo',tr:'zaten indirimde',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ถ้าซื้อสองลดไหมครับ',ro:'tha sue song lot mai khrap',tr:'İki alırsam indirim var mı?',bd:[{ro:'tha sue song',tr:'iki alırsam',role:'Kelime'},{ro:'lot mai',tr:'indirim var mı',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {id:'w4',th:'แพง',ro:'phaeng',tr:'Pahalı',
+     tip:'"Phaeng" = pahalı. "Thuuk" = ucuz. İki karşıt kelime.',
+     ctx:'Pazar ve markette fiyat tepkisi verirken.',
+     examples:[
+       {th:'แพงมากครับ',ro:'phaeng maak khrap',tr:'Çok pahalı.',bd:[{ro:'phaeng maak',tr:'çok pahalı',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'แพงกว่าที่อื่นครับ',ro:'phaeng-kwaa thii-uen khrap',tr:'Başka yerlerden daha pahalı.',bd:[{ro:'phaeng-kwaa',tr:'daha pahalı',role:'V - Yuklem'},{ro:'thii-uen',tr:'başka yer',role:'Kelime'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ทำไมแพงจังครับ',ro:'tham-mai phaeng jang khrap',tr:'Neden bu kadar pahalı?',bd:[{ro:'tham-mai',tr:'neden',role:'Soru/Olumsuz'},{ro:'phaeng jang',tr:'bu kadar pahalı',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ไม่แพงครับ ถูกมาก',ro:'mai-phaeng khrap thuuk maak',tr:'Pahalı değil, çok ucuz.',bd:[{ro:'mai-phaeng',tr:'pahalı değil',role:'Olumsuz'},{ro:'thuuk maak',tr:'çok ucuz',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {id:'w5',th:'ถูก',ro:'thuuk',tr:'Ucuz',
+     tip:'"Thuuk" iki anlam: ucuz ve doğru. Konuşmada bağlamdan anlaşılır.',
+     ctx:'Alışverişte iyi fiyat bulduğunda söyle.',
+     examples:[
+       {th:'ถูกมากครับ',ro:'thuuk maak khrap',tr:'Çok ucuz.',bd:[{ro:'thuuk maak',tr:'çok ucuz',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ถูกกว่าที่อื่นครับ',ro:'thuuk-kwaa thii-uen khrap',tr:'Başka yerlerden daha ucuz.',bd:[{ro:'thuuk-kwaa',tr:'daha ucuz',role:'V - Yuklem'},{ro:'thii-uen',tr:'başka yer',role:'Kelime'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ซื้อเลยดีกว่าครับ ถูก',ro:'sue loey dee-kwaa khrap thuuk',tr:'Hemen al, ucuz.',bd:[{ro:'sue loey',tr:'hemen al',role:'V - Yuklem'},{ro:'dee-kwaa',tr:'daha iyi',role:'Kelime'},{ro:'thuuk',tr:'ucuz',role:'Kelime'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ที่นี่ถูกที่สุดครับ',ro:'thii-nii thuuk-thii-sut khrap',tr:'Burası en ucuz.',bd:[{ro:'thii-nii',tr:'burası',role:'S - Ozne'},{ro:'thuuk-thii-sut',tr:'en ucuz',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {id:'w6',th:'มี',ro:'mii',tr:'Var / Sahip olmak',
+     tip:'"Mii" = var. "Mai mii" = yok. Çok kullanılan kelime.',
+     ctx:'Ürün sorgulamak için en temel kelime.',
+     examples:[
+       {th:'มีไหมครับ',ro:'mii mai khrap',tr:'Var mı?',bd:[{ro:'mii mai',tr:'var mı',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'มีสีอื่นไหมครับ',ro:'mii sii-uen mai khrap',tr:'Başka rengi var mı?',bd:[{ro:'mii',tr:'var mı',role:'V - Yuklem'},{ro:'sii-uen',tr:'başka renk',role:'O - Nesne'},{ro:'mai',tr:'soru eki',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ไม่มีครับ หมดแล้ว',ro:'mai-mii khrap mot-laeo',tr:'Yok, tükendi.',bd:[{ro:'mai-mii',tr:'yok',role:'Olumsuz'},{ro:'mot-laeo',tr:'tükendi',role:'Kelime'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'มีขนาดใหญ่กว่านี้ไหมครับ',ro:'mii kha-nat yai-kwaa-nii mai khrap',tr:'Bundan büyük beden var mı?',bd:[{ro:'mii',tr:'var mı',role:'V - Yuklem'},{ro:'kha-nat yai-kwaa-nii',tr:'bundan büyük beden',role:'O - Nesne'},{ro:'mai',tr:'soru eki',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {id:'w7',th:'จ่าย',ro:'jai',tr:'Ödemek',
+     tip:'"Jai ngoen" = para ödemek. "Jai baet khredit" = kart ile ödemek.',
+     ctx:'Kasada ödeme yaparken.',
+     examples:[
+       {th:'จ่ายยังไงครับ',ro:'jai yang-ngai khrap',tr:'Nasıl ödeyebilirim?',bd:[{ro:'jai yang-ngai',tr:'nasıl öderim',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'จ่ายด้วยบัตรได้ไหมครับ',ro:'jai duay bat dai mai khrap',tr:'Kartla ödeyebilir miyim?',bd:[{ro:'jai duay bat',tr:'kartla ödemek',role:'V - Yuklem'},{ro:'dai mai',tr:'olur mu',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'จ่ายพร้อมเพย์ได้ไหมครับ',ro:'jai PromPay dai mai khrap',tr:'PromPay ile ödeyebilir miyim?',bd:[{ro:'jai PromPay',tr:'PromPay ödemek',role:'V - Yuklem'},{ro:'dai mai',tr:'olur mu',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'จ่ายเงินสดครับ',ro:'jai ngoen-sot khrap',tr:'Nakit ödüyorum.',bd:[{ro:'jai ngoen-sot',tr:'nakit ödüyorum',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {id:'w8',th:'ขนาด',ro:'kha-nat',tr:'Beden / Boyut',
+     tip:'"Kha-nat" = boyut/beden. S/M/L/XL de kullanılır.',
+     ctx:'Kıyafet alırken beden sormak için.',
+     examples:[
+       {th:'มีขนาดอะไรบ้างครับ',ro:'mii kha-nat a-rai baang khrap',tr:'Hangi bedenler var?',bd:[{ro:'mii kha-nat a-rai baang',tr:'hangi bedenler var',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ขนาดกลางครับ',ro:'kha-nat glaang khrap',tr:'Orta beden (M).',bd:[{ro:'kha-nat glaang',tr:'orta beden',role:'Kelime'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ใหญ่กว่านี้มีไหมครับ',ro:'yai-kwaa-nii mii mai khrap',tr:'Bundan büyük var mı?',bd:[{ro:'yai-kwaa-nii',tr:'bundan büyük',role:'Kelime'},{ro:'mii mai',tr:'var mı',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'เล็กเกินไปครับ',ro:'lek koern-pai khrap',tr:'Çok küçük.',bd:[{ro:'lek koern-pai',tr:'çok küçük',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {id:'w9',th:'ลอง',ro:'long',tr:'Denemek',
+     tip:'"Long suea" = gömlek dene. "Dai mai" = olur mu eklenir.',
+     ctx:'Kıyafet mağazasında prova yapmak isterken.',
+     examples:[
+       {th:'ลองได้ไหมครับ',ro:'long dai mai khrap',tr:'Deneyebilir miyim?',bd:[{ro:'long dai mai',tr:'deneyebilir miyim',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ห้องลองอยู่ที่ไหนครับ',ro:'hong-long yuu thii-nai khrap',tr:'Soyunma odası nerede?',bd:[{ro:'hong-long',tr:'soyunma odası',role:'S - Ozne'},{ro:'yuu thii-nai',tr:'nerede',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ลองแล้วแต่ไม่พอดีครับ',ro:'long laeo tae mai pho-dee khrap',tr:'Denedim ama tam olmadı.',bd:[{ro:'long laeo',tr:'denedim',role:'V - Yuklem'},{ro:'tae mai pho-dee',tr:'ama tam değil',role:'Kelime'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ลองใหม่ได้ไหมครับ',ro:'long-mai dai mai khrap',tr:'Tekrar deneyebilir miyim?',bd:[{ro:'long-mai',tr:'tekrar dene',role:'V - Yuklem'},{ro:'dai mai',tr:'olur mu',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {id:'w10',th:'ถุง',ro:'thueng',tr:'Torba / Poşet',
+     tip:'"Thueng" = torba. "Thueng plastic" = plastik poşet.',
+     ctx:'Kasada poşet ister misiniz diye sorulur.',
+     examples:[
+       {th:'เอาถุงไหมครับ',ro:'ao thueng mai khrap',tr:'Poşet ister misiniz?',bd:[{ro:'ao thueng mai',tr:'poşet ister misiniz',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ไม่เอาถุงครับ',ro:'mai-ao thueng khrap',tr:'Poşet istemiyorum.',bd:[{ro:'mai-ao thueng',tr:'poşet istemiyorum',role:'Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ขอถุงใหญ่ครับ',ro:'khor thueng yai khrap',tr:'Büyük poşet istiyorum.',bd:[{ro:'khor thueng yai',tr:'büyük poşet istiyorum',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'มีถุงผ้าไหมครับ',ro:'mii thueng-pha mai khrap',tr:'Bez çanta var mı?',bd:[{ro:'mii thueng-pha mai',tr:'bez çanta var mı',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+  ],
+
+  grammar:[
+    {
+      title:'1. Pazarlık: lot + fiyat kalıpları',
+      formula:'LOT DAI MAI = indirim var mı? | LOT HAI NOI = biraz indir',
+      explain:'Thai pazarlarında pazarlık normaldir. Saygılı ama kararlı ol. "Lot dai mai" açık soru, "lot hai noi" rica.',
+      tips:['"lot" = indir/düşür','"hai" = ver (burada: yapıver)','"noi" = biraz (kibar ton)','"tha sue song" = iki alırsam','Bodrum pazarları (Chatuchak, yerel pazarlar) pazarlığa açık, AVM\'ler genelde değil'],
+      examples:[
+        {th:'ลดได้ไหมครับ',ro:'lot dai mai khrap',tr:'İndirim yapabilir misiniz?',bd:[{ro:'lot',tr:'indir',role:'V - Yuklem'},{ro:'dai mai',tr:'olur mu',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+        {th:'ลดให้หน่อยได้ไหมครับ',ro:'lot hai noi dai mai khrap',tr:'Biraz indirim yapar mısınız?',bd:[{ro:'lot hai noi',tr:'biraz indirim yap',role:'V - Yuklem'},{ro:'dai mai',tr:'olur mu',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+        {th:'ถ้าซื้อสองลดไหมครับ',ro:'tha sue song lot mai khrap',tr:'İki alırsam indirim var mı?',bd:[{ro:'tha sue song',tr:'iki alırsam',role:'Kelime'},{ro:'lot mai',tr:'indirim var mı',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+        {th:'สองร้อยได้ไหมครับ',ro:'song-roi dai mai khrap',tr:'200 Baht olur mu?',bd:[{ro:'song-roi',tr:'200 Baht',role:'Kelime'},{ro:'dai mai',tr:'olur mu',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+        {th:'แพงเกินไปครับ',ro:'phaeng koern-pai khrap',tr:'Çok pahalı.',bd:[{ro:'phaeng koern-pai',tr:'çok pahalı',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+      ]
+    },
+    {
+      title:'2. Ürün Sormak: mii + ürün + mai',
+      formula:'MII + [ÜRÜN/ÖZELLİK] + MAI = ... var mı?',
+      explain:'"Mii" = var, "mai mii" = yok. Soru için sona "mai" eklenir. Renk, beden, model sormak için bu kalıp kullanılır.',
+      tips:['sii = renk | sii daeng = kırmızı, sii faa = mavi, sii khiao = yeşil','kha-nat = beden | lek = küçük, glaang = orta, yai = büyük','baep = model/stil','mot laeo = tükendi'],
+      examples:[
+        {th:'มีสีอื่นไหมครับ',ro:'mii sii-uen mai khrap',tr:'Başka rengi var mı?',bd:[{ro:'mii',tr:'var mı',role:'V - Yuklem'},{ro:'sii-uen',tr:'başka renk',role:'O - Nesne'},{ro:'mai',tr:'soru eki',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+        {th:'มีขนาดใหญ่กว่านี้ไหมครับ',ro:'mii kha-nat yai-kwaa-nii mai khrap',tr:'Bundan büyük beden var mı?',bd:[{ro:'mii',tr:'var mı',role:'V - Yuklem'},{ro:'kha-nat yai-kwaa-nii',tr:'bundan büyük beden',role:'O - Nesne'},{ro:'mai',tr:'soru eki',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+        {th:'ไม่มีครับ หมดแล้ว',ro:'mai-mii khrap mot-laeo',tr:'Yok, tükendi.',bd:[{ro:'mai-mii',tr:'yok',role:'Olumsuz'},{ro:'mot-laeo',tr:'tükendi',role:'Kelime'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+        {th:'มีแบบอื่นไหมครับ',ro:'mii baep-uen mai khrap',tr:'Başka modeli var mı?',bd:[{ro:'mii baep-uen',tr:'başka model',role:'O - Nesne'},{ro:'mai',tr:'soru eki',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+      ]
+    },
+  ],
+
+  speaking:[
+    {task:'Fiyat sor',th:'ราคาเท่าไรครับ',ro:'raa-khaa thao-rai khrap',tr:'Fiyat ne kadar?',bd:[{ro:'raa-khaa thao-rai',tr:'fiyat ne kadar',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+    {task:'İndirim iste',th:'ลดได้ไหมครับ',ro:'lot dai mai khrap',tr:'İndirim yapabilir misiniz?',bd:[{ro:'lot dai mai',tr:'indirim olur mu',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+    {task:'Başka renk sor',th:'มีสีอื่นไหมครับ',ro:'mii sii-uen mai khrap',tr:'Başka rengi var mı?',bd:[{ro:'mii sii-uen mai',tr:'başka renk var mı',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+    {task:'Denemek iste',th:'ลองได้ไหมครับ',ro:'long dai mai khrap',tr:'Deneyebilir miyim?',bd:[{ro:'long dai mai',tr:'deneyebilir miyim',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+    {task:'Çok pahalı söyle',th:'แพงมากครับ',ro:'phaeng maak khrap',tr:'Çok pahalı.',bd:[{ro:'phaeng maak',tr:'çok pahalı',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+    {task:'Nakit öde',th:'จ่ายเงินสดครับ',ro:'jai ngoen-sot khrap',tr:'Nakit ödüyorum.',bd:[{ro:'jai ngoen-sot',tr:'nakit ödüyorum',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+    {task:'Poşet isteme',th:'ไม่เอาถุงครับ',ro:'mai-ao thueng khrap',tr:'Poşet istemiyorum.',bd:[{ro:'mai-ao thueng',tr:'poşet istemiyorum',role:'Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+    {task:'Tükendi mi sor',th:'มีไหมครับ',ro:'mii mai khrap',tr:'Var mı?',bd:[{ro:'mii mai',tr:'var mı',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+  ],
+
+  dialogues:[
+    {title:'🛍️ Kıyafet Mağazası',
+     lines:[
+       {s:'Ali',th:'เสื้อตัวนี้ราคาเท่าไรครับ',ro:'suea tua-nii raa-khaa thao-rai khrap',tr:'Bu gömleğin fiyatı ne kadar?',bd:[{ro:'suea tua-nii',tr:'bu gömlek',role:'S - Ozne'},{ro:'raa-khaa thao-rai',tr:'fiyat ne kadar',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Nada',th:'สามร้อยบาทค่ะ',ro:'sam-roi baht kha',tr:'300 Baht.',bd:[{ro:'sam-roi baht',tr:'300 Baht',role:'Kelime'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Ali',th:'ลดได้ไหมครับ แพงไปหน่อย',ro:'lot dai mai khrap phaeng pai noi',tr:'İndirim olur mu, biraz pahalı.',bd:[{ro:'lot dai mai',tr:'indirim olur mu',role:'Soru/Olumsuz'},{ro:'phaeng pai noi',tr:'biraz pahalı',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Nada',th:'ได้ค่ะ สองร้อยห้าสิบบาทค่ะ',ro:'dai kha song-roi-haa-sip baht kha',tr:'Olur, 250 Baht.',bd:[{ro:'dai',tr:'olur',role:'Kelime'},{ro:'song-roi-haa-sip baht',tr:'250 Baht',role:'Kelime'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Ali',th:'โอเคครับ เอาเลย',ro:'o-kee khrap ao loey',tr:'Tamam, alıyorum.',bd:[{ro:'o-kee',tr:'tamam',role:'Kelime'},{ro:'ao loey',tr:'alıyorum',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {title:'📏 Beden Sorma',
+     lines:[
+       {s:'Ali',th:'มีขนาดอะไรบ้างครับ',ro:'mii kha-nat a-rai baang khrap',tr:'Hangi bedenler var?',bd:[{ro:'mii kha-nat a-rai baang',tr:'hangi bedenler var',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Nada',th:'มี S M L XL ค่ะ',ro:'mii S M L XL kha',tr:'S M L XL var.',bd:[{ro:'mii S M L XL',tr:'S M L XL var',role:'Kelime'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Ali',th:'ขอลองไซส์ L ได้ไหมครับ',ro:'khor long sai L dai mai khrap',tr:'L bedenini deneyebilir miyim?',bd:[{ro:'khor long sai L',tr:'L deneye',role:'V - Yuklem'},{ro:'dai mai',tr:'olur mu',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Nada',th:'ได้เลยค่ะ ห้องลองอยู่ด้านในค่ะ',ro:'dai loey kha hong-long yuu dan-nai kha',tr:'Tabii, soyunma odası içerde.',bd:[{ro:'dai loey',tr:'tabii ki',role:'Kelime'},{ro:'hong-long yuu dan-nai',tr:'soyunma odası içerde',role:'Kelime'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {title:'💳 Ödeme',
+     lines:[
+       {s:'Ali',th:'จ่ายด้วยบัตรได้ไหมครับ',ro:'jai duay bat dai mai khrap',tr:'Kartla ödeyebilir miyim?',bd:[{ro:'jai duay bat',tr:'kartla öde',role:'V - Yuklem'},{ro:'dai mai',tr:'olur mu',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Nada',th:'ได้ค่ะ แต่มีค่าธรรมเนียม 2% นะคะ',ro:'dai kha tae mii kha-tham-niam 2% na kha',tr:'Olur, ama %2 komisyon var.',bd:[{ro:'dai',tr:'olur',role:'Kelime'},{ro:'tae mii kha-tham-niam 2%',tr:'ama %2 komisyon',role:'Kelime'},{ro:'na kha',tr:'bilginize',role:'Kibar'}]},
+       {s:'Ali',th:'งั้นจ่ายเงินสดดีกว่าครับ',ro:'ngan jai ngoen-sot dee-kwaa khrap',tr:'O zaman nakit daha iyi.',bd:[{ro:'ngan',tr:'o zaman',role:'Kelime'},{ro:'jai ngoen-sot dee-kwaa',tr:'nakit daha iyi',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Nada',th:'ได้เลยค่ะ',ro:'dai loey kha',tr:'Tabii.',bd:[{ro:'dai loey',tr:'tabii',role:'Kelime'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+    {title:'🎽 Pazarda Alışveriş',
+     lines:[
+       {s:'Ali',th:'อันนี้ราคาเท่าไรครับ',ro:'an-nii raa-khaa thao-rai khrap',tr:'Bu kaç para?',bd:[{ro:'an-nii',tr:'bu (nesne)',role:'S - Ozne'},{ro:'raa-khaa thao-rai',tr:'kaç para',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Nada',th:'ห้าสิบบาทค่ะ',ro:'haa-sip baht kha',tr:'50 Baht.',bd:[{ro:'haa-sip baht',tr:'50 Baht',role:'Kelime'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Ali',th:'ถ้าซื้อสองอันลดไหมครับ',ro:'tha sue song-an lot mai khrap',tr:'İki alırsam indirim var mı?',bd:[{ro:'tha sue song-an',tr:'iki alırsam',role:'Kelime'},{ro:'lot mai',tr:'indirim var mı',role:'Soru/Olumsuz'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Nada',th:'ได้ค่ะ สองอันแปดสิบบาทค่ะ',ro:'dai kha song-an paet-sip baht kha',tr:'Olur, ikisi 80 Baht.',bd:[{ro:'dai',tr:'olur',role:'Kelime'},{ro:'song-an paet-sip baht',tr:'iki tane 80 Baht',role:'Kelime'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Ali',th:'เอาสองอันครับ',ro:'ao song-an khrap',tr:'İki tane alıyorum.',bd:[{ro:'ao song-an',tr:'iki tane alıyorum',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+     ]},
+  ],
+
+  listening:[
+    {diff:'easy',th:'ราคาเท่าไรครับ',q:'Ne soruluyor?',opts:['Renk','Beden','Fiyat'],c:2},
+    {diff:'easy',th:'ลดได้ไหมครับ',q:'Ne isteniyor?',opts:['İndirim','Poşet','Beden'],c:0},
+    {diff:'easy',th:'แพงมากครับ',q:'Fiyat nasıl?',opts:['Çok ucuz','Çok pahalı','Uygun'],c:1},
+    {diff:'medium',th:'มีสีอื่นไหมครับ',q:'Ne soruluyor?',opts:['Başka beden','Başka renk','Başka model'],c:1},
+    {diff:'medium',th:'ลองได้ไหมครับ',q:'Ne isteniyor?',opts:['Satın almak','Denemek','Bakmak'],c:1},
+    {diff:'medium',th:'จ่ายด้วยบัตรได้ไหมครับ',q:'Nasıl ödeme?',opts:['Nakit','Kartla','PromPay'],c:1},
+    {diff:'medium',th:'ไม่มีครับ หมดแล้ว',q:'Ürün durumu?',opts:['Var','Yok/Tükendi','Pahalı'],c:1},
+    {diff:'hard',th:'ถ้าซื้อสองลดไหมครับ',q:'Kaç alınırsa indirim?',opts:['1','2','3'],c:1},
+    {diff:'hard',th:'สองร้อยห้าสิบบาทค่ะ',q:'Fiyat ne kadar?',opts:['250 Baht','200 Baht','350 Baht'],c:0},
+    {diff:'hard',th:'จ่ายเงินสดครับ',q:'Ödeme şekli?',opts:['Kartla','Nakit','PromPay'],c:1},
+  ],
+
+  quiz:[
+    {q:'"lot dai mai" ne demek?',opts:['Fiyat ne kadar?','İndirim olur mu?','Var mı?','Ne renk?'],c:1},
+    {q:'"phaeng" ne demek?',opts:['Ucuz','Pahalı','Büyük','Küçük'],c:1},
+    {q:'"thuuk" ne demek?',opts:['Pahalı','Yanlış','Ucuz/Doğru','Büyük'],c:2},
+    {q:'"mii" ne demek?',opts:['Yok','Var','Gel','Git'],c:1},
+    {q:'Nakit ödemek Tayca?',opts:['jai bat','jai PromPay','jai ngoen-sot','jai kard'],c:2},
+    {q:'"long" ne demek?',opts:['Satın almak','Denemek','Ödemek','Sormak'],c:1},
+    {q:'"mot laeo" ne demek?',opts:['Var','Tükendi/Yok','Pahalı','Yeni'],c:1},
+    {q:'Soyunma odası Tayca?',opts:['hong-naam','hong-long','hong-khon','hong-norn'],c:1},
+    {q:'"jai" ne demek?',opts:['Sormak','Almak','Ödemek','Vermek'],c:2},
+    {q:'"thueng" ne demek?',opts:['Para','Torba/Poşet','Beden','Renk'],c:1},
+  ],
+};
+
+// =================== SRS (ARALIKLI TEKRAR) SİSTEMİ ===================
+// SM-2 algoritması tabanlı
+const SRS = {
+  // localStorage key'i
+  DB_KEY: 'tv3_srs',
+
+  // Tüm kartları yükle
+  load(){
+    return JSON.parse(localStorage.getItem(this.DB_KEY)||'{}');
+  },
+
+  // Kaydet
+  save(db){
+    localStorage.setItem(this.DB_KEY, JSON.stringify(db));
+  },
+
+  // Kart başlangıç verisi
+  newCard(id, th, ro, tr, lessonNum, type){
+    return {
+      id, th, ro, tr, lessonNum, type,
+      interval: 1,        // gün
+      easeFactor: 2.5,    // başlangıç kolaydık faktörü
+      nextReview: Date.now(), // hemen tekrar edilebilir
+      reps: 0,            // kaç kez tekrar edildi
+      lapses: 0,          // kaç kez yanlış
+    };
+  },
+
+  // SM-2 değerlendirme: q = 0 (bilmiyorum) -> 3 (kolay)
+  review(card, q){
+    const now = Date.now();
+    const DAY = 86400000;
+    let {interval, easeFactor, reps, lapses} = card;
+
+    if(q < 1){
+      // Bilmiyorum — yarın tekrar
+      interval = 1;
+      lapses++;
+      reps = 0;
+    } else if(q === 1){
+      // Zor — 3 gün
+      interval = Math.max(1, Math.round(interval * 1.2));
+      reps++;
+    } else if(q === 2){
+      // Normal
+      if(reps === 0) interval = 1;
+      else if(reps === 1) interval = 6;
+      else interval = Math.round(interval * easeFactor);
+      easeFactor = Math.max(1.3, easeFactor + 0.1);
+      reps++;
+    } else {
+      // Kolay
+      if(reps === 0) interval = 4;
+      else if(reps === 1) interval = 10;
+      else interval = Math.round(interval * easeFactor * 1.3);
+      easeFactor = Math.max(1.3, easeFactor + 0.15);
+      reps++;
+    }
+
+    return {
+      ...card,
+      interval,
+      easeFactor,
+      reps,
+      lapses,
+      nextReview: now + interval * DAY,
+    };
+  },
+
+  // Bugün tekrar edilecek kartlar
+  getDueCards(){
+    const db = this.load();
+    const now = Date.now();
+    return Object.values(db).filter(c => c.nextReview <= now);
+  },
+
+  // Kart ekle ya da güncelle
+  updateCard(card){
+    const db = this.load();
+    db[card.id] = card;
+    this.save(db);
+  },
+
+  // Dersten tüm kartları SRS'e ekle (henüz yoksa)
+  addLessonCards(lessonNum, lessonData){
+    const db = this.load();
+    let added = 0;
+
+    // Kelimeler
+    (lessonData.words||[]).forEach(w => {
+      const id = `L${lessonNum}_w_${w.id}`;
+      if(!db[id]){
+        db[id] = this.newCard(id, w.th||'', w.ro, w.tr, lessonNum, 'word');
+        added++;
+      }
+      // Örnekler
+      (w.examples||[]).forEach((e,ei) => {
+        const eid = `L${lessonNum}_ex_${w.id}_${ei}`;
+        if(!db[eid]){
+          db[eid] = this.newCard(eid, e.th||'', e.ro, e.tr, lessonNum, 'example');
+          added++;
+        }
+      });
+    });
+
+    // Konuşma kartları
+    (lessonData.speaking||[]).forEach((s,si) => {
+      const id = `L${lessonNum}_sp_${si}`;
+      if(!db[id]){
+        db[id] = this.newCard(id, s.th||'', s.ro, s.tr, lessonNum, 'speaking');
+        added++;
+      }
+    });
+
+    this.save(db);
+    return added;
+  },
+
+  // İstatistik
+  getStats(){
+    const db = this.load();
+    const now = Date.now();
+    const all = Object.values(db);
+    return {
+      total: all.length,
+      due: all.filter(c => c.nextReview <= now).length,
+      learned: all.filter(c => c.reps > 0).length,
+      new: all.filter(c => c.reps === 0).length,
+    };
+  }
+};
+
+LESSONS[5] = L5;
