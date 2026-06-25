@@ -17,30 +17,36 @@ h1{margin:0 0 6px;font-size:22px;color:#134e4a}
 .btn:active{transform:translateY(2px);box-shadow:0 2px 0 #0a7568}
 .note{margin-top:16px;font-size:11px;color:#98a2b3;text-align:center;line-height:1.5}
 .ver{text-align:center;margin-top:12px;font-size:10px;color:#cbd5e1}
-@media(prefers-color-scheme:dark){.card{background:#1e1e1e}.h1,h1{color:#e0f2f1}.sub{color:#aaa}.field select{background:#2a2a2a;border-color:#444;color:#e0e0e0}.field label{color:#888}}
+@media(prefers-color-scheme:dark){.card{background:#1e1e1e}h1{color:#e0f2f1}.sub{color:#aaa}.field select{background:#2a2a2a;border-color:#444;color:#e0e0e0}.field label{color:#888}}
 </style>
 </head>
 <body>
 <div class="card">
   <h1>Kolay Dil Ogren</h1>
-  <p class="sub" id="intro">Orijinal Kolay Tayca ve Kolay Ingilizce uygulamalari — tek giris noktasi.</p>
+  <p class="sub" id="intro">Tayca, Ingilizce ve Almanca — orijinal tam surumler.</p>
   <div class="field">
     <label id="lbl-locale">Arayuz dili</label>
     <select id="locale"><option value="tr">Turkce</option><option value="en">English</option></select>
   </div>
   <div class="field">
     <label id="lbl-target">Ogrenilecek dil</label>
-    <select id="target"><option value="th">Tayca — ไทย</option><option value="en">Ingilizce — English</option></select>
+    <select id="target">
+      <option value="th">Tayca — ไทย</option>
+      <option value="en">Ingilizce — English</option>
+      <option value="de">Almanca — Deutsch</option>
+    </select>
   </div>
   <button class="btn" id="go">Basla</button>
-  <p class="note" id="note">Tum dersler, menuler ve icerikler orijinal programlarla birebir.</p>
-  <div class="ver">v1.0</div>
+  <p class="note" id="note">Tam dersler, detayli gramer, alistirma ve SRS.</p>
+  <div class="ver">v1.1</div>
 </div>
 <script>
 const APP='kdo';
+const ROUTES={th:'tayca-v3.html',en:'english-v3.html',de:'german-v3.html'};
+const LANG_KEYS={th:'tv3_lang',en:'en1_lang',de:'de1_lang'};
 const ui={
-  tr:{intro:'Orijinal Kolay Tayca ve Kolay Ingilizce uygulamalari — tek giris noktasi.',locale:'Arayuz dili',target:'Ogrenilecek dil',go:'Basla',note:'Tum dersler, menuler ve icerikler orijinal programlarla birebir.'},
-  en:{intro:'Original Easy Thai and Easy English apps — one entry point.',locale:'Interface language',target:'Language to learn',go:'Start',note:'All lessons, menus and content match the original apps.'}
+  tr:{intro:'Tayca, Ingilizce ve Almanca — orijinal tam surumler.',locale:'Arayuz dili',target:'Ogrenilecek dil',go:'Basla',note:'Tam dersler, detayli gramer, alistirma ve SRS.'},
+  en:{intro:'Thai, English and German — full original apps.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, detailed grammar, practice and SRS.'}
 };
 const locale=localStorage.getItem(APP+':locale')||localStorage.getItem(APP+':ui')||'tr';
 const target=localStorage.getItem(APP+':target')||'th';
@@ -70,8 +76,8 @@ function launch(){
   localStorage.setItem(APP+':ui',loc);
   localStorage.setItem(APP+':base',loc);
   localStorage.setItem(APP+':target',tgt);
-  localStorage.setItem(tgt==='en'?'en1_lang':'tv3_lang',loc);
-  location.href=tgt==='en'?'english-v3.html':'tayca-v3.html';
+  localStorage.setItem(LANG_KEYS[tgt]||'tv3_lang',loc);
+  location.href=ROUTES[tgt]||ROUTES.th;
 }
 document.getElementById('go').addEventListener('click',launch);
 if(new URLSearchParams(location.search).get('auto')==='1') launch();

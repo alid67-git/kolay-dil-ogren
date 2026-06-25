@@ -1,0 +1,173 @@
+// ders26.js — German Lesson 26: Farben (vocabulary)
+const L26 = {
+  words:[
+    {
+      id:'w1',
+      en:'rot',
+      ro:'rot',
+      tr:'kırmızı'
+    },
+    {
+      id:'w2',
+      en:'blau',
+      ro:'blau',
+      tr:'mavi'
+    },
+    {
+      id:'w3',
+      en:'grün',
+      ro:'grün',
+      tr:'yeşil'
+    },
+    {
+      id:'w4',
+      en:'gelb',
+      ro:'gelp',
+      tr:'sarı'
+    },
+    {
+      id:'w5',
+      en:'schwarz',
+      ro:'shvarts',
+      tr:'siyah'
+    },
+    {
+      id:'w6',
+      en:'weiß',
+      ro:'vays',
+      tr:'beyaz'
+    },
+    {
+      id:'w7',
+      en:'grau',
+      ro:'grau',
+      tr:'gri'
+    },
+    {
+      id:'w8',
+      en:'braun',
+      ro:'braun',
+      tr:'kahverengi'
+    },
+    {
+      id:'w9',
+      en:'orange',
+      ro:'o-RAN-zhe',
+      tr:'turuncu'
+    },
+    {
+      id:'w10',
+      en:'lila',
+      ro:'LEE-la',
+      tr:'mor'
+    },
+    {
+      id:'w11',
+      en:'rosa',
+      ro:'RO-za',
+      tr:'pembe'
+    },
+    {
+      id:'w12',
+      en:'hell',
+      ro:'hel',
+      tr:'açık (renk)'
+    },
+    {
+      id:'w13',
+      en:'dunkel',
+      ro:'DUN-kel',
+      tr:'koyu (renk)'
+    },
+    {
+      id:'w14',
+      en:'bunt',
+      ro:'bunt',
+      tr:'renkli / rengarenk'
+    },
+    {
+      id:'w15',
+      en:'farblos',
+      ro:'FARB-los',
+      tr:'renksiz'
+    },
+    {
+      id:'w16',
+      en:'die Farbe',
+      ro:'dee FAR-be',
+      tr:'renk'
+    },
+    {
+      id:'w17',
+      en:'bunt',
+      ro:'bunt',
+      tr:'renkli'
+    },
+    {
+      id:'w18',
+      en:'golden',
+      ro:'GOL-den',
+      tr:'altın rengi'
+    },
+    {
+      id:'w19',
+      en:'silbern',
+      ro:'ZIL-bern',
+      tr:'gümüş rengi'
+    },
+    {
+      id:'w20',
+      en:'beige',
+      ro:'bezh',
+      tr:'bej'
+    },
+    {
+      id:'w21',
+      en:'türkis',
+      ro:'tür-KIS',
+      tr:'turkuaz'
+    },
+    {
+      id:'w22',
+      en:'violett',
+      ro:'vee-o-LET',
+      tr:'eflatun'
+    },
+    {
+      id:'w23',
+      en:'farbig',
+      ro:'FAR-bikh',
+      tr:'renkli'
+    },
+    {
+      id:'w24',
+      en:'schillern',
+      ro:'SHIL-ern',
+      tr:'parıldamak'
+    },
+    {
+      id:'w25',
+      en:'leuchten',
+      ro:'LOY-kh-ten',
+      tr:'parlamak / ışıldamak'
+    },
+    {
+      id:'w26',
+      en:'der Farbton',
+      ro:'der FARB-ton',
+      tr:'renk tonu'
+    },
+    {
+      id:'w27',
+      en:'matt',
+      ro:'mat',
+      tr:'mat (parlak olmayan)'
+    }
+  ],
+  grammar:[],
+  speaking:[],
+  dialogues:[],
+  listening:[],
+  tones:[]
+};
+LESSONS[26] = L26;
