@@ -14,8 +14,10 @@ window.KDO_LANGUAGE_MANIFEST = {
     "listening": true,
     "srs": true,
     "tones": true,
-    "numbers": true
+    "numbers": true,
+    "calculator": true
   },
+  "numbersLesson": 2,
   "fieldMap": {
     "text": "th",
     "pronunciation": "ro",
