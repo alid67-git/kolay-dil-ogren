@@ -21,10 +21,10 @@ html = html.replace(/<title>[^<]+<\/title>/, '<title>Kolay Dil Öğren</title>')
 const sharedHead = `</style>
 <script src="shared/kdo-version.js"></script>
 <script src="shared/kdo-lang-registry.js"></script>
-<script src="shared/kdo-platform-init.js"></script>
 <script src="shared/kdo-ui-i18n.js"></script>
 <script src="shared/kdo-ui-extra.js"></script>
 <script src="shared/kdo-ui-helpers.js"></script>
+<script src="shared/kdo-platform-init.js"></script>
 <script src="shared/kdo-analytics-config.js"></script>
 <script src="shared/kdo-geo-locale.js"></script>
 <script src="shared/kdo-translate.js"></script>
@@ -186,6 +186,8 @@ if((KDO_CFG.extras||[]).includes('gram-turkish')){
   if(gs){ const s=document.createElement('script'); s.src='shared/kdo-gram-turkish.js'; gs.parentNode.insertBefore(s,gs); }
 }
 if(typeof KDO_applyBrandHeader==='function') KDO_applyBrandHeader();
+if(typeof KDO_applyBrandDev==='function') KDO_applyBrandDev();
+else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit==='function') _bd.textContent=devCredit(appLang); }
 `;
 
 app = app.replace('gistAutoSync();\n}', 'gistAutoSync();\n}' + initExtra);

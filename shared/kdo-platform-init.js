@@ -1,7 +1,7 @@
 /** Ortak platform başlatma — sürüm, önbellek, marka */
 (function () {
   'use strict';
-  var APP_VERSION = window.KDO_PLATFORM_VERSION || 'v3.0.0';
+  var APP_VERSION = window.KDO_PLATFORM_VERSION || 'v3.0.1';
   var storedVersion = localStorage.getItem('app_version');
   if (storedVersion && storedVersion !== APP_VERSION) {
     if ('caches' in window) {
@@ -14,10 +14,17 @@
   localStorage.setItem('app_version', APP_VERSION);
   window.KDO_APP_VERSION = APP_VERSION;
 
+  function resolveUiLocale() {
+    return localStorage.getItem('kdo:locale')
+      || localStorage.getItem('kdo:ui')
+      || (typeof appLang !== 'undefined' ? appLang : null)
+      || 'tr';
+  }
+
   function applyBrandDev() {
     var el = document.getElementById('brand-dev');
     if (!el) return;
-    var loc = localStorage.getItem('kdo:locale') || 'tr';
+    var loc = resolveUiLocale();
     if (typeof devCredit === 'function') {
       el.textContent = devCredit(loc);
     } else {
@@ -43,19 +50,21 @@
     if (cfg.title) document.title = cfg.title;
   }
 
+  window.KDO_applyBrandDev = applyBrandDev;
   window.KDO_applyBrandHeader = applyBrandHeader;
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function () {
-      applyBrandDev();
-      applyVersionBadge();
-      applyBrandHeader();
-    });
-  } else {
+  function onReady() {
     applyBrandDev();
     applyVersionBadge();
     applyBrandHeader();
   }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', onReady);
+  } else {
+    onReady();
+  }
+  window.addEventListener('load', onReady);
   applyVersionBadge();
 
   if ('serviceWorker' in navigator) {

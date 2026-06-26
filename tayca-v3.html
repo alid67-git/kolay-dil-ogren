@@ -615,10 +615,10 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
 <script src="shared/kdo-version.js"></script>
-<script src="shared/kdo-platform-init.js"></script>
 <script src="shared/kdo-ui-i18n.js"></script>
 <script src="shared/kdo-ui-extra.js"></script>
 <script src="shared/kdo-ui-helpers.js"></script>
+<script src="shared/kdo-platform-init.js"></script>
 <script>
 const APP_VERSION = window.KDO_APP_VERSION || window.KDO_PLATFORM_VERSION;
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
@@ -3245,7 +3245,7 @@ function buildHelpContent(){
         </div>
       </div>
       <div class="help-section-header">📋 ${en?'App Info':'Uygulama Bilgisi'}</div>
-      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">v3.0.0</strong></div>
+      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">v3.0.1</strong></div>
       <div class="help-info-row"><span>${en?'Total Lessons':'Toplam Ders'}</span><strong>19 + 29 ${en?'BONUS sets':'BONUS set'}</strong></div>
       <div class="help-info-row"><span>${en?'Per Lesson':'Ders Başına'}</span><strong>~10 ${en?'words, 8 grammar, 4 dialogues':'kelime, 8 gramer, 4 diyalog'}</strong></div>
       <div class="help-info-row"><span>${en?'Audio':'Ses Motoru'}</span><strong>Web Speech API + Google TTS</strong></div>
@@ -4044,6 +4044,8 @@ document.getElementById('api-key-input').value = localStorage.getItem('tayca_api
 document.getElementById('gist-token-input').value = localStorage.getItem('tayca_gist_token')||'';
 gistAutoSync();
 }
+if(typeof KDO_applyBrandDev==='function') KDO_applyBrandDev();
+else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit==='function') _bd.textContent=devCredit(appLang); }
 </script>
 
 <!-- EXERCISE OVERLAY -->
