@@ -655,6 +655,8 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 </style>
 <script src="shared/kdo-version.js"></script>
 <script src="shared/kdo-ui-i18n.js"></script>
+<script src="shared/kdo-ui-extra.js"></script>
+<script src="shared/kdo-ui-helpers.js"></script>
 <script src="shared/kdo-analytics-config.js"></script>
 <script src="shared/kdo-geo-locale.js"></script>
 <script src="shared/kdo-translate.js"></script>
@@ -666,7 +668,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.6';
+const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.3.0';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -950,14 +952,75 @@ const UI_LOCAL = {
     scroll_top:'Scroll to top',
     add_coming:'Word addition module coming soon',
     gist_saved:'✅ Token saved.',
-  }
+  },
+  de:{
+    test_dir_en2tr:'Deutsch → Bedeutung',
+    test_dir_tr2en:'Bedeutung → Deutsch',
+    test_dir_mix:'Gemischt',
+    review_q_en2tr:'🇩🇪 Deutsch → Bedeutung',
+    review_q_tr2en:'🇹🇷 Bedeutung → Deutsch',
+    translate_placeholder:'Deutsch / Bedeutung...',
+    translate_tip:'Deutsch veya Bedeutung yazın.',
+    settings_voices:'🔊 Deutsch',
+    settings_voices_loading:'...',
+    pron_col_english:'Deutsch'
+  },
+  fr:{
+    test_dir_en2tr:'allemand → Sens',
+    test_dir_tr2en:'Sens → allemand',
+    test_dir_mix:'Mixte',
+    review_q_en2tr:'🇫🇷 allemand → Sens',
+    review_q_tr2en:'🇹🇷 Sens → allemand',
+    translate_placeholder:'allemand / Sens...',
+    translate_tip:'allemand veya Sens yazın.',
+    settings_voices:'🔊 allemand',
+    settings_voices_loading:'...',
+    pron_col_english:'allemand'
+  },
+  es:{
+    test_dir_en2tr:'alemán → Significado',
+    test_dir_tr2en:'Significado → alemán',
+    test_dir_mix:'Mixto',
+    review_q_en2tr:'🇪🇸 alemán → Significado',
+    review_q_tr2en:'🇹🇷 Significado → alemán',
+    translate_placeholder:'alemán / Significado...',
+    translate_tip:'alemán veya Significado yazın.',
+    settings_voices:'🔊 alemán',
+    settings_voices_loading:'...',
+    pron_col_english:'alemán'
+  },
+  it:{
+    test_dir_en2tr:'tedesco → Significato',
+    test_dir_tr2en:'Significato → tedesco',
+    test_dir_mix:'Misto',
+    review_q_en2tr:'🇮🇹 tedesco → Significato',
+    review_q_tr2en:'🇹🇷 Significato → tedesco',
+    translate_placeholder:'tedesco / Significato...',
+    translate_tip:'tedesco veya Significato yazın.',
+    settings_voices:'🔊 tedesco',
+    settings_voices_loading:'...',
+    pron_col_english:'tedesco'
+  },
+  ru:{
+    test_dir_en2tr:'немецкий → Значение',
+    test_dir_tr2en:'Значение → немецкий',
+    test_dir_mix:'Смешанный',
+    review_q_en2tr:'🇷🇺 немецкий → Значение',
+    review_q_tr2en:'🇹🇷 Значение → немецкий',
+    translate_placeholder:'немецкий / Значение...',
+    translate_tip:'немецкий veya Значение yazın.',
+    settings_voices:'🔊 немецкий',
+    settings_voices_loading:'...',
+    pron_col_english:'немецкий'
+  },
 };
 
 function _mergeUI(){
   const langs = window.KDO_UI_LANGS || ['tr','en'];
   const ui = {};
   for(const l of langs){
-    ui[l] = Object.assign({}, (window.KDO_UI||{})[l]||{}, (UI_LOCAL[l]||{}));
+    const locBase = l==='tr' ? (UI_LOCAL.tr||{}) : (UI_LOCAL.en||{});
+    ui[l] = Object.assign({}, locBase, (window.KDO_UI||{})[l]||{}, (UI_LOCAL[l]||{}));
   }
   return ui;
 }
@@ -965,12 +1028,13 @@ const UI = _mergeUI();
 function devCredit(lang){ return (window.KDO_UI_DEV||{})[lang] || (window.KDO_UI_DEV||{}).tr || ''; }
 function uiB(en, tr){ return appLang==='tr' ? tr : en; }
 
-function s(key){ return (UI[appLang]||UI.tr)[key] || UI.tr[key] || key; }
+function s(key){ return typeof KDO_sFix==='function'?KDO_sFix(UI,appLang,key):((UI[appLang]||UI.en||UI.tr)[key]||(UI.en||{})[key]||(UI.tr||{})[key]||key); }
 
-function Lf(item, field){
+function Lf(item,field){
   if(!item) return '';
-  if(appLang!=='tr' && item[field+'_en']!==undefined) return item[field+'_en'];
-  return item[field] || '';
+  if(typeof KDO_Lf==='function') return KDO_Lf(item,field,appLang);
+  if(appLang!=='tr'&&item[field+'_en']!==undefined) return item[field+'_en'];
+  return item[field]||'';
 }
 
 function lessonSubtitle(meta){
@@ -981,7 +1045,7 @@ function lessonSubtitle(meta){
 }
 
 function lessonNumLabel(num){
-  return (appLang==='en'?'Lesson ':'Ders ') + num;
+  return (appLang!=='tr'?'Lesson ':'Ders ') + num;
 }
 
 
@@ -1022,7 +1086,7 @@ function setLang(lang){
 
 <header>
   <div class="brand-wrap"><div class="brand">🇩🇪 Kolay Almanca</div><div class="brand-dev" id="brand-dev"></div></div>
-  <button class="hbtn" onclick="location.href='index.html?hub=1'" title="Dil degistir">🌐</button>
+  <button class="hbtn" onclick="location.href='index.html?hub=1'" title="" data-lk="ui_change_lang">🌐</button>
   <div class="pbar-wrap">
     <div class="pbar"><div class="pfill" id="pbar"></div></div>
     <div class="pbar-label" id="pbar-label">0 / 49</div>
@@ -1031,7 +1095,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version">v2.2.6</span>
+  <span class="vbadge" id="app-version">v2.3.0</span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>
@@ -1375,15 +1439,9 @@ function gramRoleClass(role){
   return m[role]||'phrase';
 }
 function gramRoleLabel(role){
-  role = normalizeGramRole(role);
-  const tr = {S:'Özne',V:'Yüklem',O:'Nesne',K:'Zarf / Belirteç',Q:'Soru',
-    greeting:'Selamlama',farewell:'Veda',phrase:'Kalıp ifade',adj:'Sıfat / Durum',
-    question:'Soru kelimesi',courtesy:'Nezaket',modal:'Yardımcı fiil',name:'İsim',N:'Olumsuz'};
-  const en = {S:'Subject',V:'Verb',O:'Object',K:'Modifier',Q:'Question',
-    greeting:'Greeting',farewell:'Farewell',phrase:'Set phrase',adj:'Adjective',
-    question:'Question word',courtesy:'Courtesy',modal:'Auxiliary',name:'Name',N:'Negative'};
-  const L = appLang==='en'?en:tr;
-  return L[role]||role;
+  role=normalizeGramRole(role);
+  if(typeof KDO_gramRoleLabel==='function') return KDO_gramRoleLabel(role,appLang,function(k){return s(k);});
+  return role;
 }
 
 function showGramModal(th, tr, bdJson, summary){
@@ -1534,7 +1592,7 @@ function renderLessonCard(L){
   const badges = [];
   if(isDone) badges.push('<span class="lbadge lbadge-done">🎉 '+s('lesson_done_msg')+'</span>');
   else if(allVisited) badges.push('<span class="lbadge" style="background:#e3f2fd;color:#1565c0;">'+s('lesson_all_done_q')+'</span>');
-  else if(visitedCount>0) badges.push('<span class="lbadge lbadge-visit">'+visitedCount+'/'+tabs.length+' '+(appLang==='en'?'tabs':'sekme')+'</span>');
+  else if(visitedCount>0) badges.push('<span class="lbadge lbadge-visit">'+visitedCount+'/'+tabs.length+' '+(appLang!=='tr'?'tabs':'sekme')+'</span>');
   if(scorePct!==null) badges.push('<span class="lbadge lbadge-score" style="color:'+scoreColor+'">🎯 '+scorePct+'%</span>');
   if(timeStr) badges.push('<span class="lbadge lbadge-time">⏱ '+timeStr+'</span>');
 
@@ -1631,7 +1689,7 @@ function showLessonStars(num, event){
   if(event) event.stopPropagation();
   const prefixes = ['w'+num+'__', 'ex'+num+'w', 'dia'+num];
   const items = Object.entries(starred).filter(([k,v])=>v&&typeof v==='object'&&prefixes.some(p=>k.startsWith(p)));
-  const en = appLang==='en';
+  const en = appLang!=='tr';
   if(items.length===0){
     alert(en?'No starred items for this lesson yet. Star words or sentences inside the lesson.':'Bu derse ait yıldızlı öğe yok. Dersin içinde kelime veya cümleleri yıldızlayın.');
     return;
@@ -1944,13 +2002,13 @@ function prepareExampleBreakdown(en, tr, rawBd, gramNote){
     ro: p.ro,
     tr: p.tr || splitTrParts(tr, arr.length)[i] || '—',
     role: normalizeGramRole(p.role) || guessGramRole(p.ro, i, arr.map(x=>x.ro), cleanEn),
-    note: p.note || guessPieceNote(p.ro, p.role, i, arr.map(x=>x.ro), cleanEn)
+    note: (typeof KDO_LfNote==='function'&&KDO_LfNote(p,appLang))?KDO_LfNote(p,appLang):(p.note||guessPieceNote(p.ro,p.role,i,arr.map(x=>x.ro),cleanEn))
   }));
   return {bd, summary: gramNote || buildAutoSummary(text, bd)};
 }
 
 function lineBreakdown(line){
-  return prepareExampleBreakdown(line.en||'', line.tr||'', line.bd, line.gramNote).bd;
+  return prepareExampleBreakdown(line.en||'', line.tr||'', line.bd, Lf(line,'gramNote')||line.gramNote).bd;
 }
 
 function buildLessonHTML(L, meta){
@@ -1968,7 +2026,7 @@ function buildLessonHTML(L, meta){
     const sk = starKey('w'+meta.num,w.en||w.ro);
     const exs = (w.examples||[]).map((e,ei)=>{
       const esk = starKey('ex'+meta.num+w.id,e.en||e.ro);
-      const exPrep = prepareExampleBreakdown(e.en||e.ro, e.tr, e.pieces||e.bd, e.gramNote);
+      const exPrep = prepareExampleBreakdown(e.en||e.ro, e.tr, e.pieces||e.bd, Lf(e,'gramNote')||e.gramNote);
       const exPieces = exPrep.bd;
       const exBdIdx = window._wordBD.length;
       window._wordBD.push({th:e.en||e.ro, tr:e.tr, bd:exPieces, summary:exPrep.summary});
@@ -2006,26 +2064,26 @@ function buildLessonHTML(L, meta){
   // L1 için Sözcükler başına özne tablosu
   const pronounTable = meta.num===1 ? `
     <div style="background:#fff8e1;border:1.5px solid #ffe082;border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:#555;line-height:1.6;">
-      <strong style="color:#b45309;">${appLang==='en'?'Start here:':'Buradan başla:'}</strong>
-      ${appLang==='en'?'Learn one word at a time. Listen 🔊, repeat aloud, then try 🐢 slow mode. Build sentences only after you know the words.':'Önce tek tek kelimeleri öğren. 🔊 dinle, yüksek sesle tekrar et, sonra 🐢 yavaş modu dene. Cümlelere kelimeler oturduktan sonra geç.'}
+      <strong style="color:#b45309;">${appLang!=='tr'?'Start here:':'Buradan başla:'}</strong>
+      ${appLang!=='tr'?'Learn one word at a time. Listen 🔊, repeat aloud, then try 🐢 slow mode. Build sentences only after you know the words.':'Önce tek tek kelimeleri öğren. 🔊 dinle, yüksek sesle tekrar et, sonra 🐢 yavaş modu dene. Cümlelere kelimeler oturduktan sonra geç.'}
     </div>
     <div style="background:#f0fdf9;border:1.5px solid #b2dfdb;border-radius:12px;padding:12px 14px;margin-bottom:16px;">
-      <div style="font-size:12px;font-weight:700;color:#0d9488;margin-bottom:10px;">👤 ${appLang==='en'?'Personal Pronouns — Quick Reference':'Kişi Zamirleri — Hızlı Referans'}</div>
+      <div style="font-size:12px;font-weight:700;color:#0d9488;margin-bottom:10px;">👤 ${appLang!=='tr'?'Personal Pronouns — Quick Reference':'Kişi Zamirleri — Hızlı Referans'}</div>
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
         <tr style="border-bottom:1px solid #b2dfdb;">
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang==='en'?'Person':'Kişi'}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang==='en'?'German':'Almanca'}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang==='en'?'Turkish':'Türkçe'}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang==='en'?'Note':'Not'}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?'Person':'Kişi'}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?'German':'Almanca'}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?'Turkish':'Türkçe'}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?'Note':'Not'}</th>
         </tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'1st sing.':'1. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ich</td><td style="padding:6px 6px;">Ben</td><td style="padding:6px 6px;color:#888;">${appLang==='en'?'Always lowercase':'Küçük harf'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'2nd sing. (informal)':'2. tekil (samimi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">du</td><td style="padding:6px 6px;">Sen</td><td style="padding:6px 6px;color:#888;">${appLang==='en'?'Informal you':'Samimi sen'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'2nd sing. (formal)':'2. tekil (resmi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">Sie</td><td style="padding:6px 6px;">Siz</td><td style="padding:6px 6px;color:#888;">${appLang==='en'?'Capital S = formal':'Büyük S = resmi'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">er / sie / es</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">${appLang==='en'?'M / F / neuter':'E / K / nötr'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">wir</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">sie / Sie</td><td style="padding:6px 6px;">Onlar / Siz</td><td style="padding:6px 6px;color:#888;">${appLang==='en'?'sie=they, Sie=formal you':'sie=onlar, Sie=resmi siz'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'1st sing.':'1. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ich</td><td style="padding:6px 6px;">Ben</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Always lowercase':'Küçük harf'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'2nd sing. (informal)':'2. tekil (samimi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">du</td><td style="padding:6px 6px;">Sen</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Informal you':'Samimi sen'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'2nd sing. (formal)':'2. tekil (resmi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">Sie</td><td style="padding:6px 6px;">Siz</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Capital S = formal':'Büyük S = resmi'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">er / sie / es</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'M / F / neuter':'E / K / nötr'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">wir</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">sie / Sie</td><td style="padding:6px 6px;">Onlar / Siz</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'sie=they, Sie=formal you':'sie=onlar, Sie=resmi siz'}</td></tr>
       </table>
-      <div style="font-size:10px;color:#888;margin-top:8px;">💡 ${appLang==='en'?'More examples → Grammar tab → Rule 1':'Detaylı örnekler → Gramer sekmesi → Kural 1'}</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">💡 ${appLang!=='tr'?'More examples → Grammar tab → Rule 1':'Detaylı örnekler → Gramer sekmesi → Kural 1'}</div>
     </div>` : '';
 
   // TELAFFUZ (Ders 1 — IPA ses rehberi)
@@ -2049,7 +2107,7 @@ function buildLessonHTML(L, meta){
     const words = t.words || [];
     return `<div class="tone-card" style="border-left-color:${color}">
       <div class="tone-name" style="color:${color}">${t.name||Lf(t,'en')||t.en||''}</div>
-      ${t.symbol?`<div class="tone-symbol">${appLang==='en'?'Mark:':'İşaret:'} ${t.symbol}</div>`:''}
+      ${t.symbol?`<div class="tone-symbol">${appLang!=='tr'?'Mark:':'İşaret:'} ${t.symbol}</div>`:''}
       <div class="tone-desc">${Lf(t,'desc')||t.desc||Lf(t,'tip')||t.tip||''}</div>
       <div class="tone-words">
         ${words.map(w=>`
@@ -2073,7 +2131,7 @@ function buildLessonHTML(L, meta){
     let exHtml = '';
     if(g.table && g.table.length){
       exHtml = `<table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;">
-        <tr style="background:#f5f3ff;"><th style="padding:6px;text-align:left;color:#7c3aed;">${appLang==='en'?'Form':'Biçim'}</th><th style="padding:6px;text-align:left;color:#7c3aed;">${appLang==='en'?'Rule':'Kural'}</th><th style="padding:6px;text-align:left;color:#7c3aed;">${appLang==='en'?'Example':'Örnek'}</th><th style="padding:6px;text-align:left;color:#7c3aed;">TR</th></tr>
+        <tr style="background:#f5f3ff;"><th style="padding:6px;text-align:left;color:#7c3aed;">${appLang!=='tr'?'Form':'Biçim'}</th><th style="padding:6px;text-align:left;color:#7c3aed;">${appLang!=='tr'?'Rule':'Kural'}</th><th style="padding:6px;text-align:left;color:#7c3aed;">${appLang!=='tr'?'Example':'Örnek'}</th><th style="padding:6px;text-align:left;color:#7c3aed;">TR</th></tr>
         ${g.table.map(row=>`<tr style="border-bottom:1px solid #f0f0f0;">
           <td style="padding:6px;font-weight:700;color:#333;">${row.pronoun||''}</td>
           <td style="padding:6px;color:#888;">${row.form||''}</td>
@@ -2083,7 +2141,7 @@ function buildLessonHTML(L, meta){
       </table>${g.note?`<div class="gram-note-box" style="font-size:12px;margin-top:8px;line-height:1.6;">💡 ${g.note}</div>`:''}`;
     } else {
     exHtml = (g.examples||[]).map((e,ei)=>{
-      const exPrep = prepareExampleBreakdown(e.en||e.ro, e.tr, e.bd, e.gramNote);
+      const exPrep = prepareExampleBreakdown(e.en||e.ro, e.tr, e.bd, Lf(e,'gramNote')||e.gramNote);
       const bdIdx = window._gramBD.length;
       window._gramBD.push({th:e.en||e.ro, tr:e.tr, bd:exPrep.bd, summary:exPrep.summary});
       return '<div class="ex-item" style="cursor:pointer" data-gram="'+bdIdx+'">'+
@@ -2097,8 +2155,8 @@ function buildLessonHTML(L, meta){
         '</div></div>';
     }).join('');
     }
-    const gTips = (appLang==='en' && g.tips_en) ? g.tips_en : g.tips;
-    const gExplain = Lf(g,'explain')||g.explain||g.explanation||'';
+    const gTips=(appLang!=='tr'&&(g.tips_en||g['tips_'+appLang]))?(g['tips_'+appLang]||g.tips_en):g.tips;
+    const gExplain=Lf(g,'explanation')||Lf(g,'explain')||g.explain||g.explanation||'';
     const gFormula = Lf(g,'formula')||g.formula||'';
     return '<div class="gram-card"><div class="gram-title">📖 '+(Lf(g,'title')||g.title)+'</div>'+(gFormula?'<div class="gram-formula">'+gFormula+'</div>':'')+(gExplain?'<div class="gram-explain">'+gExplain+'</div>':'')+(gTips?'<div class="gram-tips-box" style="padding:8px;border-radius:6px;margin-bottom:10px;font-size:12px;"><strong>'+s('gram_tip_label')+'</strong><ul style="margin:4px 0 0 14px;">'+gTips.map(t=>'<li>'+t+'</li>').join('')+'</ul></div>':'')+'<div class="gram-examples">'+exHtml+'</div></div>';
   }).join('');
@@ -2112,7 +2170,7 @@ function buildLessonHTML(L, meta){
       </div>
       ${d.lines.map((l,li)=>{
         const dsk = starKey('dia'+meta.num+di, (l.en||l.ro)+li);
-        const exPrep = prepareExampleBreakdown(l.en||'', l.tr, l.bd, l.gramNote);
+        const exPrep = prepareExampleBreakdown(l.en||'', l.tr, l.bd, Lf(l,'gramNote')||l.gramNote);
         const bd = exPrep.bd;
         const dlineGramIdx = window._gramBD.length;
         window._gramBD.push({th:l.en||'', tr:l.tr, bd, summary:exPrep.summary});
@@ -2135,7 +2193,7 @@ function buildLessonHTML(L, meta){
 
   // KONUŞMA
   const speaking = (L.speaking||[]).map((sp,i)=>{
-    const spPrep = prepareExampleBreakdown(sp.en||'', sp.tr, sp.bd, sp.gramNote);
+    const spPrep = prepareExampleBreakdown(sp.en||'', sp.tr, sp.bd, Lf(sp,'gramNote')||sp.gramNote);
     const gramIdx = window._gramBD.length;
     if(spPrep.bd.length) window._gramBD.push({th:sp.en||'', tr:sp.tr, bd:spPrep.bd, summary:spPrep.summary});
     const hasBd = spPrep.bd.length>0;
@@ -2218,13 +2276,13 @@ function buildLessonHTML(L, meta){
   if(meta.num === 3 && L.numbers){
     // --- NUMBERS sekmesi: Flash kart benzeri grid ---
     const groups = [
-      {title: appLang==='en'?'🔢 Basic Numbers (0–9)':'🔢 Temel Rakamlar (0–9)', data: L.numbers.filter(x=>x.n<=9)},
-      {title: appLang==='en'?'🔟 Tens (10–100)':'🔟 Onlar (10–100)',             data: L.numbers.filter(x=>x.n>=10&&x.n<=100)},
-      {title: appLang==='en'?'💯 Large Units':'💯 Büyük Birimler',               data: L.numbers.filter(x=>x.n>100)},
+      {title: appLang!=='tr'?'🔢 Basic Numbers (0–9)':'🔢 Temel Rakamlar (0–9)', data: L.numbers.filter(x=>x.n<=9)},
+      {title: appLang!=='tr'?'🔟 Tens (10–100)':'🔟 Onlar (10–100)',             data: L.numbers.filter(x=>x.n>=10&&x.n<=100)},
+      {title: appLang!=='tr'?'💯 Large Units':'💯 Büyük Birimler',               data: L.numbers.filter(x=>x.n>100)},
     ];
     numbersHtml = `
       <div style="background:#f0faf7;border:1px solid #b2dfdb;border-radius:12px;padding:12px 14px;margin-bottom:14px;font-size:13px;color:#444;line-height:1.7">
-        <strong style="color:#0d9488">${appLang==='en'?'System:':'Sistem:'}</strong> ${s('num_info')}
+        <strong style="color:#0d9488">${appLang!=='tr'?'System:':'Sistem:'}</strong> ${s('num_info')}
       </div>
       ${groups.map(g=>`
         <div style="font-weight:700;color:#0d9488;margin:14px 0 8px;font-size:13px;border-left:3px solid #0d9488;padding-left:8px">${g.title}</div>
@@ -2305,7 +2363,7 @@ function buildLessonHTML(L, meta){
         ${lessonSubtitle(meta) ? `<div class="lesson-hero-sub">${lessonSubtitle(meta)}</div>` : ''}
         <div class="lesson-hero-meta"><span id="lesson-score-live"></span></div>
       </div>
-      <button type="button" class="lesson-header-star" onclick="showLessonStars(${meta.num},event)" title="${appLang==='en'?'Starred items':'Yıldızlılar'}">⭐</button>
+      <button type="button" class="lesson-header-star" onclick="showLessonStars(${meta.num},event)" title="${appLang!=='tr'?'Starred items':'Yıldızlılar'}">⭐</button>
     </div>
     <div class="ltabs" id="ltabs-wrap">${tabs}</div>
     ${tabNames.map(t=>`<div id="lc-${t}" class="lcontent">${
@@ -3625,7 +3683,7 @@ function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 document.querySelectorAll('.overlay').forEach(el=>{
   el.addEventListener('click',e=>{ if(e.target===el) el.classList.remove('open'); });
 });
-function saveKey(){ localStorage.setItem('german_api_key',document.getElementById('api-key-input').value); alert(appLang==='en'?'Saved.':'Kaydedildi.'); }
+function saveKey(){ localStorage.setItem('german_api_key',document.getElementById('api-key-input').value); alert(appLang!=='tr'?'Saved.':'Kaydedildi.'); }
 function saveGist(){
   localStorage.setItem('german_gist_token', document.getElementById('gist-token-input').value.trim());
   document.getElementById('gist-status').textContent = s('gist_saved');
@@ -3661,8 +3719,8 @@ function gistSetStatus(msg, color){
 
 async function gistPush(){
   const token = localStorage.getItem('german_gist_token');
-  if(!token){ alert(appLang==='en'?'Save Gist token first.':'Önce Gist token kaydet.'); return; }
-  gistSetStatus('⏳ '+(appLang==='en'?'Uploading...':'Yükleniyor...'), '#888');
+  if(!token){ alert(appLang!=='tr'?'Save Gist token first.':'Önce Gist token kaydet.'); return; }
+  gistSetStatus('⏳ '+(appLang!=='tr'?'Uploading...':'Yükleniyor...'), '#888');
   try{
     const gistId = localStorage.getItem('german_gist_id');
     const url    = gistId ? `https://api.github.com/gists/${gistId}` : 'https://api.github.com/gists';
@@ -3677,17 +3735,17 @@ async function gistPush(){
       })
     });
     const data = await resp.json();
-    if(!data.id) throw new Error(data.message||(appLang==='en'?'Unknown error':'Bilinmeyen hata'));
+    if(!data.id) throw new Error(data.message||(appLang!=='tr'?'Unknown error':'Bilinmeyen hata'));
     localStorage.setItem('german_gist_id', data.id);
-    const t = new Date().toLocaleTimeString(appLang==='en'?'en-US':'tr-TR',{hour:'2-digit',minute:'2-digit'});
-    gistSetStatus('✅ '+(appLang==='en'?'Saved to cloud · ':'Buluta kaydedildi · ')+t, '#059669');
-  } catch(e){ gistSetStatus('❌ '+(appLang==='en'?'Error: ':'Hata: ')+e.message, '#dc2626'); }
+    const t = new Date().toLocaleTimeString(appLang!=='tr'?'en-US':'tr-TR',{hour:'2-digit',minute:'2-digit'});
+    gistSetStatus('✅ '+(appLang!=='tr'?'Saved to cloud · ':'Buluta kaydedildi · ')+t, '#059669');
+  } catch(e){ gistSetStatus('❌ '+(appLang!=='tr'?'Error: ':'Hata: ')+e.message, '#dc2626'); }
 }
 
 async function gistPull(){
   const token = localStorage.getItem('german_gist_token');
-  if(!token){ alert(appLang==='en'?'Save Gist token first.':'Önce Gist token kaydet.'); return; }
-  gistSetStatus('⏳ '+(appLang==='en'?'Searching...':'Aranıyor...'), '#888');
+  if(!token){ alert(appLang!=='tr'?'Save Gist token first.':'Önce Gist token kaydet.'); return; }
+  gistSetStatus('⏳ '+(appLang!=='tr'?'Searching...':'Aranıyor...'), '#888');
   try{
     // Gist ID varsa direkt al, yoksa listeden ara
     let gistId = localStorage.getItem('german_gist_id');
@@ -3696,7 +3754,7 @@ async function gistPull(){
         headers:{'Authorization':'Bearer '+token}
       }).then(r=>r.json());
       const found = list.find && list.find(g=>g.files&&g.files[GIST_FILENAME]);
-      if(!found) throw new Error(appLang==='en'?'No cloud data found. First push from another device.':'Bulutta veri bulunamadı. Önce bir cihazdan "Buluta Kaydet" yap.');
+      if(!found) throw new Error(appLang!=='tr'?'No cloud data found. First push from another device.':'Bulutta veri bulunamadı. Önce bir cihazdan "Buluta Kaydet" yap.');
       gistId = found.id;
       localStorage.setItem('german_gist_id', gistId);
     }
@@ -3705,11 +3763,11 @@ async function gistPull(){
     });
     const data = await resp.json();
     const raw = data.files?.[GIST_FILENAME]?.content;
-    if(!raw) throw new Error(appLang==='en'?'Gist file not found.':'Gist dosyası bulunamadı.');
+    if(!raw) throw new Error(appLang!=='tr'?'Gist file not found.':'Gist dosyası bulunamadı.');
     const payload = JSON.parse(raw);
     gistApplyPayload(payload);
-    const saved = payload.saved_at ? new Date(payload.saved_at).toLocaleString(appLang==='en'?'en-US':'tr-TR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) : '?';
-    gistSetStatus('✅ '+(appLang==='en'?'Loaded · Saved: ':'Alındı · Kaydedilme: ')+saved, '#059669');
+    const saved = payload.saved_at ? new Date(payload.saved_at).toLocaleString(appLang!=='tr'?'en-US':'tr-TR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) : '?';
+    gistSetStatus('✅ '+(appLang!=='tr'?'Loaded · Saved: ':'Alındı · Kaydedilme: ')+saved, '#059669');
     renderLessonList();
     updateProgressBar();
     updateReviewBadge();
@@ -3937,16 +3995,16 @@ async function claudeTranslate(q,dir){
     el.innerHTML=out||text;
   }catch(e){
     const el=document.getElementById('claude-result');
-    if(el) el.innerHTML=`<div style="color:#dc2626;font-size:13px;">❌ ${appLang==='en'?'Error:':'Hata:'} ${e.message}</div>`;
+    if(el) el.innerHTML=`<div style="color:#dc2626;font-size:13px;">❌ ${appLang!=='tr'?'Error:':'Hata:'} ${e.message}</div>`;
   }
 }
 
 // =================== SES LİSTESİ ===================
 function loadVoiceList(){
   const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
-  let html = '<div style="font-size:12px;color:#059669;margin-bottom:8px;">✅ '+(appLang==='en'?'Device speech (Web Speech API)':'Cihaz sesi (Web Speech API)')+'</div>';
+  let html = '<div style="font-size:12px;color:#059669;margin-bottom:8px;">✅ '+(appLang!=='tr'?'Device speech (Web Speech API)':'Cihaz sesi (Web Speech API)')+'</div>';
   html += '<div style="color:#666;padding:8px;background:#ecfdf5;border-radius:6px;font-size:12px;">';
-  html += (appLang==='en'?'Uses your phone/browser built-in voices — no API key needed.':'Telefon/tarayıcının yerleşik sesleri kullanılır — API anahtarı gerekmez.');
+  html += (appLang!=='tr'?'Uses your phone/browser built-in voices — no API key needed.':'Telefon/tarayıcının yerleşik sesleri kullanılır — API anahtarı gerekmez.');
   if(voices.length){
     const sample = voices.filter(v=>v.lang).slice(0,6).map(v=>'<li>'+v.name+' ('+v.lang+')</li>').join('');
     html += '<ul style="margin:8px 0 0 16px;font-size:11px;">'+sample+'</ul>';
@@ -4083,20 +4141,20 @@ async function startExercise(lessonNum, event){
     }
   }
   if(!LD){
-    alert((appLang==='en'?'Could not load lesson data. Please open the lesson first.':'Ders verisi yüklenemedi. Lütfen önce derse girin.'));
+    alert((appLang!=='tr'?'Could not load lesson data. Please open the lesson first.':'Ders verisi yüklenemedi. Lütfen önce derse girin.'));
     return;
   }
   try{
     exLessonNum = lessonNum;
     exExercises = buildExercises(LD, lessonNum);
-    if(exExercises.length===0){ alert(appLang==='en'?'Not enough exercise data for this lesson.':'Bu ders için yeterli egzersiz verisi yok.'); return; }
+    if(exExercises.length===0){ alert(appLang!=='tr'?'Not enough exercise data for this lesson.':'Bu ders için yeterli egzersiz verisi yok.'); return; }
     exIdx = 0; exLives = 3; exSelected = null; exAnswerWords = []; exAnswered = false; exCorrectCount = 0;
     document.getElementById('exercise-overlay').classList.add('open');
     document.getElementById('ex-footer').style.display='';
     document.body.style.overflow = 'hidden';
     renderExercise();
   } catch(err){
-    alert((appLang==='en'?'Exercise error: ':'Egzersiz hatası: ')+err.message);
+    alert((appLang!=='tr'?'Exercise error: ':'Egzersiz hatası: ')+err.message);
   }
 }
 
@@ -4117,18 +4175,18 @@ function setExBtn(state){
   btn.disabled = (state==='disabled');
   btn.className = 'ex-check-btn ' + (state==='disabled'?'':state);
   btn.textContent = state==='next'
-    ? (appLang==='en'?'Continue':'Devam et')
-    : (appLang==='en'?'Check':'Kontrol et');
+    ? (appLang!=='tr'?'Continue':'Devam et')
+    : (appLang!=='tr'?'Check':'Kontrol et');
 }
 
 function showExFeedback(correct, correctAnswer){
   const fb = document.getElementById('ex-feedback');
   if(correct){
     fb.className='ex-feedback-bar correct';
-    fb.innerHTML=`<div class="ex-fb-icon">🎉</div><div class="ex-fb-text"><div class="ex-fb-title">${appLang==='en'?'Correct!':'Doğru!'}</div></div>`;
+    fb.innerHTML=`<div class="ex-fb-icon">🎉</div><div class="ex-fb-text"><div class="ex-fb-title">${appLang!=='tr'?'Correct!':'Doğru!'}</div></div>`;
   } else {
     fb.className='ex-feedback-bar wrong';
-    fb.innerHTML=`<div class="ex-fb-icon">❌</div><div class="ex-fb-text"><div class="ex-fb-title">${appLang==='en'?'Incorrect':'Yanlış'}</div><div class="ex-fb-answer">${appLang==='en'?'Correct answer:':'Doğru cevap:'} <strong>${correctAnswer||''}</strong></div></div>`;
+    fb.innerHTML=`<div class="ex-fb-icon">❌</div><div class="ex-fb-text"><div class="ex-fb-title">${appLang!=='tr'?'Incorrect':'Yanlış'}</div><div class="ex-fb-answer">${appLang!=='tr'?'Correct answer:':'Doğru cevap:'} <strong>${correctAnswer||''}</strong></div></div>`;
   }
 }
 
@@ -4180,7 +4238,7 @@ function renderExercise(){
   }
   const e = exExercises[exIdx];
   const content = document.getElementById('ex-content');
-  const en = appLang==='en';
+  const en = appLang!=='tr';
 
   if(e.type==='word-choice'){
     content.innerHTML = `
@@ -4353,7 +4411,7 @@ function saveExStats(){
 
 function showExFinish(){
   saveExStats();
-  const en = appLang==='en';
+  const en = appLang!=='tr';
   const content = document.getElementById('ex-content');
   const accuracy = exExercises.length>0 ? Math.round(exCorrectCount/exExercises.length*100) : 0;
   const meta = LESSONS_META.find(m=>m.num===exLessonNum);
@@ -4374,7 +4432,7 @@ function showExFinish(){
 
 function showExFailed(){
   saveExStats();
-  const en = appLang==='en';
+  const en = appLang!=='tr';
   const content = document.getElementById('ex-content');
   content.innerHTML = `
     <div class="ex-finish">

@@ -87,6 +87,8 @@ const L1 = {
       title:'Selamlaşma Kalıpları',
       title_en:'Greeting Patterns',
       explanation:'Türkçede selamlaşma çoğunlukla sabit kalıplarla yapılır. Günün saatine göre Günaydın / İyi akşamlar seçilir; genel selam olarak Merhaba her zaman kullanılabilir. Ali erkek öğrenci olarak ilk konuşmada net ve kısa kalıpları kullanır.',
+      explanation_en:'Turkish greetings use fixed phrases. Use Günaydın in the morning, İyi akşamlar in the evening; Merhaba works any time. Short, clear phrases are best when meeting someone new.',
+      explanation_de:'Türkische Begrüßungen sind feste Wendungen. Günaydın morgens, İyi akşamlar abends; Merhaba jederzeit. Kurze, klare Sätze beim Kennenlernen.',
       table:[
         {
           pronoun:'Genel',
@@ -120,6 +122,8 @@ const L1 = {
       title:'Tanışma ve Nezaket',
       title_en:'Introductions and Courtesy',
       explanation:'Tanışmada önce isim sorulur, sonra isim söylenir: Adın ne? / Benim adım Ali. Nezaket için Teşekkürler ve Lütfen çok önemlidir. Türkçede özne çoğu zaman düşebilir ama başlangıçta tam cümle ile çalışmak daha güvenlidir.',
+      explanation_en:'When meeting someone: ask the name (Adın ne?), then give yours (Benim adım …). Teşekkürler and Lütfen are essential for politeness. Tanıştığıma memnun oldum = Nice to meet you (literally: I became pleased that I met you).',
+      explanation_de:'Beim Kennenlernen: Name fragen (Adın ne?), dann eigenen Namen nennen. Teşekkürler und Lütfen sind wichtig. Tanıştığıma memnun oldum = Freut mich, dich kennenzulernen.',
       table:[
         {
           pronoun:'Soru',
@@ -230,7 +234,14 @@ const L1 = {
           gender:'m',
           en:'Tanıştığıma memnun oldum.',
           tr:'nice to meet you',
-          bd:[]
+          gramNote:'Tanışma kalıbı — yeni biriyle tanışınca.',
+          gramNote_en:'Meeting phrase when you meet someone new. Tanışmak = to meet; -dığıma = that I met; memnun = pleased; oldum = I am (pleased).',
+          gramNote_de:'Begrüßung beim Kennenlernen. Tanışmak = kennenlernen; memnun = erfreut; oldum = ich bin.',
+          bd:[
+            {ro:'Tanıştığıma',tr:'that I met',role:'phrase',note:'Tanışmak fiilinden -dığıma',note_en:'From tanışmak (to meet) + -dığıma (that I …)',note_de:'Von tanışmak + -dığıma (dass ich …)'},
+            {ro:'memnun',tr:'pleased',role:'adj',note:'Sıfat: memnun',note_en:'Adjective: pleased, glad',note_de:'Adjektiv: erfreut'},
+            {ro:'oldum',tr:'I became',role:'V',note:'olumlu geçmiş: oldum',note_en:'Past of olmak: I became / I am',note_de:'Vergangenheit von olmak'}
+          ]
         },
         {
           speaker:'B',
