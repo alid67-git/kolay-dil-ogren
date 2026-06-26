@@ -666,7 +666,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.4';
+const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.5';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -1022,7 +1022,7 @@ function setLang(lang){
 
 <header>
   <div class="brand-wrap"><div class="brand">🇮🇹 Kolay İtalyanca</div><div class="brand-dev" id="brand-dev"></div></div>
-  <button class="hbtn" onclick="location.href='index.html'" title="Dil degistir">🌐</button>
+  <button class="hbtn" onclick="location.href='index.html?hub=1'" title="Dil degistir">🌐</button>
   <div class="pbar-wrap">
     <div class="pbar"><div class="pfill" id="pbar"></div></div>
     <div class="pbar-label" id="pbar-label">0 / 49</div>
@@ -1031,7 +1031,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version">v2.2.4</span>
+  <span class="vbadge" id="app-version">v2.2.5</span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>
