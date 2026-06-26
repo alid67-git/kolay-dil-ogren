@@ -15,7 +15,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .english{}
 
 /* HEADER */
-header{background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;}
 .brand{font-size:17px;font-weight:700;white-space:nowrap;} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
 /* YARDIM MODALİ */
 .htab{background:none;border:none;padding:9px 13px;font-size:12px;font-weight:700;color:#888;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:.15s;}
@@ -60,7 +60,7 @@ header{background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14
 .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.04em;white-space:nowrap;margin-right:2px;}
 
 /* NAV */
-nav{display:flex;gap:6px;padding:10px 14px;background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;}
+nav{position:sticky;top:54px;z-index:49;display:flex;gap:6px;padding:10px 14px;background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06);}
 .nbtn{padding:8px 12px;border:none;background:#f0f0f0;border-radius:16px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;}
 .nbtn.active{background:#0d9488;color:white;}
 
@@ -996,7 +996,7 @@ function setLang(lang){
 </header>
 
 <nav>
-  <button class="nbtn active" onclick="switchView('lessons',this)" data-lk="nav_lessons">📚 Dersler</button>
+  <button class="nbtn active" id="nav-lessons-btn" onclick="switchView('lessons',this)" data-lk="nav_lessons">📚 Dersler</button>
   <button class="nbtn" onclick="switchView('test',this)" data-lk="nav_test">📝 Test</button>
   <button class="nbtn" onclick="switchView('translate',this)" data-lk="nav_translate">🌐 Çeviri</button>
   <button class="nbtn" onclick="switchView('list',this)" data-lk="nav_list">📋 Liste</button>
@@ -1447,12 +1447,24 @@ function toggleStar(key, type, th, ro, tr, el, bd){
 function starKey(prefix, th){ return prefix+'__'+th.slice(0,20); }
 
 // =================== NAV ===================
+window.addEventListener('popstate', ()=>{
+  if(document.getElementById('detail-view').classList.contains('active')) closeLessonDetail();
+});
+
 function switchView(v, btn){
+  const wasDetail = document.getElementById('detail-view').classList.contains('active');
+  if(wasDetail && v !== 'detail'){
+    stopTabTimer();
+    stopLessonTimer();
+    currentLesson = null;
+  }
   if(v!=='list'){ _lessonStarFilter=null; const b=document.getElementById('star-filter-banner'); if(b) b.remove(); }
   document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
   document.getElementById(v+'-view').classList.add('active');
   document.querySelectorAll('.nbtn').forEach(b=>b.classList.remove('active'));
   if(btn) btn.classList.add('active');
+  else if(v==='lessons'){ const nb=document.getElementById('nav-lessons-btn'); if(nb) nb.classList.add('active'); }
+  if(v==='lessons'){ renderLessonList(); window.scrollTo(0,0); }
   if(v==='list') renderList();
   if(v==='review') renderReview();
   if(v==='test') initTestView();
@@ -1666,6 +1678,7 @@ async function openLesson(num){
   const firstTab = getTabsForLesson(meta)[0];
   switchLessonTab(firstTab);
   startLessonTimer(num);
+  try{ history.pushState({kdoView:'detail',lesson:num}, '', '#ders'+num); }catch(_){}
   } catch(err) {
     switchView('detail', null);
     document.getElementById('detail-content').innerHTML = '<div style="padding:20px;color:red;font-size:13px;">⚠️ Ders '+num+' yüklenirken hata: '+err.message+'<br><small>'+err.stack+'</small></div>';
@@ -1673,17 +1686,22 @@ async function openLesson(num){
 }
 
 function closeLessonDetail(){
+  if(!document.getElementById('detail-view').classList.contains('active')) return;
   stopTabTimer();
   stopLessonTimer();
   const returnNum = currentLesson ? currentLesson.num : null;
   if(returnNum && returnNum>=21) bonusOpen = true;
-  renderLessonList();
-  switchView('lessons', document.querySelector('.nbtn'));
-  document.querySelector('.nbtn').classList.add('active');
+  currentLesson = null;
+  document.getElementById('detail-content').innerHTML = '';
+  switchView('lessons', document.getElementById('nav-lessons-btn'));
+  window.scrollTo(0,0);
+  try{
+    if(location.hash) history.replaceState({kdoView:'lessons'}, '', location.pathname+location.search);
+  }catch(_){}
   if(returnNum){
     requestAnimationFrame(()=>{
       const card = document.querySelector(`.lesson-card[data-num="${returnNum}"]`);
-      if(card) card.scrollIntoView({block:'center', behavior:'smooth'});
+      if(card) card.scrollIntoView({block:'nearest', behavior:'smooth'});
     });
   }
 }
