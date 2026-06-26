@@ -11,23 +11,24 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:100%;max-width:100%;overflow-x:hidden;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f5f5f5;max-width:600px;margin:0 auto;color:#333;}
 .english{}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;}
-.brand-wrap{display:flex;flex-direction:column;line-height:1.2;}
-.brand{font-size:17px;font-weight:700;white-space:nowrap;}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;max-width:100%;min-width:0;}
+.brand-wrap{display:flex;flex:1 1 auto;min-width:0;flex-direction:column;line-height:1.2;}
+.brand{font-size:17px;font-weight:700;white-space:normal;overflow-wrap:anywhere;line-height:1.15;}
 .brand-dev{font-size:10px;font-weight:600;color:#fef9c3;letter-spacing:.04em;margin-top:6px;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.18);} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
 /* YARDIM MODALİ */
 .htab{background:none;border:none;padding:9px 13px;font-size:12px;font-weight:700;color:#888;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:.15s;}
 .htab.active{color:#0d9488;border-bottom-color:#0d9488;}
 .htab-content{display:none;}
 .htab-content.active{display:block;}
-.help-card{display:flex;gap:12px;background:#f8f9fa;border:1px solid #e8e8e8;border-radius:10px;padding:12px 14px;margin-bottom:14px;align-items:flex-start;}
+.help-card{display:flex;gap:12px;background:#f8f9fa;border:1px solid #e8e8e8;border-radius:10px;padding:12px 14px;margin-bottom:14px;align-items:flex-start;max-width:100%;min-width:0;}
 .help-card-icon{font-size:24px;flex-shrink:0;}
 .help-card-title{font-size:13px;font-weight:700;color:#222;margin-bottom:3px;}
-.help-card-body{font-size:12px;color:#555;line-height:1.6;}
+.help-card-body{font-size:12px;color:#555;line-height:1.6;overflow-wrap:anywhere;}
 .help-section-header{font-size:11px;font-weight:700;color:#0d9488;text-transform:uppercase;letter-spacing:.08em;margin:16px 0 8px;border-left:3px solid #0d9488;padding-left:7px;}
 .help-row{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px;}
 .help-row-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
@@ -47,12 +48,13 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d948
 .changelog-item{background:#f8f9fa;border-left:3px solid #0d9488;padding:8px 12px;border-radius:0 8px 8px 0;}
 .changelog-ver{font-size:12px;font-weight:700;color:#0d9488;margin-bottom:3px;}
 .changelog-desc{font-size:11px;color:#666;line-height:1.5;}
-.pbar-wrap{flex:1;display:flex;flex-direction:column;gap:3px;margin:0 10px;}
+.pbar-wrap{flex:0 1 110px;min-width:46px;display:flex;flex-direction:column;gap:3px;margin:0 4px;}
 .pbar{height:5px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;}
 .pbar-label{font-size:9px;color:rgba(255,255,255,.55);text-align:right;letter-spacing:.03em;}
 
 .pfill{height:100%;width:5%;background:white;border-radius:99px;transition:.3s;}
-.hbtn{background:rgba(255,255,255,.2);color:white;border:none;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:15px;}
+.header-actions{display:flex;align-items:center;gap:6px;flex-shrink:0;}
+.hbtn{background:rgba(255,255,255,.2);color:white;border:none;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:15px;flex-shrink:0;}
 /* TEST MODÜLİ */
 .test-cat-btn{padding:6px 12px;background:white;border:1.5px solid #e0e0e0;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;color:#666;transition:.15s;}
 .test-cat-btn.active{background:#e0f2f1;border-color:#0d9488;color:#0d9488;}
@@ -62,17 +64,17 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d948
 .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.04em;white-space:nowrap;margin-right:2px;}
 
 /* NAV */
-nav{position:sticky;top:54px;z-index:49;display:flex;gap:6px;padding:10px 14px;background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+nav{position:sticky;top:54px;z-index:49;display:flex;gap:6px;padding:10px 14px;background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06);max-width:100%;}
 .nbtn{padding:8px 12px;border:none;background:#f0f0f0;border-radius:16px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;}
 .nbtn.active{background:#0d9488;color:white;}
 
 /* MAIN */
-main{padding:14px;}
+main{padding:14px;max-width:100%;min-width:0;}
 .view{display:none;}
 .view.active{display:block;}
 
 /* LESSON LIST */
-.lesson-card{background:white;padding:14px 16px;margin-bottom:10px;border-radius:14px;border:1.5px solid #e8f2f1;border-left:4px solid #0d9488;cursor:pointer;display:flex;align-items:center;gap:14px;transition:.15s;box-shadow:0 1px 4px rgba(13,148,136,.06);}
+.lesson-card{background:white;padding:14px 16px;margin-bottom:10px;border-radius:14px;border:1.5px solid #e8f2f1;border-left:4px solid #0d9488;cursor:pointer;display:flex;align-items:center;gap:14px;transition:.15s;box-shadow:0 1px 4px rgba(13,148,136,.06);max-width:100%;min-width:0;}
 .lesson-card:hover{box-shadow:0 4px 14px rgba(13,148,136,.12);transform:translateY(-1px);}
 .lesson-card.empty{border-left-color:#ddd;opacity:.65;cursor:default;box-shadow:none;}
 .lthumb{width:50px;height:50px;border-radius:14px;background:linear-gradient(145deg,#e0f2f1,#f0fdf9);border:1px solid #b2dfdb;display:flex;align-items:center;justify-content:center;font-size:28px;flex-shrink:0;line-height:1;}
@@ -102,7 +104,7 @@ main{padding:14px;}
 .lesson-back-btn:hover{background:#e0f2f1;border-color:#0d9488;}
 .lesson-back-btn:active{transform:scale(.98);}
 .lesson-back-icon{font-size:20px;line-height:1;font-weight:900;}
-.lesson-hero{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#f0fdf9 0%,#fff 55%);border:1.5px solid #b2dfdb;border-radius:16px;padding:14px 16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(13,148,136,.08);}
+.lesson-hero{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#f0fdf9 0%,#fff 55%);border:1.5px solid #b2dfdb;border-radius:16px;padding:14px 16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(13,148,136,.08);max-width:100%;min-width:0;}
 .lesson-hero-emoji{font-size:34px;width:58px;height:58px;display:flex;align-items:center;justify-content:center;background:white;border-radius:14px;box-shadow:0 2px 8px rgba(13,148,136,.1);flex-shrink:0;line-height:1;}
 .lesson-hero-text{flex:1;min-width:0;}
 .lesson-hero-label{font-size:10px;font-weight:800;color:#0d9488;text-transform:uppercase;letter-spacing:.07em;}
@@ -137,7 +139,7 @@ main{padding:14px;}
 .ltab.timing::before{content:'⏳';font-size:9px;}
 
 /* WORD CARD — Ingilizce metin, Romanizasyon net */
-.word-card{background:white;padding:14px;margin-bottom:10px;border-radius:10px;border:1px solid #e8e8e8;}
+.word-card{background:white;padding:14px;margin-bottom:10px;border-radius:10px;border:1px solid #e8e8e8;max-width:100%;min-width:0;overflow-wrap:anywhere;}
 .word-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;}
 .word-en{font-size:22px;font-weight:700;margin-bottom:2px;line-height:1.3;color:#1a1a1a;display:block;}
 .word-ro{font-size:15px;color:#1a1a1a;font-weight:700;margin-top:1px;}
@@ -204,7 +206,9 @@ main{padding:14px;}
 .tw-tr{font-size:11px;color:#555;}
 
 /* GRAMMAR */
-.gram-card{background:white;padding:14px;margin-bottom:10px;border-radius:10px;border-left:4px solid #7c3aed;}
+.gram-card{background:white;padding:14px;margin-bottom:10px;border-radius:10px;border-left:4px solid #7c3aed;max-width:100%;min-width:0;overflow-wrap:anywhere;}
+main table{width:100%!important;max-width:100%;table-layout:fixed;border-collapse:collapse;}
+main th,main td{overflow-wrap:anywhere;word-break:break-word;}
 .gram-title{font-size:14px;font-weight:700;color:#7c3aed;margin-bottom:8px;}
 .gram-formula{background:#f5f3ff;border:1px solid #ede9fe;border-radius:8px;padding:10px;font-size:13px;font-weight:600;margin-bottom:10px;text-align:center;line-height:1.8;}
 .gram-explain{font-size:13px;color:#555;line-height:1.7;margin-bottom:10px;}
@@ -234,7 +238,7 @@ main{padding:14px;}
 /* MODAL */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:flex-end;}
 .overlay.open{display:flex;}
-.modal{background:white;border-radius:16px 16px 0 0;padding:20px;width:100%;max-height:80vh;overflow-y:auto;}
+.modal{background:white;border-radius:16px 16px 0 0;padding:20px;width:100%;max-width:100%;max-height:80vh;overflow-y:auto;overflow-x:hidden;}
 .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
 .modal-title{font-size:16px;font-weight:700;}
 .modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:#999;}
@@ -326,6 +330,27 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 .bonus-lesson{margin-left:14px;border-left:3px solid #b2dfdb;}
 .ex-texts[data-word-idx]{cursor:pointer;border-radius:8px;transition:background .15s;}
 .ex-texts[data-word-idx]:hover{background:#f0fdf9;}
+
+@media (max-width:420px){
+  header{padding:10px 8px;gap:6px;}
+  .brand{font-size:13px;}
+  .brand-dev{font-size:9px;margin-top:3px;}
+  .vbadge{display:none;}
+  .pbar-wrap{max-width:74px;margin:0 2px;}
+  .pbar-label{font-size:8px;}
+  .header-actions{gap:4px;}
+  .hbtn{padding:6px 8px;font-size:13px;}
+  nav{top:45px;padding:8px 10px;}
+  main{padding:10px;}
+  .lesson-card{padding:12px 10px;gap:9px;border-radius:12px;}
+  .lthumb{width:42px;height:42px;font-size:23px;border-radius:12px;}
+  .larrow-wrap{width:30px;height:30px;}
+  .lesson-hero{padding:12px 10px;gap:10px;border-radius:14px;}
+  .lesson-hero-emoji{width:46px;height:46px;font-size:28px;}
+  .lesson-hero-title{font-size:16px;}
+  .word-card,.gram-card{padding:12px 10px;}
+  .modal{padding:16px 14px;}
+}
 
 /* ===== DARK MODE ===== */
 @media (prefers-color-scheme: dark) {
@@ -653,16 +678,17 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.16"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.16"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.16"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.16"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.16"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.16"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.16"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.16"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.16"></script>
-<script src="shared/kdo-translate.js?v=3.0.16"></script>
+<script src="shared/kdo-version.js?v=3.0.17"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.17"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.17"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.17"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.17"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.17"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.17"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.17"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.17"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.17"></script>
+<script src="shared/kdo-translate.js?v=3.0.17"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 </script>
@@ -1010,6 +1036,35 @@ function applyTargetUi(){
   };
   const meaning={tr:'Anlam',en:'Meaning',th:'ความหมาย',de:'Bedeutung',fr:'Sens',es:'Significado',it:'Significato',ru:'Значение',ar:'المعنى',zh:'含义'};
   const mixed={tr:'Karışık',en:'Mixed',th:'ผสม',de:'Gemischt',fr:'Mixte',es:'Mixto',it:'Misto',ru:'Смешанный',ar:'مختلط',zh:'混合'};
+  const pronRows={
+    tr:['1. tekil','2. tekil (samimi)','2. tekil (resmi)','3. tekil','1. çoğul','3. çoğul'],
+    en:['1st singular','2nd singular (informal)','2nd singular (formal)','3rd singular','1st plural','3rd plural'],
+    th:['เอกพจน์ที่ 1','เอกพจน์ที่ 2 (กันเอง)','เอกพจน์ที่ 2 (สุภาพ)','เอกพจน์ที่ 3','พหูพจน์ที่ 1','พหูพจน์ที่ 3'],
+    de:['1. Person Singular','2. Person Singular (informell)','2. Person Singular (formell)','3. Person Singular','1. Person Plural','3. Person Plural'],
+    fr:['1re personne singulier','2e personne singulier (informel)','2e personne singulier (formel)','3e personne singulier','1re personne pluriel','3e personne pluriel'],
+    es:['1.ª persona singular','2.ª persona singular (informal)','2.ª persona singular (formal)','3.ª persona singular','1.ª persona plural','3.ª persona plural'],
+    it:['1ª persona singolare','2ª persona singolare (informale)','2ª persona singolare (formale)','3ª persona singolare','1ª persona plurale','3ª persona plurale'],
+    ru:['1-е лицо ед.','2-е лицо ед. (неформ.)','2-е лицо ед. (форм.)','3-е лицо ед.','1-е лицо мн.','3-е лицо мн.'],
+    ar:['المتكلم المفرد','المخاطب المفرد (غير رسمي)','المخاطب المفرد (رسمي)','الغائب المفرد','المتكلم الجمع','الغائب الجمع'],
+    zh:['第一人称单数','第二人称单数（非正式）','第二人称单数（正式）','第三人称单数','第一人称复数','第三人称复数']
+  };
+  const pronNotes={
+    tr:['Küçük harf','Samimi sen','Resmi kullanım','Cinsiyet ayrımı yok','', 'Çoğul / resmi siz'],
+    en:['Always lowercase','Informal you','Formal you','M / F / neuter','', 'they / formal you'],
+    th:['เขียนตัวพิมพ์เล็กเสมอ','ใช้กับคนสนิท','ใช้แบบสุภาพ/เป็นทางการ','เขา/เธอ/กลาง','', 'พวกเขา / คุณแบบสุภาพ'],
+    de:['immer kleingeschrieben','informelles du','formelles Sie','m/w/sächlich','', 'sie / formelles Sie'],
+    fr:['toujours en minuscule','tu informel','vous formel','masculin/féminin/neutre','', 'ils/elles / vous formel'],
+    es:['siempre minúscula','tú informal','usted formal','masculino/femenino/neutro','', 'ellos / usted formal'],
+    it:['sempre minuscolo','tu informale','Lei formale','maschile/femminile/neutro','', 'loro / Lei formale'],
+    ru:['всегда строчными','неформальное ты','формальное Вы','м/ж/ср.','', 'они / формальное Вы'],
+    ar:['دائما بحروف صغيرة','أنت غير رسمي','أنت رسمي','مذكر/مؤنث/محايد','', 'هم / أنت رسمي'],
+    zh:['始终小写','非正式你','正式您','男/女/中性','', '他们 / 正式您']
+  };
+  if(KDO_CFG && !KDO_CFG.nameTh){
+    const thName=(names.th&&names.th[targetCode])||KDO_CFG.targetLabelEn||targetCode;
+    KDO_CFG.nameTh='เรียนภาษา'+thName+'ง่ายๆ';
+    KDO_CFG.titleTh=KDO_CFG.nameTh;
+  }
   for(const loc of (window.KDO_UI_LANGS||Object.keys(names))){
     if(!UI_LOCAL[loc]) UI_LOCAL[loc]={};
     const n=(names[loc]||names.en)[targetCode]||KDO_CFG.targetLabelEn||targetCode;
@@ -1023,6 +1078,13 @@ function applyTargetUi(){
       test_dir_mix:mixed[loc]||mixed.en,
       review_q_en2tr:n+' → '+m,
       review_q_tr2en:m+' → '+n
+    });
+    const rows=pronRows[loc]||pronRows.en, notes=pronNotes[loc]||pronNotes.en;
+    Object.assign(UI_LOCAL[loc], {
+      pron_row_1sg:rows[0], pron_row_2sg_inf:rows[1], pron_row_2sg_form:rows[2],
+      pron_row_3sg:rows[3], pron_row_1pl:rows[4], pron_row_3pl:rows[5],
+      pron_note_lower:notes[0], pron_note_inf:notes[1], pron_note_formal:notes[2],
+      pron_note_gender:notes[3], pron_note_sie:notes[5]
     });
   }
   for(const loc of Object.keys(tu)){
@@ -1074,6 +1136,9 @@ function s(key){ return typeof KDO_sFix==='function'?KDO_sFix(UI,appLang,key):((
 
 function Lf(item,field){
   if(!item) return '';
+  if(item.num && window.KDO_LESSON_I18N && window.KDO_LESSON_I18N[appLang] && window.KDO_LESSON_I18N[appLang][item.num] && window.KDO_LESSON_I18N[appLang][item.num][field]){
+    return window.KDO_LESSON_I18N[appLang][item.num][field];
+  }
   if(typeof KDO_Lf==='function') return KDO_Lf(item,field,appLang);
   if(appLang!=='tr'&&item[field+'_en']!==undefined) return item[field+'_en'];
   return item[field]||'';
@@ -1081,9 +1146,9 @@ function Lf(item,field){
 
 function lessonSubtitle(meta){
   if(!meta) return '';
-  const sub = appLang!=='tr' ? (meta.subtitle_en||meta.subtitle) : (meta.subtitle||meta.subtitle_en);
+  const sub = Lf(meta,'subtitle');
   if(sub) return sub;
-  return appLang!=='tr' ? (meta.title_en||meta.title||'') : (meta.title||meta.title_en||'');
+  return '';
 }
 
 function lessonNumLabel(num){
@@ -1112,6 +1177,8 @@ function setLang(lang){
   document.documentElement.dir = (appLang === 'ar') ? 'rtl' : 'ltr';
   document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
   document.querySelectorAll('[data-lk-ph]').forEach(el=>{ el.placeholder=s(el.dataset.lkPh); });
+  if(typeof KDO_applyBrandHeader==='function') KDO_applyBrandHeader();
+  if(typeof KDO_applyBrandDev==='function') KDO_applyBrandDev();
   // Re-render current view
   const vid = (document.querySelector('.view.active')||{}).id||'';
   if(vid==='lessons-view') renderLessonList();
@@ -2110,8 +2177,22 @@ function buildLessonHTML(L, meta){
   }).join('');
 
   // L1 için Sözcükler başına özne tablosu
-  const _tui = (window.KDO_UI&&window.KDO_UI[window.KDO_TARGET])||(window.KDO_UI&&window.KDO_UI.de)||{};
-  function tgt(key){ return _tui[key]||key; }
+  const PRON_TARGETS = {
+    tk:{tk_pron_ben:'ben',tk_pron_sen:'sen',tk_pron_siz:'siz',tk_pron_o:'o',tk_pron_biz:'biz',tk_pron_onlar:'onlar/siz'},
+    de:{tk_pron_ben:'ich',tk_pron_sen:'du',tk_pron_siz:'Sie',tk_pron_o:'er/sie',tk_pron_biz:'wir',tk_pron_onlar:'sie'},
+    en:{tk_pron_ben:'I',tk_pron_sen:'you',tk_pron_siz:'you (formal)',tk_pron_o:'he/she',tk_pron_biz:'we',tk_pron_onlar:'they/you'},
+    it:{tk_pron_ben:'io',tk_pron_sen:'tu',tk_pron_siz:'Lei',tk_pron_o:'lui/lei',tk_pron_biz:'noi',tk_pron_onlar:'loro'},
+    es:{tk_pron_ben:'yo',tk_pron_sen:'tú',tk_pron_siz:'usted',tk_pron_o:'él/ella',tk_pron_biz:'nosotros',tk_pron_onlar:'ellos/ustedes'},
+    fr:{tk_pron_ben:'je',tk_pron_sen:'tu',tk_pron_siz:'vous',tk_pron_o:'il/elle',tk_pron_biz:'nous',tk_pron_onlar:'ils/elles'},
+    ru:{tk_pron_ben:'я',tk_pron_sen:'ты',tk_pron_siz:'Вы',tk_pron_o:'он/она',tk_pron_biz:'мы',tk_pron_onlar:'они/вы'},
+    ar:{tk_pron_ben:'أنا',tk_pron_sen:'أنت',tk_pron_siz:'أنت (رسمي)',tk_pron_o:'هو/هي',tk_pron_biz:'نحن',tk_pron_onlar:'هم/أنتم'},
+    zh:{tk_pron_ben:'我',tk_pron_sen:'你',tk_pron_siz:'您',tk_pron_o:'他/她',tk_pron_biz:'我们',tk_pron_onlar:'他们/您们'},
+    th:{tk_pron_ben:'ฉัน',tk_pron_sen:'คุณ',tk_pron_siz:'คุณ (สุภาพ)',tk_pron_o:'เขา/เธอ',tk_pron_biz:'เรา',tk_pron_onlar:'พวกเขา'}
+  };
+  const targetPron = PRON_TARGETS[(KDO_CFG&&KDO_CFG.kdoTarget)||'de'] || PRON_TARGETS.de;
+  const meaningPron = (window.KDO_UI&&window.KDO_UI[appLang]) || {};
+  function tgt(key){ return targetPron[key]||key; }
+  function mean(key, fallback){ return meaningPron[key]||fallback||''; }
   const pronounTable = meta.num===1 ? `
     <div style="background:#fff8e1;border:1.5px solid #ffe082;border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:#555;line-height:1.6;">
       <strong style="color:#b45309;">${s('ui_start_here')}</strong>
@@ -2126,12 +2207,12 @@ function buildLessonHTML(L, meta){
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_meaning')}</th>
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_note')}</th>
         </tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_1sg')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_ben')}</td><td style="padding:6px 6px;">ben</td><td style="padding:6px 6px;color:#888;">${s('pron_note_lower')}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_2sg_inf')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_sen')}</td><td style="padding:6px 6px;">sen</td><td style="padding:6px 6px;color:#888;">${s('pron_note_inf')}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_2sg_form')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_siz')}</td><td style="padding:6px 6px;">siz</td><td style="padding:6px 6px;color:#888;">${s('pron_note_formal')}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_3sg')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_o')}</td><td style="padding:6px 6px;">o</td><td style="padding:6px 6px;color:#888;">${s('pron_note_gender')}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_1pl')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_biz')}</td><td style="padding:6px 6px;">biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_3pl')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_onlar')}</td><td style="padding:6px 6px;">onlar/siz</td><td style="padding:6px 6px;color:#888;">${s('pron_note_sie')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_1sg')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_ben')}</td><td style="padding:6px 6px;">${mean('tk_pron_ben','ben')}</td><td style="padding:6px 6px;color:#888;">${s('pron_note_lower')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_2sg_inf')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_sen')}</td><td style="padding:6px 6px;">${mean('tk_pron_sen','sen')}</td><td style="padding:6px 6px;color:#888;">${s('pron_note_inf')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_2sg_form')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_siz')}</td><td style="padding:6px 6px;">${mean('tk_pron_siz','siz')}</td><td style="padding:6px 6px;color:#888;">${s('pron_note_formal')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_3sg')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_o')}</td><td style="padding:6px 6px;">${mean('tk_pron_o','o')}</td><td style="padding:6px 6px;color:#888;">${s('pron_note_gender')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_1pl')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_biz')}</td><td style="padding:6px 6px;">${mean('tk_pron_biz','biz')}</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_3pl')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_onlar')}</td><td style="padding:6px 6px;">${mean('tk_pron_onlar','onlar/siz')}</td><td style="padding:6px 6px;color:#888;">${s('pron_note_sie')}</td></tr>
       </table>
       <div style="font-size:10px;color:#888;margin-top:8px;">💡 ${s('ui_more_grammar')}</div>
     </div>` : '';
@@ -4648,6 +4729,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.16"></script>
+<script src="shared/kdo-analytics.js?v=3.0.17"></script>
 </body>
 </html>
