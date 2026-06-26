@@ -653,18 +653,20 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.6"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.6"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.6"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.6"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.6"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.6"></script>
-<script src="shared/kdo-pronoun-tables.js?v=3.0.6"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.6"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.6"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.6"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.6"></script>
-<script src="shared/kdo-translate.js?v=3.0.6"></script>
+<script src="shared/kdo-version.js?v=3.0.7"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.7"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.7"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.7"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.7"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.7"></script>
+<script src="shared/kdo-gloss.js?v=3.0.7"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.7"></script>
+<script src="shared/kdo-pronoun-tables.js?v=3.0.7"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.7"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.7"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.7"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.7"></script>
+<script src="shared/kdo-translate.js?v=3.0.7"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 </script>
@@ -1060,6 +1062,16 @@ function Lf(item,field){
 function Lmeta(meta,field){
   if(typeof KDO_Lmeta==='function') return KDO_Lmeta(meta,field,appLang);
   return Lf(meta,field);
+}
+
+function Lm(item,field){
+  if(typeof KDO_Lm==='function') return KDO_Lm(item,field,appLang);
+  return Lf(item,field);
+}
+
+function Ltips(item){
+  if(typeof KDO_Ltips==='function') return KDO_Ltips(item,appLang);
+  return appLang==='tr' ? item.tips : (item.tips_en||null);
 }
 
 function lessonSubtitle(meta){
@@ -1606,7 +1618,7 @@ function renderLessonCard(L){
     <div class="lesson-card empty">
       <div class="lnum">${L.num}</div>
       <div class="linfo">
-        <div class="ltitle">${L.emoji} ${Lf(L,'title')}</div>
+        <div class="ltitle">${L.emoji} ${Lmeta(L,'title')}</div>
         <div class="lsub">○ ${s('lesson_no_content')}</div>
       </div>
       <div class="larrow">·</div>
@@ -2066,7 +2078,7 @@ function buildLessonHTML(L, meta){
         <div class="ex-texts" style="cursor:pointer" data-word-idx="${exBdIdx}">
           <div class="ex-th">${e.en||''}</div>
           <div class="ex-ro">${e.ro||''}</div>
-          <div class="ex-tr">${Lf(e,'tr')}</div>
+          <div class="ex-tr">${Lm(e,'tr')}</div>
         </div>
         <div class="ex-actions">
           <button class="sm-abtn" data-speak="${esc(e.en||e.ro)}" data-slow="0">🔊</button>
@@ -2080,7 +2092,7 @@ function buildLessonHTML(L, meta){
         <div>
           <div class="word-en">${w.en||''}</div>
           <div class="word-ro">${w.ro||''}</div>
-          <div class="word-tr">${Lf(w,'tr')}</div>
+          <div class="word-tr">${Lm(w,'tr')}</div>
         </div>
         <div class="word-btns">
           <button class="sbtn ${starred[sk]?'on':''}" data-star="${esc(sk)}" data-stype="word" data-th="${esc(w.en||'')}" data-ro="${esc(w.ro||'')}" data-tr="${esc(w.tr)}">⭐</button>
@@ -2088,7 +2100,7 @@ function buildLessonHTML(L, meta){
           <button class="abtn slow" data-speak="${esc(w.en||w.ro)}" data-slow="1">🐢</button>
         </div>
       </div>
-      ${(Lf(w,'tip')||Lf(w,'ctx'))?`<div class="word-note">${Lf(w,'tip')}<span class="ctx">${Lf(w,'ctx')}</span></div>`:''}
+      ${(Lm(w,'tip')||Lm(w,'ctx'))?`<div class="word-note">${Lm(w,'tip')}<span class="ctx">${Lm(w,'ctx')}</span></div>`:''}
       ${exs?`<div class="examples-wrap">${exs}</div>`:''}
     </div>`;
   }).join('');
@@ -2115,7 +2127,7 @@ function buildLessonHTML(L, meta){
             <div class="tone-word" style="text-align:left;min-width:100%;cursor:default;">
               <div class="tw-th" style="font-size:18px;color:#0d9488">${s.symbol||''}</div>
               <div class="tw-ro">${s.example||''}</div>
-              <div class="tw-tr">${Lf(s,'tr')||s.tr||''}</div>
+              <div class="tw-tr">${Lm(s,'tr')||s.tr||''}</div>
             </div>`).join('')}
         </div>
       </div>`;
@@ -2131,7 +2143,7 @@ function buildLessonHTML(L, meta){
             <div class="tone-word">
               <div class="tw-th">${wordEn(w)}</div>
               <div class="tw-ro">${w.ro||''}</div>
-              <div class="tw-tr">${Lf(w,'tr')||w.tr||''}</div>
+              <div class="tw-tr">${Lm(w,'tr')||w.tr||''}</div>
             </div>
             <div style="display:flex;gap:4px;">
               <button class="sm-abtn" data-speak="${esc(wordEn(w))}" data-slow="0" style="flex:1;padding:4px;font-size:11px;">🔊</button>
@@ -2164,24 +2176,24 @@ function buildLessonHTML(L, meta){
         '<div class="ex-texts">'+
           '<div class="ex-th">'+(e.en||'')+'</div>'+
           '<div class="ex-ro">'+(e.ro||'')+'</div>'+
-          '<div class="ex-tr">'+(Lf(e,'tr')||e.tr)+'</div>'+
+          '<div class="ex-tr">'+(Lm(e,'tr')||e.tr)+'</div>'+
         '</div>'+
         '<div class="ex-actions">'+
           '<button class="sm-abtn" data-speak="'+(e.en||e.ro||'')+'" data-slow="0">🔊</button>'+
         '</div></div>';
     }).join('');
     }
-    const gTips=(appLang!=='tr'&&(g.tips_en||g['tips_'+appLang]))?(g['tips_'+appLang]||g.tips_en):g.tips;
-    const gExplain=Lf(g,'explanation')||Lf(g,'explain')||g.explain||g.explanation||'';
-    const gFormula = Lf(g,'formula')||g.formula||'';
-    return '<div class="gram-card"><div class="gram-title">📖 '+(Lf(g,'title')||g.title)+'</div>'+(gFormula?'<div class="gram-formula">'+gFormula+'</div>':'')+(gExplain?'<div class="gram-explain">'+gExplain+'</div>':'')+(gTips?'<div class="gram-tips-box" style="padding:8px;border-radius:6px;margin-bottom:10px;font-size:12px;"><strong>'+s('gram_tip_label')+'</strong><ul style="margin:4px 0 0 14px;">'+gTips.map(t=>'<li>'+t+'</li>').join('')+'</ul></div>':'')+'<div class="gram-examples">'+exHtml+'</div></div>';
+    const gTips=Ltips(g);
+    const gExplain=Lm(g,'explanation')||Lm(g,'explain')||'';
+    const gFormula = Lm(g,'formula')||g.formula||'';
+    return '<div class="gram-card"><div class="gram-title">📖 '+(Lm(g,'title')||g.title)+'</div>'+(gFormula?'<div class="gram-formula">'+gFormula+'</div>':'')+(gExplain?'<div class="gram-explain">'+gExplain+'</div>':'')+(gTips&&gTips.length?'<div class="gram-tips-box" style="padding:8px;border-radius:6px;margin-bottom:10px;font-size:12px;"><strong>'+s('gram_tip_label')+'</strong><ul style="margin:4px 0 0 14px;">'+gTips.map(t=>'<li>'+t+'</li>').join('')+'</ul></div>':'')+'<div class="gram-examples">'+exHtml+'</div></div>';
   }).join('');
 
   // DİYALOG
   const dialogues = (L.dialogues||[]).map((d,di)=>`
     <div class="dialog-card">
       <div class="dialog-title">
-        ${Lf(d,'title')||d.title}
+        ${Lm(d,'title')||d.title}
         <button id="dplay-${di}" class="play-all-btn" onclick="playDialogue(${di})">${s('dial_play')}</button>
       </div>
       ${d.lines.map((l,li)=>{
@@ -2196,7 +2208,7 @@ function buildLessonHTML(L, meta){
           <div class="dspeaker">${sp}</div>
           <div class="dbubble dbubble-clickable" data-dline-idx="${dlineGramIdx}">
             <div class="dbubble-th">${l.en||''}</div>
-            <div class="dbubble-tr">${Lf(l,'tr')||l.tr}</div>
+            <div class="dbubble-tr">${Lm(l,'tr')||l.tr}</div>
           </div>
           <div class="dline-actions">
             <button class="sm-abtn" data-speak="${esc(l.en||l.ro)}" data-slow="0" data-gender="${dg}">🔊</button>
@@ -2214,10 +2226,10 @@ function buildLessonHTML(L, meta){
     if(spPrep.bd.length) window._gramBD.push({th:sp.en||'', tr:sp.tr, bd:spPrep.bd, summary:spPrep.summary});
     const hasBd = spPrep.bd.length>0;
     return '<div class="speak-card">'+
-      '<div class="speak-task">'+(i+1)+'. '+(Lf(sp,'task')||sp.task||sp.prompt||'')+'</div>'+
+      '<div class="speak-task">'+(i+1)+'. '+(Lm(sp,'task')||sp.task||sp.prompt||'')+'</div>'+
       '<div class="speak-en" '+(hasBd?'style="cursor:pointer" data-gram="'+gramIdx+'"':'')+'>'+(sp.en||'')+'</div>'+
       '<div class="speak-ro">'+(sp.ro||'')+'</div>'+
-      '<div class="speak-tr">'+(Lf(sp,'tr')||sp.tr)+'</div>'+
+      '<div class="speak-tr">'+(Lm(sp,'tr')||sp.tr)+'</div>'+
       '<div class="speak-btns">'+
         '<button class="ref-btn" data-speak="'+(sp.en||sp.ro||'')+'" data-slow="0" data-gender="m">'+s('speak_listen')+'</button>'+
         '<button class="ref-btn slow" data-speak="'+(sp.en||sp.ro||'')+'" data-slow="1" data-gender="m">'+s('speak_slow')+'</button>'+
@@ -2237,7 +2249,7 @@ function buildLessonHTML(L, meta){
           ${qi===0 && playText ? `<button class="play-big" data-speak="${esc(playText)}" data-slow="0">${s('listen_play_btn')}</button>` : ''}
           ${qi===0 && item.tr ? `<div style="font-size:12px;color:#888;margin-bottom:10px;line-height:1.5;">${item.tr}</div>` : ''}
           <div class="diff-badge ${diff}">${diff==='easy'?s('listen_easy'):diff==='medium'?s('listen_medium'):s('listen_hard')}</div>
-          <div class="listen-q">${Lf(q,'q')||q.q}</div>
+          <div class="listen-q">${Lm(q,'q')||q.q}</div>
           <div id="lo-${idx}">${(q.opts||[]).map((o,j)=>`<div class="opt" onclick="checkListen('${idx}',${j},${correct})">${o}</div>`).join('')}</div>
           <div id="lf-${idx}"></div>
         </div>`;
@@ -2248,7 +2260,7 @@ function buildLessonHTML(L, meta){
     return `<div class="listen-card">
       <div class="diff-badge ${diff}">${diff==='easy'?s('listen_easy'):diff==='medium'?s('listen_medium'):s('listen_hard')}</div>
       <button class="play-big" data-speak="${esc(item.en||item.transcript||item.ro||'')}" data-slow="0">${s('listen_play_btn')}</button>
-      <div class="listen-q">${Lf(item,'q')||item.q||''}</div>
+      <div class="listen-q">${Lm(item,'q')||item.q||''}</div>
       <div id="lo-${i}">${(item.opts||[]).map((o,j)=>`<div class="opt" onclick="checkListen(${i},${j},${correct})">${o}</div>`).join('')}</div>
       <div id="lf-${i}"></div>
     </div>`;
@@ -2896,7 +2908,7 @@ function renderLessonPicker(){
       onmouseenter="this.style.background='#f0fdf9'" onmouseleave="this.style.background=''">
       <div style="font-size:20px;">${m.emoji}</div>
       <div style="flex:1;">
-        <div style="font-size:13px;font-weight:700;color:#222;">${s('review_lesson_prefix')} ${m.num}: ${Lf(m,'title')}</div>
+        <div style="font-size:13px;font-weight:700;color:#222;">${s('review_lesson_prefix')} ${m.num}: ${Lmeta(m,'title')}</div>
         <div style="font-size:11px;color:#888;margin-top:1px;">${cnt} ${s('test_cards_available')} · <span style="color:#0d9488">✓</span></div>
       </div>
       <div style="color:#ccc;font-size:18px;">›</div>
@@ -3345,7 +3357,7 @@ function buildSrsLessonRows(){
     const db = SRS.load();
     const lessonCards = Object.values(db).filter(c=>c.lessonNum===m.num).length;
     html += `<div class="lesson-srs-row">
-      <div style="flex:1;font-size:12px;">${m.emoji} ${s('review_lesson_prefix')} ${m.num}: ${Lf(m,'title')}</div>
+      <div style="flex:1;font-size:12px;">${m.emoji} ${s('review_lesson_prefix')} ${m.num}: ${Lmeta(m,'title')}</div>
       <div style="font-size:11px;color:#888;margin-right:6px;">${lessonCards} ${s('review_cards')}</div>
       <button class="srs-add-btn" onclick="addLessonToSRS(${m.num})">${s('review_add_btn')}</button>
     </div>`;
@@ -4546,6 +4558,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.6"></script>
+<script src="shared/kdo-analytics.js?v=3.0.7"></script>
 </body>
 </html>
