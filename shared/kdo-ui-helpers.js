@@ -19,13 +19,13 @@
 
   function Lf(item, field, lang) {
     if (!item) return '';
-    if (lang && !isTr(lang)) {
-      var loc = item[field + '_' + lang];
-      if (loc !== undefined && loc !== '') return loc;
-      var en = item[field + '_en'];
-      if (en !== undefined && en !== '') return en;
-    }
-    return item[field] || '';
+    if (!lang || lang === 'tr') return item[field] || '';
+    var loc = item[field + '_' + lang];
+    if (loc !== undefined && loc !== '') return loc;
+    var en = item[field + '_en'];
+    if (en !== undefined && en !== '') return en;
+    if (lang === 'en') return item[field] || '';
+    return '';
   }
 
   function LfNote(piece, lang) {

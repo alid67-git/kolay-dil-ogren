@@ -653,16 +653,18 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.5"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.5"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.5"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.5"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.5"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.5"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.5"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.5"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.5"></script>
-<script src="shared/kdo-translate.js?v=3.0.5"></script>
+<script src="shared/kdo-version.js?v=3.0.6"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.6"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.6"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.6"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.6"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.6"></script>
+<script src="shared/kdo-pronoun-tables.js?v=3.0.6"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.6"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.6"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.6"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.6"></script>
+<script src="shared/kdo-translate.js?v=3.0.6"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 </script>
@@ -1055,13 +1057,16 @@ function Lf(item,field){
   return item[field]||'';
 }
 
+function Lmeta(meta,field){
+  if(typeof KDO_Lmeta==='function') return KDO_Lmeta(meta,field,appLang);
+  return Lf(meta,field);
+}
+
 function lessonSubtitle(meta){
   if(!meta) return '';
-  if(appLang==='th' && meta.title_th) return meta.title_th;
-  const sub = appLang!=='tr' ? (meta['subtitle_'+appLang]||meta.subtitle_en||meta.subtitle) : (meta.subtitle||meta.subtitle_en);
+  const sub = Lmeta(meta,'subtitle');
   if(sub) return sub;
-  if(appLang==='th') return meta.title_th||meta.title_en||meta.title||'';
-  return appLang!=='tr' ? (meta.title_en||meta.title||'') : (meta.title||meta.title_en||'');
+  return '';
 }
 
 function lessonNumLabel(num){
@@ -1382,10 +1387,10 @@ function stopLessonTimer(){
 }
 
 function fmtTime(sec){
-  if(!sec || sec<60) return sec ? sec+'sn' : '-';
+  if(!sec || sec<60) return sec ? sec+s('time_sec_abbr') : '-';
   const m = Math.floor(sec/60);
-  const s = sec%60;
-  return s>0 ? m+'dk '+s+'sn' : m+'dk';
+  const rem = sec%60;
+  return rem>0 ? m+s('time_min_abbr')+' '+rem+s('time_sec_abbr') : m+s('time_min_abbr');
 }
 function saveStars(){ localStorage.setItem(PREFIX+'star', JSON.stringify(starred)); }
 function saveVisited(){
@@ -1416,7 +1421,7 @@ function updateProgressBar(){
   const fill = document.getElementById('pbar');
   const label = document.getElementById('pbar-label');
   if(fill) fill.style.width = Math.max(2, pct) + '%';
-  if(label) label.textContent = completed + ' / ' + total + ' ders';
+  if(label) label.textContent = completed + ' / ' + total + ' ' + s('lesson_count_unit');
 }
 
 // =================== SES (cihaz TTS) ===================
@@ -1629,7 +1634,7 @@ function renderLessonCard(L){
       <div class="lthumb" aria-hidden="true">${L.emoji}</div>
       <div class="linfo">
         <span class="lnum-badge">${lessonNumLabel(L.num)}</span>
-        <div class="ltitle">${Lf(L,'title')}</div>
+        <div class="ltitle">${Lmeta(L,'title')}</div>
         ${lessonSubtitle(L) ? `<div class="lsubtitle">${lessonSubtitle(L)}</div>` : ''}
         ${badges.length ? '<div class="lmeta">'+badges.join('')+'</div>' : ''}
         ${renderLessonStars(L.num)}
@@ -1722,7 +1727,7 @@ function showLessonStars(num, event){
     return;
   }
   const meta = LESSONS_META.find(m=>m.num===num);
-  document.getElementById('lstar-title').textContent = (meta?meta.emoji+' '+Lf(meta,'title'):'Ders ')+' — '+s('starred_label');
+  document.getElementById('lstar-title').textContent = (meta?meta.emoji+' '+Lmeta(meta,'title'):'Ders ')+' — '+s('starred_label');
   document.getElementById('lstar-count').textContent = items.length+' '+s('item_label');
   document.getElementById('lstar-list').innerHTML = items.map(([k,v])=>{
     const hasBd = v.bd && Array.isArray(v.bd) && v.bd.length>0;
@@ -2089,29 +2094,13 @@ function buildLessonHTML(L, meta){
   }).join('');
 
   // L1 için Sözcükler başına özne tablosu
-  const pronounTable = meta.num===1 ? `
+  const lessonIntroBox = meta.num===1 ? `
     <div style="background:#fff8e1;border:1.5px solid #ffe082;border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:#555;line-height:1.6;">
       <strong style="color:#b45309;">${s('ui_start_here')}</strong>
       ${s('ui_learn_words')}
-    </div>
-    <div style="background:#f0fdf9;border:1.5px solid #b2dfdb;border-radius:12px;padding:12px 14px;margin-bottom:16px;">
-      <div style="font-size:12px;font-weight:700;color:#0d9488;margin-bottom:10px;">👤 ${s('ui_pronouns_ref')}</div>
-      <table style="width:100%;border-collapse:collapse;font-size:12px;">
-        <tr style="border-bottom:1px solid #b2dfdb;">
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_person')}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang==='tr'?KDO_CFG.targetLabelTr:KDO_CFG.targetLabelEn}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_turkish')}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_note')}</th>
-        </tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_1sg')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ich</td><td style="padding:6px 6px;">Ben</td><td style="padding:6px 6px;color:#888;">${s('pron_note_lower')}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_2sg_inf')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">du</td><td style="padding:6px 6px;">Sen</td><td style="padding:6px 6px;color:#888;">${s('pron_note_inf')}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_2sg_form')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">Sie</td><td style="padding:6px 6px;">Siz</td><td style="padding:6px 6px;color:#888;">${s('pron_note_formal')}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_3sg')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">er / sie / es</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">${s('pron_note_gender')}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_1pl')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">wir</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_3pl')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">sie / Sie</td><td style="padding:6px 6px;">Onlar / Siz</td><td style="padding:6px 6px;color:#888;">${s('pron_note_sie')}</td></tr>
-      </table>
-      <div style="font-size:10px;color:#888;margin-top:8px;">💡 ${s('ui_more_grammar')}</div>
     </div>` : '';
+  const pronounTable = (meta.num===1 && typeof KDO_buildPronounTable==='function')
+    ? KDO_buildPronounTable(meta, s) : '';
 
   // TELAFFUZ (Ders 1 — IPA ses rehberi)
   const toneColors = ['#0d9488','#7c3aed','#2563eb','#d97706','#dc2626'];
@@ -2386,7 +2375,7 @@ function buildLessonHTML(L, meta){
       <div class="lesson-hero-emoji" aria-hidden="true">${meta.emoji}</div>
       <div class="lesson-hero-text">
         <div class="lesson-hero-label">${lessonNumLabel(meta.num)}</div>
-        <h2 class="lesson-hero-title">${Lf(meta,'title')}</h2>
+        <h2 class="lesson-hero-title">${Lmeta(meta,'title')}</h2>
         ${lessonSubtitle(meta) ? `<div class="lesson-hero-sub">${lessonSubtitle(meta)}</div>` : ''}
         <div class="lesson-hero-meta"><span id="lesson-score-live"></span></div>
       </div>
@@ -2394,7 +2383,7 @@ function buildLessonHTML(L, meta){
     </div>
     <div class="ltabs" id="ltabs-wrap">${tabs}</div>
     ${tabNames.map(t=>`<div id="lc-${t}" class="lcontent">${
-      t==='words'?(pronounTable+words):t==='tones'?tones:t==='grammar'?grammar:
+      t==='words'?(lessonIntroBox+pronounTable+words):t==='tones'?tones:t==='grammar'?grammar:
       t==='speaking'?speaking:t==='dialogue'?dialogues:
       t==='listening'?listening:t==='practice'?practiceHtml:
       t==='numbers'?numbersHtml:
@@ -2938,7 +2927,7 @@ function selectTestLesson(num){
     <button onclick="renderLessonPicker()" style="background:none;border:none;color:#0d9488;font-size:13px;font-weight:700;cursor:pointer;padding:0;margin-bottom:14px;">${s('test_back_btn')}</button>
 
     <div style="background:white;border-radius:12px;border:1px solid #e8e8e8;padding:14px;margin-bottom:14px;">
-      <div style="font-size:15px;font-weight:700;color:#222;margin-bottom:2px;">${meta.emoji} ${s('review_lesson_prefix')} ${num}: ${Lf(meta,'title')}</div>
+      <div style="font-size:15px;font-weight:700;color:#222;margin-bottom:2px;">${meta.emoji} ${s('review_lesson_prefix')} ${num}: ${Lmeta(meta,'title')}</div>
       <div style="font-size:11px;color:#888;">${allCards.length} ${s('test_cards_available')}</div>
     </div>
 
@@ -4443,7 +4432,7 @@ function showExFinish(){
     <div class="ex-finish">
       <div class="ex-finish-trophy">🏆</div>
       <div class="ex-finish-title">${s('ex_finish_title')}</div>
-      <div class="ex-finish-sub">${meta?`${meta.emoji} ${Lf(meta,'title')}`:''}${exLives>0?'<br>'+('❤️'.repeat(exLives)+' '+(s('ex_lives_remaining'))):'<br>'+(s('ex_completed_errors'))}</div>
+      <div class="ex-finish-sub">${meta?`${meta.emoji} ${Lmeta(meta,'title')}`:''}${exLives>0?'<br>'+('❤️'.repeat(exLives)+' '+(s('ex_lives_remaining'))):'<br>'+(s('ex_completed_errors'))}</div>
       <div class="ex-finish-stats">
         <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exCorrectCount}</div><div class="ex-finish-stat-lbl">${s('ex_stat_correct')}</div></div>
         <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exExercises.length-exCorrectCount}</div><div class="ex-finish-stat-lbl">${s('ui_incorrect')}</div></div>
@@ -4557,6 +4546,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.5"></script>
+<script src="shared/kdo-analytics.js?v=3.0.6"></script>
 </body>
 </html>

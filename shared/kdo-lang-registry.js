@@ -456,7 +456,9 @@ window.KDO_LANG_REGISTRY = {
     "flag": "🇹🇷",
     "nameTr": "Kolay Türkçe",
     "nameEn": "Easy Turkish Learning",
+    "nameTh": "เรียนภาษาตุรกีง่ายๆ",
     "title": "Kolay Türkçe Öğrenme",
+    "titleTh": "เรียนภาษาตุรกีง่ายๆ",
     "lessonsPath": "languages/tr/lessons",
     "tts": "tr-TR",
     "ttsAlt": "tr-TR",
@@ -495,6 +497,19 @@ window.KDO_LANG_REGISTRY = {
         "calc_info": "Enter any number — instant Turkish equivalent. Tap 🔊 to hear.",
         "review_q_en2tr": "🇹🇷 Turkish → Turkish",
         "review_q_tr2en": "🇹🇷 Turkish → Turkish"
+      },
+      "th": {
+        "test_dir_en2tr": "ตุรกี → ความหมาย",
+        "test_dir_tr2en": "ความหมาย → ตุรกี",
+        "translate_placeholder": "พิมพ์ตุรกีหรือภาษาความหมาย...",
+        "translate_tip": "พิมพ์คำหรือประโยคภาษาตุรกี",
+        "settings_voices": "🔊 เสียงตุรกี",
+        "pron_col_english": "ตุรกี",
+        "ui_col_target": "ตุรกี",
+        "num_info": "ตัวเลขตุรกี: หลักหน่วยมาก่อน 21 = yirmi bir แตะการ์ดเพื่อฟัง 🔊",
+        "calc_info": "ใส่ตัวเลข — ได้คำสะกดตุรกีทันที แตะ 🔊 เพื่อฟัง",
+        "review_q_en2tr": "🇹🇷 ตุรกี → ความหมาย",
+        "review_q_tr2en": "🇹🇷 ความหมาย → ตุรกี"
       }
     },
     "legacy": false,
