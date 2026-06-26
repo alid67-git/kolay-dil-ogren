@@ -8,3 +8,4 @@ window.KDO_ANALYTICS = {
   enabled: true,
   pingSec: 60
 };
+window.KDO_PLATFORM_VERSION = window.KDO_PLATFORM_VERSION || 'v2.0.0';

@@ -65,6 +65,7 @@
       page: location.pathname.split('/').pop() || 'index.html',
       durationSec: totalSec,
       ts: Date.now(),
+      appVersion: window.KDO_PLATFORM_VERSION || localStorage.getItem('app_version') || '',
       ...extra
     };
     try {

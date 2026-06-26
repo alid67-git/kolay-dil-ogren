@@ -28,6 +28,31 @@ function json(data, status = 200, extra = {}) {
   });
 }
 
+function normalizeCreatedMs(ts) {
+  let n = Number(ts);
+  if (!Number.isFinite(n) || n <= 0) n = Date.now();
+  // Unix saniye (1e9–1e12) → milisaniye
+  if (n >= 1e9 && n < 1e12) n *= 1000;
+  // Bozuk / epoch yakını değerler → şimdi
+  if (n < 1e11) n = Date.now();
+  return Math.floor(n);
+}
+
+function formatCreatedAt(ms) {
+  let n = Number(ms);
+  if (!Number.isFinite(n) || n <= 0) return '—';
+  if (n >= 1e9 && n < 1e12) n *= 1000;
+  if (n < 1e11) return '—';
+  try {
+    return new Date(n).toLocaleString('tr-TR', {
+      year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+    });
+  } catch {
+    return new Date(n).toISOString().slice(0, 19).replace('T', ' ');
+  }
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -62,10 +87,12 @@ export default {
 
       if (!visitorId) return json({ error: 'visitorId required' }, 400, cors);
 
+      const createdMs = normalizeCreatedMs(ts);
+
       await env.DB.prepare(
         `INSERT INTO sessions (visitor_id, session_id, lang, ui_lang, country, ip_hash, page, duration_sec, event, created_at)
          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-      ).bind(visitorId, sessionId, lang, uiLang, country, ipHash, page, durationSec | 0, event, ts | 0).run();
+      ).bind(visitorId, sessionId, lang, uiLang, country, ipHash, page, durationSec | 0, event, createdMs).run();
 
       return json({ ok: true }, 200, cors);
     }
@@ -93,7 +120,7 @@ export default {
            GROUP BY lang ORDER BY visitors DESC`
         ).bind(since).all(),
         env.DB.prepare(
-          `SELECT datetime(created_at/1000, 'unixepoch') AS at, country, lang, ui_lang, page, duration_sec, event
+          `SELECT created_at, country, lang, ui_lang, page, duration_sec, event
            FROM sessions ORDER BY created_at DESC LIMIT 50`
         ).all()
       ]);
@@ -106,6 +133,16 @@ export default {
 
       const totalStudy = langs.reduce((a, r) => a + (r.totalSec || 0), 0);
 
+      const recentRows = (recent.results || []).map(r => ({
+        at: formatCreatedAt(r.created_at),
+        country: r.country,
+        lang: r.lang,
+        ui_lang: r.ui_lang,
+        page: r.page,
+        duration_sec: r.duration_sec,
+        event: r.event
+      }));
+
       return json({
         uniqueIps: uniqueIps?.n || 0,
         uniqueVisitors: uniqueVisitors?.n || 0,
@@ -113,7 +150,7 @@ export default {
         totalStudySec: totalStudy,
         byCountry: byCountry.results || [],
         byLang: langs,
-        recent: recent.results || [],
+        recent: recentRows,
         sinceDays: 90
       }, 200, cors);
     }

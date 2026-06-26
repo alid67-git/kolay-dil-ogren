@@ -620,7 +620,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = 'v3.58';
+const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.0.0';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -632,6 +632,7 @@ if(storedVersion && storedVersion !== APP_VERSION){
   console.log('Yeni versiyon: '+APP_VERSION+', cache temizlendi.');
 }
 localStorage.setItem('app_version', APP_VERSION);
+(function(){const _vb=document.getElementById('app-version');if(_vb)_vb.textContent=APP_VERSION;})();
 
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
 let appLang = localStorage.getItem('kdo:locale') || localStorage.getItem('tv3_lang') || 'tr';
@@ -934,7 +935,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version">v3.56</span>
+  <span class="vbadge" id="app-version">v2.0.0</span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>
@@ -2995,9 +2996,8 @@ function openModal(id){
   document.getElementById(id).classList.add('open');
   // Yardım modalı açılınca versiyon güncelle
   if(id==='help-overlay'){
-    const v = document.getElementById('app-version');
     const hv = document.getElementById('hakkinda-version');
-    if(v && hv) hv.textContent = v.textContent;
+    if(hv) hv.textContent = APP_VERSION;
   }
 }
 function switchHelpTab(tab, btn){

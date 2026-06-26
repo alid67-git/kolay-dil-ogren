@@ -651,6 +651,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
+<script src="shared/kdo-version.js"></script>
 <script>
 // Cache temizleme — GitHub Pages kısayolu güncelleme sorunu için
 if('serviceWorker' in navigator){
@@ -659,7 +660,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = 'v1.7.1';
+const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.0.0';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -671,6 +672,7 @@ if(storedVersion && storedVersion !== APP_VERSION){
   console.log('Yeni versiyon: '+APP_VERSION+', cache temizlendi.');
 }
 localStorage.setItem('app_version', APP_VERSION);
+(function(){const _vb=document.getElementById('app-version');if(_vb)_vb.textContent=APP_VERSION;})();
 
 // Eski uygulama anahtarlarından (tv3_*) tek seferlik taşıma
 (function migrateLegacyStorage(){
@@ -1014,7 +1016,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version">v1.6.0</span>
+  <span class="vbadge" id="app-version">v2.0.0</span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>
@@ -3373,9 +3375,8 @@ function openModal(id){
   document.getElementById(id).classList.add('open');
   // Yardım modalı açılınca versiyon güncelle
   if(id==='help-overlay'){
-    const v = document.getElementById('app-version');
     const hv = document.getElementById('hakkinda-version');
-    if(v && hv) hv.textContent = v.textContent;
+    if(hv) hv.textContent = APP_VERSION;
   }
 }
 function switchHelpTab(tab, btn){
