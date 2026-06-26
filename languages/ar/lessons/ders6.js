@@ -1,0 +1,239 @@
+// ders6.js — Arabic Lesson 6: Shopping (beginner)
+const L6 = {
+  words:[
+    {
+      id:'w1',
+      en:'المتجر',
+      ro:'al-matjar',
+      tr:'market',
+      tip:'Temel kelime.',
+      ctx:'Günlük konuşma.'
+    },
+    {
+      id:'w2',
+      en:'السعر',
+      ro:'as-siʿr',
+      tr:'fiyat'
+    },
+    {
+      id:'w3',
+      en:'رخيص',
+      ro:'rakhīṣ',
+      tr:'ucuz'
+    },
+    {
+      id:'w4',
+      en:'غالي',
+      ro:'ghālī',
+      tr:'pahalı'
+    },
+    {
+      id:'w5',
+      en:'الخصم',
+      ro:'al-khaṣm',
+      tr:'indirim'
+    },
+    {
+      id:'w6',
+      en:'المقاس',
+      ro:'al-miqās',
+      tr:'beden'
+    },
+    {
+      id:'w7',
+      en:'اللون',
+      ro:'al-lawn',
+      tr:'renk'
+    },
+    {
+      id:'w8',
+      en:'يقيس',
+      ro:'yaqīs',
+      tr:'denemek'
+    },
+    {
+      id:'w9',
+      en:'الإيصال',
+      ro:'al-īṣāl',
+      tr:'fiş'
+    },
+    {
+      id:'w10',
+      en:'يشتري',
+      ro:'yashtarī',
+      tr:'satın almak'
+    },
+    {
+      id:'w11',
+      en:'يبيع',
+      ro:'yabīʿ',
+      tr:'satmak'
+    },
+    {
+      id:'w12',
+      en:'المال',
+      ro:'al-māl',
+      tr:'para'
+    },
+    {
+      id:'w13',
+      en:'البطاقة',
+      ro:'al-biṭāqa',
+      tr:'kart'
+    },
+    {
+      id:'w14',
+      en:'نقد',
+      ro:'naqd',
+      tr:'nakit'
+    },
+    {
+      id:'w15',
+      en:'السؤال',
+      ro:'as-suʾāl',
+      tr:'soru'
+    }
+  ],
+  grammar:[
+    {
+      id:'g1',
+      title:'Shopping — Temel',
+      title_en:'Shopping — Basics',
+      explanation:'Bu derste Shopping konusunda temel kelimeler öğreniyorsun. Türkçe gramer açıklamaları her kuralda verilir. Ali erkek öğrenci olarak bu ifadeleri kullanır.',
+      table:[
+        {
+          pronoun:'Örnek',
+          form:'المتجر',
+          example:'المتجر',
+          tr:'market'
+        },
+        {
+          pronoun:'Pratik',
+          form:'السعر',
+          example:'السعر',
+          tr:'fiyat'
+        }
+      ],
+      note:'Kalıcı öğrenme için kelimeyi kısa bir cümle içinde tekrar et.'
+    }
+  ],
+  speaking:[
+    {
+      id:'sp1',
+      en:'المتجر',
+      tr:'market',
+      prompt:'İfade et'
+    },
+    {
+      id:'sp2',
+      en:'السعر',
+      tr:'fiyat',
+      prompt:'Kelime kullan'
+    },
+    {
+      id:'sp3',
+      en:'رخيص',
+      tr:'ucuz',
+      prompt:'Cümle kur'
+    },
+    {
+      id:'sp4',
+      en:'غالي',
+      tr:'pahalı',
+      prompt:'Soru sor'
+    },
+    {
+      id:'sp5',
+      en:'الخصم',
+      tr:'indirim',
+      prompt:'Konuşma pratiği'
+    }
+  ],
+  dialogues:[
+    {
+      id:'d1',
+      title:'Shopping',
+      title_en:'Shopping',
+      lines:[
+        {
+          speaker:'A',
+          gender:'m',
+          en:'المتجر',
+          tr:'market',
+          gramNote:'Ali konuşuyor.',
+          bd:[
+            {
+              ro:'al-matjar',
+              tr:'market',
+              role:'phrase',
+              note:'Örnek.'
+            }
+          ]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'السعر',
+          tr:'fiyat',
+          gramNote:'Karşılık.',
+          bd:[
+            {
+              ro:'as-siʿr',
+              tr:'fiyat',
+              role:'phrase',
+              note:'Cevap.'
+            }
+          ]
+        },
+        {
+          speaker:'A',
+          gender:'m',
+          en:'رخيص',
+          tr:'ucuz',
+          bd:[]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'غالي',
+          tr:'pahalı',
+          bd:[]
+        }
+      ]
+    }
+  ],
+  listening:[
+    {
+      id:'li1',
+      audio:'',
+      transcript:'كم سعر هذا القميص؟',
+      tr:'كم سعر هذا القميص؟.',
+      questions:[
+        {
+          q:'Doğru ifade hangisi?',
+          opts:[
+            'المتجر',
+            'السعر',
+            'رخيص',
+            'غالي'
+          ],
+          answer:0,
+          tr:'Doğru kelime?'
+        },
+        {
+          q:'İkinci doğru seçenek hangisi?',
+          opts:[
+            'السعر',
+            'رخيص',
+            'غالي',
+            'الخصم'
+          ],
+          answer:1,
+          tr:'İkinci soru?'
+        }
+      ]
+    }
+  ],
+  tones:[]
+};
+LESSONS[6] = L6;

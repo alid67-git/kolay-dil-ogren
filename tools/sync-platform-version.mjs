@@ -6,11 +6,12 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
-const VERSION = 'v2.0.0';
+const VERSION = 'v2.1.0';
 
 const htmlFiles = [
   'english-v3.html', 'german-v3.html', 'italian-v3.html',
-  'spanish-v3.html', 'french-v3.html', 'tayca-v3.html'
+  'spanish-v3.html', 'french-v3.html', 'tayca-v3.html',
+  'russian-v3.html', 'arabic-v3.html', 'chinese-v3.html'
 ];
 
 const openModalOld = /if\(id==='help-overlay'\)\{\s*const v = document\.getElementById\('app-version'\);\s*const hv = document\.getElementById\('hakkinda-version'\);\s*if\(v && hv\) hv\.textContent = v\.textContent;\s*\}/;
@@ -27,7 +28,9 @@ for (const file of htmlFiles) {
     s = s.replace('</style>\n<script>', '</style>\n<script src="shared/kdo-version.js"></script>\n<script>');
   }
 
-  s = s.replace(/const APP_VERSION = 'v[^']+';/, `const APP_VERSION = window.KDO_PLATFORM_VERSION || '${VERSION}';`);
+  s = s.replace(/const APP_VERSION = window\.KDO_PLATFORM_VERSION \|\| 'v[^']+';/, `const APP_VERSION = window.KDO_PLATFORM_VERSION || '${VERSION}';`);
+  s = s.replace(/<strong id="hakkinda-version">v[^<]+<\/strong>/, `<strong id="hakkinda-version">${VERSION}</strong>`);
+  s = s.replace(/<div class="changelog-ver">v3\.46\+<\/div>/, `<div class="changelog-ver">${VERSION}</div>`);
   s = s.replace(/<span class="vbadge" id="app-version">[^<]*<\/span>/, `<span class="vbadge" id="app-version">${VERSION}</span>`);
   s = openModalOld.test(s) ? s.replace(openModalOld, openModalNew) : s;
 

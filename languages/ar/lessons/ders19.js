@@ -1,0 +1,239 @@
+// ders19.js — Arabic Lesson 19: Entertainment (beginner)
+const L19 = {
+  words:[
+    {
+      id:'w1',
+      en:'الهواية',
+      ro:'al-hiwāya',
+      tr:'hobi',
+      tip:'Temel kelime.',
+      ctx:'Günlük konuşma.'
+    },
+    {
+      id:'w2',
+      en:'يقرأ',
+      ro:'yaqraʾ',
+      tr:'okumak'
+    },
+    {
+      id:'w3',
+      en:'الموسيقى',
+      ro:'al-mūsīqā',
+      tr:'müzik'
+    },
+    {
+      id:'w4',
+      en:'السينما',
+      ro:'as-sīnimā',
+      tr:'sinema'
+    },
+    {
+      id:'w5',
+      en:'المسرح',
+      ro:'al-masraḥ',
+      tr:'tiyatro'
+    },
+    {
+      id:'w6',
+      en:'المتحف',
+      ro:'al-matḥaf',
+      tr:'müze'
+    },
+    {
+      id:'w7',
+      en:'الحفلة',
+      ro:'al-ḥafla',
+      tr:'parti'
+    },
+    {
+      id:'w8',
+      en:'الصديق',
+      ro:'aṣ-ṣadīq',
+      tr:'arkadaş'
+    },
+    {
+      id:'w9',
+      en:'يدعو',
+      ro:'yadʿū',
+      tr:'davet etmek'
+    },
+    {
+      id:'w10',
+      en:'يحتفل',
+      ro:'yaḥtafil',
+      tr:'kutlamak'
+    },
+    {
+      id:'w11',
+      en:'الأغنية',
+      ro:'al-ughniya',
+      tr:'şarkı'
+    },
+    {
+      id:'w12',
+      en:'الفن',
+      ro:'al-fann',
+      tr:'sanat'
+    },
+    {
+      id:'w13',
+      en:'السؤال',
+      ro:'as-suʾāl',
+      tr:'soru'
+    },
+    {
+      id:'w14',
+      en:'الجواب',
+      ro:'al-jawāb',
+      tr:'cevap'
+    },
+    {
+      id:'w15',
+      en:'اليوم',
+      ro:'al-yawm',
+      tr:'bugün'
+    }
+  ],
+  grammar:[
+    {
+      id:'g1',
+      title:'Entertainment — Temel',
+      title_en:'Entertainment — Basics',
+      explanation:'Bu derste Entertainment konusunda temel kelimeler öğreniyorsun. Türkçe gramer açıklamaları her kuralda verilir. Ali erkek öğrenci olarak bu ifadeleri kullanır.',
+      table:[
+        {
+          pronoun:'Örnek',
+          form:'الهواية',
+          example:'الهواية',
+          tr:'hobi'
+        },
+        {
+          pronoun:'Pratik',
+          form:'يقرأ',
+          example:'يقرأ',
+          tr:'okumak'
+        }
+      ],
+      note:'Kalıcı öğrenme için kelimeyi kısa bir cümle içinde tekrar et.'
+    }
+  ],
+  speaking:[
+    {
+      id:'sp1',
+      en:'الهواية',
+      tr:'hobi',
+      prompt:'İfade et'
+    },
+    {
+      id:'sp2',
+      en:'يقرأ',
+      tr:'okumak',
+      prompt:'Kelime kullan'
+    },
+    {
+      id:'sp3',
+      en:'الموسيقى',
+      tr:'müzik',
+      prompt:'Cümle kur'
+    },
+    {
+      id:'sp4',
+      en:'السينما',
+      tr:'sinema',
+      prompt:'Soru sor'
+    },
+    {
+      id:'sp5',
+      en:'المسرح',
+      tr:'tiyatro',
+      prompt:'Konuşma pratiği'
+    }
+  ],
+  dialogues:[
+    {
+      id:'d1',
+      title:'Entertainment',
+      title_en:'Entertainment',
+      lines:[
+        {
+          speaker:'A',
+          gender:'m',
+          en:'الهواية',
+          tr:'hobi',
+          gramNote:'Ali konuşuyor.',
+          bd:[
+            {
+              ro:'al-hiwāya',
+              tr:'hobi',
+              role:'phrase',
+              note:'Örnek.'
+            }
+          ]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'يقرأ',
+          tr:'okumak',
+          gramNote:'Karşılık.',
+          bd:[
+            {
+              ro:'yaqraʾ',
+              tr:'okumak',
+              role:'phrase',
+              note:'Cevap.'
+            }
+          ]
+        },
+        {
+          speaker:'A',
+          gender:'m',
+          en:'الموسيقى',
+          tr:'müzik',
+          bd:[]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'السينما',
+          tr:'sinema',
+          bd:[]
+        }
+      ]
+    }
+  ],
+  listening:[
+    {
+      id:'li1',
+      audio:'',
+      transcript:'في عطلة نهاية الأسبوع أذهب إلى السينما.',
+      tr:'في عطلة نهاية الأسبوع أذهب إلى السينما.',
+      questions:[
+        {
+          q:'Doğru ifade hangisi?',
+          opts:[
+            'الهواية',
+            'يقرأ',
+            'الموسيقى',
+            'السينما'
+          ],
+          answer:0,
+          tr:'Doğru kelime?'
+        },
+        {
+          q:'İkinci doğru seçenek hangisi?',
+          opts:[
+            'يقرأ',
+            'الموسيقى',
+            'السينما',
+            'المسرح'
+          ],
+          answer:1,
+          tr:'İkinci soru?'
+        }
+      ]
+    }
+  ],
+  tones:[]
+};
+LESSONS[19] = L19;

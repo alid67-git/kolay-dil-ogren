@@ -1,0 +1,239 @@
+// ders5.js — Russian Lesson 5: Restaurant & Food (beginner)
+const L5 = {
+  words:[
+    {
+      id:'w1',
+      en:'ресторан',
+      ro:'restoran',
+      tr:'restoran',
+      tip:'Temel kelime.',
+      ctx:'Günlük konuşma.'
+    },
+    {
+      id:'w2',
+      en:'меню',
+      ro:'menyu',
+      tr:'menü'
+    },
+    {
+      id:'w3',
+      en:'стол',
+      ro:'stol',
+      tr:'masa'
+    },
+    {
+      id:'w4',
+      en:'вода',
+      ro:'voda',
+      tr:'su'
+    },
+    {
+      id:'w5',
+      en:'чай',
+      ro:'chay',
+      tr:'çay'
+    },
+    {
+      id:'w6',
+      en:'кофе',
+      ro:'kofe',
+      tr:'kahve'
+    },
+    {
+      id:'w7',
+      en:'хлеб',
+      ro:'khleb',
+      tr:'ekmek'
+    },
+    {
+      id:'w8',
+      en:'суп',
+      ro:'sup',
+      tr:'çorba'
+    },
+    {
+      id:'w9',
+      en:'салат',
+      ro:'salat',
+      tr:'salata'
+    },
+    {
+      id:'w10',
+      en:'курица',
+      ro:'kuritsa',
+      tr:'tavuk'
+    },
+    {
+      id:'w11',
+      en:'рыба',
+      ro:'ryba',
+      tr:'balık'
+    },
+    {
+      id:'w12',
+      en:'рис',
+      ro:'ris',
+      tr:'pirinç'
+    },
+    {
+      id:'w13',
+      en:'вкусный',
+      ro:'vkusnyy',
+      tr:'lezzetli'
+    },
+    {
+      id:'w14',
+      en:'счёт',
+      ro:'schyot',
+      tr:'hesap'
+    },
+    {
+      id:'w15',
+      en:'цена',
+      ro:'tsena',
+      tr:'fiyat'
+    }
+  ],
+  grammar:[
+    {
+      id:'g1',
+      title:'Restaurant & Food — Temel',
+      title_en:'Restaurant & Food — Basics',
+      explanation:'Bu derste Restaurant & Food konusunda temel kelimeler öğreniyorsun. Türkçe gramer açıklamaları her kuralda verilir. Ali erkek öğrenci olarak bu ifadeleri kullanır.',
+      table:[
+        {
+          pronoun:'Örnek',
+          form:'ресторан',
+          example:'ресторан',
+          tr:'restoran'
+        },
+        {
+          pronoun:'Pratik',
+          form:'меню',
+          example:'меню',
+          tr:'menü'
+        }
+      ],
+      note:'Kalıcı öğrenme için kelimeyi kısa bir cümle içinde tekrar et.'
+    }
+  ],
+  speaking:[
+    {
+      id:'sp1',
+      en:'ресторан',
+      tr:'restoran',
+      prompt:'İfade et'
+    },
+    {
+      id:'sp2',
+      en:'меню',
+      tr:'menü',
+      prompt:'Kelime kullan'
+    },
+    {
+      id:'sp3',
+      en:'стол',
+      tr:'masa',
+      prompt:'Cümle kur'
+    },
+    {
+      id:'sp4',
+      en:'вода',
+      tr:'su',
+      prompt:'Soru sor'
+    },
+    {
+      id:'sp5',
+      en:'чай',
+      tr:'çay',
+      prompt:'Konuşma pratiği'
+    }
+  ],
+  dialogues:[
+    {
+      id:'d1',
+      title:'Restaurant & Food',
+      title_en:'Restaurant & Food',
+      lines:[
+        {
+          speaker:'A',
+          gender:'m',
+          en:'ресторан',
+          tr:'restoran',
+          gramNote:'Ali konuşuyor.',
+          bd:[
+            {
+              ro:'restoran',
+              tr:'restoran',
+              role:'phrase',
+              note:'Örnek.'
+            }
+          ]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'меню',
+          tr:'menü',
+          gramNote:'Karşılık.',
+          bd:[
+            {
+              ro:'menyu',
+              tr:'menü',
+              role:'phrase',
+              note:'Cevap.'
+            }
+          ]
+        },
+        {
+          speaker:'A',
+          gender:'m',
+          en:'стол',
+          tr:'masa',
+          bd:[]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'вода',
+          tr:'su',
+          bd:[]
+        }
+      ]
+    }
+  ],
+  listening:[
+    {
+      id:'li1',
+      audio:'',
+      transcript:'Я хочу суп и чай, пожалуйста.',
+      tr:'Я хочу суп и чай, пожалуйста.',
+      questions:[
+        {
+          q:'Doğru ifade hangisi?',
+          opts:[
+            'ресторан',
+            'меню',
+            'стол',
+            'вода'
+          ],
+          answer:0,
+          tr:'Doğru kelime?'
+        },
+        {
+          q:'İkinci doğru seçenek hangisi?',
+          opts:[
+            'меню',
+            'стол',
+            'вода',
+            'чай'
+          ],
+          answer:1,
+          tr:'İkinci soru?'
+        }
+      ]
+    }
+  ],
+  tones:[]
+};
+LESSONS[5] = L5;

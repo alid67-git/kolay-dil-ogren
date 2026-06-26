@@ -1,0 +1,239 @@
+// ders11.js — Russian Lesson 11: Health (beginner)
+const L11 = {
+  words:[
+    {
+      id:'w1',
+      en:'врач',
+      ro:'vrach',
+      tr:'doktor',
+      tip:'Temel kelime.',
+      ctx:'Günlük konuşma.'
+    },
+    {
+      id:'w2',
+      en:'больница',
+      ro:'bolnitsa',
+      tr:'hastane'
+    },
+    {
+      id:'w3',
+      en:'аптека',
+      ro:'apteka',
+      tr:'eczane'
+    },
+    {
+      id:'w4',
+      en:'боль',
+      ro:'bol',
+      tr:'ağrı'
+    },
+    {
+      id:'w5',
+      en:'температура',
+      ro:'temperatura',
+      tr:'ateş'
+    },
+    {
+      id:'w6',
+      en:'лекарство',
+      ro:'lekarstvo',
+      tr:'ilaç'
+    },
+    {
+      id:'w7',
+      en:'голова',
+      ro:'golova',
+      tr:'baş'
+    },
+    {
+      id:'w8',
+      en:'желудок',
+      ro:'zheludok',
+      tr:'mide'
+    },
+    {
+      id:'w9',
+      en:'зуб',
+      ro:'zub',
+      tr:'diş'
+    },
+    {
+      id:'w10',
+      en:'рука',
+      ro:'ruka',
+      tr:'el'
+    },
+    {
+      id:'w11',
+      en:'нога',
+      ro:'noga',
+      tr:'bacak'
+    },
+    {
+      id:'w12',
+      en:'вопрос',
+      ro:'vopros',
+      tr:'soru'
+    },
+    {
+      id:'w13',
+      en:'помогать',
+      ro:'pomogat',
+      tr:'yardım etmek'
+    },
+    {
+      id:'w14',
+      en:'сегодня',
+      ro:'segodnya',
+      tr:'bugün'
+    },
+    {
+      id:'w15',
+      en:'отдыхать',
+      ro:'otdykhat',
+      tr:'dinlenmek'
+    }
+  ],
+  grammar:[
+    {
+      id:'g1',
+      title:'Health — Temel',
+      title_en:'Health — Basics',
+      explanation:'Bu derste Health konusunda temel kelimeler öğreniyorsun. Türkçe gramer açıklamaları her kuralda verilir. Ali erkek öğrenci olarak bu ifadeleri kullanır.',
+      table:[
+        {
+          pronoun:'Örnek',
+          form:'врач',
+          example:'врач',
+          tr:'doktor'
+        },
+        {
+          pronoun:'Pratik',
+          form:'больница',
+          example:'больница',
+          tr:'hastane'
+        }
+      ],
+      note:'Kalıcı öğrenme için kelimeyi kısa bir cümle içinde tekrar et.'
+    }
+  ],
+  speaking:[
+    {
+      id:'sp1',
+      en:'врач',
+      tr:'doktor',
+      prompt:'İfade et'
+    },
+    {
+      id:'sp2',
+      en:'больница',
+      tr:'hastane',
+      prompt:'Kelime kullan'
+    },
+    {
+      id:'sp3',
+      en:'аптека',
+      tr:'eczane',
+      prompt:'Cümle kur'
+    },
+    {
+      id:'sp4',
+      en:'боль',
+      tr:'ağrı',
+      prompt:'Soru sor'
+    },
+    {
+      id:'sp5',
+      en:'температура',
+      tr:'ateş',
+      prompt:'Konuşma pratiği'
+    }
+  ],
+  dialogues:[
+    {
+      id:'d1',
+      title:'Health',
+      title_en:'Health',
+      lines:[
+        {
+          speaker:'A',
+          gender:'m',
+          en:'врач',
+          tr:'doktor',
+          gramNote:'Ali konuşuyor.',
+          bd:[
+            {
+              ro:'vrach',
+              tr:'doktor',
+              role:'phrase',
+              note:'Örnek.'
+            }
+          ]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'больница',
+          tr:'hastane',
+          gramNote:'Karşılık.',
+          bd:[
+            {
+              ro:'bolnitsa',
+              tr:'hastane',
+              role:'phrase',
+              note:'Cevap.'
+            }
+          ]
+        },
+        {
+          speaker:'A',
+          gender:'m',
+          en:'аптека',
+          tr:'eczane',
+          bd:[]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'боль',
+          tr:'ağrı',
+          bd:[]
+        }
+      ]
+    }
+  ],
+  listening:[
+    {
+      id:'li1',
+      audio:'',
+      transcript:'У меня болит голова.',
+      tr:'У меня болит голова.',
+      questions:[
+        {
+          q:'Doğru ifade hangisi?',
+          opts:[
+            'врач',
+            'больница',
+            'аптека',
+            'боль'
+          ],
+          answer:0,
+          tr:'Doğru kelime?'
+        },
+        {
+          q:'İkinci doğru seçenek hangisi?',
+          opts:[
+            'больница',
+            'аптека',
+            'боль',
+            'температура'
+          ],
+          answer:1,
+          tr:'İkinci soru?'
+        }
+      ]
+    }
+  ],
+  tones:[]
+};
+LESSONS[11] = L11;

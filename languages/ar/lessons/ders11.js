@@ -1,0 +1,239 @@
+// ders11.js — Arabic Lesson 11: Health (beginner)
+const L11 = {
+  words:[
+    {
+      id:'w1',
+      en:'الطبيب',
+      ro:'aṭ-ṭabīb',
+      tr:'doktor',
+      tip:'Temel kelime.',
+      ctx:'Günlük konuşma.'
+    },
+    {
+      id:'w2',
+      en:'المستشفى',
+      ro:'al-mustashfā',
+      tr:'hastane'
+    },
+    {
+      id:'w3',
+      en:'الصيدلية',
+      ro:'aṣ-ṣaydaliya',
+      tr:'eczane'
+    },
+    {
+      id:'w4',
+      en:'الألم',
+      ro:'al-alam',
+      tr:'ağrı'
+    },
+    {
+      id:'w5',
+      en:'الحمى',
+      ro:'al-ḥummā',
+      tr:'ateş'
+    },
+    {
+      id:'w6',
+      en:'الدواء',
+      ro:'ad-dawāʾ',
+      tr:'ilaç'
+    },
+    {
+      id:'w7',
+      en:'الرأس',
+      ro:'ar-raʾs',
+      tr:'baş'
+    },
+    {
+      id:'w8',
+      en:'المعدة',
+      ro:'al-miʿda',
+      tr:'mide'
+    },
+    {
+      id:'w9',
+      en:'السن',
+      ro:'as-sinn',
+      tr:'diş'
+    },
+    {
+      id:'w10',
+      en:'اليد',
+      ro:'al-yad',
+      tr:'el'
+    },
+    {
+      id:'w11',
+      en:'الساق',
+      ro:'as-sāq',
+      tr:'bacak'
+    },
+    {
+      id:'w12',
+      en:'السؤال',
+      ro:'as-suʾāl',
+      tr:'soru'
+    },
+    {
+      id:'w13',
+      en:'يساعد',
+      ro:'yusāʿid',
+      tr:'yardım etmek'
+    },
+    {
+      id:'w14',
+      en:'اليوم',
+      ro:'al-yawm',
+      tr:'bugün'
+    },
+    {
+      id:'w15',
+      en:'يرتاح',
+      ro:'yartāḥ',
+      tr:'dinlenmek'
+    }
+  ],
+  grammar:[
+    {
+      id:'g1',
+      title:'Health — Temel',
+      title_en:'Health — Basics',
+      explanation:'Bu derste Health konusunda temel kelimeler öğreniyorsun. Türkçe gramer açıklamaları her kuralda verilir. Ali erkek öğrenci olarak bu ifadeleri kullanır.',
+      table:[
+        {
+          pronoun:'Örnek',
+          form:'الطبيب',
+          example:'الطبيب',
+          tr:'doktor'
+        },
+        {
+          pronoun:'Pratik',
+          form:'المستشفى',
+          example:'المستشفى',
+          tr:'hastane'
+        }
+      ],
+      note:'Kalıcı öğrenme için kelimeyi kısa bir cümle içinde tekrar et.'
+    }
+  ],
+  speaking:[
+    {
+      id:'sp1',
+      en:'الطبيب',
+      tr:'doktor',
+      prompt:'İfade et'
+    },
+    {
+      id:'sp2',
+      en:'المستشفى',
+      tr:'hastane',
+      prompt:'Kelime kullan'
+    },
+    {
+      id:'sp3',
+      en:'الصيدلية',
+      tr:'eczane',
+      prompt:'Cümle kur'
+    },
+    {
+      id:'sp4',
+      en:'الألم',
+      tr:'ağrı',
+      prompt:'Soru sor'
+    },
+    {
+      id:'sp5',
+      en:'الحمى',
+      tr:'ateş',
+      prompt:'Konuşma pratiği'
+    }
+  ],
+  dialogues:[
+    {
+      id:'d1',
+      title:'Health',
+      title_en:'Health',
+      lines:[
+        {
+          speaker:'A',
+          gender:'m',
+          en:'الطبيب',
+          tr:'doktor',
+          gramNote:'Ali konuşuyor.',
+          bd:[
+            {
+              ro:'aṭ-ṭabīb',
+              tr:'doktor',
+              role:'phrase',
+              note:'Örnek.'
+            }
+          ]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'المستشفى',
+          tr:'hastane',
+          gramNote:'Karşılık.',
+          bd:[
+            {
+              ro:'al-mustashfā',
+              tr:'hastane',
+              role:'phrase',
+              note:'Cevap.'
+            }
+          ]
+        },
+        {
+          speaker:'A',
+          gender:'m',
+          en:'الصيدلية',
+          tr:'eczane',
+          bd:[]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'الألم',
+          tr:'ağrı',
+          bd:[]
+        }
+      ]
+    }
+  ],
+  listening:[
+    {
+      id:'li1',
+      audio:'',
+      transcript:'رأسي يؤلمني.',
+      tr:'رأسي يؤلمني.',
+      questions:[
+        {
+          q:'Doğru ifade hangisi?',
+          opts:[
+            'الطبيب',
+            'المستشفى',
+            'الصيدلية',
+            'الألم'
+          ],
+          answer:0,
+          tr:'Doğru kelime?'
+        },
+        {
+          q:'İkinci doğru seçenek hangisi?',
+          opts:[
+            'المستشفى',
+            'الصيدلية',
+            'الألم',
+            'الحمى'
+          ],
+          answer:1,
+          tr:'İkinci soru?'
+        }
+      ]
+    }
+  ],
+  tones:[]
+};
+LESSONS[11] = L11;

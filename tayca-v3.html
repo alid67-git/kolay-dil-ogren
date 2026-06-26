@@ -17,7 +17,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 
 /* HEADER */
 header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;}
-.brand{font-size:17px;font-weight:700;white-space:nowrap;} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
+.brand-wrap{display:flex;flex-direction:column;line-height:1.2;}
+.brand{font-size:17px;font-weight:700;white-space:nowrap;}
+.brand-dev{font-size:9px;font-weight:500;color:rgba(255,255,255,.55);letter-spacing:.02em;margin-top:1px;} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
 /* YARDIM MODALİ */
 .htab{background:none;border:none;padding:9px 13px;font-size:12px;font-weight:700;color:#888;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:.15s;}
 .htab.active{color:#0d9488;border-bottom-color:#0d9488;}
@@ -620,7 +622,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.0.0';
+const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.1.0';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -632,6 +634,7 @@ if(storedVersion && storedVersion !== APP_VERSION){
   console.log('Yeni versiyon: '+APP_VERSION+', cache temizlendi.');
 }
 localStorage.setItem('app_version', APP_VERSION);
+(function(){const _bd=document.getElementById('brand-dev');const _l=localStorage.getItem('kdo:locale')||'tr';if(_bd)_bd.textContent=_l==='en'?'Developed by: Ali Dinçer':'Geliştiren: Ali Dinçer';})();
 (function(){const _vb=document.getElementById('app-version');if(_vb)_vb.textContent=APP_VERSION;})();
 
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
@@ -900,6 +903,7 @@ function lessonNumLabel(num){
 }
 
 function setLang(lang){
+  const _bd=document.getElementById('brand-dev');if(_bd)_bd.textContent=lang==='en'?'Developed by: Ali Dinçer':'Geliştiren: Ali Dinçer';
   appLang = lang;
   localStorage.setItem('tv3_lang', lang);
   localStorage.setItem('kdo:locale', lang);
@@ -925,7 +929,7 @@ function setLang(lang){
 <script type="application/json" id="thai-data">{"words": [{"id": "w1", "th": "สวัสดีครับ", "examples": ["คุณชื่ออะไร", "ยินดีที่ได้รู้จัก", "สบายดีไหม", "ผมชื่ออาลี", "คุณมาจากไหน", "ยินดีต้อนรับ", "ขอโทษที่รอ", "วันนี้เป็นอย่างไร", "เชิญเข้ามา", "ขอบคุณที่มา"]}, {"id": "w2", "th": "สวัสดีค่ะ", "examples": ["ยินดีต้อนรับ", "คุณเป็นใคร", "สบายดีไหมคะ", "ยินดีที่ได้รู้จักค่ะ", "ขอบคุณที่มาค่ะ"]}, {"id": "w3", "th": "ขอบคุณ", "examples": ["ขอบคุณครับ", "ขอบคุณมากครับ", "ขอบคุณมากๆ ครับ", "ขอบคุณสำหรับอาหารครับ", "ขอบคุณที่ช่วยครับ", "ขอบคุณที่รอครับ", "ขอบคุณสำหรับทุกอย่างครับ", "ขอบคุณที่มาครับ", "ขอบคุณที่สอนครับ", "ขอบคุณล่วงหน้าครับ"]}, {"id": "w4", "th": "ยินดีที่ได้รู้จัก", "examples": ["ยินดีที่ได้รู้จักครับ", "ยินดีที่ได้รู้จักค่ะ", "ยินดีที่ได้รู้จักเช่นกันครับ", "ผมยินดีที่ได้รู้จักคุณมากครับ", "ยินดีที่ได้รู้จักครับ", "ยินดีที่ได้รู้จัก", "ผมชื่ออาลี ยินดีที่ได้รู้จักครับ"]}, {"id": "w5", "th": "ไม่เป็นไร", "examples": ["ไม่เป็นไรครับ", "ไม่เป็นไรค่ะ", "ขอโทษครับ ไม่เป็นไร", "ไม่เป็นไร ไม่ต้องเป็นห่วงครับ", "ไม่เป็นไร มันเกิดขึ้นได้", "โอเคครับ ไม่เป็นไร", "ไม่เป็นไรครับ เกิดขึ้นกับทุกคน", "ไม่เป็นไรครับ ผมเข้าใจ"]}, {"id": "w6", "th": "ครับ", "examples": ["ใช่ครับ", "ไม่ครับ", "โอเคครับ", "ได้ครับ", "เข้าใจครับ", "ทราบแล้วครับ", "รอสักครู่ครับ", "ขอโทษครับ", "ขอบคุณครับ", "สวัสดีครับ", "ไม่เป็นไรครับ", "ยินดีที่ได้รู้จักครับ"]}, {"id": "w7", "th": "ค่ะ", "examples": ["ใช่ค่ะ", "ไม่ค่ะ", "ขอบคุณค่ะ", "ได้ค่ะ", "ไม่เป็นไรค่ะ", "เข้าใจค่ะ", "โอเคค่ะ", "ขอโทษค่ะ", "สวัสดีค่ะ", "ยินดีที่ได้รู้จักค่ะ", "รอสักครู่นะคะ", "ไม่ทราบค่ะ"]}], "tones": [{"words": ["กา", "มา", "ปลา", "ดี", "นา"]}, {"words": ["ข่า", "ป่า", "ข่าว", "ยาก", "ล่าง"]}, {"words": ["น้ำ", "ข้าว", "ค่ะ", "น้อย", "ฟ้า"]}, {"words": ["ขา", "ไม่", "ใหม่", "หมา", "นา"]}, {"words": ["ม้า", "หน้า", "ป๊า", "ฝา", "ข้า"]}], "grammar": [{"examples": ["ผมชื่ออาลีครับ", "คุณชื่ออะไร", "ผมมาจากตุรกีครับ", "ผมอยู่ที่ภูเก็ต", "ผมกินข้าวครับ"]}, {"examples": ["ขอบคุณครับ", "ขอบคุณค่ะ", "ใช่ครับ", "ได้ครับ", "สบายดีไหมคะ"]}, {"examples": ["ไม่เป็นไรครับ", "ไม่ครับ", "ไม่ทราบครับ", "ไม่เข้าใจครับ", "ไม่เอาครับ", "ไม่ได้ครับ"]}, {"examples": ["สบายดีไหม", "คุณชื่ออะไร", "ห้องน้ำอยู่ที่ไหน", "คุณมาจากไหน", "นี่เท่าไร", "ทำไมไม่มา"]}, {"examples": ["ผมกำลังกินข้าวครับ", "ผมกินข้าวแล้วครับ", "ผมจะไปภูเก็ตครับ", "ผมยังไม่ไปครับ", "ผมเคยไปภูเก็ตครับ"]}, {"examples": ["สองคนครับ", "สามตัวครับ", "หนึ่งใบครับ", "ร้อยบาทครับ", "ผมมีแฟนหนึ่งคนครับ"]}, {"examples": ["นั่นของผมครับ", "รถของคุณอยู่ที่ไหน", "นี่ของคุณไหม", "บ้านของผมอยู่ภูเก็ต"]}, {"examples": ["อาหารไทยดีกว่าครับ", "ภูเก็ตดีที่สุดครับ", "นี่แพงกว่าครับ", "วันนี้ร้อนกว่าเมื่อวานครับ"]}], "speaking": ["สวัสดีครับ", "ขอบคุณครับ", "ยินดีที่ได้รู้จักครับ", "ขอโทษครับ", "ไม่เป็นไรครับ", "ยินดีที่ได้รู้จัก", "ขอบคุณมากครับ", "ขอบคุณที่ช่วยครับ"], "dialogues": [["สวัสดีครับ", "สวัสดีค่ะ", "ยินดีที่ได้รู้จักครับ", "ยินดีที่ได้รู้จักค่ะ"], ["ขอบคุณมากครับ", "ไม่เป็นไรค่ะ", "คุณใจดีมากครับ", "ขอบคุณค่ะ"], ["ขอโทษครับ", "ไม่เป็นไรค่ะ", "ขอบคุณครับ", "สบายดีไหมคะ", "สบายดีครับ ขอบคุณ"], ["ผมชื่ออาลีครับ", "ยินดีที่ได้รู้จักค่ะ", "ยินดีที่ได้รู้จักเช่นกันครับ", "คุณมาจากไหนคะ", "ผมมาจากตุรกีครับ อยู่ภูเก็ต"], ["สบายดีไหม", "สบายดีค่ะ ขอบคุณค่ะ", "วันนี้อากาศดีมากครับ", "ใช่ค่ะ ร้อนมากเลยค่ะ", "แล้วเจอกันครับ"]], "listening": ["สวัสดีครับ", "ขอบคุณค่ะ", "ยินดีที่ได้รู้จักครับ", "ขอโทษครับ", "สวัสดีครับ", "สวัสดีค่ะ", "ขอบคุณมากครับ", "ไม่เป็นไรค่ะ", "ยินดีที่ได้รู้จักครับ", "ขอบคุณที่ช่วยครับ"]}</script>
 
 <header>
-  <div class="brand">🇹🇭 Kolay Tayca</div>
+  <div class="brand-wrap"><div class="brand">🇹🇭 Kolay Tayca</div><div class="brand-dev" id="brand-dev"></div></div>
   <button class="hbtn" onclick="location.href='index.html'" title="Dil degistir">🌐</button>
   <div class="pbar-wrap">
     <div class="pbar"><div class="pfill" id="pbar"></div></div>
@@ -935,7 +939,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version">v2.0.0</span>
+  <span class="vbadge" id="app-version">v2.1.0</span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>
@@ -3177,7 +3181,7 @@ function buildHelpContent(){
         </div>
       </div>
       <div class="help-section-header">📋 ${en?'App Info':'Uygulama Bilgisi'}</div>
-      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">v3.46</strong></div>
+      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">v2.1.0</strong></div>
       <div class="help-info-row"><span>${en?'Total Lessons':'Toplam Ders'}</span><strong>19 + 29 ${en?'BONUS sets':'BONUS set'}</strong></div>
       <div class="help-info-row"><span>${en?'Per Lesson':'Ders Başına'}</span><strong>~10 ${en?'words, 8 grammar, 4 dialogues':'kelime, 8 gramer, 4 diyalog'}</strong></div>
       <div class="help-info-row"><span>${en?'Audio':'Ses Motoru'}</span><strong>Web Speech API + Google TTS</strong></div>
@@ -3191,7 +3195,7 @@ function buildHelpContent(){
           <div class="changelog-desc">${en?'Production release: lessons 10-19 live, BONUS Thai enrichment, progress bar fix':'Canli surum: Ders 10-19 yayinda, BONUS Thai zenginlestirme, ilerleme cubugu duzeltmesi'}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.54</div>
           <div class="changelog-desc">${en?'Lessons 10–19 content added (beach, hospital, emergency, etc.); BONUS vocab Thai enrichment; progress bar shows scenario/bonus separately':'Ders 10-19 icerik eklendi (plaj, hastane, acil vb.); BONUS kelimelere Thai karakter; ilerleme cubugu senaryo/bonus ayri gosterim'}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v3.46+</div>
+        <div class="changelog-item"><div class="changelog-ver">v2.1.0</div>
           <div class="changelog-desc">${en?'Full English/Turkish bilingual UI; dark mode; BONUS accordion; 1437-word CORE 2000 vocabulary with example sentences and grammar analysis; scroll-to-top button':'Tam İngilizce/Türkçe arayüz; dark mode; BONUS accordion; 1437 kelime CORE 2000 hazinesi, örnek cümleler ve gramer analizi; yukarı çık butonu'}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.32</div>
           <div class="changelog-desc">${en?'60-second mandatory wait per tab — lesson can\'t be completed until time is up; progress bar countdown':'Her sekme için 60 saniyelik zorunlu bekleme — süre dolmadan ders tamamlanamıyor'}</div></div>

@@ -1,0 +1,131 @@
+// ders44.js — Chinese Lesson 44: Social (vocabulary)
+const L44 = {
+  words:[
+    {
+      id:'w1',
+      en:'你好',
+      ro:'nǐ hǎo',
+      tr:'merhaba'
+    },
+    {
+      id:'w2',
+      en:'你好吗？',
+      ro:'nǐ hǎo ma?',
+      tr:'nasılsın?'
+    },
+    {
+      id:'w3',
+      en:'我很好',
+      ro:'wǒ hěn hǎo',
+      tr:'iyiyim'
+    },
+    {
+      id:'w4',
+      en:'谢谢',
+      ro:'xièxie',
+      tr:'teşekkür ederim'
+    },
+    {
+      id:'w5',
+      en:'请',
+      ro:'qǐng',
+      tr:'lütfen'
+    },
+    {
+      id:'w6',
+      en:'朋友',
+      ro:'péngyou',
+      tr:'arkadaş'
+    },
+    {
+      id:'w7',
+      en:'聚会',
+      ro:'jùhuì',
+      tr:'parti'
+    },
+    {
+      id:'w8',
+      en:'邀请',
+      ro:'yāoqǐng',
+      tr:'davet etmek'
+    },
+    {
+      id:'w9',
+      en:'庆祝',
+      ro:'qìngzhù',
+      tr:'kutlamak'
+    },
+    {
+      id:'w10',
+      en:'音乐',
+      ro:'yīnyuè',
+      tr:'müzik'
+    },
+    {
+      id:'w11',
+      en:'电影',
+      ro:'diànyǐng',
+      tr:'sinema'
+    },
+    {
+      id:'w12',
+      en:'回头见',
+      ro:'huítóu jiàn',
+      tr:'görüşürüz'
+    },
+    {
+      id:'w13',
+      en:'再见',
+      ro:'zàijiàn',
+      tr:'hoşça kal'
+    },
+    {
+      id:'w14',
+      en:'祝你好运',
+      ro:'zhù nǐ hǎoyùn',
+      tr:'başarılar'
+    },
+    {
+      id:'w15',
+      en:'恭喜',
+      ro:'gōngxǐ',
+      tr:'tebrikler'
+    },
+    {
+      id:'w16',
+      en:'意见',
+      ro:'yìjiàn',
+      tr:'görüş'
+    },
+    {
+      id:'w17',
+      en:'同意',
+      ro:'tóngyì',
+      tr:'katılmak'
+    },
+    {
+      id:'w18',
+      en:'不同意',
+      ro:'bù tóngyì',
+      tr:'katılmamak'
+    },
+    {
+      id:'w19',
+      en:'问题',
+      ro:'wèntí',
+      tr:'soru'
+    },
+    {
+      id:'w20',
+      en:'回答',
+      ro:'huídá',
+      tr:'cevap'
+    }
+  ],
+  grammar:[],
+  speaking:[],
+  dialogues:[],
+  listening:[],
+  tones:[]
+};
+LESSONS[44] = L44;

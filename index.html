@@ -8,7 +8,8 @@
 <style>
 *{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#0d9488,#2563eb);padding:20px}
 .card{background:#fff;border-radius:16px;padding:28px 24px;max-width:400px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.2)}
-h1{margin:0 0 6px;font-size:22px;color:#134e4a}
+h1{margin:0 0 2px;font-size:22px;color:#134e4a}
+.dev-credit{margin:0 0 6px;font-size:10px;color:#94a3b8;font-weight:500}
 .sub{margin:0 0 22px;font-size:13px;color:#667085;line-height:1.5}
 .field{margin-bottom:14px}
 .field label{display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#667085;margin-bottom:5px}
@@ -24,7 +25,8 @@ h1{margin:0 0 6px;font-size:22px;color:#134e4a}
 <body>
 <div class="card">
   <h1>Kolay Dil Ogren</h1>
-  <p class="sub" id="intro">6 dil — tam surumler, detayli gramer.</p>
+  <p class="dev-credit" id="dev-credit"></p>
+  <p class="sub" id="intro">9 dil — tam surumler, detayli gramer.</p>
   <div class="field">
     <label id="lbl-locale">Arayuz dili</label>
     <select id="locale"><option value="tr">Turkce</option><option value="en">English</option></select>
@@ -38,6 +40,9 @@ h1{margin:0 0 6px;font-size:22px;color:#134e4a}
       <option value="it">Italyanca — Italiano</option>
       <option value="es">Ispanyolca — Espanol</option>
       <option value="fr">Fransizca — Francais</option>
+      <option value="ru">Rusca — Русский</option>
+      <option value="ar">Arapca — العربية</option>
+      <option value="zh">Cince — 中文</option>
     </select>
   </div>
   <button class="btn" id="go">Basla</button>
@@ -46,11 +51,11 @@ h1{margin:0 0 6px;font-size:22px;color:#134e4a}
 </div>
 <script>
 const APP='kdo';
-const ROUTES={th:'tayca-v3.html',en:'english-v3.html',de:'german-v3.html',it:'italian-v3.html',es:'spanish-v3.html',fr:'french-v3.html'};
-const LANG_KEYS={th:'tv3_lang',en:'en1_lang',de:'de1_lang',it:'it1_lang',es:'es1_lang',fr:'fr1_lang'};
+const ROUTES={th:'tayca-v3.html',en:'english-v3.html',de:'german-v3.html',it:'italian-v3.html',es:'spanish-v3.html',fr:'french-v3.html',ru:'russian-v3.html',ar:'arabic-v3.html',zh:'chinese-v3.html'};
+const LANG_KEYS={th:'tv3_lang',en:'en1_lang',de:'de1_lang',it:'it1_lang',es:'es1_lang',fr:'fr1_lang',ru:'ru1_lang',ar:'ar1_lang',zh:'zh1_lang'};
 const ui={
-  tr:{intro:'Tayca, Ingilizce, Almanca, Italyanca, Ispanyolca ve Fransizca — tam surumler.',locale:'Arayuz dili',target:'Ogrenilecek dil',go:'Basla',note:'Tam dersler, detayli gramer, alistirma ve SRS.'},
-  en:{intro:'Thai, English, German, Italian, Spanish and French — full apps.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, detailed grammar, practice and SRS.'}
+  tr:{intro:'Tayca, Ingilizce, Almanca, Italyanca, Ispanyolca, Fransizca, Rusca, Arapca ve Cince — tam surumler.',locale:'Arayuz dili',target:'Ogrenilecek dil',go:'Basla',note:'Tam dersler, detayli gramer, alistirma ve SRS.'},
+  en:{intro:'Thai, English, German, Italian, Spanish, French, Russian, Arabic and Chinese — full apps.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, detailed grammar, practice and SRS.'}
 };
 const locale=localStorage.getItem(APP+':locale')||localStorage.getItem(APP+':ui')||'tr';
 const target=localStorage.getItem(APP+':target')||'th';
@@ -62,6 +67,7 @@ function applyUi(){
   document.getElementById('go').textContent=L('go');
   document.getElementById('note').textContent=L('note');
   document.documentElement.lang=locale;
+  const dc=document.getElementById('dev-credit');if(dc)dc.textContent=locale==='en'?'Developed by: Ali Dinçer':'Geliştiren: Ali Dinçer';
 }
 document.getElementById('locale').value=locale;
 document.getElementById('target').value=target;

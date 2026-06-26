@@ -1,0 +1,239 @@
+// ders13.js — Chinese Lesson 13: Social (beginner)
+const L13 = {
+  words:[
+    {
+      id:'w1',
+      en:'社交',
+      ro:'shèjiāo',
+      tr:'sosyal',
+      tip:'Temel kelime.',
+      ctx:'Günlük konuşma.'
+    },
+    {
+      id:'w2',
+      en:'朋友',
+      ro:'péngyou',
+      tr:'arkadaş'
+    },
+    {
+      id:'w3',
+      en:'聚会',
+      ro:'jùhuì',
+      tr:'parti'
+    },
+    {
+      id:'w4',
+      en:'电影',
+      ro:'diànyǐng',
+      tr:'sinema'
+    },
+    {
+      id:'w5',
+      en:'音乐',
+      ro:'yīnyuè',
+      tr:'müzik'
+    },
+    {
+      id:'w6',
+      en:'邀请',
+      ro:'yāoqǐng',
+      tr:'davet etmek'
+    },
+    {
+      id:'w7',
+      en:'庆祝',
+      ro:'qìngzhù',
+      tr:'kutlamak'
+    },
+    {
+      id:'w8',
+      en:'今天',
+      ro:'jīntiān',
+      tr:'bugün'
+    },
+    {
+      id:'w9',
+      en:'明天',
+      ro:'míngtiān',
+      tr:'yarın'
+    },
+    {
+      id:'w10',
+      en:'高兴',
+      ro:'gāoxìng',
+      tr:'mutlu'
+    },
+    {
+      id:'w11',
+      en:'问题',
+      ro:'wèntí',
+      tr:'soru'
+    },
+    {
+      id:'w12',
+      en:'回答',
+      ro:'huídá',
+      tr:'cevap'
+    },
+    {
+      id:'w13',
+      en:'回头见',
+      ro:'huítóu jiàn',
+      tr:'görüşürüz'
+    },
+    {
+      id:'w14',
+      en:'谢谢',
+      ro:'xièxie',
+      tr:'teşekkür ederim'
+    },
+    {
+      id:'w15',
+      en:'再见',
+      ro:'zàijiàn',
+      tr:'hoşça kal'
+    }
+  ],
+  grammar:[
+    {
+      id:'g1',
+      title:'Social — Temel',
+      title_en:'Social — Basics',
+      explanation:'Bu derste Social konusunda temel kelimeler öğreniyorsun. Türkçe gramer açıklamaları her kuralda verilir. Ali erkek öğrenci olarak bu ifadeleri kullanır.',
+      table:[
+        {
+          pronoun:'Örnek',
+          form:'社交',
+          example:'社交',
+          tr:'sosyal'
+        },
+        {
+          pronoun:'Pratik',
+          form:'朋友',
+          example:'朋友',
+          tr:'arkadaş'
+        }
+      ],
+      note:'Kalıcı öğrenme için kelimeyi kısa bir cümle içinde tekrar et.'
+    }
+  ],
+  speaking:[
+    {
+      id:'sp1',
+      en:'社交',
+      tr:'sosyal',
+      prompt:'İfade et'
+    },
+    {
+      id:'sp2',
+      en:'朋友',
+      tr:'arkadaş',
+      prompt:'Kelime kullan'
+    },
+    {
+      id:'sp3',
+      en:'聚会',
+      tr:'parti',
+      prompt:'Cümle kur'
+    },
+    {
+      id:'sp4',
+      en:'电影',
+      tr:'sinema',
+      prompt:'Soru sor'
+    },
+    {
+      id:'sp5',
+      en:'音乐',
+      tr:'müzik',
+      prompt:'Konuşma pratiği'
+    }
+  ],
+  dialogues:[
+    {
+      id:'d1',
+      title:'Social',
+      title_en:'Social',
+      lines:[
+        {
+          speaker:'A',
+          gender:'m',
+          en:'社交',
+          tr:'sosyal',
+          gramNote:'Ali konuşuyor.',
+          bd:[
+            {
+              ro:'shèjiāo',
+              tr:'sosyal',
+              role:'phrase',
+              note:'Örnek.'
+            }
+          ]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'朋友',
+          tr:'arkadaş',
+          gramNote:'Karşılık.',
+          bd:[
+            {
+              ro:'péngyou',
+              tr:'arkadaş',
+              role:'phrase',
+              note:'Cevap.'
+            }
+          ]
+        },
+        {
+          speaker:'A',
+          gender:'m',
+          en:'聚会',
+          tr:'parti',
+          bd:[]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'电影',
+          tr:'sinema',
+          bd:[]
+        }
+      ]
+    }
+  ],
+  listening:[
+    {
+      id:'li1',
+      audio:'',
+      transcript:'明天我们有聚会。',
+      tr:'明天我们有聚会.',
+      questions:[
+        {
+          q:'Doğru ifade hangisi?',
+          opts:[
+            '社交',
+            '朋友',
+            '聚会',
+            '电影'
+          ],
+          answer:0,
+          tr:'Doğru kelime?'
+        },
+        {
+          q:'İkinci doğru seçenek hangisi?',
+          opts:[
+            '朋友',
+            '聚会',
+            '电影',
+            '音乐'
+          ],
+          answer:1,
+          tr:'İkinci soru?'
+        }
+      ]
+    }
+  ],
+  tones:[]
+};
+LESSONS[13] = L13;

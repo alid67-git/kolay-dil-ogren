@@ -1,0 +1,239 @@
+// ders5.js — Arabic Lesson 5: Restaurant & Food (beginner)
+const L5 = {
+  words:[
+    {
+      id:'w1',
+      en:'المطعم',
+      ro:'al-maṭʿam',
+      tr:'restoran',
+      tip:'Temel kelime.',
+      ctx:'Günlük konuşma.'
+    },
+    {
+      id:'w2',
+      en:'القائمة',
+      ro:'al-qāʾima',
+      tr:'menü'
+    },
+    {
+      id:'w3',
+      en:'الطاولة',
+      ro:'aṭ-ṭāwila',
+      tr:'masa'
+    },
+    {
+      id:'w4',
+      en:'الماء',
+      ro:'al-māʾ',
+      tr:'su'
+    },
+    {
+      id:'w5',
+      en:'الشاي',
+      ro:'ash-shāy',
+      tr:'çay'
+    },
+    {
+      id:'w6',
+      en:'القهوة',
+      ro:'al-qahwa',
+      tr:'kahve'
+    },
+    {
+      id:'w7',
+      en:'الخبز',
+      ro:'al-khubz',
+      tr:'ekmek'
+    },
+    {
+      id:'w8',
+      en:'الحساء',
+      ro:'al-ḥasāʾ',
+      tr:'çorba'
+    },
+    {
+      id:'w9',
+      en:'السلطة',
+      ro:'as-salaṭa',
+      tr:'salata'
+    },
+    {
+      id:'w10',
+      en:'الدجاج',
+      ro:'ad-dajāj',
+      tr:'tavuk'
+    },
+    {
+      id:'w11',
+      en:'السمك',
+      ro:'as-samak',
+      tr:'balık'
+    },
+    {
+      id:'w12',
+      en:'الأرز',
+      ro:'al-aruzz',
+      tr:'pirinç'
+    },
+    {
+      id:'w13',
+      en:'لذيذ',
+      ro:'ladhīdh',
+      tr:'lezzetli'
+    },
+    {
+      id:'w14',
+      en:'الفاتورة',
+      ro:'al-fātūra',
+      tr:'hesap'
+    },
+    {
+      id:'w15',
+      en:'السعر',
+      ro:'as-siʿr',
+      tr:'fiyat'
+    }
+  ],
+  grammar:[
+    {
+      id:'g1',
+      title:'Restaurant & Food — Temel',
+      title_en:'Restaurant & Food — Basics',
+      explanation:'Bu derste Restaurant & Food konusunda temel kelimeler öğreniyorsun. Türkçe gramer açıklamaları her kuralda verilir. Ali erkek öğrenci olarak bu ifadeleri kullanır.',
+      table:[
+        {
+          pronoun:'Örnek',
+          form:'المطعم',
+          example:'المطعم',
+          tr:'restoran'
+        },
+        {
+          pronoun:'Pratik',
+          form:'القائمة',
+          example:'القائمة',
+          tr:'menü'
+        }
+      ],
+      note:'Kalıcı öğrenme için kelimeyi kısa bir cümle içinde tekrar et.'
+    }
+  ],
+  speaking:[
+    {
+      id:'sp1',
+      en:'المطعم',
+      tr:'restoran',
+      prompt:'İfade et'
+    },
+    {
+      id:'sp2',
+      en:'القائمة',
+      tr:'menü',
+      prompt:'Kelime kullan'
+    },
+    {
+      id:'sp3',
+      en:'الطاولة',
+      tr:'masa',
+      prompt:'Cümle kur'
+    },
+    {
+      id:'sp4',
+      en:'الماء',
+      tr:'su',
+      prompt:'Soru sor'
+    },
+    {
+      id:'sp5',
+      en:'الشاي',
+      tr:'çay',
+      prompt:'Konuşma pratiği'
+    }
+  ],
+  dialogues:[
+    {
+      id:'d1',
+      title:'Restaurant & Food',
+      title_en:'Restaurant & Food',
+      lines:[
+        {
+          speaker:'A',
+          gender:'m',
+          en:'المطعم',
+          tr:'restoran',
+          gramNote:'Ali konuşuyor.',
+          bd:[
+            {
+              ro:'al-maṭʿam',
+              tr:'restoran',
+              role:'phrase',
+              note:'Örnek.'
+            }
+          ]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'القائمة',
+          tr:'menü',
+          gramNote:'Karşılık.',
+          bd:[
+            {
+              ro:'al-qāʾima',
+              tr:'menü',
+              role:'phrase',
+              note:'Cevap.'
+            }
+          ]
+        },
+        {
+          speaker:'A',
+          gender:'m',
+          en:'الطاولة',
+          tr:'masa',
+          bd:[]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'الماء',
+          tr:'su',
+          bd:[]
+        }
+      ]
+    }
+  ],
+  listening:[
+    {
+      id:'li1',
+      audio:'',
+      transcript:'أريد الحساء والشاي من فضلك.',
+      tr:'أريد الحساء والشاي من فضلك.',
+      questions:[
+        {
+          q:'Doğru ifade hangisi?',
+          opts:[
+            'المطعم',
+            'القائمة',
+            'الطاولة',
+            'الماء'
+          ],
+          answer:0,
+          tr:'Doğru kelime?'
+        },
+        {
+          q:'İkinci doğru seçenek hangisi?',
+          opts:[
+            'القائمة',
+            'الطاولة',
+            'الماء',
+            'الشاي'
+          ],
+          answer:1,
+          tr:'İkinci soru?'
+        }
+      ]
+    }
+  ],
+  tones:[]
+};
+LESSONS[5] = L5;

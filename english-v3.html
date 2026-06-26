@@ -16,7 +16,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 
 /* HEADER */
 header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;}
-.brand{font-size:17px;font-weight:700;white-space:nowrap;} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
+.brand-wrap{display:flex;flex-direction:column;line-height:1.2;}
+.brand{font-size:17px;font-weight:700;white-space:nowrap;}
+.brand-dev{font-size:9px;font-weight:500;color:rgba(255,255,255,.55);letter-spacing:.02em;margin-top:1px;} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
 /* YARDIM MODALİ */
 .htab{background:none;border:none;padding:9px 13px;font-size:12px;font-weight:700;color:#888;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:.15s;}
 .htab.active{color:#0d9488;border-bottom-color:#0d9488;}
@@ -660,7 +662,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.0.0';
+const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.1.0';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -672,6 +674,7 @@ if(storedVersion && storedVersion !== APP_VERSION){
   console.log('Yeni versiyon: '+APP_VERSION+', cache temizlendi.');
 }
 localStorage.setItem('app_version', APP_VERSION);
+(function(){const _bd=document.getElementById('brand-dev');const _l=localStorage.getItem('kdo:locale')||'tr';if(_bd)_bd.textContent=_l==='en'?'Developed by: Ali Dinçer':'Geliştiren: Ali Dinçer';})();
 (function(){const _vb=document.getElementById('app-version');if(_vb)_vb.textContent=APP_VERSION;})();
 
 // Eski uygulama anahtarlarından (tv3_*) tek seferlik taşıma
@@ -981,6 +984,7 @@ function lessonNumLabel(num){
 }
 
 function setLang(lang){
+  const _bd=document.getElementById('brand-dev');if(_bd)_bd.textContent=lang==='en'?'Developed by: Ali Dinçer':'Geliştiren: Ali Dinçer';
   appLang = lang;
   localStorage.setItem('en1_lang', lang);
   localStorage.setItem('kdo:locale', lang);
@@ -1006,7 +1010,7 @@ function setLang(lang){
 <script type="application/json" id="english-data">{}</script>
 
 <header>
-  <div class="brand">🇬🇧 Kolay İngilizce</div>
+  <div class="brand-wrap"><div class="brand">🇬🇧 Kolay İngilizce</div><div class="brand-dev" id="brand-dev"></div></div>
   <button class="hbtn" onclick="location.href='index.html'" title="Dil degistir">🌐</button>
   <div class="pbar-wrap">
     <div class="pbar"><div class="pfill" id="pbar"></div></div>
@@ -1016,7 +1020,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version">v2.0.0</span>
+  <span class="vbadge" id="app-version">v2.1.0</span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>
@@ -3561,7 +3565,7 @@ function buildHelpContent(){
       <div class="help-info-row"><span>${en?'Per Lesson':'Ders Başına'}</span><strong>~10 ${en?'words, 8 grammar, 4 dialogues':'kelime, 8 gramer, 4 diyalog'}</strong></div>
       <div class="help-info-row"><span>${en?'Audio':'Ses Motoru'}</span><strong>Web Speech API + Google TTS</strong></div>
       <div class="help-info-row"><span>${en?'Data':'Veri'}</span><strong>localStorage (${en?'works offline':'internet gerekmez'})</strong></div>
-      <div class="help-info-row"><span>${en?'Developer':'Geliştirici'}</span><strong>Ali Dincer</strong></div>
+      <div class="help-info-row"><span>${en?'Developer':'Geliştirici'}</span><strong>Ali Dinçer</strong></div>
       <div class="help-section-header" style="margin-top:16px;">📦 ${en?'Version History':'Versiyon Geçmişi'}</div>
       <div class="help-changelog">
         <div class="changelog-item"><div class="changelog-ver">${APP_VERSION}</div>

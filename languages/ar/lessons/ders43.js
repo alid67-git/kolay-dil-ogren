@@ -1,0 +1,131 @@
+// ders43.js — Arabic Lesson 43: Digital (vocabulary)
+const L43 = {
+  words:[
+    {
+      id:'w1',
+      en:'رقمي',
+      ro:'raqamī',
+      tr:'dijital'
+    },
+    {
+      id:'w2',
+      en:'الحاسوب',
+      ro:'al-ḥāsūb',
+      tr:'bilgisayar'
+    },
+    {
+      id:'w3',
+      en:'الإنترنت',
+      ro:'al-internet',
+      tr:'internet'
+    },
+    {
+      id:'w4',
+      en:'الموقع',
+      ro:'al-mawqiʿ',
+      tr:'web sitesi'
+    },
+    {
+      id:'w5',
+      en:'كلمة المرور',
+      ro:'kalimat al-murūr',
+      tr:'şifre'
+    },
+    {
+      id:'w6',
+      en:'الحساب',
+      ro:'al-ḥisāb',
+      tr:'hesap'
+    },
+    {
+      id:'w7',
+      en:'التطبيق',
+      ro:'at-taṭbīq',
+      tr:'uygulama'
+    },
+    {
+      id:'w8',
+      en:'يحمل',
+      ro:'yuḥammil',
+      tr:'indirmek'
+    },
+    {
+      id:'w9',
+      en:'يرفع',
+      ro:'yarfaʿ',
+      tr:'yüklemek'
+    },
+    {
+      id:'w10',
+      en:'ينقر',
+      ro:'yanqur',
+      tr:'tıklamak'
+    },
+    {
+      id:'w11',
+      en:'البريد الإلكتروني',
+      ro:'al-barīd al-iliktrūnī',
+      tr:'e-posta'
+    },
+    {
+      id:'w12',
+      en:'الرسالة',
+      ro:'ar-risāla',
+      tr:'mesaj'
+    },
+    {
+      id:'w13',
+      en:'يتصل',
+      ro:'yattaṣil',
+      tr:'aramak'
+    },
+    {
+      id:'w14',
+      en:'البيانات',
+      ro:'al-bayānāt',
+      tr:'veri'
+    },
+    {
+      id:'w15',
+      en:'الشبكة الاجتماعية',
+      ro:'ash-shabaka al-ijtimāʿiyya',
+      tr:'sosyal ağ'
+    },
+    {
+      id:'w16',
+      en:'السؤال',
+      ro:'as-suʾāl',
+      tr:'soru'
+    },
+    {
+      id:'w17',
+      en:'الجواب',
+      ro:'al-jawāb',
+      tr:'cevap'
+    },
+    {
+      id:'w18',
+      en:'يساعد',
+      ro:'yusāʿid',
+      tr:'yardım etmek'
+    },
+    {
+      id:'w19',
+      en:'يتعلم',
+      ro:'yataʿallam',
+      tr:'öğrenmek'
+    },
+    {
+      id:'w20',
+      en:'العمل',
+      ro:'al-ʿamal',
+      tr:'iş'
+    }
+  ],
+  grammar:[],
+  speaking:[],
+  dialogues:[],
+  listening:[],
+  tones:[]
+};
+LESSONS[43] = L43;

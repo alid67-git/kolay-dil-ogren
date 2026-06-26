@@ -12,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 const code = process.argv[2];
 if (!code || !LANGS[code]) {
-  console.error('Usage: node tools/create-lang-html.mjs it|es|fr');
+  console.error('Usage: node tools/create-lang-html.mjs it|es|fr|ru|ar|zh');
   process.exit(1);
 }
 const L = LANGS[code];
@@ -93,6 +93,25 @@ const pronTables = {
         <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">il / elle</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">\${appLang==='en'?'M / F':'E / K'}</td></tr>
         <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">nous</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
         <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ils / elles</td><td style="padding:6px 6px;">Onlar</td><td style="padding:6px 6px;color:#888;">\${appLang==='en'?'M / F plural':'E / K çoğul'}</td></tr>`,
+  ru: `<tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'1st sing.':'1. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">я</td><td style="padding:6px 6px;">Ben</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'2nd sing. (informal)':'2. tekil (samimi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ты</td><td style="padding:6px 6px;">Sen</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'2nd sing. (formal)':'2. tekil (resmi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">Вы</td><td style="padding:6px 6px;">Siz</td><td style="padding:6px 6px;color:#888;">\${appLang==='en'?'Capital В = formal':'Büyük В = resmi'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">он / она</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">\${appLang==='en'?'M / F':'E / K'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">мы</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">они</td><td style="padding:6px 6px;">Onlar</td><td style="padding:6px 6px;color:#888;"></td></tr>`,
+  ar: `<tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'1st sing.':'1. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">أنا</td><td style="padding:6px 6px;">Ben</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'2nd sing. (m)':'2. tekil (e)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">أنتَ</td><td style="padding:6px 6px;">Sen (e)</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'2nd sing. (f)':'2. tekil (k)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">أنتِ</td><td style="padding:6px 6px;">Sen (k)</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'2nd formal':'2. resmi'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">أنتم</td><td style="padding:6px 6px;">Siz</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">هو / هي</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">\${appLang==='en'?'M / F':'E / K'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">نحن</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">هم</td><td style="padding:6px 6px;">Onlar</td><td style="padding:6px 6px;color:#888;"></td></tr>`,
+  zh: `<tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'1st sing.':'1. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">我</td><td style="padding:6px 6px;">Ben</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'2nd sing.':'2. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">你</td><td style="padding:6px 6px;">Sen</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'2nd formal':'2. resmi'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">您</td><td style="padding:6px 6px;">Siz</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">他 / 她</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">\${appLang==='en'?'M / F':'E / K'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">我们</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">他们</td><td style="padding:6px 6px;">Onlar</td><td style="padding:6px 6px;color:#888;"></td></tr>`,
 };
 
 s = s.replace(
@@ -153,6 +172,52 @@ function l2FR999(n){if(n<100)return l2FR99(n);const h=Math.floor(n/100),r=n%100;
 function l2FRChunk(n,suffix){if(suffix.includes('million'))return l2FR999(n)+suffix;if(n<1000)return l2FR999(n);const k=Math.floor(n/1000),r=n%1000;return(k===1?'mille':l2FR999(k)+' mille')+(r?' '+l2FR999(r):'');}
 function l2TR99(n){if(n<20)return TR_ONES[n];const t=Math.floor(n/10),o=n%10;return TR_TENS[t]+(o?' '+TR_ONES[o]:'');}
 function l2TR999(n){if(n===0)return'';if(n<100)return l2TR99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'':TR_ONES[h]+' ')+'yüz'+(r?' '+l2TR99(r):'');}`,
+  ru: `const RU_ONES=['ноль','один','два','три','четыре','пять','шесть','семь','восемь','девять','десять','одиннадцать','двенадцать','тринадцать','четырнадцать','пятнадцать','шестнадцать','семнадцать','восемнадцать','девятнадцать'];
+const RU_TENS=['','','двадцать','тридцать','сорок','пятьдесят','шестьдесят','семьдесят','восемьдесят','девяносто'];
+const TR_ONES=['sıfır','bir','iki','üç','dört','beş','altı','yedi','sekiz','dokuz','on','on bir','on iki','on üç','on dört','on beş','on altı','on yedi','on sekiz','on dokuz'];
+const TR_TENS=['','','yirmi','otuz','kırk','elli','altmış','yetmiş','seksen','doksan'];
+function l2BuildRussian(n){
+  if(n===0) return {word:'ноль',tr:'sıfır',chunks:[{val:'0',en:'ноль',tr:'sıfır'}]};
+  const parts=[];const trParts=[];const chunks=[];let r=n;
+  const push=(val,suf,trSuf,mult)=>{const w=l2RUChunk(val,suf);const t=l2TR999(val)+(trSuf?' '+trSuf:'');parts.push(w);trParts.push(t);chunks.push({val:(val*mult).toLocaleString('tr'),en:w,tr:t});};
+  const m=Math.floor(r/1000000);r%=1000000;if(m)push(m,m===1?' миллион':' миллионов','milyon',1000000);
+  if(r>0)push(r,'','',1);return{word:parts.join(' '),tr:trParts.join(' '),chunks};
+}
+function l2RU99(n){if(n<20)return RU_ONES[n];const t=Math.floor(n/10),o=n%10;if(o===0)return RU_TENS[t];return RU_TENS[t]+' '+RU_ONES[o];}
+function l2RU999(n){if(n<100)return l2RU99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'сто':RU_ONES[h]+'сот')+(r?' '+l2RU99(r):'');}
+function l2RUChunk(n,suffix){if(suffix.includes('миллион'))return l2RU999(n)+suffix;if(n<1000)return l2RU999(n);const k=Math.floor(n/1000),r=n%1000;return(k===1?'тысяча':l2RU999(k)+' тысяч')+(r?' '+l2RU999(r):'');}
+function l2TR99(n){if(n<20)return TR_ONES[n];const t=Math.floor(n/10),o=n%10;return TR_TENS[t]+(o?' '+TR_ONES[o]:'');}
+function l2TR999(n){if(n===0)return'';if(n<100)return l2TR99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'':TR_ONES[h]+' ')+'yüz'+(r?' '+l2TR99(r):'');}`,
+  ar: `const AR_ONES=['صفر','واحد','اثنان','ثلاثة','أربعة','خمسة','ستة','سبعة','ثمانية','تسعة','عشرة','أحد عشر','اثنا عشر','ثلاثة عشر','أربعة عشر','خمسة عشر','ستة عشر','سبعة عشر','ثمانية عشر','تسعة عشر'];
+const AR_TENS=['','','عشرون','ثلاثون','أربعون','خمسون','ستون','سبعون','ثمانون','تسعون'];
+const TR_ONES=['sıfır','bir','iki','üç','dört','beş','altı','yedi','sekiz','dokuz','on','on bir','on iki','on üç','on dört','on beş','on altı','on yedi','on sekiz','on dokuz'];
+const TR_TENS=['','','yirmi','otuz','kırk','elli','altmış','yetmiş','seksen','doksan'];
+function l2BuildArabic(n){
+  if(n===0) return {word:'صفر',tr:'sıfır',chunks:[{val:'0',en:'صفر',tr:'sıfır'}]};
+  const w=l2AR999(n);return{word:w,tr:l2TR999(n),chunks:[{val:n.toLocaleString('tr'),en:w,tr:l2TR999(n)}]};
+}
+function l2AR99(n){if(n<20)return AR_ONES[n];const t=Math.floor(n/10),o=n%10;if(o===0)return AR_TENS[t];return AR_ONES[o]+' و'+AR_TENS[t];}
+function l2AR999(n){if(n<100)return l2AR99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'مائة':AR_ONES[h]+'مائة')+(r?' و'+l2AR99(r):'');}
+function l2TR99(n){if(n<20)return TR_ONES[n];const t=Math.floor(n/10),o=n%10;return TR_TENS[t]+(o?' '+TR_ONES[o]:'');}
+function l2TR999(n){if(n===0)return'';if(n<100)return l2TR99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'':TR_ONES[h]+' ')+'yüz'+(r?' '+l2TR99(r):'');}`,
+  zh: `const ZH_DIGITS=['零','一','二','三','四','五','六','七','八','九'];
+const ZH_UNITS=['','十','百','千','万'];
+const TR_ONES=['sıfır','bir','iki','üç','dört','beş','altı','yedi','sekiz','dokuz','on','on bir','on iki','on üç','on dört','on beş','on altı','on yedi','on sekiz','on dokuz'];
+const TR_TENS=['','','yirmi','otuz','kırk','elli','altmış','yetmiş','seksen','doksan'];
+function l2BuildChinese(n){
+  if(n===0) return {word:'零',tr:'sıfır',chunks:[{val:'0',en:'零',tr:'sıfır'}]};
+  const w=l2ZHNum(n);return{word:w,tr:l2TR999(n),chunks:[{val:n.toLocaleString('tr'),en:w,tr:l2TR999(n)}]};
+}
+function l2ZHNum(n){
+  if(n<10)return ZH_DIGITS[n];
+  if(n<20)return(n===10?'十':'十'+ZH_DIGITS[n%10]);
+  if(n<100){const t=Math.floor(n/10),o=n%10;return ZH_DIGITS[t]+'十'+(o?ZH_DIGITS[o]:'');}
+  if(n<1000){const h=Math.floor(n/100),r=n%100;return ZH_DIGITS[h]+'百'+(r?l2ZHNum(r):'');}
+  if(n<10000){const k=Math.floor(n/1000),r=n%1000;return ZH_DIGITS[k]+'千'+(r?l2ZHNum(r):'');}
+  const w=Math.floor(n/10000),r=n%10000;return l2ZHNum(w)+'万'+(r?l2ZHNum(r):'');
+}
+function l2TR99(n){if(n<20)return TR_ONES[n];const t=Math.floor(n/10),o=n%10;return TR_TENS[t]+(o?' '+TR_ONES[o]:'');}
+function l2TR999(n){if(n===0)return'';if(n<100)return l2TR99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'':TR_ONES[h]+' ')+'yüz'+(r?' '+l2TR99(r):'');}`,
 };
 
 // Replace German calc with language calc
@@ -161,8 +226,22 @@ const calcEnd = s.indexOf('let l2CalcWord =');
 if (calcStart >= 0 && calcEnd > calcStart) {
   s = s.slice(0, calcStart) + calcBlocks[code] + '\n\n' + s.slice(calcEnd);
 }
-s = s.replace('const res = l2BuildGerman(n);', `const res = ${code === 'it' ? 'l2BuildItalian' : code === 'es' ? 'l2BuildSpanish' : 'l2BuildFrench'}(n);`);
+s = s.replace('const res = l2BuildGerman(n);', `const res = ${code === 'it' ? 'l2BuildItalian' : code === 'es' ? 'l2BuildSpanish' : code === 'fr' ? 'l2BuildFrench' : code === 'ru' ? 'l2BuildRussian' : code === 'ar' ? 'l2BuildArabic' : code === 'zh' ? 'l2BuildChinese' : 'l2BuildGerman'}(n);`);
 
-s = s.replace('const APP_VERSION = \'v1.0.0\';', "const APP_VERSION = 'v1.2.1';");
+// RTL for Arabic
+if (L.rtl) {
+  s = s.replace('<html lang="tr">', '<html lang="tr" dir="rtl">');
+  s = s.replace('body{font-family:', 'body{direction:rtl;text-align:right;font-family:');
+}
+
+// CJK font for Chinese
+if (L.cjk) {
+  s = s.replace(
+    'font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;',
+    'font-family:"Noto Sans SC",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;'
+  );
+}
+
+const out = path.join(root, L.htmlFile);
 fs.writeFileSync(out, s);
 console.log(`Created ${L.htmlFile} (${fs.statSync(out).size} bytes)`);

@@ -1,0 +1,239 @@
+// ders19.js — Russian Lesson 19: Entertainment (beginner)
+const L19 = {
+  words:[
+    {
+      id:'w1',
+      en:'хобби',
+      ro:'khobbi',
+      tr:'hobi',
+      tip:'Temel kelime.',
+      ctx:'Günlük konuşma.'
+    },
+    {
+      id:'w2',
+      en:'читать',
+      ro:'chitat',
+      tr:'okumak'
+    },
+    {
+      id:'w3',
+      en:'музыка',
+      ro:'muzyka',
+      tr:'müzik'
+    },
+    {
+      id:'w4',
+      en:'кино',
+      ro:'kino',
+      tr:'sinema'
+    },
+    {
+      id:'w5',
+      en:'театр',
+      ro:'teatr',
+      tr:'tiyatro'
+    },
+    {
+      id:'w6',
+      en:'музей',
+      ro:'muzey',
+      tr:'müze'
+    },
+    {
+      id:'w7',
+      en:'вечеринка',
+      ro:'vecherinka',
+      tr:'parti'
+    },
+    {
+      id:'w8',
+      en:'друг',
+      ro:'drug',
+      tr:'arkadaş'
+    },
+    {
+      id:'w9',
+      en:'приглашать',
+      ro:'priglashat',
+      tr:'davet etmek'
+    },
+    {
+      id:'w10',
+      en:'праздновать',
+      ro:'prazdnovat',
+      tr:'kutlamak'
+    },
+    {
+      id:'w11',
+      en:'песня',
+      ro:'pesnya',
+      tr:'şarkı'
+    },
+    {
+      id:'w12',
+      en:'искусство',
+      ro:'iskusstvo',
+      tr:'sanat'
+    },
+    {
+      id:'w13',
+      en:'вопрос',
+      ro:'vopros',
+      tr:'soru'
+    },
+    {
+      id:'w14',
+      en:'ответ',
+      ro:'otvet',
+      tr:'cevap'
+    },
+    {
+      id:'w15',
+      en:'сегодня',
+      ro:'segodnya',
+      tr:'bugün'
+    }
+  ],
+  grammar:[
+    {
+      id:'g1',
+      title:'Entertainment — Temel',
+      title_en:'Entertainment — Basics',
+      explanation:'Bu derste Entertainment konusunda temel kelimeler öğreniyorsun. Türkçe gramer açıklamaları her kuralda verilir. Ali erkek öğrenci olarak bu ifadeleri kullanır.',
+      table:[
+        {
+          pronoun:'Örnek',
+          form:'хобби',
+          example:'хобби',
+          tr:'hobi'
+        },
+        {
+          pronoun:'Pratik',
+          form:'читать',
+          example:'читать',
+          tr:'okumak'
+        }
+      ],
+      note:'Kalıcı öğrenme için kelimeyi kısa bir cümle içinde tekrar et.'
+    }
+  ],
+  speaking:[
+    {
+      id:'sp1',
+      en:'хобби',
+      tr:'hobi',
+      prompt:'İfade et'
+    },
+    {
+      id:'sp2',
+      en:'читать',
+      tr:'okumak',
+      prompt:'Kelime kullan'
+    },
+    {
+      id:'sp3',
+      en:'музыка',
+      tr:'müzik',
+      prompt:'Cümle kur'
+    },
+    {
+      id:'sp4',
+      en:'кино',
+      tr:'sinema',
+      prompt:'Soru sor'
+    },
+    {
+      id:'sp5',
+      en:'театр',
+      tr:'tiyatro',
+      prompt:'Konuşma pratiği'
+    }
+  ],
+  dialogues:[
+    {
+      id:'d1',
+      title:'Entertainment',
+      title_en:'Entertainment',
+      lines:[
+        {
+          speaker:'A',
+          gender:'m',
+          en:'хобби',
+          tr:'hobi',
+          gramNote:'Ali konuşuyor.',
+          bd:[
+            {
+              ro:'khobbi',
+              tr:'hobi',
+              role:'phrase',
+              note:'Örnek.'
+            }
+          ]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'читать',
+          tr:'okumak',
+          gramNote:'Karşılık.',
+          bd:[
+            {
+              ro:'chitat',
+              tr:'okumak',
+              role:'phrase',
+              note:'Cevap.'
+            }
+          ]
+        },
+        {
+          speaker:'A',
+          gender:'m',
+          en:'музыка',
+          tr:'müzik',
+          bd:[]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'кино',
+          tr:'sinema',
+          bd:[]
+        }
+      ]
+    }
+  ],
+  listening:[
+    {
+      id:'li1',
+      audio:'',
+      transcript:'В выходные я иду в кино.',
+      tr:'В выходные я иду в кино.',
+      questions:[
+        {
+          q:'Doğru ifade hangisi?',
+          opts:[
+            'хобби',
+            'читать',
+            'музыка',
+            'кино'
+          ],
+          answer:0,
+          tr:'Doğru kelime?'
+        },
+        {
+          q:'İkinci doğru seçenek hangisi?',
+          opts:[
+            'читать',
+            'музыка',
+            'кино',
+            'театр'
+          ],
+          answer:1,
+          tr:'İkinci soru?'
+        }
+      ]
+    }
+  ],
+  tones:[]
+};
+LESSONS[19] = L19;

@@ -37,6 +37,9 @@
     if (p.includes('italian')) return 'it';
     if (p.includes('spanish')) return 'es';
     if (p.includes('french')) return 'fr';
+    if (p.includes('russian')) return 'ru';
+    if (p.includes('arabic')) return 'ar';
+    if (p.includes('chinese')) return 'zh';
     return localStorage.getItem('kdo:target') || 'unknown';
   }
 

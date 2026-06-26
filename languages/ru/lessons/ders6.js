@@ -1,0 +1,239 @@
+// ders6.js — Russian Lesson 6: Shopping (beginner)
+const L6 = {
+  words:[
+    {
+      id:'w1',
+      en:'магазин',
+      ro:'magazin',
+      tr:'market',
+      tip:'Temel kelime.',
+      ctx:'Günlük konuşma.'
+    },
+    {
+      id:'w2',
+      en:'цена',
+      ro:'tsena',
+      tr:'fiyat'
+    },
+    {
+      id:'w3',
+      en:'дёшево',
+      ro:'dyoshevo',
+      tr:'ucuz'
+    },
+    {
+      id:'w4',
+      en:'дорого',
+      ro:'dorogo',
+      tr:'pahalı'
+    },
+    {
+      id:'w5',
+      en:'скидка',
+      ro:'skidka',
+      tr:'indirim'
+    },
+    {
+      id:'w6',
+      en:'размер',
+      ro:'razmer',
+      tr:'beden'
+    },
+    {
+      id:'w7',
+      en:'цвет',
+      ro:'tsvet',
+      tr:'renk'
+    },
+    {
+      id:'w8',
+      en:'примерить',
+      ro:'primerit',
+      tr:'denemek'
+    },
+    {
+      id:'w9',
+      en:'чек',
+      ro:'chek',
+      tr:'fiş'
+    },
+    {
+      id:'w10',
+      en:'покупать',
+      ro:'pokupat',
+      tr:'satın almak'
+    },
+    {
+      id:'w11',
+      en:'продавать',
+      ro:'prodavat',
+      tr:'satmak'
+    },
+    {
+      id:'w12',
+      en:'деньги',
+      ro:'dengi',
+      tr:'para'
+    },
+    {
+      id:'w13',
+      en:'карта',
+      ro:'karta',
+      tr:'kart'
+    },
+    {
+      id:'w14',
+      en:'наличные',
+      ro:'nalichnyye',
+      tr:'nakit'
+    },
+    {
+      id:'w15',
+      en:'вопрос',
+      ro:'vopros',
+      tr:'soru'
+    }
+  ],
+  grammar:[
+    {
+      id:'g1',
+      title:'Shopping — Temel',
+      title_en:'Shopping — Basics',
+      explanation:'Bu derste Shopping konusunda temel kelimeler öğreniyorsun. Türkçe gramer açıklamaları her kuralda verilir. Ali erkek öğrenci olarak bu ifadeleri kullanır.',
+      table:[
+        {
+          pronoun:'Örnek',
+          form:'магазин',
+          example:'магазин',
+          tr:'market'
+        },
+        {
+          pronoun:'Pratik',
+          form:'цена',
+          example:'цена',
+          tr:'fiyat'
+        }
+      ],
+      note:'Kalıcı öğrenme için kelimeyi kısa bir cümle içinde tekrar et.'
+    }
+  ],
+  speaking:[
+    {
+      id:'sp1',
+      en:'магазин',
+      tr:'market',
+      prompt:'İfade et'
+    },
+    {
+      id:'sp2',
+      en:'цена',
+      tr:'fiyat',
+      prompt:'Kelime kullan'
+    },
+    {
+      id:'sp3',
+      en:'дёшево',
+      tr:'ucuz',
+      prompt:'Cümle kur'
+    },
+    {
+      id:'sp4',
+      en:'дорого',
+      tr:'pahalı',
+      prompt:'Soru sor'
+    },
+    {
+      id:'sp5',
+      en:'скидка',
+      tr:'indirim',
+      prompt:'Konuşma pratiği'
+    }
+  ],
+  dialogues:[
+    {
+      id:'d1',
+      title:'Shopping',
+      title_en:'Shopping',
+      lines:[
+        {
+          speaker:'A',
+          gender:'m',
+          en:'магазин',
+          tr:'market',
+          gramNote:'Ali konuşuyor.',
+          bd:[
+            {
+              ro:'magazin',
+              tr:'market',
+              role:'phrase',
+              note:'Örnek.'
+            }
+          ]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'цена',
+          tr:'fiyat',
+          gramNote:'Karşılık.',
+          bd:[
+            {
+              ro:'tsena',
+              tr:'fiyat',
+              role:'phrase',
+              note:'Cevap.'
+            }
+          ]
+        },
+        {
+          speaker:'A',
+          gender:'m',
+          en:'дёшево',
+          tr:'ucuz',
+          bd:[]
+        },
+        {
+          speaker:'B',
+          gender:'f',
+          en:'дорого',
+          tr:'pahalı',
+          bd:[]
+        }
+      ]
+    }
+  ],
+  listening:[
+    {
+      id:'li1',
+      audio:'',
+      transcript:'Сколько стоит эта рубашка?',
+      tr:'Сколько стоит эта рубашка?.',
+      questions:[
+        {
+          q:'Doğru ifade hangisi?',
+          opts:[
+            'магазин',
+            'цена',
+            'дёшево',
+            'дорого'
+          ],
+          answer:0,
+          tr:'Doğru kelime?'
+        },
+        {
+          q:'İkinci doğru seçenek hangisi?',
+          opts:[
+            'цена',
+            'дёшево',
+            'дорого',
+            'скидка'
+          ],
+          answer:1,
+          tr:'İkinci soru?'
+        }
+      ]
+    }
+  ],
+  tones:[]
+};
+LESSONS[6] = L6;
