@@ -659,6 +659,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 <script src="shared/kdo-ui-extra.js"></script>
 <script src="shared/kdo-ui-helpers.js"></script>
 <script src="shared/kdo-platform-init.js"></script>
+<script src="shared/kdo-hub-picker.js"></script>
 <script src="shared/kdo-analytics-config.js"></script>
 <script src="shared/kdo-geo-locale.js"></script>
 <script src="shared/kdo-translate.js"></script>
@@ -1099,7 +1100,6 @@ function setLang(lang){
 
 <header>
   <div class="brand-wrap"><div class="brand">Kolay Dil Öğren</div><div class="brand-dev" id="brand-dev"></div></div>
-  <button class="hbtn" onclick="location.href='index.html?hub=1'" title="" data-lk="ui_change_lang">🌐</button>
   <div class="pbar-wrap">
     <div class="pbar"><div class="pfill" id="pbar"></div></div>
     <div class="pbar-label" id="pbar-label">0 / 49</div>
@@ -1155,7 +1155,7 @@ function setLang(lang){
     <div class="modal-head"><div class="modal-title" data-lk="settings_title">⚙️ Ayarlar</div><button class="modal-close" onclick="closeModal('settings-overlay')">✕</button></div>
     <div class="setting-row">
       <div class="setting-label" data-lk="settings_lang">🌐 Uygulama Dili</div>
-      <div id="lang-btn-wrap" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;"></div>
+      <button type="button" class="setting-btn" onclick="openLangHubPicker()" style="width:100%;margin-top:6px;background:#0d9488;color:white;border-color:#0d9488;" data-lk="ui_change_lang">🌐 Dil değiştir</button>
     </div>
     <div class="setting-row"><div class="setting-label">Anthropic API Key</div><input type="password" id="api-key-input" placeholder="sk-ant-..."><button class="setting-btn" onclick="saveKey()" data-lk="settings_save">Kaydet</button></div>
     <div class="setting-row">
