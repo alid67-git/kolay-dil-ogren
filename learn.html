@@ -653,15 +653,15 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.14"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.14"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.14"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.14"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.14"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.14"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.14"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.14"></script>
-<script src="shared/kdo-translate.js?v=3.0.14"></script>
+<script src="shared/kdo-version.js?v=3.0.15"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.15"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.15"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.15"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.15"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.15"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.15"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.15"></script>
+<script src="shared/kdo-translate.js?v=3.0.15"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 </script>
@@ -2077,6 +2077,8 @@ function buildLessonHTML(L, meta){
   }).join('');
 
   // L1 için Sözcükler başına özne tablosu
+  const _tui = (window.KDO_UI&&window.KDO_UI[window.KDO_TARGET])||(window.KDO_UI&&window.KDO_UI.de)||{};
+  function tgt(key){ return _tui[key]||key; }
   const pronounTable = meta.num===1 ? `
     <div style="background:#fff8e1;border:1.5px solid #ffe082;border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:#555;line-height:1.6;">
       <strong style="color:#b45309;">${s('ui_start_here')}</strong>
@@ -2088,15 +2090,15 @@ function buildLessonHTML(L, meta){
         <tr style="border-bottom:1px solid #b2dfdb;">
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_person')}</th>
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?KDO_CFG.targetLabelEn:KDO_CFG.targetLabelTr}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?'Turkish':'Türkçe'}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_turkish')}</th>
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_note')}</th>
         </tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'1st sing.':'1. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ich</td><td style="padding:6px 6px;">Ben</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Always lowercase':'Küçük harf'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'2nd sing. (informal)':'2. tekil (samimi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">du</td><td style="padding:6px 6px;">Sen</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Informal you':'Samimi sen'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'2nd sing. (formal)':'2. tekil (resmi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">Sie</td><td style="padding:6px 6px;">Siz</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Capital S = formal':'Büyük S = resmi'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">er / sie / es</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'M / F / neuter':'E / K / nötr'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">wir</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">sie / Sie</td><td style="padding:6px 6px;">Onlar / Siz</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'sie=they, Sie=formal you':'sie=onlar, Sie=resmi siz'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_1sg')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_ben')}</td><td style="padding:6px 6px;">ben</td><td style="padding:6px 6px;color:#888;">${s('pron_note_lower')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_2sg_inf')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_sen')}</td><td style="padding:6px 6px;">sen</td><td style="padding:6px 6px;color:#888;">${s('pron_note_inf')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_2sg_form')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_siz')}</td><td style="padding:6px 6px;">siz</td><td style="padding:6px 6px;color:#888;">${s('pron_note_formal')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_3sg')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_o')}</td><td style="padding:6px 6px;">o</td><td style="padding:6px 6px;color:#888;">${s('pron_note_gender')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_1pl')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_biz')}</td><td style="padding:6px 6px;">biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_3pl')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_onlar')}</td><td style="padding:6px 6px;">onlar/siz</td><td style="padding:6px 6px;color:#888;">${s('pron_note_sie')}</td></tr>
       </table>
       <div style="font-size:10px;color:#888;margin-top:8px;">💡 ${s('ui_more_grammar')}</div>
     </div>` : '';
@@ -4543,6 +4545,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.14"></script>
+<script src="shared/kdo-analytics.js?v=3.0.15"></script>
 </body>
 </html>
