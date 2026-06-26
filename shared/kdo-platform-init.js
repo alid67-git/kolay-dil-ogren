@@ -9,6 +9,13 @@
         names.forEach(function (name) { caches.delete(name); });
       });
     }
+    var reloadKey = 'kdo:reload-' + APP_VERSION;
+    if (!sessionStorage.getItem(reloadKey)) {
+      sessionStorage.setItem(reloadKey, '1');
+      localStorage.setItem('app_version', APP_VERSION);
+      location.reload();
+      return;
+    }
     console.log('Yeni versiyon: ' + APP_VERSION + ', cache temizlendi.');
   }
   localStorage.setItem('app_version', APP_VERSION);

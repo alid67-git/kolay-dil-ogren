@@ -14,6 +14,11 @@ if (!m) {
   process.exit(1);
 }
 const VERSION = m[1];
+const VQ = VERSION.replace(/^v/, '');
+
+function bustSharedScripts(s) {
+  return s.replace(/(<script\s+src="shared\/[^"]+\.js)(?:\?v=[^"]*)?(")/g, '$1?v=' + VQ + '$2');
+}
 
 const htmlFiles = [
   'learn.html', 'tayca-v3.html',
@@ -55,6 +60,7 @@ for (const file of htmlFiles) {
   s = s.replace(/<strong id="hakkinda-version">v[^<]+<\/strong>/, `<strong id="hakkinda-version">${VERSION}</strong>`);
   s = s.replace(/<span class="vbadge" id="app-version">[^<]*<\/span>/, '<span class="vbadge" id="app-version"></span>');
   s = openModalOld.test(s) ? s.replace(openModalOld, openModalNew) : s;
+  s = bustSharedScripts(s);
 
   fs.writeFileSync(fp, s);
   console.log('synced', file);
@@ -94,6 +100,7 @@ if (!ix.includes('kdo-platform-init.js')) {
   );
 }
 ix = ix.replace(/<div class="ver" id="platform-ver">[^<]*<\/div>/, '<div class="ver" id="platform-ver"></div>');
+ix = bustSharedScripts(ix);
 fs.writeFileSync(idx, ix);
 console.log('patched index.html');
 
