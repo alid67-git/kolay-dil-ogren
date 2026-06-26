@@ -10,7 +10,7 @@ const root = path.join(__dirname, '..');
 const htmlFiles = [
   'english-v3.html', 'german-v3.html', 'italian-v3.html',
   'spanish-v3.html', 'french-v3.html', 'tayca-v3.html',
-  'russian-v3.html', 'arabic-v3.html', 'chinese-v3.html',
+  'russian-v3.html', 'arabic-v3.html', 'chinese-v3.html', 'turkish-v3.html',
   'index.html'
 ];
 

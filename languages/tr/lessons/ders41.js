@@ -1,0 +1,131 @@
+// ders41.js — Turkish Lesson 41: Health (vocabulary)
+const L41 = {
+  words:[
+    {
+      id:'w1',
+      en:'Doktor',
+      ro:'dok-tor',
+      tr:'doctor'
+    },
+    {
+      id:'w2',
+      en:'Hastane',
+      ro:'has-ta-ne',
+      tr:'hospital'
+    },
+    {
+      id:'w3',
+      en:'Eczane',
+      ro:'ej-za-ne',
+      tr:'pharmacy'
+    },
+    {
+      id:'w4',
+      en:'Ağrı',
+      ro:'aa-ruh',
+      tr:'pain'
+    },
+    {
+      id:'w5',
+      en:'Ateş',
+      ro:'a-tesh',
+      tr:'fever'
+    },
+    {
+      id:'w6',
+      en:'İlaç',
+      ro:'i-lach',
+      tr:'medicine'
+    },
+    {
+      id:'w7',
+      en:'Baş',
+      ro:'bash',
+      tr:'head'
+    },
+    {
+      id:'w8',
+      en:'Mide',
+      ro:'mi-de',
+      tr:'stomach'
+    },
+    {
+      id:'w9',
+      en:'Diş',
+      ro:'dish',
+      tr:'tooth'
+    },
+    {
+      id:'w10',
+      en:'El',
+      ro:'el',
+      tr:'hand'
+    },
+    {
+      id:'w11',
+      en:'Bacak',
+      ro:'ba-jak',
+      tr:'leg'
+    },
+    {
+      id:'w12',
+      en:'Sağlıklı',
+      ro:'saa-luhk-luh',
+      tr:'healthy'
+    },
+    {
+      id:'w13',
+      en:'Yorgun',
+      ro:'yor-gun',
+      tr:'tired'
+    },
+    {
+      id:'w14',
+      en:'Uyumak',
+      ro:'u-yu-mak',
+      tr:'to sleep'
+    },
+    {
+      id:'w15',
+      en:'Yemek yemek',
+      ro:'ye-mek ye-mek',
+      tr:'to eat'
+    },
+    {
+      id:'w16',
+      en:'İçmek',
+      ro:'ich-mek',
+      tr:'to drink'
+    },
+    {
+      id:'w17',
+      en:'Dinlenmek',
+      ro:'din-len-mek',
+      tr:'to rest'
+    },
+    {
+      id:'w18',
+      en:'Soru',
+      ro:'so-ru',
+      tr:'question'
+    },
+    {
+      id:'w19',
+      en:'Cevap',
+      ro:'je-vap',
+      tr:'answer'
+    },
+    {
+      id:'w20',
+      en:'Yardım etmek',
+      ro:'yar-duhm et-mek',
+      tr:'to help'
+    }
+  ],
+  grammar:[],
+  speaking:[],
+  dialogues:[],
+  listening:[],
+  tones:[]
+};
+LESSONS[41] = L41;

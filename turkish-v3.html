@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>Kolay Rusça Öğrenme</title>
+<title>Kolay Türkçe Öğrenme</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -683,14 +683,14 @@ localStorage.setItem('app_version', APP_VERSION);
   const suffixes = ['lang','star','visited','stats','complete','bonusOpen','srs'];
   suffixes.forEach(s=>{
     const oldKey = 'tv3_' + s;
-    const newKey = 'ru1_' + s;
+    const newKey = 'tk1_' + s;
     if(!localStorage.getItem(newKey) && localStorage.getItem(oldKey)!=null)
       localStorage.setItem(newKey, localStorage.getItem(oldKey));
   });
 })();
 
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
-let appLang = localStorage.getItem('kdo:locale') || localStorage.getItem('ru1_lang') || 'tr';
+let appLang = localStorage.getItem('kdo:locale') || localStorage.getItem('tk1_lang') || 'tr';
 
 const UI_LOCAL = {
   tr:{
@@ -745,7 +745,7 @@ const UI_LOCAL = {
     test_correct_count:'doğru',
     test_wrong_items:'🔁 Yanlışlar — Tekrar Bak',
     test_mode_fc:'Flashcard', test_mode_mc:'Çoktan Seçmeli', test_mode_mix:'Karışık',
-    test_dir_en2tr:'Rusça → Anlam', test_dir_tr2en:'Anlam → Rusça', test_dir_mix:'Karışık Yön',
+    test_dir_en2tr:'Türkçe → Anlam', test_dir_tr2en:'Anlam → Türkçe', test_dir_mix:'Karışık Yön',
     test_cat_all:'Tümü', test_cat_phrases:'Cümleler', test_cat_grammar:'Gramer', test_cat_pronouns:'Zamirler',
     test_start:'Başla', test_no_cards:'Kart bulunamadı',
     test_type_word:'Kelime', test_type_example:'Örnek Cümle',
@@ -761,13 +761,13 @@ const UI_LOCAL = {
     review_lesson_prefix:'Ders',
     review_done_title:'Oturum Tamamlandı!', review_done_sub:'kart tekrar edildi.',
     review_restart:'Yeniden Başla', review_show_answer:'Cevabı Gör',
-    review_q_en2tr:'🇷🇺 Rusça → Türkçe', review_q_tr2en:'🇹🇷 Türkçe → Rusça',
+    review_q_en2tr:'🇹🇷 Türkçe → Türkçe', review_q_tr2en:'🇹🇷 Türkçe → Türkçe',
     review_btn_0:'❌ Bilmiyorum', review_btn_1:'😰 Zor',
     review_btn_2:'👍 Normal', review_btn_3:'⚡ Kolay',
     review_type_word:'📚 Kelime', review_type_example:'💬 Örnek', review_type_speaking:'🗣️ Konuşma',
     // Çeviri
-    translate_placeholder:'Rusça veya Türkçe yaz...',
-    translate_btn:'Çevir', translate_tip:'Rusça veya Türkçe bir kelime veya cümle yaz.',
+    translate_placeholder:'Türkçe veya İngilizce yaz...',
+    translate_btn:'Çevir', translate_tip:'Türkçe veya İngilizce bir kelime veya cümle yaz.',
     translate_lesson_matches:'Ders Eşleşmeleri', translate_no_match:'Eşleşme yok',
     translate_google:'🌐 Google Çeviri', translate_claude:'🤖 Claude AI',
     translate_loading:'Çeviriliyor...',
@@ -781,22 +781,22 @@ const UI_LOCAL = {
     settings_gist:'☁️ Cihazlar Arası Senkron (GitHub Gist)',
     settings_push:'☁️ Buluta Kaydet', settings_pull:'📥 Buluttan Al',
     settings_save:'Kaydet', settings_data:'Veri', settings_backup:'💾 Yedekle',
-    settings_voices:'🔊 Rusça Sesleri', settings_voices_loading:'Sesler yükleniyor...',
+    settings_voices:'🔊 Türkçe Sesleri', settings_voices_loading:'Sesler yükleniyor...',
     settings_test_voice:'Tümünü Dinle',
     // Alert
     alert_added:'yeni kart eklendi!', alert_already:'Bu dersin kartları zaten ekli.',
     alert_backup:'✅ Veri kopyalandı!',
     // Zamir tablosu (Ders 1)
     pron_title:'👤 Kişi Zamirleri — Hızlı Referans',
-    pron_col_person:'Kişi', pron_col_english:'Rusça', pron_col_roman:'Telaffuz', pron_col_note:'Not',
+    pron_col_person:'Kişi', pron_col_english:'Türkçe', pron_col_roman:'Telaffuz', pron_col_note:'Not',
     pron_hint:'💡 Detaylı örnekler → Gramer sekmesi → Kural 9',
     // Ders listesi
     lesson_no_content:'Yakında',
     // Sayı modülü
-    num_info:'Rusça sayılarda birler önce, onlar sonda gelir: 21 = einundzwanzig. Karta dokun → sesini duy 🔊',
+    num_info:'Türkçe sayılarda birler önce, onlar sonda gelir: 21 = einundzwanzig. Karta dokun → sesini duy 🔊',
     num_compound_title:'🔗 Bileşik Sayı Örnekleri',
     num_compound_info:'Büyük birimden küçüğe sıralanır. Sıfır olan basamaklar atlanır.',
-    calc_info:'Herhangi bir sayıyı gir — Rusça karşılığı anında çıkar. 🔊 ile seslendir.',
+    calc_info:'Herhangi bir sayıyı gir — Türkçe karşılığı anında çıkar. 🔊 ile seslendir.',
     calc_input_label:'Sayıyı gir (0 – 9.999.999)',
     calc_listen:'🔊 Dinle', calc_quick:'⚡ Hızlı Örnekler',
     calc_breakdown:'Basamak dökümü',
@@ -867,7 +867,7 @@ const UI_LOCAL = {
     test_correct_count:'correct',
     test_wrong_items:'🔁 Missed — Review These',
     test_mode_fc:'Flashcard', test_mode_mc:'Multiple Choice', test_mode_mix:'Mixed',
-    test_dir_en2tr:'Russian → Meaning', test_dir_tr2en:'Meaning → Russian', test_dir_mix:'Mixed Direction',
+    test_dir_en2tr:'Turkish → Meaning', test_dir_tr2en:'Meaning → Turkish', test_dir_mix:'Mixed Direction',
     test_cat_all:'All', test_cat_phrases:'Phrases', test_cat_grammar:'Grammar', test_cat_pronouns:'Pronouns',
     test_start:'Start', test_no_cards:'No cards found',
     test_type_word:'Word', test_type_example:'Example Sentence',
@@ -883,13 +883,13 @@ const UI_LOCAL = {
     review_lesson_prefix:'Lesson',
     review_done_title:'Session Complete!', review_done_sub:'cards reviewed.',
     review_restart:'Restart', review_show_answer:'Show Answer',
-    review_q_en2tr:'🇷🇺 Russian → Turkish', review_q_tr2en:'🇹🇷 Turkish → Russian',
+    review_q_en2tr:'🇹🇷 Turkish → Turkish', review_q_tr2en:'🇹🇷 Turkish → Turkish',
     review_btn_0:"❌ Don't know", review_btn_1:'😰 Hard',
     review_btn_2:'👍 OK', review_btn_3:'⚡ Easy',
     review_type_word:'📚 Word', review_type_example:'💬 Example', review_type_speaking:'🗣️ Speaking',
     // Translate
-    translate_placeholder:'Type Russian or Turkish...',
-    translate_btn:'Translate', translate_tip:'Type a Russian or Turkish word or phrase.',
+    translate_placeholder:'Type Turkish or English...',
+    translate_btn:'Translate', translate_tip:'Type a Turkish or English word or phrase.',
     translate_lesson_matches:'Lesson Matches', translate_no_match:'No match',
     translate_google:'🌐 Google Translate', translate_claude:'🤖 Claude AI',
     translate_loading:'Translating...',
@@ -903,22 +903,22 @@ const UI_LOCAL = {
     settings_gist:'☁️ Cross-Device Sync (GitHub Gist)',
     settings_push:'☁️ Save to Cloud', settings_pull:'📥 Load from Cloud',
     settings_save:'Save', settings_data:'Data', settings_backup:'💾 Backup',
-    settings_voices:'🔊 Russian Voices', settings_voices_loading:'Loading voices...',
+    settings_voices:'🔊 Turkish Voices', settings_voices_loading:'Loading voices...',
     settings_test_voice:'Test All',
     // Alert
     alert_added:'new cards added!', alert_already:'Cards from this lesson are already added.',
     alert_backup:'✅ Data copied!',
     // Pronoun table (Lesson 1)
     pron_title:'👤 Personal Pronouns — Quick Reference',
-    pron_col_person:'Person', pron_col_english:'Russian', pron_col_roman:'Pronunciation', pron_col_note:'Note',
+    pron_col_person:'Person', pron_col_english:'Turkish', pron_col_roman:'Pronunciation', pron_col_note:'Note',
     pron_hint:'💡 More examples → Grammar tab → Rule 9',
     // Lesson list
     lesson_no_content:'Coming soon',
     // Numbers module
-    num_info:'Russian numbers: ones before tens — 21 = einundzwanzig. Tap a card to hear it 🔊',
+    num_info:'Turkish numbers: ones before tens — 21 = einundzwanzig. Tap a card to hear it 🔊',
     num_compound_title:'🔗 Compound Number Examples',
     num_compound_info:'Ordered from largest to smallest unit. Zero digits are skipped.',
-    calc_info:'Enter any number — get the Russian word instantly. 🔊 to hear it.',
+    calc_info:'Enter any number — get the Turkish word instantly. 🔊 to hear it.',
     calc_input_label:'Enter number (0 – 9,999,999)',
     calc_listen:'🔊 Listen', calc_quick:'⚡ Quick Examples',
     calc_breakdown:'Digit breakdown',
@@ -983,7 +983,7 @@ function _initLangButtons(){
 function setLang(lang){
   const _bd=document.getElementById('brand-dev');if(_bd)_bd.textContent=devCredit(lang);
   appLang = lang;
-  localStorage.setItem('ru1_lang', lang);
+  localStorage.setItem('tk1_lang', lang);
   localStorage.setItem('kdo:locale', lang);
   _initLangButtons();
   document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
@@ -1007,7 +1007,7 @@ function setLang(lang){
 <script type="application/json" id="english-data">{}</script>
 
 <header>
-  <div class="brand-wrap"><div class="brand">🇷🇺 Kolay Rusça</div><div class="brand-dev" id="brand-dev"></div></div>
+  <div class="brand-wrap"><div class="brand">🇹🇷 Kolay Türkçe</div><div class="brand-dev" id="brand-dev"></div></div>
   <button class="hbtn" onclick="location.href='index.html'" title="Dil degistir">🌐</button>
   <div class="pbar-wrap">
     <div class="pbar"><div class="pfill" id="pbar"></div></div>
@@ -1097,7 +1097,7 @@ function setLang(lang){
     <div style="background:linear-gradient(135deg,#0d9488,#06b6d4);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
       <div>
         <div style="color:white;font-size:17px;font-weight:700;" id="help-modal-title">📖 Nasıl Kullanılır?</div>
-        <div style="color:rgba(255,255,255,.7);font-size:11px;margin-top:2px;" id="help-modal-sub">Kolay Rusça · Rehber</div>
+        <div style="color:rgba(255,255,255,.7);font-size:11px;margin-top:2px;" id="help-modal-sub">Kolay Türkçe · Rehber</div>
       </div>
       <button class="modal-close" onclick="closeModal('help-overlay')" style="background:rgba(255,255,255,.2);border:none;color:white;width:30px;height:30px;border-radius:50%;font-size:16px;cursor:pointer;">✕</button>
     </div>
@@ -1149,7 +1149,7 @@ function listenResolve(lessonNum, idx){
 // 20 senaryo dersi (1–20) + 29 BONUS kelime seti (21–49)
 const LESSONS_META = [
   {num:1, emoji:'👋', title:'Selamlaşma ve Tanışma', title_en:'Greetings & Introductions', hasContent:true, hasTones:false},
-  {num:2, emoji:'📗', title:'Падежи & быть', title_en:'Cases & быть', subtitle:'именительный — adım adım', subtitle_en:'nominative — step by step', hasContent:true, hasTones:false},
+  {num:2, emoji:'📗', title:'Ekler & -de/-da', title_en:'Suffixes & -de/-da', subtitle:'ünlü uyumu — adım adım', subtitle_en:'vowel harmony — step by step', hasContent:true, hasTones:false},
   {num:3, emoji:'🔢', title:'Sayılar ve Para', title_en:'Numbers & Money', hasContent:true, hasTones:false},
   {num:4, emoji:'🕐', title:'Zaman ve Tarih', title_en:'Time & Dates', hasContent:true, hasTones:false},
   {num:5, emoji:'🍽️', title:'Restoran ve Yemek', title_en:'Restaurant & Food', hasContent:true, hasTones:false},
@@ -1210,7 +1210,7 @@ async function loadDers(num){
   if(_lessonLoading[num]) return _lessonLoading[num]; // yükleniyor
   _lessonLoading[num] = new Promise((resolve, reject)=>{
     const script = document.createElement('script');
-    script.src = `languages/ru/lessons/ders${num}.js?v=${APP_VERSION}`;
+    script.src = `languages/tr/lessons/ders${num}.js?v=${APP_VERSION}`;
     script.onload = ()=>{ resolve(); delete _lessonLoading[num]; };
     script.onerror = ()=>{ reject(new Error('Ders '+num+' yüklenemedi')); };
     document.head.appendChild(script);
@@ -1219,20 +1219,20 @@ async function loadDers(num){
 }
 
 // =================== DURUM ===================
-let starred = JSON.parse(localStorage.getItem('ru1_star')||'{}');
+let starred = JSON.parse(localStorage.getItem('tk1_star')||'{}');
 let currentLesson = {num:1};
-let visitedTabs = JSON.parse(localStorage.getItem('ru1_visited')||'{}');
+let visitedTabs = JSON.parse(localStorage.getItem('tk1_visited')||'{}');
 
 // ── DERS İSTATİSTİKLERİ ──
 // {lessonNum: {totalSec, quizCorrect, quizTotal, listenCorrect, listenTotal}}
-let lessonStats = JSON.parse(localStorage.getItem('ru1_stats')||'{}');
-let completedLessons = JSON.parse(localStorage.getItem('ru1_complete')||'[]'); // [1,3,5...]
-function saveCompleted(){ localStorage.setItem('ru1_complete', JSON.stringify(completedLessons)); }
+let lessonStats = JSON.parse(localStorage.getItem('tk1_stats')||'{}');
+let completedLessons = JSON.parse(localStorage.getItem('tk1_complete')||'[]'); // [1,3,5...]
+function saveCompleted(){ localStorage.setItem('tk1_complete', JSON.stringify(completedLessons)); }
 function isCompleted(num){ return completedLessons.includes(num); }
 
-let bonusOpen = localStorage.getItem('ru1_bonusOpen')==='true';
-function toggleBonus(){ bonusOpen=!bonusOpen; localStorage.setItem('ru1_bonusOpen',bonusOpen); renderLessonList(); }
-function saveLessonStats(){ localStorage.setItem('ru1_stats', JSON.stringify(lessonStats)); }
+let bonusOpen = localStorage.getItem('tk1_bonusOpen')==='true';
+function toggleBonus(){ bonusOpen=!bonusOpen; localStorage.setItem('tk1_bonusOpen',bonusOpen); renderLessonList(); }
+function saveLessonStats(){ localStorage.setItem('tk1_stats', JSON.stringify(lessonStats)); }
 function getStats(num){
   if(!lessonStats[num]) lessonStats[num]={totalSec:0,quizCorrect:0,quizTotal:0,listenCorrect:0,listenTotal:0};
   return lessonStats[num];
@@ -1281,9 +1281,9 @@ function fmtTime(sec){
   const s = sec%60;
   return s>0 ? m+'dk '+s+'sn' : m+'dk';
 }
-function saveStars(){ localStorage.setItem('ru1_star', JSON.stringify(starred)); }
+function saveStars(){ localStorage.setItem('tk1_star', JSON.stringify(starred)); }
 function saveVisited(){
-  localStorage.setItem('ru1_visited', JSON.stringify(visitedTabs));
+  localStorage.setItem('tk1_visited', JSON.stringify(visitedTabs));
   updateProgressBar();
 }
 
@@ -1328,12 +1328,12 @@ function speakWebSpeech(text, slow, gender){
   if(!window.speechSynthesis){ return; }
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(text);
-  u.lang='ru-RU';
+  u.lang='tr-TR';
   if(gender==='m'){ u.pitch=slow?0.82:0.90; u.rate=slow?0.42:0.95; }
   else if(gender==='f'){ u.pitch=slow?1.02:1.10; u.rate=slow?0.44:0.97; }
   else { u.pitch=slow?0.95:1.00; u.rate=slow?0.42:0.95; }
   const voices=window.speechSynthesis.getVoices();
-  const engVoices=voices.filter(x=>x.lang==='ru-RU'||x.lang==='ru-RU'||x.lang.startsWith('ru'));
+  const engVoices=voices.filter(x=>x.lang==='tr-TR'||x.lang==='tr-TR'||x.lang.startsWith('tr'));
   if(engVoices.length>0){
     if(gender==='f'){ let fv=engVoices.find(v=>{const n=v.name.toLowerCase();return n.includes('female')||n.includes('woman')||n.includes('samantha')||n.includes('kate');}); u.voice=fv||engVoices[Math.max(0,engVoices.length-1)]; }
     else { let mv=engVoices.find(v=>{const n=v.name.toLowerCase();return n.includes('male')||n.includes('man')||n.includes('daniel')||n.includes('alex');}); u.voice=mv||engVoices[0]; }
@@ -1441,11 +1441,11 @@ function playDialogue(di){
     if(lineEl) lineEl.classList.add('active-line');
     const gender = dialogueGender(lines[i]);
     const u = new SpeechSynthesisUtterance(lines[i].en||lines[i].ro||'');
-    u.lang = 'ru-RU';
+    u.lang = 'tr-TR';
     u.pitch = gender==='m' ? 0.90 : 1.10;
     u.rate = 0.95;
     const voices = window.speechSynthesis.getVoices();
-    const engVoices = voices.filter(x => x.lang==='ru-RU' || x.lang==='ru-RU' || x.lang.startsWith('ru'));
+    const engVoices = voices.filter(x => x.lang==='tr-TR' || x.lang==='tr-TR' || x.lang.startsWith('tr'));
     if(engVoices.length>0) u.voice = engVoices[0];
     u.onend = ()=>{ i++; setTimeout(next, 650); };
     window.speechSynthesis.speak(u);
@@ -1894,7 +1894,7 @@ function buildAutoSummary(en, bd){
   if(/^(hello|hi|good morning|good afternoon|good evening)/.test(low)) return 'Selamlama ifadesi.';
   if(/^(goodbye|bye)/.test(low)) return 'Vedalaşma ifadesi.';
   if(/thank you|thanks/.test(low)) return 'Teşekkür ifadesi — minnet göstermek için.';
-  if(/\?$/.test(en)) return 'Soru cümlesi — Rusçada kelime sırası esnektir; vurgu bağlama göre değişir.';
+  if(/\?$/.test(en)) return 'Soru cümlesi — Türkçeda fiil genelde cümlenin sonunda gelir (V2 kuralı).';
   if(bd.length > 1) return 'Cümle '+bd.length+' parçaya ayrıldı. Her parçanın görevine dikkat et.';
   return '';
 }
@@ -2000,16 +2000,16 @@ function buildLessonHTML(L, meta){
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
         <tr style="border-bottom:1px solid #b2dfdb;">
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang==='en'?'Person':'Kişi'}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang==='en'?'Russian':'Rusça'}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang==='en'?'Turkish':'Türkçe'}</th>
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang==='en'?'Turkish':'Türkçe'}</th>
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang==='en'?'Note':'Not'}</th>
         </tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'1st sing.':'1. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">я</td><td style="padding:6px 6px;">Ben</td><td style="padding:6px 6px;color:#888;"></td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'2nd sing. (informal)':'2. tekil (samimi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ты</td><td style="padding:6px 6px;">Sen</td><td style="padding:6px 6px;color:#888;"></td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'2nd sing. (formal)':'2. tekil (resmi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">Вы</td><td style="padding:6px 6px;">Siz</td><td style="padding:6px 6px;color:#888;">${appLang==='en'?'Capital В = formal':'Büyük В = resmi'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">он / она</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">${appLang==='en'?'M / F':'E / K'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">мы</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">они</td><td style="padding:6px 6px;">Onlar</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'1st sing.':'1. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ben</td><td style="padding:6px 6px;">I</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'2nd sing. (informal)':'2. tekil (samimi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">sen</td><td style="padding:6px 6px;">you</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'2nd sing. (formal)':'2. tekil (resmi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">siz</td><td style="padding:6px 6px;">you (formal)</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">o</td><td style="padding:6px 6px;">he/she</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">biz</td><td style="padding:6px 6px;">we</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang==='en'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">onlar</td><td style="padding:6px 6px;">they</td><td style="padding:6px 6px;color:#888;"></td></tr>
       </table>
       <div style="font-size:10px;color:#888;margin-top:8px;">💡 ${appLang==='en'?'More examples → Grammar tab → Rule 1':'Detaylı örnekler → Gramer sekmesi → Kural 1'}</div>
     </div>` : '';
@@ -2216,7 +2216,7 @@ function buildLessonHTML(L, meta){
         <div style="font-weight:700;color:#0d9488;margin:14px 0 8px;font-size:13px;border-left:3px solid #0d9488;padding-left:8px">${g.title}</div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-bottom:4px">
           ${g.data.map(d=>`
-            <div onclick="if(window.speechSynthesis){const u=new SpeechSynthesisUtterance('${d.word}');u.lang='ru-RU';u.rate=0.92;speechSynthesis.cancel();speechSynthesis.speak(u);this.style.borderColor='#0d9488';setTimeout(()=>this.style.borderColor='#e0e0e0',1200)}"
+            <div onclick="if(window.speechSynthesis){const u=new SpeechSynthesisUtterance('${d.word}');u.lang='tr-TR';u.rate=0.92;speechSynthesis.cancel();speechSynthesis.speak(u);this.style.borderColor='#0d9488';setTimeout(()=>this.style.borderColor='#e0e0e0',1200)}"
               style="background:white;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;transition:border-color .2s">
               <div style="font-size:22px;font-weight:700;color:#0d9488;line-height:1.1">${d.n}</div>
               <div style="font-size:13px;font-weight:700;color:#222;margin-top:4px">${d.word}</div>
@@ -2229,7 +2229,7 @@ function buildLessonHTML(L, meta){
           ${s('num_compound_info')}
         </div>
         ${L.compounds.map(c=>`
-          <div onclick="if(window.speechSynthesis){const u=new SpeechSynthesisUtterance('${c.word}');u.lang='ru-RU';u.rate=0.92;speechSynthesis.cancel();speechSynthesis.speak(u)}"
+          <div onclick="if(window.speechSynthesis){const u=new SpeechSynthesisUtterance('${c.word}');u.lang='tr-TR';u.rate=0.92;speechSynthesis.cancel();speechSynthesis.speak(u)}"
             style="background:white;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer;transition:border-color .2s"
             onmouseenter="this.style.borderColor='#0d9488'" onmouseleave="this.style.borderColor='#e0e0e0'">
             <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px">
@@ -2446,28 +2446,24 @@ function switchLessonTab(tab, btn){
 }
 
 // =================== L2 HESAPLAYICI ===================
-const RU_ONES=['ноль','один','два','три','четыре','пять','шесть','семь','восемь','девять','десять','одиннадцать','двенадцать','тринадцать','четырнадцать','пятнадцать','шестнадцать','семнадцать','восемнадцать','девятнадцать'];
-const RU_TENS=['','','двадцать','тридцать','сорок','пятьдесят','шестьдесят','семьдесят','восемьдесят','девяносто'];
-const TR_ONES=['sıfır','bir','iki','üç','dört','beş','altı','yedi','sekiz','dokuz','on','on bir','on iki','on üç','on dört','on beş','on altı','on yedi','on sekiz','on dokuz'];
-const TR_TENS=['','','yirmi','otuz','kırk','elli','altmış','yetmiş','seksen','doksan'];
-function l2BuildRussian(n){
-  if(n===0) return {word:'ноль',tr:'sıfır',chunks:[{val:'0',en:'ноль',tr:'sıfır'}]};
-  const parts=[];const trParts=[];const chunks=[];let r=n;
-  const push=(val,suf,trSuf,mult)=>{const w=l2RUChunk(val,suf);const t=l2TR999(val)+(trSuf?' '+trSuf:'');parts.push(w);trParts.push(t);chunks.push({val:(val*mult).toLocaleString('tr'),en:w,tr:t});};
-  const m=Math.floor(r/1000000);r%=1000000;if(m)push(m,m===1?' миллион':' миллионов','milyon',1000000);
-  if(r>0)push(r,'','',1);return{word:parts.join(' '),tr:trParts.join(' '),chunks};
+const TK_ONES=['sıfır','bir','iki','üç','dört','beş','altı','yedi','sekiz','dokuz','on','on bir','on iki','on üç','on dört','on beş','on altı','on yedi','on sekiz','on dokuz'];
+const TK_TENS=['','','yirmi','otuz','kırk','elli','altmış','yetmiş','seksen','doksan'];
+const EN_ONES=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+const EN_TENS=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+function l2BuildTurkish(n){
+  if(n===0) return {word:'sıfır',tr:'zero',chunks:[{val:'0',en:'sıfır',tr:'zero'}]};
+  const w=l2TK999(n);return{word:w,tr:l2EN999(n),chunks:[{val:n.toLocaleString('tr'),en:w,tr:l2EN999(n)}]};
 }
-function l2RU99(n){if(n<20)return RU_ONES[n];const t=Math.floor(n/10),o=n%10;if(o===0)return RU_TENS[t];return RU_TENS[t]+' '+RU_ONES[o];}
-function l2RU999(n){if(n<100)return l2RU99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'сто':RU_ONES[h]+'сот')+(r?' '+l2RU99(r):'');}
-function l2RUChunk(n,suffix){if(suffix.includes('миллион'))return l2RU999(n)+suffix;if(n<1000)return l2RU999(n);const k=Math.floor(n/1000),r=n%1000;return(k===1?'тысяча':l2RU999(k)+' тысяч')+(r?' '+l2RU999(r):'');}
-function l2TR99(n){if(n<20)return TR_ONES[n];const t=Math.floor(n/10),o=n%10;return TR_TENS[t]+(o?' '+TR_ONES[o]:'');}
-function l2TR999(n){if(n===0)return'';if(n<100)return l2TR99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'':TR_ONES[h]+' ')+'yüz'+(r?' '+l2TR99(r):'');}
+function l2TK99(n){if(n<20)return TK_ONES[n];const t=Math.floor(n/10),o=n%10;return TK_TENS[t]+(o?' '+TK_ONES[o]:'');}
+function l2TK999(n){if(n<100)return l2TK99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'yüz':TK_ONES[h]+' yüz')+(r?' '+l2TK99(r):'');}
+function l2EN99(n){if(n<20)return EN_ONES[n];const t=Math.floor(n/10),o=n%10;return EN_TENS[t]+(o?'-'+EN_ONES[o]:'');}
+function l2EN999(n){if(n<100)return l2EN99(n);const h=Math.floor(n/100),r=n%100;return EN_ONES[h]+' hundred'+(r?' '+l2EN99(r):'');}
 
 let l2CalcWord = '';
 function l2CalcNumber(val){
   const n = parseInt(val);
   if(!val||isNaN(n)||n<0||n>9999999){ document.getElementById('l2calc-result').style.display='none'; return; }
-  const res = l2BuildRussian(n);
+  const res = l2BuildTurkish(n);
   l2CalcWord = res.word;
   document.getElementById('l2calc-result').style.display='block';
   document.getElementById('l2calc-english').textContent  = res.word;
@@ -2484,7 +2480,7 @@ function l2CalcNumber(val){
   ).join('');
 }
 function l2SpeakCalc(){
-  if(l2CalcWord && window.speechSynthesis){ const u=new SpeechSynthesisUtterance(l2CalcWord); u.lang='ru-RU'; u.rate=0.92; speechSynthesis.cancel(); speechSynthesis.speak(u); }
+  if(l2CalcWord && window.speechSynthesis){ const u=new SpeechSynthesisUtterance(l2CalcWord); u.lang='tr-TR'; u.rate=0.92; speechSynthesis.cancel(); speechSynthesis.speak(u); }
 }
 
 // =================== KONTROL ===================
@@ -2685,7 +2681,7 @@ function renderTestView(){
   // İstatistikler
   const db = SRS.load();
   const allCards = Object.values(db);
-  const starred = JSON.parse(localStorage.getItem('ru1_star')||'{}');
+  const starred = JSON.parse(localStorage.getItem('tk1_star')||'{}');
   const starCount = Object.keys(starred).length;
   const completedCount = completedLessons.length;
   const totalLessons = LESSONS_META.filter(m=>m.hasContent).length;
@@ -2764,7 +2760,7 @@ function openTestModeMenu(source){
     title = '🗂️ '+s('test_all');
     subtitle = cards.length + ' '+s('test_cards_available');
   } else if(source==='starred'){
-    const starred = JSON.parse(localStorage.getItem('ru1_star')||'{}');
+    const starred = JSON.parse(localStorage.getItem('tk1_star')||'{}');
     cards = Object.entries(starred).map(([k,v])=>({
       type:v.type||'word', th:v.th||'', ro:v.ro||k, tr:v.tr||'', cat:'phrases', bd:v.bd||[], lessonNum:0
     })).filter(c=>c.th||c.ro);
@@ -3092,7 +3088,7 @@ function showTestResult(){
 
 // =================== SRS MOTORU ===================
 const SRS = {
-  _key: 'ru1_srs',
+  _key: 'tk1_srs',
 
   load(){
     try{ return JSON.parse(localStorage.getItem(this._key)||'{}'); }
@@ -3406,7 +3402,7 @@ function buildHelpContent(){
   document.getElementById('htab-btn-ipuclari').textContent= en?'💡 Tips':'💡 İpuçları';
   document.getElementById('htab-btn-hakkinda').textContent= 'ℹ️ '+s('help_tab_about');
   document.getElementById('help-modal-title').textContent = en?'📖 How to Use?':'📖 Nasıl Kullanılır?';
-  document.getElementById('help-modal-sub').textContent   = en?'Easy Russian Learning · Guide':'Kolay Rusça Öğrenme · Rehber';
+  document.getElementById('help-modal-sub').textContent   = en?'Easy Turkish Learning · Guide':'Kolay Türkçe Öğrenme · Rehber';
 
   const chip = (bg,col,txt)=>`<span class="help-color-chip" style="background:${bg};color:${col};">${txt}</span>`;
 
@@ -3414,10 +3410,10 @@ function buildHelpContent(){
     <!-- GENEL -->
     <div id="htab-genel" class="htab-content active">
       <div class="help-card">
-        <div class="help-card-icon">🇷🇺</div>
+        <div class="help-card-icon">🇹🇷</div>
         <div>
           <div class="help-card-title">${en?'What is this app?':'Bu uygulama ne için?'}</div>
-          <div class="help-card-body">${en?'Designed to quickly learn practical Russian for everyday use. Focuses on real conversation, not textbook phrases.':'Günlük hayatta kullanılan pratik Rusça\'yı hızlıca öğrenmek için tasarlandı. Ders kitabı değil, gerçek konuşma diline odaklanır.'}</div>
+          <div class="help-card-body">${en?'Designed to quickly learn practical Turkish for everyday use. Focuses on real conversation, not textbook phrases.':'Günlük hayatta kullanılan pratik Türkçe\'yı hızlıca öğrenmek için tasarlandı. Ders kitabı değil, gerçek konuşma diline odaklanır.'}</div>
         </div>
       </div>
       <div class="help-section-header">📱 ${en?'Main Tabs':'Ana Sekmeler'}</div>
@@ -3431,7 +3427,7 @@ function buildHelpContent(){
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#e3f2fd;">🌐</div><div>
         <div class="help-row-title">${en?'Translate':'Çeviri'}</div>
-        <div class="help-row-sub">${en?'Instant Russian ↔ Turkish translation.':'Rusça ↔ Türkçe anında çeviri.'}</div>
+        <div class="help-row-sub">${en?'Instant Turkish ↔ Turkish translation.':'Türkçe ↔ Türkçe anında çeviri.'}</div>
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#fce4ec;">📋</div><div>
         <div class="help-row-title">${en?'Starred':'Liste'}</div>
@@ -3443,7 +3439,7 @@ function buildHelpContent(){
       </div></div>
       <div class="help-section-header" style="margin-top:16px;">🔊 ${en?'Audio Buttons':'Ses Butonları'}</div>
       <div class="help-row"><div class="help-badge" style="background:#0d9488;color:white;">🔊</div>
-        <div class="help-row-sub" style="padding-top:2px;">${en?'Normal-speed Russian audio - uses device TTS engine.':'Normal hızda Rusça sesi — cihazın TTS motorunu kullanır.'}</div></div>
+        <div class="help-row-sub" style="padding-top:2px;">${en?'Normal-speed Turkish audio - uses device TTS engine.':'Normal hızda Türkçe sesi — cihazın TTS motorunu kullanır.'}</div></div>
       <div class="help-row"><div class="help-badge" style="background:#666;color:white;">🐢</div>
         <div class="help-row-sub" style="padding-top:2px;">${en?'Slow mode — use while learning pronunciation.':'Yavaş mod — telaffuzu öğrenirken kullan.'}</div></div>
     </div>
@@ -3458,7 +3454,7 @@ function buildHelpContent(){
       <div class="help-tab-row"><span class="htag" style="background:#e8f5e9;color:#2e7d32;">📚 ${en?'Words':'Sözcükler'}</span>
         <span>${en?'Core vocabulary. Each word has usage tips, context notes, and 7–12 examples. Star with ⭐.':'Dersin temel kelimeleri. Her kelimede ipuçları, bağlam notu ve 7–12 örnek cümle var. ⭐ ile yıldızlayabilirsin.'}</span></div>
       <div class="help-tab-row"><span class="htag" style="background:#e3f2fd;color:#1565c0;">🎵 ${en?'Pronunciation':'Telaffuz'}</span>
-        <span>${en?'Lesson 1 only. Russian pronunciation essentials — umlauts (ä, ö, ü), ß and ch sounds.':'Sadece Ders 1\'de. Rusça telaffuz temelleri — umlaut (ä, ö, ü), ß ve ch sesleri.'}</span></div>
+        <span>${en?'Lesson 1 only. Turkish pronunciation essentials — umlauts (ä, ö, ü), ß and ch sounds.':'Sadece Ders 1\'de. Türkçe telaffuz temelleri — umlaut (ä, ö, ü), ß ve ch sesleri.'}</span></div>
       <div class="help-tab-row"><span class="htag" style="background:#fff3e0;color:#e65100;">📖 ${en?'Grammar':'Gramer'}</span>
         <span>${en?'Sentence structure rules. Formula + explanation + speakable examples. Tap 📖 for color-coded S/V/O analysis.':'Cümle yapısı kuralları. Formül + açıklama + seslenebilir örnekler. 📖 ikonuna bas → renk kodlu S/V/O analizi.'}</span></div>
       <div class="help-tab-row"><span class="htag" style="background:#fce4ec;color:#880e4f;">🗣️ ${en?'Speaking':'Konuşma'}</span>
@@ -3466,13 +3462,13 @@ function buildHelpContent(){
       <div class="help-tab-row"><span class="htag" style="background:#f3e5f5;color:#4a148c;">👥 ${en?'Dialogue':'Diyalog'}</span>
         <span>${en?'Realistic dialogues between two speakers (A and B). Tap ▶ Play All to listen in sequence.':'İki konuşmacı (A ve B) arasında gerçekçi diyaloglar. ▶ Tümü ile sırayla dinle.'}</span></div>
       <div class="help-tab-row"><span class="htag" style="background:#e8eaf6;color:#283593;">🎧 ${en?'Listening':'Dinleme'}</span>
-        <span>${en?'Tap listen, hear Russian, choose the correct option. Easy / Medium / Hard levels.':'Dinle butonuna bas, Rusçayı dinle, doğru şıkkı seç. Kolay / Orta / Zor seviyeleri var.'}</span></div>
+        <span>${en?'Tap listen, hear Turkish, choose the correct option. Easy / Medium / Hard levels.':'Dinle butonuna bas, Türkçeyı dinle, doğru şıkkı seç. Kolay / Orta / Zor seviyeleri var.'}</span></div>
       <div class="help-tab-row"><span class="htag" style="background:#fff9db;color:#b45309;">🎯 ${en?'Practice':'Alıştırma'}</span>
         <span>${en?'Interactive word and sentence drills. Mark the lesson complete here after visiting all tabs.':'Etkileşimli kelime ve cümle alıştırmaları. Tüm sekmeleri gezdikten sonra dersi burada tamamla.'}</span></div>
       <div class="help-tab-row"><span class="htag" style="background:#fafafa;color:#0d9488;border:1px solid #b2dfdb;">🔢 ${en?'Numbers':'Sayılar'}</span>
         <span>${en?'Lesson 3 only. All digits + compound number examples. Tap a card to hear it.':'Sadece Ders 3\'te. Tüm rakamlar + bileşik sayı örnekleri. Her karta dokun → sesini duy.'}</span></div>
       <div class="help-tab-row"><span class="htag" style="background:#fafafa;color:#0d9488;border:1px solid #b2dfdb;">🧮 ${en?'Calculator':'Hesapla'}</span>
-        <span>${en?'Lesson 3 only. Enter 0-9,999,999 to see Russian spelling + digit breakdown.':'Sadece Ders 3\'te. 0-9.999.999 arası herhangi bir sayıyı gir, Rusça karşılığı + basamak dökümü gelsin.'}</span></div>
+        <span>${en?'Lesson 3 only. Enter 0-9,999,999 to see Turkish spelling + digit breakdown.':'Sadece Ders 3\'te. 0-9.999.999 arası herhangi bir sayıyı gir, Türkçe karşılığı + basamak dökümü gelsin.'}</span></div>
       <div class="help-section-header" style="margin-top:16px;">🎨 ${en?'Sentence Analysis Color Code':'Cümle Analizi Renk Kodu'}</div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
         ${chip('#eff6ff','#3b82f6',en?'S = Subject':'S = Özne')}
@@ -3492,13 +3488,13 @@ function buildHelpContent(){
       </div></div>
       <div class="help-section-header">⚙️ ${en?'How It Works':'Nasıl Çalışır?'}</div>
       <div class="help-step"><div class="help-step-num">1</div><div>${en?'Go to Test → Lesson Practice → tap <strong>+ Add</strong> for a lesson. Adds words to SRS.':'Test sekmesine gir → Ders Bazlı Pratik\'ten → <strong>+ Ekle</strong>\'ye bas. Kelimeleri SRS\'e ekler.'}</div></div>
-      <div class="help-step"><div class="help-step-num">2</div><div>${en?'A card appears. Flashcard first (see Russian, guess meaning). Tap Show Answer.':'Kart gösterilir. Önce flashcard ile Rusçayı gör, anlamını tahmin et. Cevabı Gör\'e bas.'}</div></div>
+      <div class="help-step"><div class="help-step-num">2</div><div>${en?'A card appears. Flashcard first (see Turkish, guess meaning). Tap Show Answer.':'Kart gösterilir. Önce flashcard ile Türkçeyı gör, anlamını tahmin et. Cevabı Gör\'e bas.'}</div></div>
       <div class="help-step"><div class="help-step-num">3</div><div>${en?'Rate yourself: ❌ Don\'t know → 😰 Hard → 👍 OK → ⚡ Easy':'Kendini değerlendir: ❌ Bilmiyorum → 😰 Zor → 👍 Normal → ⚡ Kolay'}</div></div>
       <div class="help-step"><div class="help-step-num">4</div><div>${en?'Algorithm calculates the next review date. Easy = long gap, Hard = short gap.':'Algoritma bir sonraki gösterim tarihini hesaplar. Kolay = uzun aralık, Zor = kısa aralık.'}</div></div>
       <div class="help-step"><div class="help-step-num">5</div><div>${en?'Complete <strong>Today\'s Review</strong> daily. 5–10 minutes is enough.':'Her gün <strong>Bugünün Tekrarı</strong>\'nı bitir. 5–10 dakika yeterli.'}</div></div>
       <div class="help-section-header" style="margin-top:16px;">🃏 ${en?'Card Types':'Kart Türleri'}</div>
       <div class="help-row"><div class="help-badge" style="background:#e8f5e9;color:#2e7d32;">${en?'New':'Yeni'}</div>
-        <div class="help-row-sub">${en?'Always flashcard on first show. Russian to meaning direction.':'İlk gösterimde her zaman flashcard. Rusça → anlam yönünde.'}</div></div>
+        <div class="help-row-sub">${en?'Always flashcard on first show. Turkish to meaning direction.':'İlk gösterimde her zaman flashcard. Türkçe → anlam yönünde.'}</div></div>
       <div class="help-row"><div class="help-badge" style="background:#fff3e0;color:#e65100;">${en?'Review':'Tekrar'}</div>
         <div class="help-row-sub">${en?'50% flashcard, 50% multiple choice. Direction changes randomly.':'%50 flashcard, %50 çoktan seçmeli. Yön rastgele değişir.'}</div></div>
       <div class="help-card" style="margin-top:14px;background:#fff8e1;border-color:#ffe082;">
@@ -3514,7 +3510,7 @@ function buildHelpContent(){
     <div id="htab-ipuclari" class="htab-content">
       <div class="help-section-header">🎯 ${en?'Effective Learning':'Verimli Öğrenme'}</div>
       <div class="help-tip"><div class="help-tip-icon">🔊</div>
-        <div><strong>${en?'Always study with audio.':'Her zaman sesli çalış.'}</strong> ${en?'Russian pronunciation needs clear vowels and umlauts; reading alone is not enough. Tap every card to hear it.':'Rusçada ünlüler ve umlautlar önemlidir; sadece okumak yetmez. Her kartta sesi dinle.'}</div></div>
+        <div><strong>${en?'Always study with audio.':'Her zaman sesli çalış.'}</strong> ${en?'Turkish pronunciation needs clear vowels and umlauts; reading alone is not enough. Tap every card to hear it.':'Türkçeda ünlüler ve umlautlar önemlidir; sadece okumak yetmez. Her kartta sesi dinle.'}</div></div>
       <div class="help-tip"><div class="help-tip-icon">🐢</div>
         <div><strong>${en?'Use slow mode.':'Yavaş modu kullan.'}</strong> ${en?'When learning a new word, listen at 🐢 first, then at normal 🔊 speed.':'Yeni bir kelimeyi öğrenirken önce 🐢 ile yavaş dinle, sonra 🔊 ile normal hızda.'}</div></div>
       <div class="help-tip"><div class="help-tip-icon">⭐</div>
@@ -3522,11 +3518,11 @@ function buildHelpContent(){
       <div class="help-tip"><div class="help-tip-icon">👥</div>
         <div><strong>${en?'Listen to dialogues.':'Diyalogları dinle.'}</strong> ${en?'Use ▶ Play All to listen from start to finish — for real conversation rhythm.':'▶ Tümü butonuyla diyaloğu baştan sona dinle — gerçek konuşma ritmi için.'}</div></div>
       <div class="help-tip"><div class="help-tip-icon">📖</div>
-        <div><strong>${en?'Use sentence analysis.':'Cümle analizini kullan.'}</strong> ${en?'Tap the analysis button on any example; seeing S/V/O structure internalizes Russian grammar.':'Her örnek cümlede analiz butonuna bas; S/V/O yapısını görünce Rusça grameri oturur.'}</div></div>
+        <div><strong>${en?'Use sentence analysis.':'Cümle analizini kullan.'}</strong> ${en?'Tap the analysis button on any example; seeing S/V/O structure internalizes Turkish grammar.':'Her örnek cümlede analiz butonuna bas; S/V/O yapısını görünce Türkçe grameri oturur.'}</div></div>
       <div class="help-tip"><div class="help-tip-icon">🔄</div>
         <div><strong>${en?'Don\'t skip SRS.':'SRS\'i ihmal etme.'}</strong> ${en?'Spend a few minutes every day until today\'s review hits 0.':'Bugünün tekrarı 0 karta düşene kadar her gün birkaç dakika ayır.'}</div></div>
       <div class="help-tip"><div class="help-tip-icon">EN</div>
-        <div><strong>${en?'Polite phrases matter.':'Kibar ifadeler onemli.'}</strong> ${en?'Bitte, danke and Entschuldigung make everyday Russian sound natural. Use them often.':'Bitte, danke ve Entschuldigung gibi ifadeler Rusçayı doğal ve nazik yapar. Sık kullan.'}</div></div>
+        <div><strong>${en?'Polite phrases matter.':'Kibar ifadeler onemli.'}</strong> ${en?'Bitte, danke and Entschuldigung make everyday Turkish sound natural. Use them often.':'Bitte, danke ve Entschuldigung gibi ifadeler Türkçeyı doğal ve nazik yapar. Sık kullan.'}</div></div>
       <div class="help-section-header" style="margin-top:16px;">⚡ ${en?'Shortcuts':'Kısayollar'}</div>
       <div class="help-row"><div class="help-badge" style="background:#f5f5f5;color:#333;border:1px solid #ddd;">Tap</div>
         <div class="help-row-sub">${en?'Tap a card/word → plays audio':'Kart / kelimeye dokun → ses çalar'}</div></div>
@@ -3543,8 +3539,8 @@ function buildHelpContent(){
       <div class="help-card" style="background:linear-gradient(135deg,#e0f2f1,#f0fdfa);border-color:#b2dfdb;">
         <div style="font-size:32px">EN</div>
         <div>
-          <div class="help-card-title" style="font-size:16px;">${en?'Easy Russian Learning':'Kolay Rusça Öğrenme'}</div>
-          <div class="help-card-body">${en?'A Russian learning app focused on real conversation for Turkish speakers.':'Türkçe konuşanlar için gerçek konuşma diline odaklı Rusça öğrenme uygulaması.'}</div>
+          <div class="help-card-title" style="font-size:16px;">${en?'Easy Turkish Learning':'Kolay Türkçe Öğrenme'}</div>
+          <div class="help-card-body">${en?'A Turkish learning app focused on real conversation for Turkish speakers.':'Türkçe konuşanlar için gerçek konuşma diline odaklı Türkçe öğrenme uygulaması.'}</div>
         </div>
       </div>
       <div class="help-section-header">📋 ${en?'App Info':'Uygulama Bilgisi'}</div>
@@ -3569,18 +3565,18 @@ function buildHelpContent(){
         <div class="changelog-item"><div class="changelog-ver">v1.4</div>
           <div class="changelog-desc">${en?'New Lesson 2: Articles & sein (der/die/das). Numbers in Lesson 3 with calculator.':'Yeni Ders 2: Artikel & sein (der/die/das). Sayılar Ders 3\'te — hesap makinesi ile.'}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v1.3</div>
-          <div class="changelog-desc">${en?'Removed legacy v3 version labels; storage keys renamed to ru1_*; help changelog cleaned up':'Eski v3 sürüm etiketleri kaldırıldı; depolama anahtarları ru1_* olarak güncellendi; yardım geçmişi temizlendi'}</div></div>
+          <div class="changelog-desc">${en?'Removed legacy v3 version labels; storage keys renamed to tk1_*; help changelog cleaned up':'Eski v3 sürüm etiketleri kaldırıldı; depolama anahtarları tk1_* olarak güncellendi; yardım geçmişi temizlendi'}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v1.2</div>
           <div class="changelog-desc">${en?'Fixed lessons 2–48 when words had no examples array; quiz feedback for auto-generated questions':'Ders 2–48 çökme hatası giderildi (examples dizisi); otomatik quiz geri bildirimi düzeltildi'}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v1.1</div>
-          <div class="changelog-desc">${en?'Lesson engine adapted for Russian data: pronunciation, grammar tables, dialogues, listening':'Ders motoru Rusça veri yapısına uyarlandı: telaffuz, gramer, diyalog, dinleme'}</div></div>
+          <div class="changelog-desc">${en?'Lesson engine adapted for Turkish data: pronunciation, grammar tables, dialogues, listening':'Ders motoru Türkçe veri yapısına uyarlandı: telaffuz, gramer, diyalog, dinleme'}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v1.0</div>
           <div class="changelog-desc">${en?'Initial release: 19 scenario lessons, 29 bonus vocabulary sets, SRS, tests, bilingual UI':'İlk sürüm: 19 senaryo dersi, 29 bonus kelime seti, SRS, testler, çift dil arayüz'}</div></div>
       </div>
       <div class="help-card" style="margin-top:14px;background:#fff8e1;border-color:#ffe082;text-align:center;">
         <div style="width:100%;text-align:center;">
           <div style="font-size:24px;margin-bottom:6px;">🙏</div>
-          <div style="font-size:13px;color:#555;line-height:1.6;">${en?'Built to help Turkish speakers practise practical Russian every day.<br><strong style="color:#0d9488;">Keep speaking.</strong>':'Türkçe konuşanların her gün pratik Rusça çalışması için yapıldı.<br><strong style="color:#0d9488;">Konuşmaya devam.</strong>'}</div>
+          <div style="font-size:13px;color:#555;line-height:1.6;">${en?'Built to help Turkish speakers practise practical Turkish every day.<br><strong style="color:#0d9488;">Keep speaking.</strong>':'Türkçe konuşanların her gün pratik Türkçe çalışması için yapıldı.<br><strong style="color:#0d9488;">Konuşmaya devam.</strong>'}</div>
         </div>
       </div>
     </div>
@@ -3594,31 +3590,31 @@ function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 document.querySelectorAll('.overlay').forEach(el=>{
   el.addEventListener('click',e=>{ if(e.target===el) el.classList.remove('open'); });
 });
-function saveKey(){ localStorage.setItem('russian_api_key',document.getElementById('api-key-input').value); alert(appLang==='en'?'Saved.':'Kaydedildi.'); }
+function saveKey(){ localStorage.setItem('turkish_api_key',document.getElementById('api-key-input').value); alert(appLang==='en'?'Saved.':'Kaydedildi.'); }
 function saveGist(){
-  localStorage.setItem('russian_gist_token', document.getElementById('gist-token-input').value.trim());
+  localStorage.setItem('turkish_gist_token', document.getElementById('gist-token-input').value.trim());
   document.getElementById('gist-status').textContent = s('gist_saved');
 }
 
 const GIST_FILENAME = 'english-v1-sync.json';
 
 function gistApplyPayload(payload){
-  const star     = payload.ru1_star     || payload['tv3_star'];
-  const complete = payload.ru1_complete || payload['tv3_complete'];
-  const srs      = payload.ru1_srs      || payload['tv3_srs'];
-  const stats    = payload.ru1_stats    || payload['tv3_stats'];
-  if(star)     { localStorage.setItem('ru1_star', star);     starred = JSON.parse(star); }
-  if(complete) { localStorage.setItem('ru1_complete', complete); completedLessons = JSON.parse(complete); }
-  if(srs)      localStorage.setItem('ru1_srs', srs);
-  if(stats)    localStorage.setItem('ru1_stats', stats);
+  const star     = payload.tk1_star     || payload['tv3_star'];
+  const complete = payload.tk1_complete || payload['tv3_complete'];
+  const srs      = payload.tk1_srs      || payload['tv3_srs'];
+  const stats    = payload.tk1_stats    || payload['tv3_stats'];
+  if(star)     { localStorage.setItem('tk1_star', star);     starred = JSON.parse(star); }
+  if(complete) { localStorage.setItem('tk1_complete', complete); completedLessons = JSON.parse(complete); }
+  if(srs)      localStorage.setItem('tk1_srs', srs);
+  if(stats)    localStorage.setItem('tk1_stats', stats);
 }
 
 function gistData(){
   return {
-    ru1_star:     localStorage.getItem('ru1_star')     || '{}',
-    ru1_complete: localStorage.getItem('ru1_complete') || '[]',
-    ru1_srs:      localStorage.getItem('ru1_srs')      || '{}',
-    ru1_stats:    localStorage.getItem('ru1_stats')    || '{}',
+    tk1_star:     localStorage.getItem('tk1_star')     || '{}',
+    tk1_complete: localStorage.getItem('tk1_complete') || '[]',
+    tk1_srs:      localStorage.getItem('tk1_srs')      || '{}',
+    tk1_stats:    localStorage.getItem('tk1_stats')    || '{}',
     saved_at:     new Date().toISOString()
   };
 }
@@ -3629,37 +3625,37 @@ function gistSetStatus(msg, color){
 }
 
 async function gistPush(){
-  const token = localStorage.getItem('russian_gist_token');
+  const token = localStorage.getItem('turkish_gist_token');
   if(!token){ alert(appLang==='en'?'Save Gist token first.':'Önce Gist token kaydet.'); return; }
   gistSetStatus('⏳ '+(appLang==='en'?'Uploading...':'Yükleniyor...'), '#888');
   try{
-    const gistId = localStorage.getItem('russian_gist_id');
+    const gistId = localStorage.getItem('turkish_gist_id');
     const url    = gistId ? `https://api.github.com/gists/${gistId}` : 'https://api.github.com/gists';
     const method = gistId ? 'PATCH' : 'POST';
     const resp = await fetch(url, {
       method,
       headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
       body: JSON.stringify({
-        description:'Kolay Rusça v1 - User Data',
+        description:'Kolay Türkçe v1 - User Data',
         public: false,
         files:{ [GIST_FILENAME]:{ content: JSON.stringify(gistData(), null, 2) } }
       })
     });
     const data = await resp.json();
     if(!data.id) throw new Error(data.message||(appLang==='en'?'Unknown error':'Bilinmeyen hata'));
-    localStorage.setItem('russian_gist_id', data.id);
+    localStorage.setItem('turkish_gist_id', data.id);
     const t = new Date().toLocaleTimeString(appLang==='en'?'en-US':'tr-TR',{hour:'2-digit',minute:'2-digit'});
     gistSetStatus('✅ '+(appLang==='en'?'Saved to cloud · ':'Buluta kaydedildi · ')+t, '#059669');
   } catch(e){ gistSetStatus('❌ '+(appLang==='en'?'Error: ':'Hata: ')+e.message, '#dc2626'); }
 }
 
 async function gistPull(){
-  const token = localStorage.getItem('russian_gist_token');
+  const token = localStorage.getItem('turkish_gist_token');
   if(!token){ alert(appLang==='en'?'Save Gist token first.':'Önce Gist token kaydet.'); return; }
   gistSetStatus('⏳ '+(appLang==='en'?'Searching...':'Aranıyor...'), '#888');
   try{
     // Gist ID varsa direkt al, yoksa listeden ara
-    let gistId = localStorage.getItem('russian_gist_id');
+    let gistId = localStorage.getItem('turkish_gist_id');
     if(!gistId){
       const list = await fetch('https://api.github.com/gists?per_page=30', {
         headers:{'Authorization':'Bearer '+token}
@@ -3667,7 +3663,7 @@ async function gistPull(){
       const found = list.find && list.find(g=>g.files&&g.files[GIST_FILENAME]);
       if(!found) throw new Error(appLang==='en'?'No cloud data found. First push from another device.':'Bulutta veri bulunamadı. Önce bir cihazdan "Buluta Kaydet" yap.');
       gistId = found.id;
-      localStorage.setItem('russian_gist_id', gistId);
+      localStorage.setItem('turkish_gist_id', gistId);
     }
     const resp = await fetch(`https://api.github.com/gists/${gistId}`, {
       headers:{'Authorization':'Bearer '+token}
@@ -3686,8 +3682,8 @@ async function gistPull(){
 }
 
 async function gistAutoSync(){
-  const token = localStorage.getItem('russian_gist_token');
-  const gistId = localStorage.getItem('russian_gist_id');
+  const token = localStorage.getItem('turkish_gist_token');
+  const gistId = localStorage.getItem('turkish_gist_id');
   if(!token || !gistId) return;
   try{
     const resp = await fetch(`https://api.github.com/gists/${gistId}`, {
@@ -3698,7 +3694,7 @@ async function gistAutoSync(){
     if(!raw) return;
     const payload = JSON.parse(raw);
     const remoteSaved = payload.saved_at ? new Date(payload.saved_at).getTime() : 0;
-    const localSaved  = parseInt(localStorage.getItem('russian_last_push')||'0');
+    const localSaved  = parseInt(localStorage.getItem('turkish_last_push')||'0');
     if(remoteSaved > localSaved + 30000){ // 30 saniye tolerans
       gistApplyPayload(payload);
       renderLessonList(); updateProgressBar(); updateReviewBadge();
@@ -3720,7 +3716,7 @@ async function initTranslateView(){
 
 function renderTranslateView(){
   const wrap = document.getElementById('translate-content');
-  const hasApiKey = !!localStorage.getItem('russian_api_key');
+  const hasApiKey = !!localStorage.getItem('turkish_api_key');
   wrap.innerHTML = `
     <div style="background:linear-gradient(135deg,#0d9488,#06b6d4);border-radius:14px;padding:16px 18px;margin-bottom:16px;color:white;">
       <div style="font-size:16px;font-weight:700;">${s('nav_translate')}</div>
@@ -3744,23 +3740,22 @@ function renderTranslateView(){
 
 let _translateTimer = null;
 
-const TRANSLATE_TARGET = 'de';
-const TR_WORDS_RE = /\b(bir|iki|uc|üç|dort|dört|bes|bu|su|o|ben|sen|biz|siz|onlar|ne|nasil|nasıl|neden|nicin|niçin|icin|için|ile|ve|veya|ama|degil|değil|var|yok|merhaba|gunaydin|günaydın|tesekkur|teşekkür|lutfen|lütfen|evet|hayir|hayır|cok|çok|iyi|kotu|kötü|naber|nasilsin|nasılsın|ogren|öğren|kelime|cumle|cümle|nasil\s+denir|ne\s+demek|anlami|anlamı)\b/i;
-const TARGET_LANG_RE = /[äöüßÄÖÜ]|(\b(der|die|das|den|dem|des|ein|eine|und|ist|sind|nicht|ich|du|er|sie|wir|ihr|haben|sein|wird|kann|auch|mit|von|auf|für|aber|oder|wenn|dass|guten|tag|morgen|abend)\b)/i;
+const TRANSLATE_TARGET = 'tr';
+const EN_WORDS_RE = /\b(the|is|are|was|were|hello|good|morning|evening|please|thanks|thank|yes|no|what|how|where|when|why|name|you|me|my|your|this|that|have|has|do|does|can|will|would|learn|word|sentence)\b/i;
 
 function detectTranslateDir(q){
   const t=(q||'').trim();
-  if(!t) return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
-  if(/[çğıöşüÇĞİÖŞÜ]/.test(t)) return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
-  if(TARGET_LANG_RE.test(t)) return {from:TRANSLATE_TARGET,to:'tr',isFromTr:false};
-  if(TR_WORDS_RE.test(t)) return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
-  return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
+  if(!t) return {from:'tr',to:'en',isFromTr:true};
+  if(/[çğıöşüÇĞİÖŞÜ]/.test(t)) return {from:'tr',to:'en',isFromTr:true};
+  if(EN_WORDS_RE.test(t)) return {from:'en',to:'tr',isFromTr:false};
+  if(/^[a-zA-Z\s.,!?'"-]+$/.test(t)) return {from:'en',to:'tr',isFromTr:false};
+  return {from:'tr',to:'en',isFromTr:true};
 }
 
 function translateHint(dir){
-  const tgt=appLang==='en'?'Russian':'Rusça';
-  if(dir.isFromTr) return '🇹🇷 → 🇷🇺 '+tgt;
-  return '🇷🇺 '+tgt+' → 🇹🇷 '+(appLang==='en'?'Turkish':'Türkçe');
+  const ui = appLang==='tr' ? {tk:'Türkçe',en:'İngilizce'} : {tk:'Turkish',en:'English'};
+  if(dir.isFromTr) return '🇹🇷 '+ui.tk+' → 🇬🇧 '+ui.en;
+  return '🇬🇧 '+ui.en+' → 🇹🇷 '+ui.tk;
 }
 
 function translateDebounce(){
@@ -3781,7 +3776,7 @@ function searchLessons(q){
   Object.values(LESSONS).forEach(L=>{
     if(!L) return;
     const check=(item,source)=>{
-      const field=dir.isFromTr?item.tr:(item.en||item.ro);
+      const field=dir.isFromTr?(item.en||item.ro):(item.tr);
       if(!field) return;
       const nf=norm(field);
       if(nf.includes(nq)||nq.includes(nf)){
@@ -3829,7 +3824,7 @@ async function doTranslate(){
   }
 
   const hasExact=hits.some(h=>h._score===2);
-  const apiKey=localStorage.getItem('russian_api_key');
+  const apiKey=localStorage.getItem('turkish_api_key');
 
   html+=`<div style="font-size:11px;font-weight:700;color:#4285f4;text-transform:uppercase;letter-spacing:.06em;margin:12px 0 8px;">${s('translate_google')}</div>`;
   html+=`<div id="google-result" style="background:white;border:1.5px solid #e0e0e0;border-radius:12px;padding:14px;"><div style="color:#aaa;font-size:13px;">${s('translate_loading')}</div></div>`;
@@ -3872,14 +3867,14 @@ async function googleTranslate(q,dir){
 }
 
 async function claudeTranslate(q,dir){
-  const apiKey=localStorage.getItem('russian_api_key');
+  const apiKey=localStorage.getItem('turkish_api_key');
   const prompt=appLang==='en'
     ?(dir.isFromTr
-      ?`Translate this Turkish phrase to Russian: "${q}"\n\nRespond ONLY in this format:\nRussian: ...\nNote: ...`
-      :`Translate this Russian phrase to Turkish: "${q}"\n\nRespond ONLY in this format:\nTurkish: ...\nNote: ...`)
+      ?`Translate this Turkish phrase to Turkish: "${q}"\n\nRespond ONLY in this format:\nTurkish: ...\nNote: ...`
+      :`Translate this Turkish phrase to Turkish: "${q}"\n\nRespond ONLY in this format:\nTurkish: ...\nNote: ...`)
     :(dir.isFromTr
-      ?`Kullanıcı şu Türkçe ifadeyi Rusçaya çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nRusça: ...\nAçıklama: ...`
-      :`Kullanıcı şu Rusça ifadeyi Türkçeye çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nTürkçe: ...\nAçıklama: ...`);
+      ?`Kullanıcı şu Türkçe ifadeyi Türkçeya çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nTürkçe: ...\nAçıklama: ...`
+      :`Kullanıcı şu Türkçe ifadeyi Türkçeye çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nTürkçe: ...\nAçıklama: ...`);
   try{
     const resp=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
@@ -3887,7 +3882,7 @@ async function claudeTranslate(q,dir){
       body:JSON.stringify({
         model:'claude-haiku-4-5-20251001',
         max_tokens:300,
-        system:appLang==='en'?'You are a Russian language teacher. Give short, clear, instructive answers for Turkish-speaking learners.':'Sen bir Rusça öğretmenisin. Kısa, net ve öğretici cevaplar ver. Türk kullanıcılara Rusça öğretiyorsun.',
+        system:appLang==='en'?'You are a Turkish language teacher. Give short, clear, instructive answers for Turkish-speaking learners.':'Sen bir Türkçe öğretmenisin. Kısa, net ve öğretici cevaplar ver. Türk kullanıcılara Türkçe öğretiyorsun.',
         messages:[{role:'user',content:prompt}]
       })
     });
@@ -4370,7 +4365,7 @@ function showExFailed(){
 // =================== EXERCISE ENGINE END ===================
 
 // =================== INIT ===================
-localStorage.setItem('kdo:target','ru');
+localStorage.setItem('kdo:target','tk');
 const _kdoLocale = localStorage.getItem('kdo:locale');
 if(_kdoLocale && _kdoLocale !== appLang){ setLang(_kdoLocale); }
 else {
@@ -4381,8 +4376,8 @@ renderLessonList();
 updateReviewBadge();
 updateProgressBar();
 loadVoiceList();
-document.getElementById('api-key-input').value = localStorage.getItem('russian_api_key')||'';
-document.getElementById('gist-token-input').value = localStorage.getItem('russian_gist_token')||'';
+document.getElementById('api-key-input').value = localStorage.getItem('turkish_api_key')||'';
+document.getElementById('gist-token-input').value = localStorage.getItem('turkish_gist_token')||'';
 gistAutoSync();
 }
 </script>

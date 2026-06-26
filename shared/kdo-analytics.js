@@ -40,6 +40,7 @@
     if (p.includes('russian')) return 'ru';
     if (p.includes('arabic')) return 'ar';
     if (p.includes('chinese')) return 'zh';
+    if (p.includes('turkish')) return 'tk';
     return localStorage.getItem('kdo:target') || 'unknown';
   }
 

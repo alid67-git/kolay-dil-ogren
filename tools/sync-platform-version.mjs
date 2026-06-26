@@ -6,12 +6,12 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
-const VERSION = 'v2.1.0';
+const VERSION = 'v2.2.0';
 
 const htmlFiles = [
   'english-v3.html', 'german-v3.html', 'italian-v3.html',
   'spanish-v3.html', 'french-v3.html', 'tayca-v3.html',
-  'russian-v3.html', 'arabic-v3.html', 'chinese-v3.html'
+  'russian-v3.html', 'arabic-v3.html', 'chinese-v3.html', 'turkish-v3.html'
 ];
 
 const openModalOld = /if\(id==='help-overlay'\)\{\s*const v = document\.getElementById\('app-version'\);\s*const hv = document\.getElementById\('hakkinda-version'\);\s*if\(v && hv\) hv\.textContent = v\.textContent;\s*\}/;

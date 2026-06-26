@@ -21,6 +21,7 @@ h1{margin:0 0 2px;font-size:22px;color:#134e4a}
 @media(prefers-color-scheme:dark){.card{background:#1e1e1e}h1{color:#e0f2f1}.sub{color:#aaa}.field select{background:#2a2a2a;border-color:#444;color:#e0e0e0}.field label{color:#888}}
 </style>
 <script src="shared/kdo-version.js"></script>
+<script src="shared/kdo-ui-i18n.js"></script>
 </head>
 <body>
 <div class="card">
@@ -29,11 +30,23 @@ h1{margin:0 0 2px;font-size:22px;color:#134e4a}
   <p class="sub" id="intro">9 dil — tam surumler, detayli gramer.</p>
   <div class="field">
     <label id="lbl-locale">Arayuz dili</label>
-    <select id="locale"><option value="tr">Turkce</option><option value="en">English</option></select>
+    <select id="locale">
+      <option value="tr">Turkce</option>
+      <option value="en">English</option>
+      <option value="fr">Francais</option>
+      <option value="de">Deutsch</option>
+      <option value="es">Espanol</option>
+      <option value="it">Italiano</option>
+      <option value="ru">Русский</option>
+      <option value="ar">العربية</option>
+      <option value="zh">中文</option>
+      <option value="th">ไทย</option>
+    </select>
   </div>
   <div class="field">
     <label id="lbl-target">Ogrenilecek dil</label>
     <select id="target">
+      <option value="tk">Turkce Ogrenme — Turkce</option>
       <option value="th">Tayca — ไทย</option>
       <option value="en">Ingilizce — English</option>
       <option value="de">Almanca — Deutsch</option>
@@ -51,12 +64,21 @@ h1{margin:0 0 2px;font-size:22px;color:#134e4a}
 </div>
 <script>
 const APP='kdo';
-const ROUTES={th:'tayca-v3.html',en:'english-v3.html',de:'german-v3.html',it:'italian-v3.html',es:'spanish-v3.html',fr:'french-v3.html',ru:'russian-v3.html',ar:'arabic-v3.html',zh:'chinese-v3.html'};
-const LANG_KEYS={th:'tv3_lang',en:'en1_lang',de:'de1_lang',it:'it1_lang',es:'es1_lang',fr:'fr1_lang',ru:'ru1_lang',ar:'ar1_lang',zh:'zh1_lang'};
-const ui={
-  tr:{intro:'Tayca, Ingilizce, Almanca, Italyanca, Ispanyolca, Fransizca, Rusca, Arapca ve Cince — tam surumler.',locale:'Arayuz dili',target:'Ogrenilecek dil',go:'Basla',note:'Tam dersler, detayli gramer, alistirma ve SRS.'},
-  en:{intro:'Thai, English, German, Italian, Spanish, French, Russian, Arabic and Chinese — full apps.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, detailed grammar, practice and SRS.'}
+const ROUTES={tk:'turkish-v3.html',th:'tayca-v3.html',en:'english-v3.html',de:'german-v3.html',it:'italian-v3.html',es:'spanish-v3.html',fr:'french-v3.html',ru:'russian-v3.html',ar:'arabic-v3.html',zh:'chinese-v3.html'};
+const LANG_KEYS={tk:'tk1_lang',th:'tv3_lang',en:'en1_lang',de:'de1_lang',it:'it1_lang',es:'es1_lang',fr:'fr1_lang',ru:'ru1_lang',ar:'ar1_lang',zh:'zh1_lang'};
+const HUB_UI={
+  tr:{intro:'10 dil ogrenme + Turkce ogretme — tam surumler, detayli gramer.',locale:'Arayuz dili',target:'Ogrenilecek dil',go:'Basla',note:'Tam dersler, detayli gramer, alistirma ve SRS.',dev:'Gelistiren: Ali Dinçer'},
+  en:{intro:'10 languages to learn + Turkish teaching — full apps with grammar.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, grammar, practice and SRS.',dev:'Developed by: Ali Dinçer'},
+  fr:{intro:'10 langues — lecons completes et grammaire detaillee.',locale:'Langue de l interface',target:'Langue a apprendre',go:'Commencer',note:'Lecons, grammaire, exercices et SRS.',dev:'Developpe par : Ali Dinçer'},
+  de:{intro:'10 Sprachen — vollstandige Lektionen und Grammatik.',locale:'Oberflachensprache',target:'Zu lernende Sprache',go:'Starten',note:'Lektionen, Grammatik, Ubung und SRS.',dev:'Entwickelt von: Ali Dinçer'},
+  es:{intro:'10 idiomas — lecciones completas y gramatica detallada.',locale:'Idioma de la interfaz',target:'Idioma a aprender',go:'Empezar',note:'Lecciones, gramatica, practica y SRS.',dev:'Desarrollado por: Ali Dinçer'},
+  it:{intro:'10 lingue — lezioni complete e grammatica dettagliata.',locale:'Lingua interfaccia',target:'Lingua da imparare',go:'Inizia',note:'Lezioni, grammatica, pratica e SRS.',dev:'Sviluppato da: Ali Dinçer'},
+  ru:{intro:'10 языков — полные уроки и грамматика.',locale:'Язык интерфейса',target:'Изучаемый язык',go:'Начать',note:'Уроки, грамматика, практика и SRS.',dev:'Разработчик: Ali Dinçer'},
+  ar:{intro:'10 لغات — دروس كاملة وقواعد مفصلة.',locale:'لغة الواجهة',target:'اللغة المطلوبة',go:'ابدأ',note:'دروس وقواعد وتمرين وSRS.',dev:'المطور: علي دينشر'},
+  zh:{intro:'10种语言——完整课程与详细语法。',locale:'界面语言',target:'学习语言',go:'开始',note:'课程、语法、练习和SRS。',dev:'开发者：Ali Dinçer'},
+  th:{intro:'10 ภาษา — บทเรียนครบและไวยากรณ์ละเอียด',locale:'ภาษาอินเทอร์เฟซ',target:'ภาษาที่เรียน',go:'เริ่ม',note:'บทเรียน ไวยากรณ์ ฝึกหัด และ SRS',dev:'พัฒนาโดย: Ali Dinçer'}
 };
+const ui=HUB_UI;
 const locale=localStorage.getItem(APP+':locale')||localStorage.getItem(APP+':ui')||'tr';
 const target=localStorage.getItem(APP+':target')||'th';
 const L=k=>(ui[locale]||ui.tr)[k];
@@ -67,7 +89,7 @@ function applyUi(){
   document.getElementById('go').textContent=L('go');
   document.getElementById('note').textContent=L('note');
   document.documentElement.lang=locale;
-  const dc=document.getElementById('dev-credit');if(dc)dc.textContent=locale==='en'?'Developed by: Ali Dinçer':'Geliştiren: Ali Dinçer';
+  const dc=document.getElementById('dev-credit');if(dc)dc.textContent=(HUB_UI[locale]||HUB_UI.tr).dev;
 }
 document.getElementById('locale').value=locale;
 document.getElementById('target').value=target;

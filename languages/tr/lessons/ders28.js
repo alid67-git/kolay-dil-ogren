@@ -1,0 +1,131 @@
+// ders28.js — Turkish Lesson 28: Sports (vocabulary)
+const L28 = {
+  words:[
+    {
+      id:'w1',
+      en:'Koşmak',
+      ro:'kosh-mak',
+      tr:'to run'
+    },
+    {
+      id:'w2',
+      en:'Yürümek',
+      ro:'yue-rue-mek',
+      tr:'to walk'
+    },
+    {
+      id:'w3',
+      en:'Oyun',
+      ro:'o-yun',
+      tr:'game'
+    },
+    {
+      id:'w4',
+      en:'Takım',
+      ro:'ta-kuhm',
+      tr:'team'
+    },
+    {
+      id:'w5',
+      en:'Top',
+      ro:'top',
+      tr:'ball'
+    },
+    {
+      id:'w6',
+      en:'Kazanmak',
+      ro:'ka-zan-mak',
+      tr:'to win'
+    },
+    {
+      id:'w7',
+      en:'Kaybetmek',
+      ro:'kay-bet-mek',
+      tr:'to lose'
+    },
+    {
+      id:'w8',
+      en:'Pratik',
+      ro:'pra-tik',
+      tr:'practice'
+    },
+    {
+      id:'w9',
+      en:'Antrenör',
+      ro:'ant-re-noer',
+      tr:'coach'
+    },
+    {
+      id:'w10',
+      en:'Stadyum',
+      ro:'stad-yum',
+      tr:'stadium'
+    },
+    {
+      id:'w11',
+      en:'Skor',
+      ro:'skohr',
+      tr:'score'
+    },
+    {
+      id:'w12',
+      en:'Hızlı',
+      ro:'huhz-luh',
+      tr:'fast'
+    },
+    {
+      id:'w13',
+      en:'Güçlü',
+      ro:'guech-lue',
+      tr:'strong'
+    },
+    {
+      id:'w14',
+      en:'Sağlıklı',
+      ro:'saa-luhk-luh',
+      tr:'healthy'
+    },
+    {
+      id:'w15',
+      en:'Yarışma',
+      ro:'ya-rush-ma',
+      tr:'competition'
+    },
+    {
+      id:'w16',
+      en:'Zıplamak',
+      ro:'zuhp-la-mak',
+      tr:'to jump'
+    },
+    {
+      id:'w17',
+      en:'Yüzmek',
+      ro:'yuez-mek',
+      tr:'to swim'
+    },
+    {
+      id:'w18',
+      en:'Bisiklete binmek',
+      ro:'bi-sik-le-te bin-mek',
+      tr:'to cycle'
+    },
+    {
+      id:'w19',
+      en:'Spor',
+      ro:'spor',
+      tr:'sport'
+    },
+    {
+      id:'w20',
+      en:'Tren',
+      ro:'tren',
+      tr:'train'
+    }
+  ],
+  grammar:[],
+  speaking:[],
+  dialogues:[],
+  listening:[],
+  tones:[]
+};
+LESSONS[28] = L28;

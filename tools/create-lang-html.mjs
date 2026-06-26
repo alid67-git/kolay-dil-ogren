@@ -12,7 +12,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 const code = process.argv[2];
 if (!code || !LANGS[code]) {
-  console.error('Usage: node tools/create-lang-html.mjs it|es|fr|ru|ar|zh');
+  console.error('Usage: node tools/create-lang-html.mjs it|es|fr|ru|ar|zh|tk');
   process.exit(1);
 }
 const L = LANGS[code];
@@ -112,6 +112,12 @@ const pronTables = {
         <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">他 / 她</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">\${appLang==='en'?'M / F':'E / K'}</td></tr>
         <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">我们</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
         <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">他们</td><td style="padding:6px 6px;">Onlar</td><td style="padding:6px 6px;color:#888;"></td></tr>`,
+  tk: `<tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'1st sing.':'1. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ben</td><td style="padding:6px 6px;">I</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'2nd sing. (informal)':'2. tekil (samimi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">sen</td><td style="padding:6px 6px;">you</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'2nd sing. (formal)':'2. tekil (resmi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">siz</td><td style="padding:6px 6px;">you (formal)</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">o</td><td style="padding:6px 6px;">he/she</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">biz</td><td style="padding:6px 6px;">we</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">\${appLang==='en'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">onlar</td><td style="padding:6px 6px;">they</td><td style="padding:6px 6px;color:#888;"></td></tr>`,
 };
 
 s = s.replace(
@@ -218,6 +224,18 @@ function l2ZHNum(n){
 }
 function l2TR99(n){if(n<20)return TR_ONES[n];const t=Math.floor(n/10),o=n%10;return TR_TENS[t]+(o?' '+TR_ONES[o]:'');}
 function l2TR999(n){if(n===0)return'';if(n<100)return l2TR99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'':TR_ONES[h]+' ')+'yüz'+(r?' '+l2TR99(r):'');}`,
+  tk: `const TK_ONES=['sıfır','bir','iki','üç','dört','beş','altı','yedi','sekiz','dokuz','on','on bir','on iki','on üç','on dört','on beş','on altı','on yedi','on sekiz','on dokuz'];
+const TK_TENS=['','','yirmi','otuz','kırk','elli','altmış','yetmiş','seksen','doksan'];
+const EN_ONES=['zero','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'];
+const EN_TENS=['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety'];
+function l2BuildTurkish(n){
+  if(n===0) return {word:'sıfır',tr:'zero',chunks:[{val:'0',en:'sıfır',tr:'zero'}]};
+  const w=l2TK999(n);return{word:w,tr:l2EN999(n),chunks:[{val:n.toLocaleString('tr'),en:w,tr:l2EN999(n)}]};
+}
+function l2TK99(n){if(n<20)return TK_ONES[n];const t=Math.floor(n/10),o=n%10;return TK_TENS[t]+(o?' '+TK_ONES[o]:'');}
+function l2TK999(n){if(n<100)return l2TK99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'yüz':TK_ONES[h]+' yüz')+(r?' '+l2TK99(r):'');}
+function l2EN99(n){if(n<20)return EN_ONES[n];const t=Math.floor(n/10),o=n%10;return EN_TENS[t]+(o?'-'+EN_ONES[o]:'');}
+function l2EN999(n){if(n<100)return l2EN99(n);const h=Math.floor(n/100),r=n%100;return EN_ONES[h]+' hundred'+(r?' '+l2EN99(r):'');}`,
 };
 
 // Replace German calc with language calc
@@ -226,7 +244,7 @@ const calcEnd = s.indexOf('let l2CalcWord =');
 if (calcStart >= 0 && calcEnd > calcStart) {
   s = s.slice(0, calcStart) + calcBlocks[code] + '\n\n' + s.slice(calcEnd);
 }
-s = s.replace('const res = l2BuildGerman(n);', `const res = ${code === 'it' ? 'l2BuildItalian' : code === 'es' ? 'l2BuildSpanish' : code === 'fr' ? 'l2BuildFrench' : code === 'ru' ? 'l2BuildRussian' : code === 'ar' ? 'l2BuildArabic' : code === 'zh' ? 'l2BuildChinese' : 'l2BuildGerman'}(n);`);
+s = s.replace('const res = l2BuildGerman(n);', `const res = ${code === 'it' ? 'l2BuildItalian' : code === 'es' ? 'l2BuildSpanish' : code === 'fr' ? 'l2BuildFrench' : code === 'ru' ? 'l2BuildRussian' : code === 'ar' ? 'l2BuildArabic' : code === 'zh' ? 'l2BuildChinese' : code === 'tk' ? 'l2BuildTurkish' : 'l2BuildGerman'}(n);`);
 
 // RTL for Arabic
 if (L.rtl) {

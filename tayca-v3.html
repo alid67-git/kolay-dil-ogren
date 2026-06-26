@@ -622,7 +622,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.1.0';
+const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.0';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -634,13 +634,13 @@ if(storedVersion && storedVersion !== APP_VERSION){
   console.log('Yeni versiyon: '+APP_VERSION+', cache temizlendi.');
 }
 localStorage.setItem('app_version', APP_VERSION);
-(function(){const _bd=document.getElementById('brand-dev');const _l=localStorage.getItem('kdo:locale')||'tr';if(_bd)_bd.textContent=_l==='en'?'Developed by: Ali Dinçer':'Geliştiren: Ali Dinçer';})();
+(function(){const _bd=document.getElementById('brand-dev');const _l=localStorage.getItem('kdo:locale')||'tr';if(_bd)_bd.textContent=devCredit(_l);})();
 (function(){const _vb=document.getElementById('app-version');if(_vb)_vb.textContent=APP_VERSION;})();
 
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
 let appLang = localStorage.getItem('kdo:locale') || localStorage.getItem('tv3_lang') || 'tr';
 
-const UI = {
+const UI_LOCAL = {
   tr:{
     // Nav
     nav_lessons:'📚 Dersler', nav_test:'📝 Test', nav_translate:'🌐 Çeviri',
@@ -889,7 +889,7 @@ function s(key){ return (UI[appLang]||UI.tr)[key] || UI.tr[key] || key; }
 
 function Lf(item, field){
   if(!item) return '';
-  if(appLang==='en' && item[field+'_en']!==undefined) return item[field+'_en'];
+  if(appLang!=='tr' && item[field+'_en']!==undefined) return item[field+'_en'];
   return item[field] || '';
 }
 
@@ -902,12 +902,22 @@ function lessonNumLabel(num){
   return (appLang==='en'?'Lesson ':'Ders ') + num;
 }
 
+
+function _initLangButtons(){
+  const wrap = document.getElementById('lang-btn-wrap');
+  if(!wrap) return;
+  const langs = window.KDO_UI_LANGS || ['tr','en'];
+  const labels = window.KDO_UI_LABELS || {tr:'🇹🇷 Türkçe',en:'🇬🇧 English'};
+  wrap.innerHTML = langs.map(l=>`<button class="setting-btn lang-btn" data-lang="${l}" onclick="setLang('${l}')" style="flex:0 1 auto;min-width:46%;font-size:12px;padding:8px 6px;">${labels[l]||l}</button>`).join('');
+  wrap.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===appLang));
+}
+
 function setLang(lang){
-  const _bd=document.getElementById('brand-dev');if(_bd)_bd.textContent=lang==='en'?'Developed by: Ali Dinçer':'Geliştiren: Ali Dinçer';
+  const _bd=document.getElementById('brand-dev');if(_bd)_bd.textContent=devCredit(lang);
   appLang = lang;
   localStorage.setItem('tv3_lang', lang);
   localStorage.setItem('kdo:locale', lang);
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===lang));
+  _initLangButtons();
   document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
   // Re-render current view
   const vid = (document.querySelector('.view.active')||{}).id||'';
@@ -939,7 +949,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version">v2.1.0</span>
+  <span class="vbadge" id="app-version">v2.2.0</span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>
@@ -986,10 +996,7 @@ function setLang(lang){
     <div class="modal-head"><div class="modal-title" data-lk="settings_title">⚙️ Ayarlar</div><button class="modal-close" onclick="closeModal('settings-overlay')">✕</button></div>
     <div class="setting-row">
       <div class="setting-label" data-lk="settings_lang">🌐 Uygulama Dili</div>
-      <div style="display:flex;gap:8px;margin-top:6px;">
-        <button class="setting-btn lang-btn active" data-lang="tr" onclick="setLang('tr')" style="flex:1;">🇹🇷 Türkçe</button>
-        <button class="setting-btn lang-btn" data-lang="en" onclick="setLang('en')" style="flex:1;">🇬🇧 English</button>
-      </div>
+      <div id="lang-btn-wrap" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;"></div>
     </div>
     <div class="setting-row"><div class="setting-label">Anthropic API Key</div><input type="password" id="api-key-input" placeholder="sk-ant-..."><button class="setting-btn" onclick="saveKey()" data-lk="settings_save">Kaydet</button></div>
     <div class="setting-row">
@@ -1554,25 +1561,23 @@ async function openLesson(num){
   document.querySelectorAll('.ltab').forEach(btn=>{
     let lastTap = 0;
     let clickTimer = null;
-    const runToggle = (tab)=>{
-      clearTimeout(clickTimer);
-      lastTap = 0;
-      toggleTabVisited(tab, btn);
-    };
-    btn.addEventListener('dblclick',(e)=>{
-      e.preventDefault();
-      runToggle(btn.dataset.tab);
-    });
-    btn.addEventListener('click',()=>{
+    btn.addEventListener('click',(e)=>{
       const tab = btn.dataset.tab;
       const now = Date.now();
-      if(now - lastTap < 320){
-        runToggle(tab);
+      if(now - lastTap < 380){
+        e.preventDefault();
+        clearTimeout(clickTimer);
+        clickTimer = null;
+        lastTap = 0;
+        toggleTabVisited(tab, btn);
         return;
       }
       lastTap = now;
       clearTimeout(clickTimer);
-      clickTimer = setTimeout(()=>switchLessonTab(tab, btn), 320);
+      clickTimer = setTimeout(()=>{
+        clickTimer = null;
+        switchLessonTab(tab, btn);
+      }, 380);
     });
   });
   const firstTab = getTabsForLesson(meta)[0];
@@ -3033,11 +3038,11 @@ function switchHelpTab(tab, btn){
 function buildHelpContent(){
   const en = appLang==='en';
   // Tab button labels
-  document.getElementById('htab-btn-genel').textContent   = en?'🏠 General':'🏠 Genel';
+  document.getElementById('htab-btn-genel').textContent   = '🏠 '+s('help_tab_guide');
   document.getElementById('htab-btn-dersler').textContent = en?'📚 Lessons':'📚 Dersler';
   document.getElementById('htab-btn-tekrar').textContent  = en?'🔄 Review':'🔄 Tekrar';
   document.getElementById('htab-btn-ipuclari').textContent= en?'💡 Tips':'💡 İpuçları';
-  document.getElementById('htab-btn-hakkinda').textContent= en?'ℹ️ About':'ℹ️ Hakkında';
+  document.getElementById('htab-btn-hakkinda').textContent= 'ℹ️ '+s('help_tab_about');
   document.getElementById('help-modal-title').textContent = en?'📖 How to Use?':'📖 Nasıl Kullanılır?';
   document.getElementById('help-modal-sub').textContent   = en?'Easy Thai Learning · Guide':'Kolay Tayca Öğrenme · Rehber';
 
@@ -3181,7 +3186,7 @@ function buildHelpContent(){
         </div>
       </div>
       <div class="help-section-header">📋 ${en?'App Info':'Uygulama Bilgisi'}</div>
-      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">v2.1.0</strong></div>
+      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">v2.2.0</strong></div>
       <div class="help-info-row"><span>${en?'Total Lessons':'Toplam Ders'}</span><strong>19 + 29 ${en?'BONUS sets':'BONUS set'}</strong></div>
       <div class="help-info-row"><span>${en?'Per Lesson':'Ders Başına'}</span><strong>~10 ${en?'words, 8 grammar, 4 dialogues':'kelime, 8 gramer, 4 diyalog'}</strong></div>
       <div class="help-info-row"><span>${en?'Audio':'Ses Motoru'}</span><strong>Web Speech API + Google TTS</strong></div>
@@ -3969,7 +3974,7 @@ const _kdoLocale = localStorage.getItem('kdo:locale');
 if(_kdoLocale && _kdoLocale !== appLang){ setLang(_kdoLocale); }
 else {
 document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
-document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active', b.dataset.lang===appLang));
+_initLangButtons();
 buildHelpContent();
 renderLessonList();
 updateReviewBadge();
