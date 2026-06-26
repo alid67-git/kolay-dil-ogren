@@ -5,19 +5,19 @@ const L38 = {
       id:'w1',
       en:'Öğretmen',
       ro:'oe-ret-men',
-      tr:'teacher'
+      tr:'teacher', tr_th:'ครู'
     },
     {
       id:'w2',
       en:'Öğrenci',
       ro:'oe-ren-ji',
-      tr:'student'
+      tr:'student', tr_th:'นักเรียน'
     },
     {
       id:'w3',
       en:'Doktor',
       ro:'dok-tor',
-      tr:'doctor'
+      tr:'doctor', tr_th:'หมอ'
     },
     {
       id:'w4',

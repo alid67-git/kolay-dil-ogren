@@ -5,13 +5,13 @@ const L31 = {
       id:'w1',
       en:'Ev',
       ro:'ev',
-      tr:'house'
+      tr:'house', tr_th:'บ้าน'
     },
     {
       id:'w2',
       en:'Oda',
       ro:'o-da',
-      tr:'room'
+      tr:'room', tr_th:'ห้อง'
     },
     {
       id:'w3',
@@ -35,7 +35,7 @@ const L31 = {
       id:'w6',
       en:'Masa',
       ro:'ma-sa',
-      tr:'table'
+      tr:'table', tr_th:'โต๊ะ'
     },
     {
       id:'w7',
@@ -77,37 +77,37 @@ const L31 = {
       id:'w13',
       en:'Fiyat',
       ro:'fi-yat',
-      tr:'price'
+      tr:'price', tr_th:'ราคา'
     },
     {
       id:'w14',
       en:'Para',
       ro:'pa-ra',
-      tr:'money'
+      tr:'money', tr_th:'เงิน'
     },
     {
       id:'w15',
       en:'Şehir',
       ro:'she-hir',
-      tr:'city'
+      tr:'city', tr_th:'เมือง'
     },
     {
       id:'w16',
       en:'Su',
       ro:'su',
-      tr:'water'
+      tr:'water', tr_th:'น้ำ'
     },
     {
       id:'w17',
       en:'Anahtar',
       ro:'a-nah-tar',
-      tr:'key'
+      tr:'key', tr_th:'กุญแจ'
     },
     {
       id:'w18',
       en:'Daire',
       ro:'da-i-re',
-      tr:'apartment'
+      tr:'apartment', tr_th:'อพาร์ตเมนต์'
     },
     {
       id:'w19',

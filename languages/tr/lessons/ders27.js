@@ -5,19 +5,19 @@ const L27 = {
       id:'w1',
       en:'Bugün',
       ro:'bu-guen',
-      tr:'today'
+      tr:'today', tr_th:'วันนี้'
     },
     {
       id:'w2',
       en:'Yarın',
       ro:'ya-ruhn',
-      tr:'tomorrow'
+      tr:'tomorrow', tr_th:'พรุ่งนี้'
     },
     {
       id:'w3',
       en:'Dün',
       ro:'duen',
-      tr:'yesterday'
+      tr:'yesterday', tr_th:'เมื่อวาน'
     },
     {
       id:'w4',
@@ -41,7 +41,7 @@ const L27 = {
       id:'w7',
       en:'Saat kaç?',
       ro:'sa-at kach',
-      tr:'what time is it?'
+      tr:'what time is it?', tr_th:'กี่โมงแล้ว?'
     },
     {
       id:'w8',

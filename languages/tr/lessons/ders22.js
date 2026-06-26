@@ -29,7 +29,7 @@ const L22 = {
       id:'w5',
       en:'Güzel',
       ro:'gue-zel',
-      tr:'beautiful'
+      tr:'beautiful', tr_th:'สวย'
     },
     {
       id:'w6',
@@ -71,7 +71,7 @@ const L22 = {
       id:'w12',
       en:'Önemli',
       ro:'oe-nem-li',
-      tr:'important'
+      tr:'important', tr_th:'สำคัญ'
     },
     {
       id:'w13',
@@ -83,19 +83,19 @@ const L22 = {
       id:'w14',
       en:'Mutlu',
       ro:'mut-lu',
-      tr:'happy'
+      tr:'happy', tr_th:'มีความสุข'
     },
     {
       id:'w15',
       en:'Üzgün',
       ro:'uez-guen',
-      tr:'sad'
+      tr:'sad', tr_th:'เศร้า'
     },
     {
       id:'w16',
       en:'Yorgun',
       ro:'yor-gun',
-      tr:'tired'
+      tr:'tired', tr_th:'เหนื่อย'
     },
     {
       id:'w17',
@@ -107,13 +107,13 @@ const L22 = {
       id:'w18',
       en:'Ucuz',
       ro:'u-juz',
-      tr:'cheap'
+      tr:'cheap', tr_th:'ถูก'
     },
     {
       id:'w19',
       en:'Pahalı',
       ro:'pa-ha-luh',
-      tr:'expensive'
+      tr:'expensive', tr_th:'แพง'
     },
     {
       id:'w20',

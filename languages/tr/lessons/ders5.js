@@ -5,7 +5,7 @@ const L5 = {
       id:'w1',
       en:'Restoran',
       ro:'res-to-ran',
-      tr:'restaurant',
+      tr:'restaurant', tr_th:'ร้านอาหาร',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,19 +13,19 @@ const L5 = {
       id:'w2',
       en:'Menü',
       ro:'me-nue',
-      tr:'menu'
+      tr:'menu', tr_th:'เมนู'
     },
     {
       id:'w3',
       en:'Masa',
       ro:'ma-sa',
-      tr:'table'
+      tr:'table', tr_th:'โต๊ะ'
     },
     {
       id:'w4',
       en:'Su',
       ro:'su',
-      tr:'water'
+      tr:'water', tr_th:'น้ำ'
     },
     {
       id:'w5',
@@ -91,7 +91,7 @@ const L5 = {
       id:'w15',
       en:'Fiyat',
       ro:'fi-yat',
-      tr:'price'
+      tr:'price', tr_th:'ราคา'
     }
   ],
   grammar:[
@@ -105,13 +105,13 @@ const L5 = {
           pronoun:'Örnek 1',
           form:'Restoran',
           example:'Restoran',
-          tr:'restaurant'
+          tr:'restaurant', tr_th:'ร้านอาหาร'
         },
         {
           pronoun:'Örnek 2',
           form:'Menü',
           example:'Menü',
-          tr:'menu'
+          tr:'menu', tr_th:'เมนู'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,25 +121,25 @@ const L5 = {
     {
       id:'sp1',
       en:'Restoran',
-      tr:'restaurant',
+      tr:'restaurant', tr_th:'ร้านอาหาร',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Menü',
-      tr:'menu',
+      tr:'menu', tr_th:'เมนู',
       prompt:'Kullan'
     },
     {
       id:'sp3',
       en:'Masa',
-      tr:'table',
+      tr:'table', tr_th:'โต๊ะ',
       prompt:'Cümle kur'
     },
     {
       id:'sp4',
       en:'Su',
-      tr:'water',
+      tr:'water', tr_th:'น้ำ',
       prompt:'Soru sor'
     },
     {
@@ -159,12 +159,12 @@ const L5 = {
           speaker:'A',
           gender:'m',
           en:'Restoran',
-          tr:'restaurant',
+          tr:'restaurant', tr_th:'ร้านอาหาร',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'res-to-ran',
-              tr:'restaurant',
+              tr:'restaurant', tr_th:'ร้านอาหาร',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L5 = {
           speaker:'B',
           gender:'f',
           en:'Menü',
-          tr:'menu',
+          tr:'menu', tr_th:'เมนู',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'me-nue',
-              tr:'menu',
+              tr:'menu', tr_th:'เมนู',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -189,14 +189,14 @@ const L5 = {
           speaker:'A',
           gender:'m',
           en:'Masa',
-          tr:'table',
+          tr:'table', tr_th:'โต๊ะ',
           bd:[]
         },
         {
           speaker:'B',
           gender:'f',
           en:'Su',
-          tr:'water',
+          tr:'water', tr_th:'น้ำ',
           bd:[]
         }
       ]
@@ -218,7 +218,7 @@ const L5 = {
             'Su'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L5 = {
             'Çay'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

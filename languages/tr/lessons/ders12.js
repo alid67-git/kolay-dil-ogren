@@ -5,7 +5,7 @@ const L12 = {
       id:'w1',
       en:'Aramak',
       ro:'a-ra-mak',
-      tr:'to call',
+      tr:'to call', tr_th:'โทร',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,13 +13,13 @@ const L12 = {
       id:'w2',
       en:'Mesaj',
       ro:'me-saj',
-      tr:'message'
+      tr:'message', tr_th:'ข้อความ'
     },
     {
       id:'w3',
       en:'E-posta',
       ro:'e-pos-ta',
-      tr:'email'
+      tr:'email', tr_th:'อีเมล'
     },
     {
       id:'w4',
@@ -37,25 +37,25 @@ const L12 = {
       id:'w6',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w7',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w8',
       en:'Yardım etmek',
       ro:'yar-duhm et-mek',
-      tr:'to help'
+      tr:'to help', tr_th:'ช่วย'
     },
     {
       id:'w9',
       en:'İnternet',
       ro:'in-ter-net',
-      tr:'internet'
+      tr:'internet', tr_th:'อินเทอร์เน็ต'
     },
     {
       id:'w10',
@@ -85,13 +85,13 @@ const L12 = {
       id:'w14',
       en:'Bugün',
       ro:'bu-guen',
-      tr:'today'
+      tr:'today', tr_th:'วันนี้'
     },
     {
       id:'w15',
       en:'Yarın',
       ro:'ya-ruhn',
-      tr:'tomorrow'
+      tr:'tomorrow', tr_th:'พรุ่งนี้'
     }
   ],
   grammar:[
@@ -105,13 +105,13 @@ const L12 = {
           pronoun:'Örnek 1',
           form:'Aramak',
           example:'Aramak',
-          tr:'to call'
+          tr:'to call', tr_th:'โทร'
         },
         {
           pronoun:'Örnek 2',
           form:'Mesaj',
           example:'Mesaj',
-          tr:'message'
+          tr:'message', tr_th:'ข้อความ'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,19 +121,19 @@ const L12 = {
     {
       id:'sp1',
       en:'Aramak',
-      tr:'to call',
+      tr:'to call', tr_th:'โทร',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Mesaj',
-      tr:'message',
+      tr:'message', tr_th:'ข้อความ',
       prompt:'Kullan'
     },
     {
       id:'sp3',
       en:'E-posta',
-      tr:'email',
+      tr:'email', tr_th:'อีเมล',
       prompt:'Cümle kur'
     },
     {
@@ -159,12 +159,12 @@ const L12 = {
           speaker:'A',
           gender:'m',
           en:'Aramak',
-          tr:'to call',
+          tr:'to call', tr_th:'โทร',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'a-ra-mak',
-              tr:'to call',
+              tr:'to call', tr_th:'โทร',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L12 = {
           speaker:'B',
           gender:'f',
           en:'Mesaj',
-          tr:'message',
+          tr:'message', tr_th:'ข้อความ',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'me-saj',
-              tr:'message',
+              tr:'message', tr_th:'ข้อความ',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -189,7 +189,7 @@ const L12 = {
           speaker:'A',
           gender:'m',
           en:'E-posta',
-          tr:'email',
+          tr:'email', tr_th:'อีเมล',
           bd:[]
         },
         {
@@ -218,7 +218,7 @@ const L12 = {
             'Telefon numarası'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L12 = {
             'Tekrar eder misiniz?'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

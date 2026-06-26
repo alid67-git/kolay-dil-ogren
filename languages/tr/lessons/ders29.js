@@ -5,13 +5,13 @@ const L29 = {
       id:'w1',
       en:'İş',
       ro:'ish',
-      tr:'work'
+      tr:'work', tr_th:'งาน'
     },
     {
       id:'w2',
       en:'Ofis',
       ro:'o-fis',
-      tr:'office'
+      tr:'office', tr_th:'สำนักงาน'
     },
     {
       id:'w3',
@@ -47,13 +47,13 @@ const L29 = {
       id:'w8',
       en:'İnternet',
       ro:'in-ter-net',
-      tr:'internet'
+      tr:'internet', tr_th:'อินเทอร์เน็ต'
     },
     {
       id:'w9',
       en:'E-posta',
       ro:'e-pos-ta',
-      tr:'email'
+      tr:'email', tr_th:'อีเมล'
     },
     {
       id:'w10',

@@ -5,25 +5,25 @@ const L34 = {
       id:'w1',
       en:'Para',
       ro:'pa-ra',
-      tr:'money'
+      tr:'money', tr_th:'เงิน'
     },
     {
       id:'w2',
       en:'Fiyat',
       ro:'fi-yat',
-      tr:'price'
+      tr:'price', tr_th:'ราคา'
     },
     {
       id:'w3',
       en:'Ucuz',
       ro:'u-juz',
-      tr:'cheap'
+      tr:'cheap', tr_th:'ถูก'
     },
     {
       id:'w4',
       en:'Pahalı',
       ro:'pa-ha-luh',
-      tr:'expensive'
+      tr:'expensive', tr_th:'แพง'
     },
     {
       id:'w5',
@@ -35,7 +35,7 @@ const L34 = {
       id:'w6',
       en:'Kart',
       ro:'kart',
-      tr:'card'
+      tr:'card', tr_th:'บัตร'
     },
     {
       id:'w7',
@@ -83,7 +83,7 @@ const L34 = {
       id:'w14',
       en:'Satın almak',
       ro:'sa-tuhrn al-mak',
-      tr:'to buy'
+      tr:'to buy', tr_th:'ซื้อ'
     },
     {
       id:'w15',

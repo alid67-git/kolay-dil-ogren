@@ -5,7 +5,7 @@ const L17 = {
       id:'w1',
       en:'Mutlu',
       ro:'mut-lu',
-      tr:'happy',
+      tr:'happy', tr_th:'มีความสุข',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,13 +13,13 @@ const L17 = {
       id:'w2',
       en:'Üzgün',
       ro:'uez-guen',
-      tr:'sad'
+      tr:'sad', tr_th:'เศร้า'
     },
     {
       id:'w3',
       en:'Yorgun',
       ro:'yor-gun',
-      tr:'tired'
+      tr:'tired', tr_th:'เหนื่อย'
     },
     {
       id:'w4',
@@ -31,13 +31,13 @@ const L17 = {
       id:'w5',
       en:'Nasılsın?',
       ro:'na-suhl-suhn',
-      tr:'how are you?'
+      tr:'how are you?', tr_th:'สบายดีไหม?'
     },
     {
       id:'w6',
       en:'İyiyim.',
       ro:'ii-yi-yim',
-      tr:'I am fine'
+      tr:'I am fine', tr_th:'สบายดี'
     },
     {
       id:'w7',
@@ -49,7 +49,7 @@ const L17 = {
       id:'w8',
       en:'Görüş',
       ro:'goe-ruesh',
-      tr:'opinion'
+      tr:'opinion', tr_th:'ความคิดเห็น'
     },
     {
       id:'w9',
@@ -67,7 +67,7 @@ const L17 = {
       id:'w11',
       en:'Teşekkürler',
       ro:'te-shek-kuer-ler',
-      tr:'thanks'
+      tr:'thanks', tr_th:'ขอบคุณ'
     },
     {
       id:'w12',
@@ -85,13 +85,13 @@ const L17 = {
       id:'w14',
       en:'Görüşürüz.',
       ro:'goe-ru-shue-ruz',
-      tr:'see you'
+      tr:'see you', tr_th:'แล้วเจอกัน'
     },
     {
       id:'w15',
       en:'Arkadaş',
       ro:'ar-ka-dash',
-      tr:'friend'
+      tr:'friend', tr_th:'เพื่อน'
     }
   ],
   grammar:[
@@ -105,13 +105,13 @@ const L17 = {
           pronoun:'Örnek 1',
           form:'Mutlu',
           example:'Mutlu',
-          tr:'happy'
+          tr:'happy', tr_th:'มีความสุข'
         },
         {
           pronoun:'Örnek 2',
           form:'Üzgün',
           example:'Üzgün',
-          tr:'sad'
+          tr:'sad', tr_th:'เศร้า'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,19 +121,19 @@ const L17 = {
     {
       id:'sp1',
       en:'Mutlu',
-      tr:'happy',
+      tr:'happy', tr_th:'มีความสุข',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Üzgün',
-      tr:'sad',
+      tr:'sad', tr_th:'เศร้า',
       prompt:'Kullan'
     },
     {
       id:'sp3',
       en:'Yorgun',
-      tr:'tired',
+      tr:'tired', tr_th:'เหนื่อย',
       prompt:'Cümle kur'
     },
     {
@@ -145,7 +145,7 @@ const L17 = {
     {
       id:'sp5',
       en:'Nasılsın?',
-      tr:'how are you?',
+      tr:'how are you?', tr_th:'สบายดีไหม?',
       prompt:'Konuşma pratiği'
     }
   ],
@@ -159,12 +159,12 @@ const L17 = {
           speaker:'A',
           gender:'m',
           en:'Mutlu',
-          tr:'happy',
+          tr:'happy', tr_th:'มีความสุข',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'mut-lu',
-              tr:'happy',
+              tr:'happy', tr_th:'มีความสุข',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L17 = {
           speaker:'B',
           gender:'f',
           en:'Üzgün',
-          tr:'sad',
+          tr:'sad', tr_th:'เศร้า',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'uez-guen',
-              tr:'sad',
+              tr:'sad', tr_th:'เศร้า',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -189,7 +189,7 @@ const L17 = {
           speaker:'A',
           gender:'m',
           en:'Yorgun',
-          tr:'tired',
+          tr:'tired', tr_th:'เหนื่อย',
           bd:[]
         },
         {
@@ -218,7 +218,7 @@ const L17 = {
             'Kızgın'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L17 = {
             'Nasılsın?'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

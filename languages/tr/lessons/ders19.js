@@ -5,7 +5,7 @@ const L19 = {
       id:'w1',
       en:'Hobi',
       ro:'ho-bi',
-      tr:'hobby',
+      tr:'hobby', tr_th:'งานอดิเรก',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,19 +13,19 @@ const L19 = {
       id:'w2',
       en:'Okumak',
       ro:'o-ku-mak',
-      tr:'to read'
+      tr:'to read', tr_th:'อ่าน'
     },
     {
       id:'w3',
       en:'Müzik',
       ro:'mue-zik',
-      tr:'music'
+      tr:'music', tr_th:'ดนตรี'
     },
     {
       id:'w4',
       en:'Sinema',
       ro:'si-ne-ma',
-      tr:'cinema'
+      tr:'cinema', tr_th:'โรงภาพยนตร์'
     },
     {
       id:'w5',
@@ -43,13 +43,13 @@ const L19 = {
       id:'w7',
       en:'Parti',
       ro:'par-ti',
-      tr:'party'
+      tr:'party', tr_th:'ปาร์ตี้'
     },
     {
       id:'w8',
       en:'Arkadaş',
       ro:'ar-ka-dash',
-      tr:'friend'
+      tr:'friend', tr_th:'เพื่อน'
     },
     {
       id:'w9',
@@ -79,19 +79,19 @@ const L19 = {
       id:'w13',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w14',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w15',
       en:'Bugün',
       ro:'bu-guen',
-      tr:'today'
+      tr:'today', tr_th:'วันนี้'
     }
   ],
   grammar:[
@@ -105,13 +105,13 @@ const L19 = {
           pronoun:'Örnek 1',
           form:'Hobi',
           example:'Hobi',
-          tr:'hobby'
+          tr:'hobby', tr_th:'งานอดิเรก'
         },
         {
           pronoun:'Örnek 2',
           form:'Okumak',
           example:'Okumak',
-          tr:'to read'
+          tr:'to read', tr_th:'อ่าน'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,25 +121,25 @@ const L19 = {
     {
       id:'sp1',
       en:'Hobi',
-      tr:'hobby',
+      tr:'hobby', tr_th:'งานอดิเรก',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Okumak',
-      tr:'to read',
+      tr:'to read', tr_th:'อ่าน',
       prompt:'Kullan'
     },
     {
       id:'sp3',
       en:'Müzik',
-      tr:'music',
+      tr:'music', tr_th:'ดนตรี',
       prompt:'Cümle kur'
     },
     {
       id:'sp4',
       en:'Sinema',
-      tr:'cinema',
+      tr:'cinema', tr_th:'โรงภาพยนตร์',
       prompt:'Soru sor'
     },
     {
@@ -159,12 +159,12 @@ const L19 = {
           speaker:'A',
           gender:'m',
           en:'Hobi',
-          tr:'hobby',
+          tr:'hobby', tr_th:'งานอดิเรก',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'ho-bi',
-              tr:'hobby',
+              tr:'hobby', tr_th:'งานอดิเรก',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L19 = {
           speaker:'B',
           gender:'f',
           en:'Okumak',
-          tr:'to read',
+          tr:'to read', tr_th:'อ่าน',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'o-ku-mak',
-              tr:'to read',
+              tr:'to read', tr_th:'อ่าน',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -189,14 +189,14 @@ const L19 = {
           speaker:'A',
           gender:'m',
           en:'Müzik',
-          tr:'music',
+          tr:'music', tr_th:'ดนตรี',
           bd:[]
         },
         {
           speaker:'B',
           gender:'f',
           en:'Sinema',
-          tr:'cinema',
+          tr:'cinema', tr_th:'โรงภาพยนตร์',
           bd:[]
         }
       ]
@@ -218,7 +218,7 @@ const L19 = {
             'Sinema'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L19 = {
             'Tiyatro'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

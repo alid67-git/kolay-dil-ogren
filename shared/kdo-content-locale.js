@@ -32,6 +32,9 @@
     if (lang === 'tr') return bridge;
 
     var hit = glossLookup(lang, bridge);
+    if (!hit && field === 'tr' && meaningBaseLang() === 'en') {
+      hit = glossLookup(lang, item.en) || glossLookup(lang, item.th);
+    }
     if (hit) return hit;
 
     var en = item[field + '_en'];

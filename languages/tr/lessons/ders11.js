@@ -5,7 +5,7 @@ const L11 = {
       id:'w1',
       en:'Doktor',
       ro:'dok-tor',
-      tr:'doctor',
+      tr:'doctor', tr_th:'หมอ',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,13 +13,13 @@ const L11 = {
       id:'w2',
       en:'Hastane',
       ro:'has-ta-ne',
-      tr:'hospital'
+      tr:'hospital', tr_th:'โรงพยาบาล'
     },
     {
       id:'w3',
       en:'Eczane',
       ro:'ej-za-ne',
-      tr:'pharmacy'
+      tr:'pharmacy', tr_th:'ร้านขายยา'
     },
     {
       id:'w4',
@@ -73,13 +73,13 @@ const L11 = {
       id:'w12',
       en:'Yardım etmek',
       ro:'yar-duhm et-mek',
-      tr:'to help'
+      tr:'to help', tr_th:'ช่วย'
     },
     {
       id:'w13',
       en:'Bugün',
       ro:'bu-guen',
-      tr:'today'
+      tr:'today', tr_th:'วันนี้'
     },
     {
       id:'w14',
@@ -91,7 +91,7 @@ const L11 = {
       id:'w15',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     }
   ],
   grammar:[
@@ -105,13 +105,13 @@ const L11 = {
           pronoun:'Örnek 1',
           form:'Doktor',
           example:'Doktor',
-          tr:'doctor'
+          tr:'doctor', tr_th:'หมอ'
         },
         {
           pronoun:'Örnek 2',
           form:'Hastane',
           example:'Hastane',
-          tr:'hospital'
+          tr:'hospital', tr_th:'โรงพยาบาล'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,19 +121,19 @@ const L11 = {
     {
       id:'sp1',
       en:'Doktor',
-      tr:'doctor',
+      tr:'doctor', tr_th:'หมอ',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Hastane',
-      tr:'hospital',
+      tr:'hospital', tr_th:'โรงพยาบาล',
       prompt:'Kullan'
     },
     {
       id:'sp3',
       en:'Eczane',
-      tr:'pharmacy',
+      tr:'pharmacy', tr_th:'ร้านขายยา',
       prompt:'Cümle kur'
     },
     {
@@ -159,12 +159,12 @@ const L11 = {
           speaker:'A',
           gender:'m',
           en:'Doktor',
-          tr:'doctor',
+          tr:'doctor', tr_th:'หมอ',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'dok-tor',
-              tr:'doctor',
+              tr:'doctor', tr_th:'หมอ',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L11 = {
           speaker:'B',
           gender:'f',
           en:'Hastane',
-          tr:'hospital',
+          tr:'hospital', tr_th:'โรงพยาบาล',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'has-ta-ne',
-              tr:'hospital',
+              tr:'hospital', tr_th:'โรงพยาบาล',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -189,7 +189,7 @@ const L11 = {
           speaker:'A',
           gender:'m',
           en:'Eczane',
-          tr:'pharmacy',
+          tr:'pharmacy', tr_th:'ร้านขายยา',
           bd:[]
         },
         {
@@ -218,7 +218,7 @@ const L11 = {
             'Ağrı'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L11 = {
             'Ateş'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

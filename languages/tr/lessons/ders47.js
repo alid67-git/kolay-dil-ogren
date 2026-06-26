@@ -5,7 +5,7 @@ const L47 = {
       id:'w1',
       en:'Tarih',
       ro:'ta-rih',
-      tr:'history'
+      tr:'history', tr_th:'ประวัติศาสตร์'
     },
     {
       id:'w2',
@@ -17,19 +17,19 @@ const L47 = {
       id:'w3',
       en:'Dil',
       ro:'dil',
-      tr:'language'
+      tr:'language', tr_th:'ภาษา'
     },
     {
       id:'w4',
       en:'Ülke',
       ro:'uel-ke',
-      tr:'country'
+      tr:'country', tr_th:'ประเทศ'
     },
     {
       id:'w5',
       en:'Şehir',
       ro:'she-hir',
-      tr:'city'
+      tr:'city', tr_th:'เมือง'
     },
     {
       id:'w6',
@@ -77,31 +77,31 @@ const L47 = {
       id:'w13',
       en:'Öğretmen',
       ro:'oe-ret-men',
-      tr:'teacher'
+      tr:'teacher', tr_th:'ครู'
     },
     {
       id:'w14',
       en:'Öğrenci',
       ro:'oe-ren-ji',
-      tr:'student'
+      tr:'student', tr_th:'นักเรียน'
     },
     {
       id:'w15',
       en:'Önemli',
       ro:'oe-nem-li',
-      tr:'important'
+      tr:'important', tr_th:'สำคัญ'
     },
     {
       id:'w16',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w17',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w18',
@@ -113,13 +113,13 @@ const L47 = {
       id:'w19',
       en:'Bugün',
       ro:'bu-guen',
-      tr:'today'
+      tr:'today', tr_th:'วันนี้'
     },
     {
       id:'w20',
       en:'Görüş',
       ro:'goe-ruesh',
-      tr:'opinion'
+      tr:'opinion', tr_th:'ความคิดเห็น'
     }
   ],
   grammar:[],

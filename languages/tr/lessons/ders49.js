@@ -5,7 +5,7 @@ const L49 = {
       id:'w1',
       en:'İş',
       ro:'ish',
-      tr:'work'
+      tr:'work', tr_th:'งาน'
     },
     {
       id:'w2',
@@ -17,13 +17,13 @@ const L49 = {
       id:'w3',
       en:'Seyahat',
       ro:'se-ya-hat',
-      tr:'travel'
+      tr:'travel', tr_th:'การเดินทาง'
     },
     {
       id:'w4',
       en:'Para',
       ro:'pa-ra',
-      tr:'money'
+      tr:'money', tr_th:'เงิน'
     },
     {
       id:'w5',
@@ -41,31 +41,31 @@ const L49 = {
       id:'w7',
       en:'Arkadaş',
       ro:'ar-ka-dash',
-      tr:'friend'
+      tr:'friend', tr_th:'เพื่อน'
     },
     {
       id:'w8',
       en:'Görüş',
       ro:'goe-ruesh',
-      tr:'opinion'
+      tr:'opinion', tr_th:'ความคิดเห็น'
     },
     {
       id:'w9',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w10',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w11',
       en:'Tarih',
       ro:'ta-rih',
-      tr:'history'
+      tr:'history', tr_th:'ประวัติศาสตร์'
     },
     {
       id:'w12',
@@ -95,7 +95,7 @@ const L49 = {
       id:'w16',
       en:'Dil',
       ro:'dil',
-      tr:'language'
+      tr:'language', tr_th:'ภาษา'
     },
     {
       id:'w17',
@@ -107,7 +107,7 @@ const L49 = {
       id:'w18',
       en:'Önemli',
       ro:'oe-nem-li',
-      tr:'important'
+      tr:'important', tr_th:'สำคัญ'
     },
     {
       id:'w19',

@@ -5,7 +5,7 @@ const L16 = {
       id:'w1',
       en:'Ülke',
       ro:'uel-ke',
-      tr:'country',
+      tr:'country', tr_th:'ประเทศ',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,7 +13,7 @@ const L16 = {
       id:'w2',
       en:'Şehir',
       ro:'she-hir',
-      tr:'city'
+      tr:'city', tr_th:'เมือง'
     },
     {
       id:'w3',
@@ -37,31 +37,31 @@ const L16 = {
       id:'w6',
       en:'Dil',
       ro:'dil',
-      tr:'language'
+      tr:'language', tr_th:'ภาษา'
     },
     {
       id:'w7',
       en:'Öğrenci',
       ro:'oe-ren-ji',
-      tr:'student'
+      tr:'student', tr_th:'นักเรียน'
     },
     {
       id:'w8',
       en:'Arkadaş',
       ro:'ar-ka-dash',
-      tr:'friend'
+      tr:'friend', tr_th:'เพื่อน'
     },
     {
       id:'w9',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w10',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w11',
@@ -105,13 +105,13 @@ const L16 = {
           pronoun:'Örnek 1',
           form:'Ülke',
           example:'Ülke',
-          tr:'country'
+          tr:'country', tr_th:'ประเทศ'
         },
         {
           pronoun:'Örnek 2',
           form:'Şehir',
           example:'Şehir',
-          tr:'city'
+          tr:'city', tr_th:'เมือง'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,13 +121,13 @@ const L16 = {
     {
       id:'sp1',
       en:'Ülke',
-      tr:'country',
+      tr:'country', tr_th:'ประเทศ',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Şehir',
-      tr:'city',
+      tr:'city', tr_th:'เมือง',
       prompt:'Kullan'
     },
     {
@@ -159,12 +159,12 @@ const L16 = {
           speaker:'A',
           gender:'m',
           en:'Ülke',
-          tr:'country',
+          tr:'country', tr_th:'ประเทศ',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'uel-ke',
-              tr:'country',
+              tr:'country', tr_th:'ประเทศ',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L16 = {
           speaker:'B',
           gender:'f',
           en:'Şehir',
-          tr:'city',
+          tr:'city', tr_th:'เมือง',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'she-hir',
-              tr:'city',
+              tr:'city', tr_th:'เมือง',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -218,7 +218,7 @@ const L16 = {
             'Almanya'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L16 = {
             'Fransa'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

@@ -5,19 +5,19 @@ const L48 = {
       id:'w1',
       en:'Merhaba',
       ro:'mer-ha-ba',
-      tr:'hello'
+      tr:'hello', tr_th:'สวัสดี'
     },
     {
       id:'w2',
       en:'Teşekkürler',
       ro:'te-shek-kuer-ler',
-      tr:'thanks'
+      tr:'thanks', tr_th:'ขอบคุณ'
     },
     {
       id:'w3',
       en:'Lütfen',
       ro:'luet-fen',
-      tr:'please'
+      tr:'please', tr_th:'กรุณา'
     },
     {
       id:'w4',
@@ -71,43 +71,43 @@ const L48 = {
       id:'w12',
       en:'Görüşürüz.',
       ro:'goe-ru-shue-ruz',
-      tr:'see you'
+      tr:'see you', tr_th:'แล้วเจอกัน'
     },
     {
       id:'w13',
       en:'Hoşça kal',
       ro:'hosh-cha kal',
-      tr:'goodbye'
+      tr:'goodbye', tr_th:'ลาก่อน'
     },
     {
       id:'w14',
       en:'Nasılsın?',
       ro:'na-suhl-suhn',
-      tr:'how are you?'
+      tr:'how are you?', tr_th:'สบายดีไหม?'
     },
     {
       id:'w15',
       en:'İyiyim.',
       ro:'ii-yi-yim',
-      tr:'I am fine'
+      tr:'I am fine', tr_th:'สบายดี'
     },
     {
       id:'w16',
       en:'Adın ne?',
       ro:'a-duhn ne',
-      tr:'what is your name?'
+      tr:'what is your name?', tr_th:'คุณชื่ออะไร?'
     },
     {
       id:'w17',
       en:'Benim adım Ali.',
       ro:'be-nim a-duhm a-li',
-      tr:'my name is Ali'
+      tr:'my name is Ali', tr_th:'ฉันชื่ออาลี'
     },
     {
       id:'w18',
       en:'Tanıştığıma memnun oldum.',
       ro:'ta-nush-tu-uh-ma mem-nun ol-dum',
-      tr:'nice to meet you'
+      tr:'nice to meet you', tr_th:'ยินดีที่ได้รู้จัก'
     },
     {
       id:'w19',
@@ -119,7 +119,7 @@ const L48 = {
       id:'w20',
       en:'Nerede?',
       ro:'ne-re-de',
-      tr:'where?'
+      tr:'where?', tr_th:'ที่ไหน?'
     }
   ],
   grammar:[],

@@ -5,19 +5,19 @@ const L23 = {
       id:'w1',
       en:'Öğrenci',
       ro:'oe-ren-ji',
-      tr:'student'
+      tr:'student', tr_th:'นักเรียน'
     },
     {
       id:'w2',
       en:'Öğretmen',
       ro:'oe-ret-men',
-      tr:'teacher'
+      tr:'teacher', tr_th:'ครู'
     },
     {
       id:'w3',
       en:'Arkadaş',
       ro:'ar-ka-dash',
-      tr:'friend'
+      tr:'friend', tr_th:'เพื่อน'
     },
     {
       id:'w4',
@@ -29,7 +29,7 @@ const L23 = {
       id:'w5',
       en:'Doktor',
       ro:'dok-tor',
-      tr:'doctor'
+      tr:'doctor', tr_th:'หมอ'
     },
     {
       id:'w6',

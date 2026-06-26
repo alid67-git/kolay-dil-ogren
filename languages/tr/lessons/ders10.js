@@ -5,7 +5,7 @@ const L10 = {
       id:'w1',
       en:'İş',
       ro:'ish',
-      tr:'work',
+      tr:'work', tr_th:'งาน',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,7 +13,7 @@ const L10 = {
       id:'w2',
       en:'Ofis',
       ro:'o-fis',
-      tr:'office'
+      tr:'office', tr_th:'สำนักงาน'
     },
     {
       id:'w3',
@@ -49,13 +49,13 @@ const L10 = {
       id:'w8',
       en:'İnternet',
       ro:'in-ter-net',
-      tr:'internet'
+      tr:'internet', tr_th:'อินเทอร์เน็ต'
     },
     {
       id:'w9',
       en:'E-posta',
       ro:'e-pos-ta',
-      tr:'email'
+      tr:'email', tr_th:'อีเมล'
     },
     {
       id:'w10',
@@ -73,13 +73,13 @@ const L10 = {
       id:'w12',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w13',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w14',
@@ -105,13 +105,13 @@ const L10 = {
           pronoun:'Örnek 1',
           form:'İş',
           example:'İş',
-          tr:'work'
+          tr:'work', tr_th:'งาน'
         },
         {
           pronoun:'Örnek 2',
           form:'Ofis',
           example:'Ofis',
-          tr:'office'
+          tr:'office', tr_th:'สำนักงาน'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,13 +121,13 @@ const L10 = {
     {
       id:'sp1',
       en:'İş',
-      tr:'work',
+      tr:'work', tr_th:'งาน',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Ofis',
-      tr:'office',
+      tr:'office', tr_th:'สำนักงาน',
       prompt:'Kullan'
     },
     {
@@ -159,12 +159,12 @@ const L10 = {
           speaker:'A',
           gender:'m',
           en:'İş',
-          tr:'work',
+          tr:'work', tr_th:'งาน',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'ish',
-              tr:'work',
+              tr:'work', tr_th:'งาน',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L10 = {
           speaker:'B',
           gender:'f',
           en:'Ofis',
-          tr:'office',
+          tr:'office', tr_th:'สำนักงาน',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'o-fis',
-              tr:'office',
+              tr:'office', tr_th:'สำนักงาน',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -218,7 +218,7 @@ const L10 = {
             'Toplantı'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L10 = {
             'Sözleşme'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

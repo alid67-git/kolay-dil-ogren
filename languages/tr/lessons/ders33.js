@@ -11,7 +11,7 @@ const L33 = {
       id:'w2',
       en:'Yağmur',
       ro:'yaa-mur',
-      tr:'rain'
+      tr:'rain', tr_th:'ฝน'
     },
     {
       id:'w3',
@@ -71,7 +71,7 @@ const L33 = {
       id:'w12',
       en:'Hava',
       ro:'ha-va',
-      tr:'weather'
+      tr:'weather', tr_th:'สภาพอากาศ'
     },
     {
       id:'w13',

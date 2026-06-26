@@ -5,13 +5,13 @@ const L21 = {
       id:'w1',
       en:'Okumak',
       ro:'o-ku-mak',
-      tr:'to read'
+      tr:'to read', tr_th:'อ่าน'
     },
     {
       id:'w2',
       en:'Yazmak',
       ro:'yaz-mak',
-      tr:'to write'
+      tr:'to write', tr_th:'เขียน'
     },
     {
       id:'w3',
@@ -95,7 +95,7 @@ const L21 = {
       id:'w16',
       en:'Yardım etmek',
       ro:'yar-duhm et-mek',
-      tr:'to help'
+      tr:'to help', tr_th:'ช่วย'
     },
     {
       id:'w17',
@@ -107,19 +107,19 @@ const L21 = {
       id:'w18',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w19',
       en:'Öğrenmek',
       ro:'oe-ren-mek',
-      tr:'to learn'
+      tr:'to learn', tr_th:'เรียน'
     },
     {
       id:'w20',
       en:'Satın almak',
       ro:'sa-tuhrn al-mak',
-      tr:'to buy'
+      tr:'to buy', tr_th:'ซื้อ'
     }
   ],
   grammar:[],

@@ -5,7 +5,7 @@ const L39 = {
       id:'w1',
       en:'Görüş',
       ro:'goe-ruesh',
-      tr:'opinion'
+      tr:'opinion', tr_th:'ความคิดเห็น'
     },
     {
       id:'w2',
@@ -29,7 +29,7 @@ const L39 = {
       id:'w5',
       en:'Önemli',
       ro:'oe-nem-li',
-      tr:'important'
+      tr:'important', tr_th:'สำคัญ'
     },
     {
       id:'w6',
@@ -65,7 +65,7 @@ const L39 = {
       id:'w11',
       en:'Güzel',
       ro:'gue-zel',
-      tr:'beautiful'
+      tr:'beautiful', tr_th:'สวย'
     },
     {
       id:'w12',
@@ -83,13 +83,13 @@ const L39 = {
       id:'w14',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w15',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w16',

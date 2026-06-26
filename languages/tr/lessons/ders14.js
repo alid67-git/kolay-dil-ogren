@@ -5,7 +5,7 @@ const L14 = {
       id:'w1',
       en:'Ev',
       ro:'ev',
-      tr:'house',
+      tr:'house', tr_th:'บ้าน',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,13 +13,13 @@ const L14 = {
       id:'w2',
       en:'Daire',
       ro:'da-i-re',
-      tr:'apartment'
+      tr:'apartment', tr_th:'อพาร์ตเมนต์'
     },
     {
       id:'w3',
       en:'Oda',
       ro:'o-da',
-      tr:'room'
+      tr:'room', tr_th:'ห้อง'
     },
     {
       id:'w4',
@@ -43,7 +43,7 @@ const L14 = {
       id:'w7',
       en:'Masa',
       ro:'ma-sa',
-      tr:'table'
+      tr:'table', tr_th:'โต๊ะ'
     },
     {
       id:'w8',
@@ -61,7 +61,7 @@ const L14 = {
       id:'w10',
       en:'Anahtar',
       ro:'a-nah-tar',
-      tr:'key'
+      tr:'key', tr_th:'กุญแจ'
     },
     {
       id:'w11',
@@ -91,7 +91,7 @@ const L14 = {
       id:'w15',
       en:'Fiyat',
       ro:'fi-yat',
-      tr:'price'
+      tr:'price', tr_th:'ราคา'
     }
   ],
   grammar:[
@@ -105,13 +105,13 @@ const L14 = {
           pronoun:'Örnek 1',
           form:'Ev',
           example:'Ev',
-          tr:'house'
+          tr:'house', tr_th:'บ้าน'
         },
         {
           pronoun:'Örnek 2',
           form:'Daire',
           example:'Daire',
-          tr:'apartment'
+          tr:'apartment', tr_th:'อพาร์ตเมนต์'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,19 +121,19 @@ const L14 = {
     {
       id:'sp1',
       en:'Ev',
-      tr:'house',
+      tr:'house', tr_th:'บ้าน',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Daire',
-      tr:'apartment',
+      tr:'apartment', tr_th:'อพาร์ตเมนต์',
       prompt:'Kullan'
     },
     {
       id:'sp3',
       en:'Oda',
-      tr:'room',
+      tr:'room', tr_th:'ห้อง',
       prompt:'Cümle kur'
     },
     {
@@ -159,12 +159,12 @@ const L14 = {
           speaker:'A',
           gender:'m',
           en:'Ev',
-          tr:'house',
+          tr:'house', tr_th:'บ้าน',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'ev',
-              tr:'house',
+              tr:'house', tr_th:'บ้าน',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L14 = {
           speaker:'B',
           gender:'f',
           en:'Daire',
-          tr:'apartment',
+          tr:'apartment', tr_th:'อพาร์ตเมนต์',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'da-i-re',
-              tr:'apartment',
+              tr:'apartment', tr_th:'อพาร์ตเมนต์',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -189,7 +189,7 @@ const L14 = {
           speaker:'A',
           gender:'m',
           en:'Oda',
-          tr:'room',
+          tr:'room', tr_th:'ห้อง',
           bd:[]
         },
         {
@@ -218,7 +218,7 @@ const L14 = {
             'Mutfak'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L14 = {
             'Banyo'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

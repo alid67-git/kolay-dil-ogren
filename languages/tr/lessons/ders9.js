@@ -5,7 +5,7 @@ const L9 = {
       id:'w1',
       en:'Otel',
       ro:'o-tel',
-      tr:'hotel',
+      tr:'hotel', tr_th:'โรงแรม',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,25 +13,25 @@ const L9 = {
       id:'w2',
       en:'Oda',
       ro:'o-da',
-      tr:'room'
+      tr:'room', tr_th:'ห้อง'
     },
     {
       id:'w3',
       en:'Anahtar',
       ro:'a-nah-tar',
-      tr:'key'
+      tr:'key', tr_th:'กุญแจ'
     },
     {
       id:'w4',
       en:'Fiyat',
       ro:'fi-yat',
-      tr:'price'
+      tr:'price', tr_th:'ราคา'
     },
     {
       id:'w5',
       en:'Kart',
       ro:'kart',
-      tr:'card'
+      tr:'card', tr_th:'บัตร'
     },
     {
       id:'w6',
@@ -43,13 +43,13 @@ const L9 = {
       id:'w7',
       en:'Bugün',
       ro:'bu-guen',
-      tr:'today'
+      tr:'today', tr_th:'วันนี้'
     },
     {
       id:'w8',
       en:'Yarın',
       ro:'ya-ruhn',
-      tr:'tomorrow'
+      tr:'tomorrow', tr_th:'พรุ่งนี้'
     },
     {
       id:'w9',
@@ -67,25 +67,25 @@ const L9 = {
       id:'w11',
       en:'Lütfen',
       ro:'luet-fen',
-      tr:'please'
+      tr:'please', tr_th:'กรุณา'
     },
     {
       id:'w12',
       en:'Teşekkürler',
       ro:'te-shek-kuer-ler',
-      tr:'thanks'
+      tr:'thanks', tr_th:'ขอบคุณ'
     },
     {
       id:'w13',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w14',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w15',
@@ -105,13 +105,13 @@ const L9 = {
           pronoun:'Örnek 1',
           form:'Otel',
           example:'Otel',
-          tr:'hotel'
+          tr:'hotel', tr_th:'โรงแรม'
         },
         {
           pronoun:'Örnek 2',
           form:'Oda',
           example:'Oda',
-          tr:'room'
+          tr:'room', tr_th:'ห้อง'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,31 +121,31 @@ const L9 = {
     {
       id:'sp1',
       en:'Otel',
-      tr:'hotel',
+      tr:'hotel', tr_th:'โรงแรม',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Oda',
-      tr:'room',
+      tr:'room', tr_th:'ห้อง',
       prompt:'Kullan'
     },
     {
       id:'sp3',
       en:'Anahtar',
-      tr:'key',
+      tr:'key', tr_th:'กุญแจ',
       prompt:'Cümle kur'
     },
     {
       id:'sp4',
       en:'Fiyat',
-      tr:'price',
+      tr:'price', tr_th:'ราคา',
       prompt:'Soru sor'
     },
     {
       id:'sp5',
       en:'Kart',
-      tr:'card',
+      tr:'card', tr_th:'บัตร',
       prompt:'Konuşma pratiği'
     }
   ],
@@ -159,12 +159,12 @@ const L9 = {
           speaker:'A',
           gender:'m',
           en:'Otel',
-          tr:'hotel',
+          tr:'hotel', tr_th:'โรงแรม',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'o-tel',
-              tr:'hotel',
+              tr:'hotel', tr_th:'โรงแรม',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L9 = {
           speaker:'B',
           gender:'f',
           en:'Oda',
-          tr:'room',
+          tr:'room', tr_th:'ห้อง',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'o-da',
-              tr:'room',
+              tr:'room', tr_th:'ห้อง',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -189,14 +189,14 @@ const L9 = {
           speaker:'A',
           gender:'m',
           en:'Anahtar',
-          tr:'key',
+          tr:'key', tr_th:'กุญแจ',
           bd:[]
         },
         {
           speaker:'B',
           gender:'f',
           en:'Fiyat',
-          tr:'price',
+          tr:'price', tr_th:'ราคา',
           bd:[]
         }
       ]
@@ -218,7 +218,7 @@ const L9 = {
             'Fiyat'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L9 = {
             'Kart'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

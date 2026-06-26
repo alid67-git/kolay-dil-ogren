@@ -65,13 +65,13 @@ const L26 = {
       id:'w11',
       en:'Renk',
       ro:'renk',
-      tr:'color'
+      tr:'color', tr_th:'สี'
     },
     {
       id:'w12',
       en:'Güzel',
       ro:'gue-zel',
-      tr:'beautiful'
+      tr:'beautiful', tr_th:'สวย'
     },
     {
       id:'w13',

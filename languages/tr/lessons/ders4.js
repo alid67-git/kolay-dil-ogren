@@ -5,7 +5,7 @@ const L4 = {
       id:'w1',
       en:'Saat kaç?',
       ro:'sa-at kach',
-      tr:'what time is it?',
+      tr:'what time is it?', tr_th:'กี่โมงแล้ว?',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,19 +13,19 @@ const L4 = {
       id:'w2',
       en:'Bugün',
       ro:'bu-guen',
-      tr:'today'
+      tr:'today', tr_th:'วันนี้'
     },
     {
       id:'w3',
       en:'Yarın',
       ro:'ya-ruhn',
-      tr:'tomorrow'
+      tr:'tomorrow', tr_th:'พรุ่งนี้'
     },
     {
       id:'w4',
       en:'Dün',
       ro:'duen',
-      tr:'yesterday'
+      tr:'yesterday', tr_th:'เมื่อวาน'
     },
     {
       id:'w5',
@@ -105,13 +105,13 @@ const L4 = {
           pronoun:'Örnek 1',
           form:'Saat kaç?',
           example:'Saat kaç?',
-          tr:'what time is it?'
+          tr:'what time is it?', tr_th:'กี่โมงแล้ว?'
         },
         {
           pronoun:'Örnek 2',
           form:'Bugün',
           example:'Bugün',
-          tr:'today'
+          tr:'today', tr_th:'วันนี้'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,25 +121,25 @@ const L4 = {
     {
       id:'sp1',
       en:'Saat kaç?',
-      tr:'what time is it?',
+      tr:'what time is it?', tr_th:'กี่โมงแล้ว?',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Bugün',
-      tr:'today',
+      tr:'today', tr_th:'วันนี้',
       prompt:'Kullan'
     },
     {
       id:'sp3',
       en:'Yarın',
-      tr:'tomorrow',
+      tr:'tomorrow', tr_th:'พรุ่งนี้',
       prompt:'Cümle kur'
     },
     {
       id:'sp4',
       en:'Dün',
-      tr:'yesterday',
+      tr:'yesterday', tr_th:'เมื่อวาน',
       prompt:'Soru sor'
     },
     {
@@ -159,12 +159,12 @@ const L4 = {
           speaker:'A',
           gender:'m',
           en:'Saat kaç?',
-          tr:'what time is it?',
+          tr:'what time is it?', tr_th:'กี่โมงแล้ว?',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'sa-at kach',
-              tr:'what time is it?',
+              tr:'what time is it?', tr_th:'กี่โมงแล้ว?',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L4 = {
           speaker:'B',
           gender:'f',
           en:'Bugün',
-          tr:'today',
+          tr:'today', tr_th:'วันนี้',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'bu-guen',
-              tr:'today',
+              tr:'today', tr_th:'วันนี้',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -189,14 +189,14 @@ const L4 = {
           speaker:'A',
           gender:'m',
           en:'Yarın',
-          tr:'tomorrow',
+          tr:'tomorrow', tr_th:'พรุ่งนี้',
           bd:[]
         },
         {
           speaker:'B',
           gender:'f',
           en:'Dün',
-          tr:'yesterday',
+          tr:'yesterday', tr_th:'เมื่อวาน',
           bd:[]
         }
       ]
@@ -218,7 +218,7 @@ const L4 = {
             'Dün'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L4 = {
             'Pazartesi'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

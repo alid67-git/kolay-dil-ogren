@@ -5,80 +5,80 @@ const L1 = {
       id:'w1',
       en:'Merhaba',
       ro:'mer-ha-ba',
-      tr:'hello',
-      tip:'En temel selamlaşma ifadesi.'
+      tr:'hello', tr_th:'สวัสดี',
+      tip:'En temel selamlaşma ifadesi.', tip_th:'สำนวนทักทายพื้นฐานที่สุด'
     },
     {
       id:'w2',
       en:'Günaydın',
       ro:'gue-naidun',
-      tr:'good morning'
+      tr:'good morning', tr_th:'สวัสดีตอนเช้า'
     },
     {
       id:'w3',
       en:'İyi akşamlar',
       ro:'ii ak-sham-lar',
-      tr:'good evening'
+      tr:'good evening', tr_th:'สวัสดีตอนเย็น'
     },
     {
       id:'w4',
       en:'Hoşça kal',
       ro:'hosh-cha kal',
-      tr:'goodbye'
+      tr:'goodbye', tr_th:'ลาก่อน'
     },
     {
       id:'w5',
       en:'Teşekkürler',
       ro:'te-shek-kuer-ler',
-      tr:'thanks'
+      tr:'thanks', tr_th:'ขอบคุณ'
     },
     {
       id:'w6',
       en:'Lütfen',
       ro:'luet-fen',
-      tr:'please'
+      tr:'please', tr_th:'กรุณา'
     },
     {
       id:'w7',
       en:'Evet',
       ro:'e-vet',
-      tr:'yes'
+      tr:'yes', tr_th:'ใช่'
     },
     {
       id:'w8',
       en:'Hayır',
       ro:'ha-yuhr',
-      tr:'no'
+      tr:'no', tr_th:'ไม่'
     },
     {
       id:'w9',
       en:'Adın ne?',
       ro:'a-duhn ne',
-      tr:'what is your name?'
+      tr:'what is your name?', tr_th:'คุณชื่ออะไร?'
     },
     {
       id:'w10',
       en:'Benim adım Ali.',
       ro:'be-nim a-duhm a-li',
-      tr:'my name is Ali'
+      tr:'my name is Ali', tr_th:'ฉันชื่ออาลี'
     },
     {
       id:'w11',
       en:'Tanıştığıma memnun oldum.',
       ro:'ta-nush-tu-uh-ma mem-nun ol-dum',
-      tr:'nice to meet you'
+      tr:'nice to meet you', tr_th:'ยินดีที่ได้รู้จัก'
     },
     {
       id:'w12',
       en:'Nasılsın?',
       ro:'na-suhl-suhn',
-      tr:'how are you?'
+      tr:'how are you?', tr_th:'สบายดีไหม?'
     },
     {
       id:'w13',
       en:'İyiyim.',
       ro:'ii-yi-yim',
-      tr:'I am fine'
+      tr:'I am fine', tr_th:'สบายดี'
     }
   ],
   grammar:[
@@ -94,25 +94,25 @@ const L1 = {
           pronoun:'Genel',
           form:'Merhaba',
           example:'Merhaba!',
-          tr:'hello'
+          tr:'hello', tr_th:'สวัสดี'
         },
         {
           pronoun:'Sabah',
           form:'Günaydın',
           example:'Günaydın!',
-          tr:'good morning'
+          tr:'good morning', tr_th:'สวัสดีตอนเช้า'
         },
         {
           pronoun:'Akşam',
           form:'İyi akşamlar',
           example:'İyi akşamlar!',
-          tr:'good evening'
+          tr:'good evening', tr_th:'สวัสดีตอนเย็น'
         },
         {
           pronoun:'Veda',
           form:'Hoşça kal',
           example:'Hoşça kal.',
-          tr:'goodbye'
+          tr:'goodbye', tr_th:'ลาก่อน'
         }
       ],
       note:'Aynı kalıpları farklı kişilerle sesli tekrar ederek otomatikleştir.'
@@ -129,19 +129,19 @@ const L1 = {
           pronoun:'Soru',
           form:'Adın ne?',
           example:'Adın ne?',
-          tr:'what is your name?'
+          tr:'what is your name?', tr_th:'คุณชื่ออะไร?'
         },
         {
           pronoun:'Cevap',
           form:'Benim adım Ali.',
           example:'Benim adım Ali.',
-          tr:'my name is Ali'
+          tr:'my name is Ali', tr_th:'ฉันชื่ออาลี'
         },
         {
           pronoun:'Nezaket',
           form:'Teşekkürler',
           example:'Teşekkürler.',
-          tr:'thanks'
+          tr:'thanks', tr_th:'ขอบคุณ'
         }
       ],
       note:'Ali erkek öğrenci örneklerinde birinci tekil konuşur formu kullanılır.'
@@ -151,31 +151,31 @@ const L1 = {
     {
       id:'sp1',
       en:'Merhaba!',
-      tr:'hello',
+      tr:'hello', tr_th:'สวัสดี',
       prompt:'Selam ver'
     },
     {
       id:'sp2',
       en:'Benim adım Ali.',
-      tr:'my name is Ali',
+      tr:'my name is Ali', tr_th:'ฉันชื่ออาลี',
       prompt:'Kendini tanıt'
     },
     {
       id:'sp3',
       en:'Nasılsın?',
-      tr:'how are you?',
+      tr:'how are you?', tr_th:'สบายดีไหม?',
       prompt:'Hal hatır sor'
     },
     {
       id:'sp4',
       en:'İyiyim, teşekkürler.',
-      tr:'I am fine, thanks',
+      tr:'I am fine, thanks', tr_th:'สบายดี ขอบคุณ',
       prompt:'Cevap ver'
     },
     {
       id:'sp5',
       en:'Hoşça kal.',
-      tr:'goodbye',
+      tr:'goodbye', tr_th:'ลาก่อน',
       prompt:'Vedalaş'
     }
   ],
@@ -189,12 +189,12 @@ const L1 = {
           speaker:'A',
           gender:'m',
           en:'Merhaba!',
-          tr:'hello!',
+          tr:'hello!', tr_th:'สวัสดี!',
           gramNote:'Ali konuşmayı başlatıyor.',
           bd:[
             {
               ro:'mer-ha-ba',
-              tr:'hello',
+              tr:'hello', tr_th:'สวัสดี',
               role:'greeting',
               note:'Genel selamlaşma.'
             }
@@ -204,12 +204,12 @@ const L1 = {
           speaker:'B',
           gender:'f',
           en:'Günaydın!',
-          tr:'good morning!',
+          tr:'good morning!', tr_th:'สวัสดีตอนเช้า!',
           gramNote:'Sabah selamı.',
           bd:[
             {
               ro:'gue-naidun',
-              tr:'good morning',
+              tr:'good morning', tr_th:'สวัสดีตอนเช้า',
               role:'greeting',
               note:'Sabah saatlerinde kullanılır.'
             }
@@ -219,21 +219,21 @@ const L1 = {
           speaker:'A',
           gender:'m',
           en:'Adın ne?',
-          tr:'what is your name?',
+          tr:'what is your name?', tr_th:'คุณชื่ออะไร?',
           bd:[]
         },
         {
           speaker:'B',
           gender:'f',
           en:'Benim adım Anna.',
-          tr:'my name is Anna',
+          tr:'my name is Anna', tr_th:'ฉันชื่อแอนนา',
           bd:[]
         },
         {
           speaker:'A',
           gender:'m',
           en:'Tanıştığıma memnun oldum.',
-          tr:'nice to meet you',
+          tr:'nice to meet you', tr_th:'ยินดีที่ได้รู้จัก',
           gramNote:'Tanışma kalıbı — yeni biriyle tanışınca.',
           gramNote_en:'Meeting phrase when you meet someone new. Tanışmak = to meet; -dığıma = that I met; memnun = pleased; oldum = I am (pleased).',
           gramNote_de:'Begrüßung beim Kennenlernen. Tanışmak = kennenlernen; memnun = erfreut; oldum = ich bin.',

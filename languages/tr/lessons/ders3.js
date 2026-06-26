@@ -65,25 +65,25 @@ const L3 = {
       id:'w11',
       en:'Para',
       ro:'pa-ra',
-      tr:'money'
+      tr:'money', tr_th:'เงิน'
     },
     {
       id:'w12',
       en:'Fiyat',
       ro:'fi-yat',
-      tr:'price'
+      tr:'price', tr_th:'ราคา'
     },
     {
       id:'w13',
       en:'Ucuz',
       ro:'u-juz',
-      tr:'cheap'
+      tr:'cheap', tr_th:'ถูก'
     },
     {
       id:'w14',
       en:'Pahalı',
       ro:'pa-ha-luh',
-      tr:'expensive'
+      tr:'expensive', tr_th:'แพง'
     },
     {
       id:'w15',
@@ -113,7 +113,7 @@ const L3 = {
       id:'w19',
       en:'Kart',
       ro:'kart',
-      tr:'card'
+      tr:'card', tr_th:'บัตร'
     }
   ],
   grammar:[
@@ -287,7 +287,7 @@ const L3 = {
             'Fiyat'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         }
       ]
     }

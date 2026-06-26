@@ -95,7 +95,7 @@ const L40 = {
       id:'w16',
       en:'Renk',
       ro:'renk',
-      tr:'color'
+      tr:'color', tr_th:'สี'
     },
     {
       id:'w17',
@@ -107,19 +107,19 @@ const L40 = {
       id:'w18',
       en:'Su',
       ro:'su',
-      tr:'water'
+      tr:'water', tr_th:'น้ำ'
     },
     {
       id:'w19',
       en:'Ev',
       ro:'ev',
-      tr:'house'
+      tr:'house', tr_th:'บ้าน'
     },
     {
       id:'w20',
       en:'Arkadaş',
       ro:'ar-ka-dash',
-      tr:'friend'
+      tr:'friend', tr_th:'เพื่อน'
     }
   ],
   grammar:[],

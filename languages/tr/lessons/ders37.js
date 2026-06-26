@@ -17,7 +17,7 @@ const L37 = {
       id:'w3',
       en:'Nerede?',
       ro:'ne-re-de',
-      tr:'where?'
+      tr:'where?', tr_th:'ที่ไหน?'
     },
     {
       id:'w4',
@@ -47,13 +47,13 @@ const L37 = {
       id:'w8',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w9',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w10',
@@ -89,31 +89,31 @@ const L37 = {
       id:'w15',
       en:'Lütfen',
       ro:'luet-fen',
-      tr:'please'
+      tr:'please', tr_th:'กรุณา'
     },
     {
       id:'w16',
       en:'Teşekkürler',
       ro:'te-shek-kuer-ler',
-      tr:'thanks'
+      tr:'thanks', tr_th:'ขอบคุณ'
     },
     {
       id:'w17',
       en:'Merhaba',
       ro:'mer-ha-ba',
-      tr:'hello'
+      tr:'hello', tr_th:'สวัสดี'
     },
     {
       id:'w18',
       en:'Adın ne?',
       ro:'a-duhn ne',
-      tr:'what is your name?'
+      tr:'what is your name?', tr_th:'คุณชื่ออะไร?'
     },
     {
       id:'w19',
       en:'Nasılsın?',
       ro:'na-suhl-suhn',
-      tr:'how are you?'
+      tr:'how are you?', tr_th:'สบายดีไหม?'
     },
     {
       id:'w20',

@@ -5,43 +5,43 @@ const L44 = {
       id:'w1',
       en:'Merhaba',
       ro:'mer-ha-ba',
-      tr:'hello'
+      tr:'hello', tr_th:'สวัสดี'
     },
     {
       id:'w2',
       en:'Nasılsın?',
       ro:'na-suhl-suhn',
-      tr:'how are you?'
+      tr:'how are you?', tr_th:'สบายดีไหม?'
     },
     {
       id:'w3',
       en:'İyiyim.',
       ro:'ii-yi-yim',
-      tr:'I am fine'
+      tr:'I am fine', tr_th:'สบายดี'
     },
     {
       id:'w4',
       en:'Teşekkürler',
       ro:'te-shek-kuer-ler',
-      tr:'thanks'
+      tr:'thanks', tr_th:'ขอบคุณ'
     },
     {
       id:'w5',
       en:'Lütfen',
       ro:'luet-fen',
-      tr:'please'
+      tr:'please', tr_th:'กรุณา'
     },
     {
       id:'w6',
       en:'Arkadaş',
       ro:'ar-ka-dash',
-      tr:'friend'
+      tr:'friend', tr_th:'เพื่อน'
     },
     {
       id:'w7',
       en:'Parti',
       ro:'par-ti',
-      tr:'party'
+      tr:'party', tr_th:'ปาร์ตี้'
     },
     {
       id:'w8',
@@ -59,25 +59,25 @@ const L44 = {
       id:'w10',
       en:'Müzik',
       ro:'mue-zik',
-      tr:'music'
+      tr:'music', tr_th:'ดนตรี'
     },
     {
       id:'w11',
       en:'Sinema',
       ro:'si-ne-ma',
-      tr:'cinema'
+      tr:'cinema', tr_th:'โรงภาพยนตร์'
     },
     {
       id:'w12',
       en:'Görüşürüz.',
       ro:'goe-ru-shue-ruz',
-      tr:'see you'
+      tr:'see you', tr_th:'แล้วเจอกัน'
     },
     {
       id:'w13',
       en:'Hoşça kal',
       ro:'hosh-cha kal',
-      tr:'goodbye'
+      tr:'goodbye', tr_th:'ลาก่อน'
     },
     {
       id:'w14',
@@ -95,7 +95,7 @@ const L44 = {
       id:'w16',
       en:'Görüş',
       ro:'goe-ruesh',
-      tr:'opinion'
+      tr:'opinion', tr_th:'ความคิดเห็น'
     },
     {
       id:'w17',
@@ -113,13 +113,13 @@ const L44 = {
       id:'w19',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w20',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     }
   ],
   grammar:[],

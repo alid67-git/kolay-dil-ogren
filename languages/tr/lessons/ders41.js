@@ -5,19 +5,19 @@ const L41 = {
       id:'w1',
       en:'Doktor',
       ro:'dok-tor',
-      tr:'doctor'
+      tr:'doctor', tr_th:'หมอ'
     },
     {
       id:'w2',
       en:'Hastane',
       ro:'has-ta-ne',
-      tr:'hospital'
+      tr:'hospital', tr_th:'โรงพยาบาล'
     },
     {
       id:'w3',
       en:'Eczane',
       ro:'ej-za-ne',
-      tr:'pharmacy'
+      tr:'pharmacy', tr_th:'ร้านขายยา'
     },
     {
       id:'w4',
@@ -77,7 +77,7 @@ const L41 = {
       id:'w13',
       en:'Yorgun',
       ro:'yor-gun',
-      tr:'tired'
+      tr:'tired', tr_th:'เหนื่อย'
     },
     {
       id:'w14',
@@ -107,19 +107,19 @@ const L41 = {
       id:'w18',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w19',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w20',
       en:'Yardım etmek',
       ro:'yar-duhm et-mek',
-      tr:'to help'
+      tr:'to help', tr_th:'ช่วย'
     }
   ],
   grammar:[],

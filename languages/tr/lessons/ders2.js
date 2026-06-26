@@ -5,19 +5,19 @@ const L2 = {
       id:'w1',
       en:'Ev',
       ro:'ev',
-      tr:'house'
+      tr:'house', tr_th:'บ้าน'
     },
     {
       id:'w2',
       en:'Okul',
       ro:'o-kul',
-      tr:'school'
+      tr:'school', tr_th:'โรงเรียน'
     },
     {
       id:'w3',
       en:'Ofis',
       ro:'o-fis',
-      tr:'office'
+      tr:'office', tr_th:'สำนักงาน'
     },
     {
       id:'w4',
@@ -29,7 +29,7 @@ const L2 = {
       id:'w5',
       en:'Otel',
       ro:'o-tel',
-      tr:'hotel'
+      tr:'hotel', tr_th:'โรงแรม'
     },
     {
       id:'w6',

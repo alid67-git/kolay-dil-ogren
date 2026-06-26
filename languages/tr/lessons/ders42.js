@@ -5,19 +5,19 @@ const L42 = {
       id:'w1',
       en:'Eğitim',
       ro:'e-i-tim',
-      tr:'education'
+      tr:'education', tr_th:'การศึกษา'
     },
     {
       id:'w2',
       en:'Okul',
       ro:'o-kul',
-      tr:'school'
+      tr:'school', tr_th:'โรงเรียน'
     },
     {
       id:'w3',
       en:'Üniversite',
       ro:'ue-ni-ver-si-te',
-      tr:'university'
+      tr:'university', tr_th:'มหาวิทยาลัย'
     },
     {
       id:'w4',
@@ -35,49 +35,49 @@ const L42 = {
       id:'w6',
       en:'Öğrenci',
       ro:'oe-ren-ji',
-      tr:'student'
+      tr:'student', tr_th:'นักเรียน'
     },
     {
       id:'w7',
       en:'Öğretmen',
       ro:'oe-ret-men',
-      tr:'teacher'
+      tr:'teacher', tr_th:'ครู'
     },
     {
       id:'w8',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w9',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w10',
       en:'Okumak',
       ro:'o-ku-mak',
-      tr:'to read'
+      tr:'to read', tr_th:'อ่าน'
     },
     {
       id:'w11',
       en:'Yazmak',
       ro:'yaz-mak',
-      tr:'to write'
+      tr:'to write', tr_th:'เขียน'
     },
     {
       id:'w12',
       en:'Öğrenmek',
       ro:'oe-ren-mek',
-      tr:'to learn'
+      tr:'to learn', tr_th:'เรียน'
     },
     {
       id:'w13',
       en:'Dil',
       ro:'dil',
-      tr:'language'
+      tr:'language', tr_th:'ภาษา'
     },
     {
       id:'w14',
@@ -95,7 +95,7 @@ const L42 = {
       id:'w16',
       en:'Tarih',
       ro:'ta-rih',
-      tr:'history'
+      tr:'history', tr_th:'ประวัติศาสตร์'
     },
     {
       id:'w17',
@@ -113,7 +113,7 @@ const L42 = {
       id:'w19',
       en:'Önemli',
       ro:'oe-nem-li',
-      tr:'important'
+      tr:'important', tr_th:'สำคัญ'
     },
     {
       id:'w20',

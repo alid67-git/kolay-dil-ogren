@@ -29,7 +29,7 @@ const L46 = {
       id:'w5',
       en:'Yardım etmek',
       ro:'yar-duhm et-mek',
-      tr:'to help'
+      tr:'to help', tr_th:'ช่วย'
     },
     {
       id:'w6',
@@ -41,13 +41,13 @@ const L46 = {
       id:'w7',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w8',
       en:'Satın almak',
       ro:'sa-tuhrn al-mak',
-      tr:'to buy'
+      tr:'to buy', tr_th:'ซื้อ'
     },
     {
       id:'w9',
@@ -71,13 +71,13 @@ const L46 = {
       id:'w12',
       en:'Okumak',
       ro:'o-ku-mak',
-      tr:'to read'
+      tr:'to read', tr_th:'อ่าน'
     },
     {
       id:'w13',
       en:'Yazmak',
       ro:'yaz-mak',
-      tr:'to write'
+      tr:'to write', tr_th:'เขียน'
     },
     {
       id:'w14',
@@ -113,13 +113,13 @@ const L46 = {
       id:'w19',
       en:'Öğrenmek',
       ro:'oe-ren-mek',
-      tr:'to learn'
+      tr:'to learn', tr_th:'เรียน'
     },
     {
       id:'w20',
       en:'Aramak',
       ro:'a-ra-mak',
-      tr:'to call'
+      tr:'to call', tr_th:'โทร'
     }
   ],
   grammar:[],

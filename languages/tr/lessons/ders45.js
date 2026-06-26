@@ -5,13 +5,13 @@ const L45 = {
       id:'w1',
       en:'Ülke',
       ro:'uel-ke',
-      tr:'country'
+      tr:'country', tr_th:'ประเทศ'
     },
     {
       id:'w2',
       en:'Şehir',
       ro:'she-hir',
-      tr:'city'
+      tr:'city', tr_th:'เมือง'
     },
     {
       id:'w3',
@@ -95,7 +95,7 @@ const L45 = {
       id:'w16',
       en:'Seyahat',
       ro:'se-ya-hat',
-      tr:'travel'
+      tr:'travel', tr_th:'การเดินทาง'
     },
     {
       id:'w17',

@@ -5,7 +5,7 @@ const L18 = {
       id:'w1',
       en:'Hava',
       ro:'ha-va',
-      tr:'weather',
+      tr:'weather', tr_th:'สภาพอากาศ',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,7 +13,7 @@ const L18 = {
       id:'w2',
       en:'Yağmur',
       ro:'yaa-mur',
-      tr:'rain'
+      tr:'rain', tr_th:'ฝน'
     },
     {
       id:'w3',
@@ -49,13 +49,13 @@ const L18 = {
       id:'w8',
       en:'Bugün',
       ro:'bu-guen',
-      tr:'today'
+      tr:'today', tr_th:'วันนี้'
     },
     {
       id:'w9',
       en:'Yarın',
       ro:'ya-ruhn',
-      tr:'tomorrow'
+      tr:'tomorrow', tr_th:'พรุ่งนี้'
     },
     {
       id:'w10',
@@ -73,25 +73,25 @@ const L18 = {
       id:'w12',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w13',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w14',
       en:'Şehir',
       ro:'she-hir',
-      tr:'city'
+      tr:'city', tr_th:'เมือง'
     },
     {
       id:'w15',
       en:'Seyahat',
       ro:'se-ya-hat',
-      tr:'travel'
+      tr:'travel', tr_th:'การเดินทาง'
     }
   ],
   grammar:[
@@ -105,13 +105,13 @@ const L18 = {
           pronoun:'Örnek 1',
           form:'Hava',
           example:'Hava',
-          tr:'weather'
+          tr:'weather', tr_th:'สภาพอากาศ'
         },
         {
           pronoun:'Örnek 2',
           form:'Yağmur',
           example:'Yağmur',
-          tr:'rain'
+          tr:'rain', tr_th:'ฝน'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,13 +121,13 @@ const L18 = {
     {
       id:'sp1',
       en:'Hava',
-      tr:'weather',
+      tr:'weather', tr_th:'สภาพอากาศ',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Yağmur',
-      tr:'rain',
+      tr:'rain', tr_th:'ฝน',
       prompt:'Kullan'
     },
     {
@@ -159,12 +159,12 @@ const L18 = {
           speaker:'A',
           gender:'m',
           en:'Hava',
-          tr:'weather',
+          tr:'weather', tr_th:'สภาพอากาศ',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'ha-va',
-              tr:'weather',
+              tr:'weather', tr_th:'สภาพอากาศ',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L18 = {
           speaker:'B',
           gender:'f',
           en:'Yağmur',
-          tr:'rain',
+          tr:'rain', tr_th:'ฝน',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'yaa-mur',
-              tr:'rain',
+              tr:'rain', tr_th:'ฝน',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -218,7 +218,7 @@ const L18 = {
             'Güneş'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L18 = {
             'Rüzgar'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

@@ -5,7 +5,7 @@ const L7 = {
       id:'w1',
       en:'Nerede?',
       ro:'ne-re-de',
-      tr:'where?',
+      tr:'where?', tr_th:'ที่ไหน?',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,7 +13,7 @@ const L7 = {
       id:'w2',
       en:'Cadde',
       ro:'jad-de',
-      tr:'street'
+      tr:'street', tr_th:'ถนน'
     },
     {
       id:'w3',
@@ -67,25 +67,25 @@ const L7 = {
       id:'w11',
       en:'Şehir',
       ro:'she-hir',
-      tr:'city'
+      tr:'city', tr_th:'เมือง'
     },
     {
       id:'w12',
       en:'Otel',
       ro:'o-tel',
-      tr:'hotel'
+      tr:'hotel', tr_th:'โรงแรม'
     },
     {
       id:'w13',
       en:'Metro',
       ro:'met-ro',
-      tr:'metro'
+      tr:'metro', tr_th:'รถไฟใต้ดิน'
     },
     {
       id:'w14',
       en:'Otobüs',
       ro:'o-to-bues',
-      tr:'bus'
+      tr:'bus', tr_th:'รถบัส'
     },
     {
       id:'w15',
@@ -105,13 +105,13 @@ const L7 = {
           pronoun:'Örnek 1',
           form:'Nerede?',
           example:'Nerede?',
-          tr:'where?'
+          tr:'where?', tr_th:'ที่ไหน?'
         },
         {
           pronoun:'Örnek 2',
           form:'Cadde',
           example:'Cadde',
-          tr:'street'
+          tr:'street', tr_th:'ถนน'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,13 +121,13 @@ const L7 = {
     {
       id:'sp1',
       en:'Nerede?',
-      tr:'where?',
+      tr:'where?', tr_th:'ที่ไหน?',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Cadde',
-      tr:'street',
+      tr:'street', tr_th:'ถนน',
       prompt:'Kullan'
     },
     {
@@ -159,12 +159,12 @@ const L7 = {
           speaker:'A',
           gender:'m',
           en:'Nerede?',
-          tr:'where?',
+          tr:'where?', tr_th:'ที่ไหน?',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'ne-re-de',
-              tr:'where?',
+              tr:'where?', tr_th:'ที่ไหน?',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L7 = {
           speaker:'B',
           gender:'f',
           en:'Cadde',
-          tr:'street',
+          tr:'street', tr_th:'ถนน',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'jad-de',
-              tr:'street',
+              tr:'street', tr_th:'ถนน',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -218,7 +218,7 @@ const L7 = {
             'Sağ'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L7 = {
             'Dümdüz'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

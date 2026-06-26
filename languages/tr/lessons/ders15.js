@@ -5,7 +5,7 @@ const L15 = {
       id:'w1',
       en:'Eğitim',
       ro:'e-i-tim',
-      tr:'education',
+      tr:'education', tr_th:'การศึกษา',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,25 +13,25 @@ const L15 = {
       id:'w2',
       en:'Okul',
       ro:'o-kul',
-      tr:'school'
+      tr:'school', tr_th:'โรงเรียน'
     },
     {
       id:'w3',
       en:'Üniversite',
       ro:'ue-ni-ver-si-te',
-      tr:'university'
+      tr:'university', tr_th:'มหาวิทยาลัย'
     },
     {
       id:'w4',
       en:'Öğrenci',
       ro:'oe-ren-ji',
-      tr:'student'
+      tr:'student', tr_th:'นักเรียน'
     },
     {
       id:'w5',
       en:'Öğretmen',
       ro:'oe-ret-men',
-      tr:'teacher'
+      tr:'teacher', tr_th:'ครู'
     },
     {
       id:'w6',
@@ -49,37 +49,37 @@ const L15 = {
       id:'w8',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w9',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w10',
       en:'Okumak',
       ro:'o-ku-mak',
-      tr:'to read'
+      tr:'to read', tr_th:'อ่าน'
     },
     {
       id:'w11',
       en:'Yazmak',
       ro:'yaz-mak',
-      tr:'to write'
+      tr:'to write', tr_th:'เขียน'
     },
     {
       id:'w12',
       en:'Öğrenmek',
       ro:'oe-ren-mek',
-      tr:'to learn'
+      tr:'to learn', tr_th:'เรียน'
     },
     {
       id:'w13',
       en:'Dil',
       ro:'dil',
-      tr:'language'
+      tr:'language', tr_th:'ภาษา'
     },
     {
       id:'w14',
@@ -91,7 +91,7 @@ const L15 = {
       id:'w15',
       en:'Bugün',
       ro:'bu-guen',
-      tr:'today'
+      tr:'today', tr_th:'วันนี้'
     }
   ],
   grammar:[
@@ -105,13 +105,13 @@ const L15 = {
           pronoun:'Örnek 1',
           form:'Eğitim',
           example:'Eğitim',
-          tr:'education'
+          tr:'education', tr_th:'การศึกษา'
         },
         {
           pronoun:'Örnek 2',
           form:'Okul',
           example:'Okul',
-          tr:'school'
+          tr:'school', tr_th:'โรงเรียน'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,31 +121,31 @@ const L15 = {
     {
       id:'sp1',
       en:'Eğitim',
-      tr:'education',
+      tr:'education', tr_th:'การศึกษา',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Okul',
-      tr:'school',
+      tr:'school', tr_th:'โรงเรียน',
       prompt:'Kullan'
     },
     {
       id:'sp3',
       en:'Üniversite',
-      tr:'university',
+      tr:'university', tr_th:'มหาวิทยาลัย',
       prompt:'Cümle kur'
     },
     {
       id:'sp4',
       en:'Öğrenci',
-      tr:'student',
+      tr:'student', tr_th:'นักเรียน',
       prompt:'Soru sor'
     },
     {
       id:'sp5',
       en:'Öğretmen',
-      tr:'teacher',
+      tr:'teacher', tr_th:'ครู',
       prompt:'Konuşma pratiği'
     }
   ],
@@ -159,12 +159,12 @@ const L15 = {
           speaker:'A',
           gender:'m',
           en:'Eğitim',
-          tr:'education',
+          tr:'education', tr_th:'การศึกษา',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'e-i-tim',
-              tr:'education',
+              tr:'education', tr_th:'การศึกษา',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L15 = {
           speaker:'B',
           gender:'f',
           en:'Okul',
-          tr:'school',
+          tr:'school', tr_th:'โรงเรียน',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'o-kul',
-              tr:'school',
+              tr:'school', tr_th:'โรงเรียน',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -189,14 +189,14 @@ const L15 = {
           speaker:'A',
           gender:'m',
           en:'Üniversite',
-          tr:'university',
+          tr:'university', tr_th:'มหาวิทยาลัย',
           bd:[]
         },
         {
           speaker:'B',
           gender:'f',
           en:'Öğrenci',
-          tr:'student',
+          tr:'student', tr_th:'นักเรียน',
           bd:[]
         }
       ]
@@ -218,7 +218,7 @@ const L15 = {
             'Öğrenci'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L15 = {
             'Öğretmen'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

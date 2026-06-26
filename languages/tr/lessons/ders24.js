@@ -5,13 +5,13 @@ const L24 = {
       id:'w1',
       en:'Şehir',
       ro:'she-hir',
-      tr:'city'
+      tr:'city', tr_th:'เมือง'
     },
     {
       id:'w2',
       en:'Cadde',
       ro:'jad-de',
-      tr:'street'
+      tr:'street', tr_th:'ถนน'
     },
     {
       id:'w3',
@@ -29,55 +29,55 @@ const L24 = {
       id:'w5',
       en:'Market',
       ro:'mar-ket',
-      tr:'market'
+      tr:'market', tr_th:'ตลาด'
     },
     {
       id:'w6',
       en:'Restoran',
       ro:'res-to-ran',
-      tr:'restaurant'
+      tr:'restaurant', tr_th:'ร้านอาหาร'
     },
     {
       id:'w7',
       en:'Otel',
       ro:'o-tel',
-      tr:'hotel'
+      tr:'hotel', tr_th:'โรงแรม'
     },
     {
       id:'w8',
       en:'Okul',
       ro:'o-kul',
-      tr:'school'
+      tr:'school', tr_th:'โรงเรียน'
     },
     {
       id:'w9',
       en:'Üniversite',
       ro:'ue-ni-ver-si-te',
-      tr:'university'
+      tr:'university', tr_th:'มหาวิทยาลัย'
     },
     {
       id:'w10',
       en:'Hastane',
       ro:'has-ta-ne',
-      tr:'hospital'
+      tr:'hospital', tr_th:'โรงพยาบาล'
     },
     {
       id:'w11',
       en:'Eczane',
       ro:'ej-za-ne',
-      tr:'pharmacy'
+      tr:'pharmacy', tr_th:'ร้านขายยา'
     },
     {
       id:'w12',
       en:'Ofis',
       ro:'o-fis',
-      tr:'office'
+      tr:'office', tr_th:'สำนักงาน'
     },
     {
       id:'w13',
       en:'Havaalanı',
       ro:'ha-va-a-la-nuh',
-      tr:'airport'
+      tr:'airport', tr_th:'สนามบิน'
     },
     {
       id:'w14',
@@ -95,13 +95,13 @@ const L24 = {
       id:'w16',
       en:'Ev',
       ro:'ev',
-      tr:'house'
+      tr:'house', tr_th:'บ้าน'
     },
     {
       id:'w17',
       en:'Oda',
       ro:'o-da',
-      tr:'room'
+      tr:'room', tr_th:'ห้อง'
     },
     {
       id:'w18',
@@ -113,7 +113,7 @@ const L24 = {
       id:'w19',
       en:'Ülke',
       ro:'uel-ke',
-      tr:'country'
+      tr:'country', tr_th:'ประเทศ'
     },
     {
       id:'w20',

@@ -5,7 +5,7 @@ const L20 = {
       id:'w1',
       en:'Merhaba',
       ro:'mer-ha-ba',
-      tr:'hello',
+      tr:'hello', tr_th:'สวัสดี',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,43 +13,43 @@ const L20 = {
       id:'w2',
       en:'Nasılsın?',
       ro:'na-suhl-suhn',
-      tr:'how are you?'
+      tr:'how are you?', tr_th:'สบายดีไหม?'
     },
     {
       id:'w3',
       en:'İyiyim.',
       ro:'ii-yi-yim',
-      tr:'I am fine'
+      tr:'I am fine', tr_th:'สบายดี'
     },
     {
       id:'w4',
       en:'Teşekkürler',
       ro:'te-shek-kuer-ler',
-      tr:'thanks'
+      tr:'thanks', tr_th:'ขอบคุณ'
     },
     {
       id:'w5',
       en:'Lütfen',
       ro:'luet-fen',
-      tr:'please'
+      tr:'please', tr_th:'กรุณา'
     },
     {
       id:'w6',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w7',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w8',
       en:'Nerede?',
       ro:'ne-re-de',
-      tr:'where?'
+      tr:'where?', tr_th:'ที่ไหน?'
     },
     {
       id:'w9',
@@ -91,7 +91,7 @@ const L20 = {
       id:'w15',
       en:'Görüşürüz.',
       ro:'goe-ru-shue-ruz',
-      tr:'see you'
+      tr:'see you', tr_th:'แล้วเจอกัน'
     }
   ],
   grammar:[
@@ -105,13 +105,13 @@ const L20 = {
           pronoun:'Örnek 1',
           form:'Merhaba',
           example:'Merhaba',
-          tr:'hello'
+          tr:'hello', tr_th:'สวัสดี'
         },
         {
           pronoun:'Örnek 2',
           form:'Nasılsın?',
           example:'Nasılsın?',
-          tr:'how are you?'
+          tr:'how are you?', tr_th:'สบายดีไหม?'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,31 +121,31 @@ const L20 = {
     {
       id:'sp1',
       en:'Merhaba',
-      tr:'hello',
+      tr:'hello', tr_th:'สวัสดี',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Nasılsın?',
-      tr:'how are you?',
+      tr:'how are you?', tr_th:'สบายดีไหม?',
       prompt:'Kullan'
     },
     {
       id:'sp3',
       en:'İyiyim.',
-      tr:'I am fine',
+      tr:'I am fine', tr_th:'สบายดี',
       prompt:'Cümle kur'
     },
     {
       id:'sp4',
       en:'Teşekkürler',
-      tr:'thanks',
+      tr:'thanks', tr_th:'ขอบคุณ',
       prompt:'Soru sor'
     },
     {
       id:'sp5',
       en:'Lütfen',
-      tr:'please',
+      tr:'please', tr_th:'กรุณา',
       prompt:'Konuşma pratiği'
     }
   ],
@@ -159,12 +159,12 @@ const L20 = {
           speaker:'A',
           gender:'m',
           en:'Merhaba',
-          tr:'hello',
+          tr:'hello', tr_th:'สวัสดี',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'mer-ha-ba',
-              tr:'hello',
+              tr:'hello', tr_th:'สวัสดี',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L20 = {
           speaker:'B',
           gender:'f',
           en:'Nasılsın?',
-          tr:'how are you?',
+          tr:'how are you?', tr_th:'สบายดีไหม?',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'na-suhl-suhn',
-              tr:'how are you?',
+              tr:'how are you?', tr_th:'สบายดีไหม?',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -189,14 +189,14 @@ const L20 = {
           speaker:'A',
           gender:'m',
           en:'İyiyim.',
-          tr:'I am fine',
+          tr:'I am fine', tr_th:'สบายดี',
           bd:[]
         },
         {
           speaker:'B',
           gender:'f',
           en:'Teşekkürler',
-          tr:'thanks',
+          tr:'thanks', tr_th:'ขอบคุณ',
           bd:[]
         }
       ]
@@ -218,7 +218,7 @@ const L20 = {
             'Teşekkürler'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L20 = {
             'Lütfen'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

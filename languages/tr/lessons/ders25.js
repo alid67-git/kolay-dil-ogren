@@ -5,7 +5,7 @@ const L25 = {
       id:'w1',
       en:'Su',
       ro:'su',
-      tr:'water'
+      tr:'water', tr_th:'น้ำ'
     },
     {
       id:'w2',
@@ -65,7 +65,7 @@ const L25 = {
       id:'w11',
       en:'Menü',
       ro:'me-nue',
-      tr:'menu'
+      tr:'menu', tr_th:'เมนู'
     },
     {
       id:'w12',
@@ -77,13 +77,13 @@ const L25 = {
       id:'w13',
       en:'Masa',
       ro:'ma-sa',
-      tr:'table'
+      tr:'table', tr_th:'โต๊ะ'
     },
     {
       id:'w14',
       en:'Restoran',
       ro:'res-to-ran',
-      tr:'restaurant'
+      tr:'restaurant', tr_th:'ร้านอาหาร'
     },
     {
       id:'w15',
@@ -101,25 +101,25 @@ const L25 = {
       id:'w17',
       en:'Fiyat',
       ro:'fi-yat',
-      tr:'price'
+      tr:'price', tr_th:'ราคา'
     },
     {
       id:'w18',
       en:'Ucuz',
       ro:'u-juz',
-      tr:'cheap'
+      tr:'cheap', tr_th:'ถูก'
     },
     {
       id:'w19',
       en:'Pahalı',
       ro:'pa-ha-luh',
-      tr:'expensive'
+      tr:'expensive', tr_th:'แพง'
     },
     {
       id:'w20',
       en:'Para',
       ro:'pa-ra',
-      tr:'money'
+      tr:'money', tr_th:'เงิน'
     }
   ],
   grammar:[],

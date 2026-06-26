@@ -119,7 +119,7 @@ const L28 = {
       id:'w20',
       en:'Tren',
       ro:'tren',
-      tr:'train'
+      tr:'train', tr_th:'รถไฟ'
     }
   ],
   grammar:[],

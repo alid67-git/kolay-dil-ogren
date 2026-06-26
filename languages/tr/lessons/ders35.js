@@ -47,43 +47,43 @@ const L35 = {
       id:'w8',
       en:'Üniversite',
       ro:'ue-ni-ver-si-te',
-      tr:'university'
+      tr:'university', tr_th:'มหาวิทยาลัย'
     },
     {
       id:'w9',
       en:'Öğrenci',
       ro:'oe-ren-ji',
-      tr:'student'
+      tr:'student', tr_th:'นักเรียน'
     },
     {
       id:'w10',
       en:'Öğretmen',
       ro:'oe-ret-men',
-      tr:'teacher'
+      tr:'teacher', tr_th:'ครู'
     },
     {
       id:'w11',
       en:'Soru',
       ro:'so-ru',
-      tr:'question'
+      tr:'question', tr_th:'คำถาม'
     },
     {
       id:'w12',
       en:'Cevap',
       ro:'je-vap',
-      tr:'answer'
+      tr:'answer', tr_th:'คำตอบ'
     },
     {
       id:'w13',
       en:'Öğrenmek',
       ro:'oe-ren-mek',
-      tr:'to learn'
+      tr:'to learn', tr_th:'เรียน'
     },
     {
       id:'w14',
       en:'Önemli',
       ro:'oe-nem-li',
-      tr:'important'
+      tr:'important', tr_th:'สำคัญ'
     },
     {
       id:'w15',
@@ -107,13 +107,13 @@ const L35 = {
       id:'w18',
       en:'Tarih',
       ro:'ta-rih',
-      tr:'history'
+      tr:'history', tr_th:'ประวัติศาสตร์'
     },
     {
       id:'w19',
       en:'Dil',
       ro:'dil',
-      tr:'language'
+      tr:'language', tr_th:'ภาษา'
     },
     {
       id:'w20',

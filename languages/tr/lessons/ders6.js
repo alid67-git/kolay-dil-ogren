@@ -5,7 +5,7 @@ const L6 = {
       id:'w1',
       en:'Market',
       ro:'mar-ket',
-      tr:'market',
+      tr:'market', tr_th:'ตลาด',
       tip:'Temel kelime.',
       ctx:'Günlük kullanım.'
     },
@@ -13,19 +13,19 @@ const L6 = {
       id:'w2',
       en:'Fiyat',
       ro:'fi-yat',
-      tr:'price'
+      tr:'price', tr_th:'ราคา'
     },
     {
       id:'w3',
       en:'Ucuz',
       ro:'u-juz',
-      tr:'cheap'
+      tr:'cheap', tr_th:'ถูก'
     },
     {
       id:'w4',
       en:'Pahalı',
       ro:'pa-ha-luh',
-      tr:'expensive'
+      tr:'expensive', tr_th:'แพง'
     },
     {
       id:'w5',
@@ -43,7 +43,7 @@ const L6 = {
       id:'w7',
       en:'Renk',
       ro:'renk',
-      tr:'color'
+      tr:'color', tr_th:'สี'
     },
     {
       id:'w8',
@@ -61,7 +61,7 @@ const L6 = {
       id:'w10',
       en:'Satın almak',
       ro:'sa-tuhrn al-mak',
-      tr:'to buy'
+      tr:'to buy', tr_th:'ซื้อ'
     },
     {
       id:'w11',
@@ -73,13 +73,13 @@ const L6 = {
       id:'w12',
       en:'Para',
       ro:'pa-ra',
-      tr:'money'
+      tr:'money', tr_th:'เงิน'
     },
     {
       id:'w13',
       en:'Kart',
       ro:'kart',
-      tr:'card'
+      tr:'card', tr_th:'บัตร'
     },
     {
       id:'w14',
@@ -105,13 +105,13 @@ const L6 = {
           pronoun:'Örnek 1',
           form:'Market',
           example:'Market',
-          tr:'market'
+          tr:'market', tr_th:'ตลาด'
         },
         {
           pronoun:'Örnek 2',
           form:'Fiyat',
           example:'Fiyat',
-          tr:'price'
+          tr:'price', tr_th:'ราคา'
         }
       ],
       note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
@@ -121,25 +121,25 @@ const L6 = {
     {
       id:'sp1',
       en:'Market',
-      tr:'market',
+      tr:'market', tr_th:'ตลาด',
       prompt:'İfade et'
     },
     {
       id:'sp2',
       en:'Fiyat',
-      tr:'price',
+      tr:'price', tr_th:'ราคา',
       prompt:'Kullan'
     },
     {
       id:'sp3',
       en:'Ucuz',
-      tr:'cheap',
+      tr:'cheap', tr_th:'ถูก',
       prompt:'Cümle kur'
     },
     {
       id:'sp4',
       en:'Pahalı',
-      tr:'expensive',
+      tr:'expensive', tr_th:'แพง',
       prompt:'Soru sor'
     },
     {
@@ -159,12 +159,12 @@ const L6 = {
           speaker:'A',
           gender:'m',
           en:'Market',
-          tr:'market',
+          tr:'market', tr_th:'ตลาด',
           gramNote:'Ali konuşuyor.',
           bd:[
             {
               ro:'mar-ket',
-              tr:'market',
+              tr:'market', tr_th:'ตลาด',
               role:'phrase',
               note:'Örnek kullanım.'
             }
@@ -174,12 +174,12 @@ const L6 = {
           speaker:'B',
           gender:'f',
           en:'Fiyat',
-          tr:'price',
+          tr:'price', tr_th:'ราคา',
           gramNote:'Karşılık.',
           bd:[
             {
               ro:'fi-yat',
-              tr:'price',
+              tr:'price', tr_th:'ราคา',
               role:'phrase',
               note:'Doğal cevap.'
             }
@@ -189,14 +189,14 @@ const L6 = {
           speaker:'A',
           gender:'m',
           en:'Ucuz',
-          tr:'cheap',
+          tr:'cheap', tr_th:'ถูก',
           bd:[]
         },
         {
           speaker:'B',
           gender:'f',
           en:'Pahalı',
-          tr:'expensive',
+          tr:'expensive', tr_th:'แพง',
           bd:[]
         }
       ]
@@ -218,7 +218,7 @@ const L6 = {
             'Pahalı'
           ],
           answer:0,
-          tr:'Doğru kelimeyi seç.'
+          tr:'Doğru kelimeyi seç.', tr_th:'เลือกคำที่ถูกต้อง'
         },
         {
           q:'İkinci doğru seçenek hangisi?',
@@ -229,7 +229,7 @@ const L6 = {
             'İndirim'
           ],
           answer:1,
-          tr:'İkinci ifadeyi seç.'
+          tr:'İkinci ifadeyi seç.', tr_th:'เลือกประโยคที่สอง'
         }
       ]
     }

@@ -59,25 +59,25 @@ const L32 = {
       id:'w10',
       en:'Renk',
       ro:'renk',
-      tr:'color'
+      tr:'color', tr_th:'สี'
     },
     {
       id:'w11',
       en:'Ucuz',
       ro:'u-juz',
-      tr:'cheap'
+      tr:'cheap', tr_th:'ถูก'
     },
     {
       id:'w12',
       en:'Pahalı',
       ro:'pa-ha-luh',
-      tr:'expensive'
+      tr:'expensive', tr_th:'แพง'
     },
     {
       id:'w13',
       en:'Satın almak',
       ro:'sa-tuhrn al-mak',
-      tr:'to buy'
+      tr:'to buy', tr_th:'ซื้อ'
     },
     {
       id:'w14',
@@ -95,7 +95,7 @@ const L32 = {
       id:'w16',
       en:'Market',
       ro:'mar-ket',
-      tr:'market'
+      tr:'market', tr_th:'ตลาด'
     },
     {
       id:'w17',
@@ -113,7 +113,7 @@ const L32 = {
       id:'w19',
       en:'Güzel',
       ro:'gue-zel',
-      tr:'beautiful'
+      tr:'beautiful', tr_th:'สวย'
     },
     {
       id:'w20',
