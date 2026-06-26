@@ -5,7 +5,7 @@ compatibility_date = "2024-01-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "kdo-analytics"
-database_id = "REPLACE_AFTER_CREATE"
+database_id = "0567c5a6-c90e-4887-80ee-7ac208b746ad"
 
 [vars]
 # Deploy sonrası: wrangler secret put ADMIN_PASSWORD

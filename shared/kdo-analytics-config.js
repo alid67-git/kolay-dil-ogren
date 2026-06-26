@@ -4,7 +4,7 @@
  */
 window.KDO_ANALYTICS = {
   /** Deploy sonrası: https://kdo-analytics.<subdomain>.workers.dev */
-  endpoint: '',
+  endpoint: 'https://kdo-analytics.alid67.workers.dev',
   enabled: true,
   pingSec: 60
 };
