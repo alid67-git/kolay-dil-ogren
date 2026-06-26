@@ -620,7 +620,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = 'v3.57';
+const APP_VERSION = 'v3.58';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -655,6 +655,7 @@ const UI = {
     lesson_visit_all:'⚠️ Tüm sekmeleri ziyaret etmeden dersi tamamlayamazsın.',
     lesson_all_done_q:'✅ Tüm sekmeler ziyaret edildi — dersi tamamladın mı?',
     lesson_complete_btn_active:'Tüm sekmeler tamamlandı!',
+    lesson_tab_dbl:'Çift tıkla: sekme işaretle / kaldır',
     tones_ref:"Bu ders için ton bilgisi Ders 1'de verilmiştir.",
     // Gramer
     gram_tip_label:'İpucu:',
@@ -775,6 +776,7 @@ const UI = {
     lesson_visit_all:'⚠️ You must visit all tabs before completing the lesson.',
     lesson_all_done_q:'✅ All tabs visited — ready to complete?',
     lesson_complete_btn_active:'All tabs completed!',
+    lesson_tab_dbl:'Double-click: mark / unmark tab',
     tones_ref:'Tone information for this lesson is covered in Lesson 1.',
     // Grammar
     gram_tip_label:'Tips:',
@@ -1534,25 +1536,26 @@ async function openLesson(num){
   document.getElementById('detail-content').innerHTML = buildLessonHTML(lessonData, meta);
   document.querySelectorAll('.ltab').forEach(btn=>{
     let lastTap = 0;
-    btn.addEventListener('click',(e)=>{
-      const tab = e.target.closest('.ltab').dataset.tab;
+    let clickTimer = null;
+    const runToggle = (tab)=>{
+      clearTimeout(clickTimer);
+      lastTap = 0;
+      toggleTabVisited(tab, btn);
+    };
+    btn.addEventListener('dblclick',(e)=>{
+      e.preventDefault();
+      runToggle(btn.dataset.tab);
+    });
+    btn.addEventListener('click',()=>{
+      const tab = btn.dataset.tab;
       const now = Date.now();
-      const vkey = 'L'+currentLesson.num+'_'+tab;
-      // Çift tıklama (300ms içinde 2 kez)
-      if(now - lastTap < 300 && visitedTabs[vkey]){
-        delete visitedTabs[vkey];
-        saveVisited();
-        btn.classList.remove('visited');
-        // Aktifse de active'i koru ama visited gitsin
-        updateProgressBar();
-        // Küçük titreme animasyonu
-        btn.style.transform = 'scale(.88)';
-        setTimeout(()=>btn.style.transform='', 200);
-        lastTap = 0;
+      if(now - lastTap < 320){
+        runToggle(tab);
         return;
       }
       lastTap = now;
-      switchLessonTab(tab, e.target.closest('.ltab'));
+      clearTimeout(clickTimer);
+      clickTimer = setTimeout(()=>switchLessonTab(tab, btn), 320);
     });
   });
   const firstTab = getTabsForLesson(meta)[0];
@@ -1587,7 +1590,7 @@ function buildLessonHTML(L, meta){
   const tabs = tabNames.map(t=>{
     const vkey = 'L'+meta.num+'_'+t;
     const isDone = visitedTabs[vkey];
-    return `<button class="ltab ${isDone?'visited':''}" data-tab="${t}">${getTabLabels()[t]}</button>`;
+    return `<button class="ltab ${isDone?'visited':''}" data-tab="${t}" title="${s('lesson_tab_dbl')}">${getTabLabels()[t]}</button>`;
   }).join('');
 
   // SÖZCÜKLER
@@ -1962,6 +1965,37 @@ function _renderTimerBar(tab, elapsed, total){
     setTimeout(()=>{ wrap.style.display='none'; }, 1200);
   } else {
     txt.textContent = (total-elapsed)+'s';
+  }
+}
+
+
+function toggleTabVisited(tab, btn){
+  if(!currentLesson) return;
+  const vkey = 'L'+currentLesson.num+'_'+tab;
+  const elBtn = btn || document.querySelector('.ltab[data-tab="'+tab+'"]');
+  if(visitedTabs[vkey]){
+    delete visitedTabs[vkey];
+    if(elBtn) elBtn.classList.remove('visited');
+    const activeTab = document.querySelector('.ltab.active');
+    if(activeTab && activeTab.dataset.tab === tab) startTabTimer(tab);
+  }else{
+    visitedTabs[vkey] = true;
+    if(elBtn){
+      elBtn.classList.add('visited');
+      elBtn.classList.remove('timing');
+    }
+    if(_tabTimer.tab === tab) stopTabTimer();
+    const el = document.getElementById('lc-'+tab);
+    const wrap = el && el.querySelector('.tab-timer-wrap');
+    if(wrap) wrap.style.display = 'none';
+  }
+  saveVisited();
+  updateProgressBar();
+  _updateTabButtons();
+  _refreshCompleteBtn();
+  if(elBtn){
+    elBtn.style.transform = 'scale(.88)';
+    setTimeout(()=>{ elBtn.style.transform = ''; }, 200);
   }
 }
 
