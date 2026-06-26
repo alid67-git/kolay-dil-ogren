@@ -666,7 +666,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.3';
+const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.4';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -678,7 +678,14 @@ if(storedVersion && storedVersion !== APP_VERSION){
   console.log('Yeni versiyon: '+APP_VERSION+', cache temizlendi.');
 }
 localStorage.setItem('app_version', APP_VERSION);
-(function(){const _bd=document.getElementById('brand-dev');const _l=localStorage.getItem('kdo:locale')||'tr';if(_bd)_bd.textContent=devCredit(_l);})();
+function applyBrandDev(){
+  const _bd=document.getElementById('brand-dev');
+  if(!_bd) return;
+  const _l=localStorage.getItem('kdo:locale')||'tr';
+  _bd.textContent=typeof devCredit==='function'?devCredit(_l):((window.KDO_UI_DEV||{})[_l]||(window.KDO_UI_DEV||{}).tr||'');
+}
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',applyBrandDev);
+else applyBrandDev();
 (function(){const _vb=document.getElementById('app-version');if(_vb)_vb.textContent=APP_VERSION;})();
 
 // Tayca (tv3_*) verisi bu uygulamaya yanlış kopyalanmış olabilir — tek seferlik temizlik
@@ -1024,7 +1031,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version">v2.2.3</span>
+  <span class="vbadge" id="app-version">v2.2.4</span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>

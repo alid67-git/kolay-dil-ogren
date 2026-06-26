@@ -6,7 +6,7 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
-const VERSION = 'v2.2.3';
+const VERSION = 'v2.2.4';
 
 const htmlFiles = [
   'english-v3.html', 'german-v3.html', 'italian-v3.html',
