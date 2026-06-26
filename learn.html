@@ -653,15 +653,16 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.15"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.15"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.15"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.15"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.15"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.15"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.15"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.15"></script>
-<script src="shared/kdo-translate.js?v=3.0.15"></script>
+<script src="shared/kdo-version.js?v=3.0.16"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.16"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.16"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.16"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.16"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.16"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.16"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.16"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.16"></script>
+<script src="shared/kdo-translate.js?v=3.0.16"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 </script>
@@ -994,8 +995,39 @@ function _mergeUI(){
 
 function applyTargetUi(){
   const tu=(KDO_CFG&&KDO_CFG.targetUi)||{};
+  const targetCode=(KDO_CFG&&KDO_CFG.kdoTarget)||'de';
+  const names={
+    tr:{tk:'Türkçe',th:'Tayca',en:'İngilizce',de:'Almanca',it:'İtalyanca',es:'İspanyolca',fr:'Fransızca',ru:'Rusça',ar:'Arapça',zh:'Çince'},
+    en:{tk:'Turkish',th:'Thai',en:'English',de:'German',it:'Italian',es:'Spanish',fr:'French',ru:'Russian',ar:'Arabic',zh:'Chinese'},
+    th:{tk:'ตุรกี',th:'ไทย',en:'อังกฤษ',de:'เยอรมัน',it:'อิตาลี',es:'สเปน',fr:'ฝรั่งเศส',ru:'รัสเซีย',ar:'อาหรับ',zh:'จีน'},
+    de:{tk:'Türkisch',th:'Thailändisch',en:'Englisch',de:'Deutsch',it:'Italienisch',es:'Spanisch',fr:'Französisch',ru:'Russisch',ar:'Arabisch',zh:'Chinesisch'},
+    fr:{tk:'turc',th:'thaï',en:'anglais',de:'allemand',it:'italien',es:'espagnol',fr:'français',ru:'russe',ar:'arabe',zh:'chinois'},
+    es:{tk:'turco',th:'tailandés',en:'inglés',de:'alemán',it:'italiano',es:'español',fr:'francés',ru:'ruso',ar:'árabe',zh:'chino'},
+    it:{tk:'turco',th:'thai',en:'inglese',de:'tedesco',it:'italiano',es:'spagnolo',fr:'francese',ru:'russo',ar:'arabo',zh:'cinese'},
+    ru:{tk:'турецкий',th:'тайский',en:'английский',de:'немецкий',it:'итальянский',es:'испанский',fr:'французский',ru:'русский',ar:'арабский',zh:'китайский'},
+    ar:{tk:'التركية',th:'التايلاندية',en:'الإنجليزية',de:'الألمانية',it:'الإيطالية',es:'الإسبانية',fr:'الفرنسية',ru:'الروسية',ar:'العربية',zh:'الصينية'},
+    zh:{tk:'土耳其语',th:'泰语',en:'英语',de:'德语',it:'意大利语',es:'西班牙语',fr:'法语',ru:'俄语',ar:'阿拉伯语',zh:'中文'}
+  };
+  const meaning={tr:'Anlam',en:'Meaning',th:'ความหมาย',de:'Bedeutung',fr:'Sens',es:'Significado',it:'Significato',ru:'Значение',ar:'المعنى',zh:'含义'};
+  const mixed={tr:'Karışık',en:'Mixed',th:'ผสม',de:'Gemischt',fr:'Mixte',es:'Mixto',it:'Misto',ru:'Смешанный',ar:'مختلط',zh:'混合'};
+  for(const loc of (window.KDO_UI_LANGS||Object.keys(names))){
+    if(!UI_LOCAL[loc]) UI_LOCAL[loc]={};
+    const n=(names[loc]||names.en)[targetCode]||KDO_CFG.targetLabelEn||targetCode;
+    const m=meaning[loc]||meaning.en;
+    Object.assign(UI_LOCAL[loc], {
+      ui_col_target:n,
+      pron_col_english:n,
+      settings_voices:'🔊 '+n,
+      test_dir_en2tr:n+' → '+m,
+      test_dir_tr2en:m+' → '+n,
+      test_dir_mix:mixed[loc]||mixed.en,
+      review_q_en2tr:n+' → '+m,
+      review_q_tr2en:m+' → '+n
+    });
+  }
   for(const loc of Object.keys(tu)){
-    if(UI_LOCAL[loc]) Object.assign(UI_LOCAL[loc], tu[loc]);
+    if(!UI_LOCAL[loc]) UI_LOCAL[loc]={};
+    Object.assign(UI_LOCAL[loc], tu[loc]);
   }
 }
 function patchL2Meta(){
@@ -1156,6 +1188,7 @@ function setLang(lang){
     <div class="modal-head"><div class="modal-title" data-lk="settings_title">⚙️ Ayarlar</div><button class="modal-close" onclick="closeModal('settings-overlay')">✕</button></div>
     <div class="setting-row">
       <div class="setting-label" data-lk="settings_lang">🌐 Uygulama Dili</div>
+      <div id="lang-btn-wrap" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;"></div>
       <button type="button" class="setting-btn" onclick="openLangHubPicker()" style="width:100%;margin-top:6px;background:#0d9488;color:white;border-color:#0d9488;" data-lk="ui_change_lang">🌐 Dil değiştir</button>
     </div>
     <div class="setting-row"><div class="setting-label">Anthropic API Key</div><input type="password" id="api-key-input" placeholder="sk-ant-..."><button class="setting-btn" onclick="saveKey()" data-lk="settings_save">Kaydet</button></div>
@@ -2089,8 +2122,8 @@ function buildLessonHTML(L, meta){
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
         <tr style="border-bottom:1px solid #b2dfdb;">
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_person')}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?KDO_CFG.targetLabelEn:KDO_CFG.targetLabelTr}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_turkish')}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_target')}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_meaning')}</th>
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_note')}</th>
         </tr>
         <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_1sg')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">${tgt('tk_pron_ben')}</td><td style="padding:6px 6px;">ben</td><td style="padding:6px 6px;color:#888;">${s('pron_note_lower')}</td></tr>
@@ -3489,6 +3522,8 @@ function renderList(){
 // =================== MODAL ===================
 function openModal(id){
   document.getElementById(id).classList.add('open');
+  if(id==='settings-overlay') _initLangButtons();
+  if(id==='help-overlay') buildHelpContent();
   // Yardım modalı açılınca versiyon güncelle
   if(id==='help-overlay'){
     const hv = document.getElementById('hakkinda-version');
@@ -3504,6 +3539,74 @@ function switchHelpTab(tab, btn){
 }
 
 function buildHelpContent(){
+  {
+    const targetCode = (KDO_CFG&&KDO_CFG.kdoTarget)||'de';
+    const targetNames = {
+      tr:{tk:'Türkçe',th:'Tayca',en:'İngilizce',de:'Almanca',it:'İtalyanca',es:'İspanyolca',fr:'Fransızca',ru:'Rusça',ar:'Arapça',zh:'Çince'},
+      en:{tk:'Turkish',th:'Thai',en:'English',de:'German',it:'Italian',es:'Spanish',fr:'French',ru:'Russian',ar:'Arabic',zh:'Chinese'},
+      th:{tk:'ตุรกี',th:'ไทย',en:'อังกฤษ',de:'เยอรมัน',it:'อิตาลี',es:'สเปน',fr:'ฝรั่งเศส',ru:'รัสเซีย',ar:'อาหรับ',zh:'จีน'},
+      de:{tk:'Türkisch',th:'Thailändisch',en:'Englisch',de:'Deutsch',it:'Italienisch',es:'Spanisch',fr:'Französisch',ru:'Russisch',ar:'Arabisch',zh:'Chinesisch'},
+      fr:{tk:'turc',th:'thaï',en:'anglais',de:'allemand',it:'italien',es:'espagnol',fr:'français',ru:'russe',ar:'arabe',zh:'chinois'},
+      es:{tk:'turco',th:'tailandés',en:'inglés',de:'alemán',it:'italiano',es:'español',fr:'francés',ru:'ruso',ar:'árabe',zh:'chino'},
+      it:{tk:'turco',th:'thai',en:'inglese',de:'tedesco',it:'italiano',es:'spagnolo',fr:'francese',ru:'russo',ar:'arabo',zh:'cinese'},
+      ru:{tk:'турецкий',th:'тайский',en:'английский',de:'немецкий',it:'итальянский',es:'испанский',fr:'французский',ru:'русский',ar:'арабский',zh:'китайский'},
+      ar:{tk:'التركية',th:'التايلاندية',en:'الإنجليزية',de:'الألمانية',it:'الإيطالية',es:'الإسبانية',fr:'الفرنسية',ru:'الروسية',ar:'العربية',zh:'الصينية'},
+      zh:{tk:'土耳其语',th:'泰语',en:'英语',de:'德语',it:'意大利语',es:'西班牙语',fr:'法语',ru:'俄语',ar:'阿拉伯语',zh:'中文'}
+    };
+    const copy = {
+      tr:{guide:'Rehber',lessons:'Dersler',review:'Tekrar',tips:'İpuçları',about:'Hakkında',title:'Nasıl Kullanılır?',what:'Bu uygulama ne için?',body:'Günlük hayatta kullanılan pratik {target} öğrenmek için tasarlandı. Menü, yardım ve açıklamalar seçtiğin arayüz dilinden gelir.',main:'Ana sekmeler',lessonBody:'Derslerde kelime, gramer, konuşma, diyalog, dinleme ve pratik bölümleri vardır.',testBody:'Test ve SRS alanı öğrendiklerini tekrar ettirir.',translateBody:'Çeviri alanı arayüz dilin ile öğrenilen dil arasında çalışır.',listBody:'Yıldızladığın içerikler burada toplanır.',reviewBody:'Zorlandığın kartlar daha sık geri gelir.',structure:'Ders yapısı',grammar:'Gramer açıklamaları',grammarBody:'Gramer notları hedef dile göre detaylı gösterilir: yapı, kullanım, örnek ve ipucu birlikte gelir.',pron:'Telaffuz',pronBody:'Sesleri normal ve yavaş modla dinleyerek pekiştir.',tip1:'Her kartta sesi dinle.',tip2:'Gerçekten kullanacağın cümleleri yıldızla.',tip3:'Her gün kısa tekrar yap.',total:'Toplam ders',data:'Veri',offline:'cihazda saklanır'},
+      en:{guide:'Guide',lessons:'Lessons',review:'Review',tips:'Tips',about:'About',title:'How to Use?',what:'What is this app for?',body:'It is designed for practical everyday {target}. Menus, help and explanations follow your selected interface language.',main:'Main tabs',lessonBody:'Lessons include words, grammar, speaking, dialogue, listening and practice.',testBody:'Test and SRS help you review what you learn.',translateBody:'Translation works between your interface language and the learned language.',listBody:'Starred content is collected here.',reviewBody:'Difficult cards return more often.',structure:'Lesson structure',grammar:'Grammar explanations',grammarBody:'Grammar notes are detailed for the target language: structure, usage, examples and tips together.',pron:'Pronunciation',pronBody:'Reinforce sounds with normal and slow audio.',tip1:'Listen to every card.',tip2:'Star sentences you will really use.',tip3:'Do a short review every day.',total:'Total lessons',data:'Data',offline:'stored on device'},
+      th:{guide:'คู่มือ',lessons:'บทเรียน',review:'ทบทวน',tips:'เคล็ดลับ',about:'เกี่ยวกับ',title:'วิธีใช้งาน?',what:'แอปนี้ใช้ทำอะไร?',body:'ออกแบบมาเพื่อเรียน {target} ที่ใช้จริงในชีวิตประจำวัน เมนู ความช่วยเหลือ และคำอธิบายจะแสดงตามภาษาอินเทอร์เฟซที่เลือก',main:'แท็บหลัก',lessonBody:'บทเรียนมีคำศัพท์ ไวยากรณ์ การพูด บทสนทนา การฟัง และแบบฝึก',testBody:'แบบทดสอบและ SRS ช่วยทบทวนสิ่งที่เรียน',translateBody:'การแปลทำงานระหว่างภาษาอินเทอร์เฟซกับภาษาที่เรียน',listBody:'รายการที่ติดดาวจะอยู่ที่นี่',reviewBody:'การ์ดที่ยากจะกลับมาบ่อยขึ้น',structure:'โครงสร้างบทเรียน',grammar:'คำอธิบายไวยากรณ์',grammarBody:'โน้ตไวยากรณ์ละเอียดตามภาษาที่เรียน: โครงสร้าง วิธีใช้ ตัวอย่าง และเคล็ดลับ',pron:'การออกเสียง',pronBody:'ฝึกเสียงด้วยโหมดปกติและโหมดช้า',tip1:'ฟังเสียงทุกการ์ด',tip2:'ติดดาวประโยคที่จะใช้จริง',tip3:'ทบทวนสั้นๆ ทุกวัน',total:'บทเรียนทั้งหมด',data:'ข้อมูล',offline:'เก็บไว้ในอุปกรณ์'},
+      de:{guide:'Anleitung',lessons:'Lektionen',review:'Wiederholung',tips:'Tipps',about:'Info',title:'Wie benutzt man es?',what:'Wofür ist diese App?',body:'Sie ist für praktisches {target} im Alltag gedacht. Menüs, Hilfe und Erklärungen folgen der gewählten Oberflächensprache.',main:'Hauptregister',lessonBody:'Lektionen enthalten Wörter, Grammatik, Sprechen, Dialoge, Hören und Übung.',testBody:'Test und SRS wiederholen das Gelernte.',translateBody:'Übersetzung arbeitet zwischen Oberfläche und Lernsprache.',listBody:'Markierte Inhalte werden hier gesammelt.',reviewBody:'Schwierige Karten kommen öfter zurück.',structure:'Lektionsaufbau',grammar:'Grammatikerklärungen',grammarBody:'Grammatikhinweise sind detailliert für die Zielsprache: Struktur, Nutzung, Beispiele und Tipps.',pron:'Aussprache',pronBody:'Übe Laute mit normalem und langsamem Audio.',tip1:'Höre jede Karte.',tip2:'Markiere Sätze, die du wirklich nutzt.',tip3:'Wiederhole täglich kurz.',total:'Lektionen gesamt',data:'Daten',offline:'auf dem Gerät gespeichert'},
+      fr:{guide:'Guide',lessons:'Leçons',review:'Révision',tips:'Conseils',about:'Infos',title:'Comment utiliser ?',what:'À quoi sert cette application ?',body:'Elle sert à apprendre un {target} pratique. Les menus, l’aide et les explications suivent la langue d’interface choisie.',main:'Onglets principaux',lessonBody:'Les leçons contiennent vocabulaire, grammaire, oral, dialogues, écoute et pratique.',testBody:'Le test et le SRS aident à réviser.',translateBody:'La traduction fonctionne entre la langue d’interface et la langue apprise.',listBody:'Les contenus favoris sont ici.',reviewBody:'Les cartes difficiles reviennent plus souvent.',structure:'Structure des leçons',grammar:'Explications de grammaire',grammarBody:'Les notes de grammaire sont détaillées pour la langue cible: structure, usage, exemples et conseils.',pron:'Prononciation',pronBody:'Travaille les sons avec l’audio normal et lent.',tip1:'Écoute chaque carte.',tip2:'Mets en favori les phrases utiles.',tip3:'Fais une courte révision chaque jour.',total:'Total des leçons',data:'Données',offline:'stockées sur l’appareil'},
+      es:{guide:'Guía',lessons:'Lecciones',review:'Repaso',tips:'Consejos',about:'Info',title:'¿Cómo usar?',what:'¿Para qué sirve esta app?',body:'Sirve para aprender {target} práctico. Menús, ayuda y explicaciones usan el idioma de interfaz elegido.',main:'Pestañas principales',lessonBody:'Las lecciones incluyen palabras, gramática, habla, diálogos, escucha y práctica.',testBody:'Test y SRS repasan lo aprendido.',translateBody:'La traducción funciona entre la interfaz y el idioma aprendido.',listBody:'El contenido marcado queda aquí.',reviewBody:'Las tarjetas difíciles vuelven más a menudo.',structure:'Estructura',grammar:'Explicaciones de gramática',grammarBody:'Las notas de gramática son detalladas para el idioma objetivo: estructura, uso, ejemplos y consejos.',pron:'Pronunciación',pronBody:'Practica sonidos con audio normal y lento.',tip1:'Escucha cada tarjeta.',tip2:'Marca frases útiles.',tip3:'Repasa un poco cada día.',total:'Lecciones totales',data:'Datos',offline:'guardados en el dispositivo'},
+      it:{guide:'Guida',lessons:'Lezioni',review:'Ripasso',tips:'Consigli',about:'Info',title:'Come si usa?',what:'A cosa serve questa app?',body:'Serve per imparare {target} pratico. Menu, aiuto e spiegazioni seguono la lingua interfaccia scelta.',main:'Schede principali',lessonBody:'Le lezioni includono parole, grammatica, parlato, dialoghi, ascolto e pratica.',testBody:'Test e SRS aiutano a ripassare.',translateBody:'La traduzione lavora tra lingua interfaccia e lingua studiata.',listBody:'I contenuti preferiti sono qui.',reviewBody:'Le carte difficili tornano più spesso.',structure:'Struttura',grammar:'Spiegazioni grammaticali',grammarBody:'Le note grammaticali sono dettagliate per la lingua obiettivo: struttura, uso, esempi e consigli.',pron:'Pronuncia',pronBody:'Allena i suoni con audio normale e lento.',tip1:'Ascolta ogni carta.',tip2:'Segna frasi utili.',tip3:'Ripassa poco ogni giorno.',total:'Lezioni totali',data:'Dati',offline:'salvati sul dispositivo'},
+      ru:{guide:'Руководство',lessons:'Уроки',review:'Повторение',tips:'Советы',about:'Инфо',title:'Как пользоваться?',what:'Для чего это приложение?',body:'Оно помогает учить практический {target}. Меню, помощь и объяснения идут на выбранном языке интерфейса.',main:'Основные вкладки',lessonBody:'В уроках есть слова, грамматика, речь, диалоги, аудирование и практика.',testBody:'Тест и SRS помогают повторять.',translateBody:'Перевод работает между языком интерфейса и изучаемым языком.',listBody:'Избранное хранится здесь.',reviewBody:'Сложные карточки возвращаются чаще.',structure:'Структура урока',grammar:'Объяснения грамматики',grammarBody:'Грамматика подробно показана для целевого языка: структура, использование, примеры и советы.',pron:'Произношение',pronBody:'Тренируйте звуки с обычным и медленным аудио.',tip1:'Слушайте каждую карточку.',tip2:'Отмечайте полезные фразы.',tip3:'Повторяйте понемногу каждый день.',total:'Всего уроков',data:'Данные',offline:'хранятся на устройстве'},
+      ar:{guide:'الدليل',lessons:'الدروس',review:'مراجعة',tips:'نصائح',about:'حول',title:'كيفية الاستخدام؟',what:'ما فائدة هذا التطبيق؟',body:'صمم لتعلم {target} عملي. القوائم والمساعدة والشرح تظهر بلغة الواجهة المختارة.',main:'التبويبات الرئيسية',lessonBody:'الدروس تحتوي كلمات وقواعد ومحادثة وحوار واستماع وتدريب.',testBody:'الاختبار و SRS يساعدان على المراجعة.',translateBody:'الترجمة تعمل بين لغة الواجهة واللغة المتعلمة.',listBody:'المحتوى المميز يوجد هنا.',reviewBody:'البطاقات الصعبة تعود أكثر.',structure:'بنية الدرس',grammar:'شرح القواعد',grammarBody:'شرح القواعد مفصل حسب اللغة الهدف: البنية، الاستخدام، الأمثلة والنصائح.',pron:'النطق',pronBody:'تدرب على الأصوات بالصوت العادي والبطيء.',tip1:'استمع إلى كل بطاقة.',tip2:'ميز الجمل المفيدة.',tip3:'راجع قليلا كل يوم.',total:'إجمالي الدروس',data:'البيانات',offline:'محفوظة على الجهاز'},
+      zh:{guide:'指南',lessons:'课程',review:'复习',tips:'提示',about:'关于',title:'如何使用？',what:'这个应用用来做什么？',body:'它用于学习日常生活中真正会用到的 {target}。菜单、帮助、设置、按钮和说明都会使用你选择的界面语言；学习内容则保持为正在学习的目标语言。',main:'主要标签',lessonBody:'课程按场景组织，包含词汇、语法、口语、对话、听力和练习。你可以先学单词，再看语法结构，然后通过对话和听力巩固。',testBody:'测试和 SRS 会把需要复习的卡片重新带回来，帮助你记住难点。',translateBody:'翻译在界面语言和学习语言之间工作，所以界面是中文时会显示中文说明和中文输入提示。',listBody:'收藏的单词、例句和对话会集中在这里，方便之后快速复习。',reviewBody:'较难的卡片会更常出现，简单的卡片间隔会变长。',structure:'课程结构',grammar:'语法说明',grammarBody:'语法说明按目标语言详细显示，包括句子结构、使用逻辑、例句拆分和学习提示。这样界面语言不影响你学习哪一种语言。',pron:'发音',pronBody:'用普通速度和慢速音频练习声音，先听再跟读。',tip1:'每张卡都听音频，并大声跟读。',tip2:'收藏真正会用的句子，然后在列表里复习。',tip3:'每天做一次短复习，直到今日复习清零。',total:'课程总数',data:'数据',offline:'保存在设备上'}
+    };
+    const H = copy[appLang] || copy.en;
+    const targetName = ((KDO_CFG.targetUi||{})[appLang]||{}).ui_col_target || ((targetNames[appLang]||targetNames.en)[targetCode]) || targetCode;
+    const fill = x => String(x||'').replace(/\{target\}/g,targetName);
+    const appTitle = (appLang==='th' && KDO_CFG.nameTh) ? KDO_CFG.nameTh : (appLang==='tr' ? KDO_CFG.title : (KDO_CFG.nameEn||KDO_CFG.title||'Kolay Dil Öğren'));
+    document.getElementById('htab-btn-genel').textContent = '🏠 '+H.guide;
+    document.getElementById('htab-btn-dersler').textContent = '📚 '+H.lessons;
+    document.getElementById('htab-btn-tekrar').textContent = '🔄 '+H.review;
+    document.getElementById('htab-btn-ipuclari').textContent = '💡 '+H.tips;
+    document.getElementById('htab-btn-hakkinda').textContent = 'ℹ️ '+H.about;
+    document.getElementById('help-modal-title').textContent = '📖 '+H.title;
+    document.getElementById('help-modal-sub').textContent = appTitle+' · '+H.guide;
+    const row=(icon,title,body,bg)=>`<div class="help-row"><div class="help-row-icon" style="background:${bg};">${icon}</div><div><div class="help-row-title">${title}</div><div class="help-row-sub">${fill(body)}</div></div></div>`;
+    document.getElementById('help-tabs-content').innerHTML = `
+      <div id="htab-genel" class="htab-content active">
+        <div class="help-card"><div class="help-card-icon">${KDO_CFG.flag||'🌐'}</div><div><div class="help-card-title">${H.what}</div><div class="help-card-body">${fill(H.body)}</div></div></div>
+        <div class="help-section-header">📱 ${H.main}</div>
+        ${row('📚',s('nav_lessons'),H.lessonBody,'#e8f5e9')}
+        ${row('📝',s('nav_test'),H.testBody,'#fff3e0')}
+        ${row('🌐',s('nav_translate'),H.translateBody,'#e3f2fd')}
+        ${row('⭐',s('nav_list'),H.listBody,'#fce4ec')}
+      </div>
+      <div id="htab-dersler" class="htab-content">
+        ${row('1',H.structure,H.lessonBody,'#e0f2f1')}
+        ${row('📖',H.grammar,H.grammarBody,'#ede7f6')}
+        ${row('🔊',H.pron,H.pronBody,'#e3f2fd')}
+      </div>
+      <div id="htab-tekrar" class="htab-content">${row('🔄',H.review,H.reviewBody,'#e8f5e9')}</div>
+      <div id="htab-ipuclari" class="htab-content">
+        <div class="help-tip"><div class="help-tip-icon">🔊</div><div>${H.tip1}</div></div>
+        <div class="help-tip"><div class="help-tip-icon">⭐</div><div>${H.tip2}</div></div>
+        <div class="help-tip"><div class="help-tip-icon">🔄</div><div>${H.tip3}</div></div>
+      </div>
+      <div id="htab-hakkinda" class="htab-content">
+        <div class="help-card"><div class="help-card-icon">${KDO_CFG.flag||'🌐'}</div><div><div class="help-card-title">${appTitle}</div><div class="help-card-body">${fill(H.body)}</div></div></div>
+        <div class="help-info-row"><span>${H.total}</span><strong>${LESSONS_META.filter(m=>m.hasContent).length}</strong></div>
+        <div class="help-info-row"><span>${H.data}</span><strong>localStorage (${H.offline})</strong></div>
+      </div>`;
+    const active = document.querySelector('#help-tabs-nav .htab.active');
+    if(active){ const tab = active.id.replace('htab-btn-',''); switchHelpTab(tab, active); }
+    else switchHelpTab('genel', document.getElementById('htab-btn-genel'));
+    return;
+  }
   const en = appLang!=='tr';
   // Tab button labels
   document.getElementById('htab-btn-genel').textContent   = '🏠 '+s('help_tab_guide');
@@ -4545,6 +4648,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.15"></script>
+<script src="shared/kdo-analytics.js?v=3.0.16"></script>
 </body>
 </html>

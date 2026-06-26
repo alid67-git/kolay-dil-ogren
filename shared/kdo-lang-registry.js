@@ -456,9 +456,7 @@ window.KDO_LANG_REGISTRY = {
     "flag": "🇹🇷",
     "nameTr": "Kolay Türkçe",
     "nameEn": "Easy Turkish Learning",
-    "nameTh": "เรียนภาษาตุรกีง่ายๆ",
     "title": "Kolay Türkçe Öğrenme",
-    "titleTh": "เรียนภาษาตุรกีง่ายๆ",
     "lessonsPath": "languages/tr/lessons",
     "tts": "tr-TR",
     "ttsAlt": "tr-TR",
@@ -470,24 +468,8 @@ window.KDO_LANG_REGISTRY = {
     "l2Meta": {
       "title": "Ekler & -de/-da",
       "title_en": "Suffixes & -de/-da",
-      "title_es": "Sufijos y -de/-da",
-      "title_de": "Suffixe & -de/-da",
-      "title_fr": "Suffixes et -de/-da",
-      "title_it": "Suffissi e -de/-da",
-      "title_ru": "Суффиксы и -de/-da",
-      "title_ar": "اللواحق و -de/-da",
-      "title_zh": "后缀与 -de/-da",
-      "title_th": "คำต่อท้ายและ -de/-da",
       "subtitle": "ünlü uyumu — adım adım",
-      "subtitle_en": "vowel harmony — step by step",
-      "subtitle_es": "armonía vocálica — paso a paso",
-      "subtitle_de": "Vokalharmonie — Schritt für Schritt",
-      "subtitle_fr": "harmonie vocalique — étape par étape",
-      "subtitle_it": "armonia vocalica — passo dopo passo",
-      "subtitle_ru": "гармония гласных — шаг за шагом",
-      "subtitle_ar": "انسجام الحركات — خطوة بخطوة",
-      "subtitle_zh": "元音和谐 — 循序渐进",
-      "subtitle_th": "สระประสาน — ทีละขั้น"
+      "subtitle_en": "vowel harmony — step by step"
     },
     "targetUi": {
       "tr": {
@@ -513,19 +495,6 @@ window.KDO_LANG_REGISTRY = {
         "calc_info": "Enter any number — instant Turkish equivalent. Tap 🔊 to hear.",
         "review_q_en2tr": "🇹🇷 Turkish → Turkish",
         "review_q_tr2en": "🇹🇷 Turkish → Turkish"
-      },
-      "th": {
-        "test_dir_en2tr": "ตุรกี → ความหมาย",
-        "test_dir_tr2en": "ความหมาย → ตุรกี",
-        "translate_placeholder": "พิมพ์ตุรกีหรือภาษาความหมาย...",
-        "translate_tip": "พิมพ์คำหรือประโยคภาษาตุรกี",
-        "settings_voices": "🔊 เสียงตุรกี",
-        "pron_col_english": "ตุรกี",
-        "ui_col_target": "ตุรกี",
-        "num_info": "ตัวเลขตุรกี: หลักหน่วยมาก่อน 21 = yirmi bir แตะการ์ดเพื่อฟัง 🔊",
-        "calc_info": "ใส่ตัวเลข — ได้คำสะกดตุรกีทันที แตะ 🔊 เพื่อฟัง",
-        "review_q_en2tr": "🇹🇷 ตุรกี → ความหมาย",
-        "review_q_tr2en": "🇹🇷 ความหมาย → ตุรกี"
       }
     },
     "legacy": false,
@@ -545,9 +514,7 @@ window.KDO_LANG_REGISTRY = {
     "flag": "🇹🇭",
     "nameTr": "Kolay Tayca",
     "nameEn": "Easy Thai Learning",
-    "nameTh": "เรียนภาษาไทยง่ายๆ",
     "title": "Kolay Tayca Öğrenme",
-    "titleTh": "เรียนภาษาไทยง่ายๆ",
     "lessonsPath": "languages/th/lessons",
     "tts": "th-TH",
     "ttsAlt": "th-TH",
@@ -578,18 +545,6 @@ window.KDO_LANG_REGISTRY = {
         "calc_info": "Enter any number — instant Thai equivalent. Tap 🔊 to hear.",
         "review_q_en2tr": "🇹🇭 Thai → Turkish",
         "review_q_tr2en": "🇹🇷 Turkish → Thai"
-      },
-      "th": {
-        "test_dir_th2tr": "ไทย → ความหมาย",
-        "test_dir_tr2th": "ความหมาย → ไทย",
-        "translate_placeholder": "พิมพ์ไทยหรือตุรกี...",
-        "translate_tip": "พิมพ์คำหรือประโยคภาษาไทยหรือตุรกี",
-        "settings_voices": "🔊 เสียงไทย",
-        "pron_col_english": "ไทย",
-        "calc_info": "ใส่ตัวเลขใดก็ได้ — ได้คำสะกดไทยทันที แตะ 🔊 เพื่อฟัง",
-        "num_info": "ข้ามหลักที่เป็นศูนย์ 20 = yîi-sìp (พิเศษ!) 11 = sìp-èt แตะการ์ดเพื่อฟัง 🔊",
-        "review_q_th2tr": "🇹🇭 ไทย → ความหมาย",
-        "review_q_tr2th": "🇹🇷 ความหมาย → ไทย"
       }
     },
     "legacy": true,
