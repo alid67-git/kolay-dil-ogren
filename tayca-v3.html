@@ -7,7 +7,7 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>Kolay Tayca Öğrenme</title>
+<title data-lk="app_title_th">เรียนภาษาไทยง่ายๆ</title>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -746,6 +746,23 @@ const UI_LOCAL = {
     scroll_top:'Yukarı çık',
     add_coming:'Kelime ekleme modülü yakında',
     gist_saved:'✅ Token kaydedildi.',
+    settings_api_key:'Anthropic API Key',
+    settings_gist_ph:'ghp_... (gist yetkisi olmalı)',
+    pron_i_m:'Ben (E)', pron_i_f:'Ben (K)', pron_you:'Sen/Siz', pron_he_she:'O', pron_we:'Biz',
+    pron_you_pl:'Siz(çoğul)', pron_they:'Onlar', pron_male:'Erkek', pron_female:'Kadın',
+    pron_polite:'Kibar, herkese', pron_same_mf:'E+K aynı kelime', pron_casual_i:'+ samimi "ben"',
+    pron_group_addr:'Grup hitabı', pron_phuak_group:'phuak=grup',
+    ex_q_select:'Doğru cevabı seçin', ex_q_listen:'Ne duyuyorsun?', ex_q_translate:'Bu cümleyi tercüme edin',
+    ex_q_wordbank:'Aşağıdaki kelimelerle cevabı oluşturun', ex_play_slow:'Yavaş dinle',
+    ex_finish_title:'Ders Tamamlandı!', ex_lives_remaining:'can kaldı', ex_completed_errors:'Hatalarla tamamlandı',
+    ex_stat_correct:'Doğru', ex_stat_incorrect:'Yanlış', ex_stat_accuracy:'Doğruluk', ex_finish:'Bitir',
+    ex_out_of_lives:'Canların bitti!', ex_try_again_msg:'Üzülme, tekrar dene!', ex_stat_reached:'Ulaşılan',
+    ex_try_again:'Tekrar Dene', ex_exit:'Çık',
+    no_starred_alert:'Bu derse ait yıldızlı öğe yok. Dersin içinde kelime veya cümleleri yıldızlayın.',
+    starred_label:'Yıldızlılar', item_label:'öğe',
+    help_tab_lessons:'📚 Dersler', help_tab_review:'🔄 Tekrar', help_tab_tips:'💡 İpuçları',
+    help_modal_title:'📖 Nasıl Kullanılır?', help_modal_sub:'Kolay Tayca Öğrenme · Rehber',
+    app_title_th:'Kolay Tayca Öğrenme', test_text_ph:'Test metni',
   },
   en:{
     // Nav
@@ -865,6 +882,23 @@ const UI_LOCAL = {
     scroll_top:'Scroll to top',
     add_coming:'Word addition module coming soon',
     gist_saved:'✅ Token saved.',
+    settings_api_key:'Anthropic API Key',
+    settings_gist_ph:'ghp_... (needs gist scope)',
+    pron_i_m:'I (M)', pron_i_f:'I (F)', pron_you:'You', pron_he_she:'He/She', pron_we:'We',
+    pron_you_pl:'You (pl.)', pron_they:'They', pron_male:'Male', pron_female:'Female',
+    pron_polite:'Polite, universal', pron_same_mf:'Same for M+F', pron_casual_i:'+ casual "I"',
+    pron_group_addr:'Group address', pron_phuak_group:'phuak=group',
+    ex_q_select:'Select the correct answer', ex_q_listen:'What do you hear?', ex_q_translate:'Translate this sentence',
+    ex_q_wordbank:'Tap words below to build answer', ex_play_slow:'Play slowly',
+    ex_finish_title:'Lesson Complete!', ex_lives_remaining:'lives remaining', ex_completed_errors:'Completed with errors',
+    ex_stat_correct:'Correct', ex_stat_incorrect:'Incorrect', ex_stat_accuracy:'Accuracy', ex_finish:'Finish',
+    ex_out_of_lives:'Out of lives!', ex_try_again_msg:"Don't worry, try again!", ex_stat_reached:'Reached',
+    ex_try_again:'Try Again', ex_exit:'Exit',
+    no_starred_alert:'No starred items for this lesson yet. Star words or sentences inside the lesson.',
+    starred_label:'Starred', item_label:'item',
+    help_tab_lessons:'📚 Lessons', help_tab_review:'🔄 Review', help_tab_tips:'💡 Tips',
+    help_modal_title:'📖 How to Use?', help_modal_sub:'Easy Thai Learning · Guide',
+    app_title_th:'Easy Thai Learning', test_text_ph:'Test text',
   }
 ,
   de:{
@@ -938,14 +972,214 @@ const UI_LOCAL = {
     pron_col_english:'泰语'
   },
   th:{
+    nav_lessons:'📚 บทเรียน',
+    nav_test:'📝 ทดสอบ',
+    nav_translate:'🌐 แปล',
+    nav_list:'📋 รายการโปรด',
+    nav_review:'🔄 ทบทวน',
+    nav_add:'➕ เพิ่ม',
+    tab_words:'คำศัพท์',
+    tab_tones:'วรรณยุกต์',
+    tab_grammar:'ไวยากรณ์',
+    tab_speaking:'การพูด',
+    tab_dialogue:'บทสนทนา',
+    tab_listening:'การฟัง',
+    tab_quiz:'ควิซ',
+    tab_practice:'ฝึกฝน',
+    tab_numbers:'ตัวเลข',
+    tab_calc:'เครื่องคิดเลข',
+    practice_intro:'แบบฝึกคำศัพท์และประโยคในโหมดฝึกฝนแบบรวดเร็ว',
+    practice_start:'เริ่มฝึกฝน',
+    lesson_back:'← บทเรียน',
+    lesson_back_list:'กลับไปรายการบทเรียน',
+    lesson_done_msg:'คุณเรียนบทเรียนนี้เสร็จแล้ว!',
+    lesson_redo_hint:'หากต้องการสามารถรีเซ็ตได้',
+    lesson_unmark:'↺ ทำเครื่องหมายว่ายังไม่เสร็จ',
+    lesson_mark_done:'✅ ทำเครื่องหมายว่าเสร็จแล้ว',
+    lesson_all_visited:'✅ ทุกแท็บเสร็จสมบูรณ์!',
+    lesson_visit_all:'⚠️ ต้องเยี่ยมชมทุกแท็บก่อนจึงจะทำบทเรียนให้เสร็จได้',
+    lesson_all_done_q:'✅ เยี่ยมชมทุกแท็บแล้ว — พร้อมทำเสร็จหรือยัง?',
+    lesson_complete_btn_active:'ทุกแท็บเสร็จสมบูรณ์!',
+    lesson_tab_dbl:'ดับเบิลคลิก: ทำเครื่องหมาย / ยกเลิกแท็บ',
+    tones_ref:'ข้อมูลวรรณยุกต์สำหรับบทเรียนนี้อยู่ในบทเรียนที่ 1',
+    gram_tip_label:'เคล็ดลับ:',
+    speak_listen:'🔊 ฟัง',
+    speak_slow:'🐢 ช้า',
+    dial_play:'▶ เล่นทั้งหมด',
+    dial_stop:'⏹ หยุด',
+    listen_play_btn:'🔊 ฟังเสียง',
+    listen_easy:'⭐ ง่าย',
+    listen_medium:'⭐⭐ ปานกลาง',
+    listen_hard:'⭐⭐⭐ ยาก',
+    test_loading:'⏳ กำลังโหลดข้อมูลบทเรียน...',
+    test_single:'บทเรียนเดียว',
+    test_single_desc:'ทดสอบคำศัพท์ ตัวอย่างและไวยากรณ์จากบทเรียนหนึ่งบท',
+    test_all:'ทุกบทเรียน',
+    test_all_desc_suffix:'กองการ์ด',
+    test_starred:'รายการโปรด',
+    test_starred_desc:'ทดสอบการ์ดที่คุณติดดาวไว้',
+    test_select_lesson:'เลือกบทเรียน',
+    test_lessons_done:'บทเรียนเสร็จแล้ว',
+    test_cards_available:'การ์ดพร้อมใช้',
+    test_back_btn:'← บทเรียน',
+    test_back_menu:'← เมนูหลัก',
+    test_back_geri:'← กลับ',
+    test_show_answer:'แสดงคำตอบ',
+    test_knew:'✅ รู้แล้ว',
+    test_didnt_know:'❌ ไม่รู้',
+    test_continue:'ต่อไป →',
+    test_correct_fb:'✅ ถูกต้อง!',
+    test_wrong_prefix:'❌ คำตอบ:',
+    test_retry:'🔄 ลองอีกครั้ง',
+    test_result_great:'ยอดเยี่ยม!',
+    test_result_good:'ดี!',
+    test_result_ok:'ไม่เลว!',
+    test_result_keep:'ฝึกต่อไป!',
+    test_correct_count:'ถูก',
+    test_wrong_items:'🔁 พลาด — ทบทวนสิ่งเหล่านี้',
+    test_mode_fc:'แฟลชการ์ด',
+    test_mode_mc:'ตัวเลือกหลายข้อ',
+    test_mode_mix:'ผสม',
     test_dir_th2tr:'ไทย → ความหมาย',
     test_dir_tr2th:'ความหมาย → ไทย',
-    test_dir_mix:'ผสม',
+    test_dir_mix:'ทิศทางผสม',
+    test_cat_all:'ทั้งหมด',
+    test_cat_phrases:'วลี',
+    test_cat_grammar:'ไวยากรณ์',
+    test_cat_pronouns:'สรรพนาม',
+    test_start:'เริ่ม',
+    test_no_cards:'ไม่พบการ์ด',
+    test_type_word:'คำศัพท์',
+    test_type_example:'ประโยคตัวอย่าง',
+    test_type_dialogue:'บทสนทนา',
+    test_type_speaking:'การพูด',
+    test_type_grammar:'ไวยากรณ์',
+    test_no_lessons:'ยังไม่มีบทเรียนที่เสร็จ',
+    test_soru:'คำถาม',
+    review_title:'🔄 ทบทวน (SRS)',
+    review_total:'ทั้งหมด',
+    review_learned:'เรียนแล้ว',
+    review_due:'ครบกำหนดวันนี้',
+    review_start:'เริ่มทบทวน',
+    review_no_cards:'ไม่มีการ์ดที่ต้องทบทวนวันนี้',
+    review_add_section:'📚 เพิ่มการ์ดบทเรียน',
+    review_cards:'การ์ด',
+    review_add_btn:'+ เพิ่ม',
+    review_lesson_prefix:'บทเรียน',
+    review_done_title:'เซสชันเสร็จสมบูรณ์!',
+    review_done_sub:'การ์ดที่ทบทวนแล้ว',
+    review_restart:'เริ่มใหม่',
+    review_show_answer:'แสดงคำตอบ',
     review_q_th2tr:'🇹🇭 ไทย → ความหมาย',
     review_q_tr2th:'🇹🇷 ความหมาย → ไทย',
-    settings_voices:'🔊 ไทย',
-    settings_voices_loading:'...',
-    pron_col_english:'ไทย'
+    review_btn_0:'❌ ไม่รู้',
+    review_btn_1:'😰 ยาก',
+    review_btn_2:'👍 ปกติ',
+    review_btn_3:'⚡ ง่าย',
+    review_type_word:'📚 คำศัพท์',
+    review_type_example:'💬 ตัวอย่าง',
+    review_type_speaking:'🗣️ การพูด',
+    translate_btn:'แปล',
+    translate_lesson_matches:'คู่บทเรียน',
+    translate_no_match:'ไม่พบคู่',
+    translate_google:'🌐 Google แปลภาษา',
+    translate_claude:'🤖 Claude AI',
+    translate_loading:'กำลังแปล...',
+    list_title:'⭐ คำศัพท์ที่ติดดาวของฉัน',
+    list_all:'ทั้งหมด',
+    list_words:'คำศัพท์',
+    list_examples:'ตัวอย่าง',
+    list_dialogue:'บทสนทนา',
+    list_empty:'⭐<br><br>ยังไม่มีคำศัพท์ที่ติดดาว',
+    list_analysis:'📖 วิเคราะห์ประโยค',
+    settings_title:'⚙️ การตั้งค่า',
+    settings_lang:'🌐 ภาษาของแอป',
+    settings_gist:'☁️ ซิงค์ข้ามอุปกรณ์ (GitHub Gist)',
+    settings_push:'☁️ บันทึกไปคลาวด์',
+    settings_pull:'📥 โหลดจากคลาวด์',
+    settings_save:'บันทึก',
+    settings_data:'ข้อมูล',
+    settings_backup:'💾 สำรองข้อมูล',
+    settings_voices:'🔊 เสียงไทย',
+    settings_voices_loading:'กำลังโหลดเสียง...',
+    settings_test_voice:'ทดสอบทั้งหมด',
+    settings_api_key:'Anthropic API Key',
+    settings_gist_ph:'ghp_... (ต้องมีสิทธิ์ gist)',
+    alert_added:'การ์ดใหม่ถูกเพิ่ม!',
+    alert_already:'การ์ดจากบทเรียนนี้ถูกเพิ่มแล้ว',
+    alert_backup:'✅ คัดลอกข้อมูลแล้ว!',
+    pron_title:'👤 สรรพนามบุรุษ — อ้างอิงด่วน',
+    pron_col_person:'บุคคล',
+    pron_col_thai:'ไทย',
+    pron_col_roman:'การถอดเสียง',
+    pron_col_note:'หมายเหตุ',
+    pron_hint:'💡 ตัวอย่างเพิ่มเติม → แท็บไวยากรณ์ → กฎ 9',
+    pron_i_m:'ฉัน (ช)',
+    pron_i_f:'ฉัน (ญ)',
+    pron_you:'คุณ',
+    pron_he_she:'เขา',
+    pron_we:'เรา',
+    pron_you_pl:'พวกคุณ',
+    pron_they:'พวกเขา',
+    pron_male:'ชาย',
+    pron_female:'หญิง',
+    pron_polite:'สุภาพ ใช้ได้ทุกคน',
+    pron_same_mf:'ใช้เหมือนกันทั้งชายและหญิง',
+    pron_casual_i:'+ แบบไม่เป็นทางการ "ฉัน"',
+    pron_group_addr:'การเรียกกลุ่ม',
+    pron_phuak_group:'phuak=กลุ่ม',
+    lesson_no_content:'เร็วๆ นี้',
+    num_info:'ข้ามหลักที่เป็นศูนย์ 20 = yîi-sìp (พิเศษ!) 11 = sìp-èt แตะการ์ดเพื่อฟัง 🔊',
+    num_compound_title:'🔗 ตัวอย่างตัวเลขประกอบ',
+    num_compound_info:'เรียงจากหน่วยใหญ่ไปเล็ก ข้ามหลักที่เป็นศูนย์',
+    calc_info:'ใส่ตัวเลขใดก็ได้ — ได้คำสะกดและการออกเสียงภาษาไทยทันที แตะ 🔊 เพื่อฟัง',
+    calc_input_label:'ใส่ตัวเลข (0 – 9,999,999)',
+    calc_listen:'🔊 ฟัง',
+    calc_quick:'⚡ ตัวอย่างด่วน',
+    calc_breakdown:'รายละเอียดหลัก',
+    gram_modal_title:'📖 วิเคราะห์ประโยค',
+    gram_legend_s:'S = ประธาน',
+    gram_legend_v:'V = กริยา',
+    gram_legend_o:'O = กรรม',
+    gram_legend_q:'คำถาม / ปฏิเสธ',
+    gram_legend_k:'K = คำขยาย',
+    gram_btn_tip:'วิเคราะห์ไวยากรณ์',
+    bonus_title:'BONUS — คำที่ใช้บ่อยที่สุด',
+    bonus_words:'คำ',
+    bonus_sets:'ชุด',
+    bonus_done:'เสร็จแล้ว',
+    quiz_q_suffix:'— หมายความว่าอะไร?',
+    scroll_top:'เลื่อนขึ้นด้านบน',
+    add_coming:'โมดูลเพิ่มคำศัพท์เร็วๆ นี้',
+    gist_saved:'✅ บันทึกโทเค็นแล้ว',
+    pron_col_english:'ไทย',
+    ex_q_select:'เลือกคำตอบที่ถูกต้อง',
+    ex_q_listen:'คุณได้ยินอะไร?',
+    ex_q_translate:'แปลประโยคนี้',
+    ex_q_wordbank:'แตะคำด้านล่างเพื่อสร้างคำตอบ',
+    ex_play_slow:'ฟังช้า',
+    ex_finish_title:'บทเรียนเสร็จสมบูรณ์!',
+    ex_lives_remaining:'ชีวิตเหลือ',
+    ex_completed_errors:'เสร็จแต่มีข้อผิดพลาด',
+    ex_stat_correct:'ถูก',
+    ex_stat_incorrect:'ผิด',
+    ex_stat_accuracy:'ความแม่นยำ',
+    ex_finish:'เสร็จสิ้น',
+    ex_out_of_lives:'หมดชีวิตแล้ว!',
+    ex_try_again_msg:'ไม่เป็นไร ลองอีกครั้ง!',
+    ex_stat_reached:'ถึงแล้ว',
+    ex_try_again:'ลองอีกครั้ง',
+    ex_exit:'ออก',
+    no_starred_alert:'ยังไม่มีรายการติดดาวในบทเรียนนี้ ติดดาวคำหรือประโยคในบทเรียน',
+    starred_label:'รายการโปรด',
+    item_label:'รายการ',
+    help_tab_lessons:'📚 บทเรียน',
+    help_tab_review:'🔄 ทบทวน',
+    help_tab_tips:'💡 เคล็ดลับ',
+    help_modal_title:'📖 วิธีใช้งาน?',
+    help_modal_sub:'เรียนภาษาไทยง่ายๆ · คู่มือ',
+    app_title_th:'เรียนภาษาไทยง่ายๆ',
+    test_text_ph:'ข้อความทดสอบ',
   },
 };
 
@@ -964,20 +1198,24 @@ function _mergeUI(){
 const UI = _mergeUI();
 function devCredit(lang){ return (window.KDO_UI_DEV||{})[lang] || (window.KDO_UI_DEV||{}).tr || ''; }
 function uiB(en, tr){ return appLang==='tr' ? tr : en; }
+function loc(tr, en, th){ return appLang==='tr' ? tr : (appLang==='th' ? (th||en) : en); }
 
 function s(key){ return typeof KDO_sFix==='function'?KDO_sFix(UI,appLang,key):((UI[appLang]||UI.en||UI.tr)[key]||(UI.en||{})[key]||(UI.tr||{})[key]||key); }
 
 function Lf(item,field){
   if(!item) return '';
   if(typeof KDO_Lf==='function') return KDO_Lf(item,field,appLang);
+  if(appLang==='th'&&item[field+'_th']!==undefined) return item[field+'_th'];
   if(appLang!=='tr'&&item[field+'_en']!==undefined) return item[field+'_en'];
   return item[field]||'';
 }
 
 function lessonSubtitle(meta){
   if(!meta) return '';
+  if(appLang==='th' && meta.title_th) return meta.title_th;
   const sub = appLang!=='tr' ? (meta.subtitle_en||meta.subtitle) : (meta.subtitle||meta.subtitle_en);
   if(sub) return sub;
+  if(appLang==='th') return meta.title_th||meta.title_en||meta.title||'';
   return appLang!=='tr' ? (meta.title_en||meta.title||'') : (meta.title||meta.title_en||'');
 }
 
@@ -1004,6 +1242,7 @@ function setLang(lang){
   document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
   _initLangButtons();
   document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
+  document.querySelectorAll('[data-lk-ph]').forEach(el=>{ el.placeholder=s(el.dataset.lkPh); });
   // Re-render current view
   const vid = (document.querySelector('.view.active')||{}).id||'';
   if(vid==='lessons-view') renderLessonList();
@@ -1083,10 +1322,10 @@ function setLang(lang){
       <div class="setting-label" data-lk="settings_lang">🌐 Uygulama Dili</div>
       <div id="lang-btn-wrap" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;"></div>
     </div>
-    <div class="setting-row"><div class="setting-label">Anthropic API Key</div><input type="password" id="api-key-input" placeholder="sk-ant-..."><button class="setting-btn" onclick="saveKey()" data-lk="settings_save">Kaydet</button></div>
+    <div class="setting-row"><div class="setting-label" data-lk="settings_api_key">Anthropic API Key</div><input type="password" id="api-key-input" placeholder="sk-ant-..."><button class="setting-btn" onclick="saveKey()" data-lk="settings_save">Kaydet</button></div>
     <div class="setting-row">
       <div class="setting-label" data-lk="settings_gist">☁️ Cihazlar Arası Senkron (GitHub Gist)</div>
-      <input type="password" id="gist-token-input" placeholder="ghp_... (gist yetkisi olmalı)" style="margin-top:6px;">
+      <input type="password" id="gist-token-input" data-lk-ph="settings_gist_ph" placeholder="ghp_... (gist yetkisi olmalı)" style="margin-top:6px;">
       <button class="setting-btn" onclick="saveGist()" style="margin-top:6px;" data-lk="settings_save">Kaydet</button>
       <div style="display:flex;gap:6px;margin-top:6px;">
         <button class="setting-btn" onclick="gistPush()" style="flex:1;background:#0d9488;color:white;border-color:#0d9488;" data-lk="settings_push">☁️ Buluta Kaydet</button>
@@ -1099,7 +1338,7 @@ function setLang(lang){
       <div class="setting-label" data-lk="settings_voices">🔊 Thai Sesleri</div>
       <div id="voice-list" style="margin-top:8px;" data-lk="settings_voices_loading">Sesler yükleniyor...</div>
       <div id="test-voice-controls" style="margin-top:8px;display:none;">
-        <input type="text" id="test-text" placeholder="Test metni" value="Selam" style="width:100%;padding:8px;border:1px solid #e0e0e0;border-radius:6px;margin-bottom:8px;">
+        <input type="text" id="test-text" data-lk-ph="test_text_ph" placeholder="Test metni" value="Selam" style="width:100%;padding:8px;border:1px solid #e0e0e0;border-radius:6px;margin-bottom:8px;">
         <button class="setting-btn" onclick="testVoices()" data-lk="settings_test_voice">Tümünü Dinle</button>
       </div>
     </div>
@@ -1142,55 +1381,55 @@ function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').rep
 // L1+L2 birleşti → Ders 1: "Temel İfadeler ve Tanışma"
 // Eski L3 → Ders 2, diğerleri kaydı
 const LESSONS_META = [
-  {num:1, emoji:'👋', title:'Temel İfadeler ve Tanışma', title_en:'Greetings & Basics', hasContent:true, hasTones:true},
-  {num:2, emoji:'🔢', title:'Sayılar ve Para', title_en:'Numbers & Money', hasContent:true, hasTones:false},
-  {num:3, emoji:'🕐', title:'Tarih ve Saat', title_en:'Date & Time', hasContent:true, hasTones:false},
-  {num:4, emoji:'🍜', title:'Restoran', title_en:'Restaurant', hasContent:true, hasTones:false},
-  {num:5, emoji:'🛒', title:'Market ve Alışveriş', title_en:'Market & Shopping', hasContent:true, hasTones:false},
-  {num:6, emoji:'🗺️', title:'Yol Tarifi', title_en:'Directions', hasContent:true, hasTones:false},
-  {num:7, emoji:'🚗', title:'Grab ve Ulaşım', title_en:'Grab & Transport', hasContent:true, hasTones:false},
-  {num:8, emoji:'🏨', title:'Otel ve Konaklama', title_en:'Hotel & Accommodation', hasContent:true, hasTones:false},
-  {num:9, emoji:'🏍️', title:'Motorsiklet ve Trafik', title_en:'Motorbike & Traffic', hasContent:true, hasTones:false},
-  {num:10,emoji:'🏖️', title:'Plaj ve Deniz', title_en:'Beach & Sea', hasContent:true, hasTones:false},
-  {num:11,emoji:'🏥', title:'Hastane ve Eczane', title_en:'Hospital & Pharmacy', hasContent:true, hasTones:false},
-  {num:12,emoji:'🆘', title:'Acil Durumlar', title_en:'Emergency Situations', hasContent:true, hasTones:false},
-  {num:13,emoji:'🏠', title:'Ev Yaşamı ve İnternet', title_en:'Home Life & Internet', hasContent:true, hasTones:false},
-  {num:14,emoji:'🎉', title:'Sosyalleşme', title_en:'Socializing', hasContent:true, hasTones:false},
-  {num:15,emoji:'🏦', title:'Immigration ve Resmi İşler', title_en:'Immigration & Official Matters', hasContent:true, hasTones:false},
-  {num:16,emoji:'🙏', title:'Thai Kültürü', title_en:'Thai Culture', hasContent:true, hasTones:false},
-  {num:17,emoji:'🔤', title:'Tabela ve Menü Okuma', title_en:'Reading Signs & Menus', hasContent:true, hasTones:false},
-  {num:18,emoji:'📱', title:'LINE ve Telefon', title_en:'LINE & Phone', hasContent:true, hasTones:false},
-  {num:19,emoji:'🌴', title:'Phuket Tam Gün Simülasyonu', title_en:'Phuket Full Day Simulation', hasContent:true, hasTones:false},
+  {num:1, emoji:'👋', title:'Temel İfadeler ve Tanışma', title_en:'Greetings & Basics', title_th:'ทักทายและพื้นฐาน', hasContent:true, hasTones:true},
+  {num:2, emoji:'🔢', title:'Sayılar ve Para', title_en:'Numbers & Money', title_th:'ตัวเลขและเงิน', hasContent:true, hasTones:false},
+  {num:3, emoji:'🕐', title:'Tarih ve Saat', title_en:'Date & Time', title_th:'วันที่และเวลา', hasContent:true, hasTones:false},
+  {num:4, emoji:'🍜', title:'Restoran', title_en:'Restaurant', title_th:'ร้านอาหาร', hasContent:true, hasTones:false},
+  {num:5, emoji:'🛒', title:'Market ve Alışveriş', title_en:'Market & Shopping', title_th:'ตลาดและช้อปปิ้ง', hasContent:true, hasTones:false},
+  {num:6, emoji:'🗺️', title:'Yol Tarifi', title_en:'Directions', title_th:'การบอกทาง', hasContent:true, hasTones:false},
+  {num:7, emoji:'🚗', title:'Grab ve Ulaşım', title_en:'Grab & Transport', title_th:'Grab และการเดินทาง', hasContent:true, hasTones:false},
+  {num:8, emoji:'🏨', title:'Otel ve Konaklama', title_en:'Hotel & Accommodation', title_th:'โรงแรมและที่พัก', hasContent:true, hasTones:false},
+  {num:9, emoji:'🏍️', title:'Motorsiklet ve Trafik', title_en:'Motorbike & Traffic', title_th:'มอเตอร์ไซค์และจราจร', hasContent:true, hasTones:false},
+  {num:10,emoji:'🏖️', title:'Plaj ve Deniz', title_en:'Beach & Sea', title_th:'ชายหาดและทะเล', hasContent:true, hasTones:false},
+  {num:11,emoji:'🏥', title:'Hastane ve Eczane', title_en:'Hospital & Pharmacy', title_th:'โรงพยาบาลและร้านขายยา', hasContent:true, hasTones:false},
+  {num:12,emoji:'🆘', title:'Acil Durumlar', title_en:'Emergency Situations', title_th:'สถานการณ์ฉุกเฉิน', hasContent:true, hasTones:false},
+  {num:13,emoji:'🏠', title:'Ev Yaşamı ve İnternet', title_en:'Home Life & Internet', title_th:'ชีวิตที่บ้านและอินเทอร์เน็ต', hasContent:true, hasTones:false},
+  {num:14,emoji:'🎉', title:'Sosyalleşme', title_en:'Socializing', title_th:'การเข้าสังคม', hasContent:true, hasTones:false},
+  {num:15,emoji:'🏦', title:'Immigration ve Resmi İşler', title_en:'Immigration & Official Matters', title_th:'ตรวจคนเข้าเมืองและเรื่องราชการ', hasContent:true, hasTones:false},
+  {num:16,emoji:'🙏', title:'Thai Kültürü', title_en:'Thai Culture', title_th:'วัฒนธรรมไทย', hasContent:true, hasTones:false},
+  {num:17,emoji:'🔤', title:'Tabela ve Menü Okuma', title_en:'Reading Signs & Menus', title_th:'อ่านป้ายและเมนู', hasContent:true, hasTones:false},
+  {num:18,emoji:'📱', title:'LINE ve Telefon', title_en:'LINE & Phone', title_th:'LINE และโทรศัพท์', hasContent:true, hasTones:false},
+  {num:19,emoji:'🌴', title:'Phuket Tam Gün Simülasyonu', title_en:'Phuket Full Day Simulation', title_th:'จำลองวันเต็มที่ภูเก็ต', hasContent:true, hasTones:false},
   // ── CORE 2000 Kelime Hazinesi (PDF) ──
-  {num:20,emoji:'🙏', title:'Kelimeler 1 — Temel İfadeler & Selamlaşma', title_en:'Vocab 1 — Basic Phrases & Greetings', hasContent:true, hasTones:false},
-  {num:21,emoji:'👷', title:'Kelimeler 2 — Meslekler & Vücut Bölümleri', title_en:'Vocab 2 — Professions & Body Parts', hasContent:true, hasTones:false},
-  {num:22,emoji:'😊', title:'Kelimeler 3 — Duygular, Giyim & Eylemler', title_en:'Vocab 3 — Emotions, Clothing & Actions', hasContent:true, hasTones:false},
-  {num:23,emoji:'📱', title:'Kelimeler 4 — Günlük Araçlar & Sayılar', title_en:'Vocab 4 — Daily Objects & Numbers', hasContent:true, hasTones:false},
-  {num:24,emoji:'💼', title:'Kelimeler 5 — İş & Teknoloji', title_en:'Vocab 5 — Business & Technology', hasContent:true, hasTones:false},
-  {num:25,emoji:'🎓', title:'Kelimeler 6 — Eğitim & Sanat', title_en:'Vocab 6 — Education & Arts', hasContent:true, hasTones:false},
-  {num:26,emoji:'🔢', title:'Kelimeler 7 — Sıra Sayıları & Duygular', title_en:'Vocab 7 — Ordinals & Emotions', hasContent:true, hasTones:false},
-  {num:27,emoji:'⛅', title:'Kelimeler 8 — Hava Durumu & Spor', title_en:'Vocab 8 — Weather & Sports', hasContent:true, hasTones:false},
-  {num:28,emoji:'🍽️', title:'Kelimeler 9 — Para & Restoran', title_en:'Vocab 9 — Money & Restaurant', hasContent:true, hasTones:false},
-  {num:29,emoji:'🌍', title:'Kelimeler 10 — Ülkeler & Şehirler', title_en:'Vocab 10 — Countries & Cities', hasContent:true, hasTones:false},
-  {num:30,emoji:'🏨', title:'Kelimeler 11 — Otel & Renkler', title_en:'Vocab 11 — Hotel & Colors', hasContent:true, hasTones:false},
-  {num:31,emoji:'🍉', title:'Kelimeler 12 — Meyve, Sebze & Sıfatlar', title_en:'Vocab 12 — Fruits, Vegetables & Adjectives', hasContent:true, hasTones:false},
-  {num:32,emoji:'🎹', title:'Kelimeler 13 — Meslekler & Müzik Aletleri', title_en:'Vocab 13 — Professions & Musical Instruments', hasContent:true, hasTones:false},
-  {num:33,emoji:'🚴', title:'Kelimeler 14 — Spor & Seyahat', title_en:'Vocab 14 — Sports & Travel', hasContent:true, hasTones:false},
-  {num:34,emoji:'🤝', title:'Kelimeler 15 — İş Toplantısı & Müzakere', title_en:'Vocab 15 — Business Meetings & Negotiation', hasContent:true, hasTones:false},
-  {num:35,emoji:'👗', title:'Kelimeler 16 — Giyim & Kozmetik', title_en:'Vocab 16 — Clothing & Cosmetics', hasContent:true, hasTones:false},
-  {num:36,emoji:'❓', title:'Kelimeler 17 — Soru Kelimeleri & Özellikler', title_en:'Vocab 17 — Question Words & Properties', hasContent:true, hasTones:false},
-  {num:37,emoji:'🌩️', title:'Kelimeler 18 — Hava Olayları & Doğa', title_en:'Vocab 18 — Weather Phenomena & Nature', hasContent:true, hasTones:false},
-  {num:38,emoji:'🥩', title:'Kelimeler 19 — Yemek & Mutfak', title_en:'Vocab 19 — Food & Kitchen', hasContent:true, hasTones:false},
-  {num:39,emoji:'🪞', title:'Kelimeler 20 — Görünüm & Beden', title_en:'Vocab 20 — Appearance & Body', hasContent:true, hasTones:false},
-  {num:40,emoji:'💊', title:'Kelimeler 21 — Sağlık & Ev Eşyaları', title_en:'Vocab 21 — Health & Home Furniture', hasContent:true, hasTones:false},
-  {num:41,emoji:'🏙️', title:'Kelimeler 22 — Şehir & Yapılar', title_en:'Vocab 22 — City & Buildings', hasContent:true, hasTones:false},
-  {num:42,emoji:'⚡', title:'Kelimeler 23 — Ekonomi & Teknoloji', title_en:'Vocab 23 — Economy & Technology', hasContent:true, hasTones:false},
-  {num:43,emoji:'🏠', title:'Kelimeler 24 — Ev & Okul Hayatı', title_en:'Vocab 24 — Home & School Life', hasContent:true, hasTones:false},
-  {num:44,emoji:'✈️', title:'Kelimeler 25 — Seyahat & İletişim', title_en:'Vocab 25 — Travel & Communication', hasContent:true, hasTones:false},
-  {num:45,emoji:'🏊', title:'Kelimeler 26 — Eylemler & Aktiviteler', title_en:'Vocab 26 — Actions & Activities', hasContent:true, hasTones:false},
-  {num:46,emoji:'🕷️', title:'Kelimeler 27 — Trafik, Hayvanlar & Doğa', title_en:'Vocab 27 — Traffic, Animals & Nature', hasContent:true, hasTones:false},
-  {num:47,emoji:'🎬', title:'Kelimeler 28 — Seyahat & Medya', title_en:'Vocab 28 — Travel & Media', hasContent:true, hasTones:false},
-  {num:48,emoji:'🌐', title:'Kelimeler 29 — Diller & Çeşitli Kelimeler', title_en:'Vocab 29 — Languages & Miscellaneous', hasContent:true, hasTones:false},
+  {num:20,emoji:'🙏', title:'Kelimeler 1 — Temel İfadeler & Selamlaşma', title_en:'Vocab 1 — Basic Phrases & Greetings', title_th:'คำศัพท์ 1 — สำนวนพื้นฐานและทักทาย', hasContent:true, hasTones:false},
+  {num:21,emoji:'👷', title:'Kelimeler 2 — Meslekler & Vücut Bölümleri', title_en:'Vocab 2 — Professions & Body Parts', title_th:'คำศัพท์ 2 — อาชีพและส่วนต่างๆ ของร่างกาย', hasContent:true, hasTones:false},
+  {num:22,emoji:'😊', title:'Kelimeler 3 — Duygular, Giyim & Eylemler', title_en:'Vocab 3 — Emotions, Clothing & Actions', title_th:'คำศัพท์ 3 — อารมณ์ เสื้อผ้าและการกระทำ', hasContent:true, hasTones:false},
+  {num:23,emoji:'📱', title:'Kelimeler 4 — Günlük Araçlar & Sayılar', title_en:'Vocab 4 — Daily Objects & Numbers', title_th:'คำศัพท์ 4 — สิ่งของประจำวันและตัวเลข', hasContent:true, hasTones:false},
+  {num:24,emoji:'💼', title:'Kelimeler 5 — İş & Teknoloji', title_en:'Vocab 5 — Business & Technology', title_th:'คำศัพท์ 5 — ธุรกิจและเทคโนโลยี', hasContent:true, hasTones:false},
+  {num:25,emoji:'🎓', title:'Kelimeler 6 — Eğitim & Sanat', title_en:'Vocab 6 — Education & Arts', title_th:'คำศัพท์ 6 — การศึกษาและศิลปะ', hasContent:true, hasTones:false},
+  {num:26,emoji:'🔢', title:'Kelimeler 7 — Sıra Sayıları & Duygular', title_en:'Vocab 7 — Ordinals & Emotions', title_th:'คำศัพท์ 7 —เลขลำดับและอารมณ์', hasContent:true, hasTones:false},
+  {num:27,emoji:'⛅', title:'Kelimeler 8 — Hava Durumu & Spor', title_en:'Vocab 8 — Weather & Sports', title_th:'คำศัพท์ 8 — สภาพอากาศและกีฬา', hasContent:true, hasTones:false},
+  {num:28,emoji:'🍽️', title:'Kelimeler 9 — Para & Restoran', title_en:'Vocab 9 — Money & Restaurant', title_th:'คำศัพท์ 9 — เงินและร้านอาหาร', hasContent:true, hasTones:false},
+  {num:29,emoji:'🌍', title:'Kelimeler 10 — Ülkeler & Şehirler', title_en:'Vocab 10 — Countries & Cities', title_th:'คำศัพท์ 10 — ประเทศและเมือง', hasContent:true, hasTones:false},
+  {num:30,emoji:'🏨', title:'Kelimeler 11 — Otel & Renkler', title_en:'Vocab 11 — Hotel & Colors', title_th:'คำศัพท์ 11 — โรงแรมและสี', hasContent:true, hasTones:false},
+  {num:31,emoji:'🍉', title:'Kelimeler 12 — Meyve, Sebze & Sıfatlar', title_en:'Vocab 12 — Fruits, Vegetables & Adjectives', title_th:'คำศัพท์ 12 — ผลไม้ ผักและคำคุณศัพท์', hasContent:true, hasTones:false},
+  {num:32,emoji:'🎹', title:'Kelimeler 13 — Meslekler & Müzik Aletleri', title_en:'Vocab 13 — Professions & Musical Instruments', title_th:'คำศัพท์ 13 — อาชีพและเครื่องดนตรี', hasContent:true, hasTones:false},
+  {num:33,emoji:'🚴', title:'Kelimeler 14 — Spor & Seyahat', title_en:'Vocab 14 — Sports & Travel', title_th:'คำศัพท์ 14 — กีฬาและการเดินทาง', hasContent:true, hasTones:false},
+  {num:34,emoji:'🤝', title:'Kelimeler 15 — İş Toplantısı & Müzakere', title_en:'Vocab 15 — Business Meetings & Negotiation', title_th:'คำศัพท์ 15 — ประชุมธุรกิจและการเจรจา', hasContent:true, hasTones:false},
+  {num:35,emoji:'👗', title:'Kelimeler 16 — Giyim & Kozmetik', title_en:'Vocab 16 — Clothing & Cosmetics', title_th:'คำศัพท์ 16 — เสื้อผ้าและเครื่องสำอาง', hasContent:true, hasTones:false},
+  {num:36,emoji:'❓', title:'Kelimeler 17 — Soru Kelimeleri & Özellikler', title_en:'Vocab 17 — Question Words & Properties', title_th:'คำศัพท์ 17 — คำถามและคุณสมบัติ', hasContent:true, hasTones:false},
+  {num:37,emoji:'🌩️', title:'Kelimeler 18 — Hava Olayları & Doğa', title_en:'Vocab 18 — Weather Phenomena & Nature', title_th:'คำศัพท์ 18 — สภาพอากาศและธรรมชาติ', hasContent:true, hasTones:false},
+  {num:38,emoji:'🥩', title:'Kelimeler 19 — Yemek & Mutfak', title_en:'Vocab 19 — Food & Kitchen', title_th:'คำศัพท์ 19 — อาหารและครัว', hasContent:true, hasTones:false},
+  {num:39,emoji:'🪞', title:'Kelimeler 20 — Görünüm & Beden', title_en:'Vocab 20 — Appearance & Body', title_th:'คำศัพท์ 20 — รูปลักษณ์และร่างกาย', hasContent:true, hasTones:false},
+  {num:40,emoji:'💊', title:'Kelimeler 21 — Sağlık & Ev Eşyaları', title_en:'Vocab 21 — Health & Home Furniture', title_th:'คำศัพท์ 21 — สุขภาพและเฟอร์นิเจอร์', hasContent:true, hasTones:false},
+  {num:41,emoji:'🏙️', title:'Kelimeler 22 — Şehir & Yapılar', title_en:'Vocab 22 — City & Buildings', title_th:'คำศัพท์ 22 — เมืองและอาคาร', hasContent:true, hasTones:false},
+  {num:42,emoji:'⚡', title:'Kelimeler 23 — Ekonomi & Teknoloji', title_en:'Vocab 23 — Economy & Technology', title_th:'คำศัพท์ 23 — เศรษฐกิจและเทคโนโลยี', hasContent:true, hasTones:false},
+  {num:43,emoji:'🏠', title:'Kelimeler 24 — Ev & Okul Hayatı', title_en:'Vocab 24 — Home & School Life', title_th:'คำศัพท์ 24 — บ้านและชีวิตในโรงเรียน', hasContent:true, hasTones:false},
+  {num:44,emoji:'✈️', title:'Kelimeler 25 — Seyahat & İletişim', title_en:'Vocab 25 — Travel & Communication', title_th:'คำศัพท์ 25 — การเดินทางและการสื่อสาร', hasContent:true, hasTones:false},
+  {num:45,emoji:'🏊', title:'Kelimeler 26 — Eylemler & Aktiviteler', title_en:'Vocab 26 — Actions & Activities', title_th:'คำศัพท์ 26 — การกระทำและกิจกรรม', hasContent:true, hasTones:false},
+  {num:46,emoji:'🕷️', title:'Kelimeler 27 — Trafik, Hayvanlar & Doğa', title_en:'Vocab 27 — Traffic, Animals & Nature', title_th:'คำศัพท์ 27 — จราจร สัตว์และธรรมชาติ', hasContent:true, hasTones:false},
+  {num:47,emoji:'🎬', title:'Kelimeler 28 — Seyahat & Medya', title_en:'Vocab 28 — Travel & Media', title_th:'คำศัพท์ 28 — การเดินทางและสื่อ', hasContent:true, hasTones:false},
+  {num:48,emoji:'🌐', title:'Kelimeler 29 — Diller & Çeşitli Kelimeler', title_en:'Vocab 29 — Languages & Miscellaneous', title_th:'คำศัพท์ 29 — ภาษาและคำศัพท์เบ็ดเตล็ด', hasContent:true, hasTones:false},
 ];
 
 // =================== DERS VERİLERİ (lazy load) ===================
@@ -1585,14 +1824,13 @@ function showLessonStars(num, event){
   if(event) event.stopPropagation();
   const prefixes = ['w'+num+'__', 'ex'+num+'w', 'dia'+num];
   const items = Object.entries(starred).filter(([k,v])=>v&&typeof v==='object'&&prefixes.some(p=>k.startsWith(p)));
-  const en = appLang!=='tr';
   if(items.length===0){
-    alert(en?'No starred items for this lesson yet. Star words or sentences inside the lesson.':'Bu derse ait yıldızlı öğe yok. Dersin içinde kelime veya cümleleri yıldızlayın.');
+    alert(s('no_starred_alert'));
     return;
   }
   const meta = LESSONS_META.find(m=>m.num===num);
-  document.getElementById('lstar-title').textContent = (meta?meta.emoji+' '+Lf(meta,'title'):'Ders ')+' — '+(en?'Starred':'Yıldızlılar');
-  document.getElementById('lstar-count').textContent = items.length+' '+(en?'item':'öğe');
+  document.getElementById('lstar-title').textContent = (meta?meta.emoji+' '+Lf(meta,'title'):s('lesson_prefix')+' ')+' — '+s('starred_label');
+  document.getElementById('lstar-count').textContent = items.length+' '+s('item_label');
   document.getElementById('lstar-list').innerHTML = items.map(([k,v])=>{
     const hasBd = v.bd && Array.isArray(v.bd) && v.bd.length>0;
     const thEsc = esc(v.th||'');
@@ -1759,13 +1997,13 @@ function buildLessonHTML(L, meta){
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('pron_col_roman')}</th>
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('pron_col_note')}</th>
         </tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'I (M)':'Ben (E)'}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">ผม</td><td style="padding:6px 6px;font-weight:700;">pom</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Male':'Erkek'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'I (F)':'Ben (K)'}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">ฉัน</td><td style="padding:6px 6px;font-weight:700;">chan</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Female':'Kadın'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'You':'Sen/Siz'}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">คุณ</td><td style="padding:6px 6px;font-weight:700;">khun</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Polite, universal':'Kibar, herkese'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'He/She':'O'}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">เขา</td><td style="padding:6px 6px;font-weight:700;">khao</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Same for M+F':'E+K aynı kelime'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'We':'Biz'}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">เรา</td><td style="padding:6px 6px;font-weight:700;">rao</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'+ casual "I"':'+ samimi "ben"'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'You (pl.)':'Siz(çoğul)'}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">พวกคุณ</td><td style="padding:6px 6px;font-weight:700;">phuak-khun</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Group address':'Grup hitabı'}</td></tr>
-        <tr><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'They':'Onlar'}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">พวกเขา</td><td style="padding:6px 6px;font-weight:700;">phuak-khao</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'phuak=group':'phuak=grup'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_i_m')}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">ผม</td><td style="padding:6px 6px;font-weight:700;">pom</td><td style="padding:6px 6px;color:#888;">${s('pron_male')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_i_f')}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">ฉัน</td><td style="padding:6px 6px;font-weight:700;">chan</td><td style="padding:6px 6px;color:#888;">${s('pron_female')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_you')}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">คุณ</td><td style="padding:6px 6px;font-weight:700;">khun</td><td style="padding:6px 6px;color:#888;">${s('pron_polite')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_he_she')}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">เขา</td><td style="padding:6px 6px;font-weight:700;">khao</td><td style="padding:6px 6px;color:#888;">${s('pron_same_mf')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_we')}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">เรา</td><td style="padding:6px 6px;font-weight:700;">rao</td><td style="padding:6px 6px;color:#888;">${s('pron_casual_i')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_you_pl')}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">พวกคุณ</td><td style="padding:6px 6px;font-weight:700;">phuak-khun</td><td style="padding:6px 6px;color:#888;">${s('pron_group_addr')}</td></tr>
+        <tr><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_they')}</td><td style="padding:6px 6px;font-family:'Noto Sans Thai',sans-serif;font-size:15px;">พวกเขา</td><td style="padding:6px 6px;font-weight:700;">phuak-khao</td><td style="padding:6px 6px;color:#888;">${s('pron_phuak_group')}</td></tr>
       </table>
       <div style="font-size:10px;color:#888;margin-top:8px;">${s('pron_hint')}</div>
     </div>` : '';
@@ -1774,7 +2012,7 @@ function buildLessonHTML(L, meta){
   const tones = (L.tones && L.tones.length>0) ? L.tones.map(t=>`
     <div class="tone-card" style="border-left-color:${t.color}">
       <div class="tone-name" style="color:${t.color}">${t.name}</div>
-      <div class="tone-symbol">${appLang!=='tr'?'Mark:':'İşaret:'} ${t.symbol}</div>
+      <div class="tone-symbol">${s('ui_mark')} ${t.symbol}</div>
       <div class="tone-desc">${Lf(t,'desc')||t.desc}</div>
       <div class="tone-words">
         ${t.words.map(w=>`
@@ -1905,13 +2143,13 @@ function buildLessonHTML(L, meta){
   if(meta.num === 2 && L.numbers){
     // --- NUMBERS sekmesi: Flash kart benzeri grid ---
     const groups = [
-      {title: appLang!=='tr'?'🔢 Basic Numbers (0–9)':'🔢 Temel Rakamlar (0–9)', data: L.numbers.filter(x=>x.n<=9)},
-      {title: appLang!=='tr'?'🔟 Tens (10–100)':'🔟 Onlar (10–100)',             data: L.numbers.filter(x=>x.n>=10&&x.n<=100)},
-      {title: appLang!=='tr'?'💯 Large Units':'💯 Büyük Birimler',               data: L.numbers.filter(x=>x.n>100)},
+      {title: s('ui_basic_numbers'), data: L.numbers.filter(x=>x.n<=9)},
+      {title: s('ui_tens'),             data: L.numbers.filter(x=>x.n>=10&&x.n<=100)},
+      {title: s('ui_large_units'),               data: L.numbers.filter(x=>x.n>100)},
     ];
     numbersHtml = `
       <div style="background:#f0faf7;border:1px solid #b2dfdb;border-radius:12px;padding:12px 14px;margin-bottom:14px;font-size:13px;color:#444;line-height:1.7">
-        <strong style="color:#0d9488">${appLang!=='tr'?'System:':'Sistem:'}</strong> ${s('num_info')}
+        <strong style="color:#0d9488">${s('ui_system')}</strong> ${s('num_info')}
       </div>
       ${groups.map(g=>`
         <div style="font-weight:700;color:#0d9488;margin:14px 0 8px;font-size:13px;border-left:3px solid #0d9488;padding-left:8px">${g.title}</div>
@@ -2004,7 +2242,7 @@ function buildLessonHTML(L, meta){
         ${lessonSubtitle(meta) ? `<div class="lesson-hero-sub">${lessonSubtitle(meta)}</div>` : ''}
         <div class="lesson-hero-meta"><span id="lesson-score-live"></span></div>
       </div>
-      <button type="button" class="lesson-header-star" onclick="showLessonStars(${meta.num},event)" title="${appLang!=='tr'?'Starred items':'Yıldızlılar'}">⭐</button>
+      <button type="button" class="lesson-header-star" onclick="showLessonStars(${meta.num},event)" title="${s('ui_starred')}">⭐</button>
     </div>
     <div class="ltabs" id="ltabs-wrap">${tabs}</div>
     ${tabNames.map(t=>`<div id="lc-${t}" class="lcontent">${
@@ -3121,15 +3359,15 @@ function switchHelpTab(tab, btn){
 }
 
 function buildHelpContent(){
-  const en = appLang!=='tr';
+  const L = loc;
   // Tab button labels
   document.getElementById('htab-btn-genel').textContent   = '🏠 '+s('help_tab_guide');
-  document.getElementById('htab-btn-dersler').textContent = en?'📚 Lessons':'📚 Dersler';
-  document.getElementById('htab-btn-tekrar').textContent  = en?'🔄 Review':'🔄 Tekrar';
-  document.getElementById('htab-btn-ipuclari').textContent= en?'💡 Tips':'💡 İpuçları';
+  document.getElementById('htab-btn-dersler').textContent = s('help_tab_lessons');
+  document.getElementById('htab-btn-tekrar').textContent = s('help_tab_review');
+  document.getElementById('htab-btn-ipuclari').textContent = s('help_tab_tips');
   document.getElementById('htab-btn-hakkinda').textContent= 'ℹ️ '+s('help_tab_about');
-  document.getElementById('help-modal-title').textContent = en?'📖 How to Use?':'📖 Nasıl Kullanılır?';
-  document.getElementById('help-modal-sub').textContent   = en?'Easy Thai Learning · Guide':'Kolay Tayca Öğrenme · Rehber';
+  document.getElementById('help-modal-title').textContent = s('help_modal_title');
+  document.getElementById('help-modal-sub').textContent = s('help_modal_sub');
 
   const chip = (bg,col,txt)=>`<span class="help-color-chip" style="background:${bg};color:${col};">${txt}</span>`;
 
@@ -3139,64 +3377,64 @@ function buildHelpContent(){
       <div class="help-card">
         <div class="help-card-icon">🇹🇭</div>
         <div>
-          <div class="help-card-title">${en?'What is this app?':'Bu uygulama ne için?'}</div>
-          <div class="help-card-body">${en?'Designed to quickly learn everyday Thai used in Phuket. Focuses on real conversation, not tourist phrases.':'Phuket\'te günlük hayatta kullanılan Tayca\'yı hızlıca öğrenmek için tasarlandı. Turistik değil, gerçek konuşma diline odaklanır.'}</div>
+          <div class="help-card-title">${L('Bu uygulama ne için?','What is this app?','แอปนี้ใช้ทำอะไร?')}</div>
+          <div class="help-card-body">${L('Phuket\'te günlük hayatta kullanılan Tayca\'yı hızlıca öğrenmek için tasarlandı. Turistik değil, gerçek konuşma diline odaklanır.','Designed to quickly learn everyday Thai used in Phuket. Focuses on real conversation, not tourist phrases.','ออกแบบมาเพื่อเรียนภาษาไทยที่ใช้ในชีวิตประจำวันที่ภูเก็ตอย่างรวดเร็ว เน้นการสนทนาจริง ไม่ใช่ประโยคนักท่องเที่ยว')}</div>
         </div>
       </div>
-      <div class="help-section-header">📱 ${en?'Main Tabs':'Ana Sekmeler'}</div>
+      <div class="help-section-header">📱 ${L('Ana Sekmeler','Main Tabs','แท็บหลัก')}</div>
       <div class="help-row"><div class="help-row-icon" style="background:#e8f5e9;">📚</div><div>
-        <div class="help-row-title">${en?'Lessons':'Dersler'}</div>
-        <div class="help-row-sub">${en?'19 lessons + BONUS vocabulary sets. Each lesson has 6–8 tabs. Green = completed.':'19 ders + BONUS kelime setleri. Her ders 6–8 sekme içerir. Yeşil = tamamlandı.'}</div>
+        <div class="help-row-title">${L('Dersler','Lessons','บทเรียน')}</div>
+        <div class="help-row-sub">${L('19 ders + BONUS kelime setleri. Her ders 6–8 sekme içerir. Yeşil = tamamlandı.','19 lessons + BONUS vocabulary sets. Each lesson has 6–8 tabs. Green = completed.','19 บทเรียน + ชุดคำศัพท์ BONUS แต่ละบทมี 6–8 แท็บ สีเขียว = เสร็จแล้ว')}</div>
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#fff3e0;">📝</div><div>
-        <div class="help-row-title">${en?'Test':'Test'}</div>
-        <div class="help-row-sub">${en?'Spaced repetition (SRS) system. Due cards today + lesson-based practice.':'Aralıklı tekrar (SRS) sistemi. Bugün tekrar edilecek kartlar + ders bazlı pratik.'}</div>
+        <div class="help-row-title">${L('Test','Test','ทดสอบ')}</div>
+        <div class="help-row-sub">${L('Aralıklı tekrar (SRS) sistemi. Bugün tekrar edilecek kartlar + ders bazlı pratik.','Spaced repetition (SRS) system. Due cards today + lesson-based practice.','ระบบทบทวนแบบเว้นระยะ (SRS) การ์ดที่ครบกำหนดวันนี้ + ฝึกตามบทเรียน')}</div>
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#e3f2fd;">🌐</div><div>
-        <div class="help-row-title">${en?'Translate':'Çeviri'}</div>
-        <div class="help-row-sub">${en?'Instant Thai ↔ Turkish/English translation.':'Türkçe → Tayca veya Tayca → Türkçe anında çeviri.'}</div>
+        <div class="help-row-title">${L('Çeviri','Translate','แปล')}</div>
+        <div class="help-row-sub">${L('Türkçe → Tayca veya Tayca → Türkçe anında çeviri.','Instant Thai ↔ Turkish/English translation.','แปลไทย ↔ ตุรกี/อังกฤษได้ทันที')}</div>
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#fce4ec;">📋</div><div>
-        <div class="help-row-title">${en?'Starred':'Liste'}</div>
-        <div class="help-row-sub">${en?'All your starred words, examples and dialogues. Tap 📖 for sentence breakdown.':'Yıldızladığın tüm kelimeler, örnekler ve diyaloglar. 📖 ile breakdown görebilirsin.'}</div>
+        <div class="help-row-title">${L('Liste','Starred','รายการโปรด')}</div>
+        <div class="help-row-sub">${L('Yıldızladığın tüm kelimeler, örnekler ve diyaloglar. 📖 ile breakdown görebilirsin.','All your starred words, examples and dialogues. Tap 📖 for sentence breakdown.','คำศัพท์ ตัวอย่างและบทสนทนาที่ติดดาวทั้งหมด แตะ 📖 เพื่อวิเคราะห์ประโยค')}</div>
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#f3e5f5;">🔄</div><div>
-        <div class="help-row-title">${en?'Review':'Tekrar'}</div>
-        <div class="help-row-sub">${en?'SRS algorithm surfaces the cards you struggle with most. A few minutes a day is enough.':'SRS algoritması en çok zorlandığın kartları öne çıkarır. Her gün birkaç dakika yeterli.'}</div>
+        <div class="help-row-title">${L('Tekrar','Review','ทบทวน')}</div>
+        <div class="help-row-sub">${L('SRS algoritması en çok zorlandığın kartları öne çıkarır. Her gün birkaç dakika yeterli.','SRS algorithm surfaces the cards you struggle with most. A few minutes a day is enough.','อัลกอริทึม SRS แสดงการ์ดที่คุณยากที่สุด วันละไม่กี่นาทีก็พอ')}</div>
       </div></div>
-      <div class="help-section-header" style="margin-top:16px;">🔊 ${en?'Audio Buttons':'Ses Butonları'}</div>
+      <div class="help-section-header" style="margin-top:16px;">🔊 ${L('Ses Butonları','Audio Buttons','ปุ่มเสียง')}</div>
       <div class="help-row"><div class="help-badge" style="background:#0d9488;color:white;">🔊</div>
-        <div class="help-row-sub" style="padding-top:2px;">${en?'Normal-speed Thai audio — uses device TTS engine.':'Normal hızda Thai sesi — cihazın TTS motorunu kullanır.'}</div></div>
+        <div class="help-row-sub" style="padding-top:2px;">${L('Normal hızda Thai sesi — cihazın TTS motorunu kullanır.','Normal-speed Thai audio — uses device TTS engine.','เสียงไทยความเร็วปกติ — ใช้ TTS ของอุปกรณ์')}</div></div>
       <div class="help-row"><div class="help-badge" style="background:#666;color:white;">🐢</div>
-        <div class="help-row-sub" style="padding-top:2px;">${en?'Slow mode — use while learning pronunciation.':'Yavaş mod — telaffuzu öğrenirken kullan.'}</div></div>
+        <div class="help-row-sub" style="padding-top:2px;">${L('Yavaş mod — telaffuzu öğrenirken kullan.','Slow mode — use while learning pronunciation.','โหมดช้า — ใช้ขณะเรียนการออกเสียง')}</div></div>
     </div>
 
     <!-- DERSLER -->
     <div id="htab-dersler" class="htab-content">
       <div class="help-card"><div class="help-card-icon">📖</div><div>
-        <div class="help-card-title">${en?'How are lessons structured?':'Ders yapısı nasıl?'}</div>
-        <div class="help-card-body">${en?'Each lesson has 6–8 tabs. Progress bar advances as you visit all of them.':'Her derste 6-8 sekme var. Hepsini ziyaret ettiğinde progress bar ilerler.'}</div>
+        <div class="help-card-title">${L('Ders yapısı nasıl?','How are lessons structured?','บทเรียนมีโครงสร้างอย่างไร?')}</div>
+        <div class="help-card-body">${L('Her derste 6-8 sekme var. Hepsini ziyaret ettiğinde progress bar ilerler.','Each lesson has 6–8 tabs. Progress bar advances as you visit all of them.','แต่ละบทมี 6–8 แท็บ แถบความคืบหน้าเพิ่มขึ้นเมื่อเยี่ยมชมครบ')}</div>
       </div></div>
-      <div class="help-section-header">📑 ${en?'Tab Descriptions':'Sekme Açıklamaları'}</div>
-      <div class="help-tab-row"><span class="htag" style="background:#e8f5e9;color:#2e7d32;">📚 ${en?'Words':'Sözcükler'}</span>
-        <span>${en?'Core vocabulary. Each word has usage tips, context notes, and 7–12 examples. Star with ⭐.':'Dersin temel kelimeleri. Her kelimede ipuçları, bağlam notu ve 7–12 örnek cümle var. ⭐ ile yıldızlayabilirsin.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#e3f2fd;color:#1565c0;">🎵 ${en?'Tones':'Tonlar'}</span>
-        <span>${en?'Lesson 1 only. Thai\'s 5 tones — pitch differences and practical tips.':'Sadece Ders 1\'de. Thai\'nin 5 tonu — her tonun ses farkı ve pratik ipuçları.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#fff3e0;color:#e65100;">📖 ${en?'Grammar':'Gramer'}</span>
-        <span>${en?'Sentence structure rules. Formula + explanation + speakable examples. Tap 📖 for color-coded S/V/O analysis.':'Cümle yapısı kuralları. Formül + açıklama + seslenebilir örnekler. 📖 ikonuna bas → renk kodlu S/V/O analizi.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#fce4ec;color:#880e4f;">🗣️ ${en?'Speaking':'Konuşma'}</span>
-        <span>${en?'Real-life tasks: "Ask the price", "Give directions". Practice with 🔊.':'Gerçek hayat görevleri. "Fiyat sor", "Yön tarif et". 🔊 ile pratik yap.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#f3e5f5;color:#4a148c;">👥 ${en?'Dialogue':'Diyalog'}</span>
-        <span>${en?'Realistic dialogues between Ali and Nada. Tap ▶ Play All to listen in sequence.':'Ali ve Nada arasında gerçekçi diyaloglar. ▶ Tümü ile sırayla dinle.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#e8eaf6;color:#283593;">🎧 ${en?'Listening':'Dinleme'}</span>
-        <span>${en?'Tap 🔊, listen to Thai, choose the correct option. Easy / Medium / Hard levels.':'🔊\'ya bas, Thai\'yi dinle, doğru şıkkı seç. Kolay / Orta / Zor seviyeleri var.'}</span></div>
+      <div class="help-section-header">📑 ${L('Sekme Açıklamaları','Tab Descriptions','คำอธิบายแท็บ')}</div>
+      <div class="help-tab-row"><span class="htag" style="background:#e8f5e9;color:#2e7d32;">📚 ${L('Sözcükler','Words','คำศัพท์')}</span>
+        <span>${L('Dersin temel kelimeleri. Her kelimede ipuçları, bağlam notu ve 7–12 örnek cümle var. ⭐ ile yıldızlayabilirsin.','Core vocabulary. Each word has usage tips, context notes, and 7–12 examples. Star with ⭐.','คำศัพท์หลัก แต่ละคำมีเคล็ดลับ บริบท และตัวอย่าง 7–12 ประโยค ติดดาวด้วย ⭐')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#e3f2fd;color:#1565c0;">🎵 ${L('Tonlar','Tones','วรรณยุกต์')}</span>
+        <span>${L('Sadece Ders 1\'de. Thai\'nin 5 tonu — her tonun ses farkı ve pratik ipuçları.','Lesson 1 only. Thai\'s 5 tones — pitch differences and practical tips.','เฉพาะบทเรียนที่ 1 วรรณยุกต์ 5 เสียงของไทย — ความแตกต่างของระดับเสียงและเคล็ดลับ')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#fff3e0;color:#e65100;">📖 ${L('Gramer','Grammar','ไวยากรณ์')}</span>
+        <span>${L('Cümle yapısı kuralları. Formül + açıklama + seslenebilir örnekler. 📖 ikonuna bas → renk kodlu S/V/O analizi.','Sentence structure rules. Formula + explanation + speakable examples. Tap 📖 for color-coded S/V/O analysis.','กฎโครงสร้างประโยค สูตร + คำอธิบาย + ตัวอย่างที่พูดได้ แตะ 📖 เพื่อวิเคราะห์ S/V/O')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#fce4ec;color:#880e4f;">🗣️ ${L('Konuşma','Speaking','การพูด')}</span>
+        <span>${L('Gerçek hayat görevleri. "Fiyat sor", "Yön tarif et". 🔊 ile pratik yap.','Real-life tasks: "Ask the price", "Give directions". Practice with 🔊.','งานจริง: "ถามราคา" "บอกทาง" ฝึกด้วย 🔊')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#f3e5f5;color:#4a148c;">👥 ${L('Diyalog','Dialogue','บทสนทนา')}</span>
+        <span>${L('Ali ve Nada arasında gerçekçi diyaloglar. ▶ Tümü ile sırayla dinle.','Realistic dialogues between Ali and Nada. Tap ▶ Play All to listen in sequence.','บทสนทนาจริงระหว่าง Ali และ Nada แตะ ▶ เล่นทั้งหมดเพื่อฟังตามลำดับ')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#e8eaf6;color:#283593;">🎧 ${L('Dinleme','Listening','การฟัง')}</span>
+        <span>${L('🔊\'ya bas, Thai\'yi dinle, doğru şıkkı seç. Kolay / Orta / Zor seviyeleri var.','Tap 🔊, listen to Thai, choose the correct option. Easy / Medium / Hard levels.','แตะ 🔊 ฟังไทย เลือกคำตอบที่ถูก มีระดับ ง่าย / ปานกลาง / ยาก')}</span></div>
       <div class="help-tab-row"><span class="htag" style="background:#e0f2f1;color:#004d40;">📝 Quiz</span>
-        <span>${en?'Multiple-choice questions testing the full lesson content.':'Dersin tüm içeriğini test eden çoktan seçmeli sorular.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#fafafa;color:#0d9488;border:1px solid #b2dfdb;">🔢 ${en?'Numbers':'Sayılar'}</span>
-        <span>${en?'Lesson 2 only. All digits + compound number examples. Tap a card to hear it.':'Sadece Ders 2\'de. Tüm rakamlar + bileşik sayı örnekleri. Her karta dokun → sesini duy.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#fafafa;color:#0d9488;border:1px solid #b2dfdb;">🧮 ${en?'Calculator':'Hesapla'}</span>
-        <span>${en?'Lesson 2 only. Enter 0–9,999,999 → Thai spelling + digit breakdown.':'Sadece Ders 2\'de. 0–9.999.999 arası herhangi bir sayıyı gir → Thai karşılığı + basamak dökümü.'}</span></div>
-      <div class="help-section-header" style="margin-top:16px;">🎨 ${en?'Sentence Analysis Color Code':'Cümle Analizi Renk Kodu'}</div>
+        <span>${L('Dersin tüm içeriğini test eden çoktan seçmeli sorular.','Multiple-choice questions testing the full lesson content.','คำถามหลายตัวเลือกทดสอบเนื้อหาทั้งบท')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#fafafa;color:#0d9488;border:1px solid #b2dfdb;">🔢 ${L('Sayılar','Numbers','ตัวเลข')}</span>
+        <span>${L('Sadece Ders 2\'de. Tüm rakamlar + bileşik sayı örnekleri. Her karta dokun → sesini duy.','Lesson 2 only. All digits + compound number examples. Tap a card to hear it.','เฉพาะบทเรียนที่ 2 ตัวเลขทั้งหมด + ตัวอย่างตัวเลขประกอบ แตะการ์ดเพื่อฟัง')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#fafafa;color:#0d9488;border:1px solid #b2dfdb;">🧮 ${L('Hesapla','Calculator','เครื่องคิดเลข')}</span>
+        <span>${L('Sadece Ders 2\'de. 0–9.999.999 arası herhangi bir sayıyı gir → Thai karşılığı + basamak dökümü.','Lesson 2 only. Enter 0–9,999,999 → Thai spelling + digit breakdown.','เฉพาะบทเรียนที่ 2 ใส่ 0–9,999,999 → คำสะกดไทย + รายละเอียดหลัก')}</span></div>
+      <div class="help-section-header" style="margin-top:16px;">🎨 ${L('Cümle Analizi Renk Kodu','Sentence Analysis Color Code','รหัสสีการวิเคราะห์ประโยค')}</div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
         ${chip('#eff6ff','#3b82f6',en?'S = Subject':'S = Özne')}
         ${chip('#f0fdf4','#10b981',en?'V = Verb':'V = Yüklem')}
@@ -3210,55 +3448,55 @@ function buildHelpContent(){
     <!-- TEKRAR -->
     <div id="htab-tekrar" class="htab-content">
       <div class="help-card"><div class="help-card-icon">🧠</div><div>
-        <div class="help-card-title">${en?'What is SRS?':'SRS nedir?'}</div>
-        <div class="help-card-body">${en?'Spaced Repetition System — shows difficult cards more often, easy cards less often. Same logic as Anki.':'Aralıklı tekrar algoritması. Zorlandığın kartları daha sık, bildiğin kartları daha seyrek gösterir. Anki ile aynı mantık.'}</div>
+        <div class="help-card-title">${L('SRS nedir?','What is SRS?','SRS คืออะไร?')}</div>
+        <div class="help-card-body">${L('Aralıklı tekrar algoritması. Zorlandığın kartları daha sık, bildiğin kartları daha seyrek gösterir. Anki ile aynı mantık.','Spaced Repetition System — shows difficult cards more often, easy cards less often. Same logic as Anki.','ระบบทบทวนแบบเว้นระยะ — แสดงการ์ดยากบ่อยขึ้น การ์ดง่ายน้อยลง เหมือน Anki')}</div>
       </div></div>
-      <div class="help-section-header">⚙️ ${en?'How It Works':'Nasıl Çalışır?'}</div>
-      <div class="help-step"><div class="help-step-num">1</div><div>${en?'Go to Test → Lesson Practice → tap <strong>+ Add</strong> for a lesson. Adds words to SRS.':'Test sekmesine gir → Ders Bazlı Pratik\'ten → <strong>+ Ekle</strong>\'ye bas. Kelimeleri SRS\'e ekler.'}</div></div>
-      <div class="help-step"><div class="help-step-num">2</div><div>${en?'A card appears. Flashcard first (see Thai, guess meaning). Tap Show Answer.':'Kart gösterilir. Önce flashcard (Thai\'yi gör, anlamı tahmin et). Cevabı gör\'e bas.'}</div></div>
-      <div class="help-step"><div class="help-step-num">3</div><div>${en?'Rate yourself: ❌ Don\'t know → 😰 Hard → 👍 OK → ⚡ Easy':'Kendini değerlendir: ❌ Bilmiyorum → 😰 Zor → 👍 Normal → ⚡ Kolay'}</div></div>
-      <div class="help-step"><div class="help-step-num">4</div><div>${en?'Algorithm calculates the next review date. Easy = long gap, Hard = short gap.':'Algoritma bir sonraki gösterim tarihini hesaplar. Kolay = uzun aralık, Zor = kısa aralık.'}</div></div>
-      <div class="help-step"><div class="help-step-num">5</div><div>${en?'Complete <strong>Today\'s Review</strong> daily. 5–10 minutes is enough.':'Her gün <strong>Bugünün Tekrarı</strong>\'nı bitir. 5–10 dakika yeterli.'}</div></div>
-      <div class="help-section-header" style="margin-top:16px;">🃏 ${en?'Card Types':'Kart Türleri'}</div>
-      <div class="help-row"><div class="help-badge" style="background:#e8f5e9;color:#2e7d32;">${en?'New':'Yeni'}</div>
-        <div class="help-row-sub">${en?'Always flashcard on first show. Thai → Meaning direction.':'İlk gösterimde her zaman flashcard. Thai → Anlam yönünde.'}</div></div>
-      <div class="help-row"><div class="help-badge" style="background:#fff3e0;color:#e65100;">${en?'Review':'Tekrar'}</div>
-        <div class="help-row-sub">${en?'50% flashcard, 50% multiple choice. Direction changes randomly.':'%50 flashcard, %50 çoktan seçmeli. Yön rastgele değişir.'}</div></div>
+      <div class="help-section-header">⚙️ ${L('Nasıl Çalışır?','How It Works','วิธีการทำงาน')}</div>
+      <div class="help-step"><div class="help-step-num">1</div><div>${L('Test sekmesine gir → Ders Bazlı Pratik\'ten → <strong>+ Ekle</strong>\'ye bas. Kelimeleri SRS\'e ekler.','Go to Test → Lesson Practice → tap <strong>+ Add</strong> for a lesson. Adds words to SRS.','ไปที่ ทดสอบ → ฝึกตามบทเรียน → แตะ <strong>+ เพิ่ม</strong> สำหรับบทเรียน เพิ่มคำลง SRS')}</div></div>
+      <div class="help-step"><div class="help-step-num">2</div><div>${L('Kart gösterilir. Önce flashcard (Thai\'yi gör, anlamı tahmin et). Cevabı gör\'e bas.','A card appears. Flashcard first (see Thai, guess meaning). Tap Show Answer.','การ์ดปรากฏ แฟลชการ์ดก่อน (เห็นไทย ทายความหมาย) แตะ แสดงคำตอบ')}</div></div>
+      <div class="help-step"><div class="help-step-num">3</div><div>${L('Kendini değerlendir: ❌ Bilmiyorum → 😰 Zor → 👍 Normal → ⚡ Kolay','Rate yourself: ❌ Don\'t know → 😰 Hard → 👍 OK → ⚡ Easy','ประเมินตัวเอง: ❌ ไม่รู้ → 😰 ยาก → 👍 ปกติ → ⚡ ง่าย')}</div></div>
+      <div class="help-step"><div class="help-step-num">4</div><div>${L('Algoritma bir sonraki gösterim tarihini hesaplar. Kolay = uzun aralık, Zor = kısa aralık.','Algorithm calculates the next review date. Easy = long gap, Hard = short gap.','อัลกอริทึมคำนวณวันทบทวนถัดไป ง่าย = ช่วงยาว ยาก = ช่วงสั้น')}</div></div>
+      <div class="help-step"><div class="help-step-num">5</div><div>${L('Her gün <strong>Bugünün Tekrarı</strong>\'nı bitir. 5–10 dakika yeterli.','Complete <strong>Today\'s Review</strong> daily. 5–10 minutes is enough.','ทำ <strong>ทบทวนวันนี้</strong> ทุกวัน 5–10 นาทีก็พอ')}</div></div>
+      <div class="help-section-header" style="margin-top:16px;">🃏 ${L('Kart Türleri','Card Types','ประเภทการ์ด')}</div>
+      <div class="help-row"><div class="help-badge" style="background:#e8f5e9;color:#2e7d32;">${L('Yeni','New','ใหม่')}</div>
+        <div class="help-row-sub">${L('İlk gösterimde her zaman flashcard. Thai → Anlam yönünde.','Always flashcard on first show. Thai → Meaning direction.','ครั้งแรกเป็นแฟลชการ์ดเสมอ ทิศทาง ไทย → ความหมาย')}</div></div>
+      <div class="help-row"><div class="help-badge" style="background:#fff3e0;color:#e65100;">${L('Tekrar','Review','ทบทวน')}</div>
+        <div class="help-row-sub">${L('%50 flashcard, %50 çoktan seçmeli. Yön rastgele değişir.','50% flashcard, 50% multiple choice. Direction changes randomly.','50% แฟลชการ์ด 50% หลายตัวเลือก ทิศทางสุ่มเปลี่ยน')}</div></div>
       <div class="help-card" style="margin-top:14px;background:#fff8e1;border-color:#ffe082;">
         <div class="help-card-icon">⚡</div>
         <div>
-          <div class="help-card-title" style="color:#f57f17;">${en?'Tip':'İpucu'}</div>
-          <div class="help-card-body">${en?'If you finish today\'s review every morning, you\'ll permanently memorize 9 lessons\' worth of vocabulary within 3 weeks.':'Bugünün tekrarını her sabah bitirirsen 3 hafta içinde 9 dersin kelimelerini kalıcı ezberlersin.'}</div>
+          <div class="help-card-title" style="color:#f57f17;">${L('İpucu','Tip','เคล็ดลับ')}</div>
+          <div class="help-card-body">${L('Bugünün tekrarını her sabah bitirirsen 3 hafta içinde 9 dersin kelimelerini kalıcı ezberlersin.','If you finish today\'s review every morning, you\'ll permanently memorize 9 lessons\' worth of vocabulary within 3 weeks.','ถ้าทำทบทวนวันนี้ทุกเช้า จะจำคำศัพท์ 9 บทได้ถาวรภายใน 3 สัปดาห์')}</div>
         </div>
       </div>
     </div>
 
     <!-- İPUÇLARI -->
     <div id="htab-ipuclari" class="htab-content">
-      <div class="help-section-header">🎯 ${en?'Effective Learning':'Verimli Öğrenme'}</div>
+      <div class="help-section-header">🎯 ${L('Verimli Öğrenme','Effective Learning','การเรียนรู้อย่างมีประสิทธิภาพ')}</div>
       <div class="help-tip"><div class="help-tip-icon">🔊</div>
-        <div><strong>${en?'Always study with audio.':'Her zaman sesli çalış.'}</strong> ${en?'Thai is tonal — reading alone isn\'t enough. Tap every card to hear it.':'Thai tonal bir dil — yazıyı okumak yetmez, sesi duymak zorunlu. Karta her dokunuşta sesi dinle.'}</div></div>
+        <div><strong>${L('Her zaman sesli çalış.','Always study with audio.','เรียนพร้อมเสียงเสมอ')}</strong> ${L('Thai tonal bir dil — yazıyı okumak yetmez, sesi duymak zorunlu. Karta her dokunuşta sesi dinle.','Thai is tonal — reading alone isn\'t enough. Tap every card to hear it.','ภาษาไทยมีวรรณยุกต์ — อ่านอย่างเดียวไม่พอ ต้องได้ยินเสียง แตะทุกการ์ดเพื่อฟัง')}</div></div>
       <div class="help-tip"><div class="help-tip-icon">🐢</div>
-        <div><strong>${en?'Use slow mode.':'Yavaş modu kullan.'}</strong> ${en?'When learning a new word, listen at 🐢 first, then at normal 🔊 speed.':'Yeni bir kelimeyi öğrenirken önce 🐢 ile yavaş dinle, sonra 🔊 ile normal hızda.'}</div></div>
+        <div><strong>${L('Yavaş modu kullan.','Use slow mode.','ใช้โหมดช้า')}</strong> ${L('Yeni bir kelimeyi öğrenirken önce 🐢 ile yavaş dinle, sonra 🔊 ile normal hızda.','When learning a new word, listen at 🐢 first, then at normal 🔊 speed.','เมื่อเรียนคำใหม่ ฟัง 🐢 ช้าก่อน แล้วค่อย 🔊 ความเร็วปกติ')}</div></div>
       <div class="help-tip"><div class="help-tip-icon">⭐</div>
-        <div><strong>${en?'Star selectively.':'Yıldızla seçici ol.'}</strong> ${en?'Star the sentences most useful in Phuket. Quickly review them from the List tab.':'Phuket\'te en çok işine yarayacak cümleleri yıldızla. Liste sekmesinden hızlı tekrar yap.'}</div></div>
+        <div><strong>${L('Yıldızla seçici ol.','Star selectively.','ติดดาวอย่างเลือกสรร')}</strong> ${L('Phuket\'te en çok işine yarayacak cümleleri yıldızla. Liste sekmesinden hızlı tekrar yap.','Star the sentences most useful in Phuket. Quickly review them from the List tab.','ติดดาวประโยคที่มีประโยชน์ที่สุดในภูเก็ต ทบทวนเร็วจากแท็บรายการ')}</div></div>
       <div class="help-tip"><div class="help-tip-icon">👥</div>
-        <div><strong>${en?'Listen to dialogues.':'Diyalogları dinle.'}</strong> ${en?'Use ▶ Play All to listen from start to finish — for real conversation rhythm.':'▶ Tümü butonuyla diyaloğu baştan sona dinle — gerçek konuşma ritmi için.'}</div></div>
+        <div><strong>${L('Diyalogları dinle.','Listen to dialogues.','ฟังบทสนทนา')}</strong> ${L('▶ Tümü butonuyla diyaloğu baştan sona dinle — gerçek konuşma ritmi için.','Use ▶ Play All to listen from start to finish — for real conversation rhythm.','ใช้ ▶ เล่นทั้งหมดฟังตั้งแต่ต้นจนจบ — เพื่อจังหวะการสนทนาจริง')}</div></div>
       <div class="help-tip"><div class="help-tip-icon">📖</div>
-        <div><strong>${en?'Use sentence analysis.':'Cümle analizini kullan.'}</strong> ${en?'Tap 📖 on any example — seeing S/V/O structure internalizes Thai grammar.':'Her örnek cümlede 📖 ikonuna bas — S/V/O yapısını görünce Thai grameri içselleşir.'}</div></div>
+        <div><strong>${L('Cümle analizini kullan.','Use sentence analysis.','ใช้การวิเคราะห์ประโยค')}</strong> ${L('Her örnek cümlede 📖 ikonuna bas — S/V/O yapısını görünce Thai grameri içselleşir.','Tap 📖 on any example — seeing S/V/O structure internalizes Thai grammar.','แตะ 📖 ในตัวอย่างใดก็ได้ — เห็นโครง S/V/O ทำให้ไวยากรณ์ไทยซึมซับ')}</div></div>
       <div class="help-tip"><div class="help-tip-icon">🔄</div>
-        <div><strong>${en?'Don\'t skip SRS.':'SRS\'i ihmal etme.'}</strong> ${en?'Spend a few minutes every day until today\'s review hits 0.':'Bugünün tekrarı 0 karta düşene kadar her gün birkaç dakika ayır.'}</div></div>
+        <div><strong>${L('SRS\'i ihmal etme.','Don\'t skip SRS.','อย่าข้าม SRS')}</strong> ${L('Bugünün tekrarı 0 karta düşene kadar her gün birkaç dakika ayır.','Spend a few minutes every day until today\'s review hits 0.','ใช้เวลาไม่กี่นาทีทุกวันจนกว่าทบทวนวันนี้จะเหลือ 0')}</div></div>
       <div class="help-tip"><div class="help-tip-icon">🇹🇭</div>
-        <div><strong>${en?'Polite particles matter.':'Kibar ekleri önemli.'}</strong> ${en?'ครับ (khrap) or ค่ะ (kha) without them sentences sound rude. Add them every time.':'ครับ (khrap) veya ค่ะ (kha) olmadan cümle kaba kaçar. Her cümleye ekle.'}</div></div>
-      <div class="help-section-header" style="margin-top:16px;">⚡ ${en?'Shortcuts':'Kısayollar'}</div>
+        <div><strong>${L('Kibar ekleri önemli.','Polite particles matter.','คำลงท้ายสุภาพสำคัญ')}</strong> ${L('ครับ (khrap) veya ค่ะ (kha) olmadan cümle kaba kaçar. Her cümleye ekle.','ครับ (khrap) or ค่ะ (kha) without them sentences sound rude. Add them every time.','ครับ (khrap) หรือ ค่ะ (kha) ไม่มีแล้วประโยคฟังหยาบ เพิ่มทุกครั้ง')}</div></div>
+      <div class="help-section-header" style="margin-top:16px;">⚡ ${L('Kısayollar','Shortcuts','ทางลัด')}</div>
       <div class="help-row"><div class="help-badge" style="background:#f5f5f5;color:#333;border:1px solid #ddd;">Tap</div>
-        <div class="help-row-sub">${en?'Tap a card/word → plays audio':'Kart / kelimeye dokun → ses çalar'}</div></div>
+        <div class="help-row-sub">${L('Kart / kelimeye dokun → ses çalar','Tap a card/word → plays audio','แตะการ์ด/คำ → เล่นเสียง')}</div></div>
       <div class="help-row"><div class="help-badge" style="background:#f5f5f5;color:#333;border:1px solid #ddd;">⭐</div>
-        <div class="help-row-sub">${en?'Star button → add to / remove from List':'Yıldız butonu → Liste\'ye ekle / çıkar'}</div></div>
+        <div class="help-row-sub">${L('Yıldız butonu → Liste\'ye ekle / çıkar','Star button → add to / remove from List','ปุ่มดาว → เพิ่ม/ลบจากรายการ')}</div></div>
       <div class="help-row"><div class="help-badge" style="background:#f5f5f5;color:#333;border:1px solid #ddd;">📖</div>
-        <div class="help-row-sub">${en?'Analysis icon → S/V/O breakdown':'Analiz ikonu → S/V/O breakdown'}</div></div>
+        <div class="help-row-sub">${L('Analiz ikonu → S/V/O breakdown','Analysis icon → S/V/O breakdown','ไอคอนวิเคราะห์ → แยก S/V/O')}</div></div>
       <div class="help-row"><div class="help-badge" style="background:#f5f5f5;color:#333;border:1px solid #ddd;">▶</div>
-        <div class="help-row-sub">${en?'Play dialogue → listen to all lines in order':'Diyalog oynat → tüm satırları sırayla dinle'}</div></div>
+        <div class="help-row-sub">${L('Diyalog oynat → tüm satırları sırayla dinle','Play dialogue → listen to all lines in order','เล่นบทสนทนา → ฟังทุกบรรทัดตามลำดับ')}</div></div>
     </div>
 
     <!-- HAKKINDA -->
@@ -3266,40 +3504,40 @@ function buildHelpContent(){
       <div class="help-card" style="background:linear-gradient(135deg,#e0f2f1,#f0fdfa);border-color:#b2dfdb;">
         <div style="font-size:32px">🇹🇭</div>
         <div>
-          <div class="help-card-title" style="font-size:16px;">${en?'Easy Thai Learning':'Kolay Tayca Öğrenme'}</div>
-          <div class="help-card-body">${en?'A Thai learning app focused on real conversation for people living in Phuket.':'Phuket\'te yaşayanlar için gerçek konuşma diline odaklı Tayca öğrenme uygulaması.'}</div>
+          <div class="help-card-title" style="font-size:16px;">${L('Kolay Tayca Öğrenme','Easy Thai Learning','เรียนภาษาไทยง่ายๆ')}</div>
+          <div class="help-card-body">${L('Phuket\'te yaşayanlar için gerçek konuşma diline odaklı Tayca öğrenme uygulaması.','A Thai learning app focused on real conversation for people living in Phuket.','แอปเรียนภาษาไทยที่เน้นการสนทนาจริงสำหรับผู้ที่อาศัยในภูเก็ต')}</div>
         </div>
       </div>
-      <div class="help-section-header">📋 ${en?'App Info':'Uygulama Bilgisi'}</div>
-      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">v3.0.2</strong></div>
-      <div class="help-info-row"><span>${en?'Total Lessons':'Toplam Ders'}</span><strong>19 + 29 ${en?'BONUS sets':'BONUS set'}</strong></div>
-      <div class="help-info-row"><span>${en?'Per Lesson':'Ders Başına'}</span><strong>~10 ${en?'words, 8 grammar, 4 dialogues':'kelime, 8 gramer, 4 diyalog'}</strong></div>
-      <div class="help-info-row"><span>${en?'Audio':'Ses Motoru'}</span><strong>Web Speech API + Google TTS</strong></div>
-      <div class="help-info-row"><span>${en?'Data':'Veri'}</span><strong>localStorage (${en?'works offline':'internet gerekmez'})</strong></div>
-      <div class="help-info-row"><span>${en?'Developer':'Geliştirici'}</span><strong>Ali Dinçer, Phuket 🇹🇭</strong></div>
-      <div class="help-section-header" style="margin-top:16px;">📦 ${en?'Version History':'Versiyon Geçmişi'}</div>
+      <div class="help-section-header">📋 ${L('Uygulama Bilgisi','App Info','ข้อมูลแอป')}</div>
+      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.2</strong></div>
+      <div class="help-info-row"><span>${L('Toplam Ders','Total Lessons','บทเรียนทั้งหมด')}</span><strong>19 + 29 ${L('BONUS set','BONUS sets','ชุด BONUS')}</strong></div>
+      <div class="help-info-row"><span>${L('Ders Başına','Per Lesson','ต่อบทเรียน')}</span><strong>~10 ${L('kelime, 8 gramer, 4 diyalog','words, 8 grammar, 4 dialogues','~10 คำ 8 ไวยากรณ์ 4 บทสนทนา')}</strong></div>
+      <div class="help-info-row"><span>${L('Ses Motoru','Audio','เสียง')}</span><strong>Web Speech API + Google TTS</strong></div>
+      <div class="help-info-row"><span>${L('Veri','Data','ข้อมูล')}</span><strong>localStorage (${L('internet gerekmez','works offline','ใช้งานออฟไลน์ได้')})</strong></div>
+      <div class="help-info-row"><span>${L('Geliştirici','Developer','นักพัฒนา')}</span><strong>Ali Dinçer, Phuket 🇹🇭</strong></div>
+      <div class="help-section-header" style="margin-top:16px;">📦 ${L('Versiyon Geçmişi','Version History','ประวัติเวอร์ชัน')}</div>
       <div class="help-changelog">
         <div class="changelog-item"><div class="changelog-ver">v3.56</div>
-          <div class="changelog-desc">${en?'Lesson menu UX aligned with English app: card redesign, hero header, practice tab (quiz removed from tabs), dark mode contrast':'Ingilizce uygulama ile menu UX: kart tasarimi, hero baslik, Alistirma sekmesi, karanlik mod kontrast'}</div></div>
+          <div class="changelog-desc">${L('Ingilizce uygulama ile menu UX: kart tasarimi, hero baslik, Alistirma sekmesi, karanlik mod kontrast','Lesson menu UX aligned with English app: card redesign, hero header, practice tab (quiz removed from tabs), dark mode contrast','ปรับ UX เมนูบทเรียน: ออกแบบการ์ดใหม่ ส่วนหัว hero แท็บฝึกฝน โหมดมืด')}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.55</div>
-          <div class="changelog-desc">${en?'Production release: lessons 10-19 live, BONUS Thai enrichment, progress bar fix':'Canli surum: Ders 10-19 yayinda, BONUS Thai zenginlestirme, ilerleme cubugu duzeltmesi'}</div></div>
+          <div class="changelog-desc">${L('Canli surum: Ders 10-19 yayinda, BONUS Thai zenginlestirme, ilerleme cubugu duzeltmesi','Production release: lessons 10-19 live, BONUS Thai enrichment, progress bar fix','เวอร์ชันใช้งานจริง: บท 10-19 BONUS ไทย แก้แถบความคืบหน้า')}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.54</div>
-          <div class="changelog-desc">${en?'Lessons 10–19 content added (beach, hospital, emergency, etc.); BONUS vocab Thai enrichment; progress bar shows scenario/bonus separately':'Ders 10-19 icerik eklendi (plaj, hastane, acil vb.); BONUS kelimelere Thai karakter; ilerleme cubugu senaryo/bonus ayri gosterim'}</div></div>
+          <div class="changelog-desc">${L('Ders 10-19 icerik eklendi (plaj, hastane, acil vb.); BONUS kelimelere Thai karakter; ilerleme cubugu senaryo/bonus ayri gosterim','Lessons 10–19 content added (beach, hospital, emergency, etc.); BONUS vocab Thai enrichment; progress bar shows scenario/bonus separately','เพิ่มบท 10–19 (ชายหาด โรงพยาบาล ฉุกเฉิน) BONUS ไทย แยกแสดงสถานการณ์/bonus')}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v2.1.0</div>
-          <div class="changelog-desc">${en?'Full English/Turkish bilingual UI; dark mode; BONUS accordion; 1437-word CORE 2000 vocabulary with example sentences and grammar analysis; scroll-to-top button':'Tam İngilizce/Türkçe arayüz; dark mode; BONUS accordion; 1437 kelime CORE 2000 hazinesi, örnek cümleler ve gramer analizi; yukarı çık butonu'}</div></div>
+          <div class="changelog-desc">${L('Tam İngilizce/Türkçe arayüz; dark mode; BONUS accordion; 1437 kelime CORE 2000 hazinesi, örnek cümleler ve gramer analizi; yukarı çık butonu','Full English/Turkish bilingual UI; dark mode; BONUS accordion; 1437-word CORE 2000 vocabulary with example sentences and grammar analysis; scroll-to-top button','UI สองภาษา โหมดมืด BONUS accordion คำศัพท์ CORE 2000 1437 คำ ปุ่มเลื่อนขึ้น')}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.32</div>
-          <div class="changelog-desc">${en?'60-second mandatory wait per tab — lesson can\'t be completed until time is up; progress bar countdown':'Her sekme için 60 saniyelik zorunlu bekleme — süre dolmadan ders tamamlanamıyor'}</div></div>
+          <div class="changelog-desc">${L('Her sekme için 60 saniyelik zorunlu bekleme — süre dolmadan ders tamamlanamıyor','60-second mandatory wait per tab — lesson can\'t be completed until time is up; progress bar countdown','รอบังคับ 60 วินาทีต่อแท็บ — ทำบทเรียนไม่ได้จนกว่าเวลาจะหมด')}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.30</div>
-          <div class="changelog-desc">${en?'Lessons 10–19 added (all 19 lessons complete); listening format fix; lesson 17–19 dialogue speaker fix':'Ders 10-19 eklendi (tüm 19 ders tamamlandı); listening format düzeltmesi'}</div></div>
+          <div class="changelog-desc">${L('Ders 10-19 eklendi (tüm 19 ders tamamlandı); listening format düzeltmesi','Lessons 10–19 added (all 19 lessons complete); listening format fix; lesson 17–19 dialogue speaker fix','เพิ่มบท 10–19 (ครบ 19 บท) แก้รูปแบบการฟัง')}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.19</div>
-          <div class="changelog-desc">${en?'Google Cloud TTS (Chirp3-HD) integration — Orus (male) and Aoede (female) voices, Web Speech API fallback':'Google Cloud TTS (Chirp3-HD) entegrasyonu — Orus (erkek) ve Aoede (kadın) sesleri'}</div></div>
+          <div class="changelog-desc">${L('Google Cloud TTS (Chirp3-HD) entegrasyonu — Orus (erkek) ve Aoede (kadın) sesleri','Google Cloud TTS (Chirp3-HD) integration — Orus (male) and Aoede (female) voices, Web Speech API fallback','รวม Google Cloud TTS (Chirp3-HD) — เสียง Orus และ Aoede')}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.00</div>
-          <div class="changelog-desc">${en?'SRS system (Anki-style spaced repetition) · Test module (flashcard + multiple choice) · Starring + List tab · Dialogue playback · Color-coded sentence analysis · 9 full lessons':'SRS sistemi · Test modülü (flashcard + çoktan seçmeli) · Yıldızlama + Liste · Diyalog oynatma · Renk kodlu cümle analizi · 9 tam ders'}</div></div>
+          <div class="changelog-desc">${L('SRS sistemi · Test modülü (flashcard + çoktan seçmeli) · Yıldızlama + Liste · Diyalog oynatma · Renk kodlu cümle analizi · 9 tam ders','SRS system (Anki-style spaced repetition) · Test module (flashcard + multiple choice) · Starring + List tab · Dialogue playback · Color-coded sentence analysis · 9 full lessons','ระบบ SRS · โมดูลทดสอบ · ติดดาว + รายการ · เล่นบทสนทนา · วิเคราะห์ประโยค · 9 บทเรียน')}</div></div>
       </div>
       <div class="help-card" style="margin-top:14px;background:#fff8e1;border-color:#ffe082;text-align:center;">
         <div style="width:100%;text-align:center;">
           <div style="font-size:24px;margin-bottom:6px;">🙏</div>
-          <div style="font-size:13px;color:#555;line-height:1.6;">${en?'Built to help you start talking to your Thai neighbours in Phuket.<br><strong style="color:#0d9488;">ขอบคุณครับ</strong>':'Phuket\'teki Thai komşularınla konuşmaya başlamana yardımcı olmak için yapıldı.<br><strong style="color:#0d9488;">ขอบคุณครับ</strong>'}</div>
+          <div style="font-size:13px;color:#555;line-height:1.6;">${L('Phuket\'teki Thai komşularınla konuşmaya başlamana yardımcı olmak için yapıldı.<br><strong style="color:#0d9488;">ขอบคุณครับ</strong>','Built to help you start talking to your Thai neighbours in Phuket.<br><strong style="color:#0d9488;">ขอบคุณครับ</strong>','สร้างขึ้นเพื่อช่วยให้คุณเริ่มคุยกับเพื่อนบ้านไทยในภูเก็ต<br><strong style="color:#0d9488;">ขอบคุณครับ</strong>')}</div>
         </div>
       </div>
     </div>
@@ -3389,7 +3627,7 @@ async function gistPull(){
     if(payload.tv3_srs)        localStorage.setItem('tv3_srs',      payload.tv3_srs);
     if(payload.tv3_stats)      localStorage.setItem('tv3_stats',    payload.tv3_stats);
     const saved = payload.saved_at ? new Date(payload.saved_at).toLocaleString(typeof KDO_localeTag==='function'?KDO_localeTag(appLang):(appLang==='tr'?'tr-TR':'en-US'),{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) : '?';
-    gistSetStatus('✅ '+(appLang!=='tr'?'Loaded · Saved: ':'Alındı · Kaydedilme: ')+saved, '#059669');
+    gistSetStatus('✅ '+(s('ui_loaded')+' · ')+saved, '#059669');
     renderLessonList();
     updateProgressBar();
     updateReviewBadge();
@@ -3626,7 +3864,7 @@ async function claudeTranslate(q, dir){
     el.innerHTML = out || text;
   } catch(e){
     const el = document.getElementById('claude-result');
-    if(el) el.innerHTML = `<div style="color:#dc2626;font-size:13px;">❌ ${appLang!=='tr'?'Error:':'Hata:'} ${e.message}</div>`;
+    if(el) el.innerHTML = `<div style="color:#dc2626;font-size:13px;">❌ ${s('ui_error')} ${e.message}</div>`;
   }
 }
 
@@ -3778,14 +4016,14 @@ async function startExercise(lessonNum, event){
   try{
     exLessonNum = lessonNum;
     exExercises = buildExercises(LD);
-    if(exExercises.length===0){ alert(appLang!=='tr'?'Not enough exercise data for this lesson.':'Bu ders için yeterli egzersiz verisi yok.'); return; }
+    if(exExercises.length===0){ alert(s('ui_exercise_fail')); return; }
     exIdx = 0; exLives = 3; exSelected = null; exAnswerWords = []; exAnswered = false; exCorrectCount = 0;
     document.getElementById('exercise-overlay').classList.add('open');
     document.getElementById('ex-footer').style.display='';
     document.body.style.overflow = 'hidden';
     renderExercise();
   } catch(err){
-    alert((appLang!=='tr'?'Exercise error: ':'Egzersiz hatası: ')+err.message);
+    alert((s('ui_exercise_err')+' ')+err.message);
   }
 }
 
@@ -3806,18 +4044,18 @@ function setExBtn(state){
   btn.disabled = (state==='disabled');
   btn.className = 'ex-check-btn ' + (state==='disabled'?'':state);
   btn.textContent = state==='next'
-    ? (appLang!=='tr'?'Continue':'Devam et')
-    : (appLang!=='tr'?'Check':'Kontrol et');
+    ? (s('ui_continue'))
+    : (s('ui_check'));
 }
 
 function showExFeedback(correct, correctAnswer){
   const fb = document.getElementById('ex-feedback');
   if(correct){
     fb.className='ex-feedback-bar correct';
-    fb.innerHTML=`<div class="ex-fb-icon">🎉</div><div class="ex-fb-text"><div class="ex-fb-title">${appLang!=='tr'?'Correct!':'Doğru!'}</div></div>`;
+    fb.innerHTML=`<div class="ex-fb-icon">🎉</div><div class="ex-fb-text"><div class="ex-fb-title">${s('ui_correct')}</div></div>`;
   } else {
     fb.className='ex-feedback-bar wrong';
-    fb.innerHTML=`<div class="ex-fb-icon">❌</div><div class="ex-fb-text"><div class="ex-fb-title">${appLang!=='tr'?'Incorrect':'Yanlış'}</div><div class="ex-fb-answer">${appLang!=='tr'?'Correct answer:':'Doğru cevap:'} <strong>${correctAnswer||''}</strong></div></div>`;
+    fb.innerHTML=`<div class="ex-fb-icon">❌</div><div class="ex-fb-text"><div class="ex-fb-title">${s('ui_incorrect')}</div><div class="ex-fb-answer">${s('ui_correct_answer')} <strong>${correctAnswer||''}</strong></div></div>`;
   }
 }
 
@@ -3838,11 +4076,9 @@ function renderExercise(){
   }
   const e = exExercises[exIdx];
   const content = document.getElementById('ex-content');
-  const en = appLang!=='tr';
-
   if(e.type==='word-choice'){
     content.innerHTML = `
-      <div class="ex-q-label">${en?'Select the correct answer':'Doğru cevabı seçin'}</div>
+      <div class="ex-q-label">${s('ex_q_select')}</div>
       <div class="ex-prompt-box">
         <div class="ex-prompt-th">${esc(e.prompt)}</div>
         <button class="ex-speak-sm" onclick="speakExThai('${e.correctTh.replace(/'/g,"\\'")}')">🔊</button>
@@ -3857,7 +4093,7 @@ function renderExercise(){
   }
   else if(e.type==='listen-choice'){
     content.innerHTML = `
-      <div class="ex-q-label">${en?'What do you hear?':'Ne duyuyorsun?'}</div>
+      <div class="ex-q-label">${s('ex_q_listen')}</div>
       <button class="ex-listen-big-btn" onclick="speakExThai('${e.audioTh.replace(/'/g,"\\'")}')">🔊</button>
       <div class="ex-options" id="ex-opts">
         ${e.options.map((o,i)=>`
@@ -3866,13 +4102,13 @@ function renderExercise(){
             <div class="ex-option-ro">${esc(o.ro)}</div>
           </div>`).join('')}
       </div>
-      <div class="ex-skip-listen" onclick="speakExThai('${e.audioTh.replace(/'/g,"\\'")}')">🐢 ${en?'Play slowly':'Yavaş dinle'}</div>`;
+      <div class="ex-skip-listen" onclick="speakExThai('${e.audioTh.replace(/'/g,"\\'")}')">🐢 ${s('ex_play_slow')}</div>`;
     // Auto-play audio
     setTimeout(()=>{ try{ speakExThai(e.audioTh); }catch(err){} }, 400);
   }
   else if(e.type==='translate-choice'){
     content.innerHTML = `
-      <div class="ex-q-label">${en?'Translate this sentence':'Bu cümleyi tercüme edin'}</div>
+      <div class="ex-q-label">${s('ex_q_translate')}</div>
       <div class="ex-sentence-box">
         <div class="ex-sent-info">
           <div class="ex-sent-th">${esc(e.th)}</div>
@@ -3888,7 +4124,7 @@ function renderExercise(){
   }
   else if(e.type==='translate-wordbank'){
     content.innerHTML = `
-      <div class="ex-q-label">${en?'Translate this sentence':'Bu cümleyi tercüme edin'}</div>
+      <div class="ex-q-label">${s('ex_q_translate')}</div>
       <div class="ex-sentence-box">
         <div class="ex-sent-info">
           <div class="ex-sent-th">${esc(e.th)}</div>
@@ -3897,7 +4133,7 @@ function renderExercise(){
         <button class="ex-speak-sm" onclick="speakExThai('${e.th.replace(/'/g,"\\'")}')">🔊</button>
       </div>
       <div class="ex-answer-area" id="ex-ans-area">
-        <span class="ex-answer-placeholder">${en?'Tap words below to build answer':'Aşağıdaki kelimelerle cevabı oluşturun'}</span>
+        <span class="ex-answer-placeholder">${s('ex_q_wordbank')}</span>
       </div>
       <div class="ex-bank" id="ex-bank">
         ${e.bank.map((w,i)=>`<button class="ex-bank-btn" data-idx="${i}" data-word="${esc(w)}" onclick="exBankClick(this,'${w.replace(/'/g,"\\'")}',${i})">${esc(w)}</button>`).join('')}
@@ -3941,7 +4177,7 @@ function exBankClick(btn, word, idx){
     const b = document.querySelector(`.ex-bank-btn[data-idx="${idx}"]`);
     if(b) b.classList.remove('used');
     if(!document.getElementById('ex-ans-area').querySelector('.ex-answer-chip')){
-      document.getElementById('ex-ans-area').innerHTML='<span class="ex-answer-placeholder">'+(appLang!=='tr'?'Tap words below to build answer':'Aşağıdaki kelimelerle cevabı oluşturun')+'</span>';
+      document.getElementById('ex-ans-area').innerHTML='<span class="ex-answer-placeholder">'+(s('ex_q_wordbank'))+'</span>';
       setExBtn('disabled');
     }
   };
@@ -4015,40 +4251,38 @@ function saveExStats(){
 
 function showExFinish(){
   saveExStats();
-  const en = appLang!=='tr';
   const content = document.getElementById('ex-content');
   const accuracy = exExercises.length>0 ? Math.round(exCorrectCount/exExercises.length*100) : 0;
   const meta = LESSONS_META.find(m=>m.num===exLessonNum);
   content.innerHTML = `
     <div class="ex-finish">
       <div class="ex-finish-trophy">🏆</div>
-      <div class="ex-finish-title">${en?'Lesson Complete!':'Ders Tamamlandı!'}</div>
-      <div class="ex-finish-sub">${meta?`${meta.emoji} ${Lf(meta,'title')}`:''}${exLives>0?'<br>'+('❤️'.repeat(exLives)+' '+(en?'lives remaining':'can kaldı')):'<br>'+(en?'Completed with errors':'Hatalarla tamamlandı')}</div>
+      <div class="ex-finish-title">${s('ex_finish_title')}</div>
+      <div class="ex-finish-sub">${meta?`${meta.emoji} ${Lf(meta,'title')}`:''}${exLives>0?'<br>'+('❤️'.repeat(exLives)+' '+s('ex_lives_remaining')):'<br>'+s('ex_completed_errors')}</div>
       <div class="ex-finish-stats">
-        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exCorrectCount}</div><div class="ex-finish-stat-lbl">${en?'Correct':'Doğru'}</div></div>
-        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exExercises.length-exCorrectCount}</div><div class="ex-finish-stat-lbl">${en?'Incorrect':'Yanlış'}</div></div>
-        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${accuracy}%</div><div class="ex-finish-stat-lbl">${en?'Accuracy':'Doğruluk'}</div></div>
+        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exCorrectCount}</div><div class="ex-finish-stat-lbl">${s('ex_stat_correct')}</div></div>
+        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exExercises.length-exCorrectCount}</div><div class="ex-finish-stat-lbl">${s('ex_stat_incorrect')}</div></div>
+        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${accuracy}%</div><div class="ex-finish-stat-lbl">${s('ex_stat_accuracy')}</div></div>
       </div>
-      <button class="ex-finish-btn" onclick="closeExercise()">${en?'Finish':'Bitir'}</button>
+      <button class="ex-finish-btn" onclick="closeExercise()">${s('ex_finish')}</button>
     </div>`;
   document.getElementById('ex-footer').style.display='none';
 }
 
 function showExFailed(){
   saveExStats();
-  const en = appLang!=='tr';
   const content = document.getElementById('ex-content');
   content.innerHTML = `
     <div class="ex-finish">
       <div class="ex-finish-trophy">💔</div>
-      <div class="ex-finish-title">${en?'Out of lives!':'Canların bitti!'}</div>
-      <div class="ex-finish-sub">${en?'Don\'t worry, try again!':'Üzülme, tekrar dene!'}</div>
+      <div class="ex-finish-title">${s('ex_out_of_lives')}</div>
+      <div class="ex-finish-sub">${s('ex_try_again_msg')}</div>
       <div class="ex-finish-stats">
-        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exCorrectCount}</div><div class="ex-finish-stat-lbl">${en?'Correct':'Doğru'}</div></div>
-        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exIdx+1}</div><div class="ex-finish-stat-lbl">${en?'Reached':'Ulaşılan'}</div></div>
+        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exCorrectCount}</div><div class="ex-finish-stat-lbl">${s('ex_stat_correct')}</div></div>
+        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exIdx+1}</div><div class="ex-finish-stat-lbl">${s('ex_stat_reached')}</div></div>
       </div>
-      <button class="ex-finish-btn" style="background:#1cb0f6;box-shadow:0 4px 0 #0e87c3;margin-bottom:12px;" onclick="startExercise(${exLessonNum})">${en?'Try Again':'Tekrar Dene'}</button>
-      <button style="background:none;border:none;color:#afafaf;font-size:14px;cursor:pointer;margin-top:8px;" onclick="closeExercise()">${en?'Exit':'Çık'}</button>
+      <button class="ex-finish-btn" style="background:#1cb0f6;box-shadow:0 4px 0 #0e87c3;margin-bottom:12px;" onclick="startExercise(${exLessonNum})">${s('ex_try_again')}</button>
+      <button style="background:none;border:none;color:#afafaf;font-size:14px;cursor:pointer;margin-top:8px;" onclick="closeExercise()">${s('ex_exit')}</button>
     </div>`;
   document.getElementById('ex-footer').style.display='none';
 }
@@ -4059,7 +4293,9 @@ localStorage.setItem('kdo:target','th');
 const _kdoLocale = localStorage.getItem('kdo:locale');
 if(_kdoLocale && _kdoLocale !== appLang){ setLang(_kdoLocale); }
 else {
+document.documentElement.lang = appLang;
 document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
+document.querySelectorAll('[data-lk-ph]').forEach(el=>{ el.placeholder=s(el.dataset.lkPh); });
 _initLangButtons();
 buildHelpContent();
 renderLessonList();
@@ -4084,7 +4320,7 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   <div id="ex-content" class="ex-content"></div>
   <div class="ex-footer" id="ex-footer">
     <div class="ex-feedback-bar" id="ex-feedback"></div>
-    <button id="ex-check-btn" class="ex-check-btn" disabled onclick="exBtnClick()">Kontrol et</button>
+    <button id="ex-check-btn" class="ex-check-btn" disabled onclick="exBtnClick()" data-lk="ui_check">Kontrol et</button>
   </div>
 </div>
 

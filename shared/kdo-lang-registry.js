@@ -545,6 +545,18 @@ window.KDO_LANG_REGISTRY = {
         "calc_info": "Enter any number — instant Thai equivalent. Tap 🔊 to hear.",
         "review_q_en2tr": "🇹🇭 Thai → Turkish",
         "review_q_tr2en": "🇹🇷 Turkish → Thai"
+      },
+      "th": {
+        "test_dir_th2tr": "ไทย → ความหมาย",
+        "test_dir_tr2th": "ความหมาย → ไทย",
+        "translate_placeholder": "พิมพ์ไทยหรือตุรกี...",
+        "translate_tip": "พิมพ์คำหรือประโยคภาษาไทยหรือตุรกี",
+        "settings_voices": "🔊 เสียงไทย",
+        "pron_col_english": "ไทย",
+        "calc_info": "ใส่ตัวเลขใดก็ได้ — ได้คำสะกดไทยทันที แตะ 🔊 เพื่อฟัง",
+        "num_info": "ข้ามหลักที่เป็นศูนย์ 20 = yîi-sìp (พิเศษ!) 11 = sìp-èt แตะการ์ดเพื่อฟัง 🔊",
+        "review_q_th2tr": "🇹🇭 ไทย → ความหมาย",
+        "review_q_tr2th": "🇹🇷 ความหมาย → ไทย"
       }
     },
     "legacy": true,

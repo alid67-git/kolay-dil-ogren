@@ -247,12 +247,16 @@
       gram_role_greeting: 'ทักทาย', gram_role_farewell: 'ลา', gram_role_phrase: 'สำนวน',
       gram_role_adj: 'คำคุณศัพท์', gram_role_question: 'คำถาม', gram_role_courtesy: 'สุภาพ',
       gram_role_modal: 'กริยาช่วย', gram_role_name: 'ชื่อ', gram_role_neg: 'ปฏิเสธ',
-      test_dir_en2tr: 'ตุรกี → ความหมาย', test_dir_tr2en: 'ความหมาย → ตุรกี', test_dir_mix: 'ผสม',
-      review_q_en2tr: '🇹🇷 ตุรกี → ความหมาย', review_q_tr2en: '🇹🇷 ความหมาย → ตุรกี',
-      translate_placeholder: 'พิมพ์ตุรกีหรือภาษาความหมาย...',
-      translate_tip: 'พิมพ์คำหรือประโยคตุรกีหรือความหมาย',
-      settings_voices: '🔊 เสียงตุรกี', settings_voices_loading: 'กำลังโหลดเสียง...',
-      pron_col_target: 'ตุรกี', gist_error: 'ข้อผิดพลาดไม่ทราบสาเหตุ', gist_no_file: 'ไม่พบไฟล์ Gist'
+      test_dir_th2tr: 'ไทย → ความหมาย', test_dir_tr2th: 'ความหมาย → ไทย', test_dir_mix: 'ผสม',
+      review_q_th2tr: '🇹🇭 ไทย → ความหมาย', review_q_tr2th: '🇹🇷 ความหมาย → ไทย',
+      translate_placeholder: 'พิมพ์ไทยหรือตุรกี...',
+      translate_tip: 'พิมพ์คำหรือประโยคภาษาไทยหรือตุรกี',
+      settings_voices: '🔊 เสียงไทย', settings_voices_loading: 'กำลังโหลดเสียง...',
+      pron_col_target: 'ไทย', pron_col_english: 'ไทย',
+      gist_error: 'ข้อผิดพลาดไม่ทราบสาเหตุ', gist_no_file: 'ไม่พบไฟล์ Gist',
+      claude_api_warn: 'เพิ่ม Anthropic API Key ใน ⚙️ การตั้งค่า สำหรับการแปล Claude',
+      num_info: 'ข้ามหลักที่เป็นศูนย์ 20 = yîi-sìp (พิเศษ!) 11 = sìp-èt แตะการ์ดเพื่อฟัง 🔊',
+      calc_info: 'ใส่ตัวเลขใดก็ได้ — ได้คำสะกดไทยทันที แตะ 🔊 เพื่อฟัง'
     }
   };
 
