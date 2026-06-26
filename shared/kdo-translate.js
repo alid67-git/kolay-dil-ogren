@@ -1,6 +1,6 @@
 /**
- * Çeviri: arayüz dili ↔ öğrenilen dil (aynı dil çifti asla olmaz).
- * Her uygulama window.KDO_TRANSLATE = { target, targetRe, targetLabel? } tanımlar.
+ * Çeviri: arayüz dili ↔ öğrenilen dil.
+ * window.KDO_TRANSLATE = { target, targetRe, fallback?, lessonTargetField?, lessonBaseField? }
  */
 (function () {
   'use strict';
@@ -12,12 +12,12 @@
 
   var GT_TO_UI = {
     tr: 'tr', en: 'en', fr: 'fr', de: 'de', es: 'es',
-    it: 'it', ru: 'ru', ar: 'ar', 'zh-CN': 'zh', th: 'th'
+    it: 'it', ru: 'ru', ar: 'ar', 'zh-CN': 'zh', zh: 'zh', th: 'th'
   };
 
   var FLAGS = {
-    tr: '🇹🇷', en: '🇬🇧', fr: '🇫🇷', de: '🇩🇪', es: '🇪🇸',
-    it: '🇮🇹', ru: '🇷🇺', ar: '🇸🇦', zh: '🇨🇳', th: '🇹🇭'
+    tr: 'TR', en: 'EN', fr: 'FR', de: 'DE', es: 'ES',
+    it: 'IT', ru: 'RU', ar: 'AR', zh: 'ZH', th: 'TH'
   };
 
   var NAMES = {
@@ -46,20 +46,23 @@
     th: /[\u0E00-\u0E7F]/
   };
 
+  function currentUi() {
+    return (typeof appLang !== 'undefined' ? appLang : localStorage.getItem('kdo:locale')) || 'tr';
+  }
+
   function uiGt() {
-    var lang = (typeof appLang !== 'undefined' ? appLang : 'tr') || 'tr';
-    return UI_TO_GT[lang] || 'en';
+    return UI_TO_GT[currentUi()] || 'en';
   }
 
   function nameFor(gtCode) {
-    var ui = (typeof appLang !== 'undefined' ? appLang : 'tr') || 'tr';
+    var ui = currentUi();
     var key = GT_TO_UI[gtCode] || gtCode;
     return (NAMES[ui] && NAMES[ui][key]) || (NAMES.en && NAMES.en[key]) || gtCode;
   }
 
   function flagFor(gtCode) {
     var key = GT_TO_UI[gtCode] || gtCode;
-    return FLAGS[key] || '🌐';
+    return FLAGS[key] || '';
   }
 
   function getPair() {
@@ -67,16 +70,9 @@
     var target = cfg.target || 'en';
     var base = uiGt();
     if (base === target) {
-      var fb = cfg.fallback;
-      if (!fb) {
-        if (target === 'tr') fb = 'en';
-        else if (target === 'en') fb = 'tr';
-        else if (target === 'th') fb = 'en';
-        else fb = 'en';
-      }
-      base = fb;
+      base = cfg.fallback || (target === 'tr' ? 'en' : 'tr');
     }
-    if (base === target) base = 'en';
+    if (base === target) base = target === 'en' ? 'tr' : 'en';
     return { base: base, target: target };
   }
 
@@ -103,14 +99,12 @@
 
   function translateHint(dir) {
     dir = dir || detectTranslateDir('');
-    var fromN = nameFor(dir.from);
-    var toN = nameFor(dir.to);
-    return flagFor(dir.from) + ' ' + fromN + ' → ' + flagFor(dir.to) + ' ' + toN;
+    return flagFor(dir.from) + ' ' + nameFor(dir.from) + ' -> ' + flagFor(dir.to) + ' ' + nameFor(dir.to);
   }
 
   function translatePlaceholder() {
     var p = getPair();
-    var ui = (typeof appLang !== 'undefined' ? appLang : 'tr') || 'tr';
+    var ui = currentUi();
     var a = nameFor(p.base);
     var b = nameFor(p.target);
     if (ui === 'tr') return a + ' veya ' + b + ' yaz...';
@@ -120,66 +114,41 @@
     if (ui === 'es') return 'Escribe en ' + a + ' o ' + b + '...';
     if (ui === 'it') return 'Scrivi in ' + a + ' o ' + b + '...';
     if (ui === 'ru') return 'Введите ' + a + ' или ' + b + '...';
-    if (ui === 'ar') return 'اكتب بال' + a + ' أو ' + b + '...';
+    if (ui === 'ar') return 'اكتب ' + a + ' أو ' + b + '...';
     if (ui === 'zh') return '输入' + a + '或' + b + '...';
     if (ui === 'th') return 'พิมพ์' + a + ' หรือ ' + b + '...';
     return a + ' / ' + b + '...';
   }
 
   function translateTip() {
-    var ui = (typeof appLang !== 'undefined' ? appLang : 'tr') || 'tr';
     var p = getPair();
-    var a = nameFor(p.base);
-    var b = nameFor(p.target);
-    if (ui === 'tr') return a + ' ↔ ' + b + ' anında çeviri. Aynı dilde çeviri yapılmaz.';
-    if (ui === 'en') return 'Instant ' + a + ' ↔ ' + b + ' translation.';
-    return a + ' ↔ ' + b;
+    return nameFor(p.base) + ' <-> ' + nameFor(p.target);
   }
 
   function lessonSearchField(dir) {
     var cfg = window.KDO_TRANSLATE || {};
-    if (dir.isFromTarget) return cfg.lessonTargetField || 'en';
-    var base = dir.base;
-    if (base === 'tr') return 'tr';
-    if (base === 'en') return cfg.lessonBaseField || 'en';
-    return cfg.lessonBaseField || 'tr';
+    if (dir.isFromTarget) {
+      var t = cfg.lessonTargetField;
+      if (t) return t;
+      if (cfg.target === 'zh-CN') return 'zh';
+      return cfg.target || 'en';
+    }
+    if (dir.base === 'tr') return 'tr';
+    if (dir.base === 'zh-CN' || dir.base === 'zh') return 'zh';
+    if (dir.base === 'th') return 'th';
+    if (dir.base === 'en') return cfg.lessonBaseField || 'en';
+    if (cfg.lessonBaseField) return cfg.lessonBaseField;
+    return 'tr';
   }
 
   function claudeTranslatePrompt(q, dir) {
     var fromN = nameFor(dir.from);
     var toN = nameFor(dir.to);
-    var ui = (typeof appLang !== 'undefined' ? appLang : 'tr') || 'tr';
-    if (ui === 'en') {
-      return 'Translate this ' + fromN + ' phrase to ' + toN + ': "' + q + '"\n\nRespond ONLY in this format:\n' + toN + ': ...\nNote: ...';
-    }
-    if (ui === 'tr') {
-      return 'Kullanıcı şu ' + fromN + ' ifadeyi ' + toN + ' diline çevirmek istiyor: "' + q + '"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\n' + toN + ': ...\nAçıklama: ...';
-    }
-    if (ui === 'fr') {
-      return 'Traduisez cette phrase ' + fromN + ' en ' + toN + ' : "' + q + '"\n\nRépondez UNIQUEMENT dans ce format :\n' + toN + ' : ...\nNote : ...';
-    }
-    if (ui === 'de') {
-      return 'Übersetze diesen ' + fromN + '-Satz ins ' + toN + ': "' + q + '"\n\nAntworte NUR in diesem Format:\n' + toN + ': ...\nHinweis: ...';
-    }
-    if (ui === 'es') {
-      return 'Traduce esta frase de ' + fromN + ' a ' + toN + ': "' + q + '"\n\nResponde SOLO en este formato:\n' + toN + ': ...\nNota: ...';
-    }
-    if (ui === 'it') {
-      return 'Traduci questa frase da ' + fromN + ' a ' + toN + ': "' + q + '"\n\nRispondi SOLO in questo formato:\n' + toN + ': ...\nNota: ...';
-    }
-    return 'Translate "' + q + '" from ' + fromN + ' to ' + toN + '.\nFormat:\n' + toN + ': ...\nNote: ...';
+    return 'Translate this ' + fromN + ' phrase to ' + toN + ': "' + q + '"\n\nRespond ONLY in this format:\n' + toN + ': ...\nNote: ...';
   }
 
   function claudeSystemPrompt() {
-    var ui = (typeof appLang !== 'undefined' ? appLang : 'tr') || 'tr';
-    var tgt = nameFor((window.KDO_TRANSLATE || {}).target || 'en');
-    if (ui === 'en') return 'You are a ' + tgt + ' language teacher. Give short, clear, instructive answers.';
-    if (ui === 'tr') return 'Sen bir ' + tgt + ' öğretmenisin. Kısa, net ve öğretici cevaplar ver.';
-    if (ui === 'fr') return 'Tu es professeur de ' + tgt + '. Réponses courtes et claires.';
-    if (ui === 'de') return 'Du bist ' + tgt + '-Lehrer. Kurze, klare Antworten.';
-    if (ui === 'es') return 'Eres profesor de ' + tgt + '. Respuestas breves y claras.';
-    if (ui === 'it') return 'Sei insegnante di ' + tgt + '. Risposte brevi e chiare.';
-    return 'You are a ' + tgt + ' language teacher. Give short, clear answers.';
+    return 'You are a language teacher. Give short, clear, instructive answers.';
   }
 
   window.KDO_UI_TO_GT = UI_TO_GT;

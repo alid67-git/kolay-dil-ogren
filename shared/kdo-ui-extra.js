@@ -21,6 +21,7 @@
       ui_exercise_fail: 'Bu ders için yeterli egzersiz verisi yok.', ui_exercise_err: 'Egzersiz hatası:',
       ui_continue: 'Devam et', ui_check: 'Kontrol et', ui_correct: 'Doğru!', ui_incorrect: 'Yanlış',
       ui_correct_answer: 'Doğru cevap:', ui_change_lang: 'Dil değiştir',
+      claude_api_warn: 'Claude çevirisi için ⚙️ Ayarlar\'dan Anthropic API Key ekle.',
       gram_role_greeting: 'Selamlama', gram_role_farewell: 'Veda', gram_role_phrase: 'Kalıp ifade',
       gram_role_adj: 'Sıfat', gram_role_question: 'Soru kelimesi', gram_role_courtesy: 'Nezaket',
       gram_role_modal: 'Yardımcı fiil', gram_role_name: 'İsim', gram_role_neg: 'Olumsuz'
@@ -49,7 +50,8 @@
       translate_placeholder: 'Type Turkish or meaning language...',
       translate_tip: 'Type a Turkish word or phrase, or its meaning.',
       settings_voices: '🔊 Turkish Voices', settings_voices_loading: 'Loading voices...',
-      pron_col_target: 'Turkish', gist_error: 'Unknown error', gist_no_file: 'Gist file not found.'
+      pron_col_target: 'Turkish', gist_error: 'Unknown error', gist_no_file: 'Gist file not found.',
+      claude_api_warn: 'Add Anthropic API Key in ⚙️ Settings for Claude translation.'
     },
     de: {
       lesson_prefix: 'Lektion', ui_tabs: 'Tabs', ui_start_here: 'Hier beginnen:',
@@ -74,7 +76,8 @@
       translate_placeholder: 'Türkisch oder Bedeutungssprache eingeben...',
       translate_tip: 'Türkisches Wort oder Bedeutung eingeben.',
       settings_voices: '🔊 Türkische Stimmen', settings_voices_loading: 'Stimmen werden geladen...',
-      pron_col_target: 'Türkisch', gist_error: 'Unbekannter Fehler', gist_no_file: 'Gist-Datei nicht gefunden.'
+      pron_col_target: 'Türkisch', gist_error: 'Unbekannter Fehler', gist_no_file: 'Gist-Datei nicht gefunden.',
+      claude_api_warn: 'Anthropic API-Schlüssel unter ⚙️ Einstellungen für Claude-Übersetzung hinzufügen.'
     },
     fr: {
       lesson_prefix: 'Leçon', ui_tabs: 'onglets', ui_start_here: 'Commencez ici :',

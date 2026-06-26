@@ -983,9 +983,12 @@ const UI_LOCAL = {
 function _mergeUI(){
   const langs = window.KDO_UI_LANGS || ['tr','en'];
   const ui = {};
+  const KUI = window.KDO_UI || {};
   for(const l of langs){
-    const locBase = l==='tr' ? (UI_LOCAL.tr||{}) : (UI_LOCAL.en||{});
-    ui[l] = Object.assign({}, locBase, (window.KDO_UI||{})[l]||{}, (UI_LOCAL[l]||{}));
+    const locBase = l==='tr' ? (UI_LOCAL.tr||{})
+      : l==='en' ? (UI_LOCAL.en||{})
+      : Object.assign({}, UI_LOCAL.en||{}, KUI.en||{}, KUI[l]||{});
+    ui[l] = Object.assign({}, locBase, KUI[l]||{}, (UI_LOCAL[l]||{}));
   }
   return ui;
 }
@@ -1053,7 +1056,7 @@ function lessonSubtitle(meta){
 }
 
 function lessonNumLabel(num){
-  return (appLang!=='tr'?'Lesson ':'Ders ') + num;
+  return s('lesson_prefix')+' ' + num;
 }
 
 
@@ -1071,6 +1074,8 @@ function setLang(lang){
   appLang = lang;
   localStorage.setItem(PREFIX+'lang', lang);
   localStorage.setItem('kdo:locale', lang);
+  document.documentElement.lang = lang;
+  document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
   _initLangButtons();
   document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
   // Re-render current view
@@ -1602,7 +1607,7 @@ function renderLessonCard(L){
   const badges = [];
   if(isDone) badges.push('<span class="lbadge lbadge-done">🎉 '+s('lesson_done_msg')+'</span>');
   else if(allVisited) badges.push('<span class="lbadge" style="background:#e3f2fd;color:#1565c0;">'+s('lesson_all_done_q')+'</span>');
-  else if(visitedCount>0) badges.push('<span class="lbadge lbadge-visit">'+visitedCount+'/'+tabs.length+' '+(appLang!=='tr'?'tabs':'sekme')+'</span>');
+  else if(visitedCount>0) badges.push('<span class="lbadge lbadge-visit">'+visitedCount+'/'+tabs.length+' '+s('ui_tabs')+'</span>');
   if(scorePct!==null) badges.push('<span class="lbadge lbadge-score" style="color:'+scoreColor+'">🎯 '+scorePct+'%</span>');
   if(timeStr) badges.push('<span class="lbadge lbadge-time">⏱ '+timeStr+'</span>');
 
@@ -2074,17 +2079,17 @@ function buildLessonHTML(L, meta){
   // L1 için Sözcükler başına özne tablosu
   const pronounTable = meta.num===1 ? `
     <div style="background:#fff8e1;border:1.5px solid #ffe082;border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:#555;line-height:1.6;">
-      <strong style="color:#b45309;">${appLang!=='tr'?'Start here:':'Buradan başla:'}</strong>
-      ${appLang!=='tr'?'Learn one word at a time. Listen 🔊, repeat aloud, then try 🐢 slow mode. Build sentences only after you know the words.':'Önce tek tek kelimeleri öğren. 🔊 dinle, yüksek sesle tekrar et, sonra 🐢 yavaş modu dene. Cümlelere kelimeler oturduktan sonra geç.'}
+      <strong style="color:#b45309;">${s('ui_start_here')}</strong>
+      ${s('ui_learn_words')}
     </div>
     <div style="background:#f0fdf9;border:1.5px solid #b2dfdb;border-radius:12px;padding:12px 14px;margin-bottom:16px;">
-      <div style="font-size:12px;font-weight:700;color:#0d9488;margin-bottom:10px;">👤 ${appLang!=='tr'?'Personal Pronouns — Quick Reference':'Kişi Zamirleri — Hızlı Referans'}</div>
+      <div style="font-size:12px;font-weight:700;color:#0d9488;margin-bottom:10px;">👤 ${s('ui_pronouns_ref')}</div>
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
         <tr style="border-bottom:1px solid #b2dfdb;">
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?'Person':'Kişi'}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_person')}</th>
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?KDO_CFG.targetLabelEn:KDO_CFG.targetLabelTr}</th>
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?'Turkish':'Türkçe'}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?'Note':'Not'}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_note')}</th>
         </tr>
         <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'1st sing.':'1. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ich</td><td style="padding:6px 6px;">Ben</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Always lowercase':'Küçük harf'}</td></tr>
         <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'2nd sing. (informal)':'2. tekil (samimi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">du</td><td style="padding:6px 6px;">Sen</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Informal you':'Samimi sen'}</td></tr>
@@ -2093,7 +2098,7 @@ function buildLessonHTML(L, meta){
         <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">wir</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
         <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">sie / Sie</td><td style="padding:6px 6px;">Onlar / Siz</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'sie=they, Sie=formal you':'sie=onlar, Sie=resmi siz'}</td></tr>
       </table>
-      <div style="font-size:10px;color:#888;margin-top:8px;">💡 ${appLang!=='tr'?'More examples → Grammar tab → Rule 1':'Detaylı örnekler → Gramer sekmesi → Kural 1'}</div>
+      <div style="font-size:10px;color:#888;margin-top:8px;">💡 ${s('ui_more_grammar')}</div>
     </div>` : '';
 
   // TELAFFUZ (Ders 1 — IPA ses rehberi)
@@ -2141,7 +2146,7 @@ function buildLessonHTML(L, meta){
     let exHtml = '';
     if(g.table && g.table.length){
       exHtml = `<table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;">
-        <tr style="background:#f5f3ff;"><th style="padding:6px;text-align:left;color:#7c3aed;">${appLang!=='tr'?'Form':'Biçim'}</th><th style="padding:6px;text-align:left;color:#7c3aed;">${appLang!=='tr'?'Rule':'Kural'}</th><th style="padding:6px;text-align:left;color:#7c3aed;">${appLang!=='tr'?'Example':'Örnek'}</th><th style="padding:6px;text-align:left;color:#7c3aed;">TR</th></tr>
+        <tr style="background:#f5f3ff;"><th style="padding:6px;text-align:left;color:#7c3aed;">${s('ui_col_form')}</th><th style="padding:6px;text-align:left;color:#7c3aed;">${s('ui_col_rule')}</th><th style="padding:6px;text-align:left;color:#7c3aed;">${s('ui_col_example')}</th><th style="padding:6px;text-align:left;color:#7c3aed;">TR</th></tr>
         ${g.table.map(row=>`<tr style="border-bottom:1px solid #f0f0f0;">
           <td style="padding:6px;font-weight:700;color:#333;">${row.pronoun||''}</td>
           <td style="padding:6px;color:#888;">${row.form||''}</td>
@@ -3693,7 +3698,7 @@ function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 document.querySelectorAll('.overlay').forEach(el=>{
   el.addEventListener('click',e=>{ if(e.target===el) el.classList.remove('open'); });
 });
-function saveKey(){ localStorage.setItem(KDO_CFG.storageBrand+'api_key',document.getElementById('api-key-input').value); alert(appLang!=='tr'?'Saved.':'Kaydedildi.'); }
+function saveKey(){ localStorage.setItem(KDO_CFG.storageBrand+'api_key',document.getElementById('api-key-input').value); alert(s('ui_saved')); }
 function saveGist(){
   localStorage.setItem(KDO_CFG.storageBrand+'gist_token', document.getElementById('gist-token-input').value.trim());
   document.getElementById('gist-status').textContent = s('gist_saved');
@@ -3729,8 +3734,8 @@ function gistSetStatus(msg, color){
 
 async function gistPush(){
   const token = localStorage.getItem(KDO_CFG.storageBrand+'gist_token');
-  if(!token){ alert(appLang!=='tr'?'Save Gist token first.':'Önce Gist token kaydet.'); return; }
-  gistSetStatus('⏳ '+(appLang!=='tr'?'Uploading...':'Yükleniyor...'), '#888');
+  if(!token){ alert(s('ui_gist_first')); return; }
+  gistSetStatus('⏳ '+s('ui_uploading'), '#888');
   try{
     const gistId = localStorage.getItem(KDO_CFG.storageBrand+'gist_id');
     const url    = gistId ? `https://api.github.com/gists/${gistId}` : 'https://api.github.com/gists';
@@ -3745,17 +3750,17 @@ async function gistPush(){
       })
     });
     const data = await resp.json();
-    if(!data.id) throw new Error(data.message||(appLang!=='tr'?'Unknown error':'Bilinmeyen hata'));
+    if(!data.id) throw new Error(data.message||(s('gist_error')));
     localStorage.setItem(KDO_CFG.storageBrand+'gist_id', data.id);
-    const t = new Date().toLocaleTimeString(appLang!=='tr'?'en-US':'tr-TR',{hour:'2-digit',minute:'2-digit'});
-    gistSetStatus('✅ '+(appLang!=='tr'?'Saved to cloud · ':'Buluta kaydedildi · ')+t, '#059669');
-  } catch(e){ gistSetStatus('❌ '+(appLang!=='tr'?'Error: ':'Hata: ')+e.message, '#dc2626'); }
+    const t = new Date().toLocaleTimeString(typeof KDO_localeTag==='function'?KDO_localeTag(appLang):(appLang==='tr'?'tr-TR':'en-US'),{hour:'2-digit',minute:'2-digit'});
+    gistSetStatus('✅ '+s('ui_saved_cloud')+' · '+t, '#059669');
+  } catch(e){ gistSetStatus('❌ '+s('ui_error')+' '+e.message, '#dc2626'); }
 }
 
 async function gistPull(){
   const token = localStorage.getItem(KDO_CFG.storageBrand+'gist_token');
-  if(!token){ alert(appLang!=='tr'?'Save Gist token first.':'Önce Gist token kaydet.'); return; }
-  gistSetStatus('⏳ '+(appLang!=='tr'?'Searching...':'Aranıyor...'), '#888');
+  if(!token){ alert(s('ui_gist_first')); return; }
+  gistSetStatus('⏳ '+s('ui_searching'), '#888');
   try{
     // Gist ID varsa direkt al, yoksa listeden ara
     let gistId = localStorage.getItem(KDO_CFG.storageBrand+'gist_id');
@@ -3764,7 +3769,7 @@ async function gistPull(){
         headers:{'Authorization':'Bearer '+token}
       }).then(r=>r.json());
       const found = list.find && list.find(g=>g.files&&g.files[GIST_FILENAME]);
-      if(!found) throw new Error(appLang!=='tr'?'No cloud data found. First push from another device.':'Bulutta veri bulunamadı. Önce bir cihazdan "Buluta Kaydet" yap.');
+      if(!found) throw new Error(s('ui_no_cloud'));
       gistId = found.id;
       localStorage.setItem(KDO_CFG.storageBrand+'gist_id', gistId);
     }
@@ -3773,10 +3778,10 @@ async function gistPull(){
     });
     const data = await resp.json();
     const raw = data.files?.[GIST_FILENAME]?.content;
-    if(!raw) throw new Error(appLang!=='tr'?'Gist file not found.':'Gist dosyası bulunamadı.');
+    if(!raw) throw new Error(s('gist_no_file'));
     const payload = JSON.parse(raw);
     gistApplyPayload(payload);
-    const saved = payload.saved_at ? new Date(payload.saved_at).toLocaleString(appLang!=='tr'?'en-US':'tr-TR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) : '?';
+    const saved = payload.saved_at ? new Date(payload.saved_at).toLocaleString(typeof KDO_localeTag==='function'?KDO_localeTag(appLang):(appLang==='tr'?'tr-TR':'en-US'),{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) : '?';
     gistSetStatus('✅ '+(appLang!=='tr'?'Loaded · Saved: ':'Alındı · Kaydedilme: ')+saved, '#059669');
     renderLessonList();
     updateProgressBar();
@@ -3835,7 +3840,7 @@ function renderTranslateView(){
         <button onclick="doTranslate()" style="background:#0d9488;color:white;border:none;border-radius:8px;padding:7px 18px;font-size:13px;font-weight:700;cursor:pointer;">🔍 ${s('translate_btn')}</button>
       </div>
     </div>
-    ${!hasApiKey?'<div style="background:#fff3e0;border:1px solid #ffe0b2;border-radius:8px;padding:10px 12px;font-size:12px;color:#e65100;margin-bottom:12px;">⚠️ '+(appLang==="en"?"Add Anthropic API Key in ⚙️ Settings for Claude translation.":"Claude çevirisi için ⚙️ Ayarlar\'dan Anthropic API Key ekle.")+'</div>':''}
+    ${!hasApiKey?'<div style="background:#fff3e0;border:1px solid #ffe0b2;border-radius:8px;padding:10px 12px;font-size:12px;color:#e65100;margin-bottom:12px;">⚠️ '+(s('claude_api_warn'))+'</div>':''}
     <div id="translate-results"></div>
   `;
   document.getElementById('translate-input').focus();
@@ -4011,9 +4016,9 @@ async function claudeTranslate(q,dir){
 // =================== SES LİSTESİ ===================
 function loadVoiceList(){
   const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
-  let html = '<div style="font-size:12px;color:#059669;margin-bottom:8px;">✅ '+(appLang!=='tr'?'Device speech (Web Speech API)':'Cihaz sesi (Web Speech API)')+'</div>';
+  let html = '<div style="font-size:12px;color:#059669;margin-bottom:8px;">✅ '+(s('ui_device_tts'))+'</div>';
   html += '<div style="color:#666;padding:8px;background:#ecfdf5;border-radius:6px;font-size:12px;">';
-  html += (appLang!=='tr'?'Uses your phone/browser built-in voices — no API key needed.':'Telefon/tarayıcının yerleşik sesleri kullanılır — API anahtarı gerekmez.');
+  html += (s('ui_device_tts_info'));
   if(voices.length){
     const sample = voices.filter(v=>v.lang).slice(0,6).map(v=>'<li>'+v.name+' ('+v.lang+')</li>').join('');
     html += '<ul style="margin:8px 0 0 16px;font-size:11px;">'+sample+'</ul>';
@@ -4150,7 +4155,7 @@ async function startExercise(lessonNum, event){
     }
   }
   if(!LD){
-    alert((appLang!=='tr'?'Could not load lesson data. Please open the lesson first.':'Ders verisi yüklenemedi. Lütfen önce derse girin.'));
+    alert((s('ui_lesson_load_fail')));
     return;
   }
   try{
@@ -4534,6 +4539,7 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
 <script>
 (async function(){
   if(localStorage.getItem('kdo:locale')) return;
+  if(typeof PREFIX!=='undefined'&&localStorage.getItem(PREFIX+'lang')) return;
   if(typeof KDO_detectLocale!=='function') return;
   try{
     const loc=await KDO_detectLocale();

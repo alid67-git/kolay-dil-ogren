@@ -37,6 +37,14 @@
     return piece.note || '';
   }
 
+  function localeTag(lang) {
+    var map = {
+      tr: 'tr-TR', en: 'en-US', de: 'de-DE', fr: 'fr-FR', es: 'es-ES',
+      it: 'it-IT', ru: 'ru-RU', ar: 'ar-SA', zh: 'zh-CN', th: 'th-TH'
+    };
+    return map[lang] || 'en-US';
+  }
+
   function gramRoleLabel(role, appLang, sFn) {
     var map = {
       S: 'gram_legend_s', V: 'gram_legend_v', O: 'gram_legend_o',
@@ -69,6 +77,13 @@
       name: 'İsim', N: 'Olumsuz'
     };
     var L = isTr(appLang) ? tr : en;
+    if (!isTr(appLang) && sFn) {
+      var sk = map[role] || ext[role];
+      if (sk) {
+        var sv = sFn(sk);
+        if (sv && sv !== sk) return sv;
+      }
+    }
     return L[role] || role;
   }
 
@@ -77,4 +92,5 @@
   window.KDO_Lf = Lf;
   window.KDO_LfNote = LfNote;
   window.KDO_gramRoleLabel = gramRoleLabel;
+  window.KDO_localeTag = localeTag;
 })();
