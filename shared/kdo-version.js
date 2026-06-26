@@ -1,2 +1,2 @@
 /** Kolay Dil Öğren — tüm dillerde ortak platform sürümü */
-window.KDO_PLATFORM_VERSION = 'v2.2.1';
+window.KDO_PLATFORM_VERSION = 'v2.2.3';

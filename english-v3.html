@@ -657,6 +657,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 <script src="shared/kdo-ui-i18n.js"></script>
 <script src="shared/kdo-analytics-config.js"></script>
 <script src="shared/kdo-geo-locale.js"></script>
+<script src="shared/kdo-translate.js"></script>
 <script>
 // Cache temizleme — GitHub Pages kısayolu güncelleme sorunu için
 if('serviceWorker' in navigator){
@@ -665,7 +666,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.1';
+const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.3';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -680,15 +681,19 @@ localStorage.setItem('app_version', APP_VERSION);
 (function(){const _bd=document.getElementById('brand-dev');const _l=localStorage.getItem('kdo:locale')||'tr';if(_bd)_bd.textContent=devCredit(_l);})();
 (function(){const _vb=document.getElementById('app-version');if(_vb)_vb.textContent=APP_VERSION;})();
 
-// Eski uygulama anahtarlarından (tv3_*) tek seferlik taşıma
-(function migrateLegacyStorage(){
-  const suffixes = ['lang','star','visited','stats','complete','bonusOpen','srs'];
-  suffixes.forEach(s=>{
-    const oldKey = 'tv3_' + s;
-    const newKey = 'en1_' + s;
-    if(!localStorage.getItem(newKey) && localStorage.getItem(oldKey)!=null)
-      localStorage.setItem(newKey, localStorage.getItem(oldKey));
+// Tayca (tv3_*) verisi bu uygulamaya yanlış kopyalanmış olabilir — tek seferlik temizlik
+(function fixTv3CrossMigration(){
+  const PREFIX='en1_';
+  const MARK='kdo:purge-tv3-cross:'+PREFIX;
+  if(localStorage.getItem(MARK)) return;
+  ['star','visited','stats','complete','bonusOpen','srs','lang'].forEach(s=>{
+    const appKey=PREFIX+s;
+    const thaiKey='tv3_'+s;
+    const a=localStorage.getItem(appKey);
+    const t=localStorage.getItem(thaiKey);
+    if(a!=null&&t!=null&&a===t) localStorage.removeItem(appKey);
   });
+  localStorage.setItem(MARK,'1');
 })();
 
 // v1.4: yeni Ders 2 (Fiil Zamanları) eklendi — eski 2+ ders numaraları +1 kaydırılır
@@ -1045,7 +1050,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version">v2.2.1</span>
+  <span class="vbadge" id="app-version">v2.2.3</span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>
@@ -3635,10 +3640,10 @@ function saveGist(){
 const GIST_FILENAME = 'english-v1-sync.json';
 
 function gistApplyPayload(payload){
-  const star     = payload.en1_star     || payload['tv3_star'];
-  const complete = payload.en1_complete || payload['tv3_complete'];
-  const srs      = payload.en1_srs      || payload['tv3_srs'];
-  const stats    = payload.en1_stats    || payload['tv3_stats'];
+  const star     = payload.en1_star;
+  const complete = payload.en1_complete;
+  const srs      = payload.en1_srs;
+  const stats    = payload.en1_stats;
   if(star)     { localStorage.setItem('en1_star', star);     starred = JSON.parse(star); }
   if(complete) { localStorage.setItem('en1_complete', complete); completedLessons = JSON.parse(complete); }
   if(srs)      localStorage.setItem('en1_srs', srs);
@@ -3756,10 +3761,10 @@ function renderTranslateView(){
   wrap.innerHTML = `
     <div style="background:linear-gradient(135deg,#0d9488,#06b6d4);border-radius:14px;padding:16px 18px;margin-bottom:16px;color:white;">
       <div style="font-size:16px;font-weight:700;">${s('nav_translate')}</div>
-      <div style="font-size:12px;opacity:.8;margin-top:2px;">${s('translate_tip')}</div>
+      <div style="font-size:12px;opacity:.8;margin-top:2px;">${typeof KDO_translateTip==='function'?KDO_translateTip():s('translate_tip')}</div>
     </div>
     <div style="background:white;border:1.5px solid #e0e0e0;border-radius:12px;padding:12px;margin-bottom:12px;">
-      <textarea id="translate-input" placeholder="${s('translate_placeholder')}"
+      <textarea id="translate-input" placeholder="${typeof KDO_translatePlaceholder==='function'?KDO_translatePlaceholder():s('translate_placeholder')}"
         style="width:100%;border:none;outline:none;font-size:15px;resize:none;min-height:72px;font-family:inherit;box-sizing:border-box;"
         oninput="translateDebounce()"
       ></textarea>
@@ -3775,24 +3780,16 @@ function renderTranslateView(){
 }
 
 let _translateTimer = null;
-
-const TRANSLATE_TARGET = 'en';
-const TR_WORDS_RE = /\b(bir|iki|uc|üç|dort|dört|bes|bu|su|o|ben|sen|biz|siz|onlar|ne|nasil|nasıl|neden|nicin|niçin|icin|için|ile|ve|veya|ama|degil|değil|var|yok|merhaba|gunaydin|günaydın|tesekkur|teşekkür|lutfen|lütfen|evet|hayir|hayır|cok|çok|iyi|kotu|kötü|naber|nasilsin|nasılsın|ogren|öğren|kelime|cumle|cümle|nasil\s+denir|ne\s+demek|anlami|anlamı)\b/i;
-const TARGET_LANG_RE = /\b(the|and|is|are|was|were|have|has|had|you|your|they|their|this|that|with|from|what|how|hello|good|morning|thank|please|yes|no)\b/i;
-
+window.KDO_TRANSLATE={target:'en',targetRe:/\b(the|is|are|was|were|have|has|had|will|would|can|could|hello|good|morning|please|thank|you|your|my|this|that|what|how|where|when|why)\b/i};
 function detectTranslateDir(q){
-  const t=(q||'').trim();
-  if(!t) return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
-  if(/[çğıöşüÇĞİÖŞÜ]/.test(t)) return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
-  if(TARGET_LANG_RE.test(t)) return {from:TRANSLATE_TARGET,to:'tr',isFromTr:false};
-  if(TR_WORDS_RE.test(t)) return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
-  return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
+  if(typeof KDO_detectTranslateDir==='function') return KDO_detectTranslateDir(q);
+  const p=typeof KDO_getTranslatePair==='function'?KDO_getTranslatePair():{base:'tr',target:TRANSLATE_TARGET};
+  return {from:p.base,to:p.target,isFromTarget:false,base:p.base,target:p.target};
 }
 
 function translateHint(dir){
-  const tgt=appLang==='en'?'English':'İngilizce';
-  if(dir.isFromTr) return '🇹🇷 → 🇬🇧 '+tgt;
-  return '🇬🇧 '+tgt+' → 🇹🇷 '+(appLang==='en'?'Turkish':'Türkçe');
+  if(typeof KDO_translateHint==='function') return KDO_translateHint(dir);
+  return '';
 }
 
 function translateDebounce(){
@@ -3813,7 +3810,8 @@ function searchLessons(q){
   Object.values(LESSONS).forEach(L=>{
     if(!L) return;
     const check=(item,source)=>{
-      const field=dir.isFromTr?item.tr:(item.en||item.ro);
+      const fk=typeof KDO_lessonSearchField==='function'?KDO_lessonSearchField(dir):(dir.isFromTarget?'en':'tr');
+      const field=item[fk]||(fk==='en'?(item.en||item.ro):item.tr);
       if(!field) return;
       const nf=norm(field);
       if(nf.includes(nq)||nq.includes(nf)){
@@ -3888,7 +3886,7 @@ async function googleTranslate(q,dir){
     const el=document.getElementById('google-result');
     if(!el) return;
     if(!translated){el.innerHTML='<div style="color:#aaa;font-size:13px;">'+s('translate_no_match')+'</div>';return;}
-    if(dir.isFromTr){
+    if(dir.isFromTarget){
       el.innerHTML=`
         <div style="font-size:22px;font-weight:700;color:#0d9488;margin-bottom:4px;">
           ${translated}
@@ -3905,13 +3903,12 @@ async function googleTranslate(q,dir){
 
 async function claudeTranslate(q,dir){
   const apiKey=localStorage.getItem('english_api_key');
-  const prompt=appLang==='en'
-    ?(dir.isFromTr
-      ?`Translate this Turkish phrase to English: "${q}"\n\nRespond ONLY in this format:\nEnglish: ...\nNote: ...`
-      :`Translate this English phrase to Turkish: "${q}"\n\nRespond ONLY in this format:\nTurkish: ...\nNote: ...`)
-    :(dir.isFromTr
-      ?`Kullanıcı şu Türkçe ifadeyi İngilizceya çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nİngilizce: ...\nAçıklama: ...`
-      :`Kullanıcı şu İngilizce ifadeyi Türkçeye çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nTürkçe: ...\nAçıklama: ...`);
+  const prompt=typeof KDO_claudeTranslatePrompt==='function'
+    ?KDO_claudeTranslatePrompt(q,dir)
+    :`Translate "${q}" from ${dir.from} to ${dir.to}`;
+  const systemMsg=typeof KDO_claudeSystemPrompt==='function'
+    ?KDO_claudeSystemPrompt()
+    :'You are a language teacher. Give short, clear answers.';
   try{
     const resp=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',

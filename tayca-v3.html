@@ -622,7 +622,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.1';
+const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.3';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -949,7 +949,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version">v2.2.1</span>
+  <span class="vbadge" id="app-version">v2.2.3</span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>
@@ -3186,7 +3186,7 @@ function buildHelpContent(){
         </div>
       </div>
       <div class="help-section-header">📋 ${en?'App Info':'Uygulama Bilgisi'}</div>
-      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">v2.2.1</strong></div>
+      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">v2.2.3</strong></div>
       <div class="help-info-row"><span>${en?'Total Lessons':'Toplam Ders'}</span><strong>19 + 29 ${en?'BONUS sets':'BONUS set'}</strong></div>
       <div class="help-info-row"><span>${en?'Per Lesson':'Ders Başına'}</span><strong>~10 ${en?'words, 8 grammar, 4 dialogues':'kelime, 8 gramer, 4 diyalog'}</strong></div>
       <div class="help-info-row"><span>${en?'Audio':'Ses Motoru'}</span><strong>Web Speech API + Google TTS</strong></div>
@@ -3353,10 +3353,10 @@ function renderTranslateView(){
   wrap.innerHTML = `
     <div style="background:linear-gradient(135deg,#0d9488,#06b6d4);border-radius:14px;padding:16px 18px;margin-bottom:16px;color:white;">
       <div style="font-size:16px;font-weight:700;">${s('nav_translate')}</div>
-      <div style="font-size:12px;opacity:.8;margin-top:2px;">${s('translate_tip')}</div>
+      <div style="font-size:12px;opacity:.8;margin-top:2px;">${typeof KDO_translateTip==='function'?KDO_translateTip():s('translate_tip')}</div>
     </div>
     <div style="background:white;border:1.5px solid #e0e0e0;border-radius:12px;padding:12px;margin-bottom:12px;">
-      <textarea id="translate-input" placeholder="${s('translate_placeholder')}"
+      <textarea id="translate-input" placeholder="${typeof KDO_translatePlaceholder==='function'?KDO_translatePlaceholder():s('translate_placeholder')}"
         style="width:100%;border:none;outline:none;font-size:15px;resize:none;min-height:72px;font-family:inherit;box-sizing:border-box;"
         oninput="translateDebounce()"
       ></textarea>
@@ -3372,20 +3372,23 @@ function renderTranslateView(){
 }
 
 let _translateTimer = null;
-const TR_WORDS_TH = /\b(bir|iki|bu|ben|sen|ne|ve|ile|merhaba|gunaydin|günaydın|tesekkur|teşekkür|nasil|nasıl|evet|hayir|hayır|cok|çok|iyi)\b/i;
+window.KDO_TRANSLATE={target:'th',targetRe:/[\u0E00-\u0E7F]/,fallback:'tr',lessonTargetField:'th',lessonBaseField:'tr'};
+function detectTranslateDir(q){
+  if(typeof KDO_detectTranslateDir==='function') return KDO_detectTranslateDir(q);
+  const p=typeof KDO_getTranslatePair==='function'?KDO_getTranslatePair():{base:'tr',target:'th'};
+  return {from:p.base,to:p.target,isFromTarget:false,base:p.base,target:p.target};
+}
 
-function detectThaiDir(q){
-  const t=(q||'').trim();
-  if(!t) return {isThai:false};
-  if(/[฀-๿]/.test(t)) return {isThai:true};
-  return {isThai:false};
+function translateHint(dir){
+  if(typeof KDO_translateHint==='function') return KDO_translateHint(dir);
+  return '';
 }
 
 function translateDebounce(){
   const q = document.getElementById('translate-input').value;
-  const dir = detectThaiDir(q);
+  const dir = detectTranslateDir(q);
   const hint = document.getElementById('translate-lang-hint');
-  if(hint) hint.textContent = q.trim() ? (dir.isThai ? '🇹🇭 → 🇹🇷 '+(appLang==='en'?'Thai → Turkish':'Tayca → Türkçe') : '🇹🇷 → 🇹🇭 '+(appLang==='en'?'Turkish → Thai':'Türkçe → Tayca')) : '';
+  if(hint) hint.textContent = q.trim() ? translateHint(dir) : '';
   clearTimeout(_translateTimer);
   if(q.trim().length >= 2) _translateTimer = setTimeout(doTranslate, 800);
 }
@@ -3393,13 +3396,14 @@ function translateDebounce(){
 function searchLessons(q){
   const norm = str => str.toLowerCase().replace(/\s+/g,' ').trim();
   const nq = norm(q);
-  const isThai = detectThaiDir(q).isThai;
+  const dir = detectTranslateDir(q);
   const results = [];
 
   Object.values(LESSONS).forEach(L=>{
     if(!L) return;
     const check = (item, source) => {
-      const field = isThai ? item.th : item.tr;
+      const fk=typeof KDO_lessonSearchField==='function'?KDO_lessonSearchField(dir):(dir.isFromTarget?'th':'tr');
+      const field = item[fk];
       if(!field) return;
       const nf = norm(field);
       if(nf.includes(nq) || nq.includes(nf)){
@@ -3423,7 +3427,7 @@ async function doTranslate(){
 
   // Ders araması
   const hits = searchLessons(q);
-  const isThai = detectThaiDir(q).isThai;
+  const dir = detectTranslateDir(q);
 
   let html = '';
 
@@ -3463,14 +3467,14 @@ async function doTranslate(){
   wrap.innerHTML = html;
 
   // Paralel çalıştır
-  const tasks = [googleTranslate(q, isThai)];
-  if(apiKey && !hasExact) tasks.push(claudeTranslate(q, isThai));
+  const tasks = [googleTranslate(q, dir)];
+  if(apiKey && !hasExact) tasks.push(claudeTranslate(q, dir));
   await Promise.all(tasks);
 }
 
-async function googleTranslate(q, isThai){
-  const sl = isThai ? 'th' : 'tr';
-  const tl = isThai ? 'tr' : 'th';
+async function googleTranslate(q, dir){
+  const sl = dir.from;
+  const tl = dir.to;
   try{
     const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&dt=rm&q=${encodeURIComponent(q)}`;
     const data = await fetch(url).then(r=>r.json());
@@ -3479,7 +3483,7 @@ async function googleTranslate(q, isThai){
     const el = document.getElementById('google-result');
     if(!el) return;
     if(!translated){ el.innerHTML = '<div style="color:#aaa;font-size:13px;">'+s('translate_no_match')+'</div>'; return; }
-    if(isThai){
+    if(dir.isFromTarget){
       el.innerHTML = `<div style="font-size:15px;font-weight:600;color:#222;">${translated}</div>`;
     } else {
       el.innerHTML = `
@@ -3495,15 +3499,14 @@ async function googleTranslate(q, isThai){
   }
 }
 
-async function claudeTranslate(q, isThai){
+async function claudeTranslate(q, dir){
   const apiKey = localStorage.getItem('tayca_api_key');
-  const prompt = appLang==='en'
-    ? (isThai
-      ? `Translate this Thai phrase to English: "${q}"\n\nRespond ONLY in this format:\nEnglish: ...\nRomanization: ...\nNote: ...`
-      : `Translate this English phrase to Thai: "${q}"\n\nRespond ONLY in this format:\nThai: ...\nRomanization: ...\nEnglish: ...\nNote: ...`)
-    : (isThai
-      ? `Kullanıcı şu Tayca ifadeyi Türkçeye çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nTürkçe: ...\nRomanizasyon: ...\nAçıklama: ...`
-      : `Kullanıcı şu Türkçe ifadeyi Taycaya çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nTayca: ...\nRomanizasyon: ...\nTürkçe: ...\nAçıklama: ...`);
+  const prompt = typeof KDO_claudeTranslatePrompt==='function'
+    ? KDO_claudeTranslatePrompt(q, dir)
+    : `Translate "${q}" from ${dir.from} to ${dir.to}`;
+  const systemMsg = typeof KDO_claudeSystemPrompt==='function'
+    ? KDO_claudeSystemPrompt()
+    : 'You are a Thai language teacher. Give short, clear answers.';
   try{
     const resp = await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
@@ -3511,7 +3514,7 @@ async function claudeTranslate(q, isThai){
       body:JSON.stringify({
         model:'claude-haiku-4-5-20251001',
         max_tokens:300,
-        system: appLang==='en' ? 'You are a Thai language teacher. Give short, clear, instructive answers for English-speaking learners.' : 'Sen bir Tayca öğretmenisin. Kısa, net ve öğretici cevaplar ver. Türk kullanıcılar için Tayca öğretiyorsun.',
+        system:systemMsg,
         messages:[{role:'user',content:prompt}]
       })
     });
@@ -3519,22 +3522,20 @@ async function claudeTranslate(q, isThai){
     const text = data.content?.[0]?.text || s('translate_no_match');
     const el = document.getElementById('claude-result');
     if(!el) return;
-    // Satırları parse et
     const lines = text.split('\n').filter(l=>l.trim());
     let out = '';
     lines.forEach(line=>{
       const [label,...rest] = line.split(':');
       const val = rest.join(':').trim();
       if(!val) return;
-      if(label.includes('Tayca')||label.includes('Thai')){
+      const ll = label.toLowerCase();
+      if(ll.includes('tayca')||ll.includes('thai')||ll.includes('ไทย')){
         out += `<div style="font-family:'Noto Sans Thai',sans-serif;font-size:22px;font-weight:700;color:#0d9488;margin-bottom:4px;">${val}
           <button onclick="speak('${val.replace(/'/g,'&#39;')}',false,'m')" style="background:none;border:1px solid #e0e0e0;border-radius:20px;padding:3px 10px;font-size:11px;color:#888;cursor:pointer;margin-left:8px;">🔊</button></div>`;
-      } else if(label.includes('Romaniz')||label.includes('Roman')){
+      } else if(ll.includes('romaniz')||ll.includes('roman')){
         out += `<div style="font-size:13px;color:#888;font-style:italic;margin-bottom:4px;">${val}</div>`;
-      } else if(label.includes('Türkçe')||label.includes('English')){
-        out += `<div style="font-size:15px;font-weight:600;color:#222;margin-bottom:6px;">${val}</div>`;
       } else {
-        out += `<div style="font-size:12px;color:#666;border-top:1px solid #f0f0f0;padding-top:8px;margin-top:4px;">${line}</div>`;
+        out += `<div style="font-size:15px;font-weight:600;color:#222;margin-bottom:6px;">${val}</div>`;
       }
     });
     el.innerHTML = out || text;
@@ -4033,6 +4034,7 @@ gistAutoSync();
 </div>
 <script src="shared/kdo-analytics-config.js"></script>
 <script src="shared/kdo-geo-locale.js"></script>
+<script src="shared/kdo-translate.js"></script>
 <script>
 (async function(){
   if(localStorage.getItem('kdo:locale')) return;
