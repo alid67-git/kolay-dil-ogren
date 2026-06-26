@@ -22,10 +22,12 @@ h1{margin:0 0 2px;font-size:22px;color:#134e4a}
 </style>
 <script src="shared/kdo-version.js"></script>
 <script src="shared/kdo-ui-i18n.js"></script>
+<script src="shared/kdo-analytics-config.js"></script>
+<script src="shared/kdo-geo-locale.js"></script>
 </head>
 <body>
 <div class="card">
-  <h1>Kolay Dil Ogren</h1>
+  <h1 id="hub-title">Kolay Dil Ogren</h1>
   <p class="dev-credit" id="dev-credit"></p>
   <p class="sub" id="intro">9 dil — tam surumler, detayli gramer.</p>
   <div class="field">
@@ -67,37 +69,50 @@ const APP='kdo';
 const ROUTES={tk:'turkish-v3.html',th:'tayca-v3.html',en:'english-v3.html',de:'german-v3.html',it:'italian-v3.html',es:'spanish-v3.html',fr:'french-v3.html',ru:'russian-v3.html',ar:'arabic-v3.html',zh:'chinese-v3.html'};
 const LANG_KEYS={tk:'tk1_lang',th:'tv3_lang',en:'en1_lang',de:'de1_lang',it:'it1_lang',es:'es1_lang',fr:'fr1_lang',ru:'ru1_lang',ar:'ar1_lang',zh:'zh1_lang'};
 const HUB_UI={
-  tr:{intro:'10 dil ogrenme + Turkce ogretme — tam surumler, detayli gramer.',locale:'Arayuz dili',target:'Ogrenilecek dil',go:'Basla',note:'Tam dersler, detayli gramer, alistirma ve SRS.',dev:'Gelistiren: Ali Dinçer'},
-  en:{intro:'10 languages to learn + Turkish teaching — full apps with grammar.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, grammar, practice and SRS.',dev:'Developed by: Ali Dinçer'},
-  fr:{intro:'10 langues — lecons completes et grammaire detaillee.',locale:'Langue de l interface',target:'Langue a apprendre',go:'Commencer',note:'Lecons, grammaire, exercices et SRS.',dev:'Developpe par : Ali Dinçer'},
-  de:{intro:'10 Sprachen — vollstandige Lektionen und Grammatik.',locale:'Oberflachensprache',target:'Zu lernende Sprache',go:'Starten',note:'Lektionen, Grammatik, Ubung und SRS.',dev:'Entwickelt von: Ali Dinçer'},
-  es:{intro:'10 idiomas — lecciones completas y gramatica detallada.',locale:'Idioma de la interfaz',target:'Idioma a aprender',go:'Empezar',note:'Lecciones, gramatica, practica y SRS.',dev:'Desarrollado por: Ali Dinçer'},
-  it:{intro:'10 lingue — lezioni complete e grammatica dettagliata.',locale:'Lingua interfaccia',target:'Lingua da imparare',go:'Inizia',note:'Lezioni, grammatica, pratica e SRS.',dev:'Sviluppato da: Ali Dinçer'},
-  ru:{intro:'10 языков — полные уроки и грамматика.',locale:'Язык интерфейса',target:'Изучаемый язык',go:'Начать',note:'Уроки, грамматика, практика и SRS.',dev:'Разработчик: Ali Dinçer'},
-  ar:{intro:'10 لغات — دروس كاملة وقواعد مفصلة.',locale:'لغة الواجهة',target:'اللغة المطلوبة',go:'ابدأ',note:'دروس وقواعد وتمرين وSRS.',dev:'المطور: علي دينشر'},
-  zh:{intro:'10种语言——完整课程与详细语法。',locale:'界面语言',target:'学习语言',go:'开始',note:'课程、语法、练习和SRS。',dev:'开发者：Ali Dinçer'},
-  th:{intro:'10 ภาษา — บทเรียนครบและไวยากรณ์ละเอียด',locale:'ภาษาอินเทอร์เฟซ',target:'ภาษาที่เรียน',go:'เริ่ม',note:'บทเรียน ไวยากรณ์ ฝึกหัด และ SRS',dev:'พัฒนาโดย: Ali Dinçer'}
+  tr:{title:'Kolay Dil Ogren',intro:'10 dil ogrenme + Turkce ogretme — tam surumler, detayli gramer.',locale:'Arayuz dili',target:'Ogrenilecek dil',go:'Basla',note:'Tam dersler, detayli gramer, alistirma ve SRS.',dev:'Gelistiren: Ali Dinçer'},
+  en:{title:'Easy Language Learning',intro:'10 languages to learn + Turkish teaching — full apps with grammar.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, grammar, practice and SRS.',dev:'Developed by: Ali Dinçer'},
+  fr:{title:'Apprendre les langues',intro:'10 langues — lecons completes et grammaire detaillee.',locale:'Langue de l interface',target:'Langue a apprendre',go:'Commencer',note:'Lecons, grammaire, exercices et SRS.',dev:'Developpe par : Ali Dinçer'},
+  de:{title:'Sprachen leicht lernen',intro:'10 Sprachen — vollstandige Lektionen und Grammatik.',locale:'Oberflachensprache',target:'Zu lernende Sprache',go:'Starten',note:'Lektionen, Grammatik, Ubung und SRS.',dev:'Entwickelt von: Ali Dinçer'},
+  es:{title:'Aprender idiomas',intro:'10 idiomas — lecciones completas y gramatica detallada.',locale:'Idioma de la interfaz',target:'Idioma a aprender',go:'Empezar',note:'Lecciones, gramatica, practica y SRS.',dev:'Desarrollado por: Ali Dinçer'},
+  it:{title:'Imparare le lingue',intro:'10 lingue — lezioni complete e grammatica dettagliata.',locale:'Lingua interfaccia',target:'Lingua da imparare',go:'Inizia',note:'Lezioni, grammatica, pratica e SRS.',dev:'Sviluppato da: Ali Dinçer'},
+  ru:{title:'Изучение языков',intro:'10 языков — полные уроки и грамматика.',locale:'Язык интерфейса',target:'Изучаемый язык',go:'Начать',note:'Уроки, грамматика, практика и SRS.',dev:'Разработчик: Ali Dinçer'},
+  ar:{title:'تعلم اللغات',intro:'10 لغات — دروس كاملة وقواعد مفصلة.',locale:'لغة الواجهة',target:'اللغة المطلوبة',go:'ابدأ',note:'دروس وقواعد وتمرين وSRS.',dev:'المطور: علي دينشر'},
+  zh:{title:'轻松学语言',intro:'10种语言——完整课程与详细语法。',locale:'界面语言',target:'学习语言',go:'开始',note:'课程、语法、练习和SRS。',dev:'开发者：Ali Dinçer'},
+  th:{title:'เรียนภาษาง่ายๆ',intro:'10 ภาษา — บทเรียนครบและไวยากรณ์ละเอียด',locale:'ภาษาอินเทอร์เฟซ',target:'ภาษาที่เรียน',go:'เริ่ม',note:'บทเรียน ไวยากรณ์ ฝึกหัด และ SRS',dev:'พัฒนาโดย: Ali Dinçer'}
 };
 const ui=HUB_UI;
-const locale=localStorage.getItem(APP+':locale')||localStorage.getItem(APP+':ui')||'tr';
+let locale=localStorage.getItem(APP+':locale')||localStorage.getItem(APP+':ui')||null;
 const target=localStorage.getItem(APP+':target')||'th';
-const L=k=>(ui[locale]||ui.tr)[k];
+const L=k=>(ui[locale]||ui.en)[k];
 function applyUi(){
-  document.getElementById('intro').textContent=L('intro');
-  document.getElementById('lbl-locale').textContent=L('locale');
-  document.getElementById('lbl-target').textContent=L('target');
-  document.getElementById('go').textContent=L('go');
-  document.getElementById('note').textContent=L('note');
+  const pack=ui[locale]||ui.en;
+  document.getElementById('hub-title').textContent=pack.title;
+  document.getElementById('intro').textContent=pack.intro;
+  document.getElementById('lbl-locale').textContent=pack.locale;
+  document.getElementById('lbl-target').textContent=pack.target;
+  document.getElementById('go').textContent=pack.go;
+  document.getElementById('note').textContent=pack.note;
   document.documentElement.lang=locale;
-  const dc=document.getElementById('dev-credit');if(dc)dc.textContent=(HUB_UI[locale]||HUB_UI.tr).dev;
+  document.documentElement.dir=locale==='ar'?'rtl':'ltr';
+  const dc=document.getElementById('dev-credit');if(dc)dc.textContent=pack.dev;
 }
-document.getElementById('locale').value=locale;
-document.getElementById('target').value=target;
-applyUi();
+async function initHub(){
+  if(!locale){
+    locale=typeof KDO_detectLocaleSync==='function'?KDO_detectLocaleSync():'en';
+    if(typeof KDO_detectLocale==='function'){
+      try{ locale=await KDO_detectLocale(); }catch(_){}
+    }
+  }
+  document.getElementById('locale').value=locale;
+  document.getElementById('target').value=target;
+  applyUi();
+}
+initHub();
 document.getElementById('locale').addEventListener('change',e=>{
-  localStorage.setItem(APP+':locale',e.target.value);
-  localStorage.setItem(APP+':ui',e.target.value);
-  localStorage.setItem(APP+':base',e.target.value);
+  locale=e.target.value;
+  localStorage.setItem(APP+':locale',locale);
+  localStorage.setItem(APP+':ui',locale);
+  localStorage.setItem(APP+':base',locale);
   applyUi();
 });
 document.getElementById('target').addEventListener('change',e=>localStorage.setItem(APP+':target',e.target.value));
@@ -114,7 +129,6 @@ function launch(){
 document.getElementById('go').addEventListener('click',launch);
 if(new URLSearchParams(location.search).get('auto')==='1') launch();
 </script>
-<script src="shared/kdo-analytics-config.js"></script>
 <script src="shared/kdo-analytics.js"></script>
 </body>
 </html>

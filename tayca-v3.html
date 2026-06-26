@@ -622,7 +622,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.0';
+const APP_VERSION = window.KDO_PLATFORM_VERSION || 'v2.2.1';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -638,7 +638,7 @@ localStorage.setItem('app_version', APP_VERSION);
 (function(){const _vb=document.getElementById('app-version');if(_vb)_vb.textContent=APP_VERSION;})();
 
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
-let appLang = localStorage.getItem('kdo:locale') || localStorage.getItem('tv3_lang') || 'tr';
+let appLang = localStorage.getItem('kdo:locale') || localStorage.getItem('tv3_lang') || (typeof KDO_detectLocaleSync==='function'?KDO_detectLocaleSync():'tr');
 
 const UI_LOCAL = {
   tr:{
@@ -949,7 +949,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version">v2.2.0</span>
+  <span class="vbadge" id="app-version">v2.2.1</span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>
@@ -3186,7 +3186,7 @@ function buildHelpContent(){
         </div>
       </div>
       <div class="help-section-header">📋 ${en?'App Info':'Uygulama Bilgisi'}</div>
-      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">v2.2.0</strong></div>
+      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">v2.2.1</strong></div>
       <div class="help-info-row"><span>${en?'Total Lessons':'Toplam Ders'}</span><strong>19 + 29 ${en?'BONUS sets':'BONUS set'}</strong></div>
       <div class="help-info-row"><span>${en?'Per Lesson':'Ders Başına'}</span><strong>~10 ${en?'words, 8 grammar, 4 dialogues':'kelime, 8 gramer, 4 diyalog'}</strong></div>
       <div class="help-info-row"><span>${en?'Audio':'Ses Motoru'}</span><strong>Web Speech API + Google TTS</strong></div>
@@ -4032,6 +4032,17 @@ gistAutoSync();
   </div>
 </div>
 <script src="shared/kdo-analytics-config.js"></script>
+<script src="shared/kdo-geo-locale.js"></script>
+<script>
+(async function(){
+  if(localStorage.getItem('kdo:locale')) return;
+  if(typeof KDO_detectLocale!=='function') return;
+  try{
+    const loc=await KDO_detectLocale();
+    if(loc && typeof setLang==='function' && loc!==appLang) setLang(loc);
+  }catch(_){}
+})();
+</script>
 <script src="shared/kdo-analytics.js"></script>
 </body>
 </html>

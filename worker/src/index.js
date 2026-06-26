@@ -66,6 +66,11 @@ export default {
     const country = request.headers.get('CF-IPCountry') || '??';
     const ipHash = await sha256(ip + (env.IP_SALT || 'kdo'));
 
+    if (url.pathname === '/geo' && request.method === 'GET') {
+      const cc = country && country !== '??' ? country : '';
+      return json({ country: cc, ok: true }, 200, cors);
+    }
+
     if (url.pathname === '/track' && request.method === 'POST') {
       let body;
       try {
