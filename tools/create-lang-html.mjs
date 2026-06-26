@@ -18,6 +18,10 @@ if (!code || !LANGS[code]) {
 const L = LANGS[code];
 let s = fs.readFileSync(path.join(root, 'german-v3.html'), 'utf8');
 
+function jsQuote(v) {
+  return `'${String(v).replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'`;
+}
+
 // Base replacements from German template
 const reps = [
   [/de1_/g, L.prefix],
@@ -56,7 +60,7 @@ for (const [a, b] of reps) s = s.replace(a, b);
 // LESSONS_META lesson 2
 s = s.replace(
   `{num:2, emoji:'📗', title:'Artikel & sein', title_en:'Articles & sein', subtitle:'der/die/das — adım adım', subtitle_en:'der/die/das — step by step', hasContent:true, hasTones:false}`,
-  `{num:2, emoji:'📗', title:'${L.l2Meta.title}', title_en:'${L.l2Meta.title_en}', subtitle:'${L.l2Meta.subtitle}', subtitle_en:'${L.l2Meta.subtitle_en}', hasContent:true, hasTones:false}`
+  `{num:2, emoji:'📗', title:${jsQuote(L.l2Meta.title)}, title_en:${jsQuote(L.l2Meta.title_en)}, subtitle:${jsQuote(L.l2Meta.subtitle)}, subtitle_en:${jsQuote(L.l2Meta.subtitle_en)}, hasContent:true, hasTones:false}`
 );
 
 // num_info in UI object
@@ -159,8 +163,6 @@ if (calcStart >= 0 && calcEnd > calcStart) {
 }
 s = s.replace('const res = l2BuildGerman(n);', `const res = ${code === 'it' ? 'l2BuildItalian' : code === 'es' ? 'l2BuildSpanish' : 'l2BuildFrench'}(n);`);
 
-// Help: umlauts -> language specific pronunciation note already handled by German/Italian swap
-
-const out = path.join(root, L.htmlFile);
+s = s.replace('const APP_VERSION = \'v1.0.0\';', "const APP_VERSION = 'v1.2.1';");
 fs.writeFileSync(out, s);
 console.log(`Created ${L.htmlFile} (${fs.statSync(out).size} bytes)`);

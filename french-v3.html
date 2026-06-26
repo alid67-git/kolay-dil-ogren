@@ -659,7 +659,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = 'v1.0.0';
+const APP_VERSION = 'v1.2.1';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -1122,7 +1122,7 @@ function listenResolve(lessonNum, idx){
 // 20 senaryo dersi (1–20) + 29 BONUS kelime seti (21–49)
 const LESSONS_META = [
   {num:1, emoji:'👋', title:'Selamlaşma ve Tanışma', title_en:'Greetings & Introductions', hasContent:true, hasTones:false},
-  {num:2, emoji:'📗', title:'Articles & être', title_en:'Articles & être', subtitle:'le/la/l' — adım adım', subtitle_en:'le/la/l' — step by step', hasContent:true, hasTones:false},
+  {num:2, emoji:'📗', title:'Articles & être', title_en:'Articles & être', subtitle:'le/la/l\' — adım adım', subtitle_en:'le/la/l\' — step by step', hasContent:true, hasTones:false},
   {num:3, emoji:'🔢', title:'Sayılar ve Para', title_en:'Numbers & Money', hasContent:true, hasTones:false},
   {num:4, emoji:'🕐', title:'Zaman ve Tarih', title_en:'Time & Dates', hasContent:true, hasTones:false},
   {num:5, emoji:'🍽️', title:'Restoran ve Yemek', title_en:'Restaurant & Food', hasContent:true, hasTones:false},
