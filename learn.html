@@ -672,7 +672,7 @@ const KDO_CFG = window.KDO_CFG;
 const APP_VERSION = window.KDO_APP_VERSION || window.KDO_PLATFORM_VERSION;
 
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
-let appLang = localStorage.getItem('kdo:locale') || localStorage.getItem(PREFIX+'lang') || (typeof KDO_detectLocaleSync==='function'?KDO_detectLocaleSync():'tr');
+let appLang = (typeof KDO_resolveAppLang==='function'?KDO_resolveAppLang({prefix:PREFIX,fallback:'tr'}):null) || localStorage.getItem(PREFIX+'lang') || localStorage.getItem('kdo:locale') || (typeof KDO_detectLocaleSync==='function'?KDO_detectLocaleSync():'tr');
 
 const UI_LOCAL = {
   tr:{
@@ -986,10 +986,9 @@ function _mergeUI(){
   const ui = {};
   const KUI = window.KDO_UI || {};
   for(const l of langs){
-    const locBase = l==='tr' ? (UI_LOCAL.tr||{})
-      : l==='en' ? (UI_LOCAL.en||{})
-      : Object.assign({}, UI_LOCAL.en||{}, KUI.en||{}, KUI[l]||{});
-    ui[l] = Object.assign({}, locBase, KUI[l]||{}, (UI_LOCAL[l]||{}));
+    if(l==='tr') ui[l] = Object.assign({}, KUI.tr||{}, UI_LOCAL.tr||{});
+    else if(l==='en') ui[l] = Object.assign({}, KUI.en||{}, UI_LOCAL.en||{});
+    else ui[l] = Object.assign({}, KUI.en||{}, KUI[l]||{}, UI_LOCAL[l]||{});
   }
   return ui;
 }
@@ -997,7 +996,8 @@ function _mergeUI(){
 function applyTargetUi(){
   const tu=(KDO_CFG&&KDO_CFG.targetUi)||{};
   for(const loc of Object.keys(tu)){
-    if(UI_LOCAL[loc]) Object.assign(UI_LOCAL[loc], tu[loc]);
+    if(!UI_LOCAL[loc]) UI_LOCAL[loc]={};
+    Object.assign(UI_LOCAL[loc], tu[loc]);
   }
 }
 function patchL2Meta(){
@@ -1039,6 +1039,12 @@ applyTargetUi();
 const UI = _mergeUI();
 function devCredit(lang){ return (window.KDO_UI_DEV||{})[lang] || (window.KDO_UI_DEV||{}).tr || ''; }
 function uiB(en, tr){ return appLang==='tr' ? tr : en; }
+function loc(tr, en, th){
+  if(typeof KDO_loc==='function') return KDO_loc(tr, en, th, UI, appLang);
+  if(appLang==='tr') return tr;
+  if(appLang==='th') return th||en;
+  return en;
+}
 
 function s(key){ return typeof KDO_sFix==='function'?KDO_sFix(UI,appLang,key):((UI[appLang]||UI.en||UI.tr)[key]||(UI.en||{})[key]||(UI.tr||{})[key]||key); }
 
@@ -1051,8 +1057,10 @@ function Lf(item,field){
 
 function lessonSubtitle(meta){
   if(!meta) return '';
-  const sub = appLang!=='tr' ? (meta.subtitle_en||meta.subtitle) : (meta.subtitle||meta.subtitle_en);
+  if(appLang==='th' && meta.title_th) return meta.title_th;
+  const sub = appLang!=='tr' ? (meta['subtitle_'+appLang]||meta.subtitle_en||meta.subtitle) : (meta.subtitle||meta.subtitle_en);
   if(sub) return sub;
+  if(appLang==='th') return meta.title_th||meta.title_en||meta.title||'';
   return appLang!=='tr' ? (meta.title_en||meta.title||'') : (meta.title||meta.title_en||'');
 }
 
@@ -1078,7 +1086,10 @@ function setLang(lang){
   document.documentElement.lang = lang;
   document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
   _initLangButtons();
+  document.documentElement.lang = appLang;
+  document.documentElement.dir = (appLang === 'ar') ? 'rtl' : 'ltr';
   document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
+  document.querySelectorAll('[data-lk-ph]').forEach(el=>{ el.placeholder=s(el.dataset.lkPh); });
   // Re-render current view
   const vid = (document.querySelector('.view.active')||{}).id||'';
   if(vid==='lessons-view') renderLessonList();
@@ -1091,6 +1102,8 @@ function setLang(lang){
     if(LD) document.getElementById('detail-content').innerHTML = buildLessonHTML(LD, currentLesson);
   }
   buildHelpContent();
+  if(typeof KDO_applyBrandHeader==='function') KDO_applyBrandHeader();
+  if(typeof KDO_applyBrandDev==='function') KDO_applyBrandDev();
 }
 // =================== DİL SİSTEMİ END ===================
 </script>
@@ -1704,14 +1717,13 @@ function showLessonStars(num, event){
   if(event) event.stopPropagation();
   const prefixes = ['w'+num+'__', 'ex'+num+'w', 'dia'+num];
   const items = Object.entries(starred).filter(([k,v])=>v&&typeof v==='object'&&prefixes.some(p=>k.startsWith(p)));
-  const en = appLang!=='tr';
   if(items.length===0){
-    alert(en?'No starred items for this lesson yet. Star words or sentences inside the lesson.':'Bu derse ait yıldızlı öğe yok. Dersin içinde kelime veya cümleleri yıldızlayın.');
+    alert(s('no_starred_alert'));
     return;
   }
   const meta = LESSONS_META.find(m=>m.num===num);
-  document.getElementById('lstar-title').textContent = (meta?meta.emoji+' '+Lf(meta,'title'):'Ders ')+' — '+(en?'Starred':'Yıldızlılar');
-  document.getElementById('lstar-count').textContent = items.length+' '+(en?'item':'öğe');
+  document.getElementById('lstar-title').textContent = (meta?meta.emoji+' '+Lf(meta,'title'):'Ders ')+' — '+s('starred_label');
+  document.getElementById('lstar-count').textContent = items.length+' '+s('item_label');
   document.getElementById('lstar-list').innerHTML = items.map(([k,v])=>{
     const hasBd = v.bd && Array.isArray(v.bd) && v.bd.length>0;
     const thEsc = esc(v.th||'');
@@ -2087,16 +2099,16 @@ function buildLessonHTML(L, meta){
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
         <tr style="border-bottom:1px solid #b2dfdb;">
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_person')}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?KDO_CFG.targetLabelEn:KDO_CFG.targetLabelTr}</th>
-          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang!=='tr'?'Turkish':'Türkçe'}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${appLang==='tr'?KDO_CFG.targetLabelTr:KDO_CFG.targetLabelEn}</th>
+          <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_turkish')}</th>
           <th style="text-align:left;padding:5px 6px;color:#555;font-weight:600;">${s('ui_col_note')}</th>
         </tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'1st sing.':'1. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ich</td><td style="padding:6px 6px;">Ben</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Always lowercase':'Küçük harf'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'2nd sing. (informal)':'2. tekil (samimi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">du</td><td style="padding:6px 6px;">Sen</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Informal you':'Samimi sen'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'2nd sing. (formal)':'2. tekil (resmi)'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">Sie</td><td style="padding:6px 6px;">Siz</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'Capital S = formal':'Büyük S = resmi'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'3rd sing.':'3. tekil'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">er / sie / es</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'M / F / neuter':'E / K / nötr'}</td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'1st plural':'1. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">wir</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
-        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${appLang!=='tr'?'3rd plural':'3. çoğul'}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">sie / Sie</td><td style="padding:6px 6px;">Onlar / Siz</td><td style="padding:6px 6px;color:#888;">${appLang!=='tr'?'sie=they, Sie=formal you':'sie=onlar, Sie=resmi siz'}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_1sg')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">ich</td><td style="padding:6px 6px;">Ben</td><td style="padding:6px 6px;color:#888;">${s('pron_note_lower')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_2sg_inf')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">du</td><td style="padding:6px 6px;">Sen</td><td style="padding:6px 6px;color:#888;">${s('pron_note_inf')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_2sg_form')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">Sie</td><td style="padding:6px 6px;">Siz</td><td style="padding:6px 6px;color:#888;">${s('pron_note_formal')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_3sg')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">er / sie / es</td><td style="padding:6px 6px;">O</td><td style="padding:6px 6px;color:#888;">${s('pron_note_gender')}</td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;background:white;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_1pl')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">wir</td><td style="padding:6px 6px;">Biz</td><td style="padding:6px 6px;color:#888;"></td></tr>
+        <tr style="border-bottom:1px solid #e0f2f1;"><td style="padding:6px 6px;font-weight:700;color:#0d9488;">${s('pron_row_3pl')}</td><td style="padding:6px 6px;font-weight:700;font-size:15px;">sie / Sie</td><td style="padding:6px 6px;">Onlar / Siz</td><td style="padding:6px 6px;color:#888;">${s('pron_note_sie')}</td></tr>
       </table>
       <div style="font-size:10px;color:#888;margin-top:8px;">💡 ${s('ui_more_grammar')}</div>
     </div>` : '';
@@ -2122,7 +2134,7 @@ function buildLessonHTML(L, meta){
     const words = t.words || [];
     return `<div class="tone-card" style="border-left-color:${color}">
       <div class="tone-name" style="color:${color}">${t.name||Lf(t,'en')||t.en||''}</div>
-      ${t.symbol?`<div class="tone-symbol">${appLang!=='tr'?'Mark:':'İşaret:'} ${t.symbol}</div>`:''}
+      ${t.symbol?`<div class="tone-symbol">${s('ui_mark')} ${t.symbol}</div>`:''}
       <div class="tone-desc">${Lf(t,'desc')||t.desc||Lf(t,'tip')||t.tip||''}</div>
       <div class="tone-words">
         ${words.map(w=>`
@@ -2291,13 +2303,13 @@ function buildLessonHTML(L, meta){
   if(meta.num === 3 && L.numbers){
     // --- NUMBERS sekmesi: Flash kart benzeri grid ---
     const groups = [
-      {title: appLang!=='tr'?'🔢 Basic Numbers (0–9)':'🔢 Temel Rakamlar (0–9)', data: L.numbers.filter(x=>x.n<=9)},
-      {title: appLang!=='tr'?'🔟 Tens (10–100)':'🔟 Onlar (10–100)',             data: L.numbers.filter(x=>x.n>=10&&x.n<=100)},
-      {title: appLang!=='tr'?'💯 Large Units':'💯 Büyük Birimler',               data: L.numbers.filter(x=>x.n>100)},
+      {title: s('ui_basic_numbers'), data: L.numbers.filter(x=>x.n<=9)},
+      {title: s('ui_tens'),             data: L.numbers.filter(x=>x.n>=10&&x.n<=100)},
+      {title: s('ui_large_units'),               data: L.numbers.filter(x=>x.n>100)},
     ];
     numbersHtml = `
       <div style="background:#f0faf7;border:1px solid #b2dfdb;border-radius:12px;padding:12px 14px;margin-bottom:14px;font-size:13px;color:#444;line-height:1.7">
-        <strong style="color:#0d9488">${appLang!=='tr'?'System:':'Sistem:'}</strong> ${s('num_info')}
+        <strong style="color:#0d9488">${s('ui_system')}</strong> ${s('num_info')}
       </div>
       ${groups.map(g=>`
         <div style="font-weight:700;color:#0d9488;margin:14px 0 8px;font-size:13px;border-left:3px solid #0d9488;padding-left:8px">${g.title}</div>
@@ -2378,7 +2390,7 @@ function buildLessonHTML(L, meta){
         ${lessonSubtitle(meta) ? `<div class="lesson-hero-sub">${lessonSubtitle(meta)}</div>` : ''}
         <div class="lesson-hero-meta"><span id="lesson-score-live"></span></div>
       </div>
-      <button type="button" class="lesson-header-star" onclick="showLessonStars(${meta.num},event)" title="${appLang!=='tr'?'Starred items':'Yıldızlılar'}">⭐</button>
+      <button type="button" class="lesson-header-star" onclick="showLessonStars(${meta.num},event)" title="${s('ui_starred')}">⭐</button>
     </div>
     <div class="ltabs" id="ltabs-wrap">${tabs}</div>
     ${tabNames.map(t=>`<div id="lc-${t}" class="lcontent">${
@@ -3502,15 +3514,16 @@ function switchHelpTab(tab, btn){
 }
 
 function buildHelpContent(){
-  const en = appLang!=='tr';
+  const L = loc;
+  const en = appLang !== 'tr';
   // Tab button labels
   document.getElementById('htab-btn-genel').textContent   = '🏠 '+s('help_tab_guide');
-  document.getElementById('htab-btn-dersler').textContent = en?'📚 Lessons':'📚 Dersler';
-  document.getElementById('htab-btn-tekrar').textContent  = en?'🔄 Review':'🔄 Tekrar';
-  document.getElementById('htab-btn-ipuclari').textContent= en?'💡 Tips':'💡 İpuçları';
+  document.getElementById('htab-btn-dersler').textContent = s('help_tab_lessons');
+  document.getElementById('htab-btn-tekrar').textContent  = s('help_tab_review');
+  document.getElementById('htab-btn-ipuclari').textContent= s('help_tab_tips');
   document.getElementById('htab-btn-hakkinda').textContent= 'ℹ️ '+s('help_tab_about');
-  document.getElementById('help-modal-title').textContent = en?'📖 How to Use?':'📖 Nasıl Kullanılır?';
-  document.getElementById('help-modal-sub').textContent   = en?'Easy German Learning · Guide':'Kolay Almanca Öğrenme · Rehber';
+  document.getElementById('help-modal-title').textContent = s('help_modal_title');
+  document.getElementById('help-modal-sub').textContent   = s('help_modal_sub');
 
   const chip = (bg,col,txt)=>`<span class="help-color-chip" style="background:${bg};color:${col};">${txt}</span>`;
 
@@ -3579,12 +3592,12 @@ function buildHelpContent(){
         <span>${en?'Lesson 3 only. Enter 0-9,999,999 to see German spelling + digit breakdown.':'Sadece Ders 3\'te. 0-9.999.999 arası herhangi bir sayıyı gir, Almanca karşılığı + basamak dökümü gelsin.'}</span></div>
       <div class="help-section-header" style="margin-top:16px;">🎨 ${en?'Sentence Analysis Color Code':'Cümle Analizi Renk Kodu'}</div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
-        ${chip('#eff6ff','#3b82f6',en?'S = Subject':'S = Özne')}
-        ${chip('#f0fdf4','#10b981',en?'V = Verb':'V = Yüklem')}
-        ${chip('#fffbeb','#f59e0b',en?'O = Object':'O = Nesne')}
-        ${chip('#fef2f2','#ef4444',en?'Question / Neg.':'Soru / Olumsuz')}
+        ${chip('#eff6ff','#3b82f6',s('gram_legend_s'))}
+        ${chip('#f0fdf4','#10b981',s('gram_legend_v'))}
+        ${chip('#fffbeb','#f59e0b',s('gram_legend_o'))}
+        ${chip('#fef2f2','#ef4444',s('gram_legend_q'))}
         ${chip('#f0fdfa','#0d9488',en?'Modifier':'Belirteç')}
-        ${chip('#f5f3ff','#7c3aed',en?'Preposition':'Edat')}
+        ${chip('#f5f3ff','#7c3aed',s('ui_col_form'))}
       </div>
     </div>
 
@@ -3782,7 +3795,7 @@ async function gistPull(){
     const payload = JSON.parse(raw);
     gistApplyPayload(payload);
     const saved = payload.saved_at ? new Date(payload.saved_at).toLocaleString(typeof KDO_localeTag==='function'?KDO_localeTag(appLang):(appLang==='tr'?'tr-TR':'en-US'),{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'}) : '?';
-    gistSetStatus('✅ '+(appLang!=='tr'?'Loaded · Saved: ':'Alındı · Kaydedilme: ')+saved, '#059669');
+    gistSetStatus('✅ '+(s('ui_loaded')+' · ')+saved, '#059669');
     renderLessonList();
     updateProgressBar();
     updateReviewBadge();
@@ -4009,7 +4022,7 @@ async function claudeTranslate(q,dir){
     el.innerHTML=out||text;
   }catch(e){
     const el=document.getElementById('claude-result');
-    if(el) el.innerHTML=`<div style="color:#dc2626;font-size:13px;">❌ ${appLang!=='tr'?'Error:':'Hata:'} ${e.message}</div>`;
+    if(el) el.innerHTML=`<div style="color:#dc2626;font-size:13px;">❌ ${s('ui_error')} ${e.message}</div>`;
   }
 }
 
@@ -4161,14 +4174,14 @@ async function startExercise(lessonNum, event){
   try{
     exLessonNum = lessonNum;
     exExercises = buildExercises(LD, lessonNum);
-    if(exExercises.length===0){ alert(appLang!=='tr'?'Not enough exercise data for this lesson.':'Bu ders için yeterli egzersiz verisi yok.'); return; }
+    if(exExercises.length===0){ alert(s('ui_exercise_fail')); return; }
     exIdx = 0; exLives = 3; exSelected = null; exAnswerWords = []; exAnswered = false; exCorrectCount = 0;
     document.getElementById('exercise-overlay').classList.add('open');
     document.getElementById('ex-footer').style.display='';
     document.body.style.overflow = 'hidden';
     renderExercise();
   } catch(err){
-    alert((appLang!=='tr'?'Exercise error: ':'Egzersiz hatası: ')+err.message);
+    alert((s('ui_exercise_err')+' ')+err.message);
   }
 }
 
@@ -4189,18 +4202,18 @@ function setExBtn(state){
   btn.disabled = (state==='disabled');
   btn.className = 'ex-check-btn ' + (state==='disabled'?'':state);
   btn.textContent = state==='next'
-    ? (appLang!=='tr'?'Continue':'Devam et')
-    : (appLang!=='tr'?'Check':'Kontrol et');
+    ? (s('ui_continue'))
+    : (s('ui_check'));
 }
 
 function showExFeedback(correct, correctAnswer){
   const fb = document.getElementById('ex-feedback');
   if(correct){
     fb.className='ex-feedback-bar correct';
-    fb.innerHTML=`<div class="ex-fb-icon">🎉</div><div class="ex-fb-text"><div class="ex-fb-title">${appLang!=='tr'?'Correct!':'Doğru!'}</div></div>`;
+    fb.innerHTML=`<div class="ex-fb-icon">🎉</div><div class="ex-fb-text"><div class="ex-fb-title">${s('ui_correct')}</div></div>`;
   } else {
     fb.className='ex-feedback-bar wrong';
-    fb.innerHTML=`<div class="ex-fb-icon">❌</div><div class="ex-fb-text"><div class="ex-fb-title">${appLang!=='tr'?'Incorrect':'Yanlış'}</div><div class="ex-fb-answer">${appLang!=='tr'?'Correct answer:':'Doğru cevap:'} <strong>${correctAnswer||''}</strong></div></div>`;
+    fb.innerHTML=`<div class="ex-fb-icon">❌</div><div class="ex-fb-text"><div class="ex-fb-title">${s('ui_incorrect')}</div><div class="ex-fb-answer">${s('ui_correct_answer')} <strong>${correctAnswer||''}</strong></div></div>`;
   }
 }
 
@@ -4252,11 +4265,9 @@ function renderExercise(){
   }
   const e = exExercises[exIdx];
   const content = document.getElementById('ex-content');
-  const en = appLang!=='tr';
-
   if(e.type==='word-choice'){
     content.innerHTML = `
-      <div class="ex-q-label">${en?'Select the correct answer':'Doğru cevabı seçin'}</div>
+      <div class="ex-q-label">${s('ex_q_select')}</div>
       <div class="ex-prompt-box">
         <div class="ex-prompt-th">${esc(e.prompt)}</div>
         <button class="ex-speak-sm" onclick="speakExEnglish('${e.correctEn.replace(/'/g,"\\'")}')">🔊</button>
@@ -4271,7 +4282,7 @@ function renderExercise(){
   }
   else if(e.type==='listen-choice'){
     content.innerHTML = `
-      <div class="ex-q-label">${en?'What do you hear?':'Ne duyuyorsun?'}</div>
+      <div class="ex-q-label">${s('ex_q_listen')}</div>
       <button class="ex-listen-big-btn" onclick="speakExEnglish('${e.audioEn.replace(/'/g,"\\'")}')">🔊</button>
       <div class="ex-options" id="ex-opts">
         ${e.options.map((o,i)=>`
@@ -4280,13 +4291,13 @@ function renderExercise(){
             <div class="ex-option-ro">${esc(o.ro)}</div>
           </div>`).join('')}
       </div>
-      <div class="ex-skip-listen" onclick="speakExEnglish('${e.audioEn.replace(/'/g,"\\'")}',true)">🐢 ${en?'Play slowly':'Yavaş dinle'}</div>`;
+      <div class="ex-skip-listen" onclick="speakExEnglish('${e.audioEn.replace(/'/g,"\\'")}',true)">🐢 ${s('ex_play_slow')}</div>`;
     // Auto-play audio
     setTimeout(()=>{ try{ speakExEnglish(e.audioEn); }catch(err){} }, 400);
   }
   else if(e.type==='translate-choice'){
     content.innerHTML = `
-      <div class="ex-q-label">${en?'Translate this sentence':'Bu cümleyi tercüme edin'}</div>
+      <div class="ex-q-label">${s('ex_q_translate')}</div>
       <div class="ex-sentence-box">
         <div class="ex-sent-info">
           <div class="ex-sent-th">${esc(e.th)}</div>
@@ -4303,7 +4314,7 @@ function renderExercise(){
   else if(e.type==='translate-wordbank'){
     exSlotState = e.correctWords.map(()=>({word:null, bankIdx:null, marked:false}));
     content.innerHTML = `
-      <div class="ex-q-label">${en?'Translate this sentence':'Bu cümleyi tercüme edin'}</div>
+      <div class="ex-q-label">${s('ex_q_translate')}</div>
       <div class="ex-sentence-box">
         <div class="ex-sent-info">
           <div class="ex-sent-th">${esc(e.th)}</div>
@@ -4425,50 +4436,49 @@ function saveExStats(){
 
 function showExFinish(){
   saveExStats();
-  const en = appLang!=='tr';
   const content = document.getElementById('ex-content');
   const accuracy = exExercises.length>0 ? Math.round(exCorrectCount/exExercises.length*100) : 0;
   const meta = LESSONS_META.find(m=>m.num===exLessonNum);
   content.innerHTML = `
     <div class="ex-finish">
       <div class="ex-finish-trophy">🏆</div>
-      <div class="ex-finish-title">${en?'Lesson Complete!':'Ders Tamamlandı!'}</div>
-      <div class="ex-finish-sub">${meta?`${meta.emoji} ${Lf(meta,'title')}`:''}${exLives>0?'<br>'+('❤️'.repeat(exLives)+' '+(en?'lives remaining':'can kaldı')):'<br>'+(en?'Completed with errors':'Hatalarla tamamlandı')}</div>
+      <div class="ex-finish-title">${s('ex_finish_title')}</div>
+      <div class="ex-finish-sub">${meta?`${meta.emoji} ${Lf(meta,'title')}`:''}${exLives>0?'<br>'+('❤️'.repeat(exLives)+' '+(s('ex_lives_remaining'))):'<br>'+(s('ex_completed_errors'))}</div>
       <div class="ex-finish-stats">
-        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exCorrectCount}</div><div class="ex-finish-stat-lbl">${en?'Correct':'Doğru'}</div></div>
-        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exExercises.length-exCorrectCount}</div><div class="ex-finish-stat-lbl">${en?'Incorrect':'Yanlış'}</div></div>
-        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${accuracy}%</div><div class="ex-finish-stat-lbl">${en?'Accuracy':'Doğruluk'}</div></div>
+        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exCorrectCount}</div><div class="ex-finish-stat-lbl">${s('ex_stat_correct')}</div></div>
+        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exExercises.length-exCorrectCount}</div><div class="ex-finish-stat-lbl">${s('ui_incorrect')}</div></div>
+        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${accuracy}%</div><div class="ex-finish-stat-lbl">${s('ex_stat_accuracy')}</div></div>
       </div>
-      <button class="ex-finish-btn" onclick="closeExercise()">${en?'Finish':'Bitir'}</button>
+      <button class="ex-finish-btn" onclick="closeExercise()">${s('ex_finish')}</button>
     </div>`;
   document.getElementById('ex-footer').style.display='none';
 }
 
 function showExFailed(){
   saveExStats();
-  const en = appLang!=='tr';
   const content = document.getElementById('ex-content');
   content.innerHTML = `
     <div class="ex-finish">
       <div class="ex-finish-trophy">💔</div>
-      <div class="ex-finish-title">${en?'Out of lives!':'Canların bitti!'}</div>
+      <div class="ex-finish-title">${s('ex_out_of_lives')}</div>
       <div class="ex-finish-sub">${en?'Don\'t worry, try again!':'Üzülme, tekrar dene!'}</div>
       <div class="ex-finish-stats">
-        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exCorrectCount}</div><div class="ex-finish-stat-lbl">${en?'Correct':'Doğru'}</div></div>
-        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exIdx+1}</div><div class="ex-finish-stat-lbl">${en?'Reached':'Ulaşılan'}</div></div>
+        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exCorrectCount}</div><div class="ex-finish-stat-lbl">${s('ex_stat_correct')}</div></div>
+        <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exIdx+1}</div><div class="ex-finish-stat-lbl">${s('ex_stat_reached')}</div></div>
       </div>
-      <button class="ex-finish-btn" style="background:#1cb0f6;box-shadow:0 4px 0 #0e87c3;margin-bottom:12px;" onclick="startExercise(${exLessonNum})">${en?'Try Again':'Tekrar Dene'}</button>
-      <button style="background:none;border:none;color:#afafaf;font-size:14px;cursor:pointer;margin-top:8px;" onclick="closeExercise()">${en?'Exit':'Çık'}</button>
+      <button class="ex-finish-btn" style="background:#1cb0f6;box-shadow:0 4px 0 #0e87c3;margin-bottom:12px;" onclick="startExercise(${exLessonNum})">${s('ex_try_again')}</button>
+      <button style="background:none;border:none;color:#afafaf;font-size:14px;cursor:pointer;margin-top:8px;" onclick="closeExercise()">${s('ex_exit')}</button>
     </div>`;
   document.getElementById('ex-footer').style.display='none';
 }
 // =================== EXERCISE ENGINE END ===================
 
 // =================== INIT ===================
-const _kdoLocale = localStorage.getItem('kdo:locale');
-if(_kdoLocale && _kdoLocale !== appLang){ setLang(_kdoLocale); }
-else {
+{
+document.documentElement.lang = appLang;
+document.documentElement.dir = (appLang === 'ar') ? 'rtl' : 'ltr';
 document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
+document.querySelectorAll('[data-lk-ph]').forEach(el=>{ el.placeholder=s(el.dataset.lkPh); });
 _initLangButtons();
 buildHelpContent();
 renderLessonList();

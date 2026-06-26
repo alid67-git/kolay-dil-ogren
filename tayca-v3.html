@@ -626,7 +626,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 <script>
 const APP_VERSION = window.KDO_APP_VERSION || window.KDO_PLATFORM_VERSION;
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
-let appLang = localStorage.getItem('kdo:locale') || localStorage.getItem('tv3_lang') || (typeof KDO_detectLocaleSync==='function'?KDO_detectLocaleSync():'tr');
+let appLang = (typeof KDO_resolveAppLang==='function'?KDO_resolveAppLang({appKey:'tv3_lang',fallback:'tr',skipGlobalLocale:true}):null) || localStorage.getItem('tv3_lang') || (typeof KDO_detectLocaleSync==='function'?KDO_detectLocaleSync():'tr');
 
 const UI_LOCAL = {
   tr:{
@@ -1189,17 +1189,22 @@ function _mergeUI(){
   const ui = {};
   const KUI = window.KDO_UI || {};
   for(const l of langs){
-    const locBase = l==='tr' ? (UI_LOCAL.tr||{})
-      : l==='en' ? (UI_LOCAL.en||{})
-      : Object.assign({}, UI_LOCAL.en||{}, KUI.en||{}, KUI[l]||{});
-    ui[l] = Object.assign({}, locBase, KUI[l]||{}, (UI_LOCAL[l]||{}));
+    if(l==='tr') ui[l] = Object.assign({}, KUI.tr||{}, UI_LOCAL.tr||{});
+    else if(l==='en') ui[l] = Object.assign({}, KUI.en||{}, UI_LOCAL.en||{});
+    else ui[l] = Object.assign({}, KUI.en||{}, KUI[l]||{}, UI_LOCAL[l]||{});
   }
   return ui;
 }
 const UI = _mergeUI();
 function devCredit(lang){ return (window.KDO_UI_DEV||{})[lang] || (window.KDO_UI_DEV||{}).tr || ''; }
 function uiB(en, tr){ return appLang==='tr' ? tr : en; }
-function loc(tr, en, th){ return appLang==='tr' ? tr : (appLang==='th' ? (th||en) : en); }
+function loc(tr, en, th){
+  if(typeof KDO_loc==='function') return KDO_loc(tr, en, th, UI, appLang);
+  if(appLang==='tr') return tr;
+  if(appLang==='th') return th||en;
+  if(UI&&UI[appLang]&&UI[appLang]._loc&&UI[appLang]._loc[en]) return UI[appLang]._loc[en];
+  return en;
+}
 
 function s(key){ return typeof KDO_sFix==='function'?KDO_sFix(UI,appLang,key):((UI[appLang]||UI.en||UI.tr)[key]||(UI.en||{})[key]||(UI.tr||{})[key]||key); }
 
@@ -1256,6 +1261,8 @@ function setLang(lang){
     if(LD) document.getElementById('detail-content').innerHTML = buildLessonHTML(LD, currentLesson);
   }
   buildHelpContent();
+  if(typeof KDO_applyBrandHeader==='function') KDO_applyBrandHeader();
+  if(typeof KDO_applyBrandDev==='function') KDO_applyBrandDev();
 }
 // =================== DİL SİSTEMİ END ===================
 </script>
@@ -3436,12 +3443,12 @@ function buildHelpContent(){
         <span>${L('Sadece Ders 2\'de. 0–9.999.999 arası herhangi bir sayıyı gir → Thai karşılığı + basamak dökümü.','Lesson 2 only. Enter 0–9,999,999 → Thai spelling + digit breakdown.','เฉพาะบทเรียนที่ 2 ใส่ 0–9,999,999 → คำสะกดไทย + รายละเอียดหลัก')}</span></div>
       <div class="help-section-header" style="margin-top:16px;">🎨 ${L('Cümle Analizi Renk Kodu','Sentence Analysis Color Code','รหัสสีการวิเคราะห์ประโยค')}</div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
-        ${chip('#eff6ff','#3b82f6',en?'S = Subject':'S = Özne')}
-        ${chip('#f0fdf4','#10b981',en?'V = Verb':'V = Yüklem')}
-        ${chip('#fffbeb','#f59e0b',en?'O = Object':'O = Nesne')}
-        ${chip('#fef2f2','#ef4444',en?'Question / Neg.':'Soru / Olumsuz')}
-        ${chip('#f0fdfa','#0d9488',en?'Polite particle':'Kibar eki')}
-        ${chip('#f5f3ff','#7c3aed',en?'Preposition':'Edat')}
+        ${chip('#eff6ff','#3b82f6',s('gram_legend_s'))}
+        ${chip('#f0fdf4','#10b981',s('gram_legend_v'))}
+        ${chip('#fffbeb','#f59e0b',s('gram_legend_o'))}
+        ${chip('#fef2f2','#ef4444',s('gram_legend_q'))}
+        ${chip('#f0fdfa','#0d9488',s('ui_col_note'))}
+        ${chip('#f5f3ff','#7c3aed',s('ui_col_form'))}
       </div>
     </div>
 
@@ -3509,7 +3516,7 @@ function buildHelpContent(){
         </div>
       </div>
       <div class="help-section-header">📋 ${L('Uygulama Bilgisi','App Info','ข้อมูลแอป')}</div>
-      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.3</strong></div>
+      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.4</strong></div>
       <div class="help-info-row"><span>${L('Toplam Ders','Total Lessons','บทเรียนทั้งหมด')}</span><strong>19 + 29 ${L('BONUS set','BONUS sets','ชุด BONUS')}</strong></div>
       <div class="help-info-row"><span>${L('Ders Başına','Per Lesson','ต่อบทเรียน')}</span><strong>~10 ${L('kelime, 8 gramer, 4 diyalog','words, 8 grammar, 4 dialogues','~10 คำ 8 ไวยากรณ์ 4 บทสนทนา')}</strong></div>
       <div class="help-info-row"><span>${L('Ses Motoru','Audio','เสียง')}</span><strong>Web Speech API + Google TTS</strong></div>
@@ -4290,13 +4297,11 @@ function showExFailed(){
 
 // =================== INIT ===================
 localStorage.setItem('kdo:target','th');
-const _kdoLocale = localStorage.getItem('kdo:locale');
-if(_kdoLocale && _kdoLocale !== appLang){ setLang(_kdoLocale); }
-else {
+{
 document.documentElement.lang = appLang;
+document.documentElement.dir = (appLang === 'ar') ? 'rtl' : 'ltr';
 document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
 document.querySelectorAll('[data-lk-ph]').forEach(el=>{ el.placeholder=s(el.dataset.lkPh); });
-_initLangButtons();
 buildHelpContent();
 renderLessonList();
 updateReviewBadge();

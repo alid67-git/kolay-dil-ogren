@@ -37,6 +37,44 @@
     return piece.note || '';
   }
 
+  function resolveAppLang(opts) {
+    opts = opts || {};
+    if (opts.appKey) {
+      var ak = localStorage.getItem(opts.appKey);
+      if (ak) return ak;
+      if (opts.skipGlobalLocale) {
+        return (typeof KDO_detectLocaleSync === 'function' ? KDO_detectLocaleSync() : null)
+          || opts.fallback || 'tr';
+      }
+    }
+    if (opts.prefix) {
+      var pk = localStorage.getItem(opts.prefix + 'lang');
+      if (pk) return pk;
+      if (opts.skipGlobalLocale) {
+        return (typeof KDO_detectLocaleSync === 'function' ? KDO_detectLocaleSync() : null)
+          || opts.fallback || 'tr';
+      }
+    }
+    return localStorage.getItem('kdo:locale')
+      || localStorage.getItem('kdo:ui')
+      || (typeof KDO_detectLocaleSync === 'function' ? KDO_detectLocaleSync() : null)
+      || opts.fallback
+      || 'tr';
+  }
+
+  function loc(tr, en, th, UI, lang) {
+    if (lang === 'tr') return tr;
+    if (lang === 'th') return th || en;
+    if (UI && UI[lang]) {
+      var pack = UI[lang];
+      if (pack._loc) {
+        if (pack._loc[tr]) return pack._loc[tr];
+        if (pack._loc[en]) return pack._loc[en];
+      }
+    }
+    return en;
+  }
+
   function localeTag(lang) {
     var map = {
       tr: 'tr-TR', en: 'en-US', de: 'de-DE', fr: 'fr-FR', es: 'es-ES',
@@ -77,7 +115,7 @@
       name: 'İsim', N: 'Olumsuz'
     };
     var L = isTr(appLang) ? tr : en;
-    if (!isTr(appLang) && sFn) {
+    if (sFn) {
       var sk = map[role] || ext[role];
       if (sk) {
         var sv = sFn(sk);
@@ -88,6 +126,8 @@
   }
 
   window.KDO_isTr = isTr;
+  window.KDO_resolveAppLang = resolveAppLang;
+  window.KDO_loc = loc;
   window.KDO_sFix = sFix;
   window.KDO_Lf = Lf;
   window.KDO_LfNote = LfNote;

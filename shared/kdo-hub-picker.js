@@ -29,8 +29,14 @@
   };
 
   function uiLang() {
-    return localStorage.getItem(APP + ':locale') || localStorage.getItem(APP + ':ui')
-      || (typeof appLang !== 'undefined' ? appLang : null) || 'tr';
+    if (typeof appLang !== 'undefined' && appLang) return appLang;
+    var tgt = currentTarget();
+    var key = LANG_KEYS[tgt];
+    if (key) {
+      var appLoc = localStorage.getItem(key);
+      if (appLoc) return appLoc;
+    }
+    return localStorage.getItem(APP + ':locale') || localStorage.getItem(APP + ':ui') || 'tr';
   }
 
   function hubPack() {

@@ -15,9 +15,16 @@
   window.KDO_APP_VERSION = APP_VERSION;
 
   function resolveUiLocale() {
+    if (typeof appLang !== 'undefined' && appLang) return appLang;
+    var tgt = localStorage.getItem('kdo:target');
+    var keys = { th: 'tv3_lang', tk: 'tk1_lang', en: 'en1_lang', de: 'de1_lang', it: 'it1_lang',
+      es: 'es1_lang', fr: 'fr1_lang', ru: 'ru1_lang', ar: 'ar1_lang', zh: 'zh1_lang' };
+    if (tgt && keys[tgt]) {
+      var appLoc = localStorage.getItem(keys[tgt]);
+      if (appLoc) return appLoc;
+    }
     return localStorage.getItem('kdo:locale')
       || localStorage.getItem('kdo:ui')
-      || (typeof appLang !== 'undefined' ? appLang : null)
       || 'tr';
   }
 
@@ -46,8 +53,19 @@
     var cfg = window.KDO_CFG;
     if (!cfg) return;
     var brand = document.querySelector('.brand');
-    if (brand) brand.textContent = cfg.flag + ' ' + cfg.nameTr;
-    if (cfg.title) document.title = cfg.title;
+    if (!brand) return;
+    var lang = resolveUiLocale();
+    var name = cfg.nameTr;
+    if (lang === 'en' && cfg.nameEn) name = cfg.nameEn;
+    else if (lang === 'th' && cfg.nameTh) name = cfg.nameTh;
+    else if (lang !== 'tr' && cfg['name' + lang.charAt(0).toUpperCase() + lang.slice(1)]) {
+      name = cfg['name' + lang.charAt(0).toUpperCase() + lang.slice(1)];
+    } else if (lang !== 'tr' && cfg.nameEn) name = cfg.nameEn;
+    brand.textContent = cfg.flag + ' ' + name;
+    if (cfg.title) {
+      var titles = { tr: cfg.title, en: cfg.titleEn, th: cfg.titleTh };
+      document.title = titles[lang] || cfg.titleEn || cfg.title;
+    }
   }
 
   window.KDO_applyBrandDev = applyBrandDev;
