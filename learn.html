@@ -661,20 +661,20 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.12"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.12"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.12"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.12"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.12"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.12"></script>
-<script src="shared/kdo-gloss.js?v=3.0.12"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.12"></script>
-<script src="shared/kdo-pronoun-tables.js?v=3.0.12"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.12"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.12"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.12"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.12"></script>
-<script src="shared/kdo-translate.js?v=3.0.12"></script>
+<script src="shared/kdo-version.js?v=3.0.13"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.13"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.13"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.13"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.13"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.13"></script>
+<script src="shared/kdo-gloss.js?v=3.0.13"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.13"></script>
+<script src="shared/kdo-pronoun-tables.js?v=3.0.13"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.13"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.13"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.13"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.13"></script>
+<script src="shared/kdo-translate.js?v=3.0.13"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 </script>
@@ -1192,6 +1192,7 @@ function setLang(lang){
     <div class="modal-head"><div class="modal-title" data-lk="settings_title">⚙️ Ayarlar</div><button class="modal-close" onclick="closeModal('settings-overlay')">✕</button></div>
     <div class="setting-row">
       <div class="setting-label" data-lk="settings_lang">🌐 Uygulama Dili</div>
+      <div id="lang-btn-wrap" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;"></div>
       <button type="button" class="setting-btn" onclick="openLangHubPicker()" style="width:100%;margin-top:6px;background:#0d9488;color:white;border-color:#0d9488;" data-lk="ui_change_lang">🌐 Dil değiştir</button>
     </div>
     <div class="setting-row"><div class="setting-label">Anthropic API Key</div><input type="password" id="api-key-input" placeholder="sk-ant-..."><button class="setting-btn" onclick="saveKey()" data-lk="settings_save">Kaydet</button></div>
@@ -3529,6 +3530,188 @@ function buildHelpContent(){
     if(l==='th')return a[2]||a[1];
     return a[1];
   }
+  {
+  const helpCopy = {
+    tr:{
+      what:'Bu uygulama ne için?', body:'Günlük konuşmada kullanılan pratik {target} öğrenmek için tasarlandı. Ders kitabı dili yerine gerçek kullanım, dinleme ve tekrar akışı öne çıkar.',
+      mainTabs:'Ana sekmeler', lessons:'Senaryo dersleri ve BONUS kelime setleri. Her derste kelime, gramer, konuşma, diyalog, dinleme ve pratik bölümleri bulunur.',
+      test:'Aralıklı tekrar sistemi. Bugün çalışılacak kartlar ve ders bazlı pratikler burada toplanır.', translate:'Seçili arayüz dilinden bağımsız olarak çeviri yönü öğrenilen dile göre ayarlanır.',
+      list:'Yıldızladığın kelimeler, örnekler ve diyaloglar burada saklanır.', review:'Zorlandığın kartlar daha sık geri gelir; birkaç dakikalık günlük tekrar yeterli olur.',
+      lessonStructure:'Ders yapısı', lessonBody:'Her dersi sekme sekme gez. Tüm bölümler ziyaret edilince ilerleme tamamlanır ve dersi bitirebilirsin.',
+      grammar:'Gramer çalışması', grammarBody:'Gramer notları hedef dile göre gelir: yapı, kullanım mantığı, örnek ve kısa ipucu birlikte gösterilir.',
+      pronunciation:'Telaffuz', pronBody:'İlk derslerde harf, ton veya ses sistemi anlatılır. Kelime kartlarında normal ve yavaş dinleme ile pekiştir.',
+      reviewTitle:'Tekrar nasıl çalışır?', reviewBody:'Ders pratiklerinden kart ekle, cevabı tahmin et, zorluk derecesini seç. Sistem sonraki tekrar tarihini otomatik ayarlar.',
+      tips:'Verimli öğrenme', tip1:'Her kartta sesi dinle; sadece okumak telaffuzu oturtmaz.', tip2:'Kullanacağın cümleleri yıldızla ve Liste sekmesinden tekrar et.', tip3:'Bugünün tekrarını sıfırlayana kadar kısa bir çalışma yap.',
+      about:'Uygulama bilgisi', total:'Toplam ders', perLesson:'Ders başına', data:'Veri', offline:'cihazda saklanır', built:'Günlük pratik ve gerçek konuşma için hazırlandı.'
+    },
+    en:{
+      what:'What is this app for?', body:'It is designed for practical everyday {target}. The flow favors real usage, listening and review instead of textbook-only phrases.',
+      mainTabs:'Main tabs', lessons:'Scenario lessons and BONUS vocabulary sets. Each lesson includes words, grammar, speaking, dialogue, listening and practice.',
+      test:'Spaced repetition lives here: due cards for today plus lesson-based practice.', translate:'Translation direction follows the learned language, independent of the selected interface language.',
+      list:'Starred words, examples and dialogues are saved here.', review:'Difficult cards return more often; a few minutes of daily review is enough.',
+      lessonStructure:'Lesson structure', lessonBody:'Move through each lesson tab by tab. Progress completes after all sections are visited.',
+      grammar:'Grammar study', grammarBody:'Grammar notes are target-aware: structure, usage logic, examples and quick tips are shown together.',
+      pronunciation:'Pronunciation', pronBody:'Early lessons explain letters, tones or sound systems. Use normal and slow audio on word cards.',
+      reviewTitle:'How review works', reviewBody:'Add cards from lesson practice, guess the answer, choose difficulty. The system schedules the next review automatically.',
+      tips:'Effective learning', tip1:'Listen to every card; reading alone will not lock in pronunciation.', tip2:'Star sentences you will actually use and review them from the List tab.', tip3:'Do a short session until today’s review reaches zero.',
+      about:'App info', total:'Total lessons', perLesson:'Per lesson', data:'Data', offline:'stored on device', built:'Built for daily practice and real conversation.'
+    },
+    th:{
+      what:'แอปนี้ใช้ทำอะไร?', body:'ออกแบบมาเพื่อเรียน {target} ที่ใช้ได้จริงในชีวิตประจำวัน เน้นการใช้งานจริง การฟัง และการทบทวน ไม่ใช่แค่ประโยคในตำรา',
+      mainTabs:'แท็บหลัก', lessons:'บทเรียนสถานการณ์และชุดคำศัพท์ BONUS แต่ละบทมีคำศัพท์ ไวยากรณ์ การพูด บทสนทนา การฟัง และแบบฝึก',
+      test:'ระบบทบทวนแบบเว้นระยะ: การ์ดที่ต้องทบทวนวันนี้และแบบฝึกตามบทเรียนอยู่ที่นี่', translate:'ทิศทางการแปลอิงตามภาษาที่เรียน ไม่ขึ้นกับภาษาของอินเทอร์เฟซ',
+      list:'คำ ตัวอย่าง และบทสนทนาที่ติดดาวจะเก็บไว้ที่นี่', review:'การ์ดที่ยากจะกลับมาบ่อยขึ้น ทบทวนวันละไม่กี่นาทีก็พอ',
+      lessonStructure:'โครงสร้างบทเรียน', lessonBody:'เรียนทีละแท็บ เมื่อเยี่ยมชมครบทุกส่วน ความคืบหน้าจะสมบูรณ์และจบบทได้',
+      grammar:'การเรียนไวยากรณ์', grammarBody:'คำอธิบายไวยากรณ์เปลี่ยนตามภาษาที่เรียน พร้อมโครงสร้าง วิธีใช้ ตัวอย่าง และเคล็ดลับสั้นๆ',
+      pronunciation:'การออกเสียง', pronBody:'บทแรกๆ อธิบายตัวอักษร วรรณยุกต์ หรือระบบเสียง ใช้เสียงปกติและเสียงช้าในการ์ดคำศัพท์',
+      reviewTitle:'การทบทวนทำงานอย่างไร', reviewBody:'เพิ่มการ์ดจากแบบฝึกบทเรียน เดาคำตอบ แล้วเลือกระดับความยาก ระบบจะกำหนดวันทบทวนถัดไปเอง',
+      tips:'เรียนให้ได้ผล', tip1:'ฟังเสียงทุกการ์ด เพราะการอ่านอย่างเดียวไม่พอสำหรับการออกเสียง', tip2:'ติดดาวประโยคที่จะใช้จริง แล้วทบทวนจากแท็บรายการ', tip3:'ฝึกสั้นๆ จนจำนวนทบทวนวันนี้เหลือศูนย์',
+      about:'ข้อมูลแอป', total:'บทเรียนทั้งหมด', perLesson:'ต่อบทเรียน', data:'ข้อมูล', offline:'เก็บไว้ในอุปกรณ์', built:'สร้างมาเพื่อฝึกทุกวันและใช้สนทนาจริง'
+    },
+    de:{
+      what:'Wofür ist diese App?', body:'Sie ist für praktisches {target} im Alltag gedacht. Im Fokus stehen echte Nutzung, Hören und Wiederholen statt nur Lehrbuchsätze.',
+      mainTabs:'Hauptregister', lessons:'Szenario-Lektionen und BONUS-Wortschatz. Jede Lektion enthält Wörter, Grammatik, Sprechen, Dialoge, Hören und Übung.',
+      test:'Hier liegt die Wiederholung mit Abstand: heutige Karten und Übungen pro Lektion.', translate:'Die Übersetzungsrichtung folgt der Lernsprache, unabhängig von der Oberflächensprache.',
+      list:'Markierte Wörter, Beispiele und Dialoge werden hier gespeichert.', review:'Schwierige Karten kommen öfter zurück; wenige Minuten täglich reichen.',
+      lessonStructure:'Lektionsaufbau', lessonBody:'Gehe jede Lektion Register für Register durch. Der Fortschritt ist vollständig, wenn alle Bereiche besucht wurden.',
+      grammar:'Grammatiktraining', grammarBody:'Grammatikhinweise sind auf die Zielsprache abgestimmt: Struktur, Verwendung, Beispiele und kurze Tipps erscheinen zusammen.',
+      pronunciation:'Aussprache', pronBody:'Frühe Lektionen erklären Buchstaben, Töne oder Lautsysteme. Nutze normales und langsames Audio.',
+      reviewTitle:'So funktioniert Wiederholung', reviewBody:'Füge Karten aus der Lektionsübung hinzu, rate die Antwort und wähle die Schwierigkeit. Das System plant den nächsten Termin.',
+      tips:'Effektiv lernen', tip1:'Höre jede Karte; Lesen allein festigt die Aussprache nicht.', tip2:'Markiere Sätze, die du wirklich nutzen wirst, und wiederhole sie in der Liste.', tip3:'Übe kurz, bis die heutige Wiederholung bei null ist.',
+      about:'App-Info', total:'Lektionen gesamt', perLesson:'Pro Lektion', data:'Daten', offline:'auf dem Gerät gespeichert', built:'Gemacht für tägliche Praxis und echte Gespräche.'
+    },
+    fr:{
+      what:'À quoi sert cette application ?', body:'Elle sert à apprendre un {target} pratique pour la vie quotidienne, avec un accent sur l’usage réel, l’écoute et la révision.',
+      mainTabs:'Onglets principaux', lessons:'Leçons par scénario et listes BONUS. Chaque leçon contient vocabulaire, grammaire, oral, dialogues, écoute et pratique.',
+      test:'La répétition espacée se trouve ici: cartes du jour et exercices par leçon.', translate:'Le sens de traduction suit la langue apprise, quelle que soit la langue de l’interface.',
+      list:'Les mots, exemples et dialogues favoris sont enregistrés ici.', review:'Les cartes difficiles reviennent plus souvent; quelques minutes par jour suffisent.',
+      lessonStructure:'Structure des leçons', lessonBody:'Parcours chaque leçon onglet par onglet. La progression se termine quand toutes les sections sont vues.',
+      grammar:'Travail de grammaire', grammarBody:'Les notes de grammaire suivent la langue cible: structure, logique d’usage, exemples et conseils courts.',
+      pronunciation:'Prononciation', pronBody:'Les premières leçons expliquent les lettres, tons ou sons. Utilise l’audio normal et lent.',
+      reviewTitle:'Fonctionnement de la révision', reviewBody:'Ajoute des cartes depuis la pratique, devine la réponse, choisis la difficulté. Le système planifie la suite.',
+      tips:'Apprendre efficacement', tip1:'Écoute chaque carte; lire seulement ne suffit pas pour la prononciation.', tip2:'Mets en favori les phrases utiles et révise-les dans la Liste.', tip3:'Fais une courte session jusqu’à zéro révision aujourd’hui.',
+      about:'Infos app', total:'Total des leçons', perLesson:'Par leçon', data:'Données', offline:'stockées sur l’appareil', built:'Conçue pour la pratique quotidienne et la conversation réelle.'
+    },
+    es:{
+      what:'¿Para qué sirve esta app?', body:'Está pensada para aprender {target} práctico de uso diario, con foco en uso real, escucha y repaso.',
+      mainTabs:'Pestañas principales', lessons:'Lecciones por escenario y listas BONUS. Cada lección incluye palabras, gramática, habla, diálogos, escucha y práctica.',
+      test:'Aquí está la repetición espaciada: tarjetas de hoy y práctica por lección.', translate:'La dirección de traducción sigue el idioma aprendido, sin depender del idioma de la interfaz.',
+      list:'Aquí se guardan palabras, ejemplos y diálogos marcados.', review:'Las tarjetas difíciles vuelven más a menudo; bastan unos minutos al día.',
+      lessonStructure:'Estructura de la lección', lessonBody:'Avanza por cada pestaña. El progreso se completa cuando visitas todas las secciones.',
+      grammar:'Trabajo de gramática', grammarBody:'Las notas de gramática dependen del idioma objetivo: estructura, uso, ejemplos y consejos breves.',
+      pronunciation:'Pronunciación', pronBody:'Las primeras lecciones explican letras, tonos o sonidos. Usa audio normal y lento.',
+      reviewTitle:'Cómo funciona el repaso', reviewBody:'Añade tarjetas desde la práctica, adivina la respuesta y elige dificultad. El sistema programa el próximo repaso.',
+      tips:'Aprender mejor', tip1:'Escucha cada tarjeta; leer solo no fija la pronunciación.', tip2:'Marca frases que usarás de verdad y repásalas en Lista.', tip3:'Haz una sesión corta hasta dejar el repaso de hoy en cero.',
+      about:'Información', total:'Lecciones totales', perLesson:'Por lección', data:'Datos', offline:'guardados en el dispositivo', built:'Creada para práctica diaria y conversación real.'
+    },
+    it:{
+      what:'A cosa serve questa app?', body:'Serve per imparare {target} pratico per la vita quotidiana, con uso reale, ascolto e ripasso.',
+      mainTabs:'Schede principali', lessons:'Lezioni scenario e set BONUS. Ogni lezione include parole, grammatica, parlato, dialoghi, ascolto e pratica.',
+      test:'Qui trovi la ripetizione dilazionata: carte di oggi e pratica per lezione.', translate:'La direzione della traduzione segue la lingua studiata, indipendentemente dalla lingua dell’interfaccia.',
+      list:'Parole, esempi e dialoghi preferiti sono salvati qui.', review:'Le carte difficili tornano più spesso; bastano pochi minuti al giorno.',
+      lessonStructure:'Struttura della lezione', lessonBody:'Procedi scheda per scheda. Il progresso si completa dopo aver visitato tutte le sezioni.',
+      grammar:'Studio della grammatica', grammarBody:'Le note grammaticali seguono la lingua obiettivo: struttura, uso, esempi e suggerimenti brevi.',
+      pronunciation:'Pronuncia', pronBody:'Le prime lezioni spiegano lettere, toni o suoni. Usa audio normale e lento.',
+      reviewTitle:'Come funziona il ripasso', reviewBody:'Aggiungi carte dalla pratica, indovina la risposta e scegli la difficoltà. Il sistema pianifica il prossimo ripasso.',
+      tips:'Imparare meglio', tip1:'Ascolta ogni carta; leggere soltanto non basta per la pronuncia.', tip2:'Segna le frasi davvero utili e ripassale dalla Lista.', tip3:'Fai una sessione breve finché il ripasso di oggi arriva a zero.',
+      about:'Info app', total:'Lezioni totali', perLesson:'Per lezione', data:'Dati', offline:'salvati sul dispositivo', built:'Creata per pratica quotidiana e conversazioni reali.'
+    },
+    ru:{
+      what:'Для чего это приложение?', body:'Оно помогает учить практический {target} для повседневной речи: реальное использование, аудирование и повторение.',
+      mainTabs:'Основные вкладки', lessons:'Сценарные уроки и BONUS-наборы слов. В каждом уроке есть слова, грамматика, речь, диалоги, аудирование и практика.',
+      test:'Здесь интервальное повторение: карточки на сегодня и практика по урокам.', translate:'Направление перевода зависит от изучаемого языка, а не от языка интерфейса.',
+      list:'Отмеченные слова, примеры и диалоги сохраняются здесь.', review:'Сложные карточки возвращаются чаще; достаточно нескольких минут в день.',
+      lessonStructure:'Структура урока', lessonBody:'Проходи урок по вкладкам. Прогресс завершается после просмотра всех разделов.',
+      grammar:'Грамматика', grammarBody:'Грамматические объяснения зависят от целевого языка: структура, логика, примеры и короткие советы.',
+      pronunciation:'Произношение', pronBody:'Первые уроки объясняют буквы, тоны или звуки. Используй обычное и медленное аудио.',
+      reviewTitle:'Как работает повторение', reviewBody:'Добавь карточки из практики, угадай ответ и выбери сложность. Система назначит следующую дату.',
+      tips:'Эффективное обучение', tip1:'Слушай каждую карточку; одного чтения мало для произношения.', tip2:'Отмечай фразы, которые реально будешь использовать, и повторяй их в списке.', tip3:'Делай короткую сессию, пока повторение на сегодня не станет нулем.',
+      about:'Информация', total:'Всего уроков', perLesson:'На урок', data:'Данные', offline:'хранятся на устройстве', built:'Создано для ежедневной практики и реального общения.'
+    },
+    ar:{
+      what:'ما فائدة هذا التطبيق؟', body:'صمم لتعلم {target} عملي للحياة اليومية، مع التركيز على الاستخدام الحقيقي والاستماع والمراجعة.',
+      mainTabs:'التبويبات الرئيسية', lessons:'دروس سيناريو ومجموعات BONUS. كل درس يحتوي كلمات وقواعد ومحادثة وحوار واستماع وتدريب.',
+      test:'هنا نظام التكرار المتباعد: بطاقات اليوم وتدريب حسب الدرس.', translate:'اتجاه الترجمة يتبع اللغة المتعلمة بغض النظر عن لغة الواجهة.',
+      list:'الكلمات والأمثلة والحوارات المميزة تحفظ هنا.', review:'البطاقات الصعبة تعود أكثر؛ بضع دقائق يوميا تكفي.',
+      lessonStructure:'بنية الدرس', lessonBody:'تنقل في الدرس تبويبا تبويبا. يكتمل التقدم بعد زيارة كل الأقسام.',
+      grammar:'دراسة القواعد', grammarBody:'شرح القواعد يتبع اللغة الهدف: البنية، طريقة الاستخدام، الأمثلة ونصائح قصيرة.',
+      pronunciation:'النطق', pronBody:'الدروس الأولى تشرح الحروف أو النغمات أو الأصوات. استخدم الصوت العادي والبطيء.',
+      reviewTitle:'كيف تعمل المراجعة', reviewBody:'أضف بطاقات من التدريب، خمّن الإجابة واختر الصعوبة. النظام يحدد موعد المراجعة التالي.',
+      tips:'تعلم بفعالية', tip1:'استمع إلى كل بطاقة؛ القراءة وحدها لا تكفي للنطق.', tip2:'ميز الجمل التي ستستخدمها فعلا وراجعها من القائمة.', tip3:'قم بجلسة قصيرة حتى تصبح مراجعة اليوم صفرا.',
+      about:'معلومات التطبيق', total:'إجمالي الدروس', perLesson:'لكل درس', data:'البيانات', offline:'محفوظة على الجهاز', built:'صمم للتدريب اليومي والمحادثة الحقيقية.'
+    },
+    zh:{
+      what:'这个应用用来做什么？', body:'它用于学习日常实用的 {target}，重点是真实使用、听力和复习，而不是只背课本句子。',
+      mainTabs:'主要标签', lessons:'情景课程和 BONUS 词汇包。每课包含词汇、语法、口语、对话、听力和练习。',
+      test:'这里是间隔复习：今日卡片和按课程练习。', translate:'翻译方向跟随正在学习的语言，不受界面语言影响。',
+      list:'收藏的词语、例句和对话会保存在这里。', review:'较难的卡片会更常出现；每天几分钟就够。',
+      lessonStructure:'课程结构', lessonBody:'按标签完成每一课。访问所有部分后进度完成。',
+      grammar:'语法学习', grammarBody:'语法说明会根据目标语言显示：结构、用法逻辑、例句和简短提示。',
+      pronunciation:'发音', pronBody:'前几课说明字母、声调或语音系统。使用普通和慢速音频巩固。',
+      reviewTitle:'复习如何工作', reviewBody:'从课程练习添加卡片，猜答案并选择难度。系统会自动安排下次复习。',
+      tips:'高效学习', tip1:'每张卡都要听音频；只读不够掌握发音。', tip2:'收藏真正会用的句子，并在列表中复习。', tip3:'做一个短练习，直到今日复习为零。',
+      about:'应用信息', total:'课程总数', perLesson:'每课', data:'数据', offline:'保存在设备上', built:'为每日练习和真实对话而做。'
+    }
+  };
+  const H = helpCopy[appLang] || helpCopy.en;
+  const targetGt = (window.KDO_TRANSLATE && window.KDO_TRANSLATE.target) || ({tk:'tr', zh:'zh-CN'}[(KDO_CFG&&KDO_CFG.kdoTarget)||''] || (KDO_CFG&&KDO_CFG.kdoTarget) || '');
+  const targetName = ((KDO_CFG.targetUi||{})[appLang]||{}).ui_col_target || (typeof KDO_translateName==='function' ? KDO_translateName(targetGt, appLang) : '') || (appLang==='tr' ? KDO_CFG.targetLabelTr : KDO_CFG.targetLabelEn);
+  const fill = txt => String(txt||'').replace(/\{target\}/g, targetName);
+  const flag = KDO_CFG.flag || '🌐';
+  const sc = 20, bon = 29;
+  const appTitle = (appLang==='th' && KDO_CFG.nameTh) ? KDO_CFG.nameTh : (appLang==='tr' ? KDO_CFG.title : (KDO_CFG.nameEn||KDO_CFG.title));
+  document.getElementById('htab-btn-genel').textContent = '🏠 '+s('help_tab_guide');
+  document.getElementById('htab-btn-dersler').textContent = s('help_tab_lessons');
+  document.getElementById('htab-btn-tekrar').textContent = s('help_tab_review');
+  document.getElementById('htab-btn-ipuclari').textContent = s('help_tab_tips');
+  document.getElementById('htab-btn-hakkinda').textContent = 'ℹ️ '+s('help_tab_about');
+  document.getElementById('help-modal-title').textContent = s('help_modal_title');
+  document.getElementById('help-modal-sub').textContent = appTitle + ' · ' + s('help_tab_guide');
+  const row = (icon,title,body,bg)=>`<div class="help-row"><div class="help-row-icon" style="background:${bg||'#eef2ff'};">${icon}</div><div><div class="help-row-title">${title}</div><div class="help-row-sub">${fill(body)}</div></div></div>`;
+  const tip = (icon,strong,body)=>`<div class="help-tip"><div class="help-tip-icon">${icon}</div><div><strong>${strong}</strong> ${fill(body)}</div></div>`;
+  document.getElementById('help-tabs-content').innerHTML = `
+    <div id="htab-genel" class="htab-content active">
+      <div class="help-card"><div class="help-card-icon">${flag}</div><div><div class="help-card-title">${H.what}</div><div class="help-card-body">${fill(H.body)}</div></div></div>
+      <div class="help-section-header">📱 ${H.mainTabs}</div>
+      ${row('📚', s('nav_lessons').replace(/^[^\\s]+\\s/,''), H.lessons, '#e8f5e9')}
+      ${row('📝', s('nav_test').replace(/^[^\\s]+\\s/,''), H.test, '#fff3e0')}
+      ${row('🌐', s('nav_translate').replace(/^[^\\s]+\\s/,''), H.translate, '#e3f2fd')}
+      ${row('⭐', s('nav_list').replace(/^[^\\s]+\\s/,''), H.list, '#fce4ec')}
+      ${row('🔄', s('nav_review').replace(/^[^\\s]+\\s/,''), H.review, '#f3e5f5')}
+    </div>
+    <div id="htab-dersler" class="htab-content">
+      <div class="help-section-header">📚 ${H.lessonStructure}</div>
+      ${row('1', H.lessonStructure, H.lessonBody, '#e0f2f1')}
+      ${row('📖', H.grammar, H.grammarBody, '#ede7f6')}
+      ${row('🔊', H.pronunciation, H.pronBody, '#e3f2fd')}
+      <div class="help-info-row"><span>${H.total}</span><strong>${sc} + ${bon} BONUS</strong></div>
+      <div class="help-info-row"><span>${H.perLesson}</span><strong>~10 ${s('ui_learn_words') || 'words'} + ${s('tab_grammar')}</strong></div>
+    </div>
+    <div id="htab-tekrar" class="htab-content">
+      <div class="help-section-header">🔄 ${H.reviewTitle}</div>
+      <div class="help-card"><div class="help-card-icon">🧠</div><div><div class="help-card-title">${H.reviewTitle}</div><div class="help-card-body">${fill(H.reviewBody)}</div></div></div>
+      ${row('+', s('review_add_section'), H.reviewBody, '#fff8e1')}
+      ${row('✓', s('review_today'), H.review, '#e8f5e9')}
+    </div>
+    <div id="htab-ipuclari" class="htab-content">
+      <div class="help-section-header">🎯 ${H.tips}</div>
+      ${tip('🔊', H.pronunciation, H.tip1)}
+      ${tip('⭐', s('starred_label'), H.tip2)}
+      ${tip('🔄', s('nav_review').replace(/^[^\\s]+\\s/,''), H.tip3)}
+    </div>
+    <div id="htab-hakkinda" class="htab-content">
+      <div class="help-card" style="background:linear-gradient(135deg,#e0f2f1,#f0fdfa);border-color:#b2dfdb;"><div style="font-size:32px">${flag}</div><div><div class="help-card-title" style="font-size:16px;">${appTitle}</div><div class="help-card-body">${fill(H.built)}</div></div></div>
+      <div class="help-section-header">📋 ${H.about}</div>
+      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน','Version','Version','Versión','Versione','Версия','الإصدار','版本')}</span><strong id="hakkinda-version">${APP_VERSION}</strong></div>
+      <div class="help-info-row"><span>${H.total}</span><strong>${sc} + ${bon} BONUS</strong></div>
+      <div class="help-info-row"><span>${H.data}</span><strong>localStorage (${H.offline})</strong></div>
+      <div class="help-info-row"><span>${L('Geliştirici','Developer','ผู้พัฒนา','Entwickler','Développeur','Desarrollador','Sviluppatore','Разработчик','المطور','开发者')}</span><strong>Ali Dinçer</strong></div>
+    </div>`;
+  const active = document.querySelector('#help-tabs-nav .htab.active');
+  if(active){ const tab = active.id.replace('htab-btn-',''); switchHelpTab(tab, active); }
+  else switchHelpTab('genel', document.getElementById('htab-btn-genel'));
+  return;
+  }
   const tg = ((KDO_CFG.targetUi||{})[appLang]||{}).ui_col_target || (appLang==='tr' ? KDO_CFG.targetLabelTr : KDO_CFG.targetLabelEn);
   const flag = KDO_CFG.flag || '🌐';
   const sc = 20, bon = 29;
@@ -3550,8 +3733,8 @@ function buildHelpContent(){
   document.getElementById('htab-btn-ipuclari').textContent= s('help_tab_tips');
   document.getElementById('htab-btn-hakkinda').textContent= 'ℹ️ '+s('help_tab_about');
   document.getElementById('help-modal-title').textContent = s('help_modal_title');
-  const subName = appLang==='th' && KDO_CFG.nameTh ? KDO_CFG.nameTh : appLang==='tr' ? KDO_CFG.title : KDO_CFG.nameEn;
-  document.getElementById('help-modal-sub').textContent   = subName + ' · ' + s('help_tab_guide');
+  const helpSubName = appLang==='th' && KDO_CFG.nameTh ? KDO_CFG.nameTh : appLang==='tr' ? KDO_CFG.title : KDO_CFG.nameEn;
+  document.getElementById('help-modal-sub').textContent   = helpSubName + ' · ' + s('help_tab_guide');
 
   const chip = (bg,col,txt)=>`<span class="help-color-chip" style="background:${bg};color:${col};">${txt}</span>`;
 
@@ -4471,7 +4654,7 @@ function showExFailed(){
     <div class="ex-finish">
       <div class="ex-finish-trophy">💔</div>
       <div class="ex-finish-title">${s('ex_out_of_lives')}</div>
-      <div class="ex-finish-sub">${en?'Don\'t worry, try again!':'Üzülme, tekrar dene!'}</div>
+      <div class="ex-finish-sub">${s('ex_try_again_msg')}</div>
       <div class="ex-finish-stats">
         <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exCorrectCount}</div><div class="ex-finish-stat-lbl">${s('ex_stat_correct')}</div></div>
         <div class="ex-finish-stat"><div class="ex-finish-stat-val">${exIdx+1}</div><div class="ex-finish-stat-lbl">${s('ex_stat_reached')}</div></div>
@@ -4567,6 +4750,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.12"></script>
+<script src="shared/kdo-analytics.js?v=3.0.13"></script>
 </body>
 </html>
