@@ -1,0 +1,83 @@
+// ders27.js - French Lesson 27: Temps (vocabulary)
+const L27 = {
+  words:[
+    {
+      id:'w1',
+      en:'aujourd\'hui',
+      ro:'o-jur-dwi',
+      tr:'bugün'
+    },
+    {
+      id:'w2',
+      en:'demain',
+      ro:'duh-man',
+      tr:'yarın'
+    },
+    {
+      id:'w3',
+      en:'hier',
+      ro:'yi-er',
+      tr:'dün'
+    },
+    {
+      id:'w4',
+      en:'maintenant',
+      ro:'man-te-nan',
+      tr:'şimdi'
+    },
+    {
+      id:'w5',
+      en:'plus tard',
+      ro:'plü tar',
+      tr:'sonra'
+    },
+    {
+      id:'w6',
+      en:'toujours',
+      ro:'tu-jur',
+      tr:'her zaman'
+    },
+    {
+      id:'w7',
+      en:'souvent',
+      ro:'su-van',
+      tr:'sık sık'
+    },
+    {
+      id:'w8',
+      en:'parfois',
+      ro:'par-fwa',
+      tr:'bazen'
+    },
+    {
+      id:'w9',
+      en:'jamais',
+      ro:'ja-me',
+      tr:'asla'
+    },
+    {
+      id:'w10',
+      en:'tôt',
+      ro:'to',
+      tr:'erken'
+    },
+    {
+      id:'w11',
+      en:'tard',
+      ro:'tar',
+      tr:'geç'
+    },
+    {
+      id:'w12',
+      en:'bientôt',
+      ro:'byen-to',
+      tr:'yakında'
+    }
+  ],
+  grammar:[],
+  speaking:[],
+  dialogues:[],
+  listening:[],
+  tones:[]
+};
+LESSONS[27] = L27;

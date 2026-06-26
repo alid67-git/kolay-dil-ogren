@@ -23,7 +23,7 @@ h1{margin:0 0 6px;font-size:22px;color:#134e4a}
 <body>
 <div class="card">
   <h1>Kolay Dil Ogren</h1>
-  <p class="sub" id="intro">Tayca, Ingilizce ve Almanca — orijinal tam surumler.</p>
+  <p class="sub" id="intro">6 dil — tam surumler, detayli gramer.</p>
   <div class="field">
     <label id="lbl-locale">Arayuz dili</label>
     <select id="locale"><option value="tr">Turkce</option><option value="en">English</option></select>
@@ -34,19 +34,22 @@ h1{margin:0 0 6px;font-size:22px;color:#134e4a}
       <option value="th">Tayca — ไทย</option>
       <option value="en">Ingilizce — English</option>
       <option value="de">Almanca — Deutsch</option>
+      <option value="it">Italyanca — Italiano</option>
+      <option value="es">Ispanyolca — Espanol</option>
+      <option value="fr">Fransizca — Francais</option>
     </select>
   </div>
   <button class="btn" id="go">Basla</button>
   <p class="note" id="note">Tam dersler, detayli gramer, alistirma ve SRS.</p>
-  <div class="ver">v1.1</div>
+  <div class="ver">v1.2</div>
 </div>
 <script>
 const APP='kdo';
-const ROUTES={th:'tayca-v3.html',en:'english-v3.html',de:'german-v3.html'};
-const LANG_KEYS={th:'tv3_lang',en:'en1_lang',de:'de1_lang'};
+const ROUTES={th:'tayca-v3.html',en:'english-v3.html',de:'german-v3.html',it:'italian-v3.html',es:'spanish-v3.html',fr:'french-v3.html'};
+const LANG_KEYS={th:'tv3_lang',en:'en1_lang',de:'de1_lang',it:'it1_lang',es:'es1_lang',fr:'fr1_lang'};
 const ui={
-  tr:{intro:'Tayca, Ingilizce ve Almanca — orijinal tam surumler.',locale:'Arayuz dili',target:'Ogrenilecek dil',go:'Basla',note:'Tam dersler, detayli gramer, alistirma ve SRS.'},
-  en:{intro:'Thai, English and German — full original apps.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, detailed grammar, practice and SRS.'}
+  tr:{intro:'Tayca, Ingilizce, Almanca, Italyanca, Ispanyolca ve Fransizca — tam surumler.',locale:'Arayuz dili',target:'Ogrenilecek dil',go:'Basla',note:'Tam dersler, detayli gramer, alistirma ve SRS.'},
+  en:{intro:'Thai, English, German, Italian, Spanish and French — full apps.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, detailed grammar, practice and SRS.'}
 };
 const locale=localStorage.getItem(APP+':locale')||localStorage.getItem(APP+':ui')||'tr';
 const target=localStorage.getItem(APP+':target')||'th';
