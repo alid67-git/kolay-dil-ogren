@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>KDO Admin — İstatistikler</title>
+<style>
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:20px}
+.wrap{max-width:960px;margin:0 auto}
+h1{font-size:22px;margin:0 0 4px;color:#5eead4}
+.sub{font-size:13px;color:#94a3b8;margin-bottom:24px}
+.card{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:20px;margin-bottom:16px}
+label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#94a3b8;margin-bottom:6px}
+input{width:100%;padding:10px 12px;border:1px solid #475569;border-radius:8px;background:#0f172a;color:#f1f5f9;font-size:14px;margin-bottom:12px}
+.btn{padding:11px 18px;border:0;border-radius:10px;background:#0d9488;color:#fff;font-weight:700;cursor:pointer;font-size:14px}
+.btn:hover{background:#0f766e}
+.btn.sec{background:#334155}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px}
+.stat{background:#0f172a;border-radius:10px;padding:14px;text-align:center}
+.stat .n{font-size:28px;font-weight:800;color:#5eead4}
+.stat .l{font-size:11px;color:#94a3b8;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid #334155}
+th{color:#94a3b8;font-size:11px;text-transform:uppercase}
+.err{color:#f87171;font-size:13px;margin-top:8px}
+.note{font-size:12px;color:#64748b;line-height:1.6;margin-top:12px}
+.hidden{display:none}
+.lang-badge{display:inline-block;padding:2px 8px;border-radius:6px;background:#134e4a;font-size:12px;font-weight:700}
+</style>
+<script src="shared/kdo-analytics-config.js"></script>
+<script src="shared/kdo-analytics.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <h1>📊 Kolay Dil Öğren — Admin</h1>
+  <p class="sub">Kullanım istatistikleri (son 90 gün)</p>
+
+  <div id="login-card" class="card">
+    <label>Admin şifresi</label>
+    <input type="password" id="pw" placeholder="Şifre" autocomplete="current-password">
+    <label>Analytics endpoint (Cloudflare Worker URL)</label>
+    <input type="url" id="endpoint" placeholder="https://kdo-analytics.xxx.workers.dev">
+    <button class="btn" onclick="doLogin()">Giriş yap</button>
+    <p class="note">İlk kurulum: <code>worker/</code> klasöründeki Cloudflare Worker'ı deploy edin, URL'yi buraya yapıştırın. Şifre: <code>wrangler secret put ADMIN_PASSWORD</code> ile belirlediğiniz değer.</p>
+    <div id="login-err" class="err hidden"></div>
+  </div>
+
+  <div id="dash" class="hidden">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+      <span style="font-size:13px;color:#94a3b8" id="ep-label"></span>
+      <button class="btn sec" onclick="logout()">Çıkış</button>
+    </div>
+    <div class="grid" id="kpis"></div>
+
+    <div class="card">
+      <h2 style="margin:0 0 12px;font-size:16px">🌍 Ülkelere göre</h2>
+      <table><thead><tr><th>Ülke</th><th>Benzersiz IP</th><th>Ziyaretçi</th></tr></thead><tbody id="tbl-country"></tbody></table>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 12px;font-size:16px">📚 Dillere göre</h2>
+      <table><thead><tr><th>Dil</th><th>Ziyaretçi</th><th>Toplam süre</th></tr></thead><tbody id="tbl-lang"></tbody></table>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 12px;font-size:16px">🕐 Son kayıtlar</h2>
+      <table><thead><tr><th>Zaman</th><th>Ülke</th><th>Dil</th><th>Sayfa</th><th>Süre</th></tr></thead><tbody id="tbl-recent"></tbody></table>
+    </div>
+
+    <button class="btn sec" onclick="loadStats()" style="margin-top:8px">Yenile</button>
+  </div>
+</div>
+<script>
+const LANG_NAMES={th:'Tayca',en:'İngilizce',de:'Almanca',it:'İtalyanca',es:'İspanyolca',fr:'Fransızca',unknown:'?'};
+const PW_KEY='kdo:admin_pw';
+const EP_KEY='kdo:analytics_endpoint';
+
+function fmtSec(s){
+  s=+s||0;
+  if(s<60) return s+' sn';
+  const m=Math.floor(s/60);
+  if(m<60) return m+' dk';
+  return Math.floor(m/60)+' sa '+(m%60)+' dk';
+}
+
+function logout(){
+  sessionStorage.removeItem(PW_KEY);
+  document.getElementById('dash').classList.add('hidden');
+  document.getElementById('login-card').classList.remove('hidden');
+}
+
+async function doLogin(){
+  const pw=document.getElementById('pw').value;
+  const ep=document.getElementById('endpoint').value.trim().replace(/\/$/,'');
+  const err=document.getElementById('login-err');
+  err.classList.add('hidden');
+  if(!ep){ err.textContent='Analytics endpoint gerekli.'; err.classList.remove('hidden'); return; }
+  if(!pw){ err.textContent='Şifre gerekli.'; err.classList.remove('hidden'); return; }
+  localStorage.setItem(EP_KEY,ep);
+  if(window.KDOAnalytics) KDOAnalytics.setEndpoint(ep);
+  try{
+    const r=await fetch(ep+'/stats?pw='+encodeURIComponent(pw));
+    if(!r.ok) throw new Error(r.status===401?'Yanlış şifre':'Hata '+r.status);
+    sessionStorage.setItem(PW_KEY,pw);
+    localStorage.setItem(EP_KEY,ep);
+    document.getElementById('login-card').classList.add('hidden');
+    document.getElementById('dash').classList.remove('hidden');
+    document.getElementById('ep-label').textContent=ep;
+    await renderStats(await r.json());
+  }catch(e){
+    err.textContent=e.message||'Bağlantı hatası';
+    err.classList.remove('hidden');
+  }
+}
+
+async function loadStats(){
+  const pw=sessionStorage.getItem(PW_KEY);
+  const ep=localStorage.getItem(EP_KEY)||'';
+  if(!pw||!ep) return logout();
+  const r=await fetch(ep+'/stats?pw='+encodeURIComponent(pw));
+  if(!r.ok){ alert('Oturum süresi doldu veya şifre yanlış'); logout(); return; }
+  await renderStats(await r.json());
+}
+
+async function renderStats(d){
+  document.getElementById('kpis').innerHTML=[
+    {n:d.uniqueIps,l:'Benzersiz IP'},
+    {n:d.uniqueVisitors,l:'Benzersiz ziyaretçi'},
+    {n:d.totalSessions,l:'Oturum'},
+    {n:fmtSec(d.totalStudySec||0),l:'Toplam çalışma'}
+  ].map(x=>'<div class="stat"><div class="n">'+x.n+'</div><div class="l">'+x.l+'</div></div>').join('');
+
+  document.getElementById('tbl-country').innerHTML=(d.byCountry||[]).map(r=>
+    '<tr><td>'+(r.country||'?')+'</td><td>'+r.ips+'</td><td>'+r.visitors+'</td></tr>'
+  ).join('')||'<tr><td colspan="3">Henüz veri yok</td></tr>';
+
+  document.getElementById('tbl-lang').innerHTML=(d.byLang||[]).map(r=>
+    '<tr><td><span class="lang-badge">'+(LANG_NAMES[r.lang]||r.lang)+'</span></td><td>'+r.visitors+'</td><td>'+fmtSec(r.totalSec)+'</td></tr>'
+  ).join('')||'<tr><td colspan="3">Henüz veri yok</td></tr>';
+
+  document.getElementById('tbl-recent').innerHTML=(d.recent||[]).map(r=>
+    '<tr><td>'+(r.at||'')+'</td><td>'+(r.country||'')+'</td><td>'+(LANG_NAMES[r.lang]||r.lang||'')+'</td><td>'+(r.page||'')+'</td><td>'+fmtSec(r.duration_sec)+'</td></tr>'
+  ).join('')||'<tr><td colspan="5">Henüz veri yok</td></tr>';
+}
+
+(function init(){
+  const ep=localStorage.getItem(EP_KEY)||(window.KDO_ANALYTICS&&KDO_ANALYTICS.endpoint)||'';
+  if(ep) document.getElementById('endpoint').value=ep;
+  if(sessionStorage.getItem(PW_KEY)&&ep){
+    document.getElementById('login-card').classList.add('hidden');
+    document.getElementById('dash').classList.remove('hidden');
+    document.getElementById('ep-label').textContent=ep;
+    loadStats();
+  }
+})();
+</script>
+</body>
+</html>

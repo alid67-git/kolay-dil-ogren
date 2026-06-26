@@ -620,7 +620,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = 'v3.56';
+const APP_VERSION = 'v3.57';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -984,7 +984,6 @@ function setLang(lang){
         <button class="setting-btn lang-btn" data-lang="en" onclick="setLang('en')" style="flex:1;">🇬🇧 English</button>
       </div>
     </div>
-    <div class="setting-row"><div class="setting-label">Google TTS API Key</div><input type="password" id="google-tts-key-input" placeholder="AIza..."><button class="setting-btn" onclick="saveGoogleTTSKey()" data-lk="settings_save">Kaydet</button></div>
     <div class="setting-row"><div class="setting-label">Anthropic API Key</div><input type="password" id="api-key-input" placeholder="sk-ant-..."><button class="setting-btn" onclick="saveKey()" data-lk="settings_save">Kaydet</button></div>
     <div class="setting-row">
       <div class="setting-label" data-lk="settings_gist">☁️ Cihazlar Arası Senkron (GitHub Gist)</div>
@@ -1211,40 +1210,15 @@ function updateProgressBar(){
   if(label) label.textContent = completedScenario+'/'+scenarioTotal+' · ⭐'+completedBonus+'/'+bonusTotal;
 }
 
-// =================== SES ===================
-// =================== GOOGLE TTS ===================
-const GTTS = {
-  cache: new Map(),
-  _current: null,
-  stop(){ if(this._current){ this._current.pause(); this._current=null; } window.speechSynthesis&&window.speechSynthesis.cancel(); },
-  key(){ return localStorage.getItem('tayca_google_tts_key')||''; }
-};
+// =================== SES (cihaz TTS) ===================
+function speakStop(){
+  if(window.speechSynthesis) window.speechSynthesis.cancel();
+}
 
-async function speak(text, slow, gender){
+function speak(text, slow, gender){
   if(!text||!text.trim()) return;
-  GTTS.stop();
-  const apiKey = GTTS.key();
-  if(!apiKey){ speakWebSpeech(text, slow, gender); return; }
-  const voiceName = gender==='f' ? 'th-TH-Chirp3-HD-Aoede' : 'th-TH-Chirp3-HD-Orus';
-  const rate = slow ? 0.65 : 1.0;
-  const cacheKey = text+'|'+voiceName+'|'+rate;
-  let audioContent = GTTS.cache.get(cacheKey);
-  if(!audioContent){
-    try{
-      const resp = await fetch('https://texttospeech.googleapis.com/v1/text:synthesize?key='+apiKey,{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({input:{text},voice:{languageCode:'th-TH',name:voiceName},audioConfig:{audioEncoding:'MP3',speakingRate:rate}})
-      });
-      const data = await resp.json();
-      if(data.error||!data.audioContent){ console.warn('Google TTS hata:',data.error); speakWebSpeech(text,slow,gender); return; }
-      audioContent = data.audioContent;
-      GTTS.cache.set(cacheKey, audioContent);
-    } catch(e){ console.warn('Google TTS baglanti hatasi:',e); speakWebSpeech(text,slow,gender); return; }
-  }
-  const audio = new Audio('data:audio/mp3;base64,'+audioContent);
-  GTTS._current = audio;
-  audio.play();
+  speakStop();
+  speakWebSpeech(text, slow, gender);
 }
 
 function speakWebSpeech(text, slow, gender){
@@ -3193,7 +3167,6 @@ function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 document.querySelectorAll('.overlay').forEach(el=>{
   el.addEventListener('click',e=>{ if(e.target===el) el.classList.remove('open'); });
 });
-function saveGoogleTTSKey(){ localStorage.setItem('tayca_google_tts_key',document.getElementById('google-tts-key-input').value.trim()); GTTS.cache.clear(); loadVoiceList(); alert(appLang==='en'?'Saved.':'Kaydedildi.'); }
 function saveKey(){ localStorage.setItem('tayca_api_key',document.getElementById('api-key-input').value); alert(appLang==='en'?'Saved.':'Kaydedildi.'); }
 function saveGist(){
   localStorage.setItem('tayca_gist_token', document.getElementById('gist-token-input').value.trim());
@@ -3338,11 +3311,20 @@ function renderTranslateView(){
 }
 
 let _translateTimer = null;
+const TR_WORDS_TH = /\b(bir|iki|bu|ben|sen|ne|ve|ile|merhaba|gunaydin|günaydın|tesekkur|teşekkür|nasil|nasıl|evet|hayir|hayır|cok|çok|iyi)\b/i;
+
+function detectThaiDir(q){
+  const t=(q||'').trim();
+  if(!t) return {isThai:false};
+  if(/[฀-๿]/.test(t)) return {isThai:true};
+  return {isThai:false};
+}
+
 function translateDebounce(){
   const q = document.getElementById('translate-input').value;
-  const isThai = /[฀-๿]/.test(q);
+  const dir = detectThaiDir(q);
   const hint = document.getElementById('translate-lang-hint');
-  if(hint) hint.textContent = q.trim() ? (isThai ? '🇹🇭 '+(appLang==='en'?'Thai detected':'Tayca algılandı') : (appLang==='en'?'🌐 Text detected':'🌐 Metin algılandı')) : '';
+  if(hint) hint.textContent = q.trim() ? (dir.isThai ? '🇹🇭 → 🇹🇷 '+(appLang==='en'?'Thai → Turkish':'Tayca → Türkçe') : '🇹🇷 → 🇹🇭 '+(appLang==='en'?'Turkish → Thai':'Türkçe → Tayca')) : '';
   clearTimeout(_translateTimer);
   if(q.trim().length >= 2) _translateTimer = setTimeout(doTranslate, 800);
 }
@@ -3350,7 +3332,7 @@ function translateDebounce(){
 function searchLessons(q){
   const norm = str => str.toLowerCase().replace(/\s+/g,' ').trim();
   const nq = norm(q);
-  const isThai = /[฀-๿]/.test(q);
+  const isThai = detectThaiDir(q).isThai;
   const results = [];
 
   Object.values(LESSONS).forEach(L=>{
@@ -3380,7 +3362,7 @@ async function doTranslate(){
 
   // Ders araması
   const hits = searchLessons(q);
-  const isThai = /[฀-๿]/.test(q);
+  const isThai = detectThaiDir(q).isThai;
 
   let html = '';
 
@@ -3503,18 +3485,15 @@ async function claudeTranslate(q, isThai){
 
 // =================== SES LİSTESİ ===================
 function loadVoiceList(){
-  const hasKey = !!GTTS.key();
-  let html = '';
-  if(hasKey){
-    html = '<div style="font-size:12px;color:#059669;margin-bottom:8px;">✅ Google Cloud TTS (Chirp3-HD)</div>';
-    html += '<div style="color:#059669;padding:8px;background:#ecfdf5;border-radius:6px;font-size:12px;">';
-    html += '🔵 <strong>Orus</strong> — '+(appLang==='en'?'Male voice':'Erkek sesi')+' (Ali)<br>';
-    html += '🔴 <strong>Aoede</strong> — '+(appLang==='en'?'Female voice':'Kadın sesi')+' (Nada)';
-    html += '</div>';
-  } else {
-    html = '<div style="font-size:12px;color:#e65100;margin-bottom:8px;">⚠️ '+(appLang==='en'?'No Google TTS key — using Web Speech API':'Google TTS key yok — Web Speech API kullanılıyor')+'</div>';
-    html += '<div style="color:#666;padding:8px;background:#fff3e0;border-radius:6px;font-size:12px;">'+(appLang==='en'?'Enter a Google TTS API Key above for high-quality audio.':'Kaliteli ses için yukarıya Google TTS API Key girin.')+'</div>';
+  const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+  let html = '<div style="font-size:12px;color:#059669;margin-bottom:8px;">✅ '+(appLang==='en'?'Device speech (Web Speech API)':'Cihaz sesi (Web Speech API)')+'</div>';
+  html += '<div style="color:#666;padding:8px;background:#ecfdf5;border-radius:6px;font-size:12px;">';
+  html += (appLang==='en'?'Uses your phone/browser built-in voices — no API key needed.':'Telefon/tarayıcının yerleşik sesleri kullanılır — API anahtarı gerekmez.');
+  if(voices.length){
+    const sample = voices.filter(v=>v.lang).slice(0,6).map(v=>'<li>'+v.name+' ('+v.lang+')</li>').join('');
+    html += '<ul style="margin:8px 0 0 16px;font-size:11px;">'+sample+'</ul>';
   }
+  html += '</div>';
   document.getElementById('voice-list').innerHTML = html;
   document.getElementById('test-voice-controls').style.display = 'block';
 }
@@ -3944,7 +3923,6 @@ document.getElementById('api-key-input').value = localStorage.getItem('tayca_api
 document.getElementById('gist-token-input').value = localStorage.getItem('tayca_gist_token')||'';
 gistAutoSync();
 }
-document.getElementById('google-tts-key-input').value = localStorage.getItem('tayca_google_tts_key')||'';
 </script>
 
 <!-- EXERCISE OVERLAY -->
@@ -3992,5 +3970,7 @@ document.getElementById('google-tts-key-input').value = localStorage.getItem('ta
     </div>
   </div>
 </div>
+<script src="shared/kdo-analytics-config.js"></script>
+<script src="shared/kdo-analytics.js"></script>
 </body>
 </html>

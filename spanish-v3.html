@@ -659,7 +659,7 @@ if('serviceWorker' in navigator){
   });
 }
 // Versiyon kontrolü — yeni versiyon varsa cache temizle
-const APP_VERSION = 'v1.2.1';
+const APP_VERSION = 'v1.3.0';
 const storedVersion = localStorage.getItem('app_version');
 if(storedVersion && storedVersion !== APP_VERSION){
   // Yeni versiyon → caches temizle
@@ -1038,7 +1038,6 @@ function setLang(lang){
         <button class="setting-btn lang-btn" data-lang="en" onclick="setLang('en')" style="flex:1;">🇬🇧 English</button>
       </div>
     </div>
-    <div class="setting-row"><div class="setting-label">Google TTS API Key</div><input type="password" id="google-tts-key-input" placeholder="AIza..."><button class="setting-btn" onclick="saveGoogleTTSKey()" data-lk="settings_save">Kaydet</button></div>
     <div class="setting-row"><div class="setting-label">Anthropic API Key</div><input type="password" id="api-key-input" placeholder="sk-ant-..."><button class="setting-btn" onclick="saveKey()" data-lk="settings_save">Kaydet</button></div>
     <div class="setting-row">
       <div class="setting-label" data-lk="settings_gist">☁️ Cihazlar Arası Senkron (GitHub Gist)</div>
@@ -1286,40 +1285,15 @@ function updateProgressBar(){
   if(label) label.textContent = completed + ' / ' + total + ' ders';
 }
 
-// =================== SES ===================
-// =================== GOOGLE TTS ===================
-const GTTS = {
-  cache: new Map(),
-  _current: null,
-  stop(){ if(this._current){ this._current.pause(); this._current=null; } window.speechSynthesis&&window.speechSynthesis.cancel(); },
-  key(){ return localStorage.getItem('spanish_google_tts_key')||''; }
-};
+// =================== SES (cihaz TTS) ===================
+function speakStop(){
+  if(window.speechSynthesis) window.speechSynthesis.cancel();
+}
 
-async function speak(text, slow, gender){
+function speak(text, slow, gender){
   if(!text||!text.trim()) return;
-  GTTS.stop();
-  const apiKey = GTTS.key();
-  if(!apiKey){ speakWebSpeech(text, slow, gender); return; }
-  const voiceName = gender==='f' ? 'es-ES-Neural2-F' : 'es-ES-Neural2-D';
-  const rate = slow ? 0.42 : 1.0;
-  const cacheKey = text+'|'+voiceName+'|'+rate;
-  let audioContent = GTTS.cache.get(cacheKey);
-  if(!audioContent){
-    try{
-      const resp = await fetch('https://texttospeech.googleapis.com/v1/text:synthesize?key='+apiKey,{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({input:{text},voice:{languageCode:'es-ES',name:voiceName},audioConfig:{audioEncoding:'MP3',speakingRate:rate}})
-      });
-      const data = await resp.json();
-      if(data.error||!data.audioContent){ console.warn('Google TTS hata:',data.error); speakWebSpeech(text,slow,gender); return; }
-      audioContent = data.audioContent;
-      GTTS.cache.set(cacheKey, audioContent);
-    } catch(e){ console.warn('Google TTS baglanti hatasi:',e); speakWebSpeech(text,slow,gender); return; }
-  }
-  const audio = new Audio('data:audio/mp3;base64,'+audioContent);
-  GTTS._current = audio;
-  audio.play();
+  speakStop();
+  speakWebSpeech(text, slow, gender);
 }
 
 function speakWebSpeech(text, slow, gender){
@@ -3545,7 +3519,6 @@ function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 document.querySelectorAll('.overlay').forEach(el=>{
   el.addEventListener('click',e=>{ if(e.target===el) el.classList.remove('open'); });
 });
-function saveGoogleTTSKey(){ localStorage.setItem('spanish_google_tts_key',document.getElementById('google-tts-key-input').value.trim()); GTTS.cache.clear(); loadVoiceList(); alert(appLang==='en'?'Saved.':'Kaydedildi.'); }
 function saveKey(){ localStorage.setItem('spanish_api_key',document.getElementById('api-key-input').value); alert(appLang==='en'?'Saved.':'Kaydedildi.'); }
 function saveGist(){
   localStorage.setItem('spanish_gist_token', document.getElementById('gist-token-input').value.trim());
@@ -3695,64 +3668,83 @@ function renderTranslateView(){
 }
 
 let _translateTimer = null;
+
+const TRANSLATE_TARGET = 'es';
+const TR_WORDS_RE = /\b(bir|iki|uc|üç|dort|dört|bes|bu|su|o|ben|sen|biz|siz|onlar|ne|nasil|nasıl|neden|nicin|niçin|icin|için|ile|ve|veya|ama|degil|değil|var|yok|merhaba|gunaydin|günaydın|tesekkur|teşekkür|lutfen|lütfen|evet|hayir|hayır|cok|çok|iyi|kotu|kötü|naber|nasilsin|nasılsın|ogren|öğren|kelime|cumle|cümle|nasil\s+denir|ne\s+demek|anlami|anlamı)\b/i;
+const TARGET_LANG_RE = /[áéíóúüñ¿¡]|(\b(el|la|los|las|un|una|yo|tu|él|ella|nosotros|es|son|no|con|para|hola|gracias|sí|muy|bien|cómo|qué)\b)/i;
+
+function detectTranslateDir(q){
+  const t=(q||'').trim();
+  if(!t) return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
+  if(/[çğıöşüÇĞİÖŞÜ]/.test(t)) return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
+  if(TARGET_LANG_RE.test(t)) return {from:TRANSLATE_TARGET,to:'tr',isFromTr:false};
+  if(TR_WORDS_RE.test(t)) return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
+  return {from:'tr',to:TRANSLATE_TARGET,isFromTr:true};
+}
+
+function translateHint(dir){
+  const tgt=appLang==='en'?'Spanish':'İspanyolca';
+  if(dir.isFromTr) return '🇹🇷 → 🇪🇸 '+tgt;
+  return '🇪🇸 '+tgt+' → 🇹🇷 '+(appLang==='en'?'Turkish':'Türkçe');
+}
+
 function translateDebounce(){
-  const q = document.getElementById('translate-input').value;
-  const isTurkish = /[çğıöşüÇĞİÖŞÜ]/.test(q) || /\b(bir|iki|bu|ben|sen|ne|ve|ile)\b/i.test(q);
-  const hint = document.getElementById('translate-lang-hint');
-  if(hint) hint.textContent = q.trim() ? (isTurkish ? '🇹🇷 '+(appLang==='en'?'Turkish detected':'Türkçe algılandı') : '🇪🇸 '+(appLang==='en'?'Spanish detected':'İspanyolca algılandı')) : '';
+  const q=document.getElementById('translate-input').value;
+  const dir=detectTranslateDir(q);
+  const hint=document.getElementById('translate-lang-hint');
+  if(hint) hint.textContent=q.trim()?translateHint(dir):'';
   clearTimeout(_translateTimer);
-  if(q.trim().length >= 2) _translateTimer = setTimeout(doTranslate, 800);
+  if(q.trim().length>=2) _translateTimer=setTimeout(doTranslate,800);
 }
 
 function searchLessons(q){
-  const norm = str => str.toLowerCase().replace(/\s+/g,' ').trim();
-  const nq = norm(q);
-  const isTurkish = /[çğıöşüÇĞİÖŞÜ]/.test(q);
-  const results = [];
+  const norm=str=>str.toLowerCase().replace(/\s+/g,' ').trim();
+  const nq=norm(q);
+  const dir=detectTranslateDir(q);
+  const results=[];
 
   Object.values(LESSONS).forEach(L=>{
     if(!L) return;
-    const check = (item, source) => {
-      const field = isTurkish ? item.tr : (item.en||item.ro);
+    const check=(item,source)=>{
+      const field=dir.isFromTr?item.tr:(item.en||item.ro);
       if(!field) return;
-      const nf = norm(field);
-      if(nf.includes(nq) || nq.includes(nf)){
-        results.push({...item, _source: source, _score: nf===nq ? 2 : 1});
+      const nf=norm(field);
+      if(nf.includes(nq)||nq.includes(nf)){
+        results.push({...item,_source:source,_score:nf===nq?2:1});
       }
     };
-    (L.words||[]).forEach(w=>{ check(w,'word'); (w.examples||[]).forEach(e=>check(e,'example')); });
-    (L.grammar||[]).forEach(g=>{ (g.examples||[]).forEach(e=>check(e,'grammar')); });
+    (L.words||[]).forEach(w=>{check(w,'word');(w.examples||[]).forEach(e=>check(e,'example'));});
+    (L.grammar||[]).forEach(g=>{(g.examples||[]).forEach(e=>check(e,'grammar'));});
     (L.speaking||[]).forEach(sp=>check(sp,'speaking'));
-    (L.dialogues||[]).forEach(d=>{ (d.lines||[]).forEach(l=>check(l,'dialogue')); });
+    (L.dialogues||[]).forEach(d=>{(d.lines||[]).forEach(l=>check(l,'dialogue'));});
   });
 
   return results.sort((a,b)=>b._score-a._score).slice(0,5);
 }
 
 async function doTranslate(){
-  const q = document.getElementById('translate-input')?.value?.trim();
+  const q=document.getElementById('translate-input')?.value?.trim();
   if(!q) return;
-  const wrap = document.getElementById('translate-results');
+  const wrap=document.getElementById('translate-results');
   if(!wrap) return;
 
-  // Ders araması
-  const hits = searchLessons(q);
-  const isTurkish = /[çğıöşüÇĞİÖŞÜ]/.test(q) || /\b(bir|iki|bu|ben|sen|ne|ve|ile)\b/i.test(q);
+  const hits=searchLessons(q);
+  const dir=detectTranslateDir(q);
 
-  let html = '';
+  let html='';
 
-  if(hits.length > 0){
-    html += `<div style="font-size:11px;font-weight:700;color:#0d9488;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">📚 ${s('translate_lesson_matches')}</div>`;
+  if(hits.length>0){
+    html+=`<div style="font-size:11px;font-weight:700;color:#0d9488;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">📚 ${s('translate_lesson_matches')}</div>`;
     hits.forEach(h=>{
-      const bdHtml = (h.bd||[]).map(p=>`<span style="display:inline-block;background:#f0fdf9;border:1px solid #b2dfdb;border-radius:4px;padding:2px 6px;font-size:10px;margin:2px;color:#0d9488;"><strong>${p.ro}</strong> = ${p.tr}</span>`).join('');
-      html += `
+      const bdHtml=(h.bd||[]).map(p=>`<span style="display:inline-block;background:#f0fdf9;border:1px solid #b2dfdb;border-radius:4px;padding:2px 6px;font-size:10px;margin:2px;color:#0d9488;"><strong>${p.ro}</strong> = ${p.tr}</span>`).join('');
+      html+=`
         <div style="background:white;border:1.5px solid #e0e0e0;border-radius:12px;padding:12px 14px;margin-bottom:8px;">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;">
             <div style="flex:1;">
               <div style="font-size:20px;font-weight:700;color:#0d9488;">${h.en||h.th||''}</div>
               <div style="font-size:12px;color:#888;font-style:italic;margin-top:1px;">${h.ro||''}</div>
               <div style="font-size:14px;font-weight:600;color:#222;margin-top:4px;">${h.tr||''}</div>
-              ${bdHtml ? '<div style="margin-top:6px;">'+bdHtml+'</div>' : ''}
+              ${bdHtml?'<div style="margin-top:6px;">'+bdHtml+'</div>':''}
             </div>
             <button onclick="speak('${(h.en||h.th||'').replace(/'/g,'&#39;')}',false,'m')" style="background:none;border:1px solid #e0e0e0;border-radius:20px;padding:4px 10px;font-size:11px;color:#888;cursor:pointer;flex-shrink:0;margin-left:8px;">🔊</button>
           </div>
@@ -3761,113 +3753,107 @@ async function doTranslate(){
     });
   }
 
-  const hasExact = hits.some(h=>h._score===2);
-  const apiKey = localStorage.getItem('spanish_api_key');
+  const hasExact=hits.some(h=>h._score===2);
+  const apiKey=localStorage.getItem('spanish_api_key');
 
-  // Google Translate — her zaman göster
-  html += `<div style="font-size:11px;font-weight:700;color:#4285f4;text-transform:uppercase;letter-spacing:.06em;margin:12px 0 8px;">${s('translate_google')}</div>`;
-  html += `<div id="google-result" style="background:white;border:1.5px solid #e0e0e0;border-radius:12px;padding:14px;"><div style="color:#aaa;font-size:13px;">${s('translate_loading')}</div></div>`;
+  html+=`<div style="font-size:11px;font-weight:700;color:#4285f4;text-transform:uppercase;letter-spacing:.06em;margin:12px 0 8px;">${s('translate_google')}</div>`;
+  html+=`<div id="google-result" style="background:white;border:1.5px solid #e0e0e0;border-radius:12px;padding:14px;"><div style="color:#aaa;font-size:13px;">${s('translate_loading')}</div></div>`;
 
-  // Claude — API key varsa ve tam eşleşme yoksa
-  if(apiKey && !hasExact){
-    html += `<div style="font-size:11px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.06em;margin:12px 0 8px;">${s('translate_claude')}</div>`;
-    html += `<div id="claude-result" style="background:white;border:1.5px solid #e0e0e0;border-radius:12px;padding:14px;"><div style="color:#aaa;font-size:13px;">${s('translate_loading')}</div></div>`;
+  if(apiKey&&!hasExact){
+    html+=`<div style="font-size:11px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.06em;margin:12px 0 8px;">${s('translate_claude')}</div>`;
+    html+=`<div id="claude-result" style="background:white;border:1.5px solid #e0e0e0;border-radius:12px;padding:14px;"><div style="color:#aaa;font-size:13px;">${s('translate_loading')}</div></div>`;
   }
 
-  wrap.innerHTML = html;
+  wrap.innerHTML=html;
 
-  // Paralel çalıştır
-  const tasks = [googleTranslate(q, isTurkish)];
-  if(apiKey && !hasExact) tasks.push(claudeTranslate(q, isTurkish));
+  const tasks=[googleTranslate(q,dir)];
+  if(apiKey&&!hasExact) tasks.push(claudeTranslate(q,dir));
   await Promise.all(tasks);
 }
 
-async function googleTranslate(q, isTurkish){
-  const sl = isTurkish ? 'tr' : 'es';
-  const tl = isTurkish ? 'es' : 'tr';
+async function googleTranslate(q,dir){
+  const sl=dir.from;
+  const tl=dir.to;
   try{
-    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&dt=rm&q=${encodeURIComponent(q)}`;
-    const data = await fetch(url).then(r=>r.json());
-    const translated = (data[0]||[]).map(x=>x[0]||'').join('');
-    const el = document.getElementById('google-result');
+    const url=`https://translate.googleapis.com/translate_a/single?client=gtx&sl=${sl}&tl=${tl}&dt=t&dt=rm&q=${encodeURIComponent(q)}`;
+    const data=await fetch(url).then(r=>r.json());
+    const translated=(data[0]||[]).map(x=>x[0]||'').join('');
+    const el=document.getElementById('google-result');
     if(!el) return;
-    if(!translated){ el.innerHTML = '<div style="color:#aaa;font-size:13px;">'+s('translate_no_match')+'</div>'; return; }
-    if(isTurkish){
-      el.innerHTML = `
+    if(!translated){el.innerHTML='<div style="color:#aaa;font-size:13px;">'+s('translate_no_match')+'</div>';return;}
+    if(dir.isFromTr){
+      el.innerHTML=`
         <div style="font-size:22px;font-weight:700;color:#0d9488;margin-bottom:4px;">
           ${translated}
           <button onclick="speak('${translated.replace(/'/g,'&#39;')}',false,'m')" style="background:none;border:1px solid #e0e0e0;border-radius:20px;padding:3px 10px;font-size:11px;color:#888;cursor:pointer;margin-left:8px;">🔊</button>
         </div>`;
-    } else {
-      el.innerHTML = `<div style="font-size:15px;font-weight:600;color:#222;">${translated}</div>`;
+    }else{
+      el.innerHTML=`<div style="font-size:15px;font-weight:600;color:#222;">${translated}</div>`;
     }
-  } catch(e){
-    const el = document.getElementById('google-result');
-    if(el) el.innerHTML = `<div style="color:#dc2626;font-size:13px;">❌ ${e.message}</div>`;
+  }catch(e){
+    const el=document.getElementById('google-result');
+    if(el) el.innerHTML=`<div style="color:#dc2626;font-size:13px;">❌ ${e.message}</div>`;
   }
 }
 
-async function claudeTranslate(q, isTurkish){
-  const apiKey = localStorage.getItem('spanish_api_key');
-  const prompt = appLang==='en'
-    ? (isTurkish
-      ? `Translate this Turkish phrase to Spanish: "${q}"\n\nRespond ONLY in this format:\nSpanish: ...\nNote: ...`
-      : `Translate this Spanish phrase to Turkish: "${q}"\n\nRespond ONLY in this format:\nTurkish: ...\nNote: ...`)
-    : (isTurkish
-      ? `Kullanıcı şu Türkçe ifadeyi İspanyolcaya çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nİspanyolca: ...\nAçıklama: ...`
-      : `Kullanıcı şu İspanyolca ifadeyi Türkçeye çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nTürkçe: ...\nAçıklama: ...`);
+async function claudeTranslate(q,dir){
+  const apiKey=localStorage.getItem('spanish_api_key');
+  const prompt=appLang==='en'
+    ?(dir.isFromTr
+      ?`Translate this Turkish phrase to Spanish: "${q}"\n\nRespond ONLY in this format:\nSpanish: ...\nNote: ...`
+      :`Translate this Spanish phrase to Turkish: "${q}"\n\nRespond ONLY in this format:\nTurkish: ...\nNote: ...`)
+    :(dir.isFromTr
+      ?`Kullanıcı şu Türkçe ifadeyi İspanyolcaya çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nİspanyolca: ...\nAçıklama: ...`
+      :`Kullanıcı şu İspanyolca ifadeyi Türkçeye çevirmek istiyor: "${q}"\n\nŞu formatta cevap ver (başka hiçbir şey yazma):\nTürkçe: ...\nAçıklama: ...`);
   try{
-    const resp = await fetch('https://api.anthropic.com/v1/messages',{
+    const resp=await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{'x-api-key':apiKey,'anthropic-version':'2023-06-01','content-type':'application/json','anthropic-dangerous-direct-browser-calls':'true'},
       body:JSON.stringify({
         model:'claude-haiku-4-5-20251001',
         max_tokens:300,
-        system: appLang==='en' ? 'You are a Spanish language teacher. Give short, clear, instructive answers for Turkish-speaking learners.' : 'Sen bir İspanyolca öğretmenisin. Kısa, net ve öğretici cevaplar ver. Türk kullanıcılara İspanyolca öğretiyorsun.',
+        system:appLang==='en'?'You are a Spanish language teacher. Give short, clear, instructive answers for Turkish-speaking learners.':'Sen bir İspanyolca öğretmenisin. Kısa, net ve öğretici cevaplar ver. Türk kullanıcılara İspanyolca öğretiyorsun.',
         messages:[{role:'user',content:prompt}]
       })
     });
-    const data = await resp.json();
-    const text = data.content?.[0]?.text || s('translate_no_match');
-    const el = document.getElementById('claude-result');
+    const data=await resp.json();
+    const text=data.content?.[0]?.text||s('translate_no_match');
+    const el=document.getElementById('claude-result');
     if(!el) return;
-    // Satırları parse et
-    const lines = text.split('\n').filter(l=>l.trim());
-    let out = '';
+    const lines=text.split('\n').filter(l=>l.trim());
+    let out='';
     lines.forEach(line=>{
-      const [label,...rest] = line.split(':');
-      const val = rest.join(':').trim();
+      const [label,...rest]=line.split(':');
+      const val=rest.join(':').trim();
       if(!val) return;
-      if(label.includes('İspanyolca')||label.includes('Spanish')||label.includes('İngilizce')||label.includes('English')){
-        out += `<div style="font-size:22px;font-weight:700;color:#0d9488;margin-bottom:4px;">${val}
+      const ll=label.toLowerCase();
+      if(ll.includes('i̇spanyolca')||ll.includes('spanish')||ll.includes('ingilizce')||ll.includes('english')||ll.includes('almanca')||ll.includes('german')||ll.includes('fransızca')||ll.includes('french')||ll.includes('italyanca')||ll.includes('italian')||ll.includes('ispanyolca')||ll.includes('spanish')){
+        out+=`<div style="font-size:22px;font-weight:700;color:#0d9488;margin-bottom:4px;">${val}
           <button onclick="speak('${val.replace(/'/g,'&#39;')}',false,'m')" style="background:none;border:1px solid #e0e0e0;border-radius:20px;padding:3px 10px;font-size:11px;color:#888;cursor:pointer;margin-left:8px;">🔊</button></div>`;
-      } else if(label.includes('Türkçe')||label.includes('Turkish')){
-        out += `<div style="font-size:15px;font-weight:600;color:#222;margin-bottom:6px;">${val}</div>`;
-      } else {
-        out += `<div style="font-size:12px;color:#666;border-top:1px solid #f0f0f0;padding-top:8px;margin-top:4px;">${line}</div>`;
+      }else if(ll.includes('türkçe')||ll.includes('turkish')){
+        out+=`<div style="font-size:15px;font-weight:600;color:#222;margin-bottom:6px;">${val}</div>`;
+      }else{
+        out+=`<div style="font-size:12px;color:#666;border-top:1px solid #f0f0f0;padding-top:8px;margin-top:4px;">${line}</div>`;
       }
     });
-    el.innerHTML = out || text;
-  } catch(e){
-    const el = document.getElementById('claude-result');
-    if(el) el.innerHTML = `<div style="color:#dc2626;font-size:13px;">❌ ${appLang==='en'?'Error:':'Hata:'} ${e.message}</div>`;
+    el.innerHTML=out||text;
+  }catch(e){
+    const el=document.getElementById('claude-result');
+    if(el) el.innerHTML=`<div style="color:#dc2626;font-size:13px;">❌ ${appLang==='en'?'Error:':'Hata:'} ${e.message}</div>`;
   }
 }
 
 // =================== SES LİSTESİ ===================
 function loadVoiceList(){
-  const hasKey = !!GTTS.key();
-  let html = '';
-  if(hasKey){
-    html = '<div style="font-size:12px;color:#059669;margin-bottom:8px;">✅ Google Cloud TTS (Chirp3-HD)</div>';
-    html += '<div style="color:#059669;padding:8px;background:#ecfdf5;border-radius:6px;font-size:12px;">';
-    html += '🔵 <strong>Orus</strong> — '+(appLang==='en'?'Male voice':'Erkek sesi')+' (Ali)<br>';
-    html += '🔴 <strong>Aoede</strong> — '+(appLang==='en'?'Female voice':'Kadın sesi')+' (Nada)';
-    html += '</div>';
-  } else {
-    html = '<div style="font-size:12px;color:#e65100;margin-bottom:8px;">⚠️ '+(appLang==='en'?'No Google TTS key — using Web Speech API':'Google TTS key yok — Web Speech API kullanılıyor')+'</div>';
-    html += '<div style="color:#666;padding:8px;background:#fff3e0;border-radius:6px;font-size:12px;">'+(appLang==='en'?'Enter a Google TTS API Key above for high-quality audio.':'Kaliteli ses için yukarıya Google TTS API Key girin.')+'</div>';
+  const voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+  let html = '<div style="font-size:12px;color:#059669;margin-bottom:8px;">✅ '+(appLang==='en'?'Device speech (Web Speech API)':'Cihaz sesi (Web Speech API)')+'</div>';
+  html += '<div style="color:#666;padding:8px;background:#ecfdf5;border-radius:6px;font-size:12px;">';
+  html += (appLang==='en'?'Uses your phone/browser built-in voices — no API key needed.':'Telefon/tarayıcının yerleşik sesleri kullanılır — API anahtarı gerekmez.');
+  if(voices.length){
+    const sample = voices.filter(v=>v.lang).slice(0,6).map(v=>'<li>'+v.name+' ('+v.lang+')</li>').join('');
+    html += '<ul style="margin:8px 0 0 16px;font-size:11px;">'+sample+'</ul>';
   }
+  html += '</div>';
   document.getElementById('voice-list').innerHTML = html;
   document.getElementById('test-voice-controls').style.display = 'block';
 }
@@ -4324,7 +4310,6 @@ document.getElementById('api-key-input').value = localStorage.getItem('spanish_a
 document.getElementById('gist-token-input').value = localStorage.getItem('spanish_gist_token')||'';
 gistAutoSync();
 }
-document.getElementById('google-tts-key-input').value = localStorage.getItem('spanish_google_tts_key')||'';
 </script>
 
 <!-- EXERCISE OVERLAY -->
@@ -4373,5 +4358,7 @@ document.getElementById('google-tts-key-input').value = localStorage.getItem('sp
     </div>
   </div>
 </div>
+<script src="shared/kdo-analytics-config.js"></script>
+<script src="shared/kdo-analytics.js"></script>
 </body>
 </html>

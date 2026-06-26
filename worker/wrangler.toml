@@ -1,0 +1,11 @@
+name = "kdo-analytics"
+main = "src/index.js"
+compatibility_date = "2024-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "kdo-analytics"
+database_id = "REPLACE_AFTER_CREATE"
+
+[vars]
+# Deploy sonrası: wrangler secret put ADMIN_PASSWORD
