@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -11,13 +11,14 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f5f5f5;max-width:600px;margin:0 auto;color:#333;}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f5f5f5;margin:0 auto;color:#333;max-width:600px;width:100%;overflow-x:hidden;min-height:100vh;}
 .english{}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;}
-.brand-wrap{display:flex;flex-direction:column;line-height:1.2;}
-.brand{font-size:17px;font-weight:700;white-space:nowrap;}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14px max(14px,env(safe-area-inset-right)) 14px max(10px,env(safe-area-inset-left));display:flex;align-items:center;gap:6px;border-bottom:3px solid #0f766e;width:100%;max-width:100%;overflow:hidden;}
+.brand-wrap{display:flex;flex-direction:column;line-height:1.2;min-width:0;flex:0 1 42%;max-width:42%;}
+.brand{font-size:16px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;}
 .brand-dev{font-size:10px;font-weight:600;color:#fef9c3;letter-spacing:.04em;margin-top:6px;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.18);} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
 /* YARDIM MODALİ */
 .htab{background:none;border:none;padding:9px 13px;font-size:12px;font-weight:700;color:#888;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:.15s;}
@@ -47,12 +48,19 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d948
 .changelog-item{background:#f8f9fa;border-left:3px solid #0d9488;padding:8px 12px;border-radius:0 8px 8px 0;}
 .changelog-ver{font-size:12px;font-weight:700;color:#0d9488;margin-bottom:3px;}
 .changelog-desc{font-size:11px;color:#666;line-height:1.5;}
-.pbar-wrap{flex:1;display:flex;flex-direction:column;gap:3px;margin:0 10px;}
+.pbar-wrap{flex:1;display:flex;flex-direction:column;gap:3px;margin:0 6px;min-width:0;}
 .pbar{height:5px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;}
 .pbar-label{font-size:9px;color:rgba(255,255,255,.55);text-align:right;letter-spacing:.03em;}
 
 .pfill{height:100%;width:5%;background:white;border-radius:99px;transition:.3s;}
-.hbtn{background:rgba(255,255,255,.2);color:white;border:none;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:15px;}
+.hbtn{background:rgba(255,255,255,.2);color:white;border:none;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:15px;flex-shrink:0;line-height:1;}
+.header-actions{display:flex;align-items:center;gap:4px;margin-left:auto;flex-shrink:0;min-width:0;}
+.hbtn{padding:6px 8px;font-size:14px;}
+.vbadge{font-size:9px;margin-right:0;}
+@media (max-width:380px){
+  .vbadge{display:none;}
+  .brand-dev{font-size:9px;}
+}
 /* TEST MODÜLİ */
 .test-cat-btn{padding:6px 12px;background:white;border:1.5px solid #e0e0e0;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;color:#666;transition:.15s;}
 .test-cat-btn.active{background:#e0f2f1;border-color:#0d9488;color:#0d9488;}
@@ -91,7 +99,7 @@ main{padding:14px;}
 .lbadge-done{background:#0d9488;color:white;}
 @keyframes popIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
 .lesson-card.done{border-left-color:#0d9488;background:#f0fdf9;}
-.ltimer-wrap{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.75);margin-left:auto;}
+.ltimer-wrap{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.75);}
 .ltimer-icon{font-size:13px;}
 #lesson-live-timer{font-family:'Courier New',monospace;font-weight:700;font-size:12px;color:white;}
 .larrow-wrap{width:34px;height:34px;border-radius:50%;background:#f0fdf9;border:1.5px solid #b2dfdb;display:flex;align-items:center;justify-content:center;color:#0d9488;font-size:18px;font-weight:700;flex-shrink:0;transition:.15s;}
@@ -232,9 +240,9 @@ main{padding:14px;}
 .filter-btn.active{background:#0d9488;color:white;border-color:#0d9488;}
 
 /* MODAL */
-.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:flex-end;}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:flex-end;padding:0;}
 .overlay.open{display:flex;}
-.modal{background:white;border-radius:16px 16px 0 0;padding:20px;width:100%;max-height:80vh;overflow-y:auto;}
+.modal{background:white;border-radius:16px 16px 0 0;padding:20px;width:100%;max-width:600px;margin:0 auto;max-height:80vh;overflow-y:auto;}
 .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
 .modal-title{font-size:16px;font-weight:700;}
 .modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:#999;}
@@ -653,20 +661,20 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.8"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.8"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.8"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.8"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.8"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.8"></script>
-<script src="shared/kdo-gloss.js?v=3.0.8"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.8"></script>
-<script src="shared/kdo-pronoun-tables.js?v=3.0.8"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.8"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.8"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.8"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.8"></script>
-<script src="shared/kdo-translate.js?v=3.0.8"></script>
+<script src="shared/kdo-version.js?v=3.0.12"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.12"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.12"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.12"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.12"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.12"></script>
+<script src="shared/kdo-gloss.js?v=3.0.12"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.12"></script>
+<script src="shared/kdo-pronoun-tables.js?v=3.0.12"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.12"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.12"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.12"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.12"></script>
+<script src="shared/kdo-translate.js?v=3.0.12"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 </script>
@@ -1007,10 +1015,7 @@ function applyTargetUi(){
 function patchL2Meta(){
   if(!KDO_CFG||!KDO_CFG.l2Meta||!LESSONS_META[1]) return;
   const m=KDO_CFG.l2Meta;
-  Object.assign(LESSONS_META[1],{
-    title:m.title, title_en:m.title_en,
-    subtitle:m.subtitle, subtitle_en:m.subtitle_en
-  });
+  Object.assign(LESSONS_META[1], m);
 }
 function runEnLesson2Migration(){
   if(!KDO_CFG||!KDO_CFG.enLesson2Migration) return;
@@ -1134,6 +1139,7 @@ function setLang(lang){
     <div class="pbar"><div class="pfill" id="pbar"></div></div>
     <div class="pbar-label" id="pbar-label">0 / 49</div>
   </div>
+  <div class="header-actions">
   <div class="ltimer-wrap" id="lesson-timer-wrap" style="display:none">
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
@@ -1141,6 +1147,7 @@ function setLang(lang){
   <span class="vbadge" id="app-version"></span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
+  </div>
 </header>
 
 <nav>
@@ -2320,7 +2327,7 @@ function buildLessonHTML(L, meta){
               style="background:white;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;transition:border-color .2s">
               <div style="font-size:22px;font-weight:700;color:#0d9488;line-height:1.1">${d.n}</div>
               <div style="font-size:13px;font-weight:700;color:#222;margin-top:4px">${d.word}</div>
-              <div style="font-size:10px;color:#4caf80;font-weight:700;margin-top:3px">${d.tr||''}</div>
+              <div style="font-size:10px;color:#4caf80;font-weight:700;margin-top:3px">${Lm(d,'tr')||d.tr||''}</div>
             </div>`).join('')}
         </div>`).join('')}
       ${L.compounds ? `
@@ -2335,7 +2342,7 @@ function buildLessonHTML(L, meta){
             <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px">
               <span style="font-size:14px;font-weight:700;color:#0d9488">${c.n.toLocaleString('tr')}</span>
               <span style="font-size:16px;font-weight:700;color:#222">${c.word||''}</span>
-              <span style="font-size:11px;color:#4caf50;font-weight:700">${c.tr||''}</span>
+              <span style="font-size:11px;color:#4caf50;font-weight:700">${Lm(c,'tr')||c.tr||''}</span>
               <span style="margin-left:auto;font-size:11px;color:#bbb">🔊</span>
             </div>
           </div>`).join('')}
@@ -3515,8 +3522,27 @@ function switchHelpTab(tab, btn){
 }
 
 function buildHelpContent(){
-  const L = loc;
-  const en = appLang !== 'tr';
+  function L(){
+    var a=arguments,l=appLang,i={tr:0,en:1,th:2,de:3,fr:4,es:5,it:6,ru:7,ar:8,zh:9}[l];
+    if(i!=null&&a[i])return a[i];
+    if(l==='tr')return a[0];
+    if(l==='th')return a[2]||a[1];
+    return a[1];
+  }
+  const tg = ((KDO_CFG.targetUi||{})[appLang]||{}).ui_col_target || (appLang==='tr' ? KDO_CFG.targetLabelTr : KDO_CFG.targetLabelEn);
+  const flag = KDO_CFG.flag || '🌐';
+  const sc = 20, bon = 29;
+  const subName = appLang==='th' && KDO_CFG.nameTh ? KDO_CFG.nameTh : appLang==='tr' ? KDO_CFG.title : KDO_CFG.nameEn;
+  const pronLine = KDO_CFG.kdoTarget==='de'
+    ? L('Sadece Ders 1\'de. Almanca telaffuz — umlaut (ä, ö, ü), ß ve ch sesleri.','Lesson 1 only. German pronunciation — umlauts (ä, ö, ü), ß and ch sounds.','เฉพาะบท 1 การออกเสียงเยอรมัน — umlaut (ä, ö, ü), ß และ ch','Nur Lektion 1. Deutsche Aussprache — Umlaute (ä, ö, ü), ß und ch-Laute.')
+    : KDO_CFG.kdoTarget==='tk'
+    ? L('Varsa Ders 1\'de. Türkçe özel harfler (ç, ğ, ı, ö, ş, ü).','Lesson 1 (if present). Turkish letters (ç, ğ, ı, ö, ş, ü).','บท 1 ตัวอักษรตุรกีพิเศษ (ç, ğ, ı, ö, ş, ü)','Lektion 1: Türkische Buchstaben (ç, ğ, ı, ö, ş, ü).')
+    : L('Ders 1 telaffuz — '+tg+' sesleri.','Lesson 1 pronunciation — '+tg+' sounds.','บท 1 การออกเสียง'+tg);
+  const politeLine = KDO_CFG.kdoTarget==='de'
+    ? L('Bitte, danke ve Entschuldigung günlük Almancayı doğal yapar. Sık kullan.','Bitte, danke and Entschuldigung make everyday German natural. Use them often.','Bitte, danke และ Entschuldigung ทำให้เยอรมันประจำวันฟังเป็นธรรมชาติ','Bitte, danke und Entschuldigung machen Alltagsdeutsch natürlich.')
+    : KDO_CFG.kdoTarget==='tk'
+    ? L('Lütfen, teşekkür ederim ve özür dilerim günlük Türkçeyi nazik yapar.','Phrases like lütfen and teşekkür ederim make everyday Turkish polite.','lütfen และ teşekkür ederim ทำให้ตุรกีประจำวันสุภาพ','Höfliche Ausdrücke wie lütfen und teşekkür ederim im Alltagstürkisch.')
+    : L('Kibar ifadeler günlük '+tg+' için önemli.','Polite phrases matter in everyday '+tg+'.','สำนวนสุภาพสำคัญใน'+tg+'ประจำวัน');
   // Tab button labels
   document.getElementById('htab-btn-genel').textContent   = '🏠 '+s('help_tab_guide');
   document.getElementById('htab-btn-dersler').textContent = s('help_tab_lessons');
@@ -3524,7 +3550,8 @@ function buildHelpContent(){
   document.getElementById('htab-btn-ipuclari').textContent= s('help_tab_tips');
   document.getElementById('htab-btn-hakkinda').textContent= 'ℹ️ '+s('help_tab_about');
   document.getElementById('help-modal-title').textContent = s('help_modal_title');
-  document.getElementById('help-modal-sub').textContent   = s('help_modal_sub');
+  const subName = appLang==='th' && KDO_CFG.nameTh ? KDO_CFG.nameTh : appLang==='tr' ? KDO_CFG.title : KDO_CFG.nameEn;
+  document.getElementById('help-modal-sub').textContent   = subName + ' · ' + s('help_tab_guide');
 
   const chip = (bg,col,txt)=>`<span class="help-color-chip" style="background:${bg};color:${col};">${txt}</span>`;
 
@@ -3532,72 +3559,72 @@ function buildHelpContent(){
     <!-- GENEL -->
     <div id="htab-genel" class="htab-content active">
       <div class="help-card">
-        <div class="help-card-icon">🇩🇪</div>
+        <div class="help-card-icon">${flag}</div>
         <div>
-          <div class="help-card-title">${en?'What is this app?':'Bu uygulama ne için?'}</div>
-          <div class="help-card-body">${en?'Designed to quickly learn practical German for everyday use. Focuses on real conversation, not textbook phrases.':'Günlük hayatta kullanılan pratik Almanca\'yı hızlıca öğrenmek için tasarlandı. Ders kitabı değil, gerçek konuşma diline odaklanır.'}</div>
+          <div class="help-card-title">${L('Bu uygulama ne için?','What is this app?','แอปนี้ใช้ทำอะไร?','Wofür ist diese App?','À quoi sert cette application ?')}</div>
+          <div class="help-card-body">${L('Günlük hayatta kullanılan pratik '+tg+' öğrenmek için tasarlandı. Ders kitabı değil, gerçek konuşma diline odaklanır.','Designed to quickly learn practical '+tg+' for everyday use. Focuses on real conversation, not textbook phrases.','ออกแบบมาเพื่อเรียน'+tg+'ที่ใช้ในชีวิตประจำวัน เน้นการสนทนาจริง','Zum schnellen Lernen von praktischem '+tg+' für den Alltag. Fokus auf echte Gespräche.')}</div>
         </div>
       </div>
-      <div class="help-section-header">📱 ${en?'Main Tabs':'Ana Sekmeler'}</div>
+      <div class="help-section-header">📱 ${L('Ana Sekmeler','Main Tabs','แท็บหลัก','Hauptregister','Onglets principaux')}</div>
       <div class="help-row"><div class="help-row-icon" style="background:#e8f5e9;">📚</div><div>
-        <div class="help-row-title">${en?'Lessons':'Dersler'}</div>
-        <div class="help-row-sub">${en?'20 scenario lessons + 29 BONUS vocabulary sets. Each lesson has 6–8 tabs. Green = completed.':'20 senaryo dersi + 29 BONUS kelime seti. Her ders 6–8 sekme içerir. Yeşil = tamamlandı.'}</div>
+        <div class="help-row-title">${s('nav_lessons').replace(/^[^\s]+\s/,'')||L('Dersler','Lessons','บทเรียน')}</div>
+        <div class="help-row-sub">${L(sc+' senaryo dersi + '+bon+' BONUS kelime seti. Her ders 6–8 sekme. Yeşil = tamamlandı.',sc+' scenario lessons + '+bon+' BONUS sets. 6–8 tabs each. Green = completed.',sc+' บทสถานการณ์ + '+bon+' ชุด BONUS สีเขียว = เสร็จ',sc+' Szenario-Lektionen + '+bon+' BONUS-Listen. Grün = erledigt.')}</div>
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#fff3e0;">📝</div><div>
-        <div class="help-row-title">${en?'Test':'Test'}</div>
-        <div class="help-row-sub">${en?'Spaced repetition (SRS) system. Due cards today + lesson-based practice.':'Aralıklı tekrar (SRS) sistemi. Bugün tekrar edilecek kartlar + ders bazlı pratik.'}</div>
+        <div class="help-row-title">${L('Test','Test','ทดสอบ')}</div>
+        <div class="help-row-sub">${L('Aralıklı tekrar (SRS) sistemi. Bugün tekrar edilecek kartlar + ders bazlı pratik.','Spaced repetition (SRS). Due cards today + lesson practice.','ระบบ SRS การ์ดวันนี้ + ฝึกตามบทเรียน')}</div>
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#e3f2fd;">🌐</div><div>
-        <div class="help-row-title">${en?'Translate':'Çeviri'}</div>
-        <div class="help-row-sub">${en?'Instant German ↔ Turkish translation.':'Almanca ↔ Türkçe anında çeviri.'}</div>
+        <div class="help-row-title">${L('Çeviri','Translate','แปล')}</div>
+        <div class="help-row-sub">${((KDO_CFG.targetUi||{})[appLang]||{}).translate_tip||L(tg+' ↔ Türkçe anında çeviri.',tg+' ↔ Turkish instant translation.',tg+' ↔ ตุรกี แปลทันที')}</div>
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#fce4ec;">📋</div><div>
-        <div class="help-row-title">${en?'Starred':'Liste'}</div>
-        <div class="help-row-sub">${en?'All your starred words, examples and dialogues. Tap 📖 for sentence breakdown.':'Yıldızladığın tüm kelimeler, örnekler ve diyaloglar. 📖 ile breakdown görebilirsin.'}</div>
+        <div class="help-row-title">${L('Liste','Starred','รายการโปรด')}</div>
+        <div class="help-row-sub">${L('Yıldızladığın kelimeler, örnekler ve diyaloglar. 📖 ile analiz.','Starred words, examples and dialogues. Tap 📖 for breakdown.','คำศัพท์ ตัวอย่าง บทสนทนาที่ติดดาว แตะ 📖 วิเคราะห์')}</div>
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#f3e5f5;">🔄</div><div>
-        <div class="help-row-title">${en?'Review':'Tekrar'}</div>
-        <div class="help-row-sub">${en?'SRS algorithm surfaces the cards you struggle with most. A few minutes a day is enough.':'SRS algoritması en çok zorlandığın kartları öne çıkarır. Her gün birkaç dakika yeterli.'}</div>
+        <div class="help-row-title">${L('Tekrar','Review','ทบทวน')}</div>
+        <div class="help-row-sub">${L('SRS en çok zorlandığın kartları öne çıkarır. Günde birkaç dakika yeterli.','SRS surfaces difficult cards. A few minutes daily is enough.','SRS แสดงการ์ดยาก วันละไม่กี่นาทีพอ')}</div>
       </div></div>
-      <div class="help-section-header" style="margin-top:16px;">🔊 ${en?'Audio Buttons':'Ses Butonları'}</div>
+      <div class="help-section-header" style="margin-top:16px;">🔊 ${L('Ses Butonları','Audio Buttons','ปุ่มเสียง')}</div>
       <div class="help-row"><div class="help-badge" style="background:#0d9488;color:white;">🔊</div>
-        <div class="help-row-sub" style="padding-top:2px;">${en?'Normal-speed German audio - uses device TTS engine.':'Normal hızda Almanca sesi — cihazın TTS motorunu kullanır.'}</div></div>
+        <div class="help-row-sub" style="padding-top:2px;">${L('Normal hızda '+tg+' sesi — cihaz TTS.','Normal-speed '+tg+' audio — device TTS.','เสียง'+tg+'ความเร็วปกติ — TTS อุปกรณ์')}</div></div>
       <div class="help-row"><div class="help-badge" style="background:#666;color:white;">🐢</div>
-        <div class="help-row-sub" style="padding-top:2px;">${en?'Slow mode — use while learning pronunciation.':'Yavaş mod — telaffuzu öğrenirken kullan.'}</div></div>
+        <div class="help-row-sub" style="padding-top:2px;">${L('Yavaş mod — telaffuzu öğrenirken kullan.','Slow mode — for learning pronunciation.','โหมดช้า — เรียนการออกเสียง')}</div></div>
     </div>
 
     <!-- DERSLER -->
     <div id="htab-dersler" class="htab-content">
       <div class="help-card"><div class="help-card-icon">📖</div><div>
-        <div class="help-card-title">${en?'How are lessons structured?':'Ders yapısı nasıl?'}</div>
-        <div class="help-card-body">${en?'Each lesson has 6–8 tabs. Progress bar advances as you visit all of them.':'Her derste 6-8 sekme var. Hepsini ziyaret ettiğinde progress bar ilerler.'}</div>
+        <div class="help-card-title">${L('Ders yapısı nasıl?','How are lessons structured?','บทเรียนมีโครงสร้างอย่างไร?','Wie sind Lektionen aufgebaut?')}</div>
+        <div class="help-card-body">${L('Her derste 6-8 sekme var. Hepsini ziyaret ettiğinde progress bar ilerler.','Each lesson has 6–8 tabs. Progress bar advances as you visit all of them.','แต่ละบทมี 6–8 แท็บ แถบความคืบหน้าเพิ่มเมื่อเยี่ยมชมครบ','Jede Lektion hat 6–8 Tabs. Die Fortschrittsleiste steigt, wenn du alle besuchst.')}</div>
       </div></div>
-      <div class="help-section-header">📑 ${en?'Tab Descriptions':'Sekme Açıklamaları'}</div>
-      <div class="help-tab-row"><span class="htag" style="background:#e8f5e9;color:#2e7d32;">📚 ${en?'Words':'Sözcükler'}</span>
-        <span>${en?'Core vocabulary. Each word has usage tips, context notes, and 7–12 examples. Star with ⭐.':'Dersin temel kelimeleri. Her kelimede ipuçları, bağlam notu ve 7–12 örnek cümle var. ⭐ ile yıldızlayabilirsin.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#e3f2fd;color:#1565c0;">🎵 ${en?'Pronunciation':'Telaffuz'}</span>
-        <span>${en?'Lesson 1 only. German pronunciation essentials — umlauts (ä, ö, ü), ß and ch sounds.':'Sadece Ders 1\'de. Almanca telaffuz temelleri — umlaut (ä, ö, ü), ß ve ch sesleri.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#fff3e0;color:#e65100;">📖 ${en?'Grammar':'Gramer'}</span>
-        <span>${en?'Sentence structure rules. Formula + explanation + speakable examples. Tap 📖 for color-coded S/V/O analysis.':'Cümle yapısı kuralları. Formül + açıklama + seslenebilir örnekler. 📖 ikonuna bas → renk kodlu S/V/O analizi.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#fce4ec;color:#880e4f;">🗣️ ${en?'Speaking':'Konuşma'}</span>
-        <span>${en?'Real-life tasks: "Ask the price", "Give directions". Practice with 🔊.':'Gerçek hayat görevleri. "Fiyat sor", "Yön tarif et". 🔊 ile pratik yap.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#f3e5f5;color:#4a148c;">👥 ${en?'Dialogue':'Diyalog'}</span>
-        <span>${en?'Realistic dialogues between two speakers (A and B). Tap ▶ Play All to listen in sequence.':'İki konuşmacı (A ve B) arasında gerçekçi diyaloglar. ▶ Tümü ile sırayla dinle.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#e8eaf6;color:#283593;">🎧 ${en?'Listening':'Dinleme'}</span>
-        <span>${en?'Tap listen, hear German, choose the correct option. Easy / Medium / Hard levels.':'Dinle butonuna bas, Almancayı dinle, doğru şıkkı seç. Kolay / Orta / Zor seviyeleri var.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#fff9db;color:#b45309;">🎯 ${en?'Practice':'Alıştırma'}</span>
-        <span>${en?'Interactive word and sentence drills. Mark the lesson complete here after visiting all tabs.':'Etkileşimli kelime ve cümle alıştırmaları. Tüm sekmeleri gezdikten sonra dersi burada tamamla.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#fafafa;color:#0d9488;border:1px solid #b2dfdb;">🔢 ${en?'Numbers':'Sayılar'}</span>
-        <span>${en?'Lesson 3 only. All digits + compound number examples. Tap a card to hear it.':'Sadece Ders 3\'te. Tüm rakamlar + bileşik sayı örnekleri. Her karta dokun → sesini duy.'}</span></div>
-      <div class="help-tab-row"><span class="htag" style="background:#fafafa;color:#0d9488;border:1px solid #b2dfdb;">🧮 ${en?'Calculator':'Hesapla'}</span>
-        <span>${en?'Lesson 3 only. Enter 0-9,999,999 to see German spelling + digit breakdown.':'Sadece Ders 3\'te. 0-9.999.999 arası herhangi bir sayıyı gir, Almanca karşılığı + basamak dökümü gelsin.'}</span></div>
-      <div class="help-section-header" style="margin-top:16px;">🎨 ${en?'Sentence Analysis Color Code':'Cümle Analizi Renk Kodu'}</div>
+      <div class="help-section-header">📑 ${L('Sekme Açıklamaları','Tab Descriptions','คำอธิบายแท็บ','Tab-Beschreibungen')}</div>
+      <div class="help-tab-row"><span class="htag" style="background:#e8f5e9;color:#2e7d32;">📚 ${L('Sözcükler','Words','คำศัพท์','Wörter')}</span>
+        <span>${L('Dersin temel kelimeleri. Her kelimede ipuçları ve 7–12 örnek. ⭐ ile yıldızla.','Core vocabulary. Tips and 7–12 examples per word. Star with ⭐.','คำศัพท์หลัก เคล็ดลับและตัวอย่าง 7–12 ติดดาวด้วย ⭐','Kernwortschatz. Tipps und 7–12 Beispiele. Mit ⭐ markieren.')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#e3f2fd;color:#1565c0;">🎵 ${L('Telaffuz','Pronunciation','การออกเสียง','Aussprache')}</span>
+        <span>${pronLine}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#fff3e0;color:#e65100;">📖 ${L('Gramer','Grammar','ไวยากรณ์','Grammatik')}</span>
+        <span>${L('Cümle yapısı kuralları. 📖 ile renk kodlu S/V/O analizi.','Sentence rules. Tap 📖 for color-coded S/V/O analysis.','กฎโครงสร้างประโยค แตะ 📖 วิเคราะห์ S/V/O','Satzstruktur. 📖 für S/V/O-Analyse.')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#fce4ec;color:#880e4f;">🗣️ ${L('Konuşma','Speaking','การพูด','Sprechen')}</span>
+        <span>${L('Gerçek hayat görevleri. 🔊 ile pratik yap.','Real-life tasks. Practice with 🔊.','งานจริง ฝึกด้วย 🔊','Alltagsaufgaben. Mit 🔊 üben.')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#f3e5f5;color:#4a148c;">👥 ${L('Diyalog','Dialogue','บทสนทนา','Dialog')}</span>
+        <span>${L('İki konuşmacı arasında diyaloglar. ▶ Tümü ile sırayla dinle.','Dialogues between two speakers. ▶ Play All to listen in sequence.','บทสนทนาระหว่างสองคน ▶ เล่นทั้งหมด','Dialoge zwischen zwei Sprechern. ▶ Alle abspielen.')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#e8eaf6;color:#283593;">🎧 ${L('Dinleme','Listening','การฟัง','Hören')}</span>
+        <span>${L('Dinle, '+tg+' duy, doğru şıkkı seç. Kolay / Orta / Zor.','Listen to '+tg+', choose the correct option. Easy / Medium / Hard.','ฟัง'+tg+' เลือกคำตอบ ง่าย / ปานกลาง / ยาก',''+tg+' hören, richtige Option wählen. Leicht / Mittel / Schwer.')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#fff9db;color:#b45309;">🎯 ${L('Alıştırma','Practice','ฝึกฝน','Übung')}</span>
+        <span>${L('Etkileşimli alıştırmalar. Tüm sekmeleri gezdikten sonra dersi tamamla.','Interactive drills. Mark lesson complete after all tabs.','แบบฝึกโต้ตอบ ทำบทเรียนเสร็จหลังครบทุกแท็บ','Interaktive Übungen. Lektion nach allen Tabs abschließen.')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#fafafa;color:#0d9488;border:1px solid #b2dfdb;">🔢 ${L('Sayılar','Numbers','ตัวเลข','Zahlen')}</span>
+        <span>${L('İlgili derste. Rakamlar + bileşik sayılar. Karta dokun → ses.','In the numbers lesson. Digits + compounds. Tap card for audio.','ในบทตัวเลข แตะการ์ดเพื่อฟัง','In der Zahlen-Lektion. Karte antippen für Audio.')}</span></div>
+      <div class="help-tab-row"><span class="htag" style="background:#fafafa;color:#0d9488;border:1px solid #b2dfdb;">🧮 ${L('Hesapla','Calculator','เครื่องคิดเลข','Rechner')}</span>
+        <span>${L('Sayı gir → '+tg+' karşılığı + basamak dökümü.','Enter a number → '+tg+' spelling + breakdown.','ใส่ตัวเลข → คำสะกด'+tg,'Zahl eingeben → '+tg+'-Schreibweise.')}</span></div>
+      <div class="help-section-header" style="margin-top:16px;">🎨 ${L('Cümle Analizi Renk Kodu','Sentence Analysis Color Code','รหัสสีการวิเคราะห์ประโยค','Farbcode Satzanalyse')}</div>
       <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;">
         ${chip('#eff6ff','#3b82f6',s('gram_legend_s'))}
         ${chip('#f0fdf4','#10b981',s('gram_legend_v'))}
         ${chip('#fffbeb','#f59e0b',s('gram_legend_o'))}
         ${chip('#fef2f2','#ef4444',s('gram_legend_q'))}
-        ${chip('#f0fdfa','#0d9488',en?'Modifier':'Belirteç')}
+        ${chip('#f0fdfa','#0d9488',L('Belirteç','Modifier','คำขยาย','Modifikator'))}
         ${chip('#f5f3ff','#7c3aed',s('ui_col_form'))}
       </div>
     </div>
@@ -3605,100 +3632,82 @@ function buildHelpContent(){
     <!-- TEKRAR -->
     <div id="htab-tekrar" class="htab-content">
       <div class="help-card"><div class="help-card-icon">🧠</div><div>
-        <div class="help-card-title">${en?'What is SRS?':'SRS nedir?'}</div>
-        <div class="help-card-body">${en?'Spaced Repetition System — shows difficult cards more often, easy cards less often. Same logic as Anki.':'Aralıklı tekrar algoritması. Zorlandığın kartları daha sık, bildiğin kartları daha seyrek gösterir. Anki ile aynı mantık.'}</div>
+        <div class="help-card-title">${L('SRS nedir?','What is SRS?','SRS คืออะไร?','Was ist SRS?')}</div>
+        <div class="help-card-body">${L('Aralıklı tekrar algoritması. Zor kartları daha sık gösterir. Anki mantığı.','Spaced repetition — difficult cards more often. Same as Anki.','ทบทวนแบบเว้นระยะ การ์ดยากบ่อยขึ้น เหมือน Anki','Spaced Repetition — schwierige Karten öfter. Wie Anki.')}</div>
       </div></div>
-      <div class="help-section-header">⚙️ ${en?'How It Works':'Nasıl Çalışır?'}</div>
-      <div class="help-step"><div class="help-step-num">1</div><div>${en?'Go to Test → Lesson Practice → tap <strong>+ Add</strong> for a lesson. Adds words to SRS.':'Test sekmesine gir → Ders Bazlı Pratik\'ten → <strong>+ Ekle</strong>\'ye bas. Kelimeleri SRS\'e ekler.'}</div></div>
-      <div class="help-step"><div class="help-step-num">2</div><div>${en?'A card appears. Flashcard first (see German, guess meaning). Tap Show Answer.':'Kart gösterilir. Önce flashcard ile Almancayı gör, anlamını tahmin et. Cevabı Gör\'e bas.'}</div></div>
-      <div class="help-step"><div class="help-step-num">3</div><div>${en?'Rate yourself: ❌ Don\'t know → 😰 Hard → 👍 OK → ⚡ Easy':'Kendini değerlendir: ❌ Bilmiyorum → 😰 Zor → 👍 Normal → ⚡ Kolay'}</div></div>
-      <div class="help-step"><div class="help-step-num">4</div><div>${en?'Algorithm calculates the next review date. Easy = long gap, Hard = short gap.':'Algoritma bir sonraki gösterim tarihini hesaplar. Kolay = uzun aralık, Zor = kısa aralık.'}</div></div>
-      <div class="help-step"><div class="help-step-num">5</div><div>${en?'Complete <strong>Today\'s Review</strong> daily. 5–10 minutes is enough.':'Her gün <strong>Bugünün Tekrarı</strong>\'nı bitir. 5–10 dakika yeterli.'}</div></div>
-      <div class="help-section-header" style="margin-top:16px;">🃏 ${en?'Card Types':'Kart Türleri'}</div>
-      <div class="help-row"><div class="help-badge" style="background:#e8f5e9;color:#2e7d32;">${en?'New':'Yeni'}</div>
-        <div class="help-row-sub">${en?'Always flashcard on first show. German to meaning direction.':'İlk gösterimde her zaman flashcard. Almanca → anlam yönünde.'}</div></div>
-      <div class="help-row"><div class="help-badge" style="background:#fff3e0;color:#e65100;">${en?'Review':'Tekrar'}</div>
-        <div class="help-row-sub">${en?'50% flashcard, 50% multiple choice. Direction changes randomly.':'%50 flashcard, %50 çoktan seçmeli. Yön rastgele değişir.'}</div></div>
+      <div class="help-section-header">⚙️ ${L('Nasıl Çalışır?','How It Works','วิธีการทำงาน','So funktioniert es')}</div>
+      <div class="help-step"><div class="help-step-num">1</div><div>${L('Test → Ders Bazlı Pratik → <strong>+ Ekle</strong>. Kelimeleri SRS\'e ekler.','Test → Lesson Practice → <strong>+ Add</strong>. Adds words to SRS.','ทดสอบ → ฝึกตามบท → <strong>+ เพิ่ม</strong>','Test → Lektionsübung → <strong>+ Hinzufügen</strong>.')}</div></div>
+      <div class="help-step"><div class="help-step-num">2</div><div>${L('Flashcard: '+tg+' gör, anlamı tahmin et. Cevabı Gör.','Flashcard: see '+tg+', guess meaning. Show Answer.','แฟลชการ์ด: เห็น'+tg+' ทายความหมาย','Karteikarte: '+tg+' sehen, Bedeutung raten.')}</div></div>
+      <div class="help-step"><div class="help-step-num">3</div><div>${L('❌ Bilmiyorum → 😰 Zor → 👍 Normal → ⚡ Kolay','❌ Don\'t know → 😰 Hard → 👍 OK → ⚡ Easy','❌ ไม่รู้ → 😰 ยาก → 👍 ปกติ → ⚡ ง่าย','❌ Weiß nicht → 😰 Schwer → 👍 OK → ⚡ Leicht')}</div></div>
+      <div class="help-step"><div class="help-step-num">4</div><div>${L('Algoritma sonraki tarihi hesaplar. Kolay = uzun aralık.','Algorithm sets next review. Easy = longer gap.','อัลกอริทึมกำหนดวันทบทวน ง่าย = ช่วงยาว','Algorithmus berechnet nächstes Datum.')}</div></div>
+      <div class="help-step"><div class="help-step-num">5</div><div>${L('Her gün <strong>Bugünün Tekrarı</strong>. 5–10 dakika yeterli.','Complete <strong>Today\'s Review</strong> daily. 5–10 min.','ทำ <strong>ทบทวนวันนี้</strong> ทุกวัน 5–10 นาที','Täglich <strong>Heutige Wiederholung</strong>. 5–10 Min.')}</div></div>
+      <div class="help-section-header" style="margin-top:16px;">🃏 ${L('Kart Türleri','Card Types','ประเภทการ์ด','Kartentypen')}</div>
+      <div class="help-row"><div class="help-badge" style="background:#e8f5e9;color:#2e7d32;">${L('Yeni','New','ใหม่','Neu')}</div>
+        <div class="help-row-sub">${L('İlk gösterimde flashcard. '+tg+' → anlam.','First show: flashcard. '+tg+' → meaning.','ครั้งแรก: แฟลชการ์ด '+tg+' → ความหมาย','Erstes Mal: '+tg+' → Bedeutung.')}</div></div>
+      <div class="help-row"><div class="help-badge" style="background:#fff3e0;color:#e65100;">${L('Tekrar','Review','ทบทวน','Wiederholung')}</div>
+        <div class="help-row-sub">${L('%50 flashcard, %50 çoktan seçmeli.','50% flashcard, 50% multiple choice.','50% แฟลชการ์ด 50% หลายตัวเลือก','50 % Karteikarte, 50 % Multiple Choice.')}</div></div>
       <div class="help-card" style="margin-top:14px;background:#fff8e1;border-color:#ffe082;">
         <div class="help-card-icon">⚡</div>
         <div>
-          <div class="help-card-title" style="color:#f57f17;">${en?'Tip':'İpucu'}</div>
-          <div class="help-card-body">${en?'If you finish today\'s review every morning, you\'ll permanently memorize 9 lessons\' worth of vocabulary within 3 weeks.':'Bugünün tekrarını her sabah bitirirsen 3 hafta içinde 9 dersin kelimelerini kalıcı ezberlersin.'}</div>
+          <div class="help-card-title" style="color:#f57f17;">${L('İpucu','Tip','เคล็ดลับ','Tipp')}</div>
+          <div class="help-card-body">${L('Her sabah tekrarı bitirirsen 3 haftada 9 dersin kelimelerini ezberlersin.','Finish daily review each morning — memorize 9 lessons in 3 weeks.','ทบทวนทุกเช้า จำ 9 บทใน 3 สัปดาห์','Tägliche Wiederholung — 9 Lektionen in 3 Wochen.')}</div>
         </div>
       </div>
     </div>
 
     <!-- İPUÇLARI -->
     <div id="htab-ipuclari" class="htab-content">
-      <div class="help-section-header">🎯 ${en?'Effective Learning':'Verimli Öğrenme'}</div>
+      <div class="help-section-header">🎯 ${L('Verimli Öğrenme','Effective Learning','การเรียนรู้อย่างมีประสิทธิภาพ','Effektiv lernen')}</div>
       <div class="help-tip"><div class="help-tip-icon">🔊</div>
-        <div><strong>${en?'Always study with audio.':'Her zaman sesli çalış.'}</strong> ${en?'German pronunciation needs clear vowels and umlauts; reading alone is not enough. Tap every card to hear it.':'Almancada ünlüler ve umlautlar önemlidir; sadece okumak yetmez. Her kartta sesi dinle.'}</div></div>
+        <div><strong>${L('Her zaman sesli çalış.','Always study with audio.','เรียนพร้อมเสียงเสมอ','Immer mit Audio lernen.')}</strong> ${L('Sadece okumak yetmez. Her kartta sesi dinle.','Reading alone is not enough. Tap every card to hear it.','อ่านอย่างเดียวไม่พอ แตะทุกการ์ดเพื่อฟัง','Nur lesen reicht nicht. Jede Karte anhören.')}</div></div>
       <div class="help-tip"><div class="help-tip-icon">🐢</div>
-        <div><strong>${en?'Use slow mode.':'Yavaş modu kullan.'}</strong> ${en?'When learning a new word, listen at 🐢 first, then at normal 🔊 speed.':'Yeni bir kelimeyi öğrenirken önce 🐢 ile yavaş dinle, sonra 🔊 ile normal hızda.'}</div></div>
+        <div><strong>${L('Yavaş modu kullan.','Use slow mode.','ใช้โหมดช้า','Langsam-Modus nutzen.')}</strong> ${L('Önce 🐢 sonra 🔊 ile dinle.','Listen at 🐢 first, then 🔊.','ฟัง 🐢 ก่อน แล้ว 🔊','Zuerst 🐢, dann 🔊.')}</div></div>
       <div class="help-tip"><div class="help-tip-icon">⭐</div>
-        <div><strong>${en?'Star selectively.':'Yıldızla seçici ol.'}</strong> ${en?'Star the sentences you will actually use. Quickly review them from the List tab.':'Gercekten kullanacagin cumleleri yildizla. Liste sekmesinden hizli tekrar yap.'}</div></div>
+        <div><strong>${L('Yıldızla seçici ol.','Star selectively.','ติดดาวอย่างเลือกสรร','Gezielt markieren.')}</strong> ${L('Kullanacağın cümleleri yıldızla. Liste sekmesinden tekrar et.','Star sentences you will use. Review from List tab.','ติดดาวประโยคที่ใช้จริง ทบทวนจากแท็บรายการ','Nützliche Sätze markieren. In der Liste wiederholen.')}</div></div>
       <div class="help-tip"><div class="help-tip-icon">👥</div>
-        <div><strong>${en?'Listen to dialogues.':'Diyalogları dinle.'}</strong> ${en?'Use ▶ Play All to listen from start to finish — for real conversation rhythm.':'▶ Tümü butonuyla diyaloğu baştan sona dinle — gerçek konuşma ritmi için.'}</div></div>
+        <div><strong>${L('Diyalogları dinle.','Listen to dialogues.','ฟังบทสนทนา','Dialoge hören.')}</strong> ${L('▶ Tümü ile baştan sona dinle.','▶ Play All from start to finish.','▶ เล่นทั้งหมดตั้งแต่ต้นจนจบ','▶ Alle von Anfang bis Ende.')}</div></div>
       <div class="help-tip"><div class="help-tip-icon">📖</div>
-        <div><strong>${en?'Use sentence analysis.':'Cümle analizini kullan.'}</strong> ${en?'Tap the analysis button on any example; seeing S/V/O structure internalizes German grammar.':'Her örnek cümlede analiz butonuna bas; S/V/O yapısını görünce Almanca grameri oturur.'}</div></div>
+        <div><strong>${L('Cümle analizini kullan.','Use sentence analysis.','ใช้การวิเคราะห์ประโยค','Satzanalyse nutzen.')}</strong> ${L('📖 ile S/V/O yapısını gör; gramer oturur.','📖 shows S/V/O structure; grammar sticks.','📖 แสดงโครง S/V/O ไวยากรณ์ซึมซับ','📖 zeigt S/V/O-Struktur.')}</div></div>
       <div class="help-tip"><div class="help-tip-icon">🔄</div>
-        <div><strong>${en?'Don\'t skip SRS.':'SRS\'i ihmal etme.'}</strong> ${en?'Spend a few minutes every day until today\'s review hits 0.':'Bugünün tekrarı 0 karta düşene kadar her gün birkaç dakika ayır.'}</div></div>
-      <div class="help-tip"><div class="help-tip-icon">EN</div>
-        <div><strong>${en?'Polite phrases matter.':'Kibar ifadeler onemli.'}</strong> ${en?'Bitte, danke and Entschuldigung make everyday German sound natural. Use them often.':'Bitte, danke ve Entschuldigung gibi ifadeler Almancayı doğal ve nazik yapar. Sık kullan.'}</div></div>
-      <div class="help-section-header" style="margin-top:16px;">⚡ ${en?'Shortcuts':'Kısayollar'}</div>
+        <div><strong>${L('SRS\'i ihmal etme.','Don\'t skip SRS.','อย่าข้าม SRS','SRS nicht auslassen.')}</strong> ${L('Bugünün tekrarı 0 olana kadar her gün birkaç dakika.','A few minutes daily until today\'s review is 0.','วันละไม่กี่นาทีจนทบทวนวันนี้เหลือ 0','Täglich ein paar Minuten bis 0 Karten übrig.')}</div></div>
+      <div class="help-tip"><div class="help-tip-icon">${flag}</div>
+        <div><strong>${L('Kibar ifadeler önemli.','Polite phrases matter.','สำนวนสุภาพสำคัญ','Höfliche Ausdrücke zählen.')}</strong> ${politeLine}</div></div>
+      <div class="help-section-header" style="margin-top:16px;">⚡ ${L('Kısayollar','Shortcuts','ทางลัด','Kurzbefehle')}</div>
       <div class="help-row"><div class="help-badge" style="background:#f5f5f5;color:#333;border:1px solid #ddd;">Tap</div>
-        <div class="help-row-sub">${en?'Tap a card/word → plays audio':'Kart / kelimeye dokun → ses çalar'}</div></div>
+        <div class="help-row-sub">${L('Kart / kelimeye dokun → ses','Tap card/word → audio','แตะการ์ด/คำ → เสียง','Karte/Wort antippen → Audio')}</div></div>
       <div class="help-row"><div class="help-badge" style="background:#f5f5f5;color:#333;border:1px solid #ddd;">⭐</div>
-        <div class="help-row-sub">${en?'Star button → add to / remove from List':'Yıldız butonu → Liste\'ye ekle / çıkar'}</div></div>
+        <div class="help-row-sub">${L('Yıldız → Liste\'ye ekle / çıkar','Star → add/remove from List','ดาว → เพิ่ม/ลบรายการ','Stern → Liste hinzufügen/entfernen')}</div></div>
       <div class="help-row"><div class="help-badge" style="background:#f5f5f5;color:#333;border:1px solid #ddd;">📖</div>
-        <div class="help-row-sub">${en?'Analysis icon → S/V/O breakdown':'Analiz ikonu → S/V/O breakdown'}</div></div>
+        <div class="help-row-sub">${L('Analiz → S/V/O breakdown','Analysis → S/V/O breakdown','วิเคราะห์ → แยก S/V/O','Analyse → S/V/O')}</div></div>
       <div class="help-row"><div class="help-badge" style="background:#f5f5f5;color:#333;border:1px solid #ddd;">▶</div>
-        <div class="help-row-sub">${en?'Play dialogue → listen to all lines in order':'Diyalog oynat → tüm satırları sırayla dinle'}</div></div>
+        <div class="help-row-sub">${L('Diyalog oynat → sırayla dinle','Play dialogue → all lines in order','เล่นบทสนทนา → ฟังตามลำดับ','Dialog abspielen → alle Zeilen')}</div></div>
     </div>
 
     <!-- HAKKINDA -->
     <div id="htab-hakkinda" class="htab-content">
       <div class="help-card" style="background:linear-gradient(135deg,#e0f2f1,#f0fdfa);border-color:#b2dfdb;">
-        <div style="font-size:32px">EN</div>
+        <div style="font-size:32px">${flag}</div>
         <div>
-          <div class="help-card-title" style="font-size:16px;">${en?KDO_CFG.nameEn:KDO_CFG.title}</div>
-          <div class="help-card-body">${en?'A German learning app focused on real conversation for Turkish speakers.':'Türkçe konuşanlar için gerçek konuşma diline odaklı Almanca öğrenme uygulaması.'}</div>
+          <div class="help-card-title" style="font-size:16px;">${subName}</div>
+          <div class="help-card-body">${L('Gerçek konuşma diline odaklı '+tg+' öğrenme uygulaması.','A '+tg+' learning app focused on real conversation.','แอปเรียน'+tg+'ที่เน้นการสนทนาจริง',''+tg+'-Lernapp mit Fokus auf echte Gespräche.')}</div>
         </div>
       </div>
-      <div class="help-section-header">📋 ${en?'App Info':'Uygulama Bilgisi'}</div>
-      <div class="help-info-row"><span>${en?'Version':'Versiyon'}</span><strong id="hakkinda-version">${APP_VERSION}</strong></div>
-      <div class="help-info-row"><span>${en?'Total Lessons':'Toplam Ders'}</span><strong>20 + 29 ${en?'BONUS sets':'BONUS set'}</strong></div>
-      <div class="help-info-row"><span>${en?'Per Lesson':'Ders Başına'}</span><strong>~10 ${en?'words, 8 grammar, 4 dialogues':'kelime, 8 gramer, 4 diyalog'}</strong></div>
-      <div class="help-info-row"><span>${en?'Audio':'Ses Motoru'}</span><strong>Web Speech API + Google TTS</strong></div>
-      <div class="help-info-row"><span>${en?'Data':'Veri'}</span><strong>localStorage (${en?'works offline':'internet gerekmez'})</strong></div>
-      <div class="help-info-row"><span>${en?'Developer':'Geliştirici'}</span><strong>Ali Dinçer</strong></div>
-      <div class="help-section-header" style="margin-top:16px;">📦 ${en?'Version History':'Versiyon Geçmişi'}</div>
+      <div class="help-section-header">📋 ${L('Uygulama Bilgisi','App Info','ข้อมูลแอป','App-Info')}</div>
+      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน','Version')}</span><strong id="hakkinda-version">${APP_VERSION}</strong></div>
+      <div class="help-info-row"><span>${L('Toplam Ders','Total Lessons','บทเรียนทั้งหมด','Lektionen gesamt')}</span><strong>${sc} + ${bon} BONUS</strong></div>
+      <div class="help-info-row"><span>${L('Ders Başına','Per Lesson','ต่อบทเรียน','Pro Lektion')}</span><strong>~10 ${L('kelime, gramer, diyalog','words, grammar, dialogues','คำ ไวยากรณ์ บทสนทนา','Wörter, Grammatik, Dialoge')}</strong></div>
+      <div class="help-info-row"><span>${L('Ses Motoru','Audio','เสียง','Audio')}</span><strong>Web Speech API + Google TTS</strong></div>
+      <div class="help-info-row"><span>${L('Veri','Data','ข้อมูล','Daten')}</span><strong>localStorage (${L('internet gerekmez','works offline','ใช้งานออฟไลน์','offline nutzbar')})</strong></div>
+      <div class="help-info-row"><span>${L('Geliştirici','Developer','นักพัฒนา','Entwickler')}</span><strong>Ali Dinçer</strong></div>
+      <div class="help-section-header" style="margin-top:16px;">📦 ${L('Versiyon Geçmişi','Version History','ประวัติเวอร์ชัน','Versionsverlauf')}</div>
       <div class="help-changelog">
         <div class="changelog-item"><div class="changelog-ver">${APP_VERSION}</div>
-          <div class="changelog-desc">${en?'Lesson 2 redesigned: 6 tenses step-by-step (12 words, 2 dialogues, balanced sections)':'Ders 2 yeniden tasarlandı: 6 fiil zamanı adım adım (12 kelime, 2 diyalog, dengeli yapı)'}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v1.5.5</div>
-          <div class="changelog-desc">${en?'Dialogue grammar: no hint text, richer word-by-word breakdown with Turkish notes':'Diyalog grameri: ipucu metni kaldırıldı, kelime kelime detaylı Türkçe açıklamalar'}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v1.5.1</div>
-          <div class="changelog-desc">${en?'Removed redundant Quiz tab from lessons; practice tab is the final step':'Derslerden gereksiz Quiz sekmesi kaldırıldı; son adım Alıştırma'}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v1.5</div>
-          <div class="changelog-desc">${en?'Slower audio, pronunciation removed, exercise word slots, clickable dialogues, Lesson 1 simplified':'Yavaş ses, telaffuz kaldırıldı, alıştırma kutuları, tıklanabilir diyaloglar, Ders 1 sadeleştirildi'}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v1.4.1</div>
-          <div class="changelog-desc">${en?'Lesson list simplified: tap card to open':'Ders listesi sadeleştirildi'}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v1.4</div>
-          <div class="changelog-desc">${en?'New Lesson 2: Articles & sein (der/die/das). Numbers in Lesson 3 with calculator.':'Yeni Ders 2: Artikel & sein (der/die/das). Sayılar Ders 3\'te — hesap makinesi ile.'}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v1.3</div>
-          <div class="changelog-desc">${en?'Removed legacy v3 version labels; storage keys renamed to de1_*; help changelog cleaned up':'Eski v3 sürüm etiketleri kaldırıldı; depolama anahtarları de1_* olarak güncellendi; yardım geçmişi temizlendi'}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v1.2</div>
-          <div class="changelog-desc">${en?'Fixed lessons 2–48 when words had no examples array; quiz feedback for auto-generated questions':'Ders 2–48 çökme hatası giderildi (examples dizisi); otomatik quiz geri bildirimi düzeltildi'}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v1.1</div>
-          <div class="changelog-desc">${en?'Lesson engine adapted for German data: pronunciation, grammar tables, dialogues, listening':'Ders motoru Almanca veri yapısına uyarlandı: telaffuz, gramer, diyalog, dinleme'}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v1.0</div>
-          <div class="changelog-desc">${en?'Initial release: 19 scenario lessons, 29 bonus vocabulary sets, SRS, tests, bilingual UI':'İlk sürüm: 19 senaryo dersi, 29 bonus kelime seti, SRS, testler, çift dil arayüz'}</div></div>
+          <div class="changelog-desc">${L('Çok dilli yardım, hedef dile göre içerik, arayüz iyileştirmeleri.','Multilingual help, target-aware content, UI improvements.','คู่มือหลายภาษา เนื้อหาตามเป้าหมาย ปรับปรุง UI','Mehrsprachige Hilfe, zielsprachspezifische Inhalte.')}</div></div>
       </div>
       <div class="help-card" style="margin-top:14px;background:#fff8e1;border-color:#ffe082;text-align:center;">
         <div style="width:100%;text-align:center;">
           <div style="font-size:24px;margin-bottom:6px;">🙏</div>
-          <div style="font-size:13px;color:#555;line-height:1.6;">${en?'Built to help Turkish speakers practise practical German every day.<br><strong style="color:#0d9488;">Keep speaking.</strong>':'Türkçe konuşanların her gün pratik Almanca çalışması için yapıldı.<br><strong style="color:#0d9488;">Konuşmaya devam.</strong>'}</div>
+          <div style="font-size:13px;color:#555;line-height:1.6;">${L('Her gün pratik '+tg+' çalışman için yapıldı.<br><strong style="color:#0d9488;">Konuşmaya devam.</strong>','Built for daily '+tg+' practice.<br><strong style="color:#0d9488;">Keep speaking.</strong>','สร้างเพื่อฝึก'+tg+'ทุกวัน<br><strong style="color:#0d9488;">พูดต่อไป</strong>','Für tägliches '+tg+'-Lernen.<br><strong style="color:#0d9488;">Weiter sprechen.</strong>')}</div>
         </div>
       </div>
     </div>
@@ -4558,6 +4567,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.8"></script>
+<script src="shared/kdo-analytics.js?v=3.0.12"></script>
 </body>
 </html>

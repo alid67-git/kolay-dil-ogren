@@ -41,7 +41,88 @@ const SEED_TH = {
   'Sabah selamlaması.': 'คำทักทายตอนเช้า',
 };
 
+const SEED_ES = {
+  hello: 'hola', 'hello!': '¡hola!', goodbye: 'adiós', thanks: 'gracias', please: 'por favor',
+  yes: 'sí', no: 'no', 'good morning': 'buenos días', 'good morning!': '¡buenos días!',
+  'good evening': 'buenas tardes', 'how are you?': '¿cómo estás?', 'I am fine': 'estoy bien',
+  'I am fine, thanks': 'estoy bien, gracias', 'what is your name?': '¿cómo te llamas?',
+  'my name is Ali': 'me llamo Ali', 'my name is Anna': 'me llamo Anna', 'nice to meet you': 'encantado de conocerte',
+  today: 'hoy', tomorrow: 'mañana', yesterday: 'ayer', friend: 'amigo', city: 'ciudad',
+  price: 'precio', room: 'habitación', house: 'casa', hotel: 'hotel', hospital: 'hospital',
+  doctor: 'médico', school: 'escuela', university: 'universidad', student: 'estudiante',
+  teacher: 'profesor', work: 'trabajo', office: 'oficina', restaurant: 'restaurante', market: 'mercado',
+  street: 'calle', water: 'agua', money: 'dinero', menu: 'menú', train: 'tren', bus: 'autobús',
+  metro: 'metro', airport: 'aeropuerto', country: 'país', language: 'idioma', internet: 'internet',
+  email: 'correo', message: 'mensaje', party: 'fiesta', cinema: 'cine', music: 'música',
+  hobby: 'afición', weather: 'tiempo', rain: 'lluvia', happy: 'feliz', sad: 'triste',
+  tired: 'cansado', beautiful: 'bonito', cheap: 'barato', expensive: 'caro', important: 'importante',
+  color: 'color', card: 'tarjeta', key: 'llave', table: 'mesa', apartment: 'apartamento',
+  pharmacy: 'farmacia', travel: 'viaje', education: 'educación', history: 'historia', opinion: 'opinión',
+  'where?': '¿dónde?', 'what time is it?': '¿qué hora es?', 'see you': 'hasta luego',
+  question: 'pregunta', answer: 'respuesta', 'to read': 'leer', 'to write': 'escribir',
+  'to call': 'llamar', 'to help': 'ayudar', 'to learn': 'aprender', 'to buy': 'comprar',
+  park: 'parque', bank: 'banco', shop: 'tienda', store: 'tienda', food: 'comida',
+  zero: 'cero', one: 'uno', two: 'dos', three: 'tres', four: 'cuatro', five: 'cinco',
+  six: 'seis', seven: 'siete', eight: 'ocho', nine: 'nueve', ten: 'diez',
+  eleven: 'once', twelve: 'doce', thirteen: 'trece', fourteen: 'catorce', fifteen: 'quince',
+  sixteen: 'dieciséis', seventeen: 'diecisiete', eighteen: 'dieciocho', nineteen: 'diecinueve',
+  twenty: 'veinte', thirty: 'treinta', forty: 'cuarenta', fifty: 'cincuenta',
+  sixty: 'sesenta', seventy: 'setenta', eighty: 'ochenta', ninety: 'noventa',
+  hundred: 'cien', thousand: 'mil', 'twenty-one': 'veintiuno', 'thirty-two': 'treinta y dos',
+  'one hundred five': 'ciento cinco', 'three hundred fifty': 'trescientos cincuenta',
+  'ten thousand': 'diez mil',
+  drink: 'bebida', coffee: 'café', tea: 'té', bread: 'pan', milk: 'leche',
+  morning: 'mañana', evening: 'tarde', night: 'noche', week: 'semana', month: 'mes',
+  year: 'año', time: 'hora', name: 'nombre', age: 'edad', phone: 'teléfono',
+  address: 'dirección', door: 'puerta', window: 'ventana', car: 'coche', taxi: 'taxi',
+  ticket: 'billete', passport: 'pasaporte', map: 'mapa', help: 'ayuda', problem: 'problema',
+  open: 'abierto', closed: 'cerrado', big: 'grande', small: 'pequeño', new: 'nuevo', old: 'viejo',
+  good: 'bueno', bad: 'malo', hot: 'caliente', cold: 'frío', fast: 'rápido', slow: 'lento',
+  near: 'cerca', far: 'lejos', left: 'izquierda', right: 'derecha', straight: 'recto',
+  here: 'aquí', there: 'allí', now: 'ahora', later: 'después', always: 'siempre', never: 'nunca',
+  'good afternoon': 'buenas tardes', 'good night': 'buenas noches', sorry: 'lo siento',
+  'excuse me': 'disculpe', welcome: 'bienvenido', bathroom: 'baño', kitchen: 'cocina',
+  garden: 'jardín', sea: 'mar', beach: 'playa', mountain: 'montaña', island: 'isla',
+  north: 'norte', south: 'sur', east: 'este', west: 'oeste', station: 'estación',
+  bridge: 'puente', church: 'iglesia', museum: 'museo', library: 'biblioteca',
+  police: 'policía', fire: 'fuego', ambulance: 'ambulancia', medicine: 'medicina',
+  pain: 'dolor', sick: 'enfermo', healthy: 'sano', family: 'familia', mother: 'madre',
+  father: 'padre', brother: 'hermano', sister: 'hermana', child: 'niño', man: 'hombre', woman: 'mujer',
+  boy: 'niño', girl: 'niña', husband: 'esposo', wife: 'esposa', neighbour: 'vecino',
+  suffix: 'sufijo', vowel: 'vocal', harmony: 'armonía', location: 'ubicación', plural: 'plural',
+  'at home': 'en casa', 'at school': 'en la escuela', 'at work': 'en el trabajo',
+  'in the park': 'en el parque', 'in the hotel': 'en el hotel', 'in the office': 'en la oficina',
+};
+
+const SEED_FR = {
+  house: 'maison', school: 'école', office: 'bureau', park: 'parc', hotel: 'hôtel',
+  hello: 'bonjour', thanks: 'merci', please: 's\'il vous plaît', yes: 'oui', no: 'non',
+  restaurant: 'restaurant', street: 'rue', water: 'eau', money: 'argent', friend: 'ami',
+  city: 'ville', price: 'prix', room: 'chambre', work: 'travail', doctor: 'médecin',
+};
+
+const SEED_IT = {
+  house: 'casa', school: 'scuola', office: 'ufficio', park: 'parco', hotel: 'hotel',
+  hello: 'ciao', thanks: 'grazie', please: 'per favore', yes: 'sì', no: 'no',
+};
+
+const SEED_RU = {
+  house: 'дом', school: 'школа', office: 'офис', park: 'парк', hotel: 'отель',
+  hello: 'привет', thanks: 'спасибо', please: 'пожалуйста', yes: 'да', no: 'нет',
+};
+
+const SEED_AR = {
+  house: 'منزل', school: 'مدرسة', office: 'مكتب', park: 'حديقة', hotel: 'فندق',
+  hello: 'مرحبا', thanks: 'شكرا', please: 'من فضلك', yes: 'نعم', no: 'لا',
+};
+
+const SEED_ZH = {
+  house: '房子', school: '学校', office: '办公室', park: '公园', hotel: '酒店',
+  hello: '你好', thanks: '谢谢', please: '请', yes: '是', no: '不',
+};
+
 const SEED_DE = {
+  hello: 'hallo', house: 'Haus', school: 'Schule', office: 'Büro', park: 'Park', hotel: 'Hotel',
   Merhaba: 'Hallo', 'Merhaba!': 'Hallo!', Günaydın: 'Guten Morgen', 'Günaydın!': 'Guten Morgen!',
   'İyi akşamlar': 'Guten Abend', 'Hoşça kal': 'Auf Wiedersehen', Teşekkürler: 'Danke',
   Lütfen: 'Bitte', Evet: 'Ja', Hayır: 'Nein', 'Nasılsın?': 'Wie geht es dir?',
@@ -66,9 +147,20 @@ function scanLessonStrings() {
 
 const th = { ...SEED_TH };
 const de = { ...SEED_DE };
+const es = { ...SEED_ES };
+const fr = { ...SEED_FR };
+const it = { ...SEED_IT };
+const ru = { ...SEED_RU };
+const ar = { ...SEED_AR };
+const zh = { ...SEED_ZH };
+const packs = { th, de, es, fr, it, ru, ar, zh };
 for (const s of scanLessonStrings()) {
   const low = s.toLowerCase();
-  if (!th[s] && SEED_TH[low]) th[s] = SEED_TH[low];
+  for (const [code, pack] of Object.entries(packs)) {
+    const seed = { th: SEED_TH, de: SEED_DE, es: SEED_ES, fr: SEED_FR, it: SEED_IT, ru: SEED_RU, ar: SEED_AR, zh: SEED_ZH }[code];
+    if (!pack[s] && seed && seed[low]) pack[s] = seed[low];
+    if (!pack[s] && seed && seed[s]) pack[s] = seed[s];
+  }
 }
 
 const out = `/** Otomatik: tools/build-gloss.mjs */
@@ -76,10 +168,16 @@ const out = `/** Otomatik: tools/build-gloss.mjs */
   'use strict';
   window.KDO_GLOSS = {
     th: ${JSON.stringify(th, null, 2)},
-    de: ${JSON.stringify(de, null, 2)}
+    de: ${JSON.stringify(de, null, 2)},
+    es: ${JSON.stringify(es, null, 2)},
+    fr: ${JSON.stringify(fr, null, 2)},
+    it: ${JSON.stringify(it, null, 2)},
+    ru: ${JSON.stringify(ru, null, 2)},
+    ar: ${JSON.stringify(ar, null, 2)},
+    zh: ${JSON.stringify(zh, null, 2)}
   };
 })();
 `;
 
 fs.writeFileSync(path.join(root, 'shared', 'kdo-gloss.js'), out);
-console.log('shared/kdo-gloss.js — th:', Object.keys(th).length, 'de:', Object.keys(de).length);
+console.log('shared/kdo-gloss.js — th:', Object.keys(th).length, 'es:', Object.keys(es).length, 'de:', Object.keys(de).length);

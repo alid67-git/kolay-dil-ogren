@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -16,9 +16,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .thai{font-family:'Sarabun',sans-serif;}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;}
-.brand-wrap{display:flex;flex-direction:column;line-height:1.2;}
-.brand{font-size:17px;font-weight:700;white-space:nowrap;}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14px max(18px,env(safe-area-inset-right)) 14px max(12px,env(safe-area-inset-left));display:flex;align-items:center;gap:8px;border-bottom:3px solid #0f766e;}
+.brand-wrap{display:flex;flex-direction:column;line-height:1.2;min-width:0;flex:0 1 auto;}
+.brand{font-size:17px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:42vw;}
 .brand-dev{font-size:10px;font-weight:600;color:#fef9c3;letter-spacing:.04em;margin-top:6px;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.18);} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
 /* YARDIM MODALİ */
 .htab{background:none;border:none;padding:9px 13px;font-size:12px;font-weight:700;color:#888;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:.15s;}
@@ -48,12 +48,13 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d948
 .changelog-item{background:#f8f9fa;border-left:3px solid #0d9488;padding:8px 12px;border-radius:0 8px 8px 0;}
 .changelog-ver{font-size:12px;font-weight:700;color:#0d9488;margin-bottom:3px;}
 .changelog-desc{font-size:11px;color:#666;line-height:1.5;}
-.pbar-wrap{flex:1;display:flex;flex-direction:column;gap:3px;margin:0 10px;}
+.pbar-wrap{flex:1;display:flex;flex-direction:column;gap:3px;margin:0 6px;min-width:0;}
 .pbar{height:5px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;}
 .pbar-label{font-size:9px;color:rgba(255,255,255,.55);text-align:right;letter-spacing:.03em;}
 
 .pfill{height:100%;width:5%;background:white;border-radius:99px;transition:.3s;}
-.hbtn{background:rgba(255,255,255,.2);color:white;border:none;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:15px;}
+.hbtn{background:rgba(255,255,255,.2);color:white;border:none;padding:6px 10px;border-radius:6px;cursor:pointer;font-size:15px;flex-shrink:0;line-height:1;}
+.header-actions{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0;padding-right:6px;}
 /* TEST MODÜLİ */
 .test-cat-btn{padding:6px 12px;background:white;border:1.5px solid #e0e0e0;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;color:#666;transition:.15s;}
 .test-cat-btn.active{background:#e0f2f1;border-color:#0d9488;color:#0d9488;}
@@ -92,7 +93,7 @@ main{padding:14px;}
 .lbadge-done{background:#0d9488;color:white;}
 @keyframes popIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
 .lesson-card.done{border-left-color:#0d9488;background:#f0fdf9;}
-.ltimer-wrap{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.75);margin-left:auto;}
+.ltimer-wrap{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.75);}
 .ltimer-icon{font-size:13px;}
 #lesson-live-timer{font-family:'Courier New',monospace;font-weight:700;font-size:12px;color:white;}
 .larrow-wrap{width:34px;height:34px;border-radius:50%;background:#f0fdf9;border:1.5px solid #b2dfdb;display:flex;align-items:center;justify-content:center;color:#0d9488;font-size:18px;font-weight:700;flex-shrink:0;transition:.15s;}
@@ -614,15 +615,15 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.8"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.8"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.8"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.8"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.8"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.8"></script>
-<script src="shared/kdo-translate.js?v=3.0.8"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.8"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.8"></script>
+<script src="shared/kdo-version.js?v=3.0.12"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.12"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.12"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.12"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.12"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.12"></script>
+<script src="shared/kdo-translate.js?v=3.0.12"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.12"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.12"></script>
 <script>
 const APP_VERSION = window.KDO_APP_VERSION || window.KDO_PLATFORM_VERSION;
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
@@ -1276,6 +1277,7 @@ function setLang(lang){
     <div class="pbar"><div class="pfill" id="pbar"></div></div>
     <div class="pbar-label" id="pbar-label">0 / 19</div>
   </div>
+  <div class="header-actions">
   <div class="ltimer-wrap" id="lesson-timer-wrap" style="display:none">
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
@@ -1283,6 +1285,7 @@ function setLang(lang){
   <span class="vbadge" id="app-version"></span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
+  </div>
 </header>
 
 <nav>
@@ -3516,7 +3519,7 @@ function buildHelpContent(){
         </div>
       </div>
       <div class="help-section-header">📋 ${L('Uygulama Bilgisi','App Info','ข้อมูลแอป')}</div>
-      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.8</strong></div>
+      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.12</strong></div>
       <div class="help-info-row"><span>${L('Toplam Ders','Total Lessons','บทเรียนทั้งหมด')}</span><strong>19 + 29 ${L('BONUS set','BONUS sets','ชุด BONUS')}</strong></div>
       <div class="help-info-row"><span>${L('Ders Başına','Per Lesson','ต่อบทเรียน')}</span><strong>~10 ${L('kelime, 8 gramer, 4 diyalog','words, 8 grammar, 4 dialogues','~10 คำ 8 ไวยากรณ์ 4 บทสนทนา')}</strong></div>
       <div class="help-info-row"><span>${L('Ses Motoru','Audio','เสียง')}</span><strong>Web Speech API + Google TTS</strong></div>
@@ -4373,6 +4376,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.8"></script>
+<script src="shared/kdo-analytics.js?v=3.0.12"></script>
 </body>
 </html>

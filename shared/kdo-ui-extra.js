@@ -338,10 +338,78 @@
 
   var langs = ['tr', 'en', 'fr', 'de', 'es', 'it', 'ru', 'ar', 'zh', 'th'];
   if (window.KDO_UI) {
-    langs.forEach(function (loc) {
-      if (!window.KDO_UI[loc]) window.KDO_UI[loc] = {};
-      Object.assign(window.KDO_UI[loc], EXTRA[loc] || EXTRA.en);
-    });
+  langs.forEach(function (loc) {
+    if (!window.KDO_UI[loc]) window.KDO_UI[loc] = {};
+    Object.assign(window.KDO_UI[loc], EXTRA[loc] || EXTRA.en);
+  });
+
+  var PRON = {
+    es: {
+      pron_row_1sg: '1.ª sing.', pron_row_2sg_inf: '2.ª sing. (informal)', pron_row_2sg_form: '2.ª sing. (formal)',
+      pron_row_3sg: '3.ª sing.', pron_row_1pl: '1.ª plural', pron_row_3pl: '3.ª plural',
+      pron_note_inf: 'tú informal', pron_note_formal: 'S mayúscula = formal',
+      tk_pron_ben: 'yo', tk_pron_sen: 'tú', tk_pron_siz: 'usted', tk_pron_o: 'él/ella',
+      tk_pron_biz: 'nosotros', tk_pron_onlar: 'ellos/ellas',
+      help_tab_lessons: '📚 Lecciones', help_tab_review: '🔄 Repaso', help_tab_tips: '💡 Consejos',
+      help_modal_title: '📖 ¿Cómo usar?', help_modal_sub: 'Aprendizaje fácil · Guía',
+      lesson_count_unit: 'lecciones', time_sec_abbr: 's', time_min_abbr: 'min'
+    },
+    fr: {
+      pron_row_1sg: '1re sing.', pron_row_2sg_inf: '2e sing. (informel)', pron_row_2sg_form: '2e sing. (formel)',
+      pron_row_3sg: '3e sing.', pron_row_1pl: '1re plur.', pron_row_3pl: '3e plur.',
+      pron_note_inf: 'tu informel', pron_note_formal: 'S majuscule = formel',
+      tk_pron_ben: 'je', tk_pron_sen: 'tu', tk_pron_siz: 'vous', tk_pron_o: 'il/elle',
+      tk_pron_biz: 'nous', tk_pron_onlar: 'ils/elles',
+      help_tab_lessons: '📚 Leçons', help_tab_review: '🔄 Révision', help_tab_tips: '💡 Conseils',
+      help_modal_title: '📖 Comment utiliser ?', help_modal_sub: 'Apprentissage facile · Guide',
+      lesson_count_unit: 'leçons', time_sec_abbr: 's', time_min_abbr: 'min'
+    },
+    it: {
+      pron_row_1sg: '1ª sing.', pron_row_2sg_inf: '2ª sing. (informale)', pron_row_2sg_form: '2ª sing. (formale)',
+      pron_row_3sg: '3ª sing.', pron_row_1pl: '1ª plur.', pron_row_3pl: '3ª plur.',
+      pron_note_inf: 'tu informale', pron_note_formal: 'S maiuscola = formale',
+      tk_pron_ben: 'io', tk_pron_sen: 'tu', tk_pron_siz: 'Lei', tk_pron_o: 'lui/lei',
+      tk_pron_biz: 'noi', tk_pron_onlar: 'loro',
+      help_tab_lessons: '📚 Lezioni', help_tab_review: '🔄 Ripasso', help_tab_tips: '💡 Suggerimenti',
+      help_modal_title: '📖 Come si usa?', help_modal_sub: 'Apprendimento facile · Guida',
+      lesson_count_unit: 'lezioni', time_sec_abbr: 's', time_min_abbr: 'min'
+    },
+    ru: {
+      pron_row_1sg: '1-е л. ед.', pron_row_2sg_inf: '2-е л. ед. (неформ.)', pron_row_2sg_form: '2-е л. ед. (форм.)',
+      pron_row_3sg: '3-е л. ед.', pron_row_1pl: '1-е л. мн.', pron_row_3pl: '3-е л. мн.',
+      pron_note_inf: 'неформальное ты', pron_note_formal: 'заглавная S = формально',
+      tk_pron_ben: 'я', tk_pron_sen: 'ты', tk_pron_siz: 'Вы', tk_pron_o: 'он/она',
+      tk_pron_biz: 'мы', tk_pron_onlar: 'они',
+      help_tab_lessons: '📚 Уроки', help_tab_review: '🔄 Повторение', help_tab_tips: '💡 Советы',
+      help_modal_title: '📖 Как пользоваться?', help_modal_sub: 'Лёгкое обучение · Справка',
+      lesson_count_unit: 'уроков', time_sec_abbr: 'с', time_min_abbr: 'мин'
+    },
+    ar: {
+      pron_row_1sg: 'مفرد 1', pron_row_2sg_inf: 'مفرد 2 (غير رسمي)', pron_row_2sg_form: 'مفرد 2 (رسمي)',
+      pron_row_3sg: 'مفرد 3', pron_row_1pl: 'جمع 1', pron_row_3pl: 'جمع 3',
+      pron_note_inf: 'أنت غير رسمي', pron_note_formal: 'S كبيرة = رسمي',
+      tk_pron_ben: 'أنا', tk_pron_sen: 'أنت', tk_pron_siz: 'أنت (رسمي)', tk_pron_o: 'هو/هي',
+      tk_pron_biz: 'نحن', tk_pron_onlar: 'هم',
+      help_tab_lessons: '📚 الدروس', help_tab_review: '🔄 مراجعة', help_tab_tips: '💡 نصائح',
+      help_modal_title: '📖 كيفية الاستخدام؟', help_modal_sub: 'تعلم سهل · دليل',
+      lesson_count_unit: 'دروس', time_sec_abbr: 'ث', time_min_abbr: 'د'
+    },
+    zh: {
+      pron_row_1sg: '第一人称单数', pron_row_2sg_inf: '第二人称单数（非正式）', pron_row_2sg_form: '第二人称单数（正式）',
+      pron_row_3sg: '第三人称单数', pron_row_1pl: '第一人称复数', pron_row_3pl: '第三人称复数',
+      pron_note_inf: '非正式你', pron_note_formal: '大写 S = 正式',
+      tk_pron_ben: '我', tk_pron_sen: '你', tk_pron_siz: '您', tk_pron_o: '他/她',
+      tk_pron_biz: '我们', tk_pron_onlar: '他们',
+      help_tab_lessons: '📚 课程', help_tab_review: '🔄 复习', help_tab_tips: '💡 提示',
+      help_modal_title: '📖 如何使用？', help_modal_sub: '轻松学语言 · 指南',
+      lesson_count_unit: '课', time_sec_abbr: '秒', time_min_abbr: '分'
+    }
+  };
+  Object.keys(PRON).forEach(function (loc) {
+    if (!EXTRA[loc]) EXTRA[loc] = {};
+    Object.assign(EXTRA[loc], PRON[loc]);
+    if (window.KDO_UI && window.KDO_UI[loc]) Object.assign(window.KDO_UI[loc], PRON[loc]);
+  });
   }
   window.KDO_UI_EXTRA = EXTRA;
 })();

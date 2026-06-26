@@ -470,8 +470,24 @@ window.KDO_LANG_REGISTRY = {
     "l2Meta": {
       "title": "Ekler & -de/-da",
       "title_en": "Suffixes & -de/-da",
+      "title_es": "Sufijos y -de/-da",
+      "title_de": "Suffixe & -de/-da",
+      "title_fr": "Suffixes et -de/-da",
+      "title_it": "Suffissi e -de/-da",
+      "title_ru": "Суффиксы и -de/-da",
+      "title_ar": "اللواحق و -de/-da",
+      "title_zh": "后缀与 -de/-da",
+      "title_th": "คำต่อท้ายและ -de/-da",
       "subtitle": "ünlü uyumu — adım adım",
-      "subtitle_en": "vowel harmony — step by step"
+      "subtitle_en": "vowel harmony — step by step",
+      "subtitle_es": "armonía vocálica — paso a paso",
+      "subtitle_de": "Vokalharmonie — Schritt für Schritt",
+      "subtitle_fr": "harmonie vocalique — étape par étape",
+      "subtitle_it": "armonia vocalica — passo dopo passo",
+      "subtitle_ru": "гармония гласных — шаг за шагом",
+      "subtitle_ar": "انسجام الحركات — خطوة بخطوة",
+      "subtitle_zh": "元音和谐 — 循序渐进",
+      "subtitle_th": "สระประสาน — ทีละขั้น"
     },
     "targetUi": {
       "tr": {

@@ -292,6 +292,49 @@ const L3 = {
       ]
     }
   ],
+
+  numbers: [
+    {n:0, word:'sıfır', tr:'zero'},
+    {n:1, word:'bir', tr:'one'},
+    {n:2, word:'iki', tr:'two'},
+    {n:3, word:'üç', tr:'three'},
+    {n:4, word:'dört', tr:'four'},
+    {n:5, word:'beş', tr:'five'},
+    {n:6, word:'altı', tr:'six'},
+    {n:7, word:'yedi', tr:'seven'},
+    {n:8, word:'sekiz', tr:'eight'},
+    {n:9, word:'dokuz', tr:'nine'},
+    {n:10, word:'on', tr:'ten'},
+    {n:11, word:'on bir', tr:'eleven'},
+    {n:12, word:'on iki', tr:'twelve'},
+    {n:13, word:'on üç', tr:'thirteen'},
+    {n:14, word:'on dört', tr:'fourteen'},
+    {n:15, word:'on beş', tr:'fifteen'},
+    {n:16, word:'on altı', tr:'sixteen'},
+    {n:17, word:'on yedi', tr:'seventeen'},
+    {n:18, word:'on sekiz', tr:'eighteen'},
+    {n:19, word:'on dokuz', tr:'nineteen'},
+    {n:20, word:'yirmi', tr:'twenty'},
+    {n:30, word:'otuz', tr:'thirty'},
+    {n:40, word:'kırk', tr:'forty'},
+    {n:50, word:'elli', tr:'fifty'},
+    {n:60, word:'altmış', tr:'sixty'},
+    {n:70, word:'yetmiş', tr:'seventy'},
+    {n:80, word:'seksen', tr:'eighty'},
+    {n:90, word:'doksan', tr:'ninety'},
+    {n:100, word:'yüz', tr:'hundred'},
+    {n:1000, word:'bin', tr:'thousand'}
+  ],
+
+  compounds: [
+    {n:21, word:'yirmi bir', tr:'twenty-one'},
+    {n:32, word:'otuz iki', tr:'thirty-two'},
+    {n:105, word:'yüz beş', tr:'one hundred five'},
+    {n:350, word:'üç yüz elli', tr:'three hundred fifty'},
+    {n:1835, word:'bin sekiz yüz otuz beş', tr:'one thousand eight hundred thirty-five'},
+    {n:10000, word:'on bin', tr:'ten thousand'}
+  ],
+
   tones:[]
 };
 LESSONS[3] = L3;

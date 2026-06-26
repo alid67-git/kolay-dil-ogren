@@ -560,6 +560,7 @@
     }),
     es: fill({
       nav_lessons: "Lecciones",
+      nav_test: "Prueba",
       nav_translate: "Traducir",
       nav_list: "Lista",
       nav_review: "Repaso",
@@ -637,7 +638,7 @@
       bonus_sets: "Conjuntos extra",
       scroll_top: "Volver arriba",
       add_coming: "Proximamente.",
-      help_tab_about: "Acerca de",
+      help_tab_guide: "Guia",
       help_tab_changelog: "Cambios",
       ex_start: "Iniciar",
       ex_lives: "Vidas",
