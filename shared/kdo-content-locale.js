@@ -64,7 +64,10 @@
 
     if (lang === 'en') {
       if (meaningBaseLang() === 'en') return bridge;
-      return glossLookup('en', item.en) || glossLookup('en', bridge) || bridge;
+      var enHit = bridgeGloss('en', bridge) || glossLookup('en', item.th) || glossLookup('en', item.en);
+      if (enHit) return enHit;
+      if (item.tr_en) return item.tr_en;
+      return '';
     }
 
     if (meaningBaseLang() === 'en') {

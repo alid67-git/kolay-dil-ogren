@@ -615,17 +615,18 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.23"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.23"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.23"></script>
-<script src="shared/kdo-gloss.js?v=3.0.23"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.23"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.23"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.23"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.23"></script>
-<script src="shared/kdo-translate.js?v=3.0.23"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.23"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.23"></script>
+<script src="shared/kdo-version.js?v=3.0.24"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.24"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.24"></script>
+<script src="shared/kdo-gloss.js?v=3.0.24"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.24"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.24"></script>
+<script src="shared/kdo-tts.js?v=3.0.24"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.24"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.24"></script>
+<script src="shared/kdo-translate.js?v=3.0.24"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.24"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.24"></script>
 <script>
 const APP_VERSION = window.KDO_APP_VERSION || window.KDO_PLATFORM_VERSION;
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
@@ -1335,6 +1336,7 @@ function setLang(lang){
       <button type="button" class="setting-btn" onclick="openLangHubPicker()" style="width:100%;margin-top:6px;background:#0d9488;color:white;border-color:#0d9488;" data-lk="ui_change_lang">🌐 Dil değiştir</button>
     </div>
     <div class="setting-row"><div class="setting-label" data-lk="settings_api_key">Anthropic API Key</div><input type="password" id="api-key-input" placeholder="sk-ant-..."><button class="setting-btn" onclick="saveKey()" data-lk="settings_save">Kaydet</button></div>
+    <div class="setting-row"><div class="setting-label">Google TTS API Key</div><input type="password" id="google-tts-key-input" placeholder="AIza..."><button class="setting-btn" onclick="saveGoogleTTSKey()">Kaydet</button><div style="font-size:11px;color:#666;margin-top:6px;">Masaüstünde kaliteli Tayca sesi için (ücretsiz kotanız varsa). Boş bırakırsanız cihaz sesi kullanılır.</div></div>
     <div class="setting-row">
       <div class="setting-label" data-lk="settings_gist">☁️ Cihazlar Arası Senkron (GitHub Gist)</div>
       <input type="password" id="gist-token-input" data-lk-ph="settings_gist_ph" placeholder="ghp_... (gist yetkisi olmalı)" style="margin-top:6px;">
@@ -1560,14 +1562,15 @@ function updateProgressBar(){
   if(label) label.textContent = completedScenario+'/'+scenarioTotal+' · ⭐'+completedBonus+'/'+bonusTotal;
 }
 
-// =================== SES (cihaz TTS) ===================
+// =================== SES (Google TTS + cihaz) ===================
 function speakStop(){
-  if(window.speechSynthesis) window.speechSynthesis.cancel();
+  if(typeof KDO_speakStop==='function') KDO_speakStop();
+  else if(window.speechSynthesis) window.speechSynthesis.cancel();
 }
 
 function speak(text, slow, gender){
   if(!text||!text.trim()) return;
-  speakStop();
+  if(typeof KDO_speak==='function'){ KDO_speak(text, slow, gender, KDO_CFG); return; }
   speakWebSpeech(text, slow, gender);
 }
 
@@ -3521,7 +3524,7 @@ function buildHelpContent(){
         </div>
       </div>
       <div class="help-section-header">📋 ${L('Uygulama Bilgisi','App Info','ข้อมูลแอป')}</div>
-      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.23</strong></div>
+      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.24</strong></div>
       <div class="help-info-row"><span>${L('Toplam Ders','Total Lessons','บทเรียนทั้งหมด')}</span><strong>19 + 29 ${L('BONUS set','BONUS sets','ชุด BONUS')}</strong></div>
       <div class="help-info-row"><span>${L('Ders Başına','Per Lesson','ต่อบทเรียน')}</span><strong>~10 ${L('kelime, 8 gramer, 4 diyalog','words, 8 grammar, 4 dialogues','~10 คำ 8 ไวยากรณ์ 4 บทสนทนา')}</strong></div>
       <div class="help-info-row"><span>${L('Ses Motoru','Audio','เสียง')}</span><strong>Web Speech API + Google TTS</strong></div>
@@ -3564,6 +3567,7 @@ document.querySelectorAll('.overlay').forEach(el=>{
   el.addEventListener('click',e=>{ if(e.target===el) el.classList.remove('open'); });
 });
 function saveKey(){ localStorage.setItem('tayca_api_key',document.getElementById('api-key-input').value); alert(s('ui_saved')); }
+function saveGoogleTTSKey(){ var v=document.getElementById('google-tts-key-input').value; localStorage.setItem('google_tts_key',v); localStorage.setItem('kdo:google_tts_key',v); alert(s('ui_saved')); }
 function saveGist(){
   localStorage.setItem('tayca_gist_token', document.getElementById('gist-token-input').value.trim());
   document.getElementById('gist-status').textContent = s('gist_saved');
@@ -4313,6 +4317,7 @@ updateReviewBadge();
 updateProgressBar();
 loadVoiceList();
 document.getElementById('api-key-input').value = localStorage.getItem('tayca_api_key')||'';
+document.getElementById('google-tts-key-input').value = localStorage.getItem('google_tts_key')||localStorage.getItem('kdo:google_tts_key')||'';
 document.getElementById('gist-token-input').value = localStorage.getItem('tayca_gist_token')||'';
 gistAutoSync();
 }
@@ -4378,6 +4383,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.23"></script>
+<script src="shared/kdo-analytics.js?v=3.0.24"></script>
 </body>
 </html>

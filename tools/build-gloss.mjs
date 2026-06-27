@@ -187,6 +187,26 @@ const SEED_DE = {
   'Güle güle': 'Tschüss', 'Benim adım...': 'Ich heiße ...',
 };
 
+const SEED_EN = {
+  Merhaba: 'Hello', 'Merhaba!': 'Hello!', Günaydın: 'Good morning', Selam: 'Hi',
+  'İyi akşamlar': 'Good evening', 'İyi günler': 'Good day', 'Hoşça kal': 'Goodbye',
+  'Hoşça kalın': 'Goodbye', 'Görüşmek üzere': 'See you', Teşekkürler: 'Thanks',
+  'Teşekkür ederim': 'Thank you', Lütfen: 'Please', Evet: 'Yes', Hayır: 'No',
+  'Nasılsın?': 'How are you?', 'İyiyim.': "I'm fine", 'Adın ne?': 'What is your name?',
+  'Benim adım Ali.': 'My name is Ali.', 'Benim adım...': 'My name is...',
+  'Tanıştığıma memnun oldum.': 'Nice to meet you', 'Tanıştığıma memnun': 'Nice to meet you',
+  'Sorun değil': 'No problem', Ben: 'I', Sen: 'you', 'Teşekkür ederim.': 'Thank you.',
+  'adin ne?': 'what is your name?', 'nasilsin?': 'how are you?',
+  'tanistigima memnun.': 'nice to meet you.', 'benim adim Tom.': 'my name is Tom.',
+  'nerelisin?': 'where are you from?', 'hos geldiniz.': 'welcome.',
+  'Tesekkur ederim.': 'Thank you.', 'Sorun degil.': 'No problem.',
+  'Tanistigima memnun.': 'Nice to meet you.', 'Cok tesekkur ederim.': 'Thank you very much.',
+  hello: 'hello', thanks: 'thanks', please: 'please', goodbye: 'goodbye',
+  'good morning': 'good morning', 'good evening': 'good evening',
+  'how are you?': 'how are you?', 'nice to meet you': 'nice to meet you',
+  'what is your name?': 'what is your name?', 'my name is': 'my name is',
+};
+
 const LESSON_LANGS = ['tr', 'de', 'en', 'th', 'fr', 'es', 'it', 'ru', 'ar', 'zh'];
 
 function normKey(s) {
@@ -273,6 +293,7 @@ function mergeEnglishSeed(target, source) {
 
 mergeEnglishSeed(SEED_TH, SEED_ES);
 
+const en = { ...SEED_EN };
 const th = { ...SEED_TH };
 const de = { ...SEED_DE };
 const es = { ...SEED_ES };
@@ -281,26 +302,36 @@ const it = { ...SEED_IT };
 const ru = { ...SEED_RU };
 const ar = { ...SEED_AR };
 const zh = { ...SEED_ZH };
-const seeds = { th: SEED_TH, de: SEED_DE, es: SEED_ES, fr: SEED_FR, it: SEED_IT, ru: SEED_RU, ar: SEED_AR, zh: SEED_ZH };
-const packs = { th, de, es, fr, it, ru, ar, zh };
+const seeds = { en: SEED_EN, th: SEED_TH, de: SEED_DE, es: SEED_ES, fr: SEED_FR, it: SEED_IT, ru: SEED_RU, ar: SEED_AR, zh: SEED_ZH };
+const packs = { en, th, de, es, fr, it, ru, ar, zh };
 const { trStrings, enTrPairs, enLessonPairs } = scanLessons();
 const trToEn = buildTrToEnPivot(enLessonPairs);
 
-function fillPair(en, tr) {
-  const pivotEn = trToEn.get(tr) || trToEn.get(tr.split(/\s*\/\s*/)[0].trim()) || en;
+for (const { en: enWord, tr } of enLessonPairs) {
+  if (!en[tr]) en[tr] = enWord;
+  const nk = normKey(tr);
+  if (!en[nk]) en[nk] = enWord;
+  const first = tr.split(/\s*\/\s*/)[0].trim();
+  if (first && !en[first]) en[first] = enWord;
+}
+
+function fillPair(wordKey, tr) {
+  const pivotEn = trToEn.get(tr) || trToEn.get(tr.split(/\s*\/\s*/)[0].trim()) || wordKey;
   for (const [code, pack] of Object.entries(packs)) {
     const seed = seeds[code];
-    let val = resolveTrToPack(tr, pack, seed) || pivotFromEn(pivotEn, pack, seed) || pivotFromEn(en, pack, seed);
+    let val = resolveTrToPack(tr, pack, seed) || pivotFromEn(pivotEn, pack, seed) || pivotFromEn(wordKey, pack, seed);
     if (val) {
       if (!pack[tr]) pack[tr] = val;
-      if (!pack[en]) pack[en] = val;
+      if (!pack[wordKey]) pack[wordKey] = val;
       const first = tr.split(/\s*\/\s*/)[0].trim();
       if (first && !pack[first]) pack[first] = val;
     }
   }
+  if (pivotEn && !en[tr]) en[tr] = pivotEn;
+  if (pivotEn && !en[normKey(tr)]) en[normKey(tr)] = pivotEn;
 }
 
-for (const { en, tr } of enTrPairs) fillPair(en, tr);
+for (const { en: wordKey, tr } of enTrPairs) fillPair(wordKey, tr);
 
 for (const s of trStrings) {
   for (const [code, pack] of Object.entries(packs)) {
@@ -320,6 +351,7 @@ const out = `/** Otomatik: tools/build-gloss.mjs */
 (function () {
   'use strict';
   window.KDO_GLOSS = {
+    en: ${JSON.stringify(en, null, 2)},
     th: ${JSON.stringify(th, null, 2)},
     de: ${JSON.stringify(de, null, 2)},
     es: ${JSON.stringify(es, null, 2)},
@@ -333,4 +365,4 @@ const out = `/** Otomatik: tools/build-gloss.mjs */
 `;
 
 fs.writeFileSync(path.join(root, 'shared', 'kdo-gloss.js'), out);
-console.log('shared/kdo-gloss.js — th:', Object.keys(th).length, 'es:', Object.keys(es).length, 'de:', Object.keys(de).length);
+console.log('shared/kdo-gloss.js — en:', Object.keys(en).length, 'th:', Object.keys(th).length, 'es:', Object.keys(es).length, 'de:', Object.keys(de).length);
