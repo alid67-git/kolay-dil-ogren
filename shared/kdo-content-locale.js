@@ -17,6 +17,18 @@
     return g[k] || g[k.toLowerCase()] || '';
   }
 
+  function bridgeGloss(lang, bridge) {
+    if (!bridge) return '';
+    var hit = glossLookup(lang, bridge);
+    if (hit) return hit;
+    var parts = String(bridge).split(/\s*\/\s*|\s*—\s*|\s*–\s*/);
+    for (var i = 0; i < parts.length; i++) {
+      hit = glossLookup(lang, parts[i].trim());
+      if (hit) return hit;
+    }
+    return '';
+  }
+
   function Lm(item, field, lang) {
     if (!item) return '';
     field = field || 'tr';
@@ -31,8 +43,8 @@
 
     if (lang === 'tr') return bridge;
 
-    var hit = glossLookup(lang, bridge);
-    if (!hit && field === 'tr' && meaningBaseLang() === 'en') {
+    var hit = bridgeGloss(lang, bridge);
+    if (!hit && field === 'tr') {
       hit = glossLookup(lang, item.en) || glossLookup(lang, item.th);
     }
     if (hit) return hit;

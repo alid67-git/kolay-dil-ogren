@@ -17,8 +17,17 @@
     return key;
   }
 
+  var MEANING_FIELDS = {
+    tr: 1, tip: 1, ctx: 1, explain: 1, explanation: 1,
+    title: 1, desc: 1, gramNote: 1
+  };
+
   function Lf(item, field, lang) {
     if (!item) return '';
+    if (lang && MEANING_FIELDS[field] && typeof window.KDO_Lm === 'function') {
+      var via = window.KDO_Lm(item, field, lang);
+      if (via) return via;
+    }
     if (!lang || lang === 'tr') return item[field] || '';
     var loc = item[field + '_' + lang];
     if (loc !== undefined && loc !== '') return loc;

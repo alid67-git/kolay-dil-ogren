@@ -39,6 +39,10 @@ const SEED_TH = {
   'En temel selamlaşma ifadesi.': 'สำนวนทักทายพื้นฐานที่สุด',
   'En yaygın selamlama.': 'การทักทายที่ใช้บ่อยที่สุด',
   'Sabah selamlaması.': 'คำทักทายตอนเช้า',
+  Bonjour: 'สวัสดี', Bonsoir: 'สวัสดีตอนเย็น', Salut: 'สวัสดี', 'Au revoir': 'ลาก่อน',
+  'Merhaba / Günaydın': 'สวัสดี', Selam: 'สวัสดี', 'Hoşça kalın / Görüşmek üzere': 'ลาก่อน',
+  'Hoşça kalın': 'ลาก่อน', 'Görüşmek üzere': 'แล้วเจอกัน', 'İyi günler': 'สวัสดี',
+  Merci: 'ขอบคุณ', 'S\'il vous plaît': 'กรุณา', Pardon: 'ขอโทษ', Oui: 'ใช่', Non: 'ไม่',
 };
 
 const SEED_ES = {
@@ -130,19 +134,40 @@ const SEED_DE = {
   'Tanıştığıma memnun oldum.': 'Freut mich', 'Adın ne?': 'Wie heißt du?',
   'Bu ne kadar?': 'Wie viel kostet das?', 'Hesap, lütfen.': 'Die Rechnung, bitte',
   İyi: 'Gut', gün: 'Tag', akşam: 'Abend', sabah: 'Morgen',
+  Bonjour: 'Guten Tag', Bonsoir: 'Guten Abend', Salut: 'Hallo', 'Au revoir': 'Auf Wiedersehen',
+  'Merhaba / Günaydın': 'Guten Tag', Selam: 'Hallo', 'Hoşça kalın / Görüşmek üzere': 'Auf Wiedersehen',
 };
 
-function scanLessonStrings() {
-  const found = new Set();
-  for (const dir of ['languages/tr/lessons', 'languages/de/lessons', 'languages/en/lessons']) {
-    const full = path.join(root, dir);
+const LESSON_LANGS = ['tr', 'de', 'en', 'th', 'fr', 'es', 'it', 'ru', 'ar', 'zh'];
+
+function unescapeJs(s) {
+  return s.replace(/\\'/g, "'");
+}
+
+function resolveTrToPack(trText, pack, seed) {
+  if (!trText) return '';
+  if (pack[trText]) return pack[trText];
+  if (seed && seed[trText]) return seed[trText];
+  const first = trText.split(/\s*\/\s*/)[0].trim();
+  if (pack[first] || (seed && seed[first])) return pack[first] || seed[first];
+  return '';
+}
+
+function scanLessons() {
+  const trStrings = new Set();
+  const enTrPairs = [];
+  for (const lang of LESSON_LANGS) {
+    const full = path.join(root, 'languages', lang, 'lessons');
     if (!fs.existsSync(full)) continue;
     for (const f of fs.readdirSync(full).filter((x) => x.endsWith('.js'))) {
       const t = fs.readFileSync(path.join(full, f), 'utf8');
-      for (const m of t.matchAll(/tr:'([^']{1,100})'/g)) found.add(m[1]);
+      for (const m of t.matchAll(/tr:'((?:\\'|[^']){1,120})'/g)) trStrings.add(unescapeJs(m[1]));
+      for (const m of t.matchAll(/en:'((?:\\'|[^']){1,120})'[\s\S]{0,500}?tr:'((?:\\'|[^']){1,120})'/g)) {
+        enTrPairs.push({ en: unescapeJs(m[1]), tr: unescapeJs(m[2]) });
+      }
     }
   }
-  return found;
+  return { trStrings, enTrPairs };
 }
 
 const th = { ...SEED_TH };
@@ -153,11 +178,28 @@ const it = { ...SEED_IT };
 const ru = { ...SEED_RU };
 const ar = { ...SEED_AR };
 const zh = { ...SEED_ZH };
+const seeds = { th: SEED_TH, de: SEED_DE, es: SEED_ES, fr: SEED_FR, it: SEED_IT, ru: SEED_RU, ar: SEED_AR, zh: SEED_ZH };
 const packs = { th, de, es, fr, it, ru, ar, zh };
-for (const s of scanLessonStrings()) {
+const { trStrings, enTrPairs } = scanLessons();
+
+for (const s of trStrings) {
+  for (const [code, pack] of Object.entries(packs)) {
+    const v = resolveTrToPack(s, pack, seeds[code]);
+    if (v && !pack[s]) pack[s] = v;
+  }
+}
+for (const { en, tr } of enTrPairs) {
+  for (const [code, pack] of Object.entries(packs)) {
+    if (!pack[en]) {
+      const v = resolveTrToPack(tr, pack, seeds[code]) || pack[tr];
+      if (v) pack[en] = v;
+    }
+  }
+}
+for (const s of trStrings) {
   const low = s.toLowerCase();
   for (const [code, pack] of Object.entries(packs)) {
-    const seed = { th: SEED_TH, de: SEED_DE, es: SEED_ES, fr: SEED_FR, it: SEED_IT, ru: SEED_RU, ar: SEED_AR, zh: SEED_ZH }[code];
+    const seed = seeds[code];
     if (!pack[s] && seed && seed[low]) pack[s] = seed[low];
     if (!pack[s] && seed && seed[s]) pack[s] = seed[s];
   }
