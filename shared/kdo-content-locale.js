@@ -23,13 +23,25 @@
     return g[k] || g[k.toLowerCase()] || g[normKey(k)] || '';
   }
 
+  function stripTrParen(text) {
+    return String(text || '').replace(/\s*\([^)]*\)/g, '').trim();
+  }
+
   function bridgeGloss(lang, bridge) {
     if (!bridge) return '';
     var hit = glossLookup(lang, bridge);
     if (hit) return hit;
+    var stripped = stripTrParen(bridge);
+    if (stripped && stripped !== bridge) {
+      hit = glossLookup(lang, stripped);
+      if (hit) return hit;
+    }
     var parts = String(bridge).split(/\s*\/\s*|\s*—\s*|\s*–\s*/);
     for (var i = 0; i < parts.length; i++) {
-      hit = glossLookup(lang, parts[i].trim());
+      var part = parts[i].trim();
+      hit = glossLookup(lang, part);
+      if (hit) return hit;
+      hit = glossLookup(lang, stripTrParen(part));
       if (hit) return hit;
     }
     return '';

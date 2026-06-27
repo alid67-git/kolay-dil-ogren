@@ -45,6 +45,19 @@ const SEED_TH = {
   Merci: 'ขอบคุณ', 'S\'il vous plaît': 'กรุณา', Pardon: 'ขอโทษ', Oui: 'ใช่', Non: 'ไม่',
 };
 
+const SEED_TR_STEM_TH = {
+  kitap: 'หนังสือ', masa: 'โต๊ะ', çocuk: 'เด็ก', cocuk: 'เด็ก',
+  'kitap (belirli)': 'หนังสือ', 'masa (belirli)': 'โต๊ะ', 'çocuk (belirli)': 'เด็ก',
+  'bir kitap': 'หนังสือหนึ่งเล่ม', 'bir masa': 'โต๊ะหนึ่งตัว',
+  kitaplar: 'หนังสือ', 'kitaplar / bazı kitaplar': 'หนังสือ',
+  öğrenci: 'นักเรียน', ogrenci: 'นักเรียน', öğretmen: 'ครู', ogretmen: 'ครู',
+  doktor: 'หมอ', arkadaş: 'เพื่อน', arkadas: 'เพื่อน',
+  hazır: 'พร้อม', hazir: 'พร้อม', mutlu: 'มีความสุข',
+  'belirli artikel': 'คำนำหน้านามชี้เฉพาะ', 'kısaltılmış artikel': 'คำนำหน้านามย่อ',
+  bir: 'หนึ่ง', burada: 'ที่นี่', nerede: 'ที่ไหน',
+};
+Object.assign(SEED_TH, SEED_TR_STEM_TH);
+
 const SEED_ES = {
   hello: 'hola', 'hello!': '¡hola!', goodbye: 'adiós', thanks: 'gracias', please: 'por favor',
   yes: 'sí', no: 'no', 'good morning': 'buenos días', 'good morning!': '¡buenos días!',
@@ -225,15 +238,22 @@ function seedGet(seed, key) {
   return seed[key] || seed[key.toLowerCase()] || seed[normKey(key)] || '';
 }
 
+function stripTrParen(s) {
+  return String(s || '').replace(/\s*\([^)]*\)/g, '').trim();
+}
+
 function resolveTrToPack(trText, pack, seed) {
   if (!trText) return '';
-  if (pack[trText]) return pack[trText];
-  if (seedGet(seed, trText)) return seedGet(seed, trText);
+  const candidates = [trText, stripTrParen(trText)];
   const first = trText.split(/\s*\/\s*/)[0].trim();
-  if (pack[first]) return pack[first];
-  if (seedGet(seed, first)) return seedGet(seed, first);
-  const nk = normKey(trText);
-  if (pack[nk]) return pack[nk];
+  candidates.push(first, stripTrParen(first));
+  for (const c of candidates) {
+    if (!c) continue;
+    if (pack[c]) return pack[c];
+    if (seedGet(seed, c)) return seedGet(seed, c);
+    const nk = normKey(c);
+    if (pack[nk]) return pack[nk];
+  }
   return '';
 }
 
@@ -315,16 +335,33 @@ for (const { en: enWord, tr } of enLessonPairs) {
   if (first && !en[first]) en[first] = enWord;
 }
 
+for (const s of trStrings) {
+  const stem = stripTrParen(s.split(/\s*\/\s*/)[0].trim());
+  if (!en[s]) {
+    const pe = trToEn.get(s) || trToEn.get(stem) || en[stem] || en[normKey(stem)] || seedGet(SEED_EN, stem);
+    if (pe) en[s] = pe;
+  }
+  if (stem && !en[stem]) {
+    const pe2 = trToEn.get(stem) || en[normKey(stem)] || seedGet(SEED_EN, stem);
+    if (pe2) en[stem] = pe2;
+  }
+}
+
 function fillPair(wordKey, tr) {
-  const pivotEn = trToEn.get(tr) || trToEn.get(tr.split(/\s*\/\s*/)[0].trim()) || wordKey;
+  const stem = stripTrParen(tr.split(/\s*\/\s*/)[0].trim());
+  const pivotEn = trToEn.get(tr) || trToEn.get(stem)
+    || en[tr] || en[stem] || en[normKey(stem)] || '';
   for (const [code, pack] of Object.entries(packs)) {
     const seed = seeds[code];
-    let val = resolveTrToPack(tr, pack, seed) || pivotFromEn(pivotEn, pack, seed) || pivotFromEn(wordKey, pack, seed);
+    let val = resolveTrToPack(tr, pack, seed);
+    if (!val && pivotEn) val = pivotFromEn(pivotEn, pack, seed);
     if (val) {
       if (!pack[tr]) pack[tr] = val;
       if (!pack[wordKey]) pack[wordKey] = val;
       const first = tr.split(/\s*\/\s*/)[0].trim();
       if (first && !pack[first]) pack[first] = val;
+      const stripped = stripTrParen(first);
+      if (stripped && !pack[stripped]) pack[stripped] = val;
     }
   }
   if (pivotEn && !en[tr]) en[tr] = pivotEn;
@@ -337,10 +374,15 @@ for (const s of trStrings) {
   for (const [code, pack] of Object.entries(packs)) {
     const v = resolveTrToPack(s, pack, seeds[code]);
     if (v && !pack[s]) pack[s] = v;
-    const pivotEn = trToEn.get(s) || trToEn.get(s.split(/\s*\/\s*/)[0].trim());
-    if (pivotEn && !pack[s]) {
+    const stem = stripTrParen(s.split(/\s*\/\s*/)[0].trim());
+    const pivotEn = trToEn.get(s) || trToEn.get(stem) || en[s] || en[stem] || en[normKey(stem)] || '';
+    if (!pack[s] && pivotEn) {
       const pv = pivotFromEn(pivotEn, pack, seeds[code]);
       if (pv) pack[s] = pv;
+    }
+    if (stem && !pack[stem]) {
+      const v2 = resolveTrToPack(stem, pack, seeds[code]) || (pivotEn ? pivotFromEn(pivotEn, pack, seeds[code]) : '');
+      if (v2) pack[stem] = v2;
     }
   }
 }

@@ -244,8 +244,10 @@ window.KDO_LANG_REGISTRY = {
     "l2Meta": {
       "title": "Articles & être",
       "title_en": "Articles & être",
+      "title_th": "คำนำหน้านามและ être",
       "subtitle": "le/la/l' — adım adım",
-      "subtitle_en": "le/la/l' — step by step"
+      "subtitle_en": "le/la/l' — step by step",
+      "subtitle_th": "le/la/l' — ทีละขั้น"
     },
     "targetUi": {
       "tr": {
