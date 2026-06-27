@@ -10,11 +10,17 @@
     return 'tr';
   }
 
+  function normKey(text) {
+    return String(text || '').trim().toLowerCase()
+      .replace(/ı/g, 'i').replace(/ğ/g, 'g').replace(/ş/g, 's')
+      .replace(/ç/g, 'c').replace(/ö/g, 'o').replace(/ü/g, 'u');
+  }
+
   function glossLookup(lang, text) {
     if (!text || !window.KDO_GLOSS || !window.KDO_GLOSS[lang]) return '';
     var g = window.KDO_GLOSS[lang];
     var k = String(text).trim();
-    return g[k] || g[k.toLowerCase()] || '';
+    return g[k] || g[k.toLowerCase()] || g[normKey(k)] || '';
   }
 
   function bridgeGloss(lang, bridge) {
@@ -56,9 +62,16 @@
       if (lang === 'en' || (field === 'explanation' || field === 'explain' || field === 'title')) return en;
     }
 
-    if (lang === 'en') return bridge;
+    if (lang === 'en') {
+      if (meaningBaseLang() === 'en') return bridge;
+      return glossLookup('en', item.en) || glossLookup('en', bridge) || bridge;
+    }
 
-    if (meaningBaseLang() === 'en') return bridge;
+    if (meaningBaseLang() === 'en') {
+      var enHit = bridgeGloss(lang, bridge) || glossLookup(lang, bridge);
+      if (enHit) return enHit;
+      return bridge;
+    }
 
     return '';
   }
