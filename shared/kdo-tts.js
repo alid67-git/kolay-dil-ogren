@@ -8,9 +8,9 @@
 
   var PROFILES = {
     th: {
-      m: { pitch: 0.85, rate: 0.82, slowPitch: 0.75, slowRate: 0.60 },
-      f: { pitch: 1.05, rate: 0.88, slowPitch: 0.95, slowRate: 0.65 },
-      d: { pitch: 0.95, rate: 0.85, slowPitch: 0.85, slowRate: 0.60 },
+      m: { pitch: 0.85, rate: 0.82, slowPitch: 0.80, slowRate: 0.38 },
+      f: { pitch: 1.05, rate: 0.88, slowPitch: 1.00, slowRate: 0.42 },
+      d: { pitch: 0.95, rate: 0.85, slowPitch: 0.90, slowRate: 0.38 },
       pick: function (voices, gender) {
         var th = voices.filter(function (v) { return v.lang === 'th-TH' || v.lang === 'th'; });
         if (!th.length) return null;
