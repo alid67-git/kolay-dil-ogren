@@ -1590,7 +1590,7 @@ function speakWebSpeech(text, slow, gender){
     }
     u.onend = resolve;
     u.onerror = resolve;
-    setTimeout(function(){ window.speechSynthesis.speak(u); }, 50);
+    window.speechSynthesis.speak(u);
   });
 }
 
@@ -1650,7 +1650,7 @@ document.addEventListener('click', function(e){
 });
 
 // =================== DİYALOG OYNAT ===================
-async function playDialogue(di){
+function playDialogue(di){
   const lessonData = LESSONS[currentLesson.num];
   const lines = lessonData.dialogues[di].lines;
   const btn = document.getElementById('dplay-'+di);
@@ -1658,16 +1658,22 @@ async function playDialogue(di){
   clearDialogHighlight(di);
   let stopped = false;
   if(btn){ btn.textContent='⏹ Durdur'; btn.onclick=()=>{ stopped=true; speakStop(); clearDialogHighlight(di); if(btn){btn.textContent='▶ Tümü';btn.onclick=()=>playDialogue(di);} }; }
-  for(let i=0; i<lines.length; i++){
-    if(stopped) break;
+  let i = 0;
+  function next(){
+    if(stopped || i>=lines.length){
+      if(!stopped){ clearDialogHighlight(di); if(btn){btn.textContent='▶ Tümü';btn.onclick=()=>playDialogue(di);} }
+      return;
+    }
     clearDialogHighlight(di);
     const lineEl = document.getElementById('dline-'+di+'-'+i);
     if(lineEl) lineEl.classList.add('active-line');
     const gender = lines[i].s.toLowerCase()==='ali' ? 'm' : 'f';
-    await speak(lines[i].th, false, gender);
-    if(!stopped) await new Promise(r=>setTimeout(r, 650));
+    const p = speak(lines[i].th, false, gender);
+    i++;
+    // onend zinciri iOS audio bağlamını korur; setTimeout koparırdı
+    if(p && typeof p.then==='function'){ p.then(function(){ if(!stopped) next(); }); }
   }
-  if(!stopped){ clearDialogHighlight(di); if(btn){btn.textContent='▶ Tümü';btn.onclick=()=>playDialogue(di);} }
+  next();
 }
 function clearDialogHighlight(di){
   document.querySelectorAll('[id^="dline-'+di+'-"]').forEach(el=>el.classList.remove('active-line'));
@@ -3520,7 +3526,7 @@ function buildHelpContent(){
         </div>
       </div>
       <div class="help-section-header">📋 ${L('Uygulama Bilgisi','App Info','ข้อมูลแอป')}</div>
-      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.27</strong></div>
+      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.28</strong></div>
       <div class="help-info-row"><span>${L('Toplam Ders','Total Lessons','บทเรียนทั้งหมด')}</span><strong>19 + 29 ${L('BONUS set','BONUS sets','ชุด BONUS')}</strong></div>
       <div class="help-info-row"><span>${L('Ders Başına','Per Lesson','ต่อบทเรียน')}</span><strong>~10 ${L('kelime, 8 gramer, 4 diyalog','words, 8 grammar, 4 dialogues','~10 คำ 8 ไวยากรณ์ 4 บทสนทนา')}</strong></div>
       <div class="help-info-row"><span>${L('Ses Motoru','Audio','เสียง')}</span><strong>Web Speech API + Google TTS</strong></div>
@@ -3528,8 +3534,8 @@ function buildHelpContent(){
       <div class="help-info-row"><span>${L('Geliştirici','Developer','นักพัฒนา')}</span><strong>Ali Dinçer, Phuket 🇹🇭</strong></div>
       <div class="help-section-header" style="margin-top:16px;">📦 ${L('Versiyon Geçmişi','Version History','ประวัติเวอร์ชัน')}</div>
       <div class="help-changelog">
-        <div class="changelog-item"><div class="changelog-ver">v3.0.27</div>
-          <div class="changelog-desc">${L('Cihaz TTS ses düzeltmesi: Tayca pitch 0.25→0.85 (iOS\'ta neredeyse sessizdi); cancel() sonrası 50ms bekleme eklendi (iOS yutma sorunu); Google TTS Neural2-C→Chirp3-HD ses adı düzeltildi','Device TTS fix: Thai pitch 0.25→0.85 (was nearly silent on iOS); 50ms delay after cancel() for iOS bug; Google TTS voice corrected Neural2-C→Chirp3-HD','แก้ TTS อุปกรณ์: pitch ไทย 0.25→0.85 (เกือบไม่มีเสียงบน iOS); หน่วงเวลา 50ms หลัง cancel(); แก้ชื่อเสียง Google TTS')}</div></div>
+        <div class="changelog-item"><div class="changelog-ver">v3.0.28</div>
+          <div class="changelog-desc">${L('iOS ses düzeltmesi: setTimeout kaldırıldı (user gesture bağlamını kırıyordu); Google TTS yoksa speakWebSpeech senkron çağrılıyor; playDialogue onend zinciri korunuyor','iOS audio fix: removed setTimeout (broke user gesture context); speakWebSpeech called synchronously when no Google TTS key; playDialogue uses onend chain','แก้เสียง iOS: ลบ setTimeout (ทำลาย user gesture); เรียก speakWebSpeech แบบ sync เมื่อไม่มี Google TTS; playDialogue ใช้ onend chain')}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.0.26</div>
           <div class="changelog-desc">${L('Tayca ses düzeltmesi: diyalog oynatma artık Google TTS kullanıyor; speak() Promise döndürüyor, sıralama güvenilir; sayılar ve hesap makinesi speak() ile güncellendi','Thai audio fix: dialogue playback now uses Google TTS; speak() returns a Promise for reliable sequencing; numbers & calculator updated to use speak()','แก้เสียงภาษาไทย: เล่นบทสนทนาใช้ Google TTS แล้ว speak() คืน Promise เรียงลำดับถูกต้อง')}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.56</div>

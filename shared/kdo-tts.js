@@ -62,6 +62,8 @@
     if (window.speechSynthesis) window.speechSynthesis.cancel();
   }
 
+  // iOS: speechSynthesis.speak() kullanıcı dokunma bağlamında (user gesture)
+  // senkron olarak çağrılmalı. Promise içinde bile olsa onend zinciri devam eder.
   function speakWebSpeech(text, slow, gender, cfg) {
     return new Promise(function (resolve) {
       if (!window.speechSynthesis) { resolve(); return; }
@@ -78,8 +80,7 @@
       if (voice) u.voice = voice;
       u.onend = resolve;
       u.onerror = resolve;
-      // iOS'ta cancel() sonrası hemen speak() bazen yutulur — 50ms gecikme
-      setTimeout(function () { window.speechSynthesis.speak(u); }, 50);
+      window.speechSynthesis.speak(u);
     });
   }
 
@@ -123,6 +124,10 @@
     if (!text || !String(text).trim()) return Promise.resolve();
     cfg = cfg || window.KDO_CFG || {};
     speakStop();
+    // Google TTS anahtarı yoksa senkron yol — iOS user gesture bağlamını korur
+    if (!googleKey()) {
+      return speakWebSpeech(text, slow, gender, cfg);
+    }
     return speakGoogle(text, slow, gender, cfg).then(function (ok) {
       if (!ok) return speakWebSpeech(text, slow, gender, cfg);
     });
