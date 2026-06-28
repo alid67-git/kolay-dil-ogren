@@ -63,20 +63,24 @@
   }
 
   function speakWebSpeech(text, slow, gender, cfg) {
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    var prof = profile(cfg);
-    var g = gender === 'm' ? 'm' : (gender === 'f' ? 'f' : 'd');
-    var p = prof[g] || prof.d;
-    var u = new SpeechSynthesisUtterance(text);
-    u.lang = cfg.tts || 'en-US';
-    u.pitch = slow ? p.slowPitch : p.pitch;
-    u.rate = slow ? p.slowRate : p.rate;
-    var voices = window.speechSynthesis.getVoices();
-    var pick = prof.pick || PROFILES.default.pick;
-    var voice = pick(voices, gender, cfg);
-    if (voice) u.voice = voice;
-    window.speechSynthesis.speak(u);
+    return new Promise(function (resolve) {
+      if (!window.speechSynthesis) { resolve(); return; }
+      window.speechSynthesis.cancel();
+      var prof = profile(cfg);
+      var g = gender === 'm' ? 'm' : (gender === 'f' ? 'f' : 'd');
+      var p = prof[g] || prof.d;
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = cfg.tts || 'en-US';
+      u.pitch = slow ? p.slowPitch : p.pitch;
+      u.rate = slow ? p.slowRate : p.rate;
+      var voices = window.speechSynthesis.getVoices();
+      var pick = prof.pick || PROFILES.default.pick;
+      var voice = pick(voices, gender, cfg);
+      if (voice) u.voice = voice;
+      u.onend = resolve;
+      u.onerror = resolve;
+      window.speechSynthesis.speak(u);
+    });
   }
 
   function playBase64Mp3(b64) {
@@ -116,11 +120,11 @@
   }
 
   function speak(text, slow, gender, cfg) {
-    if (!text || !String(text).trim()) return;
+    if (!text || !String(text).trim()) return Promise.resolve();
     cfg = cfg || window.KDO_CFG || {};
     speakStop();
-    speakGoogle(text, slow, gender, cfg).then(function (ok) {
-      if (!ok) speakWebSpeech(text, slow, gender, cfg);
+    return speakGoogle(text, slow, gender, cfg).then(function (ok) {
+      if (!ok) return speakWebSpeech(text, slow, gender, cfg);
     });
   }
 
