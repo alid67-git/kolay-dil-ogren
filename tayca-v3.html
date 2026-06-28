@@ -1577,12 +1577,11 @@ function speak(text, slow, gender){
 function speakWebSpeech(text, slow, gender){
   return new Promise(function(resolve){
     if(!window.speechSynthesis){ resolve(); return; }
-    window.speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang='th-TH';
-    if(gender==='m'){ u.pitch=slow?0.70:0.80; u.rate=slow?0.55:0.82; }
-    else if(gender==='f'){ u.pitch=slow?0.95:1.05; u.rate=slow?0.60:0.90; }
-    else { u.pitch=slow?0.85:0.95; u.rate=slow?0.55:0.85; }
+    if(gender==='m'){ u.pitch=slow?0.75:0.85; u.rate=slow?0.60:0.82; }
+    else if(gender==='f'){ u.pitch=slow?0.95:1.05; u.rate=slow?0.65:0.90; }
+    else { u.pitch=slow?0.85:0.95; u.rate=slow?0.60:0.85; }
     const voices=window.speechSynthesis.getVoices();
     const thaiVoices=voices.filter(x=>x.lang==='th-TH'||x.lang==='th');
     if(thaiVoices.length>0){
@@ -1591,7 +1590,7 @@ function speakWebSpeech(text, slow, gender){
     }
     u.onend = resolve;
     u.onerror = resolve;
-    window.speechSynthesis.speak(u);
+    setTimeout(function(){ window.speechSynthesis.speak(u); }, 50);
   });
 }
 
@@ -3521,7 +3520,7 @@ function buildHelpContent(){
         </div>
       </div>
       <div class="help-section-header">📋 ${L('Uygulama Bilgisi','App Info','ข้อมูลแอป')}</div>
-      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.26</strong></div>
+      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.27</strong></div>
       <div class="help-info-row"><span>${L('Toplam Ders','Total Lessons','บทเรียนทั้งหมด')}</span><strong>19 + 29 ${L('BONUS set','BONUS sets','ชุด BONUS')}</strong></div>
       <div class="help-info-row"><span>${L('Ders Başına','Per Lesson','ต่อบทเรียน')}</span><strong>~10 ${L('kelime, 8 gramer, 4 diyalog','words, 8 grammar, 4 dialogues','~10 คำ 8 ไวยากรณ์ 4 บทสนทนา')}</strong></div>
       <div class="help-info-row"><span>${L('Ses Motoru','Audio','เสียง')}</span><strong>Web Speech API + Google TTS</strong></div>
@@ -3529,6 +3528,8 @@ function buildHelpContent(){
       <div class="help-info-row"><span>${L('Geliştirici','Developer','นักพัฒนา')}</span><strong>Ali Dinçer, Phuket 🇹🇭</strong></div>
       <div class="help-section-header" style="margin-top:16px;">📦 ${L('Versiyon Geçmişi','Version History','ประวัติเวอร์ชัน')}</div>
       <div class="help-changelog">
+        <div class="changelog-item"><div class="changelog-ver">v3.0.27</div>
+          <div class="changelog-desc">${L('Cihaz TTS ses düzeltmesi: Tayca pitch 0.25→0.85 (iOS\'ta neredeyse sessizdi); cancel() sonrası 50ms bekleme eklendi (iOS yutma sorunu); Google TTS Neural2-C→Chirp3-HD ses adı düzeltildi','Device TTS fix: Thai pitch 0.25→0.85 (was nearly silent on iOS); 50ms delay after cancel() for iOS bug; Google TTS voice corrected Neural2-C→Chirp3-HD','แก้ TTS อุปกรณ์: pitch ไทย 0.25→0.85 (เกือบไม่มีเสียงบน iOS); หน่วงเวลา 50ms หลัง cancel(); แก้ชื่อเสียง Google TTS')}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.0.26</div>
           <div class="changelog-desc">${L('Tayca ses düzeltmesi: diyalog oynatma artık Google TTS kullanıyor; speak() Promise döndürüyor, sıralama güvenilir; sayılar ve hesap makinesi speak() ile güncellendi','Thai audio fix: dialogue playback now uses Google TTS; speak() returns a Promise for reliable sequencing; numbers & calculator updated to use speak()','แก้เสียงภาษาไทย: เล่นบทสนทนาใช้ Google TTS แล้ว speak() คืน Promise เรียงลำดับถูกต้อง')}</div></div>
         <div class="changelog-item"><div class="changelog-ver">v3.56</div>

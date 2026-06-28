@@ -8,9 +8,9 @@
 
   var PROFILES = {
     th: {
-      m: { pitch: 0.25, rate: 0.82, slowPitch: 0.20, slowRate: 0.38 },
-      f: { pitch: 1.05, rate: 0.88, slowPitch: 0.95, slowRate: 0.40 },
-      d: { pitch: 0.55, rate: 0.85, slowPitch: 0.50, slowRate: 0.38 },
+      m: { pitch: 0.85, rate: 0.82, slowPitch: 0.75, slowRate: 0.60 },
+      f: { pitch: 1.05, rate: 0.88, slowPitch: 0.95, slowRate: 0.65 },
+      d: { pitch: 0.95, rate: 0.85, slowPitch: 0.85, slowRate: 0.60 },
       pick: function (voices, gender) {
         var th = voices.filter(function (v) { return v.lang === 'th-TH' || v.lang === 'th'; });
         if (!th.length) return null;
@@ -65,7 +65,6 @@
   function speakWebSpeech(text, slow, gender, cfg) {
     return new Promise(function (resolve) {
       if (!window.speechSynthesis) { resolve(); return; }
-      window.speechSynthesis.cancel();
       var prof = profile(cfg);
       var g = gender === 'm' ? 'm' : (gender === 'f' ? 'f' : 'd');
       var p = prof[g] || prof.d;
@@ -79,7 +78,8 @@
       if (voice) u.voice = voice;
       u.onend = resolve;
       u.onerror = resolve;
-      window.speechSynthesis.speak(u);
+      // iOS'ta cancel() sonrası hemen speak() bazen yutulur — 50ms gecikme
+      setTimeout(function () { window.speechSynthesis.speak(u); }, 50);
     });
   }
 
