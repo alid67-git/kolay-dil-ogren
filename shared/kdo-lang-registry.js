@@ -521,8 +521,8 @@ window.KDO_LANG_REGISTRY = {
     "tts": "th-TH",
     "ttsAlt": "th-TH",
     "ttsPrefix": "th",
-    "googleVoiceF": "th-TH-Neural2-C",
-    "googleVoiceM": "th-TH-Neural2-C",
+    "googleVoiceF": "th-TH-Chirp3-HD-Aoede",
+    "googleVoiceM": "th-TH-Chirp3-HD-Orus",
     "targetLabelTr": "Tayca",
     "targetLabelEn": "Thai",
     "targetUi": {

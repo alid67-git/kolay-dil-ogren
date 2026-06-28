@@ -8,9 +8,9 @@
 
   var PROFILES = {
     th: {
-      m: { pitch: 0.25, rate: 0.82, slowPitch: 0.20, slowRate: 0.38 },
-      f: { pitch: 1.05, rate: 0.88, slowPitch: 0.95, slowRate: 0.40 },
-      d: { pitch: 0.55, rate: 0.85, slowPitch: 0.50, slowRate: 0.38 },
+      m: { pitch: 0.85, rate: 0.82, slowPitch: 0.75, slowRate: 0.60 },
+      f: { pitch: 1.05, rate: 0.88, slowPitch: 0.95, slowRate: 0.65 },
+      d: { pitch: 0.95, rate: 0.85, slowPitch: 0.85, slowRate: 0.60 },
       pick: function (voices, gender) {
         var th = voices.filter(function (v) { return v.lang === 'th-TH' || v.lang === 'th'; });
         if (!th.length) return null;
@@ -63,20 +63,24 @@
   }
 
   function speakWebSpeech(text, slow, gender, cfg) {
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    var prof = profile(cfg);
-    var g = gender === 'm' ? 'm' : (gender === 'f' ? 'f' : 'd');
-    var p = prof[g] || prof.d;
-    var u = new SpeechSynthesisUtterance(text);
-    u.lang = cfg.tts || 'en-US';
-    u.pitch = slow ? p.slowPitch : p.pitch;
-    u.rate = slow ? p.slowRate : p.rate;
-    var voices = window.speechSynthesis.getVoices();
-    var pick = prof.pick || PROFILES.default.pick;
-    var voice = pick(voices, gender, cfg);
-    if (voice) u.voice = voice;
-    window.speechSynthesis.speak(u);
+    return new Promise(function (resolve) {
+      if (!window.speechSynthesis) { resolve(); return; }
+      var prof = profile(cfg);
+      var g = gender === 'm' ? 'm' : (gender === 'f' ? 'f' : 'd');
+      var p = prof[g] || prof.d;
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = cfg.tts || 'en-US';
+      u.pitch = slow ? p.slowPitch : p.pitch;
+      u.rate = slow ? p.slowRate : p.rate;
+      var voices = window.speechSynthesis.getVoices();
+      var pick = prof.pick || PROFILES.default.pick;
+      var voice = pick(voices, gender, cfg);
+      if (voice) u.voice = voice;
+      u.onend = resolve;
+      u.onerror = resolve;
+      // iOS'ta cancel() sonrası hemen speak() bazen yutulur — 50ms gecikme
+      setTimeout(function () { window.speechSynthesis.speak(u); }, 50);
+    });
   }
 
   function playBase64Mp3(b64) {
@@ -116,11 +120,11 @@
   }
 
   function speak(text, slow, gender, cfg) {
-    if (!text || !String(text).trim()) return;
+    if (!text || !String(text).trim()) return Promise.resolve();
     cfg = cfg || window.KDO_CFG || {};
     speakStop();
-    speakGoogle(text, slow, gender, cfg).then(function (ok) {
-      if (!ok) speakWebSpeech(text, slow, gender, cfg);
+    return speakGoogle(text, slow, gender, cfg).then(function (ok) {
+      if (!ok) return speakWebSpeech(text, slow, gender, cfg);
     });
   }
 
