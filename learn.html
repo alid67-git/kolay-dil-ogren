@@ -678,20 +678,20 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.32"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.32"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.32"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.32"></script>
-<script src="shared/kdo-gloss.js?v=3.0.32"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.32"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.32"></script>
-<script src="shared/kdo-tts.js?v=3.0.32"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.32"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.32"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.32"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.32"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.32"></script>
-<script src="shared/kdo-translate.js?v=3.0.32"></script>
+<script src="shared/kdo-version.js?v=3.0.33"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.33"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.33"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.33"></script>
+<script src="shared/kdo-gloss.js?v=3.0.33"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.33"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.33"></script>
+<script src="shared/kdo-tts.js?v=3.0.33"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.33"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.33"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.33"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.33"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.33"></script>
+<script src="shared/kdo-translate.js?v=3.0.33"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 </script>
@@ -4253,6 +4253,7 @@ let exAnswerWords = [];  // legacy
 let exSlotState = [];    // wordbank slots: {word, bankIdx, marked}
 let exAnswered = false;
 let exCorrectCount = 0;
+let _exRendered = null;  // render anında snapshot — exIdx kaymasına karşı güvenli
 
 function exShuffle(arr){
   for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
@@ -4459,6 +4460,7 @@ function renderExercise(){
     showExFinish(); return;
   }
   const e = exExercises[exIdx];
+  _exRendered = e;  // snapshot: exBtnClick her zaman render edilen soruyu kullanır
   const content = document.getElementById('ex-content');
   if(e.type==='word-choice'){
     content.innerHTML = `
@@ -4554,15 +4556,18 @@ function exBankClick(btn, word, idx){
 
 function exBtnClick(){
   if(!exAnswered){
-    // Check answer
-    const e = exExercises[exIdx];
+    // Check answer — _exRendered snapshot kullanılır (exIdx kaymasına karşı güvenli)
+    const e = _exRendered || exExercises[exIdx];
     let correct = false;
     let correctAnswer = '';
 
     if(e.type==='word-choice'){
       const card = document.querySelectorAll('.ex-word-card')[exSelected];
       correct = card && card.dataset.correct==='true';
-      correctAnswer = e.options.find(o=>o.correct)?.th || '';
+      const correctCardEl = document.querySelector('.ex-word-card[data-correct="true"]');
+      correctAnswer = correctCardEl
+        ? (correctCardEl.querySelector('.ex-word-th')||correctCardEl).textContent.trim()
+        : (e.options.find(o=>o.correct)?.th || '');
       document.querySelectorAll('.ex-word-card').forEach(c=>{
         if(c.dataset.correct==='true') c.classList.add('correct');
         else if(c===card && !correct) c.classList.add('wrong');
@@ -4759,6 +4764,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.32"></script>
+<script src="shared/kdo-analytics.js?v=3.0.33"></script>
 </body>
 </html>
