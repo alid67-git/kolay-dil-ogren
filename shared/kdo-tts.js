@@ -7,6 +7,17 @@
   var _audio = null;
 
   var PROFILES = {
+    ha: {
+      m: { pitch: 0.88, rate: 0.90, slowPitch: 0.82, slowRate: 0.55 },
+      f: { pitch: 1.08, rate: 0.92, slowPitch: 1.00, slowRate: 0.58 },
+      d: { pitch: 0.95, rate: 0.90, slowPitch: 0.88, slowRate: 0.55 },
+      pick: function (voices, gender) {
+        var ha = voices.filter(function (v) { return v.lang === 'ha-NG' || v.lang === 'ha'; });
+        if (!ha.length) return null;
+        if (gender === 'f') return ha[ha.length - 1];
+        return ha[0];
+      }
+    },
     th: {
       m: { pitch: 0.85, rate: 0.82, slowPitch: 0.80, slowRate: 0.38 },
       f: { pitch: 1.05, rate: 0.88, slowPitch: 1.00, slowRate: 0.42 },
