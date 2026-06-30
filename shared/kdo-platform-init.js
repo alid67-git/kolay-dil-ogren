@@ -13,7 +13,8 @@
     if (!sessionStorage.getItem(reloadKey)) {
       sessionStorage.setItem(reloadKey, '1');
       localStorage.setItem('app_version', APP_VERSION);
-      location.reload();
+      var sep = location.search ? '&' : '?';
+      location.replace(location.pathname + location.search + sep + '_r=' + Date.now() + (location.hash || ''));
       return;
     }
     console.log('Yeni versiyon: ' + APP_VERSION + ', cache temizlendi.');
