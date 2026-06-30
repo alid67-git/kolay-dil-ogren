@@ -8,12 +8,13 @@
   var ROUTES = {
     tk: 'learn.html?t=tk', th: 'tayca-v3.html', en: 'learn.html?t=en',
     de: 'learn.html?t=de', it: 'learn.html?t=it', es: 'learn.html?t=es',
-    fr: 'learn.html?t=fr', ru: 'learn.html?t=ru', ar: 'learn.html?t=ar', zh: 'learn.html?t=zh'
+    fr: 'learn.html?t=fr', ru: 'learn.html?t=ru', ar: 'learn.html?t=ar',
+    zh: 'learn.html?t=zh', ha: 'learn.html?t=ha'
   };
   var LANG_KEYS = {
     tk: 'tk1_lang', th: 'tv3_lang', en: 'en1_lang', de: 'de1_lang',
     it: 'it1_lang', es: 'es1_lang', fr: 'fr1_lang', ru: 'ru1_lang',
-    ar: 'ar1_lang', zh: 'zh1_lang'
+    ar: 'ar1_lang', zh: 'zh1_lang', ha: 'ha1_lang'
   };
   var HUB_UI = {
     tr: { title: 'Dil değiştir', locale: 'Arayüz dili', target: 'Öğrenilecek dil', apply: 'Uygula', cancel: 'İptal' },
@@ -99,11 +100,12 @@
       '    </select></div>',
       '  <div class="hub-field"><label id="lang-hub-lbl-target">Öğrenilecek dil</label>',
       '    <select id="lang-hub-target">',
-      '      <option value="tk">Türkçe Öğrenme</option><option value="th">Tayca — ไทย</option>',
-      '      <option value="en">İngilizce — English</option><option value="de">Almanca — Deutsch</option>',
-      '      <option value="it">İtalyanca — Italiano</option><option value="es">İspanyolca — Español</option>',
-      '      <option value="fr">Fransızca — Français</option><option value="ru">Rusça — Русский</option>',
-      '      <option value="ar">Arapça — العربية</option><option value="zh">Çince — 中文</option>',
+      '      <option value="tk">🇹🇷 Türkçe Öğrenme — Türkçe</option><option value="th">🇹🇭 Tayca — ภาษาไทย</option>',
+      '      <option value="en">🇬🇧 İngilizce — English</option><option value="de">🇩🇪 Almanca — Deutsch</option>',
+      '      <option value="it">🇮🇹 İtalyanca — Italiano</option><option value="es">🇪🇸 İspanyolca — Español</option>',
+      '      <option value="fr">🇫🇷 Fransızca — Français</option><option value="ru">🇷🇺 Rusça — Русский</option>',
+      '      <option value="ar">🇸🇦 Arapça — العربية</option><option value="zh">🇨🇳 Çince — 中文</option>',
+      '      <option value="ha">🇳🇬 Hausa — Hausa</option>',
       '    </select></div>',
       '  <div class="lang-hub-actions">',
       '    <button type="button" class="lang-hub-cancel" id="lang-hub-cancel-btn">İptal</button>',
