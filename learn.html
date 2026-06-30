@@ -678,20 +678,20 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.40"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.40"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.40"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.40"></script>
-<script src="shared/kdo-gloss.js?v=3.0.40"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.40"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.40"></script>
-<script src="shared/kdo-tts.js?v=3.0.40"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.40"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.40"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.40"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.40"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.40"></script>
-<script src="shared/kdo-translate.js?v=3.0.40"></script>
+<script src="shared/kdo-version.js?v=3.0.41"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.41"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.41"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.41"></script>
+<script src="shared/kdo-gloss.js?v=3.0.41"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.41"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.41"></script>
+<script src="shared/kdo-tts.js?v=3.0.41"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.41"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.41"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.41"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.41"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.41"></script>
+<script src="shared/kdo-translate.js?v=3.0.41"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -2385,18 +2385,19 @@ function buildLessonHTML(L, meta){
 
   // KONUŞMA
   const speaking = (L.speaking||[]).map((sp,i)=>{
-    const spPrep = prepareExampleBreakdown(sp.en||'', sp.tr, sp.bd, Lf(sp,'gramNote')||sp.gramNote);
+    const _sptxt = getWordText(sp)||sp.ro||'';
+    const spPrep = prepareExampleBreakdown(_sptxt, sp.tr, sp.bd, Lf(sp,'gramNote')||sp.gramNote);
     const gramIdx = window._gramBD.length;
-    if(spPrep.bd.length) window._gramBD.push({th:sp.en||'', tr:sp.tr, bd:spPrep.bd, summary:spPrep.summary});
+    if(spPrep.bd.length) window._gramBD.push({th:_sptxt, tr:sp.tr, bd:spPrep.bd, summary:spPrep.summary});
     const hasBd = spPrep.bd.length>0;
     return '<div class="speak-card">'+
       '<div class="speak-task">'+(i+1)+'. '+(Lf(sp,'task')||sp.task||sp.prompt||'')+'</div>'+
-      '<div class="speak-en" '+(hasBd?'style="cursor:pointer" data-gram="'+gramIdx+'"':'')+'>'+(sp.en||'')+'</div>'+
+      '<div class="speak-en" '+(hasBd?'style="cursor:pointer" data-gram="'+gramIdx+'"':'')+'>'+ _sptxt +'</div>'+
       '<div class="speak-ro">'+(sp.ro||'')+'</div>'+
       '<div class="speak-tr">'+(Lf(sp,'tr')||sp.tr)+'</div>'+
       '<div class="speak-btns">'+
-        '<button class="ref-btn" data-speak="'+(sp.en||sp.ro||'')+'" data-slow="0" data-gender="m">'+s('speak_listen')+'</button>'+
-        '<button class="ref-btn slow" data-speak="'+(sp.en||sp.ro||'')+'" data-slow="1" data-gender="m">'+s('speak_slow')+'</button>'+
+        '<button class="ref-btn" data-speak="'+_sptxt+'" data-slow="0" data-gender="m">'+s('speak_listen')+'</button>'+
+        '<button class="ref-btn slow" data-speak="'+_sptxt+'" data-slow="1" data-gender="m">'+s('speak_slow')+'</button>'+
       '</div>'+
     '</div>';
   }).join('');
@@ -4808,6 +4809,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.40"></script>
+<script src="shared/kdo-analytics.js?v=3.0.41"></script>
 </body>
 </html>
