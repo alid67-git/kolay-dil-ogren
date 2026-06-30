@@ -678,20 +678,20 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.39"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.39"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.39"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.39"></script>
-<script src="shared/kdo-gloss.js?v=3.0.39"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.39"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.39"></script>
-<script src="shared/kdo-tts.js?v=3.0.39"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.39"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.39"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.39"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.39"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.39"></script>
-<script src="shared/kdo-translate.js?v=3.0.39"></script>
+<script src="shared/kdo-version.js?v=3.0.40"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.40"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.40"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.40"></script>
+<script src="shared/kdo-gloss.js?v=3.0.40"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.40"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.40"></script>
+<script src="shared/kdo-tts.js?v=3.0.40"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.40"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.40"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.40"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.40"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.40"></script>
+<script src="shared/kdo-translate.js?v=3.0.40"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -2245,7 +2245,8 @@ function buildLessonHTML(L, meta){
     ru:{tk_pron_ben:'я',tk_pron_sen:'ты',tk_pron_siz:'Вы',tk_pron_o:'он/она',tk_pron_biz:'мы',tk_pron_onlar:'они/вы'},
     ar:{tk_pron_ben:'أنا',tk_pron_sen:'أنت',tk_pron_siz:'أنت (رسمي)',tk_pron_o:'هو/هي',tk_pron_biz:'نحن',tk_pron_onlar:'هم/أنتم'},
     zh:{tk_pron_ben:'我',tk_pron_sen:'你',tk_pron_siz:'您',tk_pron_o:'他/她',tk_pron_biz:'我们',tk_pron_onlar:'他们/您们'},
-    th:{tk_pron_ben:'ฉัน',tk_pron_sen:'คุณ',tk_pron_siz:'คุณ (สุภาพ)',tk_pron_o:'เขา/เธอ',tk_pron_biz:'เรา',tk_pron_onlar:'พวกเขา'}
+    th:{tk_pron_ben:'ฉัน',tk_pron_sen:'คุณ',tk_pron_siz:'คุณ (สุภาพ)',tk_pron_o:'เขา/เธอ',tk_pron_biz:'เรา',tk_pron_onlar:'พวกเขา'},
+    ha:{tk_pron_ben:'ni',tk_pron_sen:'kai/ke',tk_pron_siz:'kai/ke',tk_pron_o:'shi/ita',tk_pron_biz:'mu',tk_pron_onlar:'su'}
   };
   const targetPron = PRON_TARGETS[(KDO_CFG&&KDO_CFG.kdoTarget)||'de'] || PRON_TARGETS.de;
   const meaningPron = (window.KDO_UI&&window.KDO_UI[appLang]) || {};
@@ -4807,6 +4808,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.39"></script>
+<script src="shared/kdo-analytics.js?v=3.0.40"></script>
 </body>
 </html>
