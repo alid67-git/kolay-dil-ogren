@@ -678,20 +678,20 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.37"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.37"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.37"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.37"></script>
-<script src="shared/kdo-gloss.js?v=3.0.37"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.37"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.37"></script>
-<script src="shared/kdo-tts.js?v=3.0.37"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.37"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.37"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.37"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.37"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.37"></script>
-<script src="shared/kdo-translate.js?v=3.0.37"></script>
+<script src="shared/kdo-version.js?v=3.0.38"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.38"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.38"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.38"></script>
+<script src="shared/kdo-gloss.js?v=3.0.38"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.38"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.38"></script>
+<script src="shared/kdo-tts.js?v=3.0.38"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.38"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.38"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.38"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.38"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.38"></script>
+<script src="shared/kdo-translate.js?v=3.0.38"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1335,7 +1335,13 @@ function setLang(lang){
 <script>
 // =================== YARDIMCI ===================
 function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
-function wordEn(item){ return (item&&(item.en||item.th||item.ro))||''; }
+function getWordText(item){
+  if(!item) return '';
+  var m = window.KDO_LANGUAGE_MANIFEST;
+  var tf = m && m.fieldMap && m.fieldMap.text;
+  return (tf ? item[tf] : null) || item.en || item.th || item.ro || '';
+}
+function wordEn(item){ return getWordText(item); }
 function dialogueSpeaker(l){ return l.s||l.speaker||'?'; }
 function dialogueGender(l){
   if(l.gender==='f') return 'f';
@@ -1678,7 +1684,7 @@ function playDialogue(di){
     const lineEl = document.getElementById('dline-'+di+'-'+i);
     if(lineEl) lineEl.classList.add('active-line');
     const gender = dialogueGender(lines[i]);
-    const u = new SpeechSynthesisUtterance(lines[i].en||lines[i].ro||'');
+    const u = new SpeechSynthesisUtterance(getWordText(lines[i])||lines[i].ro||'');
     u.lang = KDO_CFG.tts;
     u.pitch = gender==='m' ? 0.90 : 1.10;
     u.rate = 0.95;
@@ -1706,7 +1712,7 @@ function toggleStar(key, type, th, ro, tr, el, bd){
   if(el) el.classList.toggle('on', !!starred[key]);
   if(document.getElementById('list-view').classList.contains('active')) renderList();
 }
-function starKey(prefix, th){ return prefix+'__'+th.slice(0,20); }
+function starKey(prefix, th){ return prefix+'__'+(th||'').slice(0,20); }
 
 // =================== NAV ===================
 window.addEventListener('popstate', ()=>{
@@ -2188,10 +2194,10 @@ function buildLessonHTML(L, meta){
 
   // SÖZCÜKLER
   const words = (L.words||[]).map(w=>{
-    const sk = starKey('w'+meta.num,w.en||w.th||w.ro);
+    const sk = starKey('w'+meta.num, getWordText(w));
     const wtxt = wordEn(w);
     const exs = (w.examples||[]).map((e,ei)=>{
-      const etxt = e.th||e.en||e.ro;
+      const etxt = getWordText(e)||e.ro;
       const esk = starKey('ex'+meta.num+w.id,etxt);
       const exPrep = prepareExampleBreakdown(etxt, e.tr, e.pieces||e.bd, Lf(e,'gramNote')||e.gramNote);
       const exPieces = exPrep.bd;
@@ -2324,17 +2330,18 @@ function buildLessonHTML(L, meta){
       </table>${g.note?`<div class="gram-note-box" style="font-size:12px;margin-top:8px;line-height:1.6;">💡 ${g.note}</div>`:''}`;
     } else {
     exHtml = (g.examples||[]).map((e,ei)=>{
-      const exPrep = prepareExampleBreakdown(e.en||e.ro, e.tr, e.bd, Lf(e,'gramNote')||e.gramNote);
+      const _etxt = getWordText(e)||e.ro||'';
+      const exPrep = prepareExampleBreakdown(_etxt, e.tr, e.bd, Lf(e,'gramNote')||e.gramNote);
       const bdIdx = window._gramBD.length;
-      window._gramBD.push({th:e.en||e.ro, tr:e.tr, bd:exPrep.bd, summary:exPrep.summary});
+      window._gramBD.push({th:_etxt, tr:e.tr, bd:exPrep.bd, summary:exPrep.summary});
       return '<div class="ex-item" style="cursor:pointer" data-gram="'+bdIdx+'">'+
         '<div class="ex-texts">'+
-          '<div class="ex-th">'+(e.en||'')+'</div>'+
+          '<div class="ex-th">'+_etxt+'</div>'+
           '<div class="ex-ro">'+(e.ro||'')+'</div>'+
           '<div class="ex-tr">'+(Lf(e,'tr')||e.tr)+'</div>'+
         '</div>'+
         '<div class="ex-actions">'+
-          '<button class="sm-abtn" data-speak="'+(e.en||e.ro||'')+'" data-slow="0">🔊</button>'+
+          '<button class="sm-abtn" data-speak="'+_etxt+'" data-slow="0">🔊</button>'+
         '</div></div>';
     }).join('');
     }
@@ -2352,23 +2359,24 @@ function buildLessonHTML(L, meta){
         <button id="dplay-${di}" class="play-all-btn" onclick="playDialogue(${di})">${s('dial_play')}</button>
       </div>
       ${d.lines.map((l,li)=>{
-        const dsk = starKey('dia'+meta.num+di, (l.en||l.ro)+li);
-        const exPrep = prepareExampleBreakdown(l.en||'', l.tr, l.bd, Lf(l,'gramNote')||l.gramNote);
+        const _ltxt = getWordText(l)||l.ro||'';
+        const dsk = starKey('dia'+meta.num+di, _ltxt+li);
+        const exPrep = prepareExampleBreakdown(_ltxt, l.tr, l.bd, Lf(l,'gramNote')||l.gramNote);
         const bd = exPrep.bd;
         const dlineGramIdx = window._gramBD.length;
-        window._gramBD.push({th:l.en||'', tr:l.tr, bd, summary:exPrep.summary});
+        window._gramBD.push({th:_ltxt, tr:l.tr, bd, summary:exPrep.summary});
         const sp = dialogueSpeaker(l);
         const dg = dialogueGender(l);
         return `<div class="dline ${dg==='m'?'ali':'nada'}" id="dline-${di}-${li}">
           <div class="dspeaker">${sp}</div>
           <div class="dbubble dbubble-clickable" data-dline-idx="${dlineGramIdx}">
-            <div class="dbubble-th">${l.en||''}</div>
+            <div class="dbubble-th">${_ltxt}</div>
             <div class="dbubble-tr">${Lf(l,'tr')||l.tr}</div>
           </div>
           <div class="dline-actions">
-            <button class="sm-abtn" data-speak="${esc(l.en||l.ro)}" data-slow="0" data-gender="${dg}">🔊</button>
-            <button class="sm-abtn" data-speak="${esc(l.en||l.ro)}" data-slow="1" data-gender="${dg}">🐢</button>
-            <button class="sbtn ${starred[dsk]?'on':''}" data-star="${esc(dsk)}" data-stype="dialogue" data-th="${esc(l.en||'')}" data-ro="${esc(l.ro||'')}" data-tr="${esc(l.tr)}" data-bd="${esc(JSON.stringify(bd))}">⭐</button>
+            <button class="sm-abtn" data-speak="${esc(_ltxt)}" data-slow="0" data-gender="${dg}">🔊</button>
+            <button class="sm-abtn" data-speak="${esc(_ltxt)}" data-slow="1" data-gender="${dg}">🐢</button>
+            <button class="sbtn ${starred[dsk]?'on':''}" data-star="${esc(dsk)}" data-stype="dialogue" data-th="${esc(_ltxt)}" data-ro="${esc(l.ro||'')}" data-tr="${esc(l.tr)}" data-bd="${esc(JSON.stringify(bd))}">⭐</button>
           </div>
         </div>`;
       }).join('')}
@@ -2871,13 +2879,13 @@ function buildTestCards(lessonNum, category){
 
   // Kelimeler + örnekler
   (L.words||[]).forEach(w=>{
-    const wen = w.en||w.th||'';
+    const wen = getWordText(w);
     if(wen && w.tr){
       const cat = getPronounCategory(w.ro||wen) ? 'pronouns' : 'phrases';
       cards.push({type:'word', th:wen, ro:w.ro||'', tr:w.tr, cat, hint:w.tip||''});
     }
     (w.examples||[]).forEach(e=>{
-      const een = e.en||e.th||'';
+      const een = getWordText(e)||e.ro||'';
       if(!een||!e.tr) return;
       const cat = hasPronouns(e.ro||een) ? 'pronouns' : 'phrases';
       cards.push({type:'example', th:een, ro:e.ro||'', tr:e.tr, cat, bd:e.bd||[]});
@@ -2887,7 +2895,7 @@ function buildTestCards(lessonNum, category){
   // Gramer örnekleri
   (L.grammar||[]).forEach(g=>{
     (g.examples||[]).forEach(e=>{
-      const een = e.en||e.th||'';
+      const een = getWordText(e)||e.ro||'';
       if(!een||!e.tr) return;
       cards.push({type:'grammar', th:een, ro:e.ro||'', tr:e.tr, cat:'grammar', bd:e.bd||[]});
     });
@@ -2898,15 +2906,15 @@ function buildTestCards(lessonNum, category){
 
   // Konuşma
   (L.speaking||[]).forEach(s=>{
-    const sen = s.en||s.th||'';
-    if(!sen&&!s.ro) return;
-    cards.push({type:'speaking', th:sen||s.ro, ro:s.ro||'', tr:s.tr||'', cat:'phrases'});
+    const sen = getWordText(s)||s.ro||'';
+    if(!sen) return;
+    cards.push({type:'speaking', th:sen, ro:s.ro||'', tr:s.tr||'', cat:'phrases'});
   });
 
   // Diyalog satırları
   (L.dialogues||[]).forEach(d=>{
     (d.lines||[]).forEach(line=>{
-      const len = line.en||line.th||'';
+      const len = getWordText(line)||line.ro||'';
       if(!len||!line.tr) return;
       const gender = line.gender || (dialogueGender(line)==='f'?'f':'m');
       cards.push({type:'dialogue', th:len, ro:line.ro||'', tr:line.tr, cat:'phrases', gender, speaker:dialogueSpeaker(line)});
@@ -3436,10 +3444,10 @@ const SRS = {
       added++;
     };
     (L.words||[]).forEach(w=>{
-      mk(`L${num}_w_${w.id}`, w.en||w.th, w.ro, w.tr, 'word', w.bd);
-      (w.examples||[]).forEach((e,i)=> mk(`L${num}_ex_${w.id}_${i}`, e.en||e.th, e.ro, e.tr, 'example', e.bd));
+      mk(`L${num}_w_${w.id}`, getWordText(w), w.ro, w.tr, 'word', w.bd);
+      (w.examples||[]).forEach((e,i)=> mk(`L${num}_ex_${w.id}_${i}`, getWordText(e)||e.ro, e.ro, e.tr, 'example', e.bd));
     });
-    (L.speaking||[]).forEach((s,i)=> mk(`L${num}_sp_${i}`, s.en||s.th, s.ro, s.tr, 'speaking', s.bd));
+    (L.speaking||[]).forEach((s,i)=> mk(`L${num}_sp_${i}`, getWordText(s)||s.ro, s.ro, s.tr, 'speaking', s.bd));
     this.save(db);
     return added;
   }
@@ -4296,9 +4304,9 @@ function exShuffle(arr){
 }
 
 function buildExercises(LD, lessonNum){
-  const words = (LD.words||[]).filter(w=>w.tr && (w.en||w.ro));
+  const words = (LD.words||[]).filter(w=>w.tr && (getWordText(w)||w.ro));
   if(words.length<2) return [];
-  const hasEnText = words.some(w=>w.en||w.th);
+  const hasEnText = words.some(w=>getWordText(w));
   const ex = [];
   const isBeginner = lessonNum===1;
   const maxWbLen = isBeginner ? 3 : 5;
@@ -4311,10 +4319,10 @@ function buildExercises(LD, lessonNum){
   wc_words.forEach(w=>{
     const dist = distractors(w.id, 3);
     if(dist.length<1) return;
-    const display = w.en||w.th||w.ro;
+    const display = getWordText(w)||w.ro;
     const opts = exShuffle([
       {th:display, ro:w.ro, correct:true},
-      ...dist.map(d=>({th:d.en||d.th||d.ro, ro:d.ro, correct:false}))
+      ...dist.map(d=>({th:getWordText(d)||d.ro, ro:d.ro, correct:false}))
     ]);
     ex.push({type:'word-choice', prompt:w.tr, correctEn:display, options:opts});
   });
@@ -4323,13 +4331,13 @@ function buildExercises(LD, lessonNum){
   if(hasEnText && !isBeginner){
     const lc_exs = exShuffle([...allExamples]).slice(0, 4);
     lc_exs.forEach(e=>{
-      const audio = e.en||e.th;
+      const audio = getWordText(e)||e.ro;
       if(!audio || !e.tr) return;
-      const dist = exShuffle(allExamples.filter(x=>(x.en||x.th)!==audio)).slice(0,3);
+      const dist = exShuffle(allExamples.filter(x=>(getWordText(x)||x.ro)!==audio)).slice(0,3);
       if(dist.length<1) return;
       const opts = exShuffle([
         {th:audio, ro:e.ro||'', correct:true},
-        ...dist.map(d=>({th:d.en||d.th||'', ro:d.ro||'', correct:false}))
+        ...dist.map(d=>({th:getWordText(d)||d.ro||'', ro:d.ro||'', correct:false}))
       ]);
       ex.push({type:'listen-choice', audioEn:audio, options:opts});
     });
@@ -4337,7 +4345,7 @@ function buildExercises(LD, lessonNum){
 
   const tc_exs = exShuffle([...allExamples]).slice(0, isBeginner?2:5);
   tc_exs.forEach(e=>{
-    const src = e.en||e.th||e.ro;
+    const src = getWordText(e)||e.ro;
     if(!src || !e.tr) return;
     if(isBeginner && src.split(/\s+/).length>4) return;
     const dist = exShuffle(allExamples.filter(x=>x.tr!==e.tr)).slice(0,3);
@@ -4799,6 +4807,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.37"></script>
+<script src="shared/kdo-analytics.js?v=3.0.38"></script>
 </body>
 </html>
