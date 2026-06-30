@@ -20,20 +20,20 @@ h1{margin:0 0 2px;font-size:22px;color:#134e4a}
 .ver{text-align:center;margin-top:12px;font-size:10px;color:#cbd5e1}
 @media(prefers-color-scheme:dark){.card{background:#1e1e1e}h1{color:#e0f2f1}.sub{color:#aaa}.dev-credit{color:#5eead4}.field select{background:#2a2a2a;border-color:#444;color:#e0e0e0}.field label{color:#888}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.25"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.25"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.25"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.25"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.25"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.25"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.25"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.25"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.25"></script>
+<script src="shared/kdo-version.js?v=3.0.34"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.34"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.34"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.34"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.34"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.34"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.34"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.34"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.34"></script>
 </head>
 <body>
 <div class="card">
   <h1 id="hub-title">Kolay Dil Ogren</h1>
-  <p class="sub" id="intro">9 dil — tam surumler, detayli gramer.</p>
+  <p class="sub" id="intro">11 dil — tam surumler, detayli gramer.</p>
   <p class="dev-credit" id="dev-credit"></p>
   <div class="field">
     <label id="lbl-locale">Arayuz dili</label>
@@ -63,6 +63,7 @@ h1{margin:0 0 2px;font-size:22px;color:#134e4a}
       <option value="ru">Rusca — Русский</option>
       <option value="ar">Arapca — العربية</option>
       <option value="zh">Cince — 中文</option>
+      <option value="ha">Hausa — Hausa 🇳🇬</option>
     </select>
   </div>
   <button class="btn" id="go">Basla</button>
@@ -71,11 +72,11 @@ h1{margin:0 0 2px;font-size:22px;color:#134e4a}
 </div>
 <script>
 const APP='kdo';
-const ROUTES={tk:'learn.html?t=tk',th:'tayca-v3.html',en:'learn.html?t=en',de:'learn.html?t=de',it:'learn.html?t=it',es:'learn.html?t=es',fr:'learn.html?t=fr',ru:'learn.html?t=ru',ar:'learn.html?t=ar',zh:'learn.html?t=zh'};
-const LANG_KEYS={tk:'tk1_lang',th:'tv3_lang',en:'en1_lang',de:'de1_lang',it:'it1_lang',es:'es1_lang',fr:'fr1_lang',ru:'ru1_lang',ar:'ar1_lang',zh:'zh1_lang'};
+const ROUTES={tk:'learn.html?t=tk',th:'tayca-v3.html',en:'learn.html?t=en',de:'learn.html?t=de',it:'learn.html?t=it',es:'learn.html?t=es',fr:'learn.html?t=fr',ru:'learn.html?t=ru',ar:'learn.html?t=ar',zh:'learn.html?t=zh',ha:'learn.html?t=ha'};
+const LANG_KEYS={tk:'tk1_lang',th:'tv3_lang',en:'en1_lang',de:'de1_lang',it:'it1_lang',es:'es1_lang',fr:'fr1_lang',ru:'ru1_lang',ar:'ar1_lang',zh:'zh1_lang',ha:'ha1_lang'};
 const HUB_UI={
-  tr:{title:'Kolay Dil Öğren',intro:'10 dil öğrenme + Türkçe öğretme — tam sürümler, detaylı gramer.',welcome:'Hoş geldiniz! Arayüz dilini ve öğrenmek istediğiniz dili seçin.',changeHint:'Dil tercihlerinizi buradan değiştirebilirsiniz.',locale:'Arayüz dili',target:'Öğrenilecek dil',go:'Başla',note:'Tam dersler, detaylı gramer, alıştırma ve SRS.',dev:'Geliştiren: Ali Dinçer'},
-  en:{title:'Easy Language Learning',intro:'10 languages to learn + Turkish teaching — full apps with grammar.',welcome:'Welcome! Choose your interface language and the language you want to learn.',changeHint:'Change your language preferences here.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, grammar, practice and SRS.',dev:'Developed by: Ali Dinçer'},
+  tr:{title:'Kolay Dil Öğren',intro:'11 dil öğrenme + Türkçe öğretme — tam sürümler, detaylı gramer.',welcome:'Hoş geldiniz! Arayüz dilini ve öğrenmek istediğiniz dili seçin.',changeHint:'Dil tercihlerinizi buradan değiştirebilirsiniz.',locale:'Arayüz dili',target:'Öğrenilecek dil',go:'Başla',note:'Tam dersler, detaylı gramer, alıştırma ve SRS.',dev:'Geliştiren: Ali Dinçer'},
+  en:{title:'Easy Language Learning',intro:'11 languages to learn + Turkish teaching — full apps with grammar.',welcome:'Welcome! Choose your interface language and the language you want to learn.',changeHint:'Change your language preferences here.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, grammar, practice and SRS.',dev:'Developed by: Ali Dinçer'},
   fr:{title:'Apprendre les langues',intro:'10 langues — lecons completes et grammaire detaillee.',welcome:'Bienvenue ! Choisissez la langue de l interface et la langue a apprendre.',changeHint:'Modifiez vos preferences de langue ici.',locale:'Langue de l interface',target:'Langue a apprendre',go:'Commencer',note:'Lecons, grammaire, exercices et SRS.',dev:'Developpe par : Ali Dinçer'},
   de:{title:'Sprachen leicht lernen',intro:'10 Sprachen — vollstandige Lektionen und Grammatik.',welcome:'Willkommen! Wahlen Sie Oberflachensprache und Lernsprache.',changeHint:'Spracheinstellungen hier andern.',locale:'Oberflachensprache',target:'Zu lernende Sprache',go:'Starten',note:'Lektionen, Grammatik, Ubung und SRS.',dev:'Entwickelt von: Ali Dinçer'},
   es:{title:'Aprender idiomas',intro:'10 idiomas — lecciones completas y gramatica detallada.',welcome:'Bienvenido! Elige el idioma de la interfaz y el idioma a aprender.',changeHint:'Cambia tus preferencias de idioma aqui.',locale:'Idioma de la interfaz',target:'Idioma a aprender',go:'Empezar',note:'Lecciones, gramatica, practica y SRS.',dev:'Desarrollado por: Ali Dinçer'},
@@ -154,6 +155,6 @@ function launch(){
 }
 document.getElementById('go').addEventListener('click',launch);
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.25"></script>
+<script src="shared/kdo-analytics.js?v=3.0.34"></script>
 </body>
 </html>

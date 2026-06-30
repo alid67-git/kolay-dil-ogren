@@ -11,8 +11,14 @@ window.KDO_REGISTRY = {
     {
       "code": "th",
       "name": "Tayca",
-      "nativeName": "???",
+      "nativeName": "ภาษาไทย",
       "manifest": "languages/th/manifest.js"
+    },
+    {
+      "code": "ha",
+      "name": "Hausa",
+      "nativeName": "Hausa",
+      "manifest": "languages/ha/manifest.js"
     }
   ],
   "baseLanguages": [

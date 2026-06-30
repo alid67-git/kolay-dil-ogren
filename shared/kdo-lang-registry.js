@@ -508,6 +508,63 @@ window.KDO_LANG_REGISTRY = {
     "rtl": false,
     "cjk": false
   },
+  "ha": {
+    "code": "ha",
+    "kdoTarget": "ha",
+    "prefix": "ha1_",
+    "storageBrand": "hausa_",
+    "flag": "🇳🇬",
+    "nameTr": "Kolay Hausa",
+    "nameEn": "Easy Hausa Learning",
+    "title": "Kolay Hausa Öğrenme",
+    "lessonsPath": "languages/ha/lessons",
+    "tts": "ha-NG",
+    "ttsAlt": "ha",
+    "ttsPrefix": "ha",
+    "googleVoiceF": "",
+    "googleVoiceM": "",
+    "targetLabelTr": "Hausa",
+    "targetLabelEn": "Hausa",
+    "l2Meta": {
+      "title": "Fi'ilai & Zamiri",
+      "title_en": "Verbs & Pronouns",
+      "subtitle": "Yanayi na Fi'il — adım adım",
+      "subtitle_en": "Verb Aspects — step by step"
+    },
+    "targetUi": {
+      "tr": {
+        "test_dir_en2tr": "Hausa → Anlam",
+        "test_dir_tr2en": "Anlam → Hausa",
+        "translate_placeholder": "Hausa veya Türkçe yaz...",
+        "translate_tip": "Hausa veya Türkçe bir kelime veya cümle yaz.",
+        "settings_voices": "🔊 Hausa Sesleri",
+        "pron_col_english": "Hausa",
+        "num_info": "Hausa sayılarında Arapça kökenli kelimeler kullanılır. Karta dokun → sesini duy 🔊",
+        "calc_info": "Herhangi bir sayıyı gir — Hausa karşılığı anında çıkar. 🔊 ile seslendir.",
+        "review_q_en2tr": "🇳🇬 Hausa → Türkçe",
+        "review_q_tr2en": "🇹🇷 Türkçe → Hausa"
+      },
+      "en": {
+        "test_dir_en2tr": "Hausa → Meaning",
+        "test_dir_tr2en": "Meaning → Hausa",
+        "translate_placeholder": "Type Hausa or Turkish...",
+        "translate_tip": "Type a Hausa or Turkish word or sentence.",
+        "settings_voices": "🔊 Hausa Voices",
+        "pron_col_english": "Hausa",
+        "num_info": "Hausa numbers use Arabic-derived words. Tap a card to hear it 🔊",
+        "calc_info": "Enter any number — instant Hausa equivalent. Tap 🔊 to hear.",
+        "review_q_en2tr": "🇳🇬 Hausa → Turkish",
+        "review_q_tr2en": "🇹🇷 Turkish → Hausa"
+      }
+    },
+    "lessonsCount": 20,
+    "legacy": false,
+    "legacyUrl": null,
+    "enLesson2Migration": false,
+    "extras": [],
+    "rtl": false,
+    "cjk": false
+  },
   "th": {
     "code": "th",
     "kdoTarget": "th",
@@ -606,6 +663,14 @@ window.KDO_TRANSLATE_BY_LANG = {
     "fallback": "en",
     "lessonTargetField": "tr",
     "lessonBaseField": "en"
+  },
+  "ha": {
+    "target": "ha",
+    "pattern": "\\b(sannu|nagode|yauwa|lafiya|ina|suna|gida|kasuwa|abinci|ruwa|tafiya|mutum|mace|yaro|asibiti|likita|mota|otal|ɓ|ɗ|ƙ)\\b",
+    "flags": "i",
+    "fallback": "en",
+    "lessonTargetField": "ha",
+    "lessonBaseField": "tr"
   },
   "th": {
     "target": "th",
