@@ -116,13 +116,17 @@ export default {
         env.DB.prepare(`SELECT COUNT(DISTINCT session_id) AS n FROM sessions WHERE created_at > ?`).bind(since).first(),
         env.DB.prepare(
           `SELECT country, COUNT(DISTINCT ip_hash) AS ips, COUNT(DISTINCT visitor_id) AS visitors,
-                  COALESCE(SUM(CASE WHEN event='session_end' THEN duration_sec ELSE 0 END), 0) AS total_sec
-           FROM sessions WHERE created_at > ? GROUP BY country ORDER BY visitors DESC LIMIT 30`
+                  COALESCE(SUM(max_dur), 0) AS total_sec
+           FROM (SELECT country, ip_hash, visitor_id, session_id, MAX(duration_sec) AS max_dur
+                 FROM sessions WHERE created_at > ? GROUP BY session_id) sub
+           GROUP BY country ORDER BY visitors DESC LIMIT 30`
         ).bind(since).all(),
         env.DB.prepare(
           `SELECT lang, COUNT(DISTINCT visitor_id) AS visitors,
-                  COALESCE(SUM(CASE WHEN event='session_end' THEN duration_sec ELSE 0 END), 0) AS total_sec
-           FROM sessions WHERE created_at > ? AND lang != '' AND lang IS NOT NULL
+                  COALESCE(SUM(max_dur), 0) AS total_sec
+           FROM (SELECT lang, visitor_id, session_id, MAX(duration_sec) AS max_dur
+                 FROM sessions WHERE created_at > ? AND lang != '' AND lang IS NOT NULL
+                 GROUP BY session_id) sub
            GROUP BY lang ORDER BY visitors DESC`
         ).bind(since).all(),
         env.DB.prepare(
