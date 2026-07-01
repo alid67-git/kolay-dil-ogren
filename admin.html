@@ -69,6 +69,7 @@ th{color:#94a3b8;font-size:11px;text-transform:uppercase}
     </div>
 
     <button class="btn sec" onclick="loadStats()" style="margin-top:8px">Yenile</button>
+    <button class="btn" onclick="resetData()" style="margin-top:8px;margin-left:8px;background:#dc2626">Verileri Sıfırla</button>
   </div>
 </div>
 <script>
@@ -115,6 +116,16 @@ async function doLogin(){
     err.textContent=e.message||'Bağlantı hatası';
     err.classList.remove('hidden');
   }
+}
+
+async function resetData(){
+  if(!confirm('Tüm analitik verileri kalıcı olarak silmek istiyor musunuz?')) return;
+  const pw=sessionStorage.getItem(PW_KEY);
+  const ep=localStorage.getItem(EP_KEY)||'';
+  if(!pw||!ep) return logout();
+  const r=await fetch(ep+'/reset?pw='+encodeURIComponent(pw),{method:'POST'});
+  if(r.ok){ alert('Veriler sıfırlandı.'); await loadStats(); }
+  else alert('Hata: '+r.status);
 }
 
 async function loadStats(){
