@@ -93,12 +93,23 @@ export default {
       if (!visitorId) return json({ error: 'visitorId required' }, 400, cors);
 
       const createdMs = normalizeCreatedMs(ts);
+      const MAX_SESSION_SEC = 4 * 3600; // açık kalan sekmeleri sınırla
+      const safeDuration = Math.min(durationSec | 0, MAX_SESSION_SEC);
 
       await env.DB.prepare(
         `INSERT INTO sessions (visitor_id, session_id, lang, ui_lang, country, ip_hash, page, duration_sec, event, created_at)
          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-      ).bind(visitorId, sessionId, lang, uiLang, country, ipHash, page, durationSec | 0, event, createdMs).run();
+      ).bind(visitorId, sessionId, lang, uiLang, country, ipHash, page, safeDuration, event, createdMs).run();
 
+      return json({ ok: true }, 200, cors);
+    }
+
+    if (url.pathname === '/reset' && request.method === 'POST') {
+      const pw = url.searchParams.get('pw') || '';
+      if (!env.ADMIN_PASSWORD || pw !== env.ADMIN_PASSWORD) {
+        return json({ error: 'unauthorized' }, 401, cors);
+      }
+      await env.DB.prepare('DELETE FROM sessions').run();
       return json({ ok: true }, 200, cors);
     }
 
