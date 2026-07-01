@@ -115,7 +115,8 @@ export default {
         env.DB.prepare(`SELECT COUNT(DISTINCT visitor_id) AS n FROM sessions WHERE created_at > ?`).bind(since).first(),
         env.DB.prepare(`SELECT COUNT(DISTINCT session_id) AS n FROM sessions WHERE created_at > ?`).bind(since).first(),
         env.DB.prepare(
-          `SELECT country, COUNT(DISTINCT ip_hash) AS ips, COUNT(DISTINCT visitor_id) AS visitors
+          `SELECT country, COUNT(DISTINCT ip_hash) AS ips, COUNT(DISTINCT visitor_id) AS visitors,
+                  COALESCE(SUM(CASE WHEN event='session_end' THEN duration_sec ELSE 0 END), 0) AS total_sec
            FROM sessions WHERE created_at > ? GROUP BY country ORDER BY visitors DESC LIMIT 30`
         ).bind(since).all(),
         env.DB.prepare(
@@ -132,6 +133,13 @@ export default {
 
       const langs = (byLang.results || []).map(r => ({
         lang: r.lang,
+        visitors: r.visitors,
+        totalSec: r.total_sec || 0
+      }));
+
+      const countries = (byCountry.results || []).map(r => ({
+        country: r.country,
+        ips: r.ips,
         visitors: r.visitors,
         totalSec: r.total_sec || 0
       }));
@@ -153,7 +161,7 @@ export default {
         uniqueVisitors: uniqueVisitors?.n || 0,
         totalSessions: totalSessions?.n || 0,
         totalStudySec: totalStudy,
-        byCountry: byCountry.results || [],
+        byCountry: countries,
         byLang: langs,
         recent: recentRows,
         sinceDays: 90

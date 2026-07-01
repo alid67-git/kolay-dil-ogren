@@ -55,7 +55,7 @@ th{color:#94a3b8;font-size:11px;text-transform:uppercase}
 
     <div class="card">
       <h2 style="margin:0 0 12px;font-size:16px">🌍 Ülkelere göre</h2>
-      <table><thead><tr><th>Ülke</th><th>Benzersiz IP</th><th>Ziyaretçi</th></tr></thead><tbody id="tbl-country"></tbody></table>
+      <table><thead><tr><th>Ülke</th><th>Benzersiz IP</th><th>Ziyaretçi</th><th>Toplam süre</th></tr></thead><tbody id="tbl-country"></tbody></table>
     </div>
 
     <div class="card">
@@ -72,7 +72,10 @@ th{color:#94a3b8;font-size:11px;text-transform:uppercase}
   </div>
 </div>
 <script>
-const LANG_NAMES={th:'Tayca',tk:'Türkçe',en:'İngilizce',de:'Almanca',it:'İtalyanca',es:'İspanyolca',fr:'Fransızca',ru:'Rusça',ar:'Arapça',zh:'Çince',unknown:'?'};
+const LANG_NAMES={th:'Tayca',tk:'Türkçe',en:'İngilizce',de:'Almanca',it:'İtalyanca',es:'İspanyolca',fr:'Fransızca',ru:'Rusça',ar:'Arapça',zh:'Çince',ha:'Hausa',unknown:'?'};
+const COUNTRY_NAMES={AF:'Afganistan',AL:'Arnavutluk',DZ:'Cezayir',AR:'Arjantin',AM:'Ermenistan',AU:'Avustralya',AT:'Avusturya',AZ:'Azerbaycan',BH:'Bahreyn',BD:'Bangladeş',BY:'Belarus',BE:'Belçika',BA:'Bosna Hersek',BR:'Brezilya',BG:'Bulgaristan',CA:'Kanada',CL:'Şili',CN:'Çin',CO:'Kolombiya',HR:'Hırvatistan',CY:'Kıbrıs',CZ:'Çekya',DK:'Danimarka',EG:'Mısır',EE:'Estonya',FI:'Finlandiya',FR:'Fransa',GE:'Gürcistan',DE:'Almanya',GH:'Gana',GR:'Yunanistan',HU:'Macaristan',IN:'Hindistan',ID:'Endonezya',IQ:'Irak',IE:'İrlanda',IL:'İsrail',IT:'İtalya',JP:'Japonya',JO:'Ürdün',KZ:'Kazakistan',KE:'Kenya',KW:'Kuveyt',KG:'Kırgızistan',LV:'Letonya',LB:'Lübnan',LT:'Litvanya',LU:'Lüksemburg',MY:'Malezya',MV:'Maldivler',MX:'Meksika',MA:'Fas',NL:'Hollanda',NZ:'Yeni Zelanda',NG:'Nijerya',NO:'Norveç',OM:'Umman',PK:'Pakistan',PS:'Filistin',PH:'Filipinler',PL:'Polonya',PT:'Portekiz',QA:'Katar',RO:'Romanya',RU:'Rusya',SA:'Suudi Arabistan',SN:'Senegal',RS:'Sırbistan',SG:'Singapur',SK:'Slovakya',SI:'Slovenya',ZA:'Güney Afrika',KR:'Güney Kore',ES:'İspanya',LK:'Sri Lanka',SE:'İsveç',CH:'İsviçre',TW:'Tayvan',TJ:'Tacikistan',TH:'Tayland',TN:'Tunus',TR:'Türkiye',TM:'Türkmenistan',UA:'Ukrayna',AE:'Birleşik Arap Emirlikleri',GB:'Birleşik Krallık',US:'Amerika',UZ:'Özbekistan',VN:'Vietnam',YE:'Yemen'};
+function countryFlag(code){if(!code||code.length!==2)return '';return code.toUpperCase().split('').map(c=>String.fromCodePoint(0x1F1E0+c.charCodeAt(0)-65)).join('');}
+function countryName(code){return COUNTRY_NAMES[code]||code||'?';}
 const PW_KEY='kdo:admin_pw';
 const EP_KEY='kdo:analytics_endpoint';
 
@@ -131,17 +134,20 @@ async function renderStats(d){
     {n:fmtSec(d.totalStudySec||0),l:'Toplam çalışma'}
   ].map(x=>'<div class="stat"><div class="n">'+x.n+'</div><div class="l">'+x.l+'</div></div>').join('');
 
-  document.getElementById('tbl-country').innerHTML=(d.byCountry||[]).map(r=>
-    '<tr><td>'+(r.country||'?')+'</td><td>'+r.ips+'</td><td>'+r.visitors+'</td></tr>'
-  ).join('')||'<tr><td colspan="3">Henüz veri yok</td></tr>';
+  document.getElementById('tbl-country').innerHTML=(d.byCountry||[]).map(r=>{
+    const flag=countryFlag(r.country);
+    const name=countryName(r.country);
+    return '<tr><td>'+flag+' <strong>'+name+'</strong> <span style="color:#64748b;font-size:11px;">('+r.country+')</span></td><td>'+r.ips+'</td><td>'+r.visitors+'</td><td>'+fmtSec(r.totalSec||0)+'</td></tr>';
+  }).join('')||'<tr><td colspan="4">Henüz veri yok</td></tr>';
 
   document.getElementById('tbl-lang').innerHTML=(d.byLang||[]).map(r=>
     '<tr><td><span class="lang-badge">'+(LANG_NAMES[r.lang]||r.lang)+'</span></td><td>'+r.visitors+'</td><td>'+fmtSec(r.totalSec)+'</td></tr>'
   ).join('')||'<tr><td colspan="3">Henüz veri yok</td></tr>';
 
-  document.getElementById('tbl-recent').innerHTML=(d.recent||[]).map(r=>
-    '<tr><td>'+(r.at||'')+'</td><td>'+(r.country||'')+'</td><td>'+(LANG_NAMES[r.lang]||r.lang||'')+'</td><td>'+(r.page||'')+'</td><td>'+fmtSec(r.duration_sec)+'</td></tr>'
-  ).join('')||'<tr><td colspan="5">Henüz veri yok</td></tr>';
+  document.getElementById('tbl-recent').innerHTML=(d.recent||[]).map(r=>{
+    const flag=countryFlag(r.country);
+    return '<tr><td>'+(r.at||'')+'</td><td>'+flag+' '+(r.country||'')+'</td><td>'+(LANG_NAMES[r.lang]||r.lang||'')+'</td><td>'+(r.page||'')+'</td><td>'+fmtSec(r.duration_sec)+'</td></tr>';
+  }).join('')||'<tr><td colspan="5">Henüz veri yok</td></tr>';
 }
 
 (function init(){
