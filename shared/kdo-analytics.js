@@ -51,6 +51,7 @@
   const started = Date.now();
   let lastPing = started;
   let totalSec = 0;
+  let ended = false;
 
   function endpoint() {
     const custom = localStorage.getItem('kdo:analytics_endpoint');
@@ -90,6 +91,8 @@
   }
 
   function onHide() {
+    if (ended) return;
+    ended = true;
     tick();
     send('session_end');
   }
