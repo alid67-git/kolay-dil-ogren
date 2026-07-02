@@ -1,5 +1,5 @@
 /**
- * Kolay Dil Ogren — ücretsiz analytics worker (Cloudflare D1).
+ * Kolay Dil Ogren — ücretsiz analytics worker (Cloudflare D1). v3.0.42
  * Deploy: cd worker && npx wrangler d1 create kdo-analytics
  *          (database_id'yi wrangler.toml'a yapıştır)
  *          npx wrangler d1 execute kdo-analytics --file=schema.sql
