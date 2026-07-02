@@ -99,12 +99,17 @@
     setTimeout(function(){ d.style.transition='opacity .5s'; d.style.opacity='0'; setTimeout(function(){ d.remove(); }, 500); }, 3000);
   }
 
-  if (localStorage.getItem('kdo:no-track') === '1') {
+  function showTestBadge() {
+    if (localStorage.getItem('kdo:no-track') !== '1') return;
+    if (document.getElementById('kdo-test-badge')) return;
     var b = document.createElement('div');
+    b.id = 'kdo-test-badge';
     b.textContent = '🚫 TEST';
     b.style.cssText = 'position:fixed;top:8px;right:8px;background:#dc2626;color:#fff;font-size:11px;font-weight:800;padding:4px 9px;border-radius:8px;z-index:99999;letter-spacing:.05em;pointer-events:none;box-shadow:0 2px 8px rgba(220,38,38,.5);';
-    document.body.appendChild(b);
+    (document.body || document.documentElement).appendChild(b);
   }
+  if (document.body) { showTestBadge(); }
+  else { document.addEventListener('DOMContentLoaded', showTestBadge); }
 
   const started = Date.now();
   let lastPing = started;
