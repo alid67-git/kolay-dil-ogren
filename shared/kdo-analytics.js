@@ -62,6 +62,7 @@
     const url = endpoint();
     if (!CFG.enabled || !url) return;
     if (localStorage.getItem('kdo:no-track') === '1') return;
+    if (new URLSearchParams(location.search).get('notrack') === '1') return;
     const payload = {
       event,
       visitorId: getVisitorId(),
