@@ -3906,6 +3906,7 @@ function buildHelpContent(){
       <div class="help-info-row"><span>${en?'Audio':'Ses Motoru'}</span><strong>Web Speech API + Google TTS</strong></div>
       <div class="help-info-row"><span>${en?'Data':'Veri'}</span><strong>localStorage (${en?'works offline':'internet gerekmez'})</strong></div>
       <div class="help-info-row"><span>${en?'Developer':'Geliştirici'}</span><strong>Ali Dinçer</strong></div>
+      ${localStorage.getItem('kdo:no-track')==='1'?'<div style="margin:6px 0 2px;padding:7px 14px;background:#7f1d1d;border:2px solid #ef4444;border-radius:10px;color:#fca5a5;font-size:13px;font-weight:800;text-align:center;letter-spacing:.05em;">🚫 TEST MODU AKTİF — Analytics kapalı</div>':''}
       <div class="help-section-header" style="margin-top:16px;">📦 ${en?'Version History':'Versiyon Geçmişi'}</div>
       <div class="help-changelog">
         <div class="changelog-item"><div class="changelog-ver">${APP_VERSION}</div>
