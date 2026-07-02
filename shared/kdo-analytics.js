@@ -50,9 +50,17 @@
 
   (function(){
     var nt = new URLSearchParams(location.search).get('notrack');
-    if (nt === '1') localStorage.setItem('kdo:no-track', '1');
-    if (nt === '0') localStorage.removeItem('kdo:no-track');
+    if (nt === '1') { localStorage.setItem('kdo:no-track', '1'); showTrackToast('🚫 Test modu açık — analytics devre dışı'); }
+    if (nt === '0') { localStorage.removeItem('kdo:no-track'); showTrackToast('✅ Test modu kapatıldı — analytics aktif'); }
   })();
+
+  function showTrackToast(msg) {
+    var d = document.createElement('div');
+    d.textContent = msg;
+    d.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1e293b;color:#e2e8f0;padding:12px 20px;border-radius:12px;font-size:14px;font-weight:600;z-index:99999;box-shadow:0 4px 20px rgba(0,0,0,.4);white-space:nowrap;';
+    document.body.appendChild(d);
+    setTimeout(function(){ d.style.transition='opacity .5s'; d.style.opacity='0'; setTimeout(function(){ d.remove(); }, 500); }, 3000);
+  }
 
   const started = Date.now();
   let lastPing = started;
