@@ -100,13 +100,10 @@
   }
 
   if (localStorage.getItem('kdo:no-track') === '1') {
-    document.addEventListener('DOMContentLoaded', function() {
-      var b = document.createElement('div');
-      b.id = 'kdo-test-badge';
-      b.textContent = '🚫 TEST';
-      b.style.cssText = 'position:fixed;top:8px;right:8px;background:#dc2626;color:#fff;font-size:11px;font-weight:800;padding:4px 9px;border-radius:8px;z-index:99999;letter-spacing:.05em;pointer-events:none;box-shadow:0 2px 8px rgba(220,38,38,.5);';
-      document.body.appendChild(b);
-    });
+    var b = document.createElement('div');
+    b.textContent = '🚫 TEST';
+    b.style.cssText = 'position:fixed;top:8px;right:8px;background:#dc2626;color:#fff;font-size:11px;font-weight:800;padding:4px 9px;border-radius:8px;z-index:99999;letter-spacing:.05em;pointer-events:none;box-shadow:0 2px 8px rgba(220,38,38,.5);';
+    document.body.appendChild(b);
   }
 
   const started = Date.now();
