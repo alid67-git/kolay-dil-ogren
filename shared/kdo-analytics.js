@@ -61,6 +61,7 @@
   async function send(event, extra) {
     const url = endpoint();
     if (!CFG.enabled || !url) return;
+    if (localStorage.getItem('kdo:no-track') === '1') return;
     const payload = {
       event,
       visitorId: getVisitorId(),
