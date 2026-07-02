@@ -48,9 +48,11 @@
     return localStorage.getItem('kdo:locale') || localStorage.getItem('kdo:ui') || 'tr';
   }
 
-  if (new URLSearchParams(location.search).get('notrack') === '1') {
-    localStorage.setItem('kdo:no-track', '1');
-  }
+  (function(){
+    var nt = new URLSearchParams(location.search).get('notrack');
+    if (nt === '1') localStorage.setItem('kdo:no-track', '1');
+    if (nt === '0') localStorage.removeItem('kdo:no-track');
+  })();
 
   const started = Date.now();
   let lastPing = started;
