@@ -18,3 +18,10 @@ CREATE INDEX IF NOT EXISTS idx_sessions_ip ON sessions(ip_hash);
 CREATE INDEX IF NOT EXISTS idx_sessions_lang ON sessions(lang);
 CREATE INDEX IF NOT EXISTS idx_sessions_country ON sessions(country);
 CREATE INDEX IF NOT EXISTS idx_sessions_created ON sessions(created_at);
+
+-- Migration: cihaz bilgisi sütunları (mevcut DB için ayrıca çalıştır: migrate-device.sql)
+-- ALTER TABLE sessions ADD COLUMN device_type TEXT DEFAULT '';
+-- ALTER TABLE sessions ADD COLUMN os TEXT DEFAULT '';
+-- ALTER TABLE sessions ADD COLUMN os_ver TEXT DEFAULT '';
+-- ALTER TABLE sessions ADD COLUMN browser TEXT DEFAULT '';
+-- ALTER TABLE sessions ADD COLUMN browser_ver TEXT DEFAULT '';

@@ -87,7 +87,12 @@ export default {
         page = '',
         durationSec = 0,
         event = 'heartbeat',
-        ts = Date.now()
+        ts = Date.now(),
+        deviceType = '',
+        os = '',
+        osVer = '',
+        browser = '',
+        browserVer = ''
       } = body;
 
       if (!visitorId) return json({ error: 'visitorId required' }, 400, cors);
@@ -97,9 +102,9 @@ export default {
       const safeDuration = Math.min(durationSec | 0, MAX_SESSION_SEC);
 
       await env.DB.prepare(
-        `INSERT INTO sessions (visitor_id, session_id, lang, ui_lang, country, ip_hash, page, duration_sec, event, created_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-      ).bind(visitorId, sessionId, lang, uiLang, country, ipHash, page, safeDuration, event, createdMs).run();
+        `INSERT INTO sessions (visitor_id, session_id, lang, ui_lang, country, ip_hash, page, duration_sec, event, created_at, device_type, os, os_ver, browser, browser_ver)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      ).bind(visitorId, sessionId, lang, uiLang, country, ipHash, page, safeDuration, event, createdMs, deviceType, os, osVer, browser, browserVer).run();
 
       return json({ ok: true }, 200, cors);
     }
@@ -121,7 +126,7 @@ export default {
 
       const since = Date.now() - 90 * 86400000;
 
-      const [uniqueIps, uniqueVisitors, totalSessions, byCountry, byLang, recent] = await Promise.all([
+      const [uniqueIps, uniqueVisitors, totalSessions, byCountry, byLang, byDevice, byOs, byBrowser, recent] = await Promise.all([
         env.DB.prepare(`SELECT COUNT(DISTINCT ip_hash) AS n FROM sessions WHERE created_at > ?`).bind(since).first(),
         env.DB.prepare(`SELECT COUNT(DISTINCT visitor_id) AS n FROM sessions WHERE created_at > ?`).bind(since).first(),
         env.DB.prepare(`SELECT COUNT(DISTINCT session_id) AS n FROM sessions WHERE created_at > ?`).bind(since).first(),
@@ -140,7 +145,22 @@ export default {
            GROUP BY lang ORDER BY visitors DESC`
         ).bind(since).all(),
         env.DB.prepare(
-          `SELECT created_at, country, lang, ui_lang, page, duration_sec, event
+          `SELECT device_type, COUNT(DISTINCT visitor_id) AS visitors
+           FROM sessions WHERE created_at > ? AND device_type != '' AND device_type IS NOT NULL
+           GROUP BY device_type ORDER BY visitors DESC`
+        ).bind(since).all(),
+        env.DB.prepare(
+          `SELECT os, os_ver, COUNT(DISTINCT visitor_id) AS visitors
+           FROM sessions WHERE created_at > ? AND os != '' AND os IS NOT NULL AND os != 'unknown'
+           GROUP BY os, os_ver ORDER BY visitors DESC LIMIT 20`
+        ).bind(since).all(),
+        env.DB.prepare(
+          `SELECT browser, COUNT(DISTINCT visitor_id) AS visitors
+           FROM sessions WHERE created_at > ? AND browser != '' AND browser IS NOT NULL AND browser != 'unknown'
+           GROUP BY browser ORDER BY visitors DESC LIMIT 10`
+        ).bind(since).all(),
+        env.DB.prepare(
+          `SELECT created_at, country, lang, ui_lang, page, duration_sec, event, device_type, os, os_ver, browser, browser_ver
            FROM sessions ORDER BY created_at DESC LIMIT 50`
         ).all()
       ]);
@@ -167,7 +187,12 @@ export default {
         ui_lang: r.ui_lang,
         page: r.page,
         duration_sec: r.duration_sec,
-        event: r.event
+        event: r.event,
+        device_type: r.device_type,
+        os: r.os,
+        os_ver: r.os_ver,
+        browser: r.browser,
+        browser_ver: r.browser_ver
       }));
 
       return json({
@@ -177,6 +202,9 @@ export default {
         totalStudySec: totalStudy,
         byCountry: countries,
         byLang: langs,
+        byDevice: (byDevice.results || []).map(r => ({ deviceType: r.device_type, visitors: r.visitors })),
+        byOs: (byOs.results || []).map(r => ({ os: r.os, osVer: r.os_ver, visitors: r.visitors })),
+        byBrowser: (byBrowser.results || []).map(r => ({ browser: r.browser, visitors: r.visitors })),
         recent: recentRows,
         sinceDays: 90
       }, 200, cors);

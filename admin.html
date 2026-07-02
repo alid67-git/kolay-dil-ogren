@@ -62,8 +62,26 @@ th{color:#94a3b8;font-size:11px;text-transform:uppercase}
     </div>
 
     <div class="card">
+      <h2 style="margin:0 0 12px;font-size:16px">📱 Cihaz &amp; Platform</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#94a3b8;margin-bottom:8px">Cihaz tipi</div>
+          <table><thead><tr><th>Tip</th><th>Ziyaretçi</th></tr></thead><tbody id="tbl-device"></tbody></table>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#94a3b8;margin-bottom:8px">İşletim sistemi</div>
+          <table><thead><tr><th>OS</th><th>Ziyaretçi</th></tr></thead><tbody id="tbl-os"></tbody></table>
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;color:#94a3b8;margin-bottom:8px">Tarayıcı</div>
+          <table><thead><tr><th>Tarayıcı</th><th>Ziyaretçi</th></tr></thead><tbody id="tbl-browser"></tbody></table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
       <h2 style="margin:0 0 12px;font-size:16px">🕐 Son kayıtlar</h2>
-      <table><thead><tr><th>Zaman</th><th>Ülke</th><th>Dil</th><th>Sayfa</th><th>Süre</th></tr></thead><tbody id="tbl-recent"></tbody></table>
+      <table><thead><tr><th>Zaman</th><th>Ülke</th><th>Dil</th><th>Cihaz</th><th>OS</th><th>Tarayıcı</th><th>Sayfa</th><th>Süre</th></tr></thead><tbody id="tbl-recent"></tbody></table>
     </div>
 
     <button class="btn sec" onclick="loadStats()" style="margin-top:8px">Yenile</button>
@@ -153,10 +171,26 @@ async function renderStats(d){
     '<tr><td><span class="lang-badge">'+(LANG_NAMES[r.lang]||r.lang)+'</span></td><td>'+r.visitors+'</td><td>'+fmtSec(r.totalSec)+'</td></tr>'
   ).join('')||'<tr><td colspan="3">Henüz veri yok</td></tr>';
 
+  const DEVICE_NAMES={mobile:'📱 Mobil',tablet:'📟 Tablet',desktop:'🖥️ Masaüstü'};
+  document.getElementById('tbl-device').innerHTML=(d.byDevice||[]).map(r=>
+    '<tr><td>'+(DEVICE_NAMES[r.deviceType]||r.deviceType)+'</td><td>'+r.visitors+'</td></tr>'
+  ).join('')||'<tr><td colspan="2">—</td></tr>';
+
+  document.getElementById('tbl-os').innerHTML=(d.byOs||[]).map(r=>
+    '<tr><td>'+(r.os||'')+(r.osVer?' <span style="color:#64748b;font-size:11px;">'+r.osVer+'</span>':'')+'</td><td>'+r.visitors+'</td></tr>'
+  ).join('')||'<tr><td colspan="2">—</td></tr>';
+
+  document.getElementById('tbl-browser').innerHTML=(d.byBrowser||[]).map(r=>
+    '<tr><td>'+(r.browser||'')+'</td><td>'+r.visitors+'</td></tr>'
+  ).join('')||'<tr><td colspan="2">—</td></tr>';
+
   document.getElementById('tbl-recent').innerHTML=(d.recent||[]).map(r=>{
     const flag=countryFlag(r.country);
-    return '<tr><td>'+(r.at||'')+'</td><td>'+flag+' '+(r.country||'')+'</td><td>'+(LANG_NAMES[r.lang]||r.lang||'')+'</td><td>'+(r.page||'')+'</td><td>'+fmtSec(r.duration_sec)+'</td></tr>';
-  }).join('')||'<tr><td colspan="5">Henüz veri yok</td></tr>';
+    const dev=r.device_type?'<span style="font-size:11px">'+(DEVICE_NAMES[r.device_type]||r.device_type)+'</span>':'';
+    const osStr=(r.os||'')+(r.os_ver?' '+r.os_ver:'');
+    const brStr=(r.browser||'')+(r.browser_ver?' <span style="color:#64748b;font-size:10px;">'+r.browser_ver.split('.')[0]+'</span>':'');
+    return '<tr><td>'+(r.at||'')+'</td><td>'+flag+' '+(r.country||'')+'</td><td>'+(LANG_NAMES[r.lang]||r.lang||'')+'</td><td>'+dev+'</td><td style="font-size:11px">'+osStr+'</td><td>'+brStr+'</td><td>'+(r.page||'')+'</td><td>'+fmtSec(r.duration_sec)+'</td></tr>';
+  }).join('')||'<tr><td colspan="8">Henüz veri yok</td></tr>';
 }
 
 (function init(){

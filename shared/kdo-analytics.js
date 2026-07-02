@@ -48,6 +48,43 @@
     return localStorage.getItem('kdo:locale') || localStorage.getItem('kdo:ui') || 'tr';
   }
 
+  function detectDevice() {
+    const ua = navigator.userAgent;
+    let os = 'unknown', osVer = '', browser = 'unknown', browserVer = '', deviceType = 'desktop';
+    if (/iPad/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1)) deviceType = 'tablet';
+    else if (/Mobi|Android|iPhone|iPod/i.test(ua)) deviceType = 'mobile';
+    if (/iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1)) {
+      os = 'iOS';
+      const m = ua.match(/OS (\d+[_\d]*)/); if (m) osVer = m[1].replace(/_/g, '.');
+    } else if (/Android/i.test(ua)) {
+      os = 'Android';
+      const m = ua.match(/Android (\d+[.\d]*)/); if (m) osVer = m[1];
+    } else if (/Windows/i.test(ua)) {
+      os = 'Windows';
+      const m = ua.match(/Windows NT (\d+\.\d+)/);
+      if (m) osVer = {'10.0':'10/11','6.3':'8.1','6.2':'8','6.1':'7'}[m[1]] || m[1];
+    } else if (/Mac OS X/i.test(ua)) {
+      os = 'macOS';
+      const m = ua.match(/Mac OS X (\d+[_\d]*)/); if (m) osVer = m[1].replace(/_/g, '.');
+    } else if (/Linux/i.test(ua)) { os = 'Linux'; }
+    if (/SamsungBrowser/i.test(ua)) {
+      browser = 'Samsung'; const m = ua.match(/SamsungBrowser\/([\d.]+)/); if (m) browserVer = m[1];
+    } else if (/OPR|Opera/i.test(ua)) {
+      browser = 'Opera'; const m = ua.match(/(?:OPR|Opera)\/([\d.]+)/); if (m) browserVer = m[1];
+    } else if (/Edg/i.test(ua)) {
+      browser = 'Edge'; const m = ua.match(/Edg\/([\d.]+)/); if (m) browserVer = m[1];
+    } else if (/Chrome/i.test(ua)) {
+      browser = 'Chrome'; const m = ua.match(/Chrome\/([\d.]+)/); if (m) browserVer = m[1];
+    } else if (/Firefox/i.test(ua)) {
+      browser = 'Firefox'; const m = ua.match(/Firefox\/([\d.]+)/); if (m) browserVer = m[1];
+    } else if (/Safari/i.test(ua)) {
+      browser = 'Safari'; const m = ua.match(/Version\/([\d.]+)/); if (m) browserVer = m[1];
+    }
+    return { deviceType, os, osVer, browser, browserVer };
+  }
+
+  const _device = detectDevice();
+
   (function(){
     var nt = new URLSearchParams(location.search).get('notrack');
     if (nt === '1') { localStorage.setItem('kdo:no-track', '1'); showTrackToast('🚫 Test modu açık — analytics devre dışı'); }
@@ -86,6 +123,11 @@
       durationSec: totalSec,
       ts: Date.now(),
       appVersion: window.KDO_PLATFORM_VERSION || localStorage.getItem('app_version') || '',
+      deviceType: _device.deviceType,
+      os: _device.os,
+      osVer: _device.osVer,
+      browser: _device.browser,
+      browserVer: _device.browserVer,
       ...extra
     };
     try {
