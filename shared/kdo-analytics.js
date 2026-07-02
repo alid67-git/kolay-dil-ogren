@@ -51,7 +51,7 @@
   (function(){
     var nt = new URLSearchParams(location.search).get('notrack');
     if (nt === '1') { localStorage.setItem('kdo:no-track', '1'); showTrackToast('🚫 Test modu açık — analytics devre dışı'); }
-    if (nt === '0') { localStorage.removeItem('kdo:no-track'); showTrackToast('✅ Test modu kapatıldı — analytics aktif'); }
+    if (nt === '0') { localStorage.removeItem('kdo:no-track'); }
   })();
 
   function showTrackToast(msg) {
