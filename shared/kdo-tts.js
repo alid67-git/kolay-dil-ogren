@@ -18,6 +18,19 @@
         return ha[0];
       }
     },
+    sw: {
+      m: { pitch: 0.90, rate: 0.88, slowPitch: 0.84, slowRate: 0.52 },
+      f: { pitch: 1.06, rate: 0.90, slowPitch: 0.98, slowRate: 0.55 },
+      d: { pitch: 0.96, rate: 0.88, slowPitch: 0.90, slowRate: 0.52 },
+      pick: function (voices, gender) {
+        var sw = voices.filter(function (v) {
+          return v.lang === 'sw-TZ' || v.lang === 'sw-KE' || v.lang === 'sw';
+        });
+        if (!sw.length) return null;
+        if (gender === 'f') return sw[sw.length - 1];
+        return sw[0];
+      }
+    },
     th: {
       m: { pitch: 0.85, rate: 0.82, slowPitch: 0.80, slowRate: 0.38 },
       f: { pitch: 1.05, rate: 0.88, slowPitch: 1.00, slowRate: 0.42 },

@@ -67,6 +67,7 @@ function toRegistryEntry(L) {
     rtl: !!L.rtl,
     cjk: !!L.cjk,
   };
+  if (L.lessonsCount) entry.lessonsCount = L.lessonsCount;
   return entry;
 }
 

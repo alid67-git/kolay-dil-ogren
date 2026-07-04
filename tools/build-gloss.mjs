@@ -220,7 +220,7 @@ const SEED_EN = {
   'what is your name?': 'what is your name?', 'my name is': 'my name is',
 };
 
-const LESSON_LANGS = ['tr', 'de', 'en', 'th', 'fr', 'es', 'it', 'ru', 'ar', 'zh'];
+const LESSON_LANGS = ['tr', 'de', 'en', 'th', 'fr', 'es', 'it', 'ru', 'ar', 'zh', 'ha', 'sw'];
 
 function normKey(s) {
   return String(s || '').trim().toLowerCase()
@@ -278,7 +278,7 @@ function scanLessons() {
     for (const f of fs.readdirSync(full).filter((x) => x.endsWith('.js'))) {
       const t = fs.readFileSync(path.join(full, f), 'utf8');
       for (const m of t.matchAll(/tr:'((?:\\'|[^']){1,160})'/g)) trStrings.add(unescapeJs(m[1]));
-      for (const m of t.matchAll(/(?:en|th):'((?:\\'|[^']){1,160})'[\s\S]{0,600}?tr:'((?:\\'|[^']){1,160})'/g)) {
+      for (const m of t.matchAll(/(?:en|th|ha|sw):'((?:\\'|[^']){1,160})'[\s\S]{0,600}?tr:'((?:\\'|[^']){1,160})'/g)) {
         const pair = { en: unescapeJs(m[1]), tr: unescapeJs(m[2]), lang };
         enTrPairs.push(pair);
         if (lang === 'en') enLessonPairs.push(pair);

@@ -9,12 +9,12 @@
     tk: 'learn.html?t=tk', th: 'tayca-v3.html', en: 'learn.html?t=en',
     de: 'learn.html?t=de', it: 'learn.html?t=it', es: 'learn.html?t=es',
     fr: 'learn.html?t=fr', ru: 'learn.html?t=ru', ar: 'learn.html?t=ar',
-    zh: 'learn.html?t=zh', ha: 'learn.html?t=ha'
+    zh: 'learn.html?t=zh', ha: 'learn.html?t=ha', sw: 'learn.html?t=sw'
   };
   var LANG_KEYS = {
     tk: 'tk1_lang', th: 'tv3_lang', en: 'en1_lang', de: 'de1_lang',
     it: 'it1_lang', es: 'es1_lang', fr: 'fr1_lang', ru: 'ru1_lang',
-    ar: 'ar1_lang', zh: 'zh1_lang', ha: 'ha1_lang'
+    ar: 'ar1_lang', zh: 'zh1_lang', ha: 'ha1_lang', sw: 'sw1_lang'
   };
   var HUB_UI = {
     tr: { title: 'Dil değiştir', locale: 'Arayüz dili', target: 'Öğrenilecek dil', apply: 'Uygula', cancel: 'İptal' },
@@ -104,6 +104,7 @@
       '    <select id="lang-hub-target" size="5" style="height:auto;overflow-y:auto;">',
       '      <option value="tk">🇹🇷 Türkçe Öğrenme</option>',
       '      <option value="ha">🇳🇬 Hausa</option>',
+      '      <option value="sw">🇹🇿 Svahili (Kiswahili)</option>',
       '      <option value="th">🇹🇭 Tayca</option>',
       '      <option value="en">🇬🇧 İngilizce</option>',
       '      <option value="de">🇩🇪 Almanca</option>',

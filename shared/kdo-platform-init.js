@@ -26,7 +26,8 @@
     if (typeof appLang !== 'undefined' && appLang) return appLang;
     var tgt = localStorage.getItem('kdo:target');
     var keys = { th: 'tv3_lang', tk: 'tk1_lang', en: 'en1_lang', de: 'de1_lang', it: 'it1_lang',
-      es: 'es1_lang', fr: 'fr1_lang', ru: 'ru1_lang', ar: 'ar1_lang', zh: 'zh1_lang' };
+      es: 'es1_lang', fr: 'fr1_lang', ru: 'ru1_lang', ar: 'ar1_lang', zh: 'zh1_lang',
+      ha: 'ha1_lang', sw: 'sw1_lang' };
     if (tgt && keys[tgt]) {
       var appLoc = localStorage.getItem(keys[tgt]);
       if (appLoc) return appLoc;

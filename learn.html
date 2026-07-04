@@ -678,20 +678,20 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.45"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.41"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.41"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.41"></script>
-<script src="shared/kdo-gloss.js?v=3.0.41"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.41"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.41"></script>
-<script src="shared/kdo-tts.js?v=3.0.41"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.41"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.41"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.41"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.45"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.41"></script>
-<script src="shared/kdo-translate.js?v=3.0.41"></script>
+<script src="shared/kdo-version.js?v=3.0.46"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.46"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.46"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.46"></script>
+<script src="shared/kdo-gloss.js?v=3.0.46"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.46"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.46"></script>
+<script src="shared/kdo-tts.js?v=3.0.46"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.46"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.46"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.46"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.46"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.46"></script>
+<script src="shared/kdo-translate.js?v=3.0.46"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1814,10 +1814,15 @@ function insertPracticeTab(tabs){
 }
 
 // =================== DERS DETAY ===================
+function lessonHasNumberTools(meta){
+  if(!meta) return false;
+  const text = ((meta.title||'')+' '+(meta.title_en||'')).toLowerCase();
+  return meta.num===3 || text.includes('sayı') || text.includes('sayi') || text.includes('number') || text.includes('money') || text.includes('para');
+}
 function getTabsForLesson(meta){
   if(meta.num>=21) return insertPracticeTab(['words']);
   const base = ['words','grammar','speaking','dialogue','listening'];
-  if(meta.num===3) return insertPracticeTab(['numbers','calc','words','grammar','speaking','dialogue','listening']);
+  if(lessonHasNumberTools(meta)) return insertPracticeTab(['numbers','calc','words','grammar','speaking','dialogue','listening']);
   return insertPracticeTab(base);
 }
 function getTabLabels(){
@@ -2246,7 +2251,8 @@ function buildLessonHTML(L, meta){
     ar:{tk_pron_ben:'أنا',tk_pron_sen:'أنت',tk_pron_siz:'أنت (رسمي)',tk_pron_o:'هو/هي',tk_pron_biz:'نحن',tk_pron_onlar:'هم/أنتم'},
     zh:{tk_pron_ben:'我',tk_pron_sen:'你',tk_pron_siz:'您',tk_pron_o:'他/她',tk_pron_biz:'我们',tk_pron_onlar:'他们/您们'},
     th:{tk_pron_ben:'ฉัน',tk_pron_sen:'คุณ',tk_pron_siz:'คุณ (สุภาพ)',tk_pron_o:'เขา/เธอ',tk_pron_biz:'เรา',tk_pron_onlar:'พวกเขา'},
-    ha:{tk_pron_ben:'ni',tk_pron_sen:'kai/ke',tk_pron_siz:'kai/ke',tk_pron_o:'shi/ita',tk_pron_biz:'mu',tk_pron_onlar:'su'}
+    ha:{tk_pron_ben:'ni',tk_pron_sen:'kai/ke',tk_pron_siz:'kai/ke',tk_pron_o:'shi/ita',tk_pron_biz:'mu',tk_pron_onlar:'su'},
+    sw:{tk_pron_ben:'mimi',tk_pron_sen:'wewe',tk_pron_siz:'ninyi',tk_pron_o:'yeye',tk_pron_biz:'sisi',tk_pron_onlar:'wao'}
   };
   const targetPron = PRON_TARGETS[(KDO_CFG&&KDO_CFG.kdoTarget)||'de'] || PRON_TARGETS.de;
   const meaningPron = (window.KDO_UI&&window.KDO_UI[appLang]) || {};
@@ -2466,12 +2472,14 @@ function buildLessonHTML(L, meta){
   // NUMBERS (sadece L3)
   let numbersHtml = '';
   let calcHtml = '';
-  if(meta.num === 3 && L.numbers){
+  if(lessonHasNumberTools(meta)){
+    const numberItems = (L.numbers && L.numbers.length) ? L.numbers : [0,1,2,3,4,5,6,7,8,9,10,20,30,40,50,60,70,80,90,100].map(n=>({n,word:l2SpellNumber(n,l2TargetLang()),tr:''}));
+    const compoundItems = (L.compounds && L.compounds.length) ? L.compounds : [21,35,99,1000,8750,183500].map(n=>({n,word:l2SpellNumber(n,l2TargetLang()),tr:''}));
     // --- NUMBERS sekmesi: Flash kart benzeri grid ---
     const groups = [
-      {title: appLang!=='tr'?'🔢 Basic Numbers (0–9)':'🔢 Temel Rakamlar (0–9)', data: L.numbers.filter(x=>x.n<=9)},
-      {title: appLang!=='tr'?'🔟 Tens (10–100)':'🔟 Onlar (10–100)',             data: L.numbers.filter(x=>x.n>=10&&x.n<=100)},
-      {title: appLang!=='tr'?'💯 Large Units':'💯 Büyük Birimler',               data: L.numbers.filter(x=>x.n>100)},
+      {title: appLang!=='tr'?'🔢 Basic Numbers (0–9)':'🔢 Temel Rakamlar (0–9)', data: numberItems.filter(x=>x.n<=9)},
+      {title: appLang!=='tr'?'🔟 Tens (10–100)':'🔟 Onlar (10–100)',             data: numberItems.filter(x=>x.n>=10&&x.n<=100)},
+      {title: appLang!=='tr'?'💯 Large Units':'💯 Büyük Birimler',               data: numberItems.filter(x=>x.n>100)},
     ];
     numbersHtml = `
       <div style="background:#f0faf7;border:1px solid #b2dfdb;border-radius:12px;padding:12px 14px;margin-bottom:14px;font-size:13px;color:#444;line-height:1.7">
@@ -2488,12 +2496,12 @@ function buildLessonHTML(L, meta){
               <div style="font-size:10px;color:#4caf80;font-weight:700;margin-top:3px">${d.tr||''}</div>
             </div>`).join('')}
         </div>`).join('')}
-      ${L.compounds ? `
+      ${compoundItems.length ? `
         <div style="font-weight:700;color:#0d9488;margin:18px 0 8px;font-size:13px;border-left:3px solid #0d9488;padding-left:8px">${s('num_compound_title')}</div>
         <div style="background:#f0faf7;border:1px solid #b2dfdb;border-radius:10px;padding:10px 12px;margin-bottom:10px;font-size:12px;color:#555;line-height:1.7">
           ${s('num_compound_info')}
         </div>
-        ${L.compounds.map(c=>`
+        ${compoundItems.map(c=>`
           <div onclick="if(window.speechSynthesis){const u=new SpeechSynthesisUtterance('${c.word}');u.lang=KDO_CFG.tts;u.rate=0.92;speechSynthesis.cancel();speechSynthesis.speak(u)}"
             style="background:white;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer;transition:border-color .2s"
             onmouseenter="this.style.borderColor='#0d9488'" onmouseleave="this.style.borderColor='#e0e0e0'">
@@ -2710,63 +2718,63 @@ function switchLessonTab(tab, btn){
   else{ const first=document.querySelector('.ltab'); if(first) first.classList.add('active'); }
 }
 
-// =================== L2 HESAPLAYICI ===================
-const DE_ONES=['null','eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun',
-  'zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn'];
-const DE_TENS=['','','zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig'];
-const TR_ONES=['sıfır','bir','iki','üç','dört','beş','altı','yedi','sekiz','dokuz',
-  'on','on bir','on iki','on üç','on dört','on beş','on altı','on yedi','on sekiz','on dokuz'];
-const TR_TENS=['','','yirmi','otuz','kırk','elli','altmış','yetmiş','seksen','doksan'];
-
-function l2BuildGerman(n){
-  if(n===0) return {word:'null',tr:'sıfır',chunks:[{val:'0',en:'null',tr:'sıfır'}]};
-  const parts=[];const trParts=[];const chunks=[];let r=n;
-  const push=(val,deSuffix,trSuffix,mult)=>{
-    const w=l2DEChunk(val,deSuffix);
-    const t=l2TR999(val)+(trSuffix?' '+trSuffix:'');
-    parts.push(w);trParts.push(t);
-    chunks.push({val:(val*mult).toLocaleString('tr'),en:w,tr:t});
-  };
-  const m=Math.floor(r/1000000); r%=1000000;
-  if(m) push(m,m===1?'Million':'Millionen','milyon',1000000);
-  if(r>0) push(r,'','',1);
-  const word=parts.join(' ');
-  return {word,tr:trParts.join(' '),chunks};
-}
-function l2DEChunk(n,suffix){
-  if(suffix==='Million'||suffix==='Millionen') return l2DE999(n)+' '+suffix;
-  if(n<1000) return l2DE999(n)+(suffix?' '+suffix:'');
-  const k=Math.floor(n/1000),r=n%1000;
-  const thou=(k===1?'ein':l2DE999(k))+'tausend';
-  return thou+(r?l2DE999(r):'');
-}
-function l2DE99(n){if(n<20)return DE_ONES[n];const t=Math.floor(n/10),o=n%10;if(o===0)return DE_TENS[t];const ones=o===1?'ein':DE_ONES[o];return ones+'und'+DE_TENS[t];}
-function l2DE999(n){if(n<100)return l2DE99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'ein':DE_ONES[h])+'hundert'+(r?l2DE99(r):'');}
-function l2TR99(n){if(n<20)return TR_ONES[n];const t=Math.floor(n/10),o=n%10;return TR_TENS[t]+(o?' '+TR_ONES[o]:'');}
-function l2TR999(n){if(n===0)return'';if(n<100)return l2TR99(n);const h=Math.floor(n/100),r=n%100;return(h===1?'':''+TR_ONES[h]+' ')+'yüz'+(r?' '+l2TR99(r):'');}
+// =================== L3 SAYI HESAPLAYICI ===================
+const NUM_WORDS = {
+  de:{zero:'null',ones:['','eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn'],tens:['','','zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig']},
+  en:{zero:'zero',ones:['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'],tens:['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety']},
+  tk:{zero:'sıfır',ones:['','bir','iki','üç','dört','beş','altı','yedi','sekiz','dokuz','on','on bir','on iki','on üç','on dört','on beş','on altı','on yedi','on sekiz','on dokuz'],tens:['','','yirmi','otuz','kırk','elli','altmış','yetmiş','seksen','doksan']},
+  th:{zero:'ศูนย์',ones:['','หนึ่ง','สอง','สาม','สี่','ห้า','หก','เจ็ด','แปด','เก้า'],places:['','สิบ','ร้อย','พัน','หมื่น','แสน','ล้าน']}
+};
+function l2TargetLang(){ return (KDO_CFG && KDO_CFG.kdoTarget) || window.KDO_TARGET || 'de'; }
+function l2TargetTts(){ return (KDO_CFG && KDO_CFG.tts) || ({tk:'tr-TR',de:'de-DE',en:'en-US',it:'it-IT',es:'es-ES',fr:'fr-FR',ru:'ru-RU',ar:'ar-SA',zh:'zh-CN',th:'th-TH'}[l2TargetLang()] || 'en-US'); }
+function l2CleanParts(parts){ return parts.filter(Boolean).join(' ').replace(/\s+/g,' ').trim(); }
+function l2SpellTRBelow1000(n){ const d=NUM_WORDS.tk; if(n===0)return''; if(n<20)return d.ones[n]; if(n<100){const t=Math.floor(n/10),o=n%10;return l2CleanParts([d.tens[t],o?d.ones[o]:'']);} const h=Math.floor(n/100),r=n%100; return l2CleanParts([h===1?'yüz':d.ones[h]+' yüz',l2SpellTRBelow1000(r)]); }
+function l2SpellTR(n){ if(n===0)return NUM_WORDS.tk.zero; const m=Math.floor(n/1000000),k=Math.floor((n%1000000)/1000),r=n%1000; return l2CleanParts([m?(m===1?'bir milyon':l2SpellTRBelow1000(m)+' milyon'):'',k?(k===1?'bin':l2SpellTRBelow1000(k)+' bin'):'',r?l2SpellTRBelow1000(r):'']); }
+function l2SpellENBelow1000(n){ const d=NUM_WORDS.en; if(n===0)return''; if(n<20)return d.ones[n]; if(n<100){const t=Math.floor(n/10),o=n%10;return d.tens[t]+(o?'-'+d.ones[o]:'');} const h=Math.floor(n/100),r=n%100; return d.ones[h]+' hundred'+(r?' '+l2SpellENBelow1000(r):''); }
+function l2SpellEN(n){ if(n===0)return NUM_WORDS.en.zero; const m=Math.floor(n/1000000),k=Math.floor((n%1000000)/1000),r=n%1000; return l2CleanParts([m?l2SpellENBelow1000(m)+' million':'',k?l2SpellENBelow1000(k)+' thousand':'',r?l2SpellENBelow1000(r):'']); }
+function l2SpellDE99(n){ const d=NUM_WORDS.de; if(n<20)return d.ones[n]||d.zero; const t=Math.floor(n/10),o=n%10; if(o===0)return d.tens[t]; return (o===1?'ein':d.ones[o])+'und'+d.tens[t]; }
+function l2SpellDE999(n){ const d=NUM_WORDS.de; if(n<100)return l2SpellDE99(n); const h=Math.floor(n/100),r=n%100; return (h===1?'ein':d.ones[h])+'hundert'+(r?l2SpellDE99(r):''); }
+function l2SpellDE(n){ if(n===0)return NUM_WORDS.de.zero; const m=Math.floor(n/1000000),rest=n%1000000,k=Math.floor(rest/1000),r=rest%1000; return l2CleanParts([m?l2SpellDE999(m)+' '+(m===1?'Million':'Millionen'):'',k?(k===1?'ein':l2SpellDE999(k))+'tausend':'',r?l2SpellDE999(r):'']); }
+function l2SpellITBelow1000(n){ const ones=['','uno','due','tre','quattro','cinque','sei','sette','otto','nove','dieci','undici','dodici','tredici','quattordici','quindici','sedici','diciassette','diciotto','diciannove']; const tens=['','','venti','trenta','quaranta','cinquanta','sessanta','settanta','ottanta','novanta']; if(n===0)return''; if(n<20)return ones[n]; if(n<100){const t=Math.floor(n/10),o=n%10;let base=tens[t]; if(o===1||o===8)base=base.slice(0,-1); return base+(o?ones[o]:'');} const h=Math.floor(n/100),r=n%100; return (h===1?'cento':ones[h]+'cento')+(r?l2SpellITBelow1000(r):''); }
+function l2SpellIT(n){ if(n===0)return'zero'; const m=Math.floor(n/1000000),k=Math.floor((n%1000000)/1000),r=n%1000; return l2CleanParts([m?(m===1?'un milione':l2SpellITBelow1000(m)+' milioni'):'',k?(k===1?'mille':l2SpellITBelow1000(k)+'mila'):'',r?l2SpellITBelow1000(r):'']); }
+function l2SpellESBelow1000(n){ const ones=['','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho','diecinueve','veinte','veintiuno','veintidós','veintitrés','veinticuatro','veinticinco','veintiséis','veintisiete','veintiocho','veintinueve']; const tens=['','','','treinta','cuarenta','cincuenta','sesenta','setenta','ochenta','noventa']; const hundreds=['','ciento','doscientos','trescientos','cuatrocientos','quinientos','seiscientos','setecientos','ochocientos','novecientos']; if(n===0)return''; if(n<30)return ones[n]; if(n<100){const t=Math.floor(n/10),o=n%10;return tens[t]+(o?' y '+ones[o]:'');} if(n===100)return'cien'; const h=Math.floor(n/100),r=n%100; return l2CleanParts([hundreds[h],l2SpellESBelow1000(r)]); }
+function l2SpellES(n){ if(n===0)return'cero'; const m=Math.floor(n/1000000),k=Math.floor((n%1000000)/1000),r=n%1000; return l2CleanParts([m?(m===1?'un millón':l2SpellESBelow1000(m)+' millones'):'',k?(k===1?'mil':l2SpellESBelow1000(k)+' mil'):'',r?l2SpellESBelow1000(r):'']); }
+function l2SpellFRBelow1000(n){ const ones=['','un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize']; if(n===0)return''; if(n<17)return ones[n]; if(n<20)return'dix-'+ones[n-10]; if(n<70){const tens={20:'vingt',30:'trente',40:'quarante',50:'cinquante',60:'soixante'};const t=Math.floor(n/10)*10,o=n%10;return tens[t]+(o===1?' et un':(o?'-'+l2SpellFRBelow1000(o):''));} if(n<80)return'soixante-'+l2SpellFRBelow1000(n-60); if(n===80)return'quatre-vingts'; if(n<100)return'quatre-vingt-'+l2SpellFRBelow1000(n-80); const h=Math.floor(n/100),r=n%100; return (h===1?'cent':ones[h]+' cent')+(r?' '+l2SpellFRBelow1000(r):(h>1?'s':'')); }
+function l2SpellFR(n){ if(n===0)return'zéro'; const m=Math.floor(n/1000000),k=Math.floor((n%1000000)/1000),r=n%1000; return l2CleanParts([m?(m===1?'un million':l2SpellFRBelow1000(m)+' millions'):'',k?(k===1?'mille':l2SpellFRBelow1000(k)+' mille'):'',r?l2SpellFRBelow1000(r):'']); }
+function l2RuPlural(n,one,few,many){ const a=n%100,b=n%10; if(a>=11&&a<=14)return many; if(b===1)return one; if(b>=2&&b<=4)return few; return many; }
+function l2SpellRUBelow1000(n,feminine){ const ones=feminine?['','одна','две','три','четыре','пять','шесть','семь','восемь','девять']:['','один','два','три','четыре','пять','шесть','семь','восемь','девять']; const teens=['десять','одиннадцать','двенадцать','тринадцать','четырнадцать','пятнадцать','шестнадцать','семнадцать','восемнадцать','девятнадцать']; const tens=['','','двадцать','тридцать','сорок','пятьдесят','шестьдесят','семьдесят','восемьдесят','девяносто']; const hund=['','сто','двести','триста','четыреста','пятьсот','шестьсот','семьсот','восемьсот','девятьсот']; if(n===0)return''; const h=Math.floor(n/100),rem=n%100,t=Math.floor(rem/10),o=rem%10; return l2CleanParts([hund[h],rem>=10&&rem<20?teens[rem-10]:(tens[t]||''),rem<10||rem>=20?ones[o]:'']); }
+function l2SpellRU(n){ if(n===0)return'ноль'; const m=Math.floor(n/1000000),k=Math.floor((n%1000000)/1000),r=n%1000; return l2CleanParts([m?l2SpellRUBelow1000(m,false)+' '+l2RuPlural(m,'миллион','миллиона','миллионов'):'',k?l2SpellRUBelow1000(k,true)+' '+l2RuPlural(k,'тысяча','тысячи','тысяч'):'',r?l2SpellRUBelow1000(r,false):'']); }
+function l2SpellARBelow1000(n){ const ones=['','واحد','اثنان','ثلاثة','أربعة','خمسة','ستة','سبعة','ثمانية','تسعة','عشرة','أحد عشر','اثنا عشر','ثلاثة عشر','أربعة عشر','خمسة عشر','ستة عشر','سبعة عشر','ثمانية عشر','تسعة عشر']; const tens=['','','عشرون','ثلاثون','أربعون','خمسون','ستون','سبعون','ثمانون','تسعون']; const hundreds=['','مائة','مائتان','ثلاثمائة','أربعمائة','خمسمائة','ستمائة','سبعمائة','ثمانمائة','تسعمائة']; if(n===0)return''; if(n<20)return ones[n]; if(n<100){const t=Math.floor(n/10),o=n%10;return o?ones[o]+' و'+tens[t]:tens[t];} const h=Math.floor(n/100),r=n%100; return hundreds[h]+(r?' و'+l2SpellARBelow1000(r):''); }
+function l2SpellAR(n){ if(n===0)return'صفر'; const m=Math.floor(n/1000000),k=Math.floor((n%1000000)/1000),r=n%1000; const thousand=k?(k===1?'ألف':k===2?'ألفان':l2SpellARBelow1000(k)+' آلاف'):''; const million=m?(m===1?'مليون':m===2?'مليونان':l2SpellARBelow1000(m)+' ملايين'):''; return [million,thousand,r?l2SpellARBelow1000(r):''].filter(Boolean).join(' و'); }
+function l2SpellZH(n){ if(n===0)return'零'; const d=['','一','二','三','四','五','六','七','八','九'],u=['','十','百','千']; function below10000(x){let s='',zero=false;String(x).padStart(4,'0').split('').map(Number).forEach((num,i)=>{const pos=3-i;if(num===0){if(s)zero=true;return;} if(zero){s+='零';zero=false;} s+=(num===1&&pos===1&&!s?'':d[num])+u[pos];});return s;} const w=Math.floor(n/10000),r=n%10000; return (w?below10000(w)+'万':'')+(r?(w&&r<1000?'零':'')+below10000(r):''); }
+function l2SpellTHBelowMillion(n){ const d=NUM_WORDS.th; if(n===0)return''; const digits=String(n).split('').map(Number),len=digits.length; let out=''; digits.forEach((digit,idx)=>{const pos=len-idx-1; if(digit===0)return; if(pos===1){out+=digit===1?'สิบ':(digit===2?'ยี่สิบ':d.ones[digit]+'สิบ');}else if(pos===0&&len>1&&digit===1){out+='เอ็ด';}else{out+=d.ones[digit]+(d.places[pos]||'');}}); return out; }
+function l2SpellTH(n){ if(n===0)return NUM_WORDS.th.zero; const m=Math.floor(n/1000000),r=n%1000000; return (m?l2SpellTHBelowMillion(m)+'ล้าน':'')+(r?l2SpellTHBelowMillion(r):''); }
+function l2SpellNumber(n, lang){ if(lang==='tk')return l2SpellTR(n); if(lang==='en')return l2SpellEN(n); if(lang==='it')return l2SpellIT(n); if(lang==='es')return l2SpellES(n); if(lang==='fr')return l2SpellFR(n); if(lang==='ru')return l2SpellRU(n); if(lang==='ar')return l2SpellAR(n); if(lang==='zh')return l2SpellZH(n); if(lang==='th')return l2SpellTH(n); return l2SpellDE(n); }
+function l2ChunkNumber(n, lang){ if(n===0)return[{val:'0',word:l2SpellNumber(0,lang)}]; const out=[],m=Math.floor(n/1000000),k=Math.floor((n%1000000)/1000),r=n%1000; if(m)out.push({val:(m*1000000).toLocaleString('tr'),word:l2SpellNumber(m*1000000,lang)}); if(k)out.push({val:(k*1000).toLocaleString('tr'),word:l2SpellNumber(k*1000,lang)}); if(r)out.push({val:r.toLocaleString('tr'),word:l2SpellNumber(r,lang)}); return out; }
 
 let l2CalcWord = '';
 function l2CalcNumber(val){
-  const n = parseInt(val);
-  if(!val||isNaN(n)||n<0||n>9999999){ document.getElementById('l2calc-result').style.display='none'; return; }
-  const res = l2BuildGerman(n);
-  l2CalcWord = res.word;
-  document.getElementById('l2calc-result').style.display='block';
-  document.getElementById('l2calc-english').textContent  = res.word;
+  const n = parseInt(val,10);
+  const box = document.getElementById('l2calc-result');
+  if(!val||isNaN(n)||n<0||n>9999999){ if(box) box.style.display='none'; return; }
+  const lang = l2TargetLang();
+  const word = l2SpellNumber(n, lang);
+  l2CalcWord = word;
+  box.style.display='block';
+  document.getElementById('l2calc-english').textContent = word;
   document.getElementById('l2calc-roman').textContent = '';
-  document.getElementById('l2calc-tr').textContent    = res.tr;
+  document.getElementById('l2calc-tr').textContent = '';
   const bd = document.getElementById('l2calc-breakdown');
-  bd.innerHTML = res.chunks.map((ch,i)=>
+  bd.innerHTML = l2ChunkNumber(n,lang).map((ch,i)=>
     `${i>0?'<span style="color:#ccc;display:flex;align-items:center">+</span>':''}
-     <div style="background:#f5f5f5;border:1px solid #e8e8e8;border-radius:6px;padding:3px 8px;text-align:center">
-       <div style="font-size:9px;color:#aaa">${ch.val}</div>
-       <div style="font-size:14px;color:#0d9488;font-weight:700">${ch.en}</div>
-       <div style="font-size:9px;color:#999">${ch.tr}</div>
-     </div>`
+     <div style="background:#f5f5f5;border:1px solid #e8e8e8;border-radius:6px;padding:3px 8px;text-align:center;max-width:100%">
+        <div style="font-size:9px;color:#aaa">${ch.val}</div>
+        <div style="font-size:14px;color:#0d9488;font-weight:700;overflow-wrap:anywhere">${ch.word}</div>
+      </div>`
   ).join('');
 }
 function l2SpeakCalc(){
-  if(l2CalcWord && window.speechSynthesis){ const u=new SpeechSynthesisUtterance(l2CalcWord); u.lang=KDO_CFG.tts; u.rate=0.92; speechSynthesis.cancel(); speechSynthesis.speak(u); }
+  if(l2CalcWord && window.speechSynthesis){ const u=new SpeechSynthesisUtterance(l2CalcWord); u.lang=l2TargetTts(); u.rate=0.92; speechSynthesis.cancel(); speechSynthesis.speak(u); }
 }
 
 // =================== KONTROL ===================
@@ -4810,6 +4818,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.45"></script>
+<script src="shared/kdo-analytics.js?v=3.0.46"></script>
 </body>
 </html>
