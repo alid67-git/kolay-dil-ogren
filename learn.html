@@ -678,20 +678,20 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.46"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.46"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.46"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.46"></script>
-<script src="shared/kdo-gloss.js?v=3.0.46"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.46"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.46"></script>
-<script src="shared/kdo-tts.js?v=3.0.46"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.46"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.46"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.46"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.46"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.46"></script>
-<script src="shared/kdo-translate.js?v=3.0.46"></script>
+<script src="shared/kdo-version.js?v=3.0.47"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.47"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.47"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.47"></script>
+<script src="shared/kdo-gloss.js?v=3.0.47"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.47"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.47"></script>
+<script src="shared/kdo-tts.js?v=3.0.47"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.47"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.47"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.47"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.47"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.47"></script>
+<script src="shared/kdo-translate.js?v=3.0.47"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1816,8 +1816,10 @@ function insertPracticeTab(tabs){
 // =================== DERS DETAY ===================
 function lessonHasNumberTools(meta){
   if(!meta) return false;
+  const m = window.KDO_LANGUAGE_MANIFEST;
+  if(m && m.numbersLesson === meta.num) return true;
   const text = ((meta.title||'')+' '+(meta.title_en||'')).toLowerCase();
-  return meta.num===3 || text.includes('sayı') || text.includes('sayi') || text.includes('number') || text.includes('money') || text.includes('para');
+  return meta.num===3 || text.includes('sayı') || text.includes('sayi') || text.includes('number') || text.includes('money') || text.includes('para') || text.includes('nambari') || text.includes('lambobi');
 }
 function getTabsForLesson(meta){
   if(meta.num>=21) return insertPracticeTab(['words']);
@@ -2723,10 +2725,11 @@ const NUM_WORDS = {
   de:{zero:'null',ones:['','eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn'],tens:['','','zwanzig','dreißig','vierzig','fünfzig','sechzig','siebzig','achtzig','neunzig']},
   en:{zero:'zero',ones:['','one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen'],tens:['','','twenty','thirty','forty','fifty','sixty','seventy','eighty','ninety']},
   tk:{zero:'sıfır',ones:['','bir','iki','üç','dört','beş','altı','yedi','sekiz','dokuz','on','on bir','on iki','on üç','on dört','on beş','on altı','on yedi','on sekiz','on dokuz'],tens:['','','yirmi','otuz','kırk','elli','altmış','yetmiş','seksen','doksan']},
-  th:{zero:'ศูนย์',ones:['','หนึ่ง','สอง','สาม','สี่','ห้า','หก','เจ็ด','แปด','เก้า'],places:['','สิบ','ร้อย','พัน','หมื่น','แสน','ล้าน']}
+  th:{zero:'ศูนย์',ones:['','หนึ่ง','สอง','สาม','สี่','ห้า','หก','เจ็ด','แปด','เก้า'],places:['','สิบ','ร้อย','พัน','หมื่น','แสน','ล้าน']},
+  sw:{zero:'sifuri',ones:['','moja','mbili','tatu','nne','tano','sita','saba','nane','tisa'],tens:['','','ishirini','thelathini','arobaini','hamsini','sitini','sabini','themanini','tisini']}
 };
 function l2TargetLang(){ return (KDO_CFG && KDO_CFG.kdoTarget) || window.KDO_TARGET || 'de'; }
-function l2TargetTts(){ return (KDO_CFG && KDO_CFG.tts) || ({tk:'tr-TR',de:'de-DE',en:'en-US',it:'it-IT',es:'es-ES',fr:'fr-FR',ru:'ru-RU',ar:'ar-SA',zh:'zh-CN',th:'th-TH'}[l2TargetLang()] || 'en-US'); }
+function l2TargetTts(){ return (KDO_CFG && KDO_CFG.tts) || ({tk:'tr-TR',de:'de-DE',en:'en-US',it:'it-IT',es:'es-ES',fr:'fr-FR',ru:'ru-RU',ar:'ar-SA',zh:'zh-CN',th:'th-TH',ha:'ha-NG',sw:'sw-TZ'}[l2TargetLang()] || 'en-US'); }
 function l2CleanParts(parts){ return parts.filter(Boolean).join(' ').replace(/\s+/g,' ').trim(); }
 function l2SpellTRBelow1000(n){ const d=NUM_WORDS.tk; if(n===0)return''; if(n<20)return d.ones[n]; if(n<100){const t=Math.floor(n/10),o=n%10;return l2CleanParts([d.tens[t],o?d.ones[o]:'']);} const h=Math.floor(n/100),r=n%100; return l2CleanParts([h===1?'yüz':d.ones[h]+' yüz',l2SpellTRBelow1000(r)]); }
 function l2SpellTR(n){ if(n===0)return NUM_WORDS.tk.zero; const m=Math.floor(n/1000000),k=Math.floor((n%1000000)/1000),r=n%1000; return l2CleanParts([m?(m===1?'bir milyon':l2SpellTRBelow1000(m)+' milyon'):'',k?(k===1?'bin':l2SpellTRBelow1000(k)+' bin'):'',r?l2SpellTRBelow1000(r):'']); }
@@ -2749,7 +2752,36 @@ function l2SpellAR(n){ if(n===0)return'صفر'; const m=Math.floor(n/1000000),k=
 function l2SpellZH(n){ if(n===0)return'零'; const d=['','一','二','三','四','五','六','七','八','九'],u=['','十','百','千']; function below10000(x){let s='',zero=false;String(x).padStart(4,'0').split('').map(Number).forEach((num,i)=>{const pos=3-i;if(num===0){if(s)zero=true;return;} if(zero){s+='零';zero=false;} s+=(num===1&&pos===1&&!s?'':d[num])+u[pos];});return s;} const w=Math.floor(n/10000),r=n%10000; return (w?below10000(w)+'万':'')+(r?(w&&r<1000?'零':'')+below10000(r):''); }
 function l2SpellTHBelowMillion(n){ const d=NUM_WORDS.th; if(n===0)return''; const digits=String(n).split('').map(Number),len=digits.length; let out=''; digits.forEach((digit,idx)=>{const pos=len-idx-1; if(digit===0)return; if(pos===1){out+=digit===1?'สิบ':(digit===2?'ยี่สิบ':d.ones[digit]+'สิบ');}else if(pos===0&&len>1&&digit===1){out+='เอ็ด';}else{out+=d.ones[digit]+(d.places[pos]||'');}}); return out; }
 function l2SpellTH(n){ if(n===0)return NUM_WORDS.th.zero; const m=Math.floor(n/1000000),r=n%1000000; return (m?l2SpellTHBelowMillion(m)+'ล้าน':'')+(r?l2SpellTHBelowMillion(r):''); }
-function l2SpellNumber(n, lang){ if(lang==='tk')return l2SpellTR(n); if(lang==='en')return l2SpellEN(n); if(lang==='it')return l2SpellIT(n); if(lang==='es')return l2SpellES(n); if(lang==='fr')return l2SpellFR(n); if(lang==='ru')return l2SpellRU(n); if(lang==='ar')return l2SpellAR(n); if(lang==='zh')return l2SpellZH(n); if(lang==='th')return l2SpellTH(n); return l2SpellDE(n); }
+function l2SpellSWBelow100(n){
+  const d=NUM_WORDS.sw;
+  if(n===0)return'';
+  if(n<10)return d.ones[n];
+  if(n===10)return'kumi';
+  if(n<20)return'kumi na '+d.ones[n-10];
+  const t=Math.floor(n/10), o=n%10;
+  return l2CleanParts([d.tens[t], o?'na '+d.ones[o]:'']);
+}
+function l2SpellSWBelow1000(n){
+  if(n<100)return l2SpellSWBelow100(n);
+  const d=NUM_WORDS.sw, h=Math.floor(n/100), r=n%100;
+  const hp=h===1?'mia':'mia '+d.ones[h];
+  if(!r)return hp;
+  return hp+' na '+l2SpellSWBelow100(r);
+}
+function l2SpellSW(n){
+  if(n===0)return NUM_WORDS.sw.zero;
+  const m=Math.floor(n/1000000), k=Math.floor((n%1000000)/1000), r=n%1000;
+  const parts=[];
+  if(m) parts.push(m===1?'milioni moja':l2CleanParts(['milioni', l2SpellSWBelow1000(m)]));
+  if(k){
+    if(k===1 && !m && !r) parts.push('elfu');
+    else if(k===1) parts.push('elfu moja');
+    else parts.push(l2CleanParts(['elfu', k<100?l2SpellSWBelow100(k):l2SpellSWBelow1000(k)]));
+  }
+  if(r) parts.push(l2SpellSWBelow1000(r));
+  return parts.join(' na ');
+}
+function l2SpellNumber(n, lang){ if(lang==='tk')return l2SpellTR(n); if(lang==='en')return l2SpellEN(n); if(lang==='it')return l2SpellIT(n); if(lang==='es')return l2SpellES(n); if(lang==='fr')return l2SpellFR(n); if(lang==='ru')return l2SpellRU(n); if(lang==='ar')return l2SpellAR(n); if(lang==='zh')return l2SpellZH(n); if(lang==='th')return l2SpellTH(n); if(lang==='sw')return l2SpellSW(n); return l2SpellDE(n); }
 function l2ChunkNumber(n, lang){ if(n===0)return[{val:'0',word:l2SpellNumber(0,lang)}]; const out=[],m=Math.floor(n/1000000),k=Math.floor((n%1000000)/1000),r=n%1000; if(m)out.push({val:(m*1000000).toLocaleString('tr'),word:l2SpellNumber(m*1000000,lang)}); if(k)out.push({val:(k*1000).toLocaleString('tr'),word:l2SpellNumber(k*1000,lang)}); if(r)out.push({val:r.toLocaleString('tr'),word:l2SpellNumber(r,lang)}); return out; }
 
 let l2CalcWord = '';
@@ -4818,6 +4850,6 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.46"></script>
+<script src="shared/kdo-analytics.js?v=3.0.47"></script>
 </body>
 </html>
