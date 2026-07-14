@@ -1,131 +1,135 @@
-// ders47.js — Italian Lesson 47: Storia e società (vocabulary)
+// ders47.js — Italian Lesson 47: Storia e società
 const L47 = {
   words:[
-    {
-      id:'w1',
-      en:'Buongiorno!',
-      ro:'Buongi',
-      tr:'İyi günler!'
-    },
-    {
-      id:'w2',
-      en:'Come sta?',
-      ro:'Come s',
-      tr:'Nasılsınız?'
-    },
-    {
-      id:'w3',
-      en:'Bene.',
-      ro:'Bene.',
-      tr:'İyiyim.'
-    },
-    {
-      id:'w4',
-      en:'Scusi',
-      ro:'Scusi',
-      tr:'Pardon'
-    },
-    {
-      id:'w5',
-      en:'Nessun problema',
-      ro:'Nessun',
-      tr:'Sorun değil'
-    },
-    {
-      id:'w6',
-      en:'Certo',
-      ro:'Certo',
-      tr:'Tabii ki'
-    },
-    {
-      id:'w7',
-      en:'Capisce?',
-      ro:'Capisc',
-      tr:'Anlıyor musunuz?'
-    },
-    {
-      id:'w8',
-      en:'Non capisco.',
-      ro:'Non ca',
-      tr:'Anlamıyorum.'
-    },
-    {
-      id:'w9',
-      en:'Può ripetere?',
-      ro:'Può ri',
-      tr:'Tekrar edebilir misiniz?'
-    },
-    {
-      id:'w10',
-      en:'Piano, per favore.',
-      ro:'Piano,',
-      tr:'Yavaş, lütfen.'
-    },
-    {
-      id:'w11',
-      en:'Un momento, per favore.',
-      ro:'Un mom',
-      tr:'Bir dakika, lütfen.'
-    },
-    {
-      id:'w12',
-      en:'Capito!',
-      ro:'Capito',
-      tr:'Anlaşıldı!'
-    },
-    {
-      id:'w13',
-      en:'Grazie',
-      ro:'Grazie',
-      tr:'Teşekkürler'
-    },
-    {
-      id:'w14',
-      en:'Prego',
-      ro:'Prego',
-      tr:'Rica ederim'
-    },
-    {
-      id:'w15',
-      en:'A dopo',
-      ro:'A dopo',
-      tr:'Görüşürüz'
-    },
-    {
-      id:'w16',
-      en:'Mi chiamo Ali',
-      ro:'Mi chi',
-      tr:'Benim adım Ali'
-    },
-    {
-      id:'w17',
-      en:'Piacere',
-      ro:'Piacer',
-      tr:'Memnun oldum'
-    },
-    {
-      id:'w18',
-      en:'Parla inglese?',
-      ro:'Parla ',
-      tr:'İngilizce biliyor musunuz?'
-    },
-    {
-      id:'w19',
-      en:'Un po\'',
-      ro:'Un po\'',
-      tr:'Biraz'
-    },
-    {
-      id:'w20',
-      en:'Può aiutarmi?',
-      ro:'Può ai',
-      tr:'Yardım edebilir misiniz?'
-    }
+    {id:'w1', en:'la storia', ro:'storia', tr:'tarih',
+     examples:[{it:'La storia d\'Italia è molto ricca.',tr:'İtalya\'nın tarihi çok zengindir.',
+       bd:[{ro:'La storia d\'Italia',tr:'İtalya\'nın tarihi'},{ro:'è molto ricca',tr:'çok zengindir'}]}]},
+    {id:'w2', en:'l\'impero', ro:'impero', tr:'imparatorluk',
+     examples:[{it:'L\'Impero Romano ha dominato il mondo antico.',tr:'Roma İmparatorluğu antik dünyaya hükmetmiştir.',
+       bd:[{ro:'L\'Impero Romano',tr:'Roma İmparatorluğu'},{ro:'ha dominato',tr:'hükmetmiştir'},{ro:'il mondo antico',tr:'antik dünyaya'}]}]},
+    {id:'w3', en:'la guerra', ro:'guerra', tr:'savaş',
+     examples:[{it:'La Seconda Guerra Mondiale ha cambiato l\'Europa.',tr:'İkinci Dünya Savaşı Avrupa\'yı değiştirmiştir.',
+       bd:[{ro:'La Seconda Guerra Mondiale',tr:'İkinci Dünya Savaşı'},{ro:'ha cambiato',tr:'değiştirmiştir'},{ro:'l\'Europa',tr:'Avrupa\'yı'}]}]},
+    {id:'w4', en:'la pace', ro:'pace', tr:'barış',
+     examples:[{it:'Dopo la guerra è arrivata la pace.',tr:'Savaşın ardından barış geldi.',
+       bd:[{ro:'Dopo la guerra',tr:'savaşın ardından'},{ro:'è arrivata',tr:'geldi'},{ro:'la pace',tr:'barış'}]}]},
+    {id:'w5', en:'la rivoluzione', ro:'rivoluzione', tr:'devrim',
+     examples:[{it:'La Rivoluzione Francese ha influenzato tutta Europa.',tr:'Fransız Devrimi tüm Avrupa\'yı etkilemiştir.',
+       bd:[{ro:'La Rivoluzione Francese',tr:'Fransız Devrimi'},{ro:'ha influenzato',tr:'etkilemiştir'},{ro:'tutta Europa',tr:'tüm Avrupa\'yı'}]}]},
+    {id:'w6', en:'il governo', ro:'governo', tr:'hükümet',
+     examples:[{it:'Il governo ha approvato una nuova legge.',tr:'Hükümet yeni bir yasa çıkardı.',
+       bd:[{ro:'Il governo',tr:'hükümet'},{ro:'ha approvato',tr:'çıkardı/onayladı'},{ro:'una nuova legge',tr:'yeni bir yasa'}]}]},
+    {id:'w7', en:'la democrazia', ro:'democrazia', tr:'demokrasi',
+     examples:[{it:'La democrazia garantisce i diritti dei cittadini.',tr:'Demokrasi vatandaşların haklarını güvence altına alır.',
+       bd:[{ro:'La democrazia',tr:'demokrasi'},{ro:'garantisce',tr:'güvence altına alır'},{ro:'i diritti dei cittadini',tr:'vatandaşların haklarını'}]}]},
+    {id:'w8', en:'il diritto', ro:'diritto', tr:'hak / hukuk',
+     examples:[{it:'Tutti hanno il diritto all\'istruzione.',tr:'Herkesin eğitim hakkı vardır.',
+       bd:[{ro:'Tutti',tr:'herkesin'},{ro:'hanno il diritto',tr:'hakkı vardır'},{ro:'all\'istruzione',tr:'eğitim'}]}]},
+    {id:'w9', en:'la legge', ro:'legge', tr:'yasa / kanun',
+     examples:[{it:'Bisogna rispettare le leggi dello Stato.',tr:'Devletin yasalarına saygı göstermek gerekir.',
+       bd:[{ro:'Bisogna rispettare',tr:'saygı göstermek gerekir'},{ro:'le leggi',tr:'yasalarına'},{ro:'dello Stato',tr:'devletin'}]}]},
+    {id:'w10', en:'la costituzione', ro:'costituzione', tr:'anayasa',
+     examples:[{it:'La Costituzione italiana è entrata in vigore nel 1948.',tr:'İtalya Anayasası 1948\'de yürürlüğe girdi.',
+       bd:[{ro:'La Costituzione italiana',tr:'İtalya Anayasası'},{ro:'è entrata in vigore',tr:'yürürlüğe girdi'},{ro:'nel 1948',tr:'1948\'de'}]}]},
+    {id:'w11', en:'il cittadino', ro:'cittadino', tr:'vatandaş',
+     examples:[{it:'Ogni cittadino ha doveri e diritti.',tr:'Her vatandaşın görevleri ve hakları vardır.',
+       bd:[{ro:'Ogni cittadino',tr:'her vatandaşın'},{ro:'ha doveri e diritti',tr:'görevleri ve hakları vardır'}]}]},
+    {id:'w12', en:'l\'elezione', ro:'elezione', tr:'seçim',
+     examples:[{it:'Le elezioni si tengono ogni cinque anni.',tr:'Seçimler her beş yılda bir yapılır.',
+       bd:[{ro:'Le elezioni',tr:'seçimler'},{ro:'si tengono',tr:'yapılır'},{ro:'ogni cinque anni',tr:'her beş yılda bir'}]}]},
+    {id:'w13', en:'la società', ro:'società', tr:'toplum',
+     examples:[{it:'La società moderna affronta molte sfide.',tr:'Modern toplum pek çok zorlukla karşı karşıyadır.',
+       bd:[{ro:'La società moderna',tr:'modern toplum'},{ro:'affronta',tr:'karşı karşıyadır'},{ro:'molte sfide',tr:'pek çok zorlukla'}]}]},
+    {id:'w14', en:'la migrazione', ro:'migrazione', tr:'göç',
+     examples:[{it:'La migrazione è un fenomeno globale.',tr:'Göç küresel bir olgudur.',
+       bd:[{ro:'La migrazione',tr:'göç'},{ro:'è un fenomeno globale',tr:'küresel bir olgudur'}]}]},
+    {id:'w15', en:'l\'economia', ro:'economia', tr:'ekonomi',
+     examples:[{it:'L\'economia italiana è tra le più grandi d\'Europa.',tr:'İtalya ekonomisi Avrupa\'nın en büyükleri arasındadır.',
+       bd:[{ro:'L\'economia italiana',tr:'İtalya ekonomisi'},{ro:'è tra le più grandi',tr:'en büyükleri arasındadır'},{ro:'d\'Europa',tr:'Avrupa\'nın'}]}]},
+    {id:'w16', en:'la povertà', ro:'povertà', tr:'yoksulluk',
+     examples:[{it:'La povertà è un problema globale da combattere.',tr:'Yoksulluk mücadele edilmesi gereken küresel bir sorundur.',
+       bd:[{ro:'La povertà',tr:'yoksulluk'},{ro:'è un problema globale',tr:'küresel bir sorundur'},{ro:'da combattere',tr:'mücadele edilmesi gereken'}]}]},
+    {id:'w17', en:'il Rinascimento', ro:'Rinascimento', tr:'Rönesans',
+     examples:[{it:'Il Rinascimento è nato in Italia nel XV secolo.',tr:'Rönesans, 15. yüzyılda İtalya\'da doğmuştur.',
+       bd:[{ro:'Il Rinascimento',tr:'Rönesans'},{ro:'è nato',tr:'doğmuştur'},{ro:'in Italia',tr:'İtalya\'da'},{ro:'nel XV secolo',tr:'15. yüzyılda'}]}]},
+    {id:'w18', en:'il fascismo', ro:'fascismo', tr:'faşizm',
+     examples:[{it:'Il fascismo italiano è durato dal 1922 al 1943.',tr:'İtalyan faşizmi 1922\'den 1943\'e kadar sürdü.',
+       bd:[{ro:'Il fascismo italiano',tr:'İtalyan faşizmi'},{ro:'è durato',tr:'sürdü'},{ro:'dal 1922 al 1943',tr:'1922\'den 1943\'e kadar'}]}]},
+    {id:'w19', en:'l\'uguaglianza', ro:'uguaglianza', tr:'eşitlik',
+     examples:[{it:'L\'uguaglianza tra uomini e donne è un valore fondamentale.',tr:'Erkekler ve kadınlar arasındaki eşitlik temel bir değerdir.',
+       bd:[{ro:'L\'uguaglianza',tr:'eşitlik'},{ro:'tra uomini e donne',tr:'erkekler ve kadınlar arasındaki'},{ro:'è un valore fondamentale',tr:'temel bir değerdir'}]}]},
+    {id:'w20', en:'la solidarietà', ro:'solidarietà', tr:'dayanışma',
+     examples:[{it:'La solidarietà è alla base della società civile.',tr:'Dayanışma sivil toplumun temelinde yer alır.',
+       bd:[{ro:'La solidarietà',tr:'dayanışma'},{ro:'è alla base',tr:'temelinde yer alır'},{ro:'della società civile',tr:'sivil toplumun'}]}]}
   ],
-  grammar:[],
-  speaking:[],
-  dialogues:[],
-  listening:[],
+  grammar:[
+    {id:'g1', title:'Passato Remoto ile Tarihi Olaylar', title_en:'Past Historic Events with Passato Remoto',
+     explanation:'Passato remoto, konuşmacının yaşanmışlığıyla ilgisi olmayan uzak geçmişi anlatmak için kullanılır. Tarih kitaplarında ve resmi anlatılarda yaygındır.',
+     table:[
+       {pronoun:'io', form:'fui / ebbi / andai', example:'Io fui testimone.', tr:'Ben tanık oldum.'},
+       {pronoun:'tu', form:'fosti / avesti / andasti', example:'Tu andasti in guerra.', tr:'Savaşa gittin.'},
+       {pronoun:'lui/lei', form:'fu / ebbe / andò', example:'Napoleone fu esiliato.', tr:'Napolyon sürgüne gönderildi.'},
+       {pronoun:'noi', form:'fummo / avemmo / andammo', example:'Noi fummo liberati nel 1945.', tr:'Biz 1945\'te özgürlüğe kavuştuk.'},
+       {pronoun:'voi', form:'foste / aveste / andaste', example:'Voi resisteste all\'occupazione.', tr:'İşgale direnmek istediniz.'},
+       {pronoun:'loro', form:'furono / ebbero / andarono', example:'I Romani costruirono strade ovunque.', tr:'Romalılar her yere yol inşa etti.'}
+     ],
+     note:'Kuzey İtalya\'da passato prossimo, güney İtalya\'da passato remoto daha sık kullanılır. Tarihi anlatılarda passato remoto tercih edilir.'},
+    {id:'g2', title:'Pasif Yapı ile Tarihi Gerçekler', title_en:'Passive Voice for Historical Facts',
+     explanation:'Tarihi olayları anlatırken, özellikle kimin yaptığından çok ne olduğunu vurgulamak için pasif yapı sıklıkla kullanılır.',
+     table:[
+       {pronoun:'essere + p.p.', form:'fu costruito/a', example:'Il Colosseo fu costruito nel I secolo.', tr:'Kolezyum MS 1. yüzyılda inşa edildi.'},
+       {pronoun:'venire + p.p.', form:'venne firmato', example:'Il trattato venne firmato nel 1815.', tr:'Antlaşma 1815\'te imzalandı.'},
+       {pronoun:'si + verbo', form:'si costruì', example:'Si costruirono molte cattedrali.', tr:'Pek çok katedral inşa edildi.'},
+       {pronoun:'essere stato', form:'è stato/a + p.p.', example:'È stata dichiarata l\'indipendenza.', tr:'Bağımsızlık ilan edildi.'},
+       {pronoun:'da + yapan', form:'da + kişi/grup', example:'Venne conquistata dai Romani.', tr:'Romalılar tarafından fethedildi.'},
+       {pronoun:'nel + yıl', form:'nel/nell\' + yıl', example:'Nell\'1861 fu unificata l\'Italia.', tr:'1861\'de İtalya birleştirildi.'}
+     ],
+     note:'"L\'Italia fu unificata nel 1861" — bu tarihi bir gerçektir ve pasif yapı doğal seçimdir. Fail biliniyorsa "da" eklenebilir.'},
+    {id:'g3', title:'Tarihi Dönemleri Sıralamayla Anlatma', title_en:'Narrating Historical Periods in Order',
+     explanation:'Tarihsel olayları kronolojik sırayla anlatmak için kullanılan bağlaçlar ve kalıplar.',
+     table:[
+       {pronoun:'Prima di + isim/infinito', form:'prima di', example:'Prima dell\'unificazione, l\'Italia era divisa.', tr:'Birleşmeden önce İtalya bölünmüş durumdaydı.'},
+       {pronoun:'Dopo + isim', form:'dopo + nome', example:'Dopo la guerra, iniziò la ricostruzione.', tr:'Savaştan sonra yeniden yapılanma başladı.'},
+       {pronoun:'Durante + isim', form:'durante', example:'Durante il Rinascimento, l\'arte fiorì.', tr:'Rönesans döneminde sanat filizlendi.'},
+       {pronoun:'Nel + yüzyıl', form:'nel XV/XVI... secolo', example:'Nel XVI secolo nacque il Barocco.', tr:'16. yüzyılda Barok doğdu.'},
+       {pronoun:'Alla fine del', form:'alla fine del/della', example:'Alla fine del XIX secolo...', tr:'19. yüzyılın sonunda...'},
+       {pronoun:'A partire dal', form:'a partire dal', example:'A partire dal 1948, la Repubblica...', tr:'1948\'den itibaren Cumhuriyet...'}
+     ],
+     note:'İtalyancada yüzyıllar için Romen rakamları kullanılır: XV = on beşinci, XX = yirminci. "Nel Novecento" = 1900\'lerde.'}
+  ],
+  speaking:[
+    {id:'sp1', en:'L\'Italia è diventata una Repubblica nel 1946, dopo la fine della Seconda Guerra Mondiale.', tr:'İtalya, İkinci Dünya Savaşı\'nın ardından 1946\'da Cumhuriyet oldu.', prompt:'İtalya Cumhuriyeti\'nin kuruluşunu anlatın.'},
+    {id:'sp2', en:'Il Rinascimento è uno dei periodi più importanti della storia culturale europea.', tr:'Rönesans, Avrupa kültür tarihinin en önemli dönemlerinden biridir.', prompt:'Rönesans\'ın önemini ifade edin.'},
+    {id:'sp3', en:'L\'unificazione d\'Italia, il Risorgimento, avvenne nel 1861.', tr:'İtalya\'nın birleşmesi olan Risorgimento 1861\'de gerçekleşti.', prompt:'İtalya\'nın birleşme sürecini özetleyin.'},
+    {id:'sp4', en:'La democrazia garantisce la libertà di parola e di stampa.', tr:'Demokrasi ifade ve basın özgürlüğünü güvence altına alır.', prompt:'Demokrasinin temel unsurlarını açıklayın.'},
+    {id:'sp5', en:'La solidarietà sociale è fondamentale per costruire una società giusta.', tr:'Sosyal dayanışma, adil bir toplum inşa etmek için temeldir.', prompt:'Toplumda dayanışmanın önemini belirtin.'}
+  ],
+  dialogues:[
+    {id:'d1', title:'Tarih Dersi', title_en:'History Lesson',
+     lines:[
+       {speaker:'A', gender:'f', en:'Professoressa, quando fu fondata Roma secondo la tradizione?', tr:'Profesörüm, geleneğe göre Roma ne zaman kuruldu?',
+        bd:[{ro:'Professoressa',tr:'profesörüm (kadın)'},{ro:'quando fu fondata',tr:'ne zaman kuruldu'},{ro:'secondo la tradizione',tr:'geleneğe göre'}]},
+       {speaker:'B', gender:'f', en:'Secondo la tradizione, Roma fu fondata nel 753 a.C. da Romolo.', tr:'Geleneğe göre Roma, MÖ 753\'te Romulus tarafından kuruldu.',
+        bd:[{ro:'fu fondata',tr:'kuruldu'},{ro:'nel 753 a.C.',tr:'MÖ 753\'te'},{ro:'da Romolo',tr:'Romulus tarafından'}]},
+       {speaker:'A', gender:'f', en:'E quando cadde l\'Impero Romano d\'Occidente?', tr:'Peki Batı Roma İmparatorluğu ne zaman çöktü?',
+        bd:[{ro:'E quando cadde',tr:'peki ne zaman çöktü'},{ro:'l\'Impero Romano d\'Occidente',tr:'Batı Roma İmparatorluğu'}]},
+       {speaker:'B', gender:'f', en:'Cadde nel 476 d.C., segnando la fine del mondo antico.', tr:'MS 476\'da çöktü; bu antik dünyanın sonu olarak kabul edilir.',
+        bd:[{ro:'Cadde nel 476 d.C.',tr:'MS 476\'da çöktü'},{ro:'segnando la fine',tr:'son işaret ederek'},{ro:'del mondo antico',tr:'antik dünyanın'}]},
+       {speaker:'A', gender:'f', en:'Quindi l\'Impero durò quasi mille anni in totale?', tr:'Yani İmparatorluk toplamda neredeyse bin yıl sürdü mü?',
+        bd:[{ro:'Quindi',tr:'yani'},{ro:'l\'Impero durò',tr:'İmparatorluk sürdü'},{ro:'quasi mille anni',tr:'neredeyse bin yıl'},{ro:'in totale',tr:'toplamda'}]},
+       {speaker:'B', gender:'f', en:'Esattamente! L\'Impero Romano d\'Oriente durò fino al 1453.', tr:'Tam olarak! Doğu Roma İmparatorluğu 1453\'e kadar sürdü.',
+        bd:[{ro:'Esattamente',tr:'tam olarak'},{ro:'durò fino al 1453',tr:'1453\'e kadar sürdü'}]}
+     ]}
+  ],
+  listening:[
+    {id:'li1', audio:'', transcript:'L\'Italia ha una storia millenaria. Dall\'antico Impero Romano al Medioevo, dal Rinascimento all\'Unità d\'Italia del 1861, ogni periodo ha lasciato tracce profonde nella cultura, nell\'arte e nell\'architettura. Nel Novecento, l\'Italia attraversò il periodo fascista sotto Mussolini e poi la Seconda Guerra Mondiale. Nel 1946, gli italiani votarono per la Repubblica e nel 1948 entrò in vigore la Costituzione. L\'Italia è uno dei paesi fondatori dell\'Unione Europea, contribuendo alla pace e alla cooperazione nel continente.',
+     tr:'İtalya\'nın binlerce yıllık bir tarihi vardır. Antik Roma İmparatorluğu\'ndan Ortaçağ\'a, Rönesans\'tan 1861\'deki İtalyan Birliği\'ne kadar her dönem kültürde, sanatta ve mimaride derin izler bırakmıştır. 20. yüzyılda İtalya, Mussolini yönetimindeki faşist dönemi ve ardından İkinci Dünya Savaşı\'nı yaşadı. 1946\'da İtalyanlar Cumhuriyet için oy kullandı ve 1948\'de Anayasa yürürlüğe girdi. İtalya, Avrupa\'da barış ve işbirliğine katkıda bulunarak Avrupa Birliği\'nin kurucu ülkelerinden biridir.',
+     questions:[
+       {q:'İtalya Anayasası ne zaman yürürlüğe girdi?', opts:['1861','1943','1946','1948'], answer:3, tr:'Metin "nel 1948 entrò in vigore la Costituzione" demektedir.'},
+       {q:'1946\'da İtalyanlar ne için oy kullandı?', opts:['Monarşi','Cumhuriyet','Bağımsızlık','AB üyeliği'], answer:1, tr:'Metin "gli italiani votarono per la Repubblica" diyor.'},
+       {q:'İtalya\'nın Avrupa Birliği\'ndeki rolü nedir?', opts:['Üye değil','Sonradan katılan','Kurucu üye','Aday ülke'], answer:2, tr:'Metin "uno dei paesi fondatori dell\'Unione Europea" diyor.'}
+     ]}
+  ],
   tones:[]
 };
 LESSONS[47] = L47;

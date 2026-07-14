@@ -1,131 +1,135 @@
-// ders46.js — Italian Lesson 46: Verbi d'azione (vocabulary)
+// ders46.js — Italian Lesson 46: Verbi d'azione
 const L46 = {
   words:[
-    {
-      id:'w1',
-      en:'Buongiorno!',
-      ro:'Buongi',
-      tr:'İyi günler!'
-    },
-    {
-      id:'w2',
-      en:'Come sta?',
-      ro:'Come s',
-      tr:'Nasılsınız?'
-    },
-    {
-      id:'w3',
-      en:'Bene.',
-      ro:'Bene.',
-      tr:'İyiyim.'
-    },
-    {
-      id:'w4',
-      en:'Scusi',
-      ro:'Scusi',
-      tr:'Pardon'
-    },
-    {
-      id:'w5',
-      en:'Nessun problema',
-      ro:'Nessun',
-      tr:'Sorun değil'
-    },
-    {
-      id:'w6',
-      en:'Certo',
-      ro:'Certo',
-      tr:'Tabii ki'
-    },
-    {
-      id:'w7',
-      en:'Capisce?',
-      ro:'Capisc',
-      tr:'Anlıyor musunuz?'
-    },
-    {
-      id:'w8',
-      en:'Non capisco.',
-      ro:'Non ca',
-      tr:'Anlamıyorum.'
-    },
-    {
-      id:'w9',
-      en:'Può ripetere?',
-      ro:'Può ri',
-      tr:'Tekrar edebilir misiniz?'
-    },
-    {
-      id:'w10',
-      en:'Piano, per favore.',
-      ro:'Piano,',
-      tr:'Yavaş, lütfen.'
-    },
-    {
-      id:'w11',
-      en:'Un momento, per favore.',
-      ro:'Un mom',
-      tr:'Bir dakika, lütfen.'
-    },
-    {
-      id:'w12',
-      en:'Capito!',
-      ro:'Capito',
-      tr:'Anlaşıldı!'
-    },
-    {
-      id:'w13',
-      en:'Grazie',
-      ro:'Grazie',
-      tr:'Teşekkürler'
-    },
-    {
-      id:'w14',
-      en:'Prego',
-      ro:'Prego',
-      tr:'Rica ederim'
-    },
-    {
-      id:'w15',
-      en:'A dopo',
-      ro:'A dopo',
-      tr:'Görüşürüz'
-    },
-    {
-      id:'w16',
-      en:'Mi chiamo Ali',
-      ro:'Mi chi',
-      tr:'Benim adım Ali'
-    },
-    {
-      id:'w17',
-      en:'Piacere',
-      ro:'Piacer',
-      tr:'Memnun oldum'
-    },
-    {
-      id:'w18',
-      en:'Parla inglese?',
-      ro:'Parla ',
-      tr:'İngilizce biliyor musunuz?'
-    },
-    {
-      id:'w19',
-      en:'Un po\'',
-      ro:'Un po\'',
-      tr:'Biraz'
-    },
-    {
-      id:'w20',
-      en:'Può aiutarmi?',
-      ro:'Può ai',
-      tr:'Yardım edebilir misiniz?'
-    }
+    {id:'w1', en:'correre', ro:'correre', tr:'koşmak',
+     examples:[{it:'Corro ogni mattina nel parco.',tr:'Her sabah parkta koşarım.',
+       bd:[{ro:'Corro',tr:'koşarım'},{ro:'ogni mattina',tr:'her sabah'},{ro:'nel parco',tr:'parkta'}]}]},
+    {id:'w2', en:'saltare', ro:'saltare', tr:'atlamak / zıplamak',
+     examples:[{it:'Il bambino salta sulla trampola.',tr:'Çocuk trampolinde zıplıyor.',
+       bd:[{ro:'Il bambino',tr:'çocuk'},{ro:'salta',tr:'zıplıyor'},{ro:'sulla trampola',tr:'trampolinde'}]}]},
+    {id:'w3', en:'lanciare', ro:'lanciare', tr:'fırlatmak / atmak',
+     examples:[{it:'Ha lanciato la palla con forza.',tr:'Topu güçlü bir şekilde fırlattı.',
+       bd:[{ro:'Ha lanciato',tr:'fırlattı'},{ro:'la palla',tr:'topu'},{ro:'con forza',tr:'güçlü bir şekilde'}]}]},
+    {id:'w4', en:'afferrare', ro:'afferrare', tr:'yakalamak / kavramak',
+     examples:[{it:'Ha afferrato il ramo per non cadere.',tr:'Düşmemek için dala tutundu.',
+       bd:[{ro:'Ha afferrato',tr:'tutundu/yakaladı'},{ro:'il ramo',tr:'dala'},{ro:'per non cadere',tr:'düşmemek için'}]}]},
+    {id:'w5', en:'spingere', ro:'spingere', tr:'itmek',
+     examples:[{it:'Non spingere, c\'è posto per tutti!',tr:'İtme, herkes için yer var!',
+       bd:[{ro:'Non spingere',tr:'itme'},{ro:'c\'è posto',tr:'yer var'},{ro:'per tutti',tr:'herkes için'}]}]},
+    {id:'w6', en:'tirare', ro:'tirare', tr:'çekmek',
+     examples:[{it:'Tira la porta per aprirla.',tr:'Kapıyı açmak için çek.',
+       bd:[{ro:'Tira',tr:'çek'},{ro:'la porta',tr:'kapıyı'},{ro:'per aprirla',tr:'açmak için'}]}]},
+    {id:'w7', en:'sollevare', ro:'sollevare', tr:'kaldırmak / yukarı almak',
+     examples:[{it:'Non riesco a sollevare questa scatola.',tr:'Bu kutuyu kaldıramıyorum.',
+       bd:[{ro:'Non riesco a',tr:'yapamıyorum'},{ro:'sollevare',tr:'kaldırmak'},{ro:'questa scatola',tr:'bu kutuyu'}]}]},
+    {id:'w8', en:'cadere', ro:'cadere', tr:'düşmek',
+     examples:[{it:'È caduto dalla bicicletta.',tr:'Bisikletten düştü.',
+       bd:[{ro:'È caduto',tr:'düştü'},{ro:'dalla bicicletta',tr:'bisikletten'}]}]},
+    {id:'w9', en:'arrampicarsi', ro:'arrampicarsi', tr:'tırmanmak',
+     examples:[{it:'I bambini si arrampicano sugli alberi.',tr:'Çocuklar ağaçlara tırmanır.',
+       bd:[{ro:'I bambini',tr:'çocuklar'},{ro:'si arrampicano',tr:'tırmanır'},{ro:'sugli alberi',tr:'ağaçlara'}]}]},
+    {id:'w10', en:'nuotare', ro:'nuotare', tr:'yüzmek',
+     examples:[{it:'Sa nuotare molto bene.',tr:'Çok iyi yüzebiliyor.',
+       bd:[{ro:'Sa nuotare',tr:'yüzebiliyor'},{ro:'molto bene',tr:'çok iyi'}]}]},
+    {id:'w11', en:'guidare', ro:'guidare', tr:'araba sürmek / yönlendirmek',
+     examples:[{it:'Guido la macchina da quindici anni.',tr:'On beş yıldır araba kullanıyorum.',
+       bd:[{ro:'Guido la macchina',tr:'araba kullanıyorum'},{ro:'da quindici anni',tr:'on beş yıldır'}]}]},
+    {id:'w12', en:'costruire', ro:'costruire', tr:'inşa etmek / yapmak',
+     examples:[{it:'Stanno costruendo un nuovo ponte.',tr:'Yeni bir köprü inşa ediyorlar.',
+       bd:[{ro:'Stanno costruendo',tr:'inşa ediyorlar'},{ro:'un nuovo ponte',tr:'yeni bir köprü'}]}]},
+    {id:'w13', en:'distruggere', ro:'distruggere', tr:'yıkmak / tahrip etmek',
+     examples:[{it:'Il terremoto ha distrutto molti edifici.',tr:'Deprem pek çok binayı yerle bir etti.',
+       bd:[{ro:'Il terremoto',tr:'deprem'},{ro:'ha distrutto',tr:'yerle bir etti'},{ro:'molti edifici',tr:'pek çok binayı'}]}]},
+    {id:'w14', en:'raccogliere', ro:'raccogliere', tr:'toplamak',
+     examples:[{it:'Raccogliamo l\'uva in settembre.',tr:'Üzümü eylülde topluyoruz.',
+       bd:[{ro:'Raccogliamo',tr:'topluyoruz'},{ro:'l\'uva',tr:'üzümü'},{ro:'in settembre',tr:'eylülde'}]}]},
+    {id:'w15', en:'versare', ro:'versare', tr:'dökmek / boşaltmak',
+     examples:[{it:'Ha versato il latte per sbaglio.',tr:'Sütü yanlışlıkla döktü.',
+       bd:[{ro:'Ha versato',tr:'döktü'},{ro:'il latte',tr:'sütü'},{ro:'per sbaglio',tr:'yanlışlıkla'}]}]},
+    {id:'w16', en:'mescolare', ro:'mescolare', tr:'karıştırmak',
+     examples:[{it:'Mescola bene gli ingredienti.',tr:'Malzemeleri iyice karıştır.',
+       bd:[{ro:'Mescola bene',tr:'iyice karıştır'},{ro:'gli ingredienti',tr:'malzemeleri'}]}]},
+    {id:'w17', en:'tagliare', ro:'tagliare', tr:'kesmek',
+     examples:[{it:'Taglia le verdure a pezzetti.',tr:'Sebzeleri küçük parçalara kes.',
+       bd:[{ro:'Taglia',tr:'kes'},{ro:'le verdure',tr:'sebzeleri'},{ro:'a pezzetti',tr:'küçük parçalara'}]}]},
+    {id:'w18', en:'cucire', ro:'cucire', tr:'dikmek',
+     examples:[{it:'Sa cucire i propri vestiti.',tr:'Kendi giysilerini dikebiliyor.',
+       bd:[{ro:'Sa cucire',tr:'dikebiliyor'},{ro:'i propri vestiti',tr:'kendi giysilerini'}]}]},
+    {id:'w19', en:'dipingere', ro:'dipingere', tr:'boyamak / resim yapmak',
+     examples:[{it:'Dipinge paesaggi con l\'acquerello.',tr:'Suluboya ile peyzaj resimleri yapıyor.',
+       bd:[{ro:'Dipinge',tr:'yapıyor/boyuyor'},{ro:'paesaggi',tr:'peyzaj resimleri'},{ro:'con l\'acquerello',tr:'suluboya ile'}]}]},
+    {id:'w20', en:'riparare', ro:'riparare', tr:'tamir etmek',
+     examples:[{it:'Il meccanico ha riparato la mia auto.',tr:'Tamirci arabamı tamir etti.',
+       bd:[{ro:'Il meccanico',tr:'tamirci'},{ro:'ha riparato',tr:'tamir etti'},{ro:'la mia auto',tr:'arabamı'}]}]}
   ],
-  grammar:[],
-  speaking:[],
-  dialogues:[],
-  listening:[],
+  grammar:[
+    {id:'g1', title:'Fiil Grupları (Coniugazione)', title_en:'Verb Conjugation Groups',
+     explanation:'İtalyancada fiiller üç gruba ayrılır: -are, -ere, -ire. Her grubun kendine özgü çekim eki vardır. Bu derste özellikle düzensiz (irregolari) eylem fiillerine odaklanıyoruz.',
+     table:[
+       {pronoun:'correre (io)', form:'corro', example:'Io corro veloce.', tr:'Hızlı koşarım.'},
+       {pronoun:'correre (tu)', form:'corri', example:'Tu corri ogni giorno?', tr:'Her gün koşuyor musun?'},
+       {pronoun:'saltare (io)', form:'salto', example:'Io salto in alto.', tr:'Yükseğe zıplarım.'},
+       {pronoun:'costruire (io)', form:'costruisco', example:'Io costruisco mobili.', tr:'Mobilya yaparım.'},
+       {pronoun:'dipingere (io)', form:'dipingo', example:'Io dipingo paesaggi.', tr:'Peyzaj resimleri yaparım.'},
+       {pronoun:'raccogliere (io)', form:'raccolgo', example:'Io raccolgo fiori.', tr:'Çiçek toplarım.'}
+     ],
+     note:'"Costruire" gibi "-isc-" eklenen fiiller: (io) costruisco, (tu) costruisci, (lui) costruisce — ama (noi) costruiamo, (voi) costruite.'},
+    {id:'g2', title:'Stare + Gerundio ile Anlık Eylemler', title_en:'Ongoing Actions with stare + gerundio',
+     explanation:'Şu an gerçekleşen bir eylemi vurgulamak için "stare + gerundio" yapısı kullanılır. Türkçedeki "-yor" ekine karşılık gelir.',
+     table:[
+       {pronoun:'io', form:'sto + gerundio', example:'Sto correndo nel parco.', tr:'Parkta koşuyorum.'},
+       {pronoun:'tu', form:'stai + gerundio', example:'Stai saltando?', tr:'Zıplıyor musun?'},
+       {pronoun:'lui/lei', form:'sta + gerundio', example:'Sta costruendo una casa.', tr:'Ev inşa ediyor.'},
+       {pronoun:'noi', form:'stiamo + gerundio', example:'Stiamo nuotando.', tr:'Yüzüyoruz.'},
+       {pronoun:'voi', form:'state + gerundio', example:'State dipingendo?', tr:'Resim mi yapıyorsunuz?'},
+       {pronoun:'loro', form:'stanno + gerundio', example:'Stanno riparando la bici.', tr:'Bisikleti tamir ediyorlar.'}
+     ],
+     note:'Gerundio yapımı: -are → -ando (correre→correndo değil! = correndo); -ere → -endo; -ire → -endo. "Correre" → "correndo", "saltare" → "saltando".'},
+    {id:'g3', title:'Emir Kipi (Imperativo) ile Eylem Yönlendirme', title_en:'Imperative Mood for Action Commands',
+     explanation:'Talimatlarda, tariflerde ve spor antrenmanlarında kullanılan emir kipi (imperativo) kalıpları.',
+     table:[
+       {pronoun:'tu (olumlu)', form:'radice verbale', example:'Corri più veloce!', tr:'Daha hızlı koş!'},
+       {pronoun:'tu (olumsuz)', form:'non + infinito', example:'Non saltare sul letto!', tr:'Yatakta zıplama!'},
+       {pronoun:'Lei (resmi)', form:'3. tekil', example:'Si sieda, per favore.', tr:'Oturun lütfen. (resmi)'},
+       {pronoun:'noi (hadi)', form:'1. çoğul', example:'Corriamo insieme!', tr:'Birlikte koşalım!'},
+       {pronoun:'voi', form:'2. çoğul', example:'Tirate la corda!', tr:'İpi çekin!'},
+       {pronoun:'Atay (talimat)', form:'infinito', example:'Mescolare bene e versare.', tr:'İyice karıştırın ve dökün. (tarif)'}
+     ],
+     note:'Tariflerde ve talimatlarda infinito kullanımı yaygındır: "Tagliare le verdure, aggiungere olio, mescolare." (Sebzeleri kes, yağ ekle, karıştır.)'}
+  ],
+  speaking:[
+    {id:'sp1', en:'Ogni mattina corro per trenta minuti e poi faccio stretching.', tr:'Her sabah otuz dakika koşarım ve sonra esneme yaparm.', prompt:'Sabah rutininizden bir egzersizi anlatın.'},
+    {id:'sp2', en:'Sto riparando la bicicletta nel garage.', tr:'Garajda bisikleti tamir ediyorum.', prompt:'Şu an yaptığınız fiziksel bir eylemi anlatın.'},
+    {id:'sp3', en:'Non riesco a sollevare questo peso, è troppo pesante.', tr:'Bu ağırlığı kaldıramıyorum, çok ağır.', prompt:'Yapamadığınız bir şeyi belirtin.'},
+    {id:'sp4', en:'Taglia le cipolle finemente e poi mescola con il formaggio.', tr:'Soğanı ince ince doğra ve sonra peynirle karıştır.', prompt:'Bir tarif talimatı verin.'},
+    {id:'sp5', en:'Stanno costruendo un palazzo nuovo nel centro della città.', tr:'Şehir merkezinde yeni bir bina inşa ediyorlar.', prompt:'Etrafınızda olan bir inşaatı anlatın.'}
+  ],
+  dialogues:[
+    {id:'d1', title:'Spor Antrenmanı', title_en:'Sports Training',
+     lines:[
+       {speaker:'A', gender:'m', en:'Cominciamo il riscaldamento. Tutti corrono intorno al campo!', tr:'Isınmaya başlıyoruz. Herkes sahayı koşuyor!',
+        bd:[{ro:'Cominciamo',tr:'başlıyoruz'},{ro:'il riscaldamento',tr:'ısınmayı'},{ro:'Tutti corrono',tr:'herkes koşuyor'},{ro:'intorno al campo',tr:'sahayı'}]},
+       {speaker:'B', gender:'f', en:'Per quanti minuti dobbiamo correre?', tr:'Kaç dakika koşmamız gerekiyor?',
+        bd:[{ro:'Per quanti minuti',tr:'kaç dakika'},{ro:'dobbiamo correre',tr:'koşmamız gerekiyor'}]},
+       {speaker:'A', gender:'m', en:'Dieci minuti. Poi saltiamo la corda per cinque minuti.', tr:'On dakika. Sonra beş dakika ip atlıyoruz.',
+        bd:[{ro:'Dieci minuti',tr:'on dakika'},{ro:'Poi saltiamo la corda',tr:'sonra ip atlıyoruz'},{ro:'per cinque minuti',tr:'beş dakika'}]},
+       {speaker:'B', gender:'f', en:'Capito. E dopo cosa facciamo?', tr:'Anladım. Peki sonra ne yapıyoruz?',
+        bd:[{ro:'Capito',tr:'anladım'},{ro:'dopo cosa facciamo',tr:'sonra ne yapıyoruz'}]},
+       {speaker:'A', gender:'m', en:'Lanciamo la palla e lavoriamo sui riflessi. Pronti?', tr:'Top atıyoruz ve refleksler üzerinde çalışıyoruz. Hazır mısınız?',
+        bd:[{ro:'Lanciamo la palla',tr:'top atıyoruz'},{ro:'lavoriamo sui riflessi',tr:'refleksler üzerinde çalışıyoruz'},{ro:'Pronti',tr:'hazır mısınız'}]},
+       {speaker:'B', gender:'f', en:'Sì, siamo pronti! Andiamo!', tr:'Evet, hazırız! Hadi gidelim!',
+        bd:[{ro:'Sì, siamo pronti',tr:'evet, hazırız'},{ro:'Andiamo',tr:'hadi gidelim'}]}
+     ]}
+  ],
+  listening:[
+    {id:'li1', audio:'', transcript:'Nel linguaggio quotidiano italiano, i verbi d\'azione sono fondamentali. Quando descriviamo quello che facciamo durante la giornata, usiamo moltissimi verbi: ci alziamo, facciamo colazione, usciamo di casa, camminiamo o guidiamo fino al lavoro. Al lavoro costruiamo, progettiamo, discutiamo e prendiamo decisioni. Nel tempo libero corriamo, nuotiamo, dipingiamo o semplicemente riposiamo. La forma "stare più gerundio" ci permette di descrivere azioni in corso: "Sto correndo" significa che l\'azione avviene esattamente adesso.',
+     tr:'İtalyan günlük dilinde eylem fiilleri temel öneme sahiptir. Gün içinde yaptıklarımızı anlatırken çok sayıda fiil kullanırız: kalkarız, kahvaltı yaparız, evden çıkarız, işe kadar yürür ya da araba kullanırız. İşte inşa eder, tasarlar, tartışır ve kararlar alırız. Boş zamanlarımızda koşar, yüzer, resim yapar ya da sadece dinleniriz. "Stare + gerundio" yapısı sürmekte olan eylemleri anlatmamızı sağlar: "Sto correndo" o anda gerçekleşen eylemi ifade eder.',
+     questions:[
+       {q:'"Sto correndo" ne anlama gelir?', opts:['Koştum','Koşacağım','Şu an koşuyorum','Koşmak istiyorum'], answer:2, tr:'Metin "stare+gerundio" yapısının şu an gerçekleşen eylemi ifade ettiğini açıklar.'},
+       {q:'Boş zamanda yapılan eylemler nelerdir?', opts:['Çalışmak ve toplantı yapmak','Koşmak, yüzmek, resim yapmak','İnşa etmek ve tasarlamak','Alışveriş yapmak'], answer:1, tr:'Metin "Nel tempo libero corriamo, nuotiamo, dipingiamo..." demektedir.'},
+       {q:'İş yerinde yapılan eylemler nelerdir?', opts:['Koşmak ve yüzmek','İnşa etmek ve tasarlamak','Yemek pişirmek','Resim yapmak'], answer:1, tr:'Metin "Al lavoro costruiamo, progettiamo, discutiamo..." demektedir.'}
+     ]}
+  ],
   tones:[]
 };
 LESSONS[46] = L46;

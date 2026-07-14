@@ -1,131 +1,135 @@
-// ders42.js — Italian Lesson 42: Italiano accademico (vocabulary)
+// ders42.js — Italian Lesson 42: Italiano accademico
 const L42 = {
   words:[
-    {
-      id:'w1',
-      en:'Buongiorno!',
-      ro:'Buongi',
-      tr:'İyi günler!'
-    },
-    {
-      id:'w2',
-      en:'Come sta?',
-      ro:'Come s',
-      tr:'Nasılsınız?'
-    },
-    {
-      id:'w3',
-      en:'Bene.',
-      ro:'Bene.',
-      tr:'İyiyim.'
-    },
-    {
-      id:'w4',
-      en:'Scusi',
-      ro:'Scusi',
-      tr:'Pardon'
-    },
-    {
-      id:'w5',
-      en:'Nessun problema',
-      ro:'Nessun',
-      tr:'Sorun değil'
-    },
-    {
-      id:'w6',
-      en:'Certo',
-      ro:'Certo',
-      tr:'Tabii ki'
-    },
-    {
-      id:'w7',
-      en:'Capisce?',
-      ro:'Capisc',
-      tr:'Anlıyor musunuz?'
-    },
-    {
-      id:'w8',
-      en:'Non capisco.',
-      ro:'Non ca',
-      tr:'Anlamıyorum.'
-    },
-    {
-      id:'w9',
-      en:'Può ripetere?',
-      ro:'Può ri',
-      tr:'Tekrar edebilir misiniz?'
-    },
-    {
-      id:'w10',
-      en:'Piano, per favore.',
-      ro:'Piano,',
-      tr:'Yavaş, lütfen.'
-    },
-    {
-      id:'w11',
-      en:'Un momento, per favore.',
-      ro:'Un mom',
-      tr:'Bir dakika, lütfen.'
-    },
-    {
-      id:'w12',
-      en:'Capito!',
-      ro:'Capito',
-      tr:'Anlaşıldı!'
-    },
-    {
-      id:'w13',
-      en:'Grazie',
-      ro:'Grazie',
-      tr:'Teşekkürler'
-    },
-    {
-      id:'w14',
-      en:'Prego',
-      ro:'Prego',
-      tr:'Rica ederim'
-    },
-    {
-      id:'w15',
-      en:'A dopo',
-      ro:'A dopo',
-      tr:'Görüşürüz'
-    },
-    {
-      id:'w16',
-      en:'Mi chiamo Ali',
-      ro:'Mi chi',
-      tr:'Benim adım Ali'
-    },
-    {
-      id:'w17',
-      en:'Piacere',
-      ro:'Piacer',
-      tr:'Memnun oldum'
-    },
-    {
-      id:'w18',
-      en:'Parla inglese?',
-      ro:'Parla ',
-      tr:'İngilizce biliyor musunuz?'
-    },
-    {
-      id:'w19',
-      en:'Un po\'',
-      ro:'Un po\'',
-      tr:'Biraz'
-    },
-    {
-      id:'w20',
-      en:'Può aiutarmi?',
-      ro:'Può ai',
-      tr:'Yardım edebilir misiniz?'
-    }
+    {id:'w1', en:'la tesi', ro:'tesi', tr:'tez',
+     examples:[{it:'Sto scrivendo la tesi di laurea.',tr:'Lisans tezimi yazıyorum.',
+       bd:[{ro:'Sto',tr:'(şu an) yapıyorum'},{ro:'scrivendo',tr:'yazarak'},{ro:'la tesi',tr:'tezi'},{ro:'di laurea',tr:'lisans'}]}]},
+    {id:'w2', en:'la ricerca', ro:'ricerca', tr:'araştırma',
+     examples:[{it:'La ricerca richiede molto tempo.',tr:'Araştırma çok zaman gerektirir.',
+       bd:[{ro:'La ricerca',tr:'araştırma'},{ro:'richiede',tr:'gerektirir'},{ro:'molto tempo',tr:'çok zaman'}]}]},
+    {id:'w3', en:'il seminario', ro:'seminario', tr:'seminer',
+     examples:[{it:'Domani partecipo a un seminario.',tr:'Yarın bir seminere katılıyorum.',
+       bd:[{ro:'Domani',tr:'yarın'},{ro:'partecipo',tr:'katılıyorum'},{ro:'a un seminario',tr:'bir seminere'}]}]},
+    {id:'w4', en:'la conferenza', ro:'conferenza', tr:'konferans',
+     examples:[{it:'Lo scienziato ha tenuto una conferenza.',tr:'Bilim insanı bir konferans verdi.',
+       bd:[{ro:'Lo scienziato',tr:'bilim insanı'},{ro:'ha tenuto',tr:'verdi'},{ro:'una conferenza',tr:'bir konferans'}]}]},
+    {id:'w5', en:'il professore / la professoressa', ro:'professore/professoressa', tr:'profesör',
+     examples:[{it:'Il professore spiega bene.',tr:'Profesör iyi anlatıyor.',
+       bd:[{ro:'Il professore',tr:'profesör'},{ro:'spiega',tr:'anlatıyor'},{ro:'bene',tr:'iyi'}]}]},
+    {id:'w6', en:'lo studente / la studentessa', ro:'studente/studentessa', tr:'öğrenci',
+     examples:[{it:'Gli studenti preparano l\'esame.',tr:'Öğrenciler sınava hazırlanıyor.',
+       bd:[{ro:'Gli studenti',tr:'öğrenciler'},{ro:'preparano',tr:'hazırlanıyor'},{ro:'l\'esame',tr:'sınavı'}]}]},
+    {id:'w7', en:'il corso', ro:'corso', tr:'ders / kurs',
+     examples:[{it:'Seguo un corso di letteratura.',tr:'Edebiyat dersi alıyorum.',
+       bd:[{ro:'Seguo',tr:'takip ediyorum'},{ro:'un corso',tr:'bir ders'},{ro:'di letteratura',tr:'edebiyat'}]}]},
+    {id:'w8', en:'l\'esame', ro:'esame', tr:'sınav',
+     examples:[{it:'Ho superato tutti gli esami.',tr:'Tüm sınavları geçtim.',
+       bd:[{ro:'Ho superato',tr:'geçtim'},{ro:'tutti',tr:'tüm'},{ro:'gli esami',tr:'sınavları'}]}]},
+    {id:'w9', en:'il voto', ro:'voto', tr:'not / puan',
+     examples:[{it:'Ho preso trenta all\'esame.',tr:'Sınavdan otuz aldım.',
+       bd:[{ro:'Ho preso',tr:'aldım'},{ro:'trenta',tr:'otuz'},{ro:'all\'esame',tr:'sınavdan'}]}]},
+    {id:'w10', en:'la laurea', ro:'laurea', tr:'lisans diploması',
+     examples:[{it:'Mi laureo a luglio.',tr:'Temmuz\'da mezun oluyorum.',
+       bd:[{ro:'Mi laureo',tr:'mezun oluyorum'},{ro:'a luglio',tr:'temmuzda'}]}]},
+    {id:'w11', en:'il dottorato', ro:'dottorato', tr:'doktora',
+     examples:[{it:'Ha conseguito il dottorato a trent\'anni.',tr:'Otuz yaşında doktorasını aldı.',
+       bd:[{ro:'Ha conseguito',tr:'aldı'},{ro:'il dottorato',tr:'doktorayı'},{ro:'a trent\'anni',tr:'otuz yaşında'}]}]},
+    {id:'w12', en:'la borsa di studio', ro:'borsa di studio', tr:'burs',
+     examples:[{it:'Ha vinto una borsa di studio.',tr:'Burs kazandı.',
+       bd:[{ro:'Ha vinto',tr:'kazandı'},{ro:'una borsa di studio',tr:'bir burs'}]}]},
+    {id:'w13', en:'la biblioteca', ro:'biblioteca', tr:'kütüphane',
+     examples:[{it:'Studio in biblioteca ogni pomeriggio.',tr:'Her öğleden sonra kütüphanede çalışırım.',
+       bd:[{ro:'Studio',tr:'çalışırım'},{ro:'in biblioteca',tr:'kütüphanede'},{ro:'ogni pomeriggio',tr:'her öğleden sonra'}]}]},
+    {id:'w14', en:'il capitolo', ro:'capitolo', tr:'bölüm (kitap)',
+     examples:[{it:'Ho letto i primi tre capitoli.',tr:'İlk üç bölümü okudum.',
+       bd:[{ro:'Ho letto',tr:'okudum'},{ro:'i primi tre',tr:'ilk üç'},{ro:'capitoli',tr:'bölümü'}]}]},
+    {id:'w15', en:'la citazione', ro:'citazione', tr:'alıntı / atıf',
+     examples:[{it:'Devo aggiungere le citazioni alla bibliografia.',tr:'Bibliyografyaya alıntıları eklemeliyim.',
+       bd:[{ro:'Devo aggiungere',tr:'eklemeliyim'},{ro:'le citazioni',tr:'alıntıları'},{ro:'alla bibliografia',tr:'bibliyografyaya'}]}]},
+    {id:'w16', en:'l\'ipotesi', ro:'ipotesi', tr:'hipotez',
+     examples:[{it:'La nostra ipotesi è stata confermata.',tr:'Hipotezimiz doğrulandı.',
+       bd:[{ro:'La nostra ipotesi',tr:'hipotezimiz'},{ro:'è stata confermata',tr:'doğrulandı'}]}]},
+    {id:'w17', en:'la metodologia', ro:'metodologia', tr:'metodoloji',
+     examples:[{it:'Quale metodologia hai usato?',tr:'Hangi metodoloji kullandın?',
+       bd:[{ro:'Quale metodologia',tr:'hangi metodoloji'},{ro:'hai usato',tr:'kullandın'}]}]},
+    {id:'w18', en:'il risultato', ro:'risultato', tr:'sonuç',
+     examples:[{it:'I risultati sono molto positivi.',tr:'Sonuçlar çok olumlu.',
+       bd:[{ro:'I risultati',tr:'sonuçlar'},{ro:'sono',tr:'(dir)'},{ro:'molto positivi',tr:'çok olumlu'}]}]},
+    {id:'w19', en:'la facoltà', ro:'facoltà', tr:'fakülte',
+     examples:[{it:'Frequenta la facoltà di medicina.',tr:'Tıp fakültesine gidiyor.',
+       bd:[{ro:'Frequenta',tr:'devam ediyor'},{ro:'la facoltà di medicina',tr:'tıp fakültesine'}]}]},
+    {id:'w20', en:'il tirocinio', ro:'tirocinio', tr:'staj',
+     examples:[{it:'Faccio un tirocinio in azienda.',tr:'Bir şirkette staj yapıyorum.',
+       bd:[{ro:'Faccio',tr:'yapıyorum'},{ro:'un tirocinio',tr:'bir staj'},{ro:'in azienda',tr:'şirkette'}]}]}
   ],
-  grammar:[],
-  speaking:[],
-  dialogues:[],
-  listening:[],
+  grammar:[
+    {id:'g1', title:'Akademik İtalyancada Fiiller', title_en:'Verbs in Academic Italian',
+     explanation:'Akademik metinlerde sıklıkla kullanılan fiiller ve kalıplar. Bu fiiller tez, makale ve rapor yazımında temel yapı taşlarıdır.',
+     table:[
+       {pronoun:'analizzare', form:'analizzare', example:'Analizziamo i dati.', tr:'Verileri analiz ediyoruz.'},
+       {pronoun:'dimostrare', form:'dimostrare', example:'Lo studio dimostra che...', tr:'Çalışma gösteriyor ki...'},
+       {pronoun:'sostenere', form:'sostenere', example:'L\'autore sostiene che...', tr:'Yazar öne sürüyor ki...'},
+       {pronoun:'concludere', form:'concludere', example:'Si conclude che...', tr:'Sonuç olarak şu çıkarılabilir ki...'},
+       {pronoun:'approfondire', form:'approfondire', example:'Approfondiremo il tema.', tr:'Konuyu derinlemesine inceleyeceğiz.'},
+       {pronoun:'confrontare', form:'confrontare', example:'Confrontiamo i risultati.', tr:'Sonuçları karşılaştırıyoruz.'}
+     ],
+     note:'Akademik İtalyancada çoğu zaman birinci çoğul şahıs (noi) kullanılır: "analizziamo", "consideriamo". Bu resmiyet ve nesnellik ifade eder.'},
+    {id:'g2', title:'Görüş Bildirme ve Atıf Yapma', title_en:'Expressing Opinion and Citation',
+     explanation:'Akademik çalışmalarda görüş bildirirken ve başkalarının görüşlerine atıf yaparken kullanılan kalıplar.',
+     table:[
+       {pronoun:'Secondo + kişi', form:'Secondo l\'autore...', example:'Secondo Umberto Eco, il testo è...', tr:'Umberto Eco\'ya göre metin...'},
+       {pronoun:'Come afferma', form:'Come afferma + kişi', example:'Come afferma Galileo...', tr:'Galileo\'nun iddia ettiği gibi...'},
+       {pronoun:'A parere di', form:'A parere di + kişi', example:'A parere di molti esperti...', tr:'Pek çok uzmanın görüşüne göre...'},
+       {pronoun:'Si ritiene che', form:'Si ritiene che + congiuntivo', example:'Si ritiene che la teoria sia valida.', tr:'Teorinin geçerli olduğu kabul edilir.'},
+       {pronoun:'È stato dimostrato', form:'passivo', example:'È stato dimostrato che...', tr:'Kanıtlanmıştır ki...'},
+       {pronoun:'In base a', form:'In base a + nome', example:'In base ai dati raccolti...', tr:'Toplanan verilere dayanarak...'}
+     ],
+     note:'Congiuntivo kullanımı akademik İtalyancada önemlidir: "Si ritiene che la proposta sia valida" (önerinin geçerli olduğu kabul edilir).'},
+    {id:'g3', title:'Tez Yapısı ve Bağlaçlar', title_en:'Thesis Structure and Connectors',
+     explanation:'Akademik bir tez veya makale yazarken paragrafları birbirine bağlamak için kullanılan bağlaçlar ve yapılar.',
+     table:[
+       {pronoun:'Giriş', form:'In primo luogo / Innanzitutto', example:'In primo luogo, è necessario definire...', tr:'Her şeyden önce, tanımlamak gerekir...'},
+       {pronoun:'Geliştirme', form:'Inoltre / Altresì / D\'altra parte', example:'Inoltre, i dati mostrano che...', tr:'Ayrıca, veriler şunu gösteriyor...'},
+       {pronoun:'Karşı argüman', form:'Tuttavia / Nonostante ciò', example:'Tuttavia, esistono limiti.', tr:'Bununla birlikte, sınırlılıklar mevcuttur.'},
+       {pronoun:'Sonuç', form:'In conclusione / Per concludere', example:'In conclusione, possiamo affermare che...', tr:'Sonuç olarak şunu söyleyebiliriz ki...'},
+       {pronoun:'Örnek', form:'Ad esempio / Per esempio', example:'Ad esempio, nel caso di...', tr:'Örneğin, şu durumda...'},
+       {pronoun:'Özet', form:'In sintesi / Riassumendo', example:'In sintesi, la ricerca ha dimostrato...', tr:'Özetle, araştırma şunu göstermiştir...'}
+     ],
+     note:'Bu bağlaçları ezberlemek, hem yazılı tezlerde hem de sözlü savunmalarda büyük fark yaratır.'}
+  ],
+  speaking:[
+    {id:'sp1', en:'Sto preparando la tesi di laurea in lettere.', tr:'Edebiyat alanında lisans tezi hazırlıyorum.', prompt:'Tez hazırlığınızı anlatın.'},
+    {id:'sp2', en:'Ho superato l\'esame con trenta e lode.', tr:'Sınavı "otuz artı" ile geçtim (en yüksek not).', prompt:'Sınav sonucunuzu bildirin.'},
+    {id:'sp3', en:'Cerco una borsa di studio per continuare gli studi.', tr:'Eğitimime devam etmek için burs arıyorum.', prompt:'Burs arayışınızı ifade edin.'},
+    {id:'sp4', en:'La metodologia usata nella ricerca è qualitativa.', tr:'Araştırmada kullanılan metodoloji nitelseldir.', prompt:'Araştırma yönteminizi açıklayın.'},
+    {id:'sp5', en:'In conclusione, i risultati confermano la nostra ipotesi.', tr:'Sonuç olarak bulgular hipotezimizi doğruluyor.', prompt:'Araştırma sonucunuzu özetleyin.'}
+  ],
+  dialogues:[
+    {id:'d1', title:'Tez Danışmanıyla Görüşme', title_en:'Meeting with the Thesis Supervisor',
+     lines:[
+       {speaker:'A', gender:'m', en:'Professore, posso parlarle della mia tesi?', tr:'Profesörüm, tezimden söz edebilir miyim?',
+        bd:[{ro:'Professore',tr:'profesörüm'},{ro:'posso parlarle',tr:'sizinle konuşabilir miyim'},{ro:'della mia tesi',tr:'tezim hakkında'}]},
+       {speaker:'B', gender:'m', en:'Certo, si accomodi. Di cosa vuole parlare?', tr:'Elbette, buyurun. Ne hakkında konuşmak istiyorsunuz?',
+        bd:[{ro:'Certo',tr:'elbette'},{ro:'si accomodi',tr:'buyurun/oturun'},{ro:'Di cosa',tr:'ne hakkında'}]},
+       {speaker:'A', gender:'m', en:'Ho completato il secondo capitolo, ma ho dubbi sulla metodologia.', tr:'İkinci bölümü tamamladım ama metodoloji konusunda tereddütlerim var.',
+        bd:[{ro:'Ho completato',tr:'tamamladım'},{ro:'il secondo capitolo',tr:'ikinci bölümü'},{ro:'ho dubbi',tr:'tereddütlerim var'},{ro:'sulla metodologia',tr:'metodoloji konusunda'}]},
+       {speaker:'B', gender:'m', en:'Capisco. Quale approccio ha usato, qualitativo o quantitativo?', tr:'Anlıyorum. Hangi yaklaşımı kullandınız, nitesel mi nicel mi?',
+        bd:[{ro:'Quale approccio',tr:'hangi yaklaşımı'},{ro:'ha usato',tr:'kullandınız'},{ro:'qualitativo',tr:'nitesel'},{ro:'quantitativo',tr:'nicel'}]},
+       {speaker:'A', gender:'m', en:'Ho usato un metodo misto, con interviste e dati statistici.', tr:'Görüşmeler ve istatistiksel verilerle karma bir yöntem kullandım.',
+        bd:[{ro:'Ho usato',tr:'kullandım'},{ro:'un metodo misto',tr:'karma bir yöntem'},{ro:'interviste',tr:'görüşmeler'},{ro:'dati statistici',tr:'istatistiksel veriler'}]},
+       {speaker:'B', gender:'m', en:'Ottimo! Le mando i miei commenti entro venerdì.', tr:'Harika! Yorumlarımı cuma gününe kadar göndereceğim.',
+        bd:[{ro:'Ottimo',tr:'harika'},{ro:'Le mando',tr:'size göndereceğim'},{ro:'i miei commenti',tr:'yorumlarımı'},{ro:'entro venerdì',tr:'cuma gününe kadar'}]}
+     ]}
+  ],
+  listening:[
+    {id:'li1', audio:'', transcript:'L\'università italiana ha una lunga tradizione. Il sistema universitario prevede tre livelli: la laurea triennale, la laurea magistrale biennale e il dottorato di ricerca. Per laurearsi, gli studenti devono superare tutti gli esami previsti dal piano di studi e presentare una tesi finale. Il voto massimo è trenta e lode. Molti studenti cercano borse di studio nazionali o europee per finanziare i loro studi o per fare un\'esperienza all\'estero con il programma Erasmus.',
+     tr:'İtalyan üniversitesi uzun bir geleneğe sahiptir. Üniversite sistemi üç aşamayı kapsar: üç yıllık lisans, iki yıllık yüksek lisans ve doktora. Mezun olmak için öğrencilerin ders planındaki tüm sınavları geçmesi ve bir final tezi sunması gerekmektedir. En yüksek not "otuz artı"dır. Pek çok öğrenci çalışmalarını finanse etmek veya Erasmus programıyla yurt dışı deneyimi yaşamak için ulusal ya da Avrupa bursları arar.',
+     questions:[
+       {q:'İtalyan üniversite sisteminde kaç aşama var?', opts:['İki','Üç','Dört','Beş'], answer:1, tr:'Metin üç aşamadan söz eder: laurea triennale, magistrale ve dottorato.'},
+       {q:'En yüksek üniversite notu nedir?', opts:['Venti','Venticinque','Trenta','Trenta e lode'], answer:3, tr:'Metin "il voto massimo è trenta e lode" demektedir.'},
+       {q:'Erasmus programı ne için kullanılır?', opts:['Burs almak için','Yurt dışı deneyimi için','Tez yazmak için','Sınava girmek için'], answer:1, tr:'Metin Erasmus\'un yurt dışı deneyimi (esperienza all\'estero) için kullanıldığını belirtir.'}
+     ]}
+  ],
   tones:[]
 };
 LESSONS[42] = L42;

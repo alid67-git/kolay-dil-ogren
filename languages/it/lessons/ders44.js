@@ -1,131 +1,135 @@
-// ders44.js — Italian Lesson 44: Espressioni sociali (vocabulary)
+// ders44.js — Italian Lesson 44: Espressioni sociali
 const L44 = {
   words:[
-    {
-      id:'w1',
-      en:'Buongiorno!',
-      ro:'Buongi',
-      tr:'İyi günler!'
-    },
-    {
-      id:'w2',
-      en:'Come sta?',
-      ro:'Come s',
-      tr:'Nasılsınız?'
-    },
-    {
-      id:'w3',
-      en:'Bene.',
-      ro:'Bene.',
-      tr:'İyiyim.'
-    },
-    {
-      id:'w4',
-      en:'Scusi',
-      ro:'Scusi',
-      tr:'Pardon'
-    },
-    {
-      id:'w5',
-      en:'Nessun problema',
-      ro:'Nessun',
-      tr:'Sorun değil'
-    },
-    {
-      id:'w6',
-      en:'Certo',
-      ro:'Certo',
-      tr:'Tabii ki'
-    },
-    {
-      id:'w7',
-      en:'Capisce?',
-      ro:'Capisc',
-      tr:'Anlıyor musunuz?'
-    },
-    {
-      id:'w8',
-      en:'Non capisco.',
-      ro:'Non ca',
-      tr:'Anlamıyorum.'
-    },
-    {
-      id:'w9',
-      en:'Può ripetere?',
-      ro:'Può ri',
-      tr:'Tekrar edebilir misiniz?'
-    },
-    {
-      id:'w10',
-      en:'Piano, per favore.',
-      ro:'Piano,',
-      tr:'Yavaş, lütfen.'
-    },
-    {
-      id:'w11',
-      en:'Un momento, per favore.',
-      ro:'Un mom',
-      tr:'Bir dakika, lütfen.'
-    },
-    {
-      id:'w12',
-      en:'Capito!',
-      ro:'Capito',
-      tr:'Anlaşıldı!'
-    },
-    {
-      id:'w13',
-      en:'Grazie',
-      ro:'Grazie',
-      tr:'Teşekkürler'
-    },
-    {
-      id:'w14',
-      en:'Prego',
-      ro:'Prego',
-      tr:'Rica ederim'
-    },
-    {
-      id:'w15',
-      en:'A dopo',
-      ro:'A dopo',
-      tr:'Görüşürüz'
-    },
-    {
-      id:'w16',
-      en:'Mi chiamo Ali',
-      ro:'Mi chi',
-      tr:'Benim adım Ali'
-    },
-    {
-      id:'w17',
-      en:'Piacere',
-      ro:'Piacer',
-      tr:'Memnun oldum'
-    },
-    {
-      id:'w18',
-      en:'Parla inglese?',
-      ro:'Parla ',
-      tr:'İngilizce biliyor musunuz?'
-    },
-    {
-      id:'w19',
-      en:'Un po\'',
-      ro:'Un po\'',
-      tr:'Biraz'
-    },
-    {
-      id:'w20',
-      en:'Può aiutarmi?',
-      ro:'Può ai',
-      tr:'Yardım edebilir misiniz?'
-    }
+    {id:'w1', en:'salutare / salutarsi', ro:'salutare', tr:'selamlamak',
+     examples:[{it:'Mi saluto sempre con un bacio.',tr:'Her zaman öpücükle selamlaşırım.',
+       bd:[{ro:'Mi saluto',tr:'selamlaşırım'},{ro:'sempre',tr:'her zaman'},{ro:'con un bacio',tr:'öpücükle'}]}]},
+    {id:'w2', en:'presentarsi', ro:'presentarsi', tr:'kendini tanıtmak',
+     examples:[{it:'Mi permetto di presentarmi.',tr:'Kendimi tanıtmama izin verin.',
+       bd:[{ro:'Mi permetto',tr:'izin verin'},{ro:'di presentarmi',tr:'kendimi tanıtmama'}]}]},
+    {id:'w3', en:'ringraziare', ro:'ringraziare', tr:'teşekkür etmek',
+     examples:[{it:'Ti ringrazio di cuore.',tr:'Sana içtenlikle teşekkür ediyorum.',
+       bd:[{ro:'Ti ringrazio',tr:'sana teşekkür ediyorum'},{ro:'di cuore',tr:'içtenlikle'}]}]},
+    {id:'w4', en:'scusarsi', ro:'scusarsi', tr:'özür dilemek',
+     examples:[{it:'Mi scuso per il ritardo.',tr:'Gecikme için özür dilerim.',
+       bd:[{ro:'Mi scuso',tr:'özür dilerim'},{ro:'per il ritardo',tr:'gecikme için'}]}]},
+    {id:'w5', en:'congratularsi', ro:'congratularsi', tr:'tebrik etmek',
+     examples:[{it:'Mi congratulo con te per la promozione.',tr:'Terfi için seni tebrik ederim.',
+       bd:[{ro:'Mi congratulo con te',tr:'seni tebrik ederim'},{ro:'per la promozione',tr:'terfi için'}]}]},
+    {id:'w6', en:'fare i complimenti', ro:'fare i complimenti', tr:'iltifat etmek',
+     examples:[{it:'Le faccio i complimenti per il lavoro.',tr:'Çalışması için ona iltifat ediyorum.',
+       bd:[{ro:'Le faccio',tr:'ona yapıyorum'},{ro:'i complimenti',tr:'iltifatı'},{ro:'per il lavoro',tr:'çalışması için'}]}]},
+    {id:'w7', en:'invitare', ro:'invitare', tr:'davet etmek',
+     examples:[{it:'Vi invito a cena sabato.',tr:'Sizi cumartesi akşam yemeğine davet ediyorum.',
+       bd:[{ro:'Vi invito',tr:'sizi davet ediyorum'},{ro:'a cena',tr:'akşam yemeğine'},{ro:'sabato',tr:'cumartesi'}]}]},
+    {id:'w8', en:'rifiutare gentilmente', ro:'rifiutare', tr:'nezaketle reddetmek',
+     examples:[{it:'Purtroppo non posso venire, mi dispiace.',tr:'Maalesef gelemiyorum, üzgünüm.',
+       bd:[{ro:'Purtroppo',tr:'maalesef'},{ro:'non posso venire',tr:'gelemiyorum'},{ro:'mi dispiace',tr:'üzgünüm'}]}]},
+    {id:'w9', en:'brindare', ro:'brindare', tr:'kadeh kaldırmak / kadeh tokuşturmak',
+     examples:[{it:'Brindiamo alla tua salute!',tr:'Sağlığına kadeh kaldırıyoruz!',
+       bd:[{ro:'Brindiamo',tr:'kadeh kaldırıyoruz'},{ro:'alla tua salute',tr:'sağlığına'}]}]},
+    {id:'w10', en:'augurare', ro:'augurare', tr:'dilek tutmak / dilemek',
+     examples:[{it:'Ti auguro buona fortuna.',tr:'Sana bol şans diliyorum.',
+       bd:[{ro:'Ti auguro',tr:'sana diliyorum'},{ro:'buona fortuna',tr:'bol şans'}]}]},
+    {id:'w11', en:'chiacchierare', ro:'chiacchierare', tr:'sohbet etmek',
+     examples:[{it:'Abbiamo chiacchierato per ore.',tr:'Saatlerce sohbet ettik.',
+       bd:[{ro:'Abbiamo chiacchierato',tr:'sohbet ettik'},{ro:'per ore',tr:'saatlerce'}]}]},
+    {id:'w12', en:'essere ospitale', ro:'essere ospitale', tr:'misafirperver olmak',
+     examples:[{it:'Gli italiani sono molto ospitali.',tr:'İtalyanlar çok misafirperverdirler.',
+       bd:[{ro:'Gli italiani',tr:'italyanlar'},{ro:'sono molto ospitali',tr:'çok misafirperverdirler'}]}]},
+    {id:'w13', en:'fare una battuta', ro:'fare una battuta', tr:'şaka yapmak',
+     examples:[{it:'Ha fatto una battuta divertente.',tr:'Eğlenceli bir şaka yaptı.',
+       bd:[{ro:'Ha fatto',tr:'yaptı'},{ro:'una battuta divertente',tr:'eğlenceli bir şaka'}]}]},
+    {id:'w14', en:'arrabbiarsi', ro:'arrabbiarsi', tr:'sinirlenip kızmak',
+     examples:[{it:'Non arrabbiarti, è un malinteso.',tr:'Sinirlenme, bu bir yanlış anlama.',
+       bd:[{ro:'Non arrabbiarti',tr:'sinirlenme'},{ro:'è un malinteso',tr:'bu bir yanlış anlamadır'}]}]},
+    {id:'w15', en:'fare pace', ro:'fare pace', tr:'barışmak',
+     examples:[{it:'Dopo la lite hanno fatto pace.',tr:'Tartışmadan sonra barıştılar.',
+       bd:[{ro:'Dopo la lite',tr:'tartışmadan sonra'},{ro:'hanno fatto pace',tr:'barıştılar'}]}]},
+    {id:'w16', en:'la cerimonia', ro:'cerimonia', tr:'tören / merasim',
+     examples:[{it:'La cerimonia di laurea è stata commovente.',tr:'Mezuniyet töreni dokunaklıydı.',
+       bd:[{ro:'La cerimonia di laurea',tr:'mezuniyet töreni'},{ro:'è stata commovente',tr:'dokunaklıydı'}]}]},
+    {id:'w17', en:'il regalo', ro:'regalo', tr:'hediye',
+     examples:[{it:'Le ho fatto un regalo per il compleanno.',tr:'Doğum günü için ona bir hediye aldım.',
+       bd:[{ro:'Le ho fatto',tr:'ona yaptım/aldım'},{ro:'un regalo',tr:'bir hediye'},{ro:'per il compleanno',tr:'doğum günü için'}]}]},
+    {id:'w18', en:'il festeggiato / la festeggiata', ro:'festeggiato/a', tr:'kutlanan kişi',
+     examples:[{it:'Il festeggiato ha soffiato le candeline.',tr:'Kutlanan kişi mumları üfledi.',
+       bd:[{ro:'Il festeggiato',tr:'kutlanan kişi'},{ro:'ha soffiato',tr:'üfledi'},{ro:'le candeline',tr:'mumları'}]}]},
+    {id:'w19', en:'l\'applauso', ro:'applauso', tr:'alkış',
+     examples:[{it:'Il pubblico ha fatto un lungo applauso.',tr:'Seyirciler uzun süre alkışladı.',
+       bd:[{ro:'Il pubblico',tr:'seyirciler'},{ro:'ha fatto',tr:'yaptı'},{ro:'un lungo applauso',tr:'uzun bir alkış'}]}]},
+    {id:'w20', en:'la stretta di mano', ro:'stretta di mano', tr:'el sıkışma',
+     examples:[{it:'Si sono salutati con una stretta di mano.',tr:'El sıkışarak selamlaştılar.',
+       bd:[{ro:'Si sono salutati',tr:'selamlaştılar'},{ro:'con una stretta di mano',tr:'el sıkışarak'}]}]}
   ],
-  grammar:[],
-  speaking:[],
-  dialogues:[],
-  listening:[],
+  grammar:[
+    {id:'g1', title:'İtalyan Selamlama Kültürü', title_en:'Italian Greeting Culture',
+     explanation:'İtalyancada selamlama duruma ve ilişkiye göre değişir. Doğru selamlama biçimini bilmek sosyal hayatta çok önemlidir.',
+     table:[
+       {pronoun:'Buongiorno', form:'sabah selamı', example:'Buongiorno, come sta?', tr:'Günaydın, nasılsınız? (resmi)'},
+       {pronoun:'Buonasera', form:'akşam selamı', example:'Buonasera, prego accomodatevi.', tr:'İyi akşamlar, buyurun oturun.'},
+       {pronoun:'Ciao', form:'gayri resmi', example:'Ciao! Come stai?', tr:'Merhaba! Nasılsın?'},
+       {pronoun:'Salve', form:'nötr/resmi', example:'Salve, sono Marco Rossi.', tr:'Merhaba, ben Marco Rossi\'yim. (resmi ama sıcak)'},
+       {pronoun:'A presto', form:'yakında görüşürüz', example:'A presto! Ci vediamo domani.', tr:'Görüşürüz! Yarın görüşürüz.'},
+       {pronoun:'In bocca al lupo', form:'bol şans', example:'In bocca al lupo per l\'esame!', tr:'Sınav için bol şans! (deyimsel)'}
+     ],
+     note:'"In bocca al lupo" deyimine karşılık olarak "Crepi!" (lafın gelişi "ölsün") denir. Bu tipik bir İtalyan ifadesidir.'},
+    {id:'g2', title:'Dilek ve Tebrik İfadeleri', title_en:'Wishes and Congratulations',
+     explanation:'Özel günlerde, başarılarda ve kutlamalarda kullanılan temel dilek ve tebrik kalıpları.',
+     table:[
+       {pronoun:'Auguri!', form:'Genel dilek', example:'Auguri per il tuo compleanno!', tr:'Doğum günün kutlu olsun!'},
+       {pronoun:'Buon + isim', form:'Özel gün', example:'Buon Natale! Buon anno!', tr:'Mutlu Noeller! Mutlu yıllar!'},
+       {pronoun:'Congratulazioni!', form:'Tebrik', example:'Congratulazioni per la laurea!', tr:'Mezuniyet için tebrikler!'},
+       {pronoun:'Benvenuto/a!', form:'Hoş geldin', example:'Benvenuto in Italia!', tr:'İtalya\'ya hoş geldiniz!'},
+       {pronoun:'Buona fortuna!', form:'Şans dileme', example:'Buona fortuna con il nuovo lavoro!', tr:'Yeni işinde bol şans!'},
+       {pronoun:'Ti voglio bene', form:'Sevgi ifadesi', example:'Ti voglio bene, nonna.', tr:'Seni seviyorum büyükannem. (aile/arkadaş)'}
+     ],
+     note:'"Ti voglio bene" aile ve arkadaşlar için; "Ti amo" romantik ilişki için kullanılır. Bu ince fark önemlidir.'},
+    {id:'g3', title:'Nezaket ve Kibarlık İfadeleri', title_en:'Polite and Courtesy Expressions',
+     explanation:'Günlük hayatta ve sosyal ortamlarda nezaket için kullanılan temel ifadeler.',
+     table:[
+       {pronoun:'Per favore / Per piacere', form:'rica', example:'Un caffè, per favore.', tr:'Bir kahve, lütfen.'},
+       {pronoun:'Grazie / Grazie mille', form:'teşekkür', example:'Grazie mille per l\'aiuto!', tr:'Yardımın için çok teşekkürler!'},
+       {pronoun:'Prego', form:'rica ederim', example:'— Grazie! — Prego!', tr:'— Teşekkürler! — Rica ederim!'},
+       {pronoun:'Mi dispiace', form:'özür/üzüntü', example:'Mi dispiace molto.', tr:'Çok üzgünüm.'},
+       {pronoun:'Con permesso', form:'izin alma', example:'Con permesso, devo passare.', tr:'Pardon, geçmem lazım.'},
+       {pronoun:'Figurati / Si figuri', form:'estirme', example:'— Grazie! — Figurati!', tr:'— Teşekkürler! — Ne demek, estirme!'}
+     ],
+     note:'"Figurati" gayri resmi, "Si figuri" resmi kullanımdır. İkisi de "ne demek, estirme" anlamına gelir.'}
+  ],
+  speaking:[
+    {id:'sp1', en:'Permettimi di presentarmi: mi chiamo Giulia e sono di Milano.', tr:'Kendimi tanıtmama izin verin: adım Giulia ve Milanlıyım.', prompt:'Kendinizi tanıtın.'},
+    {id:'sp2', en:'Congratulazioni per la promozione! Te la sei meritata davvero.', tr:'Terfi için tebrikler! Gerçekten hak ettin.', prompt:'Birini terfi için tebrik edin.'},
+    {id:'sp3', en:'Mi scuso per il malinteso, non era mia intenzione offenderti.', tr:'Yanlış anlama için özür dilerim, seni incitmek niyetinde değildim.', prompt:'Bir yanlış anlama için özür dileyin.'},
+    {id:'sp4', en:'Ti auguro tutto il meglio per il tuo viaggio!', tr:'Yolculuğun için sana en iyilerini diliyorum!', prompt:'Yolculuğa çıkan birine iyi dilekler belirtin.'},
+    {id:'sp5', en:'In bocca al lupo per l\'esame di domani!', tr:'Yarınki sınav için bol şans!', prompt:'Sınava girecek birine şans dileyin.'}
+  ],
+  dialogues:[
+    {id:'d1', title:'Doğum Günü Kutlaması', title_en:'Birthday Celebration',
+     lines:[
+       {speaker:'A', gender:'f', en:'Tanti auguri, Marco! Quanti anni compi?', tr:'Doğum günün kutlu olsun Marco! Kaç yaşına giriyorsun?',
+        bd:[{ro:'Tanti auguri',tr:'doğum günün kutlu olsun'},{ro:'Quanti anni compi',tr:'kaç yaşına giriyorsun'}]},
+       {speaker:'B', gender:'m', en:'Grazie mille, Sara! Compio trent\'anni oggi.', tr:'Çok teşekkürler Sara! Bugün otuz yaşıma giriyorum.',
+        bd:[{ro:'Grazie mille',tr:'çok teşekkürler'},{ro:'Compio trent\'anni',tr:'otuz yaşıma giriyorum'},{ro:'oggi',tr:'bugün'}]},
+       {speaker:'A', gender:'f', en:'Ecco un piccolo regalo per te. Spero ti piaccia!', tr:'İşte sana küçük bir hediye. Umarım beğenirsin!',
+        bd:[{ro:'Ecco',tr:'işte'},{ro:'un piccolo regalo',tr:'küçük bir hediye'},{ro:'Spero ti piaccia',tr:'umarım beğenirsin'}]},
+       {speaker:'B', gender:'m', en:'Che gentilezza! Non dovevi. Posso aprirlo?', tr:'Ne kadar naziksin! Gerek yoktu. Açabilir miyim?',
+        bd:[{ro:'Che gentilezza',tr:'ne kadar naziklik'},{ro:'Non dovevi',tr:'gerek yoktu'},{ro:'Posso aprirlo',tr:'açabilir miyim'}]},
+       {speaker:'A', gender:'f', en:'Certo, vai! Brindiamo alla tua salute!', tr:'Tabii, aç! Sağlığına kadeh kaldıralım!',
+        bd:[{ro:'Certo, vai',tr:'tabii, aç/haydi'},{ro:'Brindiamo',tr:'kadeh kaldıralım'},{ro:'alla tua salute',tr:'sağlığına'}]},
+       {speaker:'B', gender:'m', en:'Cin cin! Grazie a tutti voi per essere qui!', tr:'Şerefe! Burada olduğunuz için hepinize teşekkürler!',
+        bd:[{ro:'Cin cin',tr:'şerefe'},{ro:'Grazie a tutti voi',tr:'hepinize teşekkürler'},{ro:'per essere qui',tr:'burada olduğunuz için'}]}
+     ]}
+  ],
+  listening:[
+    {id:'li1', audio:'', transcript:'In Italia, i saluti variano molto in base al contesto. Tra amici, ci si saluta con "ciao" e di solito con due baci sulle guance. In un contesto formale, si preferisce "buongiorno" o "buonasera" con una stretta di mano. Per occasioni speciali come compleanni, matrimoni o lauree, si usa "auguri" o "congratulazioni". Quando si è ospiti a casa di qualcuno, è buona educazione portare un regalo, spesso fiori o dolci. Durante la cena si aspetta che il padrone di casa faccia il primo brindisi prima di bere.',
+     tr:'İtalya\'da selamlaşma bağlama göre çok değişir. Arkadaşlar arasında "ciao" denir ve genellikle yanaktan iki öpücük verilir. Resmi bir ortamda "buongiorno" ya da "buonasera" ve el sıkışma tercih edilir. Doğum günü, düğün veya mezuniyet gibi özel günlerde "auguri" ya da "congratulazioni" kullanılır. Birisinin evine misafir olunduğunda, genellikle çiçek ya da tatlı şeklinde bir hediye getirmek güzel bir davranıştır. Akşam yemeği sırasında içmeden önce ev sahibinin ilk kadeh açmasını beklemek adettir.',
+     questions:[
+       {q:'Arkadaşlar arasında selamlama nasıl yapılır?', opts:['El sıkışarak','İki yanaktan öpücük ile','Sadece "ciao" diyerek','Tokalaşarak'], answer:1, tr:'Metin "due baci sulle guance" yani iki yanaktan öpücük olduğunu belirtir.'},
+       {q:'Birisinin evine misafir olunduğunda ne getirilir?', opts:['Para','Çiçek ya da tatlı','Hiçbir şey','Yemek tarifi'], answer:1, tr:'Metin "spesso fiori o dolci" (çoğunlukla çiçek veya tatlı) der.'},
+       {q:'Akşam yemeğinde ilk kadeh kim açar?', opts:['En genç kişi','Misafir','Ev sahibi','Herkes aynı anda'], answer:2, tr:'Metin "il padrone di casa faccia il primo brindisi" demektedir.'}
+     ]}
+  ],
   tones:[]
 };
 LESSONS[44] = L44;

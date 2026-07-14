@@ -1,131 +1,135 @@
-// ders43.js — Italian Lesson 43: Tecnologia e vita digitale (vocabulary)
+// ders43.js — Italian Lesson 43: Tecnologia e vita digitale
 const L43 = {
   words:[
-    {
-      id:'w1',
-      en:'Buongiorno!',
-      ro:'Buongi',
-      tr:'İyi günler!'
-    },
-    {
-      id:'w2',
-      en:'Come sta?',
-      ro:'Come s',
-      tr:'Nasılsınız?'
-    },
-    {
-      id:'w3',
-      en:'Bene.',
-      ro:'Bene.',
-      tr:'İyiyim.'
-    },
-    {
-      id:'w4',
-      en:'Scusi',
-      ro:'Scusi',
-      tr:'Pardon'
-    },
-    {
-      id:'w5',
-      en:'Nessun problema',
-      ro:'Nessun',
-      tr:'Sorun değil'
-    },
-    {
-      id:'w6',
-      en:'Certo',
-      ro:'Certo',
-      tr:'Tabii ki'
-    },
-    {
-      id:'w7',
-      en:'Capisce?',
-      ro:'Capisc',
-      tr:'Anlıyor musunuz?'
-    },
-    {
-      id:'w8',
-      en:'Non capisco.',
-      ro:'Non ca',
-      tr:'Anlamıyorum.'
-    },
-    {
-      id:'w9',
-      en:'Può ripetere?',
-      ro:'Può ri',
-      tr:'Tekrar edebilir misiniz?'
-    },
-    {
-      id:'w10',
-      en:'Piano, per favore.',
-      ro:'Piano,',
-      tr:'Yavaş, lütfen.'
-    },
-    {
-      id:'w11',
-      en:'Un momento, per favore.',
-      ro:'Un mom',
-      tr:'Bir dakika, lütfen.'
-    },
-    {
-      id:'w12',
-      en:'Capito!',
-      ro:'Capito',
-      tr:'Anlaşıldı!'
-    },
-    {
-      id:'w13',
-      en:'Grazie',
-      ro:'Grazie',
-      tr:'Teşekkürler'
-    },
-    {
-      id:'w14',
-      en:'Prego',
-      ro:'Prego',
-      tr:'Rica ederim'
-    },
-    {
-      id:'w15',
-      en:'A dopo',
-      ro:'A dopo',
-      tr:'Görüşürüz'
-    },
-    {
-      id:'w16',
-      en:'Mi chiamo Ali',
-      ro:'Mi chi',
-      tr:'Benim adım Ali'
-    },
-    {
-      id:'w17',
-      en:'Piacere',
-      ro:'Piacer',
-      tr:'Memnun oldum'
-    },
-    {
-      id:'w18',
-      en:'Parla inglese?',
-      ro:'Parla ',
-      tr:'İngilizce biliyor musunuz?'
-    },
-    {
-      id:'w19',
-      en:'Un po\'',
-      ro:'Un po\'',
-      tr:'Biraz'
-    },
-    {
-      id:'w20',
-      en:'Può aiutarmi?',
-      ro:'Può ai',
-      tr:'Yardım edebilir misiniz?'
-    }
+    {id:'w1', en:'il dispositivo', ro:'dispositivo', tr:'cihaz',
+     examples:[{it:'Questo dispositivo è molto pratico.',tr:'Bu cihaz çok pratik.',
+       bd:[{ro:'Questo dispositivo',tr:'bu cihaz'},{ro:'è molto pratico',tr:'çok pratiktir'}]}]},
+    {id:'w2', en:'la connessione', ro:'connessione', tr:'bağlantı',
+     examples:[{it:'La connessione internet è lenta.',tr:'İnternet bağlantısı yavaş.',
+       bd:[{ro:'La connessione internet',tr:'internet bağlantısı'},{ro:'è lenta',tr:'yavaş'}]}]},
+    {id:'w3', en:'scaricare / caricare', ro:'scaricare/caricare', tr:'indirmek / yüklemek',
+     examples:[{it:'Ho scaricato l\'app sul telefono.',tr:'Uygulamayı telefona indirdim.',
+       bd:[{ro:'Ho scaricato',tr:'indirdim'},{ro:'l\'app',tr:'uygulamayı'},{ro:'sul telefono',tr:'telefona'}]}]},
+    {id:'w4', en:'il profilo', ro:'profilo', tr:'profil',
+     examples:[{it:'Ho aggiornato il mio profilo social.',tr:'Sosyal medya profilimi güncelledim.',
+       bd:[{ro:'Ho aggiornato',tr:'güncelledim'},{ro:'il mio profilo social',tr:'sosyal medya profilimi'}]}]},
+    {id:'w5', en:'il post / il messaggio', ro:'post/messaggio', tr:'paylaşım / mesaj',
+     examples:[{it:'Ha pubblicato un post interessante.',tr:'İlginç bir paylaşım yaptı.',
+       bd:[{ro:'Ha pubblicato',tr:'yayımladı'},{ro:'un post interessante',tr:'ilginç bir paylaşım'}]}]},
+    {id:'w6', en:'la notifica', ro:'notifica', tr:'bildirim',
+     examples:[{it:'Ho disattivato le notifiche di notte.',tr:'Gece bildirimleri kapattım.',
+       bd:[{ro:'Ho disattivato',tr:'kapattım'},{ro:'le notifiche',tr:'bildirimleri'},{ro:'di notte',tr:'gece'}]}]},
+    {id:'w7', en:'la privacy', ro:'privacy', tr:'gizlilik',
+     examples:[{it:'Devi proteggere la tua privacy online.',tr:'Çevrimiçi gizliliğini korumalısın.',
+       bd:[{ro:'Devi proteggere',tr:'korumalısın'},{ro:'la tua privacy',tr:'gizliliğini'},{ro:'online',tr:'çevrimiçi'}]}]},
+    {id:'w8', en:'la videochiamata', ro:'videochiamata', tr:'görüntülü arama',
+     examples:[{it:'Facciamo una videochiamata domani.',tr:'Yarın görüntülü konuşalım.',
+       bd:[{ro:'Facciamo',tr:'yapalım'},{ro:'una videochiamata',tr:'görüntülü arama'},{ro:'domani',tr:'yarın'}]}]},
+    {id:'w9', en:'il cloud', ro:'cloud', tr:'bulut (depolama)',
+     examples:[{it:'Salvo i documenti sul cloud.',tr:'Belgeleri buluta kaydediyorum.',
+       bd:[{ro:'Salvo',tr:'kaydediyorum'},{ro:'i documenti',tr:'belgeleri'},{ro:'sul cloud',tr:'buluta'}]}]},
+    {id:'w10', en:'il virus / il malware', ro:'virus/malware', tr:'virüs / kötü yazılım',
+     examples:[{it:'Il computer è stato infettato da un virus.',tr:'Bilgisayar bir virüse yakalandı.',
+       bd:[{ro:'Il computer',tr:'bilgisayar'},{ro:'è stato infettato',tr:'yakalandı/bulaştı'},{ro:'da un virus',tr:'bir virüsle'}]}]},
+    {id:'w11', en:'la piattaforma', ro:'piattaforma', tr:'platform',
+     examples:[{it:'Uso diverse piattaforme per lavorare.',tr:'Çalışmak için farklı platformlar kullanıyorum.',
+       bd:[{ro:'Uso',tr:'kullanıyorum'},{ro:'diverse piattaforme',tr:'farklı platformlar'},{ro:'per lavorare',tr:'çalışmak için'}]}]},
+    {id:'w12', en:'il algoritmo', ro:'algoritmo', tr:'algoritma',
+     examples:[{it:'L\'algoritmo mostra contenuti personalizzati.',tr:'Algoritma kişiselleştirilmiş içerik gösteriyor.',
+       bd:[{ro:'L\'algoritmo',tr:'algoritma'},{ro:'mostra',tr:'gösteriyor'},{ro:'contenuti personalizzati',tr:'kişiselleştirilmiş içerik'}]}]},
+    {id:'w13', en:'l\'intelligenza artificiale', ro:'intelligenza artificiale', tr:'yapay zeka',
+     examples:[{it:'L\'IA sta trasformando il mondo del lavoro.',tr:'Yapay zeka iş dünyasını dönüştürüyor.',
+       bd:[{ro:'L\'IA',tr:'yapay zeka'},{ro:'sta trasformando',tr:'dönüştürüyor'},{ro:'il mondo del lavoro',tr:'iş dünyasını'}]}]},
+    {id:'w14', en:'aggiornare', ro:'aggiornare', tr:'güncellemek',
+     examples:[{it:'Devi aggiornare il software.',tr:'Yazılımı güncellemelisin.',
+       bd:[{ro:'Devi',tr:'gerekiyor / -melisin'},{ro:'aggiornare',tr:'güncellemek'},{ro:'il software',tr:'yazılımı'}]}]},
+    {id:'w15', en:'il backup', ro:'backup', tr:'yedek alma',
+     examples:[{it:'Faccio il backup ogni settimana.',tr:'Her hafta yedek alıyorum.',
+       bd:[{ro:'Faccio',tr:'yapıyorum'},{ro:'il backup',tr:'yedek almayı'},{ro:'ogni settimana',tr:'her hafta'}]}]},
+    {id:'w16', en:'la rete', ro:'rete', tr:'ağ / internet',
+     examples:[{it:'La rete è fondamentale per il lavoro moderno.',tr:'Ağ, modern çalışma için temeldir.',
+       bd:[{ro:'La rete',tr:'ağ'},{ro:'è fondamentale',tr:'temeldir'},{ro:'per il lavoro moderno',tr:'modern çalışma için'}]}]},
+    {id:'w17', en:'il codice', ro:'codice', tr:'kod / şifre',
+     examples:[{it:'Inserisci il codice per accedere.',tr:'Giriş yapmak için kodu gir.',
+       bd:[{ro:'Inserisci',tr:'gir/ekle'},{ro:'il codice',tr:'kodu'},{ro:'per accedere',tr:'giriş yapmak için'}]}]},
+    {id:'w18', en:'la realtà virtuale', ro:'realtà virtuale', tr:'sanal gerçeklik',
+     examples:[{it:'La realtà virtuale è usata nell\'educazione.',tr:'Sanal gerçeklik eğitimde kullanılıyor.',
+       bd:[{ro:'La realtà virtuale',tr:'sanal gerçeklik'},{ro:'è usata',tr:'kullanılıyor'},{ro:'nell\'educazione',tr:'eğitimde'}]}]},
+    {id:'w19', en:'trasmettere in diretta', ro:'trasmettere in diretta', tr:'canlı yayın yapmak',
+     examples:[{it:'Il musicista trasmette in diretta ogni venerdì.',tr:'Müzisyen her cuma canlı yayın yapıyor.',
+       bd:[{ro:'Il musicista',tr:'müzisyen'},{ro:'trasmette in diretta',tr:'canlı yayın yapıyor'},{ro:'ogni venerdì',tr:'her cuma'}]}]},
+    {id:'w20', en:'il segnale', ro:'segnale', tr:'sinyal',
+     examples:[{it:'Il segnale è debole in questa zona.',tr:'Bu bölgede sinyal zayıf.',
+       bd:[{ro:'Il segnale',tr:'sinyal'},{ro:'è debole',tr:'zayıf'},{ro:'in questa zona',tr:'bu bölgede'}]}]}
   ],
-  grammar:[],
-  speaking:[],
-  dialogues:[],
-  listening:[],
+  grammar:[
+    {id:'g1', title:'Teknoloji Fiilleri', title_en:'Technology Verbs',
+     explanation:'Dijital hayatta en sık kullanılan fiiller ve kalıplar. Bu fiiller günlük teknoloji kullanımını ifade etmek için gereklidir.',
+     table:[
+       {pronoun:'accedere a', form:'accedere a + sito', example:'Accedo al sito con la password.', tr:'Şifreyle siteye giriş yapıyorum.'},
+       {pronoun:'condividere', form:'condividere + contenuto', example:'Condivido la foto sul profilo.', tr:'Fotoğrafı profilde paylaşıyorum.'},
+       {pronoun:'commentare', form:'commentare + post', example:'Ho commentato il post.', tr:'Paylaşıma yorum yaptım.'},
+       {pronoun:'mettere mi piace', form:'mettere mi piace', example:'Ho messo mi piace alla foto.', tr:'Fotoğrafı beğendim.'},
+       {pronoun:'seguire', form:'seguire + account', example:'Seguo quel canale YouTube.', tr:'O YouTube kanalını takip ediyorum.'},
+       {pronoun:'bloccare', form:'bloccare + utente', example:'Ho bloccato quell\'utente.', tr:'O kullanıcıyı engelledim.'}
+     ],
+     note:'İtalyancada sosyal medya fiillerinin çoğu İngilizceden alınmıştır: "postare", "taggare", "chattare" gibi fiiller günlük dilde yaygın kullanılır.'},
+    {id:'g2', title:'Gelecek Zamanla Teknoloji Planları', title_en:'Technology Plans with Future Tense',
+     explanation:'Futuro semplice kullanarak teknoloji ile ilgili planları ve tahminleri ifade etme.',
+     table:[
+       {pronoun:'io', form:'comprerò', example:'Comprerò un nuovo smartphone.', tr:'Yeni bir akıllı telefon alacağım.'},
+       {pronoun:'tu', form:'aggiornerai', example:'Aggiornerai il sistema.', tr:'Sistemi güncelleyeceksin.'},
+       {pronoun:'lui/lei', form:'scaricherà', example:'Scaricherà l\'aggiornamento.', tr:'Güncellemeyi indirecek.'},
+       {pronoun:'noi', form:'useremo', example:'Useremo l\'IA per lavorare.', tr:'Çalışmak için yapay zeka kullanacağız.'},
+       {pronoun:'voi', form:'invierete', example:'Invierete i file via email.', tr:'Dosyaları e-postayla göndereceksiniz.'},
+       {pronoun:'loro', form:'svilupperanno', example:'Svilupperanno una nuova app.', tr:'Yeni bir uygulama geliştirecekler.'}
+     ],
+     note:'Gelecek tahminlerde "sicuramente", "probabilmente", "forse" zarfları çok kullanılır: "Probabilmente comprerò un laptop."'},
+    {id:'g3', title:'Pasif Yapıyla Teknoloji', title_en:'Technology with Passive Voice',
+     explanation:'Teknoloji bağlamında sıklıkla pasif yapı kullanılır — özellikle bir şeyin yapıldığını veya kullanıldığını anlatırken.',
+     table:[
+       {pronoun:'venire + participio', form:'viene usato/a', example:'Il cloud viene usato da milioni.', tr:'Bulut milyonlarca kişi tarafından kullanılıyor.'},
+       {pronoun:'essere + participio', form:'è stato/a', example:'Il sistema è stato aggiornato.', tr:'Sistem güncellendi.'},
+       {pronoun:'si + verbo', form:'si usa / si scarica', example:'Si scarica l\'app gratuitamente.', tr:'Uygulama ücretsiz indirilir.'},
+       {pronoun:'si + verbo plurale', form:'si usano', example:'Si usano molti dispositivi.', tr:'Pek çok cihaz kullanılır.'},
+       {pronoun:'è vietato', form:'è vietato + infinito', example:'È vietato condividere dati privati.', tr:'Özel verileri paylaşmak yasaktır.'},
+       {pronoun:'è possibile', form:'è possibile + infinito', example:'È possibile accedere da remoto.', tr:'Uzaktan erişmek mümkündür.'}
+     ],
+     note:'"Si usa" yapısı en yaygın seçenektir ve resmi olmayan metinlerde de rahatlıkla kullanılabilir.'}
+  ],
+  speaking:[
+    {id:'sp1', en:'Uso lo smartphone per circa cinque ore al giorno.', tr:'Günde yaklaşık beş saat akıllı telefon kullanıyorum.', prompt:'Günlük teknoloji kullanımınızı anlatın.'},
+    {id:'sp2', en:'Preferisco le videochiamate alle telefonate tradizionali.', tr:'Geleneksel telefon aramalarına kıyasla görüntülü aramayı tercih ederim.', prompt:'İletişim tercihlerinizi paylaşın.'},
+    {id:'sp3', en:'Ho aggiornato il sistema operativo del computer stamattina.', tr:'Bu sabah bilgisayarın işletim sistemini güncelledim.', prompt:'Yaptığınız bir teknoloji işlemini anlatın.'},
+    {id:'sp4', en:'L\'intelligenza artificiale cambierà il mondo del lavoro nei prossimi anni.', tr:'Yapay zeka önümüzdeki yıllarda iş dünyasını değiştirecek.', prompt:'Teknolojinin geleceği hakkında görüşünüzü belirtin.'},
+    {id:'sp5', en:'È importante proteggere la propria privacy online.', tr:'Çevrimiçi gizliliğini korumak önemlidir.', prompt:'Dijital güvenlik hakkında bir tavsiye verin.'}
+  ],
+  dialogues:[
+    {id:'d1', title:'Bilgisayar Sorunu', title_en:'Computer Problem',
+     lines:[
+       {speaker:'A', gender:'f', en:'Il mio computer non si accende. Cosa faccio?', tr:'Bilgisayarım açılmıyor. Ne yapmalıyım?',
+        bd:[{ro:'Il mio computer',tr:'bilgisayarım'},{ro:'non si accende',tr:'açılmıyor'},{ro:'Cosa faccio',tr:'ne yapmalıyım'}]},
+       {speaker:'B', gender:'m', en:'Hai controllato il cavo dell\'alimentazione?', tr:'Güç kablosunu kontrol ettin mi?',
+        bd:[{ro:'Hai controllato',tr:'kontrol ettin mi'},{ro:'il cavo',tr:'kabloyu'},{ro:'dell\'alimentazione',tr:'güç/besleme'}]},
+       {speaker:'A', gender:'f', en:'Sì, è tutto collegato. Ma lo schermo rimane nero.', tr:'Evet, her şey bağlı. Ama ekran siyah kalıyor.',
+        bd:[{ro:'è tutto collegato',tr:'her şey bağlı'},{ro:'lo schermo',tr:'ekran'},{ro:'rimane nero',tr:'siyah kalıyor'}]},
+       {speaker:'B', gender:'m', en:'Prova a riavviarlo tenendo premuto il pulsante per dieci secondi.', tr:'On saniye boyunca düğmeyi basılı tutarak yeniden başlatmayı dene.',
+        bd:[{ro:'Prova a riavviarlo',tr:'yeniden başlatmayı dene'},{ro:'tenendo premuto',tr:'basılı tutarak'},{ro:'il pulsante',tr:'düğmeyi'},{ro:'per dieci secondi',tr:'on saniye boyunca'}]},
+       {speaker:'A', gender:'f', en:'Funziona! Si è riavviato. Grazie mille!', tr:'Çalıştı! Yeniden başladı. Çok teşekkürler!',
+        bd:[{ro:'Funziona',tr:'çalıştı'},{ro:'Si è riavviato',tr:'yeniden başladı'},{ro:'Grazie mille',tr:'çok teşekkürler'}]},
+       {speaker:'B', gender:'m', en:'Prego! Ti consiglio di fare il backup dei dati regolarmente.', tr:'Rica ederim! Verileri düzenli olarak yedeklemenizi tavsiye ederim.',
+        bd:[{ro:'Prego',tr:'rica ederim'},{ro:'Ti consiglio',tr:'sana tavsiye ederim'},{ro:'fare il backup',tr:'yedek almayı'},{ro:'regolarmente',tr:'düzenli olarak'}]}
+     ]}
+  ],
+  listening:[
+    {id:'li1', audio:'', transcript:'La trasformazione digitale sta cambiando ogni aspetto della vita moderna. Oggi usiamo lo smartphone per fare acquisti, prenotare viaggi, guardare film e comunicare con amici e familiari. I social media permettono di condividere momenti, opinioni e notizie in tempo reale. Tuttavia, bisogna fare attenzione alla privacy e alla sicurezza online. È importante usare password sicure, aggiornare regolarmente i programmi e non condividere informazioni personali con sconosciuti. L\'intelligenza artificiale sta diventando sempre più presente nella nostra quotidianità.',
+     tr:'Dijital dönüşüm modern yaşamın her boyutunu değiştiriyor. Bugün akıllı telefonu alışveriş yapmak, seyahat rezervasyonu yaptırmak, film izlemek ve arkadaşlar ile aile ile iletişim kurmak için kullanıyoruz. Sosyal medya, anlık anları, görüşleri ve haberleri gerçek zamanlı olarak paylaşmayı mümkün kılıyor. Ancak gizlilik ve çevrimiçi güvenliğe dikkat etmek gerekiyor. Güvenli şifreler kullanmak, programları düzenli güncellemek ve kişisel bilgileri yabancılarla paylaşmamak önemlidir. Yapay zeka günlük yaşamımızda giderek daha fazla yer kaplıyor.',
+     questions:[
+       {q:'Akıllı telefonla ne yapılamaz?', opts:['Alışveriş','Seyahat rezervasyonu','Film izleme','Araba kullanma'], answer:3, tr:'Metinde araba kullanmaktan söz edilmez; diğerleri ise sıralanmıştır.'},
+       {q:'Çevrimiçi güvenlik için ne tavsiye edilir?', opts:['Şifre paylaşmak','Güvenli şifre kullanmak','Güncellemeleri yok saymak','Yabancılarla bilgi paylaşmak'], answer:1, tr:'Metin "password sicure" kullanılmasını tavsiye eder.'},
+       {q:'Yapay zeka hakkında ne söyleniyor?', opts:['Tehlikelidir','Kullanışsızdır','Günlük yaşamda artıyor','Henüz mevcut değil'], answer:2, tr:'Metin "L\'IA sta diventando sempre più presente nella nostra quotidianità" demektedir.'}
+     ]}
+  ],
   tones:[]
 };
 LESSONS[43] = L43;

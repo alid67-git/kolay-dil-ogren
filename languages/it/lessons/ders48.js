@@ -1,131 +1,135 @@
-// ders48.js — Italian Lesson 48: Espressioni e proverbi (vocabulary)
+// ders48.js — Italian Lesson 48: Espressioni e proverbi
 const L48 = {
   words:[
-    {
-      id:'w1',
-      en:'Buongiorno!',
-      ro:'Buongi',
-      tr:'İyi günler!'
-    },
-    {
-      id:'w2',
-      en:'Come sta?',
-      ro:'Come s',
-      tr:'Nasılsınız?'
-    },
-    {
-      id:'w3',
-      en:'Bene.',
-      ro:'Bene.',
-      tr:'İyiyim.'
-    },
-    {
-      id:'w4',
-      en:'Scusi',
-      ro:'Scusi',
-      tr:'Pardon'
-    },
-    {
-      id:'w5',
-      en:'Nessun problema',
-      ro:'Nessun',
-      tr:'Sorun değil'
-    },
-    {
-      id:'w6',
-      en:'Certo',
-      ro:'Certo',
-      tr:'Tabii ki'
-    },
-    {
-      id:'w7',
-      en:'Capisce?',
-      ro:'Capisc',
-      tr:'Anlıyor musunuz?'
-    },
-    {
-      id:'w8',
-      en:'Non capisco.',
-      ro:'Non ca',
-      tr:'Anlamıyorum.'
-    },
-    {
-      id:'w9',
-      en:'Può ripetere?',
-      ro:'Può ri',
-      tr:'Tekrar edebilir misiniz?'
-    },
-    {
-      id:'w10',
-      en:'Piano, per favore.',
-      ro:'Piano,',
-      tr:'Yavaş, lütfen.'
-    },
-    {
-      id:'w11',
-      en:'Un momento, per favore.',
-      ro:'Un mom',
-      tr:'Bir dakika, lütfen.'
-    },
-    {
-      id:'w12',
-      en:'Capito!',
-      ro:'Capito',
-      tr:'Anlaşıldı!'
-    },
-    {
-      id:'w13',
-      en:'Grazie',
-      ro:'Grazie',
-      tr:'Teşekkürler'
-    },
-    {
-      id:'w14',
-      en:'Prego',
-      ro:'Prego',
-      tr:'Rica ederim'
-    },
-    {
-      id:'w15',
-      en:'A dopo',
-      ro:'A dopo',
-      tr:'Görüşürüz'
-    },
-    {
-      id:'w16',
-      en:'Mi chiamo Ali',
-      ro:'Mi chi',
-      tr:'Benim adım Ali'
-    },
-    {
-      id:'w17',
-      en:'Piacere',
-      ro:'Piacer',
-      tr:'Memnun oldum'
-    },
-    {
-      id:'w18',
-      en:'Parla inglese?',
-      ro:'Parla ',
-      tr:'İngilizce biliyor musunuz?'
-    },
-    {
-      id:'w19',
-      en:'Un po\'',
-      ro:'Un po\'',
-      tr:'Biraz'
-    },
-    {
-      id:'w20',
-      en:'Può aiutarmi?',
-      ro:'Può ai',
-      tr:'Yardım edebilir misiniz?'
-    }
+    {id:'w1', en:'In bocca al lupo!', ro:'In bocca al lupo', tr:'Bol şans! (lit. Kurdun ağzına)',
+     examples:[{it:'In bocca al lupo per l\'esame! — Crepi!',tr:'Sınav için bol şans! — Sağ ol! (deyimsel yanıt)',
+       bd:[{ro:'In bocca al lupo',tr:'kurdun ağzına (bol şans)'},{ro:'Crepi',tr:'gebere (şans dileğine yanıt)}]}]},
+    {id:'w2', en:'Avere il pollice verde', ro:'avere il pollice verde', tr:'Bahçeciliğe yetenekli olmak (lit. yeşil başparmağı olmak)',
+     examples:[{it:'Mia madre ha il pollice verde: le piante crescono sempre.',tr:'Annem bitkilerle arası iyidir; bitkiler her zaman büyür.',
+       bd:[{ro:'ha il pollice verde',tr:'yeşil parmağı var'},{ro:'le piante crescono',tr:'bitkiler büyür'},{ro:'sempre',tr:'her zaman'}]}]},
+    {id:'w3', en:'Costare un occhio della testa', ro:'costare un occhio della testa', tr:'Çok pahalı olmak (lit. başın bir gözüne mal olmak)',
+     examples:[{it:'Quel ristorante costa un occhio della testa.',tr:'O restoran çok pahalıya mal oluyor.',
+       bd:[{ro:'Quel ristorante',tr:'o restoran'},{ro:'costa',tr:'mal oluyor'},{ro:'un occhio della testa',tr:'çok pahalıya'}]}]},
+    {id:'w4', en:'Prendere due piccioni con una fava', ro:'due piccioni con una fava', tr:'Tek taşla iki kuş vurmak (lit. bir baklayla iki güvercin)',
+     examples:[{it:'Ho fatto la spesa e sono passato dalla nonna: due piccioni con una fava.',tr:'Alışveriş yaptım ve anneanneme uğradım: tek taşla iki kuş.',
+       bd:[{ro:'Ho fatto la spesa',tr:'alışveriş yaptım'},{ro:'sono passato dalla nonna',tr:'anneanneme uğradım'},{ro:'due piccioni con una fava',tr:'tek taşla iki kuş'}]}]},
+    {id:'w5', en:'Non è tutto oro quello che luccica', ro:'Non è tutto oro quello che luccica', tr:'Her parlayan şey altın değildir',
+     examples:[{it:'Quella ditta sembra ricca, ma non è tutto oro quello che luccica.',tr:'O şirket zengin görünüyor, ama her parlayan şey altın değildir.',
+       bd:[{ro:'Quella ditta',tr:'o şirket'},{ro:'sembra ricca',tr:'zengin görünüyor'},{ro:'non è tutto oro',tr:'hepsi altın değil'},{ro:'quello che luccica',tr:'parlayan şey'}]}]},
+    {id:'w6', en:'Tra il dire e il fare c\'è di mezzo il mare', ro:'Tra il dire e il fare', tr:'Söylemek başka, yapmak başka (lit. söylemek ve yapmak arasında deniz var)',
+     examples:[{it:'Hai detto che cucinerai, ma tra il dire e il fare c\'è di mezzo il mare.',tr:'Yemek yapacağını söyledin ama söylemek başka, yapmak başka.',
+       bd:[{ro:'Hai detto che cucinerai',tr:'yemek yapacağını söyledin'},{ro:'tra il dire e il fare',tr:'söylemek ve yapmak arasında'},{ro:'c\'è di mezzo il mare',tr:'deniz var'}]}]},
+    {id:'w7', en:'Chi dorme non piglia pesci', ro:'Chi dorme non piglia pesci', tr:'Erken kalkan yol alır (lit. uyuyan balık tutmaz)',
+     examples:[{it:'Svegliati! Chi dorme non piglia pesci.',tr:'Uyan! Erken kalkan yol alır.',
+       bd:[{ro:'Svegliati',tr:'uyan'},{ro:'Chi dorme',tr:'uyuyan'},{ro:'non piglia pesci',tr:'balık tutamaz'}]}]},
+    {id:'w8', en:'Tutto\'s bene quel che finisce bene', ro:'Tutto\'s bene quel che finisce bene', tr:'Biten iyiyse her şey iyidir',
+     examples:[{it:'Alla fine ho trovato le chiavi. Tutto è bene quel che finisce bene!',tr:'Sonunda anahtarları buldum. Biten iyiyse her şey iyidir!',
+       bd:[{ro:'Alla fine',tr:'sonunda'},{ro:'ho trovato le chiavi',tr:'anahtarları buldum'},{ro:'Tutto è bene',tr:'her şey iyi'},{ro:'quel che finisce bene',tr:'biten iyiyse'}]}]},
+    {id:'w9', en:'Avere la testa fra le nuvole', ro:'avere la testa fra le nuvole', tr:'Hayallere dalmak (lit. başını bulutların arasına sokmak)',
+     examples:[{it:'Non ascolta mai: ha sempre la testa fra le nuvole.',tr:'Hiç dinlemiyor: her zaman hayallere dalıyor.',
+       bd:[{ro:'Non ascolta mai',tr:'hiç dinlemiyor'},{ro:'ha sempre',tr:'her zaman'},{ro:'la testa fra le nuvole',tr:'başını bulutların arasına sokuyor'}]}]},
+    {id:'w10', en:'Fare il passo più lungo della gamba', ro:'fare il passo più lungo della gamba', tr:'Gücünün üstünde iş yapmak (lit. bacaktan uzun adım atmak)',
+     examples:[{it:'Non investire tutto adesso: non fare il passo più lungo della gamba.',tr:'Şimdi her şeyi yatırma: gücünün üstünde iş yapma.',
+       bd:[{ro:'Non investire tutto',tr:'her şeyi yatırma'},{ro:'non fare il passo',tr:'adım atma'},{ro:'più lungo della gamba',tr:'bacaktan uzun'}]}]},
+    {id:'w11', en:'Ogni morte di papa', ro:'ogni morte di papa', tr:'Çok nadir (lit. her papa ölümünde)',
+     examples:[{it:'Lo vedo ogni morte di papa.',tr:'Onu çok nadir görürüm.',
+       bd:[{ro:'Lo vedo',tr:'onu görürüm'},{ro:'ogni morte di papa',tr:'çok nadir/papa ölümünde'}]}]},
+    {id:'w12', en:'Rompere il ghiaccio', ro:'rompere il ghiaccio', tr:'Buzları eritmek / ilk adımı atmak',
+     examples:[{it:'Ha fatto una battuta per rompere il ghiaccio.',tr:'Buzları eritmek için şaka yaptı.',
+       bd:[{ro:'Ha fatto una battuta',tr:'şaka yaptı'},{ro:'per rompere il ghiaccio',tr:'buzları eritmek için'}]}]},
+    {id:'w13', en:'Non avere peli sulla lingua', ro:'non avere peli sulla lingua', tr:'Lafı eğip bükmemek (lit. dilinde tüy olmamak)',
+     examples:[{it:'Dice sempre quello che pensa: non ha peli sulla lingua.',tr:'Her zaman düşündüğünü söyler: lafı eğip bükmez.',
+       bd:[{ro:'Dice sempre',tr:'her zaman söyler'},{ro:'quello che pensa',tr:'düşündüğünü'},{ro:'non ha peli sulla lingua',tr:'dilinde tüy yok'}]}]},
+    {id:'w14', en:'Mangiare la foglia', ro:'mangiare la foglia', tr:'İşin farkına varmak / ipuçlarını yakalamak',
+     examples:[{it:'Ha subito mangiato la foglia quando ha cambiato argomento.',tr:'Konuyu değiştirdiğinde hemen farkına vardı.',
+       bd:[{ro:'Ha subito',tr:'hemen'},{ro:'mangiato la foglia',tr:'farkına vardı'},{ro:'quando',tr:'ne zaman'},{ro:'ha cambiato argomento',tr:'konuyu değiştirdi'}]}]},
+    {id:'w15', en:'Avere le mani in pasta', ro:'avere le mani in pasta', tr:'İşin içinde olmak / olaylara karışmış olmak',
+     examples:[{it:'È coinvolto nel progetto: ha le mani in pasta.',tr:'Projeye dahil: işin içinde.',
+       bd:[{ro:'È coinvolto',tr:'dahil'},{ro:'nel progetto',tr:'projeye'},{ro:'ha le mani in pasta',tr:'elleri hamurda (işin içinde)'}]}]},
+    {id:'w16', en:'Meglio soli che male accompagnati', ro:'Meglio soli che male accompagnati', tr:'Kötü arkadaştan iyisi yalnızlık',
+     examples:[{it:'Non frequentare quella gente: meglio soli che male accompagnati.',tr:'O insanlarla takılma: kötü arkadaştan iyisi yalnızlık.',
+       bd:[{ro:'Non frequentare',tr:'takılma'},{ro:'quella gente',tr:'o insanlarla'},{ro:'meglio soli',tr:'yalnız daha iyi'},{ro:'che male accompagnati',tr:'kötü eşlikten'}]}]},
+    {id:'w17', en:'Ogni lasciata è persa', ro:'Ogni lasciata è persa', tr:'Bırakılan şey kaybedilmiş sayılır',
+     examples:[{it:'Accetta l\'offerta oggi: ogni lasciata è persa!',tr:'Teklifi bugün kabul et: fırsatı kaçırma!',
+       bd:[{ro:'Accetta l\'offerta',tr:'teklifi kabul et'},{ro:'oggi',tr:'bugün'},{ro:'ogni lasciata è persa',tr:'bırakılan kaybolur'}]}]},
+    {id:'w18', en:'Gallina vecchia fa buon brodo', ro:'Gallina vecchia fa buon brodo', tr:'Tecrübe her şeyden değerlidir (lit. yaşlı tavuk iyi çorba yapar)',
+     examples:[{it:'Fidati di lui: gallina vecchia fa buon brodo.',tr:'Ona güven: tecrübe her şeyden değerlidir.',
+       bd:[{ro:'Fidati di lui',tr:'ona güven'},{ro:'gallina vecchia',tr:'yaşlı tavuk'},{ro:'fa buon brodo',tr:'iyi çorba yapar'}]}]},
+    {id:'w19', en:'Non c\'è due senza tre', ro:'Non c\'è due senza tre', tr:'İkisi varsa üçüncüsü de gelir',
+     examples:[{it:'È già successo due volte. Non c\'è due senza tre!',tr:'İki kez oldu. Üçüncüsü de gelir!',
+       bd:[{ro:'È già successo',tr:'zaten oldu'},{ro:'due volte',tr:'iki kez'},{ro:'Non c\'è due senza tre',tr:'ikisi varsa üçüncüsü de gelir'}]}]},
+    {id:'w20', en:'Ride bene chi ride ultimo', ro:'Ride bene chi ride ultimo', tr:'Son gülen iyi güler',
+     examples:[{it:'Non preoccuparti: ride bene chi ride ultimo.',tr:'Endişelenme: son gülen iyi güler.',
+       bd:[{ro:'Non preoccuparti',tr:'endişelenme'},{ro:'ride bene',tr:'iyi güler'},{ro:'chi ride ultimo',tr:'son gülen'}]}]}
   ],
-  grammar:[],
-  speaking:[],
-  dialogues:[],
-  listening:[],
+  grammar:[
+    {id:'g1', title:'Deyimler ve Mecazi Dil', title_en:'Idioms and Figurative Language',
+     explanation:'İtalyancada deyimler (espressioni idiomatiche) kelimelerinin gerçek anlamından farklı mecazi bir anlam taşır. Bunları öğrenmek konuşmayı doğallaştırır.',
+     table:[
+       {pronoun:'avere + nesne', form:'avere + corpo umano', example:'Ha il cuore d\'oro.', tr:'Altın kalpliymiş. (iyi niyetli)'},
+       {pronoun:'fare + nesne', form:'fare + azione', example:'Fa il filo a qualcuno.', tr:'Birine kur yapıyor.'},
+       {pronoun:'prendere + nesne', form:'prendere + concreto', example:'Prende fischi per fiaschi.', tr:'Anlamlandıramıyor / yanlış anlıyor.'},
+       {pronoun:'mettere + nesne', form:'mettere + parte corpo', example:'Metti il naso negli affari altrui.', tr:'Başkalarının işine burnunu sokuyorsun.'},
+       {pronoun:'perdere + tempo/testa', form:'perdere + astratto', example:'Non perdere la testa.', tr:'Kafayı kaybetme / soğukkanlı ol.'},
+       {pronoun:'trovarsi + aggettivo', form:'trovarsi bene/male', example:'Mi trovo bene qui.', tr:'Burada iyi hissediyorum.'}
+     ],
+     note:'Vücut organlarıyla yapılan deyimler çok yaygındır: cuore (kalp), testa (kafa), mani (eller), occhi (gözler), naso (burun) hepsi deyimlerde sık geçer.'},
+    {id:'g2', title:'Atasözleri ile Gerçek Zaman Kullanımı', title_en:'Tense in Proverbs',
+     explanation:'Atasözleri ve özdeyişler her zaman geçerli gerçekleri ifade ettiğinden genellikle presente (geniş zaman) kullanılır.',
+     table:[
+       {pronoun:'Presente generale', form:'3. tekil/çoğul', example:'Chi tace acconsente.', tr:'Susan onaylamış sayılır.'},
+       {pronoun:'Chi + verbo', form:'chi + presente', example:'Chi trova un amico, trova un tesoro.', tr:'Bir dost bulan hazine bulmuştur.'},
+       {pronoun:'Meglio + infinito', form:'meglio + infinito', example:'Meglio tardi che mai.', tr:'Hiç yoktan geç iyidir.'},
+       {pronoun:'Non + verbo + mai', form:'olumsuz genel', example:'Non si finisce mai di imparare.', tr:'İnsan öğrenmekten hiç vazgeçmez.'},
+       {pronoun:'Volere è potere', form:'infinito = soggetto', example:'Volere è potere.', tr:'İstemek güçtür / isteyen başarır.'},
+       {pronoun:'L\'abito non fa il monaco', form:'soggetto + verbo', example:'L\'abito non fa il monaco.', tr:'Elbise keşiş yapmaz. (Görünüşe bakma)'}
+     ],
+     note:'"Meglio tardi che mai" (hiç yoktan geç iyidir), "Volere è potere" (isteyen başarır) — bu atasözleri İtalyan günlük diline yerleşmiş ifadelerdir.'},
+    {id:'g3', title:'Deyimleri Cümlede Kullanma', title_en:'Using Idioms in Sentences',
+     explanation:'Deyimleri doğal ve doğru şekilde cümlede kullanmak için çekim kuralları ve bağlam bilgisi gerekir.',
+     table:[
+       {pronoun:'Coniugare il verbo', form:'avere → ho/hai/ha...', example:'Ho le mani in pasta.', tr:'Benim işin içinde elim var.'},
+       {pronoun:'Negazione', form:'non + deyim', example:'Non avere la testa tra le nuvole.', tr:'Hayallere dalma.'},
+       {pronoun:'Imperativo', form:'emir + deyim', example:'Rompi il ghiaccio tu!', tr:'Buzları sen kır!'},
+       {pronoun:'Passato', form:'deyim + geçmiş', example:'Ha rotto il ghiaccio con una battuta.', tr:'Şakayla buzları kırdı.'},
+       {pronoun:'Condizionale', form:'vorrei... ma', example:'Vorrei prendere due piccioni con una fava.', tr:'Tek taşla iki kuş vurmak isterdim.'},
+       {pronoun:'Contesto esplicativo', form:'cioè / in altre parole', example:'Costa un occhio della testa, cioè è carissimo.', tr:'Bir göze mal oluyor, yani çok pahalı.'}
+     ],
+     note:'Deyimlerin anlamını açıklarken "cioè" (yani) veya "in altre parole" (başka bir deyişle) kullanmak öğrenciler için faydalıdır.'}
+  ],
+  speaking:[
+    {id:'sp1', en:'In bocca al lupo per il colloquio di lavoro domani!', tr:'Yarınki iş görüşmen için bol şans!', prompt:'Birine iş görüşmesi için şans dileyin.'},
+    {id:'sp2', en:'Quel ristorante è buono ma costa davvero un occhio della testa.', tr:'O restoran iyi ama gerçekten çok pahalıya mal oluyor.', prompt:'Pahalı bir yeri tarif edin.'},
+    {id:'sp3', en:'Non fare il passo più lungo della gamba: inizia con piccoli investimenti.', tr:'Gücünün üstünde iş yapma: küçük yatırımlarla başla.', prompt:'Bir deyim kullanarak tavsiye verin.'},
+    {id:'sp4', en:'La professoressa non ha peli sulla lingua: dice sempre la verità.', tr:'Profesörümüz lafı eğip bükmez: her zaman gerçeği söyler.', prompt:'Bir deyim kullanarak birini tanımlayın.'},
+    {id:'sp5', en:'Meglio tardi che mai! Finalmente ho imparato a nuotare a quarant\'anni.', tr:'Hiç yoktan geç iyidir! Sonunda kırk yaşında yüzmeyi öğrendim.', prompt:'Bir atasözü kullanarak geç bir başarınızı anlatın.'}
+  ],
+  dialogues:[
+    {id:'d1', title:'Deyimlerle Konuşma', title_en:'Conversation with Idioms',
+     lines:[
+       {speaker:'A', gender:'f', en:'Domani ho l\'esame di guida. Ho paura!', tr:'Yarın ehliyet sınavım var. Korkuyorum!',
+        bd:[{ro:'Domani ho l\'esame di guida',tr:'yarın ehliyet sınavım var'},{ro:'Ho paura',tr:'korkuyorum'}]},
+       {speaker:'B', gender:'m', en:'In bocca al lupo! Hai studiato tanto, andrà bene.', tr:'Bol şans! Çok çalıştın, iyi gidecek.',
+        bd:[{ro:'In bocca al lupo',tr:'bol şans'},{ro:'Hai studiato tanto',tr:'çok çalıştın'},{ro:'andrà bene',tr:'iyi gidecek'}]},
+       {speaker:'A', gender:'f', en:'Crepi! Ma sono nervosa. Ho la testa fra le nuvole.', tr:'Sağ ol! Ama gerginim. Hayallere dalıyorum.',
+        bd:[{ro:'Crepi',tr:'sağ ol (karşılık)'},{ro:'sono nervosa',tr:'gerginim'},{ro:'Ho la testa fra le nuvole',tr:'hayallere dalıyorum'}]},
+       {speaker:'B', gender:'m', en:'Concentrati! Non fare il passo più lungo della gamba: parti dai segnali base.', tr:'Odaklan! Gücünün üstünde iş yapma: temel tabelalardan başla.',
+        bd:[{ro:'Concentrati',tr:'odaklan'},{ro:'Non fare il passo più lungo',tr:'gücünün üstünde iş yapma'},{ro:'parti dai segnali base',tr:'temel tabelalardan başla'}]},
+       {speaker:'A', gender:'f', en:'Hai ragione. Ride bene chi ride ultimo!', tr:'Haklısın. Son gülen iyi güler!',
+        bd:[{ro:'Hai ragione',tr:'haklısın'},{ro:'Ride bene chi ride ultimo',tr:'son gülen iyi güler'}]},
+       {speaker:'B', gender:'m', en:'Esatto! E dopo l\'esame andiamo a festeggiare, così prendiamo due piccioni con una fava!', tr:'Aynen! Sınavdan sonra kutlamaya gideriz, böylece tek taşla iki kuş vururuz!',
+        bd:[{ro:'Esatto',tr:'aynen'},{ro:'dopo l\'esame',tr:'sınavdan sonra'},{ro:'andiamo a festeggiare',tr:'kutlamaya gideriz'},{ro:'prendiamo due piccioni',tr:'tek taşla iki kuş vururuz'}]}
+     ]}
+  ],
+  listening:[
+    {id:'li1', audio:'', transcript:'I proverbi e le espressioni idiomatiche sono una parte fondamentale di ogni lingua. In italiano, molte espressioni quotidiane derivano dalla cultura rurale, dalla cucina o dalla vita religiosa. Per esempio, "costa un occhio della testa" significa che qualcosa è molto caro, mentre "avere le mani in pasta" indica che qualcuno è coinvolto in qualcosa. I proverbi come "Chi dorme non piglia pesci" o "Meglio tardi che mai" trasmettono saggezza popolare. Imparare queste espressioni aiuta a capire meglio la mentalità italiana e a parlare in modo più naturale.',
+     tr:'Atasözleri ve deyimler her dilin temel bir parçasıdır. İtalyancada pek çok günlük ifade kırsal kültürden, mutfaktan ya da dini yaşamdan gelir. Örneğin "costa un occhio della testa" bir şeyin çok pahalı olduğunu ifade ederken, "avere le mani in pasta" birinin bir işe dahil olduğunu belirtir. "Chi dorme non piglia pesci" ya da "Meglio tardi che mai" gibi atasözleri halk bilgeliğini aktarır. Bu ifadeleri öğrenmek, İtalyan zihniyetini daha iyi anlamaya ve daha doğal konuşmaya yardımcı olur.',
+     questions:[
+       {q:'"Costa un occhio della testa" ne anlama gelir?', opts:['Ucuz','Çok pahalı','Ücretsiz','Orta fiyatlı'], answer:1, tr:'Metin "significa che qualcosa è molto caro" demektedir.'},
+       {q:'İtalyan deyimleri nereden geliyor?', opts:['Sadece edebiyattan','Sadece dini yaşamdan','Kırsal kültür, mutfak ve dini yaşamdan','Fransızcadan'], answer:2, tr:'Metin "dalla cultura rurale, dalla cucina o dalla vita religiosa" diyor.'},
+       {q:'Bu deyimleri öğrenmek ne işe yarar?', opts:['Sadece kitap okumak için','İtalyan zihniyetini anlamak ve doğal konuşmak için','Gramer kurallarını öğrenmek için','Yabancı filmler izlemek için'], answer:1, tr:'Metin "capire meglio la mentalità italiana e a parlare in modo più naturale" diyor.'}
+     ]}
+  ],
   tones:[]
 };
 LESSONS[48] = L48;
