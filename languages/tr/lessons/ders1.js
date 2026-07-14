@@ -145,6 +145,22 @@ const L1 = {
         }
       ],
       note:'Ali erkek öğrenci örneklerinde birinci tekil konuşur formu kullanılır.'
+    },
+    {
+      id:'g3',
+      title:'Türkçede "To Be" — Ek Eylem ve Ünlü Uyumu',
+      title_en:'Turkish To Be — Suffix System and Vowel Harmony',
+      explanation_en:'In Turkish, "to be" is not a separate verb — it is a suffix added to nouns/adjectives. The suffix changes based on vowel harmony: after e/i → -im, after a/ı → -ım, after o/u → -um, after ö/ü → -üm. Negation uses "değil": öğrenci değilim (I am not a student). Questions add "mi/mı/mu/mü": öğrenci misin? (Are you a student?)',
+      explanation:'Türkçede "to be" ayrı bir fiil değil, isme eklenen ektir. Ünlü uyumuna göre değişir: e/i sonrası -im, a/ı sonrası -ım, o/u sonrası -um, ö/ü sonrası -üm. Olumsuz "değil" ile yapılır. Soru eki mi/mı/mu/mü olup kelimeden ayrı yazılır.',
+      table:[
+        {pronoun:'Ben', form:'-im / -yim', example:'Ben öğrenciyim. / Ben iyiyim.', tr:'I am a student. / I am fine.'},
+        {pronoun:'Sen', form:'-sin / -sın', example:'Sen öğrencisin.', tr:'You are a student.'},
+        {pronoun:'O', form:'-(dir) — düşebilir', example:'O öğrenci (dir).', tr:'He/She is a student.'},
+        {pronoun:'Biz', form:'-iz / -yiz', example:'Biz öğrenciyiz.', tr:'We are students.'},
+        {pronoun:'Siz', form:'-siniz / -sınız', example:'Siz Türk müsünüz?', tr:'Are you Turkish?'},
+        {pronoun:'Onlar', form:'-(dir)lar — düşebilir', example:'Onlar öğrenci.', tr:'They are students.'}
+      ],
+      note:'Vowel harmony key: öğrenciyim (e/i stem), Türküm (ü stem), iyiyim (i stem), doktorum (o/u stem). The 3rd person suffix -(dir) is often dropped in speech.'
     }
   ],
   speaking:[

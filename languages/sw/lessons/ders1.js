@@ -132,7 +132,29 @@ const L1 = {
        {pronoun:'Genel', form:'Jambo / Habari', example:'Jambo! Habari yako?', tr:'Merhaba! Nasılsın?'}
      ],
      note:'Jambo daha gayri resmi, Habari daha yaygındır. Cevap: Sijambo (iyiyim) veya Nzuri (güzel/iyi).'
-    }
+    },
+    {id:'g2', title:'Kendini Tanıtma — Jina langu ni', title_en:'Self-Introduction — My Name Is',
+     explanation:'Svahilicede kendini tanıtmak için "Jina langu ni ..." kalıbı kullanılır. Jina = isim, langu = benim, ni = (to be). Adı sormak için: "Jina lako ni nani?" veya kısa olarak "Unaitwa nani?". Tanışma ifadesi: "Nafurahi kukutana nawe" = Tanıştığıma memnun oldum.',
+     table:[
+       {pronoun:'Benim adım', form:'Jina langu ni ...', example:'Jina langu ni Juma.', tr:'Benim adım Juma.'},
+       {pronoun:'Adın ne?', form:'Jina lako ni nani?', example:'Jina lako ni nani?', tr:'Adın ne?'},
+       {pronoun:'Kısa soru', form:'Unaitwa nani?', example:'Unaitwa nani?', tr:'Sen ne diye anılırsın? / Adın ne?'},
+       {pronoun:'Nereden', form:'Ninatoka ...', example:'Ninatoka Uturuki.', tr:'Ben Türkiye\'den geliyorum.'},
+       {pronoun:'Tanışma', form:'Nafurahi kukutana nawe.', example:'Nafurahi kukutana nawe!', tr:'Tanıştığıma memnun oldum!'},
+       {pronoun:'Veda', form:'Kwaheri / Tutaonana', example:'Kwaheri!', tr:'Hoşça kal! / Görüşürüz!'}
+     ],
+     note:'"Jina langu ni" = isim belirtme. Fiil (ni) değişmez — Svahilicede bu yapı basittir. Lako = senin, langu = benim, lake = onun.'},
+    {id:'g3', title:'Svahilice Temel Cümle Yapısı', title_en:'Basic Swahili Sentence Structure',
+     explanation:'Svahilice, Bantu dili ailesinden gelir ve fiil öneki sistemi kullanır. Özne öneki fiile eklenir: Ni- (ben), U- (sen), A- (o), Tu- (biz), M- (siz), Wa- (onlar). "Ninasema Kiswahili" = Svahilice konuşuyorum. Olumsuz için "si-" öneki kullanılır: Sisemi (konuşmuyorum). Bu sistem başlangıçta karmaşık görünse de kalıplar sabittir.',
+     table:[
+       {pronoun:'Mimi (ben)', form:'Ni- + fiil', example:'Ninajua Kiswahili.', tr:'Svahilice biliyorum.'},
+       {pronoun:'Wewe (sen)', form:'U- + fiil', example:'Unasema Kiswahili?', tr:'Svahilice konuşuyor musun?'},
+       {pronoun:'Yeye (o)', form:'A- + fiil', example:'Anasema Kiswahili.', tr:'O Svahilice konuşuyor.'},
+       {pronoun:'Sisi (biz)', form:'Tu- + fiil', example:'Tunajua Kiswahili.', tr:'Svahilice biliyoruz.'},
+       {pronoun:'Olumsuz (ben)', form:'Si- + fiil', example:'Sijui Kiingereza.', tr:'İngilizce bilmiyorum.'},
+       {pronoun:'Şimdiki zaman', form:'Ni + na + fiil', example:'Ninasoma. / Ninafurahi.', tr:'Okuyorum. / Mutluyum.'}
+     ],
+     note:'"Na-" eki şimdiki zamanı gösterir: ni-na-soma = ben-şimdi-oku-yorum. Olumsuz: si-ja-soma (henüz okumadım) veya si-somi (okumuyorum).'}
   ],
   speaking: [
     {id:'sp1', sw:'Jambo!', tr:'Merhaba!', prompt:'Birisini selamla'},

@@ -404,6 +404,51 @@ const L1 = {
         }
       ],
       note:'Mağaza, doktor, iş görüşmesi → Lei. Arkadaş, sınıf arkadaşı → tu. Kararsız kalırsan Lei ile başla.'
+    },
+    {
+      id:'g3',
+      title:'Chiamarsi — Dönüşlü Fiil ile İsim Sorma',
+      title_en:'Chiamarsi — Reflexive Verb for Names',
+      explanation:'"Chiamarsi" = adı olmak / kendini adlandırmak. İtalyancada dönüşlü (reflexive) fiildir: her şahıs için hem özne hem de dönüşlü zamir kullanılır (mi, ti, si, ci, vi, si). "Come ti chiami?" = Adın ne? (tu ile). "Come si chiama?" = Adınız ne? (Lei ile, resmi). Cevap: "Mi chiamo Ali" = Benim adım Ali.',
+      table:[
+        {
+          pronoun:'io (ben)',
+          form:'mi chiamo',
+          example:'Mi chiamo Ali.',
+          tr:'Benim adım Ali.'
+        },
+        {
+          pronoun:'tu (sen)',
+          form:'ti chiami',
+          example:'Come ti chiami?',
+          tr:'Adın ne?'
+        },
+        {
+          pronoun:'lui/lei (o)',
+          form:'si chiama',
+          example:'Come si chiama?',
+          tr:'Adı ne? / Adınız ne? (resmi)'
+        },
+        {
+          pronoun:'noi (biz)',
+          form:'ci chiamiamo',
+          example:'Ci chiamiamo Marco e Sara.',
+          tr:'Bizim adımız Marco ve Sara.'
+        },
+        {
+          pronoun:'voi (siz)',
+          form:'vi chiamate',
+          example:'Come vi chiamate?',
+          tr:'Adlarınız ne?'
+        },
+        {
+          pronoun:'loro (onlar)',
+          form:'si chiamano',
+          example:'Si chiamano Luca e Giulia.',
+          tr:'Onların adı Luca ve Giulia.'
+        }
+      ],
+      note:'"Mi chiamo" her zaman işe yarar — Come mi chiamo? yerine Come ti chiami? ile sorulur. Dönüşlü zamir fiilden önce gelir.'
     }
   ],
   speaking:[

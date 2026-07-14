@@ -408,6 +408,21 @@ const L1 = {
         }
       ],
       note:'İş görüşmesi, doktor, mağaza çalışanı → Sie. Arkadaş, sınıf arkadaşı → du. Kararsız kalırsan Sie ile başla.'
+    },
+    {
+      id:'g3',
+      title:'Heißen — İsim Söyleme Fiili',
+      title_en:'Heißen — The Name Verb',
+      explanation:'"Heißen" = adı olmak. Almancada kendini tanıtmak için "Ich heiße ..." veya "Mein Name ist ..." kalıpları kullanılır. Heißen düzensiz bir fiil değildir — ancak 2. tekil şahısta (du) "-t" yerine sadece "-t" alır: du heißt (heißest değil). "Wie heißen Sie?" = resmi isim sorusu. "Wie heißt du?" = samimi.',
+      table:[
+        {pronoun:'ich (ben)', form:'heiße', example:'Ich heiße Ali.', tr:'Benim adım Ali.'},
+        {pronoun:'du (sen)', form:'heißt', example:'Wie heißt du?', tr:'Adın ne?'},
+        {pronoun:'er/sie/es (o)', form:'heißt', example:'Sie heißt Sara.', tr:'Onun adı Sara.'},
+        {pronoun:'wir (biz)', form:'heißen', example:'Wir heißen Marco und Sara.', tr:'Bizim adımız Marco ve Sara.'},
+        {pronoun:'ihr (siz — arkadaş)', form:'heißt', example:'Wie heißt ihr?', tr:'Adlarınız ne?'},
+        {pronoun:'Sie / sie (siz — resmi / onlar)', form:'heißen', example:'Wie heißen Sie?', tr:'Adınız ne? (resmi)'}
+      ],
+      note:'"Ich heiße" ve "Mein Name ist" eşdeğerdir — "Ich heiße" daha konuşma dili, "Mein Name ist" biraz daha resmi. ß harfine dikkat: "heiße" ve "heißt".'
     }
   ],
   speaking:[
