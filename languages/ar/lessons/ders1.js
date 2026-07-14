@@ -84,63 +84,48 @@ const L1 = {
   grammar:[
     {
       id:'g1',
-      title:'Selamlaşma Kalıpları',
-      title_en:'Greeting Patterns',
-      explanation:'Arapçada selamlaşmada klasik kalıp السلام عليكم çok yaygındır. Günlük kullanımda مرحباً da olur. Cinsiyet uyumuna dikkat edilir; Ali erkek olduğu için erkek çekimi kullanır.',
+      title:'Selamlama Kalıpları ve Cevaplar',
+      title_en:'Greeting Patterns and Responses',
+      explanation:'Arapçada selamlaşmada klasik kalıp السلام عليكم (Selam sizin üzerinize olsun) çok yaygındır ve standart cevabı وعليكم السلام şeklindedir. Günlük kullanımda مرحباً da olur. Sabah selamına صباح الخير (Günaydın) cevabı صباح النور (Aydınlık sabahlar) şeklinde gelir. Arapçada selamlama bir ritüeldir — aceleyle geçilmez.',
       table:[
-        {
-          pronoun:'Merhaba',
-          form:'مرحباً',
-          example:'مرحباً',
-          tr:'Merhaba'
-        },
-        {
-          pronoun:'Sabah',
-          form:'صباح الخير',
-          example:'صباح الخير',
-          tr:'Günaydın'
-        },
-        {
-          pronoun:'Akşam',
-          form:'مساء الخير',
-          example:'مساء الخير',
-          tr:'İyi akşamlar'
-        },
-        {
-          pronoun:'Veda',
-          form:'إلى اللقاء',
-          example:'إلى اللقاء',
-          tr:'Hoşça kal'
-        }
+        {pronoun:'Selamlama', form:'السلام عليكم', example:'السلام عليكم!', tr:'Selamün aleyküm'},
+        {pronoun:'Cevabı', form:'وعليكم السلام', example:'وعليكم السلام', tr:'Aleyküm selam'},
+        {pronoun:'Sabah', form:'صباح الخير', example:'صباح الخير!', tr:'Günaydın'},
+        {pronoun:'Sabah cevabı', form:'صباح النور', example:'صباح النور!', tr:'Aydınlık sabahlar'},
+        {pronoun:'Akşam', form:'مساء الخير', example:'مساء الخير!', tr:'İyi akşamlar'},
+        {pronoun:'Veda', form:'مع السلامة / إلى اللقاء', example:'مع السلامة!', tr:'Hoşça kal / Allah\'a emanet'}
       ],
-      note:'Nezaket kalıplarını tek tek değil kısa diyalog içinde ezberle.'
+      note:'Arapçada selamlama kalıpları çift yönlüdür: soran ve cevap veren için ayrı formlar vardır. Selamı almadan geçmek kaba sayılır.'
     },
     {
       id:'g2',
-      title:'Kendini Tanıtma',
-      title_en:'Introducing Yourself',
-      explanation:'Tanışmada اسمي ... (Benim adım ...) ve تشرفت بلقائك (Memnun oldum) kalıpları kullanılır.',
+      title:'Kendini Tanıtma — اسمي ve أنا من',
+      title_en:'Self-Introduction',
+      explanation:'Tanışmada اسمي ... (Benim adım ...) ve أنا من ... (Ben ... denim) kalıpları kullanılır. ما اسمك؟ sorusu samimi, ما اسمكم؟ daha resmidir. تشرفت بلقائك (erkek muhatap) / تشرفت بلقائكِ (kadın muhatap) tanışma ifadesidir. Arapçada her zamir ve fiil erkek/kadın ayrımı gözetir.',
       table:[
-        {
-          pronoun:'Soru',
-          form:'ما اسمك؟',
-          example:'ما اسمك؟',
-          tr:'Adın ne?'
-        },
-        {
-          pronoun:'Cevap',
-          form:'اسمي علي',
-          example:'اسمي علي',
-          tr:'Benim adım Ali'
-        },
-        {
-          pronoun:'Nezaket',
-          form:'تشرفت بلقائك',
-          example:'تشرفت بلقائك',
-          tr:'Tanıştığıma memnun oldum'
-        }
+        {pronoun:'Soru (samimi)', form:'ما اسمك؟', example:'ما اسمك؟', tr:'Adın ne?'},
+        {pronoun:'Cevap', form:'اسمي علي', example:'اسمي علي.', tr:'Benim adım Ali.'},
+        {pronoun:'Nereden', form:'أنا من تركيا', example:'أنا من تركيا.', tr:'Ben Türkiye\'den geliyorum.'},
+        {pronoun:'Tanışma (erkek muhatap)', form:'تشرفت بلقائك', example:'تشرفت بلقائك.', tr:'Memnun oldum. (erkeğe)'},
+        {pronoun:'Tanışma (kadın muhatap)', form:'تشرفت بلقائكِ', example:'تشرفت بلقائكِ.', tr:'Memnun oldum. (kadına)'},
+        {pronoun:'Genel yanıt', form:'أنا أيضاً', example:'أنا أيضاً تشرفت.', tr:'Ben de memnun oldum.'}
       ],
-      note:'Ali erkek öğrenci örneklerinde erkek konuşur formu esas alınır.'
+      note:'اسمي ile أنا اسمي aynı anlama gelir — konuşma dilinde اسمي daha yaygındır. Yazı dilinde أنا tercih edilir.'
+    },
+    {
+      id:'g3',
+      title:'Cinsiyet Uyumu — Erkek ve Kadın Çekimi',
+      title_en:'Gender Agreement — Masculine and Feminine',
+      explanation:'Arapçada her isim eril (مذكر) veya dişil (مؤنث) olarak sınıflandırılır. Çoğu dişil isim sonda ة (te marbuta) ile biter. Hitap ekleri ve bazı fiiller cinsiyete göre değişir: أنتَ (erkek sen) ve أنتِ (kadın sen). Selamlaşmada da bu fark önemlidir.',
+      table:[
+        {pronoun:'Erkek sen', form:'أنتَ', example:'كيف حالكَ؟', tr:'Nasılsın? (erkeğe)'},
+        {pronoun:'Kadın sen', form:'أنتِ', example:'كيف حالكِ؟', tr:'Nasılsın? (kadına)'},
+        {pronoun:'Ben iyiyim', form:'أنا بخير', example:'أنا بخير، شكراً.', tr:'İyiyim, teşekkürler.'},
+        {pronoun:'Teşekkür', form:'شكراً جزيلاً', example:'شكراً جزيلاً!', tr:'Çok teşekkürler!'},
+        {pronoun:'Rica ederim', form:'عفواً', example:'عفواً.', tr:'Rica ederim / Pardon.'},
+        {pronoun:'Lütfen', form:'من فضلك / من فضلكِ', example:'من فضلك!', tr:'Lütfen. (er/kad. ayrımı)'}
+      ],
+      note:'أنتَ (erkek) ve أنتِ (kadın) — yazıda hareke ile ayrılır; telaffuzda e/i sesi farklıdır. Günlük konuşmada bağlamdan anlaşılır.'
     }
   ],
   speaking:[

@@ -71,24 +71,39 @@ const L1 = {
   ],
 
   grammar: [
-    {id:'g1', title:'İlk Adımlar — Selamlaşma', title_en:'First Steps — Greetings',
-     explanation:'İngilizce öğrenmeye tek kelimelerle başla. Önce dinle, sonra tekrar et. Cümle kurmadan önce bu kelimeleri ezberle.',
+    {id:'g1', title:'Resmi ve Samimi Selamlama', title_en:'Formal vs Informal Greetings',
+     explanation:'İngilizcede selamlama ortama ve saate göre değişir. Resmi ortamlarda (iş, okul, yabancılar) "Hello" ve tam isim kullanılır. Samimi ortamlarda (arkadaş, aile) "Hi" veya "Hey" yeterlidir. Günün saatine göre özel selamlamalar da mevcuttur.',
      table:[
-       {pronoun:'Selam', form:'Hello / Hi', example:'Hello!', tr:'Merhaba!'},
-       {pronoun:'Sabah', form:'Good morning', example:'Good morning.', tr:'Günaydın.'},
-       {pronoun:'Veda', form:'Goodbye / Bye', example:'Bye!', tr:'Güle güle!'},
-       {pronoun:'Nezaket', form:'Please / Thank you', example:'Thank you.', tr:'Teşekkürler.'}
+       {pronoun:'Her zaman (resmi)', form:'Hello', example:'Hello, Mr. Smith.', tr:'Merhaba, Bay Smith.'},
+       {pronoun:'Her zaman (samimi)', form:'Hi / Hey', example:'Hi! How are you?', tr:'Selam! Nasılsın?'},
+       {pronoun:'Sabah', form:'Good morning', example:'Good morning!', tr:'Günaydın!'},
+       {pronoun:'Öğleden sonra', form:'Good afternoon', example:'Good afternoon.', tr:'İyi günler.'},
+       {pronoun:'Akşam', form:'Good evening', example:'Good evening.', tr:'İyi akşamlar.'},
+       {pronoun:'Veda', form:'Goodbye / Bye / See you', example:'See you later!', tr:'Görüşürüz!'}
      ],
-     note:'Önce tek kelime, sonra iki kelimelik ifadeler. Acele etme.'},
-    {id:'g2', title:'To Be — am / is / are', title_en:'To Be — am / is / are',
-     explanation:'Kendini tanıtırken "I am" kullanırsın. Soru sorarken kelime sırası değişir.',
+     note:'Resmi ortamda "Hi" çok samimi kaçar; "Hello" tercih et. Arkadaşlarla "Hey" bile kullanılabilir.'},
+    {id:'g2', title:'To Be — Tam Çekim ve Kısaltmalar', title_en:'To Be — Full Conjugation & Contractions',
+     explanation:'"To be" fiili İngilizcenin en temel fiilidir; kimlik, durum ve mensubiyet bildirir. Her şahıs için farklı form alır: am (I ile), is (he/she/it ile), are (you/we/they ile). Günlük konuşmada kısaltma kullanmak zorunludur — tam form resmi ve yapay gelir.',
      table:[
-       {pronoun:'Ben', form:'I am', example:'I am Ali.', tr:'Ben Ali\'yim.'},
-       {pronoun:'Sen / Siz', form:'You are', example:'You are kind.', tr:'Naziksin.'},
-       {pronoun:'O', form:'He/She is', example:'She is Sara.', tr:'O Sara.'},
-       {pronoun:'Soru', form:'Am I...?', example:'What is your name?', tr:'Adın ne?'}
+       {pronoun:'I (Ben)', form:"am → I'm", example:"I'm a student.", tr:'Ben bir öğrenciyim.'},
+       {pronoun:'You (Sen/Siz)', form:"are → You're", example:"You're kind.", tr:'Naziksin.'},
+       {pronoun:'He (O — erkek)', form:"is → He's", example:"He's from Italy.", tr:'O İtalya\'dan.'},
+       {pronoun:'She (O — kadın)', form:"is → She's", example:"She's my teacher.", tr:'O benim öğretmenim.'},
+       {pronoun:'We (Biz)', form:"are → We're", example:"We're friends.", tr:'Biz arkadaşız.'},
+       {pronoun:'They (Onlar)', form:"are → They're", example:"They're students.", tr:'Onlar öğrenci.'}
      ],
-     note:'Kısaltmalar: I\'m, you\'re, he\'s, she\'s'}
+     note:'Soru: Am I? / Are you? / Is he? — fiil öznenin önüne geçer. Olumsuz: I\'m not, you aren\'t, he isn\'t.'},
+    {id:'g3', title:'Kendini Tanıtma Kalıpları', title_en:'Self-Introduction Patterns',
+     explanation:'İngilizcede kendini tanıtmak için birkaç temel kalıp vardır. "My name is..." veya kısa form "I\'m..." + isim. Nereden geldiğini söylemek için "I\'m from..." kalıbı; mesleğin için "I\'m a/an..." kalıbı kullanılır. Tanışma cümlesine karşılık olarak "Nice to meet you too." denir.',
+     table:[
+       {pronoun:'İsim', form:"My name is... / I'm...", example:"My name is Ali. / I'm Ali.", tr:'Benim adım Ali. / Ben Ali.'},
+       {pronoun:'Nereden', form:"I'm from...", example:"I'm from Turkey.", tr:'Türkiye\'den geliyorum.'},
+       {pronoun:'Meslek/kimlik', form:"I'm a/an...", example:"I'm a student.", tr:'Ben bir öğrenciyim.'},
+       {pronoun:'Tanışma', form:'Nice to meet you.', example:'Nice to meet you.', tr:'Tanıştığıma memnun oldum.'},
+       {pronoun:'Karşılık', form:'Nice to meet you too.', example:'Nice to meet you too!', tr:'Ben de memnun oldum!'},
+       {pronoun:'Hal hatır', form:"How are you? / I'm fine.", example:"How are you? — I'm fine, thanks.", tr:'Nasılsın? — İyiyim, teşekkürler.'}
+     ],
+     note:'"I\'m from Turkey" → ülke büyük harf. "I\'m a student" → tekil için a/an zorunlu. Çoğulda a/an olmaz: "We\'re students".'}
   ],
 
   speaking: [

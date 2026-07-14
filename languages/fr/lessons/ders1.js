@@ -332,6 +332,21 @@ const L1 = {
         }
       ],
       note:'Kuralı basit tut: Şüphede kalırsan gündüz `Bonjour`, akşam `Bonsoir`, ayrılırken `Au revoir` kullan. Bu üçlü günlük yaşamın büyük kısmını kapsar.'
+    },
+    {
+      id:'g3',
+      title:'S\'appeler — İsim Söyleme Fiili (Tam Çekim)',
+      title_en:'S\'appeler — Full Conjugation',
+      explanation:'"S\'appeler" = adı olmak. Fransızcada dönüşlü (pronominal) fiildir: her şahıs için hem özne hem de dönüşlü zamir (me, te, se, nous, vous, se) kullanılır. "Je m\'appelle Ali" = Benim adım Ali. Soru: "Comment tu t\'appelles?" (samimi) veya "Comment vous appelez-vous?" (resmi). l → ll değişimine dikkat: m\'appelle ama nous appelons.',
+      table:[
+        {pronoun:'je (ben)', form:'me → je m\'appelle', example:'Je m\'appelle Ali.', tr:'Benim adım Ali.'},
+        {pronoun:'tu (sen)', form:'te → tu t\'appelles', example:'Comment tu t\'appelles?', tr:'Adın ne? (samimi)'},
+        {pronoun:'il/elle (o)', form:'se → il/elle s\'appelle', example:'Elle s\'appelle Sara.', tr:'Onun adı Sara.'},
+        {pronoun:'nous (biz)', form:'nous → nous nous appelons', example:'Nous nous appelons Marco et Sara.', tr:'Bizim adımız Marco ve Sara.'},
+        {pronoun:'vous (siz)', form:'vous → vous vous appelez', example:'Comment vous appelez-vous?', tr:'Adınız ne? (resmi)'},
+        {pronoun:'ils/elles (onlar)', form:'se → ils/elles s\'appellent', example:'Ils s\'appellent Luc et Marie.', tr:'Onların adı Luc ve Marie.'}
+      ],
+      note:'"Je m\'appelle" her tanışmada kullanılır. l → ll (appelle, t\'appelles, s\'appelle, s\'appellent) değişimi konuşma dilinde doğal gelir. "Comment vous appelez-vous?" resmi standart soru formudur.'
     }
   ],
   speaking:[
