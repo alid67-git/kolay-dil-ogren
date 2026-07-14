@@ -1,131 +1,135 @@
-// ders45.js — Italian Lesson 45: Geografia e mondo (vocabulary)
+// ders45.js — Italian Lesson 45: Geografia e mondo
 const L45 = {
   words:[
-    {
-      id:'w1',
-      en:'Buongiorno!',
-      ro:'Buongi',
-      tr:'İyi günler!'
-    },
-    {
-      id:'w2',
-      en:'Come sta?',
-      ro:'Come s',
-      tr:'Nasılsınız?'
-    },
-    {
-      id:'w3',
-      en:'Bene.',
-      ro:'Bene.',
-      tr:'İyiyim.'
-    },
-    {
-      id:'w4',
-      en:'Scusi',
-      ro:'Scusi',
-      tr:'Pardon'
-    },
-    {
-      id:'w5',
-      en:'Nessun problema',
-      ro:'Nessun',
-      tr:'Sorun değil'
-    },
-    {
-      id:'w6',
-      en:'Certo',
-      ro:'Certo',
-      tr:'Tabii ki'
-    },
-    {
-      id:'w7',
-      en:'Capisce?',
-      ro:'Capisc',
-      tr:'Anlıyor musunuz?'
-    },
-    {
-      id:'w8',
-      en:'Non capisco.',
-      ro:'Non ca',
-      tr:'Anlamıyorum.'
-    },
-    {
-      id:'w9',
-      en:'Può ripetere?',
-      ro:'Può ri',
-      tr:'Tekrar edebilir misiniz?'
-    },
-    {
-      id:'w10',
-      en:'Piano, per favore.',
-      ro:'Piano,',
-      tr:'Yavaş, lütfen.'
-    },
-    {
-      id:'w11',
-      en:'Un momento, per favore.',
-      ro:'Un mom',
-      tr:'Bir dakika, lütfen.'
-    },
-    {
-      id:'w12',
-      en:'Capito!',
-      ro:'Capito',
-      tr:'Anlaşıldı!'
-    },
-    {
-      id:'w13',
-      en:'Grazie',
-      ro:'Grazie',
-      tr:'Teşekkürler'
-    },
-    {
-      id:'w14',
-      en:'Prego',
-      ro:'Prego',
-      tr:'Rica ederim'
-    },
-    {
-      id:'w15',
-      en:'A dopo',
-      ro:'A dopo',
-      tr:'Görüşürüz'
-    },
-    {
-      id:'w16',
-      en:'Mi chiamo Ali',
-      ro:'Mi chi',
-      tr:'Benim adım Ali'
-    },
-    {
-      id:'w17',
-      en:'Piacere',
-      ro:'Piacer',
-      tr:'Memnun oldum'
-    },
-    {
-      id:'w18',
-      en:'Parla inglese?',
-      ro:'Parla ',
-      tr:'İngilizce biliyor musunuz?'
-    },
-    {
-      id:'w19',
-      en:'Un po\'',
-      ro:'Un po\'',
-      tr:'Biraz'
-    },
-    {
-      id:'w20',
-      en:'Può aiutarmi?',
-      ro:'Può ai',
-      tr:'Yardım edebilir misiniz?'
-    }
+    {id:'w1', en:'il continente', ro:'continente', tr:'kıta',
+     examples:[{it:'L\'Europa è un continente ricco di storia.',tr:'Avrupa tarihin zengin olduğu bir kıtadır.',
+       bd:[{ro:'L\'Europa',tr:'Avrupa'},{ro:'è un continente',tr:'bir kıtadır'},{ro:'ricco di storia',tr:'tarih açısından zengin'}]}]},
+    {id:'w2', en:'il paese / la nazione', ro:'paese/nazione', tr:'ülke / millet',
+     examples:[{it:'L\'Italia è un paese meraviglioso.',tr:'İtalya muhteşem bir ülkedir.',
+       bd:[{ro:'L\'Italia',tr:'İtalya'},{ro:'è un paese',tr:'bir ülkedir'},{ro:'meraviglioso',tr:'muhteşem'}]}]},
+    {id:'w3', en:'la capitale', ro:'capitale', tr:'başkent',
+     examples:[{it:'Roma è la capitale d\'Italia.',tr:'Roma, İtalya\'nın başkentidir.',
+       bd:[{ro:'Roma',tr:'Roma'},{ro:'è la capitale',tr:'başkentidir'},{ro:'d\'Italia',tr:'İtalya\'nın'}]}]},
+    {id:'w4', en:'la frontiera / il confine', ro:'frontiera/confine', tr:'sınır',
+     examples:[{it:'L\'Italia condivide il confine con la Francia.',tr:'İtalya Fransa ile sınır paylaşıyor.',
+       bd:[{ro:'L\'Italia',tr:'İtalya'},{ro:'condivide il confine',tr:'sınır paylaşıyor'},{ro:'con la Francia',tr:'Fransa ile'}]}]},
+    {id:'w5', en:'il nord / il sud / l\'est / l\'ovest', ro:'nord/sud/est/ovest', tr:'kuzey / güney / doğu / batı',
+     examples:[{it:'La Sicilia si trova nel sud dell\'Italia.',tr:'Sicilya İtalya\'nın güneyinde yer alır.',
+       bd:[{ro:'La Sicilia',tr:'Sicilya'},{ro:'si trova',tr:'yer alır'},{ro:'nel sud',tr:'güneyinde'},{ro:'dell\'Italia',tr:'İtalya\'nın'}]}]},
+    {id:'w6', en:'la penisola', ro:'penisola', tr:'yarımada',
+     examples:[{it:'L\'Italia è una penisola che si estende nel Mediterraneo.',tr:'İtalya, Akdeniz\'e uzanan bir yarımadadır.',
+       bd:[{ro:'L\'Italia',tr:'İtalya'},{ro:'è una penisola',tr:'bir yarımadadır'},{ro:'si estende',tr:'uzanır'},{ro:'nel Mediterraneo',tr:'Akdeniz\'de'}]}]},
+    {id:'w7', en:'il clima', ro:'clima', tr:'iklim',
+     examples:[{it:'Il clima mediterraneo è caldo e secco d\'estate.',tr:'Akdeniz iklimi yazın sıcak ve kurudur.',
+       bd:[{ro:'Il clima mediterraneo',tr:'Akdeniz iklimi'},{ro:'è caldo e secco',tr:'sıcak ve kurudur'},{ro:'d\'estate',tr:'yazın'}]}]},
+    {id:'w8', en:'la popolazione', ro:'popolazione', tr:'nüfus',
+     examples:[{it:'La popolazione italiana è circa 60 milioni.',tr:'İtalya nüfusu yaklaşık 60 milyon.',
+       bd:[{ro:'La popolazione italiana',tr:'İtalya nüfusu'},{ro:'è circa',tr:'yaklaşık'},{ro:'60 milioni',tr:'60 milyon'}]}]},
+    {id:'w9', en:'la montagna / le Alpi', ro:'montagna/Alpi', tr:'dağ / Alpler',
+     examples:[{it:'Le Alpi separano l\'Italia dal resto d\'Europa.',tr:'Alpler, İtalya\'yı Avrupa\'nın geri kalanından ayırıyor.',
+       bd:[{ro:'Le Alpi',tr:'Alpler'},{ro:'separano',tr:'ayırıyor'},{ro:'l\'Italia',tr:'İtalya\'yı'},{ro:'dal resto d\'Europa',tr:'Avrupa\'nın geri kalanından'}]}]},
+    {id:'w10', en:'il fiume', ro:'fiume', tr:'nehir',
+     examples:[{it:'Il Po è il fiume più lungo d\'Italia.',tr:'Po, İtalya\'nın en uzun nehridir.',
+       bd:[{ro:'Il Po',tr:'Po nehri'},{ro:'è il fiume più lungo',tr:'en uzun nehirdir'},{ro:'d\'Italia',tr:'İtalya\'nın'}]}]},
+    {id:'w11', en:'la costa', ro:'costa', tr:'kıyı',
+     examples:[{it:'La costa amalfitana è famosa nel mondo.',tr:'Amalfi kıyısı dünyaca ünlüdür.',
+       bd:[{ro:'La costa amalfitana',tr:'Amalfi kıyısı'},{ro:'è famosa nel mondo',tr:'dünyaca ünlüdür'}]}]},
+    {id:'w12', en:'l\'isola', ro:'isola', tr:'ada',
+     examples:[{it:'La Sardegna è la seconda isola più grande del Mediterraneo.',tr:'Sardinya, Akdeniz\'in ikinci büyük adasıdır.',
+       bd:[{ro:'La Sardegna',tr:'Sardinya'},{ro:'è la seconda isola più grande',tr:'ikinci büyük adadır'},{ro:'del Mediterraneo',tr:'Akdeniz\'in'}]}]},
+    {id:'w13', en:'la regione', ro:'regione', tr:'bölge / il',
+     examples:[{it:'L\'Italia è divisa in venti regioni.',tr:'İtalya yirmi bölgeye ayrılmıştır.',
+       bd:[{ro:'L\'Italia',tr:'İtalya'},{ro:'è divisa',tr:'ayrılmıştır'},{ro:'in venti regioni',tr:'yirmi bölgeye'}]}]},
+    {id:'w14', en:'il fuso orario', ro:'fuso orario', tr:'saat dilimi',
+     examples:[{it:'L\'Italia e la Turchia hanno fusi orari diversi.',tr:'İtalya ve Türkiye farklı saat dilimlerindedir.',
+       bd:[{ro:'L\'Italia e la Turchia',tr:'İtalya ve Türkiye'},{ro:'hanno fusi orari diversi',tr:'farklı saat dilimlerindedir'}]}]},
+    {id:'w15', en:'l\'Unione Europea', ro:'Unione Europea', tr:'Avrupa Birliği',
+     examples:[{it:'L\'Italia è membro fondatore dell\'Unione Europea.',tr:'İtalya, Avrupa Birliği\'nin kurucu üyesidir.',
+       bd:[{ro:'L\'Italia',tr:'İtalya'},{ro:'è membro fondatore',tr:'kurucu üyesidir'},{ro:'dell\'Unione Europea',tr:'Avrupa Birliği\'nin'}]}]},
+    {id:'w16', en:'la densità di popolazione', ro:'densità di popolazione', tr:'nüfus yoğunluğu',
+     examples:[{it:'La densità di popolazione in Lombardia è elevata.',tr:'Lombardia\'daki nüfus yoğunluğu yüksektir.',
+       bd:[{ro:'La densità di popolazione',tr:'nüfus yoğunluğu'},{ro:'in Lombardia',tr:'Lombardia\'da'},{ro:'è elevata',tr:'yüksektir'}]}]},
+    {id:'w17', en:'il vulcano', ro:'vulcano', tr:'yanardağ',
+     examples:[{it:'Il Vesuvio è il vulcano più famoso d\'Italia.',tr:'Vezüv, İtalya\'nın en ünlü yanardağıdır.',
+       bd:[{ro:'Il Vesuvio',tr:'Vezüv'},{ro:'è il vulcano più famoso',tr:'en ünlü yanardağıdır'},{ro:'d\'Italia',tr:'İtalya\'nın'}]}]},
+    {id:'w18', en:'il terremoto', ro:'terremoto', tr:'deprem',
+     examples:[{it:'L\'Italia è una zona sismica.',tr:'İtalya sismik aktif bir bölgedir.',
+       bd:[{ro:'L\'Italia',tr:'İtalya'},{ro:'è una zona sismica',tr:'sismik aktif bir bölgedir'}]}]},
+    {id:'w19', en:'il lago', ro:'lago', tr:'göl',
+     examples:[{it:'Il lago di Garda è il più grande in Italia.',tr:'Garda Gölü, İtalya\'daki en büyük göldür.',
+       bd:[{ro:'Il lago di Garda',tr:'Garda Gölü'},{ro:'è il più grande',tr:'en büyüktür'},{ro:'in Italia',tr:'İtalya\'da'}]}]},
+    {id:'w20', en:'le risorse naturali', ro:'risorse naturali', tr:'doğal kaynaklar',
+     examples:[{it:'L\'Italia ha poche risorse naturali proprie.',tr:'İtalya\'nın az sayıda kendi doğal kaynağı var.',
+       bd:[{ro:'L\'Italia',tr:'İtalya'},{ro:'ha poche',tr:'az var'},{ro:'risorse naturali proprie',tr:'kendi doğal kaynakları'}]}]}
   ],
-  grammar:[],
-  speaking:[],
-  dialogues:[],
-  listening:[],
+  grammar:[
+    {id:'g1', title:'Coğrafi Konumları İfade Etme', title_en:'Expressing Geographical Locations',
+     explanation:'İtalyancada ülke, şehir ve bölge isimlerinden önce doğru edat kullanmak çok önemlidir.',
+     table:[
+       {pronoun:'In + ülke (f)', form:'in + ülke', example:'Vivo in Italia / in Spagna.', tr:'İtalya\'da / İspanya\'da yaşıyorum.'},
+       {pronoun:'In + ülke (m)', form:'in + ülke', example:'Lavoro in Portogallo.', tr:'Portekiz\'de çalışıyorum.'},
+       {pronoun:'A + şehir', form:'a + şehir', example:'Abito a Roma / a Milano.', tr:'Roma\'da / Milano\'da oturuyorum.'},
+       {pronoun:'Al / Agli + ülke (m.ç.)', form:'negli Stati Uniti', example:'Vado negli Stati Uniti.', tr:'Amerika Birleşik Devletleri\'ne gidiyorum.'},
+       {pronoun:'Nel / Nella + bölge', form:'nel / nella + bölge', example:'Sono nella Toscana.', tr:'Toskana\'dayım.'},
+       {pronoun:'Al nord/sud di', form:'al nord/sud di', example:'Venezia è al nord d\'Italia.', tr:'Venedik, İtalya\'nın kuzeyindedir.'}
+     ],
+     note:'Kural: dişil ülkelerde "in" (Italia, Francia), eril ülkelerde "nel" ya da "in" kullanılır. Şehirlerde daima "a" kullanılır.'},
+    {id:'g2', title:'Superlativo Relativo ile Coğrafya', title_en:'Relative Superlative in Geography',
+     explanation:'Coğrafi özellikleri karşılaştırırken superlativo relativo (en ... olan) yapısı kullanılır.',
+     table:[
+       {pronoun:'il/la più + sıfat + di', form:'il/la più', example:'Il Po è il fiume più lungo d\'Italia.', tr:'Po, İtalya\'nın en uzun nehridir.'},
+       {pronoun:'il/la meno + sıfat + di', form:'il/la meno', example:'La Valle d\'Aosta è la regione meno popolosa.', tr:'Valled\'Aosta en az nüfuslu bölgedir.'},
+       {pronoun:'i/le più + sıfat + di', form:'çoğul', example:'Le Alpi sono le montagne più alte.', tr:'Alpler en yüksek dağlardır.'},
+       {pronoun:'il più grande', form:'büyüklük', example:'La Sicilia è l\'isola più grande.', tr:'Sicilya en büyük adadır.'},
+       {pronoun:'il più piccolo', form:'küçüklük', example:'San Marino è il paese più piccolo.', tr:'San Marino en küçük ülkedir.'},
+       {pronoun:'il più famoso', form:'şöhret', example:'Venezia è la città più famosa.', tr:'Venedik en ünlü şehirdir.'}
+     ],
+     note:'Superlativo relativo yapısı: il/la/i/le + più/meno + sıfat + di/d\'. Karşılaştırma grubu "di" veya "d\'" ile başlar.'},
+    {id:'g3', title:'Coğrafi Gerçekler İçin Geniş Zaman', title_en:'Present Tense for Geographical Facts',
+     explanation:'İtalyancada coğrafi gerçekleri, sürekli durumları ve evrensel doğruları anlatmak için presente (geniş zaman) kullanılır.',
+     table:[
+       {pronoun:'L\'Italia confina con', form:'confina con', example:'L\'Italia confina con la Francia.', tr:'İtalya Fransa ile sınır komşusudur.'},
+       {pronoun:'Il mare bagna', form:'bagna + yer', example:'Il Tirreno bagna la Toscana.', tr:'Tirren Denizi Toskana\'yı yıkar.'},
+       {pronoun:'La catena montuosa', form:'si estende', example:'Le Alpi si estendono a nord.', tr:'Alpler kuzeyde uzanır.'},
+       {pronoun:'Il fiume nasce / sfocia', form:'nasce/sfocia', example:'Il Tevere nasce in Toscana.', tr:'Tiber Nehri Toskana\'da doğar.'},
+       {pronoun:'La città si trova', form:'si trova', example:'Napoli si trova nel sud.', tr:'Napoli güneyde yer alır.'},
+       {pronoun:'La superficie è di', form:'è di + rakam', example:'La superficie è di 301.000 km².', tr:'Yüzölçümü 301.000 km²\'dir.'}
+     ],
+     note:'Coğrafya ve bilimsel gerçekler için presente kullanmak Türkçeyle örtüşür; her iki dilde de geniş zaman tercih edilir.'}
+  ],
+  speaking:[
+    {id:'sp1', en:'L\'Italia è una penisola situata nel cuore del Mediterraneo.', tr:'İtalya, Akdeniz\'in kalbinde yer alan bir yarımadadır.', prompt:'İtalya\'nın coğrafi konumunu tanımlayın.'},
+    {id:'sp2', en:'Le Alpi si trovano al nord e l\'Appennino attraversa tutta la penisola.', tr:'Alpler kuzeyde yer alır ve Apenin dağları tüm yarımadayı kateder.', prompt:'İtalya\'nın dağlarını anlatın.'},
+    {id:'sp3', en:'Il clima varia molto da nord a sud: al nord è più freddo, al sud è più caldo.', tr:'İklim kuzeyden güneye büyük farklılık gösterir: kuzeyde daha soğuk, güneyde daha sıcak.', prompt:'İtalya\'nın iklimi hakkında konuşun.'},
+    {id:'sp4', en:'L\'Italia è divisa in venti regioni, ognuna con una propria cultura.', tr:'İtalya, her biri kendine özgü bir kültüre sahip yirmi bölgeye ayrılmıştır.', prompt:'İtalya\'nın idari yapısını açıklayın.'},
+    {id:'sp5', en:'Il Vesuvio è uno dei vulcani più famosi del mondo ed è vicino a Napoli.', tr:'Vezüv, dünyanın en ünlü yanardağlarından biri olup Napoli yakınındadır.', prompt:'İtalya\'nın önemli doğal unsurlarından birini anlatın.'}
+  ],
+  dialogues:[
+    {id:'d1', title:'Coğrafya Tartışması', title_en:'Geography Discussion',
+     lines:[
+       {speaker:'A', gender:'f', en:'Qual è la regione più grande d\'Italia?', tr:'İtalya\'nın en büyük bölgesi hangisidir?',
+        bd:[{ro:'Qual è',tr:'hangisidir'},{ro:'la regione più grande',tr:'en büyük bölge'},{ro:'d\'Italia',tr:'İtalya\'nın'}]},
+       {speaker:'B', gender:'m', en:'La Sicilia è l\'isola più grande, ma la regione più grande è la Lombardia.', tr:'Sicilya en büyük ada, ama en büyük bölge Lombardia\'dır.',
+        bd:[{ro:'La Sicilia',tr:'Sicilya'},{ro:'è l\'isola più grande',tr:'en büyük adadır'},{ro:'la regione più grande',tr:'en büyük bölge'},{ro:'è la Lombardia',tr:'Lombardia\'dır'}]},
+       {speaker:'A', gender:'f', en:'E qual è la città più popolosa?', tr:'Peki en kalabalık şehir hangisi?',
+        bd:[{ro:'E qual è',tr:'peki hangisi'},{ro:'la città più popolosa',tr:'en kalabalık şehir'}]},
+       {speaker:'B', gender:'m', en:'Roma è la capitale e la città più grande con quasi tre milioni di abitanti.', tr:'Roma başkent ve neredeyse üç milyon nüfusuyla en büyük şehirdir.',
+        bd:[{ro:'Roma',tr:'Roma'},{ro:'è la capitale',tr:'başkenttir'},{ro:'la città più grande',tr:'en büyük şehir'},{ro:'quasi tre milioni',tr:'neredeyse üç milyon'},{ro:'di abitanti',tr:'nüfusla'}]},
+       {speaker:'A', gender:'f', en:'Interessante! E quante isole ha l\'Italia?', tr:'İlginç! Peki İtalya\'nın kaç adası var?',
+        bd:[{ro:'Interessante',tr:'ilginç'},{ro:'quante isole',tr:'kaç ada'},{ro:'ha l\'Italia',tr:'İtalya\'nın var'}]},
+       {speaker:'B', gender:'m', en:'Ci sono migliaia di isole, ma le principali sono Sicilia e Sardegna.', tr:'Binlerce ada var, ama başlıcaları Sicilya ve Sardinya\'dır.',
+        bd:[{ro:'Ci sono migliaia',tr:'binlerce var'},{ro:'di isole',tr:'ada'},{ro:'le principali',tr:'başlıcaları'},{ro:'Sicilia e Sardegna',tr:'Sicilya ve Sardinya'}]}
+     ]}
+  ],
+  listening:[
+    {id:'li1', audio:'', transcript:'L\'Italia è una penisola che si estende nel Mar Mediterraneo. A nord confina con la Francia, la Svizzera, l\'Austria e la Slovenia. Le Alpi formano la frontiera naturale a nord, mentre l\'Appennino attraversa tutta la penisola da nord a sud. I principali fiumi sono il Po nel nord e il Tevere nel centro. Il paese ha due grandi isole: la Sicilia e la Sardegna. L\'Italia ha una varietà di climi: al nord il clima è continentale con inverni freddi, al centro e al sud il clima è mediterraneo con estati calde e secche.',
+     tr:'İtalya, Akdeniz\'e uzanan bir yarımadadır. Kuzeyde Fransa, İsviçre, Avusturya ve Slovenya ile sınır komşusudur. Alpler kuzeyde doğal sınırı oluştururken, Apenin dağları yarımadayı kuzeyden güneye kateder. Başlıca nehirler kuzeydeki Po ve merkezindeki Tiber\'dir. Ülkenin iki büyük adası vardır: Sicilya ve Sardinya. İtalya çeşitli iklim özelliklerine sahiptir: kuzeyde soğuk kışlarıyla karasal iklim, orta ve güneyde sıcak ve kurak yazlarıyla Akdeniz iklimi görülür.',
+     questions:[
+       {q:'İtalya kuzeyinde hangi ülkelerle sınır komşusudur?', opts:['Fransa ve İsviçre','Fransa, İsviçre, Avusturya ve Slovenya','Almanya ve Avusturya','Yunanistan ve Arnavutluk'], answer:1, tr:'Metin "Francia, Svizzera, Austria e Slovenia" dört ülkeyi sayar.'},
+       {q:'Apenin dağları nasıl uzanır?', opts:['Doğu-batı','Kuzey-güney','Çapraz olarak','Dairesel'], answer:1, tr:'Metin "attraversa tutta la penisola da nord a sud" demektedir.'},
+       {q:'İtalya\'nın güneyindeki iklim nasıldır?', opts:['Karasal ve soğuk','Kutupsal','Akdeniz (sıcak ve kuru)','Tropikal'], answer:2, tr:'Metin "clima mediterraneo con estati calde e secche" diyor.'}
+     ]}
+  ],
   tones:[]
 };
 LESSONS[45] = L45;

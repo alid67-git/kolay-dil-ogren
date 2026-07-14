@@ -1,131 +1,135 @@
-// ders49.js — Italian Lesson 49: Ripasso avanzato (vocabulary)
+// ders49.js — Italian Lesson 49: Ripasso avanzato
 const L49 = {
   words:[
-    {
-      id:'w1',
-      en:'Buongiorno!',
-      ro:'Buongi',
-      tr:'İyi günler!'
-    },
-    {
-      id:'w2',
-      en:'Come sta?',
-      ro:'Come s',
-      tr:'Nasılsınız?'
-    },
-    {
-      id:'w3',
-      en:'Bene.',
-      ro:'Bene.',
-      tr:'İyiyim.'
-    },
-    {
-      id:'w4',
-      en:'Scusi',
-      ro:'Scusi',
-      tr:'Pardon'
-    },
-    {
-      id:'w5',
-      en:'Nessun problema',
-      ro:'Nessun',
-      tr:'Sorun değil'
-    },
-    {
-      id:'w6',
-      en:'Certo',
-      ro:'Certo',
-      tr:'Tabii ki'
-    },
-    {
-      id:'w7',
-      en:'Capisce?',
-      ro:'Capisc',
-      tr:'Anlıyor musunuz?'
-    },
-    {
-      id:'w8',
-      en:'Non capisco.',
-      ro:'Non ca',
-      tr:'Anlamıyorum.'
-    },
-    {
-      id:'w9',
-      en:'Può ripetere?',
-      ro:'Può ri',
-      tr:'Tekrar edebilir misiniz?'
-    },
-    {
-      id:'w10',
-      en:'Piano, per favore.',
-      ro:'Piano,',
-      tr:'Yavaş, lütfen.'
-    },
-    {
-      id:'w11',
-      en:'Un momento, per favore.',
-      ro:'Un mom',
-      tr:'Bir dakika, lütfen.'
-    },
-    {
-      id:'w12',
-      en:'Capito!',
-      ro:'Capito',
-      tr:'Anlaşıldı!'
-    },
-    {
-      id:'w13',
-      en:'Grazie',
-      ro:'Grazie',
-      tr:'Teşekkürler'
-    },
-    {
-      id:'w14',
-      en:'Prego',
-      ro:'Prego',
-      tr:'Rica ederim'
-    },
-    {
-      id:'w15',
-      en:'A dopo',
-      ro:'A dopo',
-      tr:'Görüşürüz'
-    },
-    {
-      id:'w16',
-      en:'Mi chiamo Ali',
-      ro:'Mi chi',
-      tr:'Benim adım Ali'
-    },
-    {
-      id:'w17',
-      en:'Piacere',
-      ro:'Piacer',
-      tr:'Memnun oldum'
-    },
-    {
-      id:'w18',
-      en:'Parla inglese?',
-      ro:'Parla ',
-      tr:'İngilizce biliyor musunuz?'
-    },
-    {
-      id:'w19',
-      en:'Un po\'',
-      ro:'Un po\'',
-      tr:'Biraz'
-    },
-    {
-      id:'w20',
-      en:'Può aiutarmi?',
-      ro:'Può ai',
-      tr:'Yardım edebilir misiniz?'
-    }
+    {id:'w1', en:'approfondire', ro:'approfondire', tr:'derinleştirmek / ayrıntılı incelemek',
+     examples:[{it:'Dobbiamo approfondire questo argomento.',tr:'Bu konuyu daha ayrıntılı incelememiz gerekiyor.',
+       bd:[{ro:'Dobbiamo',tr:'gerekiyor'},{ro:'approfondire',tr:'derinleştirmek'},{ro:'questo argomento',tr:'bu konuyu'}]}]},
+    {id:'w2', en:'riassumere', ro:'riassumere', tr:'özetlemek',
+     examples:[{it:'Puoi riassumere i punti principali?',tr:'Ana noktaları özetleyebilir misin?',
+       bd:[{ro:'Puoi riassumere',tr:'özetleyebilir misin'},{ro:'i punti principali',tr:'ana noktaları'}]}]},
+    {id:'w3', en:'padroneggiare', ro:'padroneggiare', tr:'hakketmek / ustalıkla kullanmak',
+     examples:[{it:'Padroneggia bene l\'italiano.',tr:'İtalyancayı iyi biliyor.',
+       bd:[{ro:'Padroneggia bene',tr:'iyi biliyor/hakimiyet kurmuş'},{ro:'l\'italiano',tr:'İtalyancayı'}]}]},
+    {id:'w4', en:'affrontare', ro:'affrontare', tr:'yüzleşmek / üstesinden gelmek',
+     examples:[{it:'Dobbiamo affrontare le difficoltà con coraggio.',tr:'Zorluklarla cesurca yüzleşmeliyiz.',
+       bd:[{ro:'Dobbiamo affrontare',tr:'yüzleşmeliyiz'},{ro:'le difficoltà',tr:'zorluklarla'},{ro:'con coraggio',tr:'cesurca'}]}]},
+    {id:'w5', en:'distinguere', ro:'distinguere', tr:'ayırt etmek',
+     examples:[{it:'Riesci a distinguere i diversi accenti italiani?',tr:'Farklı İtalyan aksanlarını ayırt edebiliyor musun?',
+       bd:[{ro:'Riesci a distinguere',tr:'ayırt edebiliyor musun'},{ro:'i diversi accenti',tr:'farklı aksanları'},{ro:'italiani',tr:'İtalyan'}]}]},
+    {id:'w6', en:'esprimere', ro:'esprimere', tr:'ifade etmek',
+     examples:[{it:'È importante esprimere i propri sentimenti.',tr:'Kendi duygularını ifade etmek önemlidir.',
+       bd:[{ro:'È importante',tr:'önemlidir'},{ro:'esprimere',tr:'ifade etmek'},{ro:'i propri sentimenti',tr:'kendi duygularını'}]}]},
+    {id:'w7', en:'valutare', ro:'valutare', tr:'değerlendirmek',
+     examples:[{it:'Bisogna valutare tutti i fattori.',tr:'Tüm faktörleri değerlendirmek gerekir.',
+       bd:[{ro:'Bisogna valutare',tr:'değerlendirmek gerekir'},{ro:'tutti i fattori',tr:'tüm faktörleri'}]}]},
+    {id:'w8', en:'consolidare', ro:'consolidare', tr:'pekiştirmek / sağlamlaştırmak',
+     examples:[{it:'Ripetere le regole aiuta a consolidare le conoscenze.',tr:'Kuralları tekrar etmek bilgileri pekiştirmeye yardımcı olur.',
+       bd:[{ro:'Ripetere le regole',tr:'kuralları tekrar etmek'},{ro:'aiuta a',tr:'yardımcı olur'},{ro:'consolidare le conoscenze',tr:'bilgileri pekiştirmek'}]}]},
+    {id:'w9', en:'superare', ro:'superare', tr:'aşmak / geçmek',
+     examples:[{it:'Ha superato tutte le aspettative.',tr:'Tüm beklentileri aştı.',
+       bd:[{ro:'Ha superato',tr:'aştı'},{ro:'tutte le aspettative',tr:'tüm beklentileri'}]}]},
+    {id:'w10', en:'tradurre', ro:'tradurre', tr:'çevirmek',
+     examples:[{it:'Sa tradurre dall\'italiano al turco.',tr:'İtalyancadan Türkçeye çevirebiliyor.',
+       bd:[{ro:'Sa tradurre',tr:'çevirebiliyor'},{ro:'dall\'italiano al turco',tr:'İtalyancadan Türkçeye'}]}]},
+    {id:'w11', en:'interpretare', ro:'interpretare', tr:'yorumlamak / canlandırmak',
+     examples:[{it:'Come interpreti questa frase?',tr:'Bu cümleyi nasıl yorumluyorsun?',
+       bd:[{ro:'Come interpreti',tr:'nasıl yorumluyorsun'},{ro:'questa frase',tr:'bu cümleyi'}]}]},
+    {id:'w12', en:'perfezionare', ro:'perfezionare', tr:'mükemmelleştirmek',
+     examples:[{it:'Voglio perfezionare il mio italiano.',tr:'İtalyancamı mükemmelleştirmek istiyorum.',
+       bd:[{ro:'Voglio perfezionare',tr:'mükemmelleştirmek istiyorum'},{ro:'il mio italiano',tr:'İtalyancamı'}]}]},
+    {id:'w13', en:'raggiungere', ro:'raggiungere', tr:'ulaşmak / erişmek',
+     examples:[{it:'Ha raggiunto il livello B2 in italiano.',tr:'İtalyancada B2 seviyesine ulaştı.',
+       bd:[{ro:'Ha raggiunto',tr:'ulaştı'},{ro:'il livello B2',tr:'B2 seviyesine'},{ro:'in italiano',tr:'İtalyancada'}]}]},
+    {id:'w14', en:'comunicare', ro:'comunicare', tr:'iletişim kurmak',
+     examples:[{it:'Sa comunicare in modo chiaro ed efficace.',tr:'Açık ve etkili bir şekilde iletişim kurabiliyor.',
+       bd:[{ro:'Sa comunicare',tr:'iletişim kurabiliyor'},{ro:'in modo chiaro',tr:'açık bir şekilde'},{ro:'ed efficace',tr:'ve etkili'}]}]},
+    {id:'w15', en:'arricchire', ro:'arricchire', tr:'zenginleştirmek',
+     examples:[{it:'La lettura arricchisce il vocabolario.',tr:'Okuma kelime dağarcığını zenginleştirir.',
+       bd:[{ro:'La lettura',tr:'okuma'},{ro:'arricchisce',tr:'zenginleştirir'},{ro:'il vocabolario',tr:'kelime dağarcığını'}]}]},
+    {id:'w16', en:'la fluidità', ro:'fluidità', tr:'akıcılık',
+     examples:[{it:'La fluidità si acquisisce con la pratica.',tr:'Akıcılık pratikle kazanılır.',
+       bd:[{ro:'La fluidità',tr:'akıcılık'},{ro:'si acquisisce',tr:'kazanılır'},{ro:'con la pratica',tr:'pratikle'}]}]},
+    {id:'w17', en:'l\'errore', ro:'errore', tr:'hata',
+     examples:[{it:'Sbagliando si impara: gli errori ci insegnano.',tr:'Yanılarak öğrenilir: hatalar bize öğretir.',
+       bd:[{ro:'Sbagliando si impara',tr:'yanılarak öğrenilir'},{ro:'gli errori',tr:'hatalar'},{ro:'ci insegnano',tr:'bize öğretir'}]}]},
+    {id:'w18', en:'il progresso', ro:'progresso', tr:'ilerleme',
+     examples:[{it:'Noto un grande progresso nel tuo italiano.',tr:'İtalyancandaki büyük ilerlemeyi fark ediyorum.',
+       bd:[{ro:'Noto',tr:'fark ediyorum'},{ro:'un grande progresso',tr:'büyük bir ilerleme'},{ro:'nel tuo italiano',tr:'İtalyancandaki'}]}]},
+    {id:'w19', en:'la motivazione', ro:'motivazione', tr:'motivasyon',
+     examples:[{it:'La motivazione è la chiave per imparare una lingua.',tr:'Motivasyon bir dil öğrenmenin anahtarıdır.',
+       bd:[{ro:'La motivazione',tr:'motivasyon'},{ro:'è la chiave',tr:'anahtarıdır'},{ro:'per imparare una lingua',tr:'bir dil öğrenmenin'}]}]},
+    {id:'w20', en:'la perseveranza', ro:'perseveranza', tr:'azim / kararlılık',
+     examples:[{it:'Con la perseveranza si raggiungono tutti gli obiettivi.',tr:'Azimle tüm hedeflere ulaşılır.',
+       bd:[{ro:'Con la perseveranza',tr:'azimle'},{ro:'si raggiungono',tr:'ulaşılır'},{ro:'tutti gli obiettivi',tr:'tüm hedeflere'}]}]}
   ],
-  grammar:[],
-  speaking:[],
-  dialogues:[],
-  listening:[],
+  grammar:[
+    {id:'g1', title:'Congiuntivo Passato ile İleri Düzey Yapılar', title_en:'Advanced Structures with Past Subjunctive',
+     explanation:'İleri düzey İtalyancada congiuntivo passato (geçmiş koşul kipi) sıklıkla kullanılır. Geçmişe yönelik belirsizlik, şüphe ve duygu ifadelerinde gereklidir.',
+     table:[
+       {pronoun:'io', form:'abbia + p.p. / sia + p.p.', example:'Credo che abbia studiato molto.', tr:'Çok çalıştığına inanıyorum.'},
+       {pronoun:'tu', form:'abbia / sia + p.p.', example:'Spero che tu abbia capito.', tr:'Anladığını umuyorum.'},
+       {pronoun:'lui/lei', form:'abbia / sia + p.p.', example:'È probabile che sia partito.', tr:'Gitmiş olması muhtemel.'},
+       {pronoun:'noi', form:'abbiamo / siamo + p.p.', example:'Penso che noi abbiamo migliorato.', tr:'Geliştiğimizi düşünüyorum.'},
+       {pronoun:'voi', form:'abbiate / siate + p.p.', example:'Mi sembra che abbiate capito.', tr:'Anladığınız gibi geliyor.'},
+       {pronoun:'loro', form:'abbiano / siano + p.p.', example:'Dubito che siano arrivati.', tr:'Gelmiş olduklarından şüphe duyuyorum.'}
+     ],
+     note:'Congiuntivo passato = avere/essere (congiuntivo presente) + participio passato. Kullanım bağlamı: "credo che", "penso che", "spero che", "è possibile che" vb.'},
+    {id:'g2', title:'Periodo Ipotetico (Koşul Cümleleri)', title_en:'Conditional Sentences',
+     explanation:'İtalyancada üç tür koşul cümlesi vardır: gerçek (reale), olası olmayan (irreale nel presente) ve geçmişe yönelik (irreale nel passato).',
+     table:[
+       {pronoun:'Reale (gerçek)', form:'se + presente → futuro', example:'Se studi, impari.', tr:'Çalışırsan öğrenirsin.'},
+       {pronoun:'Potenziale (olası)', form:'se + congiuntivo imp. → condiz.', example:'Se studiassi di più, parlerei meglio.', tr:'Daha çok çalışsaydım daha iyi konuşurdum.'},
+       {pronoun:'Irreale (imkansız)', form:'se + congiuntivo trap. → condiz. pass.', example:'Se avessi studiato, avrei superato l\'esame.', tr:'Çalışmış olsaydım sınavı geçerdim.'},
+       {pronoun:'se + presente', form:'presente → presente/futuro', example:'Se ho tempo, vengo.', tr:'Vaktim olursa gelirim.'},
+       {pronoun:'se + imperfetto', form:'imperfetto → condizionale', example:'Se avessi soldi, viaggerei.', tr:'Param olsaydı seyahat ederdim.'},
+       {pronoun:'se + trapassato', form:'trapassato → cond. passato', example:'Se l\'avessi saputo, sarei venuto.', tr:'Bilseydim gelirdim.'}
+     ],
+     note:'En yaygın hata: "se + condizionale" kullanmak — bu yanlıştır! "Se verrei" değil, "se venissi" doğrudur.'},
+    {id:'g3', title:'Dil Öğrenme Stratejileri Üzerine Konuşma', title_en:'Talking About Language Learning Strategies',
+     explanation:'Kendi dil öğrenme sürecini İtalyanca anlatabilmek ileri düzey bir beceridir. Bu kalıplar hem sözlü hem de yazılı anlatımda kullanılabilir.',
+     table:[
+       {pronoun:'Ho imparato + cosa', form:'passato prossimo', example:'Ho imparato il congiuntivo.', tr:'Koşul kipini öğrendim.'},
+       {pronoun:'Mi piace + infinito', form:'mi piace + fare', example:'Mi piace leggere in italiano.', tr:'İtalyanca okumayı severim.'},
+       {pronoun:'Ho difficoltà con', form:'ho difficoltà con', example:'Ho difficoltà con il congiuntivo.', tr:'Koşul kipiyle güçlük çekiyorum.'},
+       {pronoun:'Sono bravo/a a', form:'essere bravo/a a', example:'Sono brava a capire, ma non a parlare.', tr:'Anlamada iyiyim ama konuşmada değil.'},
+       {pronoun:'Ho bisogno di', form:'ho bisogno di + infinito', example:'Ho bisogno di praticare la pronuncia.', tr:'Telaffuzu pratik yapmam gerekiyor.'},
+       {pronoun:'Voglio migliorare', form:'volere + infinito', example:'Voglio migliorare il mio accento.', tr:'Aksanımı geliştirmek istiyorum.'}
+     ],
+     note:'Dil öğrenirken "già" (zaten), "ancora" (henüz), "non ancora" (henüz değil) zarflarını kullanmak ilerlemenizi doğru şekilde ifade eder.'}
+  ],
+  speaking:[
+    {id:'sp1', en:'Ho imparato molto italiano quest\'anno e voglio continuare a migliorare.', tr:'Bu yıl çok İtalyanca öğrendim ve gelişmeye devam etmek istiyorum.', prompt:'Bu yıl öğrendiklerinizi değerlendirin.'},
+    {id:'sp2', en:'Se avessi più tempo libero, studierei l\'italiano ogni giorno.', tr:'Daha fazla boş zamanım olsaydı her gün İtalyanca çalışırdım.', prompt:'Bir koşul cümlesiyle dil öğrenme alışkanlığınızı anlatın.'},
+    {id:'sp3', en:'Penso che la perseveranza sia la chiave per padroneggiare una lingua.', tr:'Bir dili hakketmenin anahtarının azim olduğunu düşünüyorum.', prompt:'Dil öğrenmede neyin önemli olduğunu ifade edin.'},
+    {id:'sp4', en:'Ho difficoltà con il congiuntivo, ma sto migliorando ogni giorno.', tr:'Koşul kipiyle güçlük çekiyorum ama her gün gelişiyorum.', prompt:'Zorlandığınız bir dil konusunu anlatın.'},
+    {id:'sp5', en:'La lettura e l\'ascolto sono i metodi migliori per arricchire il vocabolario.', tr:'Okuma ve dinleme, kelime dağarcığını zenginleştirmenin en iyi yöntemleridir.', prompt:'Dil öğrenme yöntemlerinizi paylaşın.'}
+  ],
+  dialogues:[
+    {id:'d1', title:'İlerlemeyi Değerlendirme', title_en:'Evaluating Progress',
+     lines:[
+       {speaker:'A', gender:'f', en:'Professoressa, posso chiederle una valutazione del mio italiano?', tr:'Profesörüm, İtalyancamın bir değerlendirmesini isteyebilir miyim?',
+        bd:[{ro:'posso chiederle',tr:'size sorabilir miyim'},{ro:'una valutazione',tr:'bir değerlendirme'},{ro:'del mio italiano',tr:'İtalyancamın'}]},
+       {speaker:'B', gender:'f', en:'Certo! Ha fatto grandi progressi. La grammatica è migliorata molto.', tr:'Elbette! Büyük ilerleme kaydettiniz. Gramer çok gelişti.',
+        bd:[{ro:'Ha fatto grandi progressi',tr:'büyük ilerleme kaydettiniz'},{ro:'La grammatica',tr:'gramer'},{ro:'è migliorata molto',tr:'çok gelişti'}]},
+       {speaker:'A', gender:'f', en:'Grazie! Però ho ancora difficoltà con il congiuntivo.', tr:'Teşekkürler! Ama hâlâ koşul kipiyle güçlük çekiyorum.',
+        bd:[{ro:'Grazie',tr:'teşekkürler'},{ro:'Però',tr:'ama'},{ro:'ho ancora difficoltà',tr:'hâlâ güçlük çekiyorum'},{ro:'con il congiuntivo',tr:'koşul kipiyle'}]},
+       {speaker:'B', gender:'f', en:'È normale. Si impara con la pratica. Penso che lei abbia bisogno di più lettura.', tr:'Bu normal. Pratikle öğrenilir. Daha fazla okumaya ihtiyacı olduğunu düşünüyorum.',
+        bd:[{ro:'È normale',tr:'bu normal'},{ro:'Si impara con la pratica',tr:'pratikle öğrenilir'},{ro:'lei abbia bisogno di',tr:'ihtiyacı olduğunu'},{ro:'più lettura',tr:'daha fazla okuma'}]},
+       {speaker:'A', gender:'f', en:'Seguirò il suo consiglio. Voglio raggiungere il livello C1 entro un anno.', tr:'Tavsiyenizi uygulayacağım. Bir yıl içinde C1 seviyesine ulaşmak istiyorum.',
+        bd:[{ro:'Seguirò il suo consiglio',tr:'tavsiyenizi uygulayacağım'},{ro:'Voglio raggiungere',tr:'ulaşmak istiyorum'},{ro:'il livello C1',tr:'C1 seviyesine'},{ro:'entro un anno',tr:'bir yıl içinde'}]},
+       {speaker:'B', gender:'f', en:'Con la sua motivazione e perseveranza, ce la farà sicuramente!', tr:'Motivasyonunuz ve azminizle kesinlikle başaracaksınız!',
+        bd:[{ro:'Con la sua motivazione',tr:'motivasyonunuzla'},{ro:'e perseveranza',tr:'ve azminizle'},{ro:'ce la farà',tr:'başaracaksınız'},{ro:'sicuramente',tr:'kesinlikle'}]}
+     ]}
+  ],
+  listening:[
+    {id:'li1', audio:'', transcript:'Imparare l\'italiano è un viaggio meraviglioso. All\'inizio si affrontano le basi: l\'alfabeto, i numeri, i saluti. Poi si costruiscono frasi semplici e si impara a descrivere la propria vita quotidiana. Man mano che si progredisce, si affrontano strutture più complesse come il congiuntivo, il condizionale e il passato remoto. La chiave del successo è la costanza: studiare un po\' ogni giorno è più efficace che studiare tanto una volta alla settimana. La lettura, l\'ascolto e la conversazione con parlanti nativi accelerano enormemente il processo di apprendimento. Con motivazione e perseveranza, chiunque può raggiungere un livello avanzato.',
+     tr:'İtalyanca öğrenmek muhteşem bir yolculuktur. Başlangıçta temellerle yüzleşilir: alfabe, sayılar, selamlaşmalar. Ardından basit cümleler kurulur ve günlük yaşam anlatılmaya başlanır. İlerledikçe koşul kipi, şartlı kip ve uzak geçmiş zaman gibi daha karmaşık yapılarla karşılaşılır. Başarının anahtarı sürekli çalışmaktır: her gün biraz çalışmak, haftada bir çok çalışmaktan daha etkilidir. Okuma, dinleme ve anadili İtalyanca olan kişilerle konuşma öğrenme sürecini büyük ölçüde hızlandırır. Motivasyon ve azimle herkes ileri düzeye ulaşabilir.',
+     questions:[
+       {q:'Dil öğrenmede hangi strateji daha etkilidir?', opts:['Haftada bir çok çalışmak','Her gün biraz çalışmak','Sadece dilbilgisi öğrenmek','Yalnızca film izlemek'], answer:1, tr:'Metin "studiare un po\' ogni giorno è più efficace" demektedir.'},
+       {q:'Hangi yapılar ileri düzeyde öğrenilir?', opts:['Alfabe ve sayılar','Selamlaşmalar','Congiuntivo, condizionale, passato remoto','Renkler ve hayvanlar'], answer:2, tr:'Metin ileri düzey yapılar olarak "congiuntivo, condizionale e passato remoto" sayar.'},
+       {q:'Öğrenmeyi hızlandıran şeyler nelerdir?', opts:['Sadece dilbilgisi kitabı','Okuma, dinleme ve anadil konuşucularıyla konuşma','Sadece yazma pratiği','Film izlemek'], answer:1, tr:'Metin "La lettura, l\'ascolto e la conversazione con parlanti nativi" demektedir.'}
+     ]}
+  ],
   tones:[]
 };
 LESSONS[49] = L49;

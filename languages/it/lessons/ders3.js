@@ -71,79 +71,170 @@ const L3 = {
       id:'w4',
       en:'quattro',
       ro:'KWAT-tro',
-      tr:'dört'
+      tr:'dört',
+      tip:'4 sayısı.',
+      ctx:'Sayma, miktar.',
+      examples:[{
+        en:'Quattro stagioni, per favore.',
+        tr:'Quattro Stagioni (pizza), lütfen.',
+        bd:[{ro:'Quattro',tr:'dört',role:'number',note:'Ünlü pizza çeşidi — 4 malzeme.'}]
+      }]
     },
     {
       id:'w5',
       en:'cinque',
       ro:'CHIN-kwe',
-      tr:'beş'
+      tr:'beş',
+      tip:'5 sayısı.',
+      ctx:'Sayma, miktar.',
+      examples:[{
+        en:'Costa cinque euro.',
+        tr:'Beş euro.',
+        bd:[{ro:'cinque euro',tr:'beş euro',role:'number',note:'Miktar + para birimi.'}]
+      }]
     },
     {
       id:'w6',
       en:'sei',
       ro:'say',
-      tr:'altı'
+      tr:'altı',
+      tip:'6 sayısı.',
+      ctx:'Sayma, miktar.',
+      examples:[{
+        en:'Sei caffè, per favore.',
+        tr:'Altı kahve, lütfen.',
+        bd:[{ro:'Sei',tr:'altı',role:'number',note:'sei + isim (artikel düşer sayıyla).'}]
+      }]
     },
     {
       id:'w7',
       en:'sette',
       ro:'SET-te',
-      tr:'yedi'
+      tr:'yedi',
+      tip:'7 sayısı.',
+      ctx:'Sayma, gün, saat.',
+      examples:[{
+        en:'Sono le sette.',
+        tr:'Saat yedi.',
+        bd:[{ro:'sette',tr:'yedi',role:'number',note:'Saati anlatmak.'}]
+      }]
     },
     {
       id:'w8',
       en:'otto',
       ro:'OT-to',
-      tr:'sekiz'
+      tr:'sekiz',
+      tip:'8 sayısı.',
+      ctx:'Saat, adet.',
+      examples:[{
+        en:'Alle otto di mattina.',
+        tr:'Sabah sekizde.',
+        bd:[{ro:'alle otto',tr:'sekizde',role:'time',note:'alle = saat (çoğul). otto = sekiz.'}]
+      }]
     },
     {
       id:'w9',
       en:'nove',
       ro:'NO-ve',
-      tr:'dokuz'
+      tr:'dokuz',
+      tip:'9 sayısı.',
+      ctx:'Sayma, saat.',
+      examples:[{
+        en:'La riunione è alle nove.',
+        tr:'Toplantı saat dokuzda.',
+        bd:[{ro:'alle nove',tr:'dokuzda',role:'time',note:'Saat ifadesi.'}]
+      }]
     },
     {
       id:'w10',
       en:'dieci',
       ro:'DYE-chi',
-      tr:'on'
+      tr:'on',
+      tip:'10 sayısı.',
+      ctx:'Sayma, fiyat.',
+      examples:[{
+        en:'Costa dieci euro.',
+        tr:'On euro.',
+        bd:[{ro:'dieci euro',tr:'on euro',role:'currency',note:'Fiyat ifadesi.'}]
+      }]
     },
     {
       id:'w11',
       en:'undici',
       ro:'UN-di-chi',
-      tr:'on bir'
+      tr:'on bir',
+      tip:'11 — özel form.',
+      ctx:'Sayma, saat.',
+      examples:[{
+        en:'Il treno parte alle undici.',
+        tr:'Tren on birde kalkıyor.',
+        bd:[{ro:'alle undici',tr:'on birde',role:'time',note:'undici: 11, özel form.'}]
+      }]
     },
     {
       id:'w12',
       en:'dodici',
       ro:'DO-di-chi',
-      tr:'on iki'
+      tr:'on iki',
+      tip:'12 — ögle saati.',
+      ctx:'Öğle, sayma.',
+      examples:[{
+        en:'A mezzogiorno, cioè alle dodici.',
+        tr:'Öğlen, yani on ikide.',
+        bd:[{ro:'dodici',tr:'on iki',role:'number',note:'mezzogiorno = öğlen = 12:00.'}]
+      }]
     },
     {
       id:'w13',
       en:'venti',
       ro:'VEN-ti',
-      tr:'yirmi'
+      tr:'yirmi',
+      tip:'20 onluğu.',
+      ctx:'Yaş, fiyat, adet.',
+      examples:[{
+        en:'Ho venti anni.',
+        tr:'Yirmi yaşındayım.',
+        bd:[{ro:'venti anni',tr:'yirmi yaş',role:'number',note:'avere + yaş — İtalyancada yaş essere değil avere ile.'}]
+      }]
     },
     {
       id:'w14',
       en:'trenta',
       ro:'TREN-ta',
-      tr:'otuz'
+      tr:'otuz',
+      tip:'30 onluğu.',
+      ctx:'Yaş, fiyat.',
+      examples:[{
+        en:'Costa trenta euro.',
+        tr:'Otuz euro.',
+        bd:[{ro:'trenta euro',tr:'otuz euro',role:'currency',note:'Onluk sayı + para.'}]
+      }]
     },
     {
       id:'w15',
       en:'cento',
       ro:'CHEN-to',
-      tr:'yüz'
+      tr:'yüz',
+      tip:'100.',
+      ctx:'Büyük rakamlar.',
+      examples:[{
+        en:'Cento per cento italiano.',
+        tr:'Yüzde yüz İtalyan.',
+        bd:[{ro:'Cento per cento',tr:'Yüzde yüz',role:'phrase',note:'Deyimsel kullanım.'}]
+      }]
     },
     {
       id:'w16',
       en:'mille',
       ro:'MIL-le',
-      tr:'bin'
+      tr:'bin',
+      tip:'1000. Çoğul: mila.',
+      ctx:'Para, nüfus.',
+      examples:[{
+        en:'Grazie mille!',
+        tr:'Çok teşekkürler! (Bin teşekkür!)',
+        bd:[{ro:'mille',tr:'bin',role:'number',note:'Deyim: Grazie mille = çok teşekkürler.'}]
+      }]
     },
     {
       id:'w17',

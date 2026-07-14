@@ -721,7 +721,7 @@ const UI_LOCAL = {
   tr:{
     // Nav
     nav_lessons:'📚 Dersler', nav_test:'📝 Test', nav_translate:'🌐 Çeviri',
-    nav_list:'📋 Liste', nav_review:'🔄 Tekrar', nav_add:'➕ Ekle',
+    nav_list:'📋 Liste', nav_review:'🔄 Tekrar', nav_add:'➕ Ekle', nav_settings:'⚙️ Ayarlar',
     // Sekmeler
     tab_words:'Sözcükler', tab_tones:'Telaffuz', tab_grammar:'Gramer',
     tab_speaking:'Konuşma', tab_dialogue:'Diyalog', tab_listening:'Dinleme',
@@ -843,7 +843,7 @@ const UI_LOCAL = {
   en:{
     // Nav
     nav_lessons:'📚 Lessons', nav_test:'📝 Test', nav_translate:'🌐 Translate',
-    nav_list:'📋 Starred', nav_review:'🔄 Review', nav_add:'➕ Add',
+    nav_list:'📋 Starred', nav_review:'🔄 Review', nav_add:'➕ Add', nav_settings:'⚙️ Settings',
     // Tabs
     tab_words:'Words', tab_tones:'Pronunciation', tab_grammar:'Grammar',
     tab_speaking:'Speaking', tab_dialogue:'Dialogue', tab_listening:'Listening',
@@ -1247,6 +1247,7 @@ function setLang(lang){
   <button class="nbtn" onclick="switchView('list',this)" data-lk="nav_list">📋 Liste</button>
   <button class="nbtn" onclick="switchView('review',this)" id="review-nav-btn" data-lk="nav_review">🔄 Tekrar <span id="review-badge" style="display:none;background:#ef4444;color:white;border-radius:8px;padding:0 5px;font-size:10px;margin-left:2px;">0</span></button>
   <button class="nbtn" onclick="switchView('add',this)" data-lk="nav_add">➕ Ekle</button>
+  <button class="nbtn" onclick="openModal('settings-overlay')" data-lk="nav_settings">⚙️ Ayarlar</button>
 </nav>
 
 <main>
