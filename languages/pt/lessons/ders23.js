@@ -1,94 +1,93 @@
-const L23 = {
-  title: "Tecnologia e Internet",
+var L23 = {
   words: [
-    { en: "o celular", tr: "cep telefonu", pron: "u selular", bd: "eril; smartphone = akıllı telefon" },
-    { en: "o computador", tr: "bilgisayar", pron: "u kõputador", bd: "eril; laptop = notebook" },
-    { en: "a internet", tr: "internet", pron: "a ĩterneti", bd: "dişil; ter internet = internet bağlantısı olmak" },
-    { en: "o aplicativo / o app", tr: "uygulama", pron: "u aplikativu / u api", bd: "eril; BP: aplicativo; app da günlük" },
-    { en: "a rede social", tr: "sosyal medya", pron: "a hédshi sosyal", bd: "dişil; redes sociais = çoğul" },
-    { en: "o site / o website", tr: "web sitesi", pron: "u saiti", bd: "eril" },
-    { en: "o e-mail", tr: "e-posta", pron: "u imayw", bd: "eril; mandar e-mail = e-posta göndermek" },
-    { en: "a senha", tr: "şifre / parola", pron: "a sẽnya", bd: "dişil; senha forte = güçlü şifre" },
-    { en: "o wi-fi", tr: "wi-fi", pron: "u vifi", bd: "eril; Tem wi-fi? = Wi-Fi var mı?" },
-    { en: "a bateria", tr: "pil / batarya", pron: "a baterĩa", bd: "dişil; a bateria acabou = batarya bitti" },
-    { en: "o carregador", tr: "şarj aleti", pron: "u karegador", bd: "eril; carregar = şarj etmek" },
-    { en: "baixar", tr: "indirmek (dosya)", pron: "bayshár", bd: "düzenli -AR; baixo o app = uygulamayı indiriyorum" },
-    { en: "instalar", tr: "yüklemek", pron: "ĩshtalár", bd: "düzenli -AR" },
-    { en: "compartilhar", tr: "paylaşmak", pron: "kõpartilyyár", bd: "düzenli -AR; compartilho = paylaşıyorum" },
-    { en: "curtir", tr: "beğenmek (sosyal medya)", pron: "kurtír", bd: "BP İngilizce 'like' karşılığı" },
-    { en: "seguir", tr: "takip etmek", pron: "segír", bd: "düzensiz -IR; sigo = takip ediyorum" },
-    { en: "postar", tr: "paylaşım yapmak (gönderi)", pron: "postár", bd: "düzenli -AR; postar uma foto" },
-    { en: "a inteligência artificial", tr: "yapay zeka", pron: "a ĩtelijẽnsia artifisjal", bd: "dişil; IA = kısaltma" },
-    { en: "a privacidade", tr: "gizlilik / mahremiyet", pron: "a privashidadshi", bd: "dişil" },
-    { en: "hackear", tr: "hacklemek / siber saldırı", pron: "hakiár", bd: "İngilizce'den alıntı fiil" }
+    {en:"mobile phone", tr:"cep telefonu", pron:"tɨliˈmovɨl", bd:"telemóvel"},
+    {en:"computer", tr:"bilgisayar", pron:"kumputɐˈdoɾ", bd:"computador"},
+    {en:"laptop", tr:"dizüstü bilgisayar", pron:"pɔɾˈtatil", bd:"portátil"},
+    {en:"tablet", tr:"tablet", pron:"ˈtɐblɨt", bd:"tablet"},
+    {en:"internet", tr:"internet", pron:"ˈĩtɨɾnɛt", bd:"internet"},
+    {en:"app", tr:"uygulama", pron:"ɐpliˈkɐsɐ̃u̯", bd:"aplicação"},
+    {en:"social media", tr:"sosyal medya", pron:"ˈɾɛdɨʃ suˈsjɐɪ̯ʃ", bd:"redes sociais"},
+    {en:"email", tr:"e-posta", pron:"iˈmɐɪ̯l", bd:"email / correio eletrónico"},
+    {en:"website", tr:"web sitesi", pron:"ˈsitu", bd:"site"},
+    {en:"password", tr:"şifre", pron:"pɐˈlavɾɐ ˈʃɐvɨ", bd:"palavra-passe"},
+    {en:"download", tr:"indirmek", pron:"dɨʃkɐɾɾɨˈɡaɾ", bd:"descarregar"},
+    {en:"upload", tr:"yüklemek", pron:"kɐɾɾɨˈɡaɾ", bd:"carregar"},
+    {en:"charger", tr:"şarj aleti", pron:"kɐɾɾɨɡɐˈdoɾ", bd:"carregador"},
+    {en:"battery", tr:"pil/batarya", pron:"bɐtɨˈɾiɐ", bd:"bateria"},
+    {en:"screen", tr:"ekran", pron:"ɨˈkɾɐ̃", bd:"ecrã"},
+    {en:"keyboard", tr:"klavye", pron:"tɨˈklɐdu", bd:"teclado"},
+    {en:"printer", tr:"yazıcı", pron:"impɾɨˈsoɾɐ", bd:"impressora"},
+    {en:"video call", tr:"görüntülü arama", pron:"viˈdɛu ʃɐˈmɐdɐ", bd:"videochamada"},
+    {en:"MB Way", tr:"MB Way (ödeme uyg.)", pron:"ˈɛm ˈbe ˈwɐɪ̯", bd:"MB Way"},
+    {en:"digital signature", tr:"dijital imza", pron:"ɐsiˈnɐtuɾɐ diʒiˈtal", bd:"assinatura digital"}
   ],
   grammar: [
     {
-      title: "Teknoloji Fiilleri — Günlük Dijital Eylemler",
-      explanation: "Dijital hayatta sık kullanılan fiiller: BAIXAR (indirmek), INSTALAR (yüklemek), DELETAR/APAGAR (silmek), SALVAR (kaydetmek), ENVIAR (göndermek), COMPARTILHAR (paylaşmak). Çoğu -AR düzenli fiildir.",
+      title: "Tecnologia em Portugal — EP Terminoloji",
+      explanation: "EP'ye özgü teknoloji terimleri. 'Telemóvel' (cep telefonu), 'portátil' (dizüstü), 'ecrã' (ekran), 'descarregar' (indirmek) Avrupa Portekizcesi'ne özgüdür.",
       table: [
-        { pronoun: "Baixar", form: "indirmek", example: "Vou baixar o aplicativo.", tr: "Uygulamayı indireceğim." },
-        { pronoun: "Compartilhar", form: "paylaşmak", example: "Compartilhou a foto no Instagram.", tr: "Fotoğrafı Instagram'da paylaştı." },
-        { pronoun: "Deletar / Apagar", form: "silmek", example: "Delete o arquivo.", tr: "Dosyayı sil." },
-        { pronoun: "Salvar / Guardar", form: "kaydetmek", example: "Salva o documento antes de sair.", tr: "Çıkmadan önce belgeyi kaydet." },
-        { pronoun: "Atualizar", form: "güncellemek", example: "Precisa atualizar o sistema.", tr: "Sistemi güncellemeniz gerekiyor." },
-        { pronoun: "Reiniciar", form: "yeniden başlatmak", example: "Reinicie o celular.", tr: "Telefonu yeniden başlatın." }
+        {pronoun:"telemóvel", form:"cep telefonu (EP)", example:"O meu telemóvel está sem bateria.", tr:"Telefonumun bataryası bitti."},
+        {pronoun:"portátil", form:"dizüstü (EP)", example:"Trabalho com o portátil em casa.", tr:"Evde dizüstü bilgisayarla çalışıyorum."},
+        {pronoun:"ecrã", form:"ekran (EP)", example:"O ecrã do telemóvel partiu-se.", tr:"Telefonun ekranı kırıldı."},
+        {pronoun:"descarregar", form:"indirmek (EP)", example:"Descarreguei a aplicação do banco.", tr:"Bankanın uygulamasını indirdim."},
+        {pronoun:"MB Way", form:"mobil ödeme (EP)", example:"Paga com MB Way — é mais fácil!", tr:"MB Way ile öde — daha kolay!"},
+        {pronoun:"palavra-passe", form:"şifre (EP)", example:"Não partilhes a tua palavra-passe.", tr:"Şifreni kimseyle paylaşma."}
       ],
-      note: "BP'de İngilizce teknoloji kelimeleri çok yaygın: 'printar' (yazdırmak), 'deletar' (silmek), 'checar' (kontrol etmek)."
+      note: "Portekiz'de 'MB Way' (Multibanco Way) mobil ödeme uygulaması çok yaygındır. Kişiye para göndermek için sadece telefon numarası yeterlidir. Chave Móvel Digital (CMD) de yaygın dijital kimlik doğrulama aracıdır."
     },
     {
-      title: "İnternet ve Sosyal Medya Dili",
-      explanation: "Brezilya sosyal medyasında kullanılan kelimeler hem Portekizce hem İngilizce kaynaklıdır. WhatsApp Brezilya'da son derece yaygındır — mesajlaşma için 'mandar mensagem' (mesaj göndermek) kullanılır. Instagram ve TikTok da çok popülerdir.",
+      title: "Verbos de Tecnologia — Teknoloji Fiilleri",
+      explanation: "Teknoloji kullanımıyla ilgili fiiller ve kalıplar.",
       table: [
-        { pronoun: "Beğeni", form: "curtir / dar like", example: "Curtiu minha foto!", tr: "Fotoğrafımı beğendi!" },
-        { pronoun: "Takip", form: "seguir / seguidor", example: "Me segue no Instagram?", tr: "Instagram'da beni takip eder misin?" },
-        { pronoun: "Paylaşım", form: "postar / publicar", example: "Postei uma foto de viagem.", tr: "Seyahat fotoğrafı paylaştım." },
-        { pronoun: "Mesaj", form: "mandar mensagem / chamar", example: "Me manda mensagem no zap.", tr: "WhatsApp'tan mesaj at." },
-        { pronoun: "Story", form: "story / storie", example: "Coloquei nos stories.", tr: "Story'e koydum." },
-        { pronoun: "Viral", form: "virar viral", example: "O vídeo viralizou.", tr: "Video viral oldu." }
+        {pronoun:"ligar", form:"açmak/bağlamak", example:"Liga o computador e entra na reunião.", tr:"Bilgisayarı aç ve toplantıya gir."},
+        {pronoun:"desligar", form:"kapatmak/bağlantıyı kesmek", example:"Desliga o telemóvel durante o filme.", tr:"Film sırasında telefonu kapat."},
+        {pronoun:"carregar", form:"şarj etmek / yüklemek", example:"Carrega o telemóvel antes de sair.", tr:"Çıkmadan önce telefonu şarj et."},
+        {pronoun:"enviar", form:"göndermek", example:"Envia-me o ficheiro por email.", tr:"Dosyayı e-postayla gönder."},
+        {pronoun:"pesquisar", form:"aramak/araştırmak", example:"Pesquisa no Google Maps.", tr:"Google Maps'te ara."},
+        {pronoun:"atualizar", form:"güncellemek", example:"Tens de atualizar o sistema operativo.", tr:"İşletim sistemini güncellemen gerekiyor."}
       ],
-      note: "'Zap' veya 'WhatsApp' BP günlük konuşmasında aynı anlama gelir. 'Chama no zap!' = WhatsApp'tan yaz!"
+      note: "EP'de 'pesquisar' (aramak/araştırmak) ve 'procurar' (bulmaya çalışmak) arasındaki fark: 'pesquisar' daha akademik/teknik, 'procurar' günlük kullanımda."
     },
     {
-      title: "Koşullu — SE + Presente/Futuro (Şart Cümleleri)",
-      explanation: "Teknoloji bağlamında koşullu ifadeler çok işe yarar: 'Se você baixar o app, fica mais fácil' = Uygulamayı indirirsen daha kolay olur. SE + presente → presente/futuro yapısı kullanılır.",
+      title: "Preposições com Tecnologia — Edatlar",
+      explanation: "Teknoloji kullanımını ifade ederken sıklıkla kullanılan edat yapıları.",
       table: [
-        { pronoun: "Se + presente", form: "...ise/eğer", example: "Se tiver internet, funciona.", tr: "İnternet varsa, çalışır." },
-        { pronoun: "Se + presente", form: "koşul", example: "Se perder a senha, reseta.", tr: "Şifreyi unutursanız, sıfırlayın." },
-        { pronoun: "Se não", form: "eğer değilse", example: "Se não funcionar, reinicie.", tr: "Çalışmazsa, yeniden başlatın." },
-        { pronoun: "Quando (ne zaman)", form: "ne zaman/...-ınca", example: "Quando chegar em casa, manda.", tr: "Eve gelince gönder." },
-        { pronoun: "Caso (durumda)", form: "...durumunda", example: "Caso precise de ajuda, me chama.", tr: "Yardım gerekirse, beni ara." },
-        { pronoun: "Desde que (yeter ki)", form: "yeter ki", example: "Desde que tenha bateria.", tr: "Yeter ki şarj olsun." }
+        {pronoun:"por email", form:"e-postayla", example:"Recebi a confirmação por email.", tr:"Onayı e-postayla aldım."},
+        {pronoun:"via telemóvel", form:"telefonla", example:"Pago via MB Way pelo telemóvel.", tr:"Telefonla MB Way ile ödüyorum."},
+        {pronoun:"em linha", form:"çevrimiçi", example:"A reunião é em linha via Zoom.", tr:"Toplantı Zoom üzerinden çevrimiçi."},
+        {pronoun:"por videochamada", form:"görüntülü aramayla", example:"Falo com a família por videochamada.", tr:"Aileyle görüntülü arama yapıyorum."},
+        {pronoun:"na internet", form:"internette", example:"Encontrei a receita na internet.", tr:"Tarifi internette buldum."},
+        {pronoun:"com o portátil", form:"dizüstüyle", example:"Trabalho com o portátil em qualquer sítio.", tr:"Her yerde dizüstüyle çalışabilirim."}
       ],
-      note: "Imperfect subjunctive (se + imperfeito) gelişmiş koşullar için: 'Se tivesse internet, mandaria.' = İnternetim olsaydı, gönderirdim."
+      note: "Portekiz'de 'Chave Móvel Digital' (CMD) devlet sistemlerine erişmek için kullanılan dijital kimlik aracıdır. Vergi beyannamesi, sosyal güvenlik ve Portal das Finanças bu sistemle erişilir."
     }
   ],
   speaking: [
-    { q: "Wi-Fi şifresini nasıl sorarsınız?", a: "Qual é a senha do wi-fi?" },
-    { q: "'Bataryam bitti' nasıl söylersiniz?", a: "Minha bateria acabou. Tem carregador?" },
-    { q: "Birini Instagram'da takip etmek istiyorsunuz.", a: "Me segue no Instagram? @[kullanıcı adı]" },
-    { q: "'Uygulamayı indirin' nasıl söylersiniz?", a: "Baixa o aplicativo." },
-    { q: "'İnternet yoksa, çalışmaz' nasıl?", a: "Se não tiver internet, não funciona." }
+    {q:"Usas muito as redes sociais?", a:"Sim, uso Instagram e LinkedIn. Não tenho Facebook — parece ultrapassado para a minha geração."},
+    {q:"Qual é a tua aplicação favorita no telemóvel?", a:"Gosto muito do Google Maps e do MB Way. São essenciais no dia a dia."},
+    {q:"O que é o MB Way?", a:"É uma aplicação portuguesa de pagamento móvel. Podes enviar dinheiro, pagar em lojas e fazer compras online."},
+    {q:"Sabes programar?", a:"Sei um pouco. Aprendi Python e estou a aprender JavaScript. É muito útil no mercado de trabalho atual."},
+    {q:"Preferes portátil ou tablet para trabalhar?", a:"Prefiro portátil para trabalhar — tem teclado e é mais prático para documentos e reuniões em linha."}
   ],
   dialogues: [
     {
-      title: "Teknoloji Sorunu",
+      title: "Problema com o Telemóvel",
       lines: [
-        { speaker: "Paulo", text: "Amiga, meu celular travou de novo!", tr: "Kız kardeşim, telefonum yine dondu!" },
-        { speaker: "Mariana", text: "Que chato! Tenta reiniciar.", tr: "Ne sıkıcı! Yeniden başlatmayı dene." },
-        { speaker: "Paulo", text: "Já tentei! Não adianta. E tá sem bateria também.", tr: "Denedim! İşe yaramıyor. Bir de şarjı bitti." },
-        { speaker: "Mariana", text: "Nossa! Vem carregar aqui. Tens o carregador?", tr: "Vay be! Buraya gel şarj et. Şarj aleti var mı?" },
-        { speaker: "Paulo", text: "Não! Esqueci em casa. Você tem o mesmo modelo?", tr: "Yok! Evde unutmuşum. Aynı modelin var mı?" },
-        { speaker: "Mariana", text: "Tenho sim! Toma, usa o meu. Depois instala um app de backup.", tr: "Var! Al, benimkini kullan. Sonra bir yedekleme uygulaması yükle." }
+        {speaker:"Cliente", text:"Bom dia! O meu telemóvel caiu e o ecrã partiu-se."},
+        {speaker:"Técnico", text:"Bom dia! Que modelo é?"},
+        {speaker:"Cliente", text:"É um Samsung Galaxy S23. Tenho garantia ainda."},
+        {speaker:"Técnico", text:"Vou verificar. Os danos físicos geralmente não estão cobertos pela garantia."},
+        {speaker:"Cliente", text:"Quanto custa reparar o ecrã?"},
+        {speaker:"Técnico", text:"Depende. Um ecrã original custa entre 150 e 200 euros. Temos também opções mais baratas."}
       ]
     }
   ],
   listening: {
-    text: "O Brasil é um dos países com maior uso de redes sociais no mundo. Os brasileiros passam em média quatro horas por dia nas redes, especialmente no Instagram, TikTok e WhatsApp. O WhatsApp é o aplicativo mais popular — quase todos os brasileiros o usam para se comunicar, inclusive empresas e profissionais de saúde. A inteligência artificial também está crescendo muito — muitas empresas brasileiras já usam IA para atendimento ao cliente e análise de dados.",
+    text: "Portugal tem uma das mais altas taxas de penetração de smartphones na Europa. O MB Way tornou-se o método de pagamento móvel mais popular, usado por milhões de portugueses. O governo português oferece serviços digitais avançados — é possível fazer a declaração de IRS, aceder ao SNS24 e assinar documentos legalmente com a Chave Móvel Digital. Portugal foi considerado um dos melhores destinos europeus para trabalho remoto, atraindo nómadas digitais de todo o mundo.",
     questions: [
-      { q: "Brezilyalılar günde ortalama kaç saat sosyal medyada geçiriyor?", a: "Dört saat" },
-      { q: "En popüler uygulama hangisi?", a: "WhatsApp" },
-      { q: "Yapay zeka ne için kullanılıyor?", a: "Müşteri hizmetleri ve veri analizi" }
+      {q:"O que é o MB Way?", a:"O método de pagamento móvel mais popular em Portugal."},
+      {q:"O que permite a Chave Móvel Digital?", a:"Assinar documentos legalmente e aceder a serviços digitais do governo."},
+      {q:"Porque atrai Portugal nómadas digitais?", a:"Foi considerado um dos melhores destinos europeus para trabalho remoto."}
     ]
   }
 };

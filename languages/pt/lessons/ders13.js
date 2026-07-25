@@ -1,94 +1,93 @@
-const L13 = {
-  title: "Tempo e Estações do Ano",
+var L13 = {
   words: [
-    { en: "o tempo", tr: "hava durumu / zaman", pron: "u tẽmpu", bd: "bağlama göre iki anlam" },
-    { en: "o sol", tr: "güneş", pron: "u sol", bd: "eril; Faz sol. = Güneşli." },
-    { en: "a chuva", tr: "yağmur", pron: "a shuva", bd: "dişil; Está chovendo. = Yağmur yağıyor." },
-    { en: "o vento", tr: "rüzgar", pron: "u vẽntu", bd: "eril; Está ventando. = Rüzgar esiyor." },
-    { en: "a nuvem", tr: "bulut", pron: "a nuvẽy", bd: "dişil; çoğul: nuvens; nublado = bulutlu" },
-    { en: "a neblina / o nevoeiro", tr: "sis", pron: "a neblĩna / u nevweyru", bd: "dişil/eril" },
-    { en: "o trovão", tr: "gök gürültüsü", pron: "u trovão", bd: "eril; relâmpago = şimşek" },
-    { en: "o granizo", tr: "dolu", pron: "u granizu", bd: "eril; granizo = dolu tanesi" },
-    { en: "quente", tr: "sıcak (hava)", pron: "kẽntshi", bd: "Está quente. = Sıcak hava." },
-    { en: "frio", tr: "soğuk (hava)", pron: "friu", bd: "Está frio. = Soğuk hava." },
-    { en: "úmido", tr: "nemli / rutubetli", pron: "umidu", bd: "Brezilya kıyı şeridi çok nemli" },
-    { en: "seco", tr: "kuru", pron: "séku", bd: "İç Brezilya kuru iklimleri" },
-    { en: "o verão", tr: "yaz", pron: "u verão", bd: "eril; Güney Yarımküre: Aralık-Mart" },
-    { en: "o outono", tr: "sonbahar", pron: "u owtonu", bd: "eril" },
-    { en: "o inverno", tr: "kış", pron: "u ĩvernu", bd: "eril; Brezilya'da kış: Haziran-Eylül" },
-    { en: "a primavera", tr: "ilkbahar", pron: "a primavéra", bd: "dişil" },
-    { en: "a previsão do tempo", tr: "hava tahmini", pron: "a previzão du tẽmpu", bd: "dişil" },
-    { en: "Está chovendo muito.", tr: "Çok yağmur yağıyor.", pron: "ıshta shovẽndu muyntu", bd: "gerúndio: chovendo" },
-    { en: "Vai fazer calor.", tr: "Sıcak olacak.", pron: "vay fazér kalor", bd: "ir + infinitivo: gelecek" },
-    { en: "Que tempo lindo!", tr: "Ne güzel hava!", pron: "ke tẽmpu lĩndu", bd: "olumlu hava yorumu" }
+    {en:"weather", tr:"hava durumu", pron:"ˈtẽpu", bd:"tempo"},
+    {en:"sun", tr:"güneş", pron:"ˈsɔl", bd:"sol"},
+    {en:"rain", tr:"yağmur", pron:"ˈʃuvɐ", bd:"chuva"},
+    {en:"wind", tr:"rüzgar", pron:"ˈvẽtu", bd:"vento"},
+    {en:"cloud", tr:"bulut", pron:"ˈnuvẽ", bd:"nuvem"},
+    {en:"fog", tr:"sis", pron:"ˈnɛvuɐ̯ɾu", bd:"nevoeiro"},
+    {en:"snow", tr:"kar", pron:"ˈnɛvɨ", bd:"neve"},
+    {en:"storm", tr:"fırtına", pron:"tẽ̃ˈpɔɾɐl", bd:"temporal"},
+    {en:"temperature", tr:"sıcaklık", pron:"tẽ̃pɨɾɐˈtuɾɐ", bd:"temperatura"},
+    {en:"hot", tr:"sıcak", pron:"ˈkɐloɾ", bd:"calor"},
+    {en:"cold", tr:"soğuk", pron:"ˈfɾiu", bd:"frio"},
+    {en:"spring", tr:"ilkbahar", pron:"ˈpɾimɐvɨɾɐ", bd:"primavera"},
+    {en:"summer", tr:"yaz", pron:"ˈvɨɾɐ̃u̯", bd:"verão"},
+    {en:"autumn", tr:"sonbahar", pron:"uˈtuɲu", bd:"outono"},
+    {en:"winter", tr:"kış", pron:"ĩˈvɛɾnu", bd:"inverno"},
+    {en:"humid", tr:"nemli", pron:"ˈhumidu", bd:"húmido"},
+    {en:"dry", tr:"kuru", pron:"ˈsɛku", bd:"seco"},
+    {en:"forecast", tr:"hava tahmini", pron:"pɾɨˈvizɐ̃u̯ du ˈtẽpu", bd:"previsão do tempo"},
+    {en:"degree", tr:"derece", pron:"ˈɡɾɐu", bd:"grau"},
+    {en:"lightning", tr:"yıldırım/şimşek", pron:"ˈɾɐɪ̯u", bd:"raio"}
   ],
   grammar: [
     {
-      title: "FAZER — Hava Durumu İfadeleri",
-      explanation: "Hava durumunu belirtmek için üç farklı yapı kullanılır: ESTAR + gerúndio (süreç), FAZER (yapmak — iklim için özel), ve ESTAR + sıfat. Faz calor = Sıcak yapıyor (hava sıcak). Está chovendo = Yağmur yağıyor.",
+      title: "Estar + Adjetivo — Hava Durumu İfadeleri",
+      explanation: "Hava durumunu ifade etmek için 'estar' + sıfat veya 'fazer' + isim kullanılır. EP'de yaygın hava ifadeleri şunlardır.",
       table: [
-        { pronoun: "Faz calor", form: "Fazer: iklim", example: "Hoje faz muito calor.", tr: "Bugün çok sıcak." },
-        { pronoun: "Faz frio", form: "Fazer: iklim", example: "No inverno faz frio.", tr: "Kışın soğuk olur." },
-        { pronoun: "Está chovendo", form: "Estar + gerúndio", example: "Está chovendo agora.", tr: "Şu an yağmur yağıyor." },
-        { pronoun: "Está ensolarado", form: "Estar + sıfat", example: "Está ensolarado hoje!", tr: "Bugün güneşli!" },
-        { pronoun: "Vai + mastar", form: "Gelecek zaman", example: "Vai chover amanhã.", tr: "Yarın yağmur yağacak." },
-        { pronoun: "Temperatura", form: "Está a X graus", example: "Está a trinta e cinco graus.", tr: "Otuz beş derece." }
+        {pronoun:"Está + adj.", form:"anlık durum", example:"Está frio hoje em Lisboa.", tr:"Bugün Lizbon'da soğuk."},
+        {pronoun:"Faz calor/frio", form:"ısı ifadesi", example:"No verão faz muito calor.", tr:"Yazın çok sıcak oluyor."},
+        {pronoun:"Chove / Está a chover", form:"yağmur yağıyor (EP)", example:"Está a chover muito lá fora.", tr:"Dışarıda çok yağmur yağıyor."},
+        {pronoun:"Neva / Está a nevar", form:"kar yağıyor (EP)", example:"Está a nevar na Serra da Estrela.", tr:"Serra da Estrela'da kar yağıyor."},
+        {pronoun:"Há nevoeiro", form:"sis var", example:"Há muito nevoeiro esta manhã.", tr:"Bu sabah çok sis var."},
+        {pronoun:"Está sol", form:"güneş var", example:"Está sol mas está frio.", tr:"Güneşli ama soğuk."}
       ],
-      note: "FAZER iklimde sadece 3. tekil kullanılır: faz. Chovendo (yağıyor), trovejando (gürüldüyor), ventando (esiyor)."
+      note: "EP'de '-a fazer/chover/nevar' yapısı (gerundium yerine 'a + infinitivo') kullanılır. BP'de 'está chovendo', EP'de 'está a chover' denir. Bu EP'nin en önemli özelliğidir!"
     },
     {
-      title: "Brezilya'nın İklimi ve Mevsimleri",
-      explanation: "Brezilya Güney Yarımküre'de olduğu için mevsimleri Türkiye'nin tersine çalışır: yaz Aralık-Mart, kış Haziran-Eylül. Buna ek olarak, Brezilya çok farklı iklim bölgelerine sahiptir: Amazon yağmur ormanı, kuzeydoğu çölümsü, güney ılıman iklim.",
+      title: "As Estações em Portugal — Portekiz'de Mevsimler",
+      explanation: "Portekiz'in iklimi Akdeniz iklimidir. Kışlar ılık ve yağışlı, yazlar ise sıcak ve kuru geçer. Kuzey daha yağışlı, güney (Algarve) ise daha sıcak ve kurudur.",
       table: [
-        { pronoun: "Yaz (verão)", form: "Aralık–Mart", example: "No verão faz muito calor.", tr: "Yazın çok sıcak olur." },
-        { pronoun: "Sonbahar (outono)", form: "Mart–Haziran", example: "O outono é agradável.", tr: "Sonbahar hoştur." },
-        { pronoun: "Kış (inverno)", form: "Haziran–Eylül", example: "No inverno chove bastante.", tr: "Kışın oldukça yağmur yağar." },
-        { pronoun: "İlkbahar (primavera)", form: "Eylül–Aralık", example: "A primavera é linda.", tr: "İlkbahar çok güzeldir." },
-        { pronoun: "Amazon", form: "Tropikal: yağışlı+kuru", example: "Chove muito no Amazonas.", tr: "Amazon'da çok yağmur yağar." },
-        { pronoun: "Güney", form: "Ilıman, dört mevsim", example: "No sul até neva às vezes.", tr: "Güneyde bazen kar yağar." }
+        {pronoun:"Primavera (Mart-Mayıs)", form:"İlkbahar", example:"Na primavera florescem os campos.", tr:"İlkbaharda tarlalar çiçek açar."},
+        {pronoun:"Verão (Haziran-Ağustos)", form:"Yaz", example:"No verão vai muita gente à praia.", tr:"Yazın plaja çok insan gider."},
+        {pronoun:"Outono (Eylül-Kasım)", form:"Sonbahar", example:"No outono as folhas ficam alaranjadas.", tr:"Sonbaharda yapraklar turuncu olur."},
+        {pronoun:"Inverno (Aralık-Şubat)", form:"Kış", example:"No inverno chove muito no Norte.", tr:"Kışın kuzeyde çok yağmur yağar."},
+        {pronoun:"Serra da Estrela", form:"Tek karlı bölge", example:"A Serra da Estrela tem neve no inverno.", tr:"Serra da Estrela'da kışın kar var."},
+        {pronoun:"Algarve", form:"En sıcak bölge", example:"O Algarve tem verões muito quentes.", tr:"Algarve'de yazlar çok sıcak geçer."}
       ],
-      note: "Karnaval yaz sonu (Şubat/Mart) dönemine denk gelir. Rio'da Carnaval sırasında hem sıcak hem de yağışlı olabilir."
+      note: "Serra da Estrela, Portekiz'in en yüksek dağıdır (1993 m) ve kışın kar yağan tek bölgedir. Buradan üretilen peynir de (queijo da Serra) çok meşhurdur!"
     },
     {
-      title: "Hava Hakkında Soru-Cevap Kalıpları",
-      explanation: "Hava durumuyla ilgili soru sormak ve yanıt vermek için yaygın kalıpları öğrenmek günlük konuşmayı büyük ölçüde kolaylaştırır. 'Como está o tempo?' (Hava nasıl?) hem resmi hem de günlük kullanımda işe yarar.",
+      title: "Futuro com IR — Yakın Gelecek Zaman",
+      explanation: "Hava tahmini için genellikle yakın gelecek kullanılır: 'ir + infinitivo'. Bu yapı 'gidiyorum yapmaya' değil 'yapacağım' anlamındadır.",
       table: [
-        { pronoun: "Soru", form: "Como está o tempo?", example: "Como está o tempo hoje?", tr: "Bugün hava nasıl?" },
-        { pronoun: "Cevap: iyi", form: "Está ótimo!", example: "Está ensolarado e quente!", tr: "Güneşli ve sıcak!" },
-        { pronoun: "Cevap: kötü", form: "Está horrível!", example: "Está chovendo muito.", tr: "Çok yağmur yağıyor." },
-        { pronoun: "Sıcaklık", form: "Que temperatura está?", example: "Está a vinte e dois graus.", tr: "Yirmi iki derece." },
-        { pronoun: "Yarın", form: "Como vai estar?", example: "Vai estar nublado amanhã.", tr: "Yarın bulutlu olacak." },
-        { pronoun: "Şemsiye", form: "Preciso de guarda-chuva?", example: "Vai chover, leva o guarda-chuva!", tr: "Yağacak, şemsiyeyi al!" }
+        {pronoun:"eu", form:"vou + inf.", example:"Amanhã vai chover.", tr:"Yarın yağmur yağacak."},
+        {pronoun:"tu", form:"vais + inf.", example:"Vais precisar de impermeável.", tr:"Yağmurluk gerekecek."},
+        {pronoun:"ele/ela", form:"vai + inf.", example:"Vai fazer muito frio esta semana.", tr:"Bu hafta çok soğuk olacak."},
+        {pronoun:"nós", form:"vamos + inf.", example:"Vamos ter um bom verão este ano.", tr:"Bu yıl iyi bir yaz geçireceğiz."},
+        {pronoun:"vós", form:"vais + inf.", example:"Vais ter sol no fim de semana.", tr:"Hafta sonunda güneşli olacak."},
+        {pronoun:"eles/elas", form:"vão + inf.", example:"Vão cair chuvas intensas no norte.", tr:"Kuzeyde yoğun yağışlar olacak."}
       ],
-      note: "Guarda-chuva = şemsiye (chuva = yağmur, guarda = koruma — yağmurdan koruyan). Anorak/capa de chuva = yağmurluk."
+      note: "Metereoloji bültenlerinde (previsões do tempo) sıklıkla 'vai chover', 'vai fazer calor' gibi ifadeler duyulur. RTP (Rádio e Televisão de Portugal) devlet yayın kuruluşudur."
     }
   ],
   speaking: [
-    { q: "'Bugün çok sıcak' nasıl?", a: "Hoje faz muito calor! / Está muito quente hoje!" },
-    { q: "'Yarın yağmur yağacak' nasıl?", a: "Vai chover amanhã." },
-    { q: "Brezilya'da yaz hangi aylarda?", a: "No verão — dezembro, janeiro e fevereiro." },
-    { q: "Hava nasıl sorarsiniz?", a: "Como está o tempo hoje?" },
-    { q: "Şemsiyeyi almalı mısınız? Neden?", a: "Sim! Vai chover. / Não, está ensolarado." }
+    {q:"Como está o tempo hoje em Lisboa?", a:"Está nublado e vai chover à tarde. A temperatura está nos 15 graus."},
+    {q:"Qual é a tua estação favorita?", a:"Gosto do outono. As cores das folhas são lindas e não faz calor."},
+    {q:"Chove muito em Portugal?", a:"No norte chove bastante, especialmente no inverno. O sul é muito mais seco."},
+    {q:"Quando neva em Portugal?", a:"Neva raramente, só na Serra da Estrela no inverno."},
+    {q:"Qual é a temperatura média no verão em Lisboa?", a:"No verão a temperatura média em Lisboa é de cerca de 27 a 30 graus."}
   ],
   dialogues: [
     {
-      title: "Hava Sohbeti",
+      title: "A Falar do Tempo",
       lines: [
-        { speaker: "Lucas", text: "Que calor hoje, não é?", tr: "Bugün ne kadar sıcak, değil mi?" },
-        { speaker: "Ana", text: "É verdade! Estão dizendo que vai fazer 38 graus.", tr: "Doğru! 38 derece yapacak diyorlar." },
-        { speaker: "Lucas", text: "Nossa! E no final de semana, como vai estar?", tr: "Vay be! Peki hafta sonu nasıl olacak?" },
-        { speaker: "Ana", text: "Aparentemente vai chover no sábado mas o domingo vai estar ótimo.", tr: "Görünüşe göre cumartesi yağmur yağacak ama pazar harika olacak." },
-        { speaker: "Lucas", text: "Então vamos ao parque no domingo?", tr: "O zaman pazar günü parkta buluşalım mı?" },
-        { speaker: "Ana", text: "Ótima ideia! Leva protetor solar, vai fazer sol forte.", tr: "Harika fikir! Güneş kremi getir, güneş çok yakacak." }
+        {speaker:"Joana", text:"Que tempo horrível! Está a chover há três dias seguidos."},
+        {speaker:"Tomás", text:"Sim, é típico do inverno no Porto. Mas segundo a previsão vai melhorar."},
+        {speaker:"Joana", text:"Quando? Queria ir à praia este fim de semana."},
+        {speaker:"Tomás", text:"No sábado vai fazer sol e temperatura de cerca de 18 graus. É bom para passear."},
+        {speaker:"Joana", text:"Óptimo! Mas ao domingo há temporal de novo."},
+        {speaker:"Tomás", text:"Então vamos ao sábado e ficamos em casa ao domingo."}
       ]
     }
   ],
   listening: {
-    text: "O Brasil é um país com climas muito variados. O nordeste, especialmente o sertão, tem um clima semiárido — faz muito calor e chove pouco. A Amazônia tem clima tropical e chove quase todos os dias. O Sul do Brasil tem quatro estações bem definidas e no inverno, cidades como Gramado e Curitiba chegam a ter temperaturas negativas e até neve!",
+    text: "Portugal tem um dos climas mais agradáveis da Europa. Com mais de 300 dias de sol por ano em certas regiões, é um destino turístico muito procurado. O Algarve, a sul, tem verões quentes e secos com praias de areia dourada. O norte do país, incluindo o Porto, é mais verde e húmido, com chuvas frequentes no outono e inverno. A Serra da Estrela é a única montanha onde neva regularmente, sendo um destino de ski popular.",
     questions: [
-      { q: "Kuzeydoğunun iklimi nasıl?", a: "Yarı kurak: çok sıcak, az yağış" },
-      { q: "Amazon'da ne sıklıkla yağmur yağar?", a: "Neredeyse her gün" },
-      { q: "Güney'de hangi şehirlerde kar yağabilir?", a: "Gramado ve Curitiba" }
+      {q:"Quantos dias de sol tem Portugal por ano em certas regiões?", a:"Mais de 300 dias."},
+      {q:"Como é o clima no Algarve?", a:"Verões quentes e secos com praias de areia dourada."},
+      {q:"Onde se pode fazer ski em Portugal?", a:"Na Serra da Estrela."}
     ]
   }
 };

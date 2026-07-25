@@ -1,94 +1,94 @@
 const L4 = {
   title: "Cores e Adjetivos",
   words: [
-    { en: "vermelho / vermelha", tr: "kırmızı (e/d)", pron: "vermelyu / vermelya", bd: "cinsiyet uyumu var" },
-    { en: "azul", tr: "mavi", pron: "azul", bd: "tek form — her iki cins" },
-    { en: "verde", tr: "yeşil", pron: "vérdi", bd: "tek form — her iki cins" },
+    { en: "vermelho / vermelha", tr: "kırmızı", pron: "vırmelyu / vırmelya", bd: "cinsiyet uyumu; vinho = koyu kırmızı" },
+    { en: "azul", tr: "mavi", pron: "azúl", bd: "tek form (e/k aynı); azuis çoğul" },
+    { en: "verde", tr: "yeşil", pron: "vérd", bd: "tek form; EP: son 'e' düşer" },
     { en: "amarelo / amarela", tr: "sarı", pron: "amarélu / amaréla", bd: "cinsiyet uyumu" },
-    { en: "branco / branca", tr: "beyaz", pron: "brãnku / brãnka", bd: "cinsiyet uyumu" },
-    { en: "preto / preta", tr: "siyah", pron: "prétu / préta", bd: "cinsiyet uyumu" },
-    { en: "laranja", tr: "turuncu", pron: "larãnja", bd: "değişmez — tek form" },
-    { en: "roxo / roxa", tr: "mor", pron: "hoshu / hosha", bd: "cinsiyet uyumu" },
-    { en: "cinza", tr: "gri", pron: "sĩnza", bd: "değişmez form" },
-    { en: "rosa", tr: "pembe / gül rengi", pron: "hoza", bd: "değişmez form" },
-    { en: "grande", tr: "büyük", pron: "grãndshi", bd: "tek form" },
-    { en: "pequeno / pequena", tr: "küçük", pron: "pekénu / pekéna", bd: "cinsiyet uyumu" },
-    { en: "bonito / bonita", tr: "güzel (şey)", pron: "bonitu / bonita", bd: "cinsiyet uyumu" },
-    { en: "feio / feia", tr: "çirkin", pron: "féyu / féya", bd: "cinsiyet uyumu" },
-    { en: "novo / nova", tr: "yeni / genç", pron: "novu / nova", bd: "bağlama göre anlam değişir" },
-    { en: "velho / velha", tr: "eski / yaşlı", pron: "vélyu / vélya", bd: "bağlama göre anlam" },
-    { en: "barato / barata", tr: "ucuz", pron: "baratu / barata", bd: "cinsiyet uyumu" },
-    { en: "caro / cara", tr: "pahalı", pron: "karu / kara", bd: "cinsiyet uyumu" },
-    { en: "muito", tr: "çok", pron: "muyntu", bd: "değişmez zarf olarak; sıfat olarak uyum" },
-    { en: "pouco / pouca", tr: "az / biraz", pron: "poku / poka", bd: "sıfat olarak uyum gerekir" }
+    { en: "preto / preta", tr: "siyah", pron: "prétu / préta", bd: "cinsiyet uyumu; negro da kullanılır" },
+    { en: "branco / branca", tr: "beyaz", pron: "brãku / brãka", bd: "cinsiyet uyumu" },
+    { en: "cinzento / cinzenta", tr: "gri", pron: "sĩzẽntu / sĩzẽnta", bd: "EP; BR'de cinza" },
+    { en: "castanho / castanha", tr: "kahverengi / kestane rengi", pron: "kashtãnyu", bd: "EP; BR'de marrom; saç için de kullanılır" },
+    { en: "cor-de-laranja", tr: "turuncu", pron: "kor dı larãja", bd: "değişmez; lit: portakal rengi" },
+    { en: "rosa", tr: "pembe", pron: "roza", bd: "değişmez ya da rosa/rosado" },
+    { en: "grande", tr: "büyük", pron: "grãd", bd: "tek form; EP: son 'e' düşer; grande/grandes" },
+    { en: "pequeno / pequena", tr: "küçük", pron: "pıkénu / pıkéna", bd: "cinsiyet uyumu" },
+    { en: "novo / nova", tr: "yeni", pron: "novu / nova", bd: "cinsiyet uyumu; novo = yeni ve genç" },
+    { en: "velho / velha", tr: "eski / yaşlı", pron: "vélyu / vélya", bd: "cinsiyet uyumu; idoso daha nazik" },
+    { en: "bom / boa", tr: "iyi", pron: "bõ / boa", bd: "düzensiz; bons/boas çoğul" },
+    { en: "mau / má", tr: "kötü", pron: "mau / má", bd: "düzensiz; maus/más çoğul" },
+    { en: "alto / alta", tr: "uzun boylu / yüksek", pron: "awtu / awta", bd: "cinsiyet uyumu" },
+    { en: "baixo / baixa", tr: "kısa boylu / alçak", pron: "bayshu / baysha", bd: "cinsiyet uyumu" },
+    { en: "Que cor é?", tr: "Ne renk?", pron: "kı kor é", bd: "renk sorma" },
+    { en: "É da cor de...", tr: "Rengi...gibi", pron: "é da kor dı", bd: "renk tarif etme" }
   ],
   grammar: [
     {
-      title: "Sıfatların Cinsiyeti ve Çoğulu",
-      explanation: "Portekizcede sıfatlar isimlerin cinsiyetine ve sayısına göre değişir. -o ile biten sıfatlar dişil için -a alır. -e ile bitenler veya ünsüzle bitenler (azul, feliz) çoğu kez değişmez. Çoğul için genellikle -s eklenir.",
+      title: "Sıfat Uyumu — Género e Número",
+      explanation: "Portekizce'de sıfatlar bağlı oldukları isimle cinsiyet ve sayı bakımından uyum sağlar. Çoğu sıfat: -o/-a (eril/dişil), -os/-as (çoğul). Bazı sıfatlar tek form: feliz, grande, verde, azul. Sıfat genellikle isimden SONRA gelir: 'uma casa grande', 'um livro azul'.",
       table: [
-        { pronoun: "Eril Tekil", form: "-o sonu", example: "o carro vermelho", tr: "kırmızı araba" },
-        { pronoun: "Dişil Tekil", form: "-a sonu", example: "a flor vermelha", tr: "kırmızı çiçek" },
-        { pronoun: "Eril Çoğul", form: "-os", example: "os carros vermelhos", tr: "kırmızı arabalar" },
-        { pronoun: "Dişil Çoğul", form: "-as", example: "as flores vermelhas", tr: "kırmızı çiçekler" },
-        { pronoun: "Değişmez", form: "tek form", example: "o/a carro/moto azul", tr: "mavi araba/motosiklet" },
-        { pronoun: "Çoğul değişmez", form: "-s ekle", example: "os/as carros/motos azuis", tr: "mavi arabalar/motosikletler (azul→azuis)" }
+        { pronoun: "Eril tekil", form: "-o", example: "um carro vermelho", tr: "kırmızı bir araba" },
+        { pronoun: "Dişil tekil", form: "-a", example: "uma casa vermelha", tr: "kırmızı bir ev" },
+        { pronoun: "Eril çoğul", form: "-os", example: "carros vermelhos", tr: "kırmızı arabalar" },
+        { pronoun: "Dişil çoğul", form: "-as", example: "casas vermelhas", tr: "kırmızı evler" },
+        { pronoun: "Tek form", form: "-e (e/k)", example: "um/uma carro/casa grande", tr: "büyük araba/ev" },
+        { pronoun: "-l sıfat", form: "-is çoğul", example: "azul → azuis", tr: "mavi → maviler" }
       ],
-      note: "Azul → Azuis (çoğulda): -l ile biten sıfatlar çoğulda -is veya -eis olur. Laranja, rosa, cinza tamamen değişmez!"
+      note: "Sıfat sırası: isimden sonra (genel kural). Ama bazı sıfatlar önce gelebilir: 'um bom amigo' (iyi bir arkadaş), 'uma grande cidade' (büyük bir şehir). Önce gelmek genellikle duygusal/subjektif anlam katar."
     },
     {
-      title: "Sıfatın İsimden Sonra Gelmesi",
-      explanation: "Portekizcede sıfatlar genellikle isimden SONRA gelir (İspanyolcaya benzer şekilde). Bu İngilizce ve Türkçeden farklıdır. Ancak bazı sıfatlar isimden önce de gelebilir ve bu durumda anlam değişebilir.",
+      title: "Karşılaştırma — Mais, Menos, Tão",
+      explanation: "Portekizce'de karşılaştırma: mais... do que (daha... -dan), menos... do que (daha az... -dan), tão... como (o kadar... gibi). Üstünlük: o/a mais + sıfat (en...). Düzensizler: bom → melhor (daha iyi), mau → pior (daha kötü), grande → maior (daha büyük).",
       table: [
-        { pronoun: "Normal sıra", form: "isim + sıfat", example: "um carro grande", tr: "büyük bir araba" },
-        { pronoun: "Normal sıra", form: "isim + sıfat", example: "uma casa bonita", tr: "güzel bir ev" },
-        { pronoun: "Önceden gelince", form: "sıfat + isim", example: "um grande homem", tr: "büyük (önemli) bir adam" },
-        { pronoun: "Sonradan gelince", form: "isim + sıfat", example: "um homem grande", tr: "iri yarı bir adam (fizik)" },
-        { pronoun: "Novo önce", form: "novo + isim", example: "meu novo carro", tr: "yeni arabam (sahip olduğum)" },
-        { pronoun: "Novo sonra", form: "isim + novo", example: "um carro novo", tr: "sıfır araba (marka yeni)" }
+        { pronoun: "Daha... -dan", form: "mais + adj + do que", example: "Lisboa é maior do que o Porto.", tr: "Lizbon Porto'dan daha büyük." },
+        { pronoun: "Daha az", form: "menos + adj + do que", example: "É menos caro do que pensei.", tr: "Düşündüğümden daha az pahalı." },
+        { pronoun: "O kadar... gibi", form: "tão + adj + como", example: "É tão bonito como na fotografia.", tr: "Fotoğraftaki kadar güzel." },
+        { pronoun: "En...", form: "o/a mais + adj", example: "É o mais alto da turma.", tr: "Sınıfın en uzun boylus." },
+        { pronoun: "bom → melhor", form: "Düzensiz", example: "Este vinho é melhor.", tr: "Bu şarap daha iyi." },
+        { pronoun: "mau → pior", form: "Düzensiz", example: "O tempo está pior hoje.", tr: "Hava bugün daha kötü." }
       ],
-      note: "En sık kullanılan sıfatlar isimden SONRA: colors, size, shape, nationality."
+      note: "grande → maior (büyük → daha büyük), pequeno → menor (küçük → daha küçük). Bunlar düzensiz karşılaştırma biçimleridir. 'Mais grande' da söylenir ama 'maior' daha doğru."
     },
     {
-      title: "Karşılaştırma: mais... do que (daha... -dan)",
-      explanation: "Portekizcede karşılaştırma yapmak için 'mais' (daha) ve 'do que' (den/dan) kullanılır. Üstünlük için 'o mais / a mais' (en) yapısı kullanılır. Bazı düzensiz karşılaştırmalar da vardır.",
+      title: "Renk ve Sıfat — EP'ye Özgü Kelimeler",
+      explanation: "EP ve BR arasında renk/sıfat farkları: EP 'cinzento' (BR 'cinza'), EP 'castanho' (BR 'marrom'), EP 'cor-de-laranja' (BR 'laranja'). Bunun dışında EP'de 'giro' = güzel/şık (BR'de farklı anlam!), 'fixe' = harika/şık (yalnızca EP).",
       table: [
-        { pronoun: "Daha... -dan", form: "mais + sıfat + do que", example: "mais grande do que", tr: "daha büyük -dan" },
-        { pronoun: "Daha az... -dan", form: "menos + sıfat + do que", example: "menos caro do que", tr: "daha az pahalı -dan" },
-        { pronoun: "En...", form: "o/a mais + sıfat", example: "o mais bonito", tr: "en güzel (eril)" },
-        { pronoun: "Eşit", form: "tão + sıfat + como", example: "tão grande como", tr: "o kadar büyük gibi" },
-        { pronoun: "bom → melhor", form: "düzensiz", example: "melhor do que", tr: "daha iyi -dan" },
-        { pronoun: "ruim → pior", form: "düzensiz", example: "pior do que", tr: "daha kötü -dan" }
+        { pronoun: "cinzento/a (EP)", form: "gri", example: "um casaco cinzento", tr: "gri bir ceket" },
+        { pronoun: "castanho/a (EP)", form: "kahverengi", example: "olhos castanhos", tr: "kahverengi gözler" },
+        { pronoun: "cor-de-laranja", form: "turuncu", example: "uma t-shirt cor-de-laranja", tr: "turuncu bir t-shirt" },
+        { pronoun: "giro / gira (EP)", form: "güzel / şık", example: "Que giro! Fica-te bem.", tr: "Ne güzel! Sana çok yakışıyor." },
+        { pronoun: "fixe (EP)", form: "harika / süper", example: "Que fixe! Adoro!", tr: "Harika! Bayıldım!" },
+        { pronoun: "às riscas (EP)", form: "çizgili", example: "uma camisa às riscas", tr: "çizgili bir gömlek" }
       ],
-      note: "Üstünlük: 'o melhor do mundo' = dünyanın en iyisi. 'o maior do Brasil' = Brezilya'nın en büyüğü."
+      note: "'Giro/a' EP'de çok yaygın: 'Que giro!' (Ne şirin!). BR'de 'giro' farklı anlam taşır. 'Fixe' yalnızca EP'ye özgü: 'Que fixe!' = 'Que fixe!' (harika!). Bu iki kelime sizi Portekizli gibi gösterir!"
     }
   ],
   speaking: [
-    { q: "Como se diz 'kırmızı araba'?", a: "Um carro vermelho. (eril: vermelho)" },
-    { q: "Como se diz 'güzel ev' (dişil)?", a: "Uma casa bonita. (dişil: bonita)" },
-    { q: "Como comparamos? 'Bu daha büyük o'dan.'", a: "Este é maior do que aquele." },
-    { q: "'En güzel şehir' nasıl?", a: "A cidade mais bonita." },
-    { q: "Azul'un çoğulu nedir?", a: "Azuis. (-l → -is)" }
+    { q: "Portekiz bayrağının renklerini söyleyin.", a: "A bandeira de Portugal é verde e vermelha, com um escudo dourado ao centro." },
+    { q: "Favori renginizi söyleyin ve neden.", a: "A minha cor favorita é o azul porque me lembra o mar de Portugal." },
+    { q: "'Bu çanta büyük ve kahverengi' nasıl?", a: "Esta mala é grande e castanha." },
+    { q: "İki şehri karşılaştırın.", a: "Lisboa é maior do que o Porto, mas o Porto é mais industrial." },
+    { q: "Bir şeyi 'harika' olarak nitelendirin (EP).", a: "Que fixe! / Que giro! Adoro esta cor!" }
   ],
   dialogues: [
     {
       title: "Kıyafet Alışverişi",
       lines: [
-        { speaker: "Cliente", text: "Boa tarde! Estou procurando uma blusa.", tr: "İyi günler! Bir bluz arıyorum." },
-        { speaker: "Vendedora", text: "Que cor prefere? Temos azul, verde e vermelha.", tr: "Hangi rengi tercih edersiniz? Mavi, yeşil ve kırmızı var." },
-        { speaker: "Cliente", text: "Gosto de azul. Tem alguma grande?", tr: "Maviyi seviyorum. Büyük var mı?" },
-        { speaker: "Vendedora", text: "Sim! Esta azul é grande e muito bonita.", tr: "Evet! Bu mavi hem büyük hem çok güzel." },
-        { speaker: "Cliente", text: "É cara? Quero algo mais barato.", tr: "Pahalı mı? Daha ucuz bir şey istiyorum." },
-        { speaker: "Vendedora", text: "Esta aqui é mais barata e igualmente bonita!", tr: "Şuradaki daha ucuz ve aynı derecede güzel!" }
+        { speaker: "Catarina", text: "O que achas desta camisola azul?", tr: "Bu mavi kazağı nasıl buluyorsun?" },
+        { speaker: "Rui", text: "É bonita! Mas prefiro a verde. Fica-te melhor.", tr: "Güzel! Ama yeşili tercih ederim. Sana daha çok yakışıyor." },
+        { speaker: "Catarina", text: "Achas? A verde é mais cara do que a azul.", tr: "Öyle mi? Yeşil maviden daha pahalı." },
+        { speaker: "Rui", text: "Mas é mais gira! E a qualidade é melhor.", tr: "Ama daha şık! Ve kalite daha iyi." },
+        { speaker: "Catarina", text: "Tens razão. E tenho este casaco cinzento que combina.", tr: "Haklısın. Ve uyan bu gri ceketim var." },
+        { speaker: "Rui", text: "Perfeito! Que fixe, vai ficar ótimo!", tr: "Mükemmel! Harika, çok iyi olacak!" }
       ]
     }
   ],
   listening: {
-    text: "Minha casa nova é muito bonita. Tem paredes brancas e janelas grandes. O sofá é cinza e as almofadas são azuis e amarelas. Tenho uma mesa pequena de madeira marrom na sala. O jardim tem flores vermelhas, rosas e roxas.",
+    text: "As cores têm um papel muito importante na cultura portuguesa. A bandeira nacional tem verde e vermelho, com o azul e branco do escudo. O azul e branco também dominam os azulejos — os famosos painéis de cerâmica que decoram igrejas, estações e fachadas de edifícios em todo o país. O preto é a cor do fado, a música da alma portuguesa. Os trajes tradicionais, como os de Viana do Castelo, são ricos em bordados coloridos. Em Portugal, o cinzento é uma cor muito comum nas cidades históricas — as calçadas portuguesas em preto e branco são um símbolo nacional.",
     questions: [
-      { q: "Duvarların rengi?", a: "Beyaz" },
-      { q: "Koltuk ve yastıkların renkleri?", a: "Koltuk gri, yastıklar mavi ve sarı" },
-      { q: "Bahçede hangi renkler var?", a: "Kırmızı, pembe, mor" }
+      { q: "Portekiz bayrağının renkleri neler?", a: "Yeşil ve kırmızı, altın renkli armadisizin üstünde" },
+      { q: "Azulejos nedir?", a: "Kilise, istasyon ve bina cephelerini süsleyen ünlü seramik paneller (mavi-beyaz)" },
+      { q: "Fado'nun rengi ne ve neden?", a: "Siyah — Portekiz ruhunun müziği fado'nun rengi" }
     ]
   }
 };

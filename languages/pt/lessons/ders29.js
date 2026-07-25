@@ -1,94 +1,93 @@
-const L29 = {
-  title: "Culinária Brasileira",
+var L29 = {
   words: [
-    { en: "a feijoada", tr: "feijoada (milli yemek)", pron: "a feyjwada", bd: "dişil; siyah fasulye+et güveci" },
-    { en: "o pão de queijo", tr: "peynirli ekmek (mısırlı)", pron: "u pão dshi keyju", bd: "eril; Minas Gerais'in simgesi" },
-    { en: "a coxinha", tr: "coxinha (tavuklu hamur)", pron: "a koshĩnya", bd: "dişil; en sevilen atıştırmalık" },
-    { en: "o brigadeiro", tr: "brigadeiro (çikolata topu)", pron: "u brigadeyru", bd: "eril; doğum günü vazgeçilmezi" },
-    { en: "o açaí", tr: "açaí (orman meyvesi)", pron: "u asaí", bd: "eril; Amazon meyve kâsesi" },
-    { en: "a caipirinha", tr: "caipirinha (kokteyl)", pron: "a kaypirínya", bd: "dişil; cachaça+limon+şeker" },
-    { en: "a cachaça", tr: "cachaça (şeker kamışı rakısı)", pron: "a kashasa", bd: "dişil; pinga veya caninha da denir" },
-    { en: "o churrasco", tr: "barbeküye/ızgara (Brezilya tarzı)", pron: "u shurrasku", bd: "eril; churrasqueiro = ızgara ustası" },
-    { en: "a farofa", tr: "farofa (manyok unu kızartması)", pron: "a farofa", bd: "dişil; feijoada'nın yanına" },
-    { en: "o quiabo", tr: "bamya", pron: "u kyabu", bd: "eril; Brezilya mutfağında çok yaygın" },
-    { en: "o tapioca", tr: "tapioka (manyok nişastası krep)", pron: "u tapyoka", bd: "eril; BP kahvaltısı" },
-    { en: "o tucupi", tr: "tucupi (sarı Amazon sosu)", pron: "u tukupi", bd: "eril; Amazon mutfağına özgü" },
-    { en: "a moqueca", tr: "moqueca (balık güveci)", pron: "a mokkéka", bd: "dişil; hindistancevizi sütü+palmiye yağı" },
-    { en: "o vatapá", tr: "vatapá (fıstıklı-hindistancevizli yemek)", pron: "u vatapá", bd: "eril; Bahia mutfağı" },
-    { en: "o guaraná", tr: "guaraná (Amazon meyveli içecek)", pron: "u guarana", bd: "eril; Amazon'a özgü bitki" },
-    { en: "temperar", tr: "baharatlamak / çeşni katmak", pron: "tẽmperar", bd: "düzenli -AR; tempero = baharat" },
-    { en: "cozinhar", tr: "pişirmek / yemek yapmak", pron: "kozĩnyár", bd: "düzenli -AR" },
-    { en: "grelhar", tr: "ızgara yapmak", pron: "grelyár", bd: "düzenli -AR" },
-    { en: "fritar", tr: "kızartmak", pron: "fritár", bd: "düzenli -AR" },
-    { en: "Bom apetite!", tr: "Afiyet olsun!", pron: "bõy apetítshi", bd: "yemek başlarken" }
+    {en:"cuisine/gastronomy", tr:"mutfak/gastronomi", pron:"ɡɐʃtɾuˈnoميɐ", bd:"gastronomia"},
+    {en:"salt cod (bacalhau)", tr:"morina balığı", pron:"bɐˈkɐʎu", bd:"bacalhau"},
+    {en:"egg custard tart", tr:"Portekiz tatlısı", pron:"pɐʃˈtɛl dɨ ˈnatɐ", bd:"pastel de nata"},
+    {en:"pork sandwich", tr:"biftek sandviç", pron:"biˈfɐnɐ", bd:"bifana"},
+    {en:"green soup", tr:"yeşil çorba", pron:"ˈkɐldu ˈvɛɾdɨ", bd:"caldo verde"},
+    {en:"grilled sardines", tr:"ızgara sardalya", pron:"sɐɾˈdiɲɐʃ ɐsɐˈdɐʃ", bd:"sardinhas assadas"},
+    {en:"dry white wine", tr:"yeşil şarap (hafif)", pron:"ˈviɲu ˈvɛɾdɨ", bd:"vinho verde"},
+    {en:"port wine", tr:"Porto şarabı", pron:"ˈviɲu du ˈpoɾtu", bd:"vinho do Porto"},
+    {en:"cherry liqueur", tr:"ginja likörü", pron:"ˈʒĩʒɐ", bd:"ginja"},
+    {en:"espresso coffee", tr:"küçük siyah kahve", pron:"ˈbikɐ", bd:"bica"},
+    {en:"milky coffee", tr:"sütlü kahve (büyük)", pron:"ɡɐˈlɐ̃u̯", bd:"galão"},
+    {en:"cornbread", tr:"mısır ekmeği", pron:"ˈbɾoɐ", bd:"broa"},
+    {en:"tripe stew", tr:"işkembe yahnisi", pron:"tɾiˈpɐʃ ɐ ˈmodɐ du ˈpoɾtu", bd:"tripas à moda do Porto"},
+    {en:"garlic prawns", tr:"sarımsaklı karides", pron:"ɡɐˈɾidɨʃ ɐu ɐˈʎu", bd:"gambas ao alho"},
+    {en:"egg sweet (dessert)", tr:"yumurtalı tatlılar", pron:"ˈdosɨs dɨ ˈovu", bd:"doces de ovo"},
+    {en:"sausage", tr:"sucuk/sosis", pron:"ʃuˈɾisu", bd:"chouriço"},
+    {en:"olive oil", tr:"zeytinyağı", pron:"ɐˈzɐɪ̯tɨ", bd:"azeite"},
+    {en:"shellfish", tr:"kabuklu deniz ürünleri", pron:"ˈmɐɾiʃku", bd:"marisco"},
+    {en:"sandwich (roll)", tr:"sandviç (ekmek)", pron:"iˈmpɨɾiku", bd:"imperial / prego"},
+    {en:"cheese from Alentejo", tr:"Alentejo peyniri", pron:"ˈkɐɪ̯ju ɐlẽˈtɨʒɐnu", bd:"queijo alentejano"}
   ],
   grammar: [
     {
-      title: "Yemek Tarifi Anlatma — Gereçler ve Süreç",
-      explanation: "Yemek tarifi anlatırken ADICIONAR (eklemek), MISTURAR (karıştırmak), COZINHAR (pişirmek), DEIXAR (bırakmak/bekletmek) gibi fiiller kullanılır. Tarifte emir kipi (imperativo) veya infinitivo kullanılır.",
+      title: "Gastronomia Portuguesa — Portekiz Mutfağı",
+      explanation: "Portekiz mutfağı Akdeniz ve Atlantik etkilerini bir araya getirir. Zeytinyağı, sarımsak, taze otlar, deniz ürünleri ve bacalhau (morina balığı) temel malzemelerdir.",
       table: [
-        { pronoun: "Eklemek", form: "Adicione / Coloque", example: "Adicione sal e pimenta.", tr: "Tuz ve karabiber ekleyin." },
-        { pronoun: "Karıştırmak", form: "Misture / Mexa", example: "Misture bem os ingredientes.", tr: "Malzemeleri iyice karıştırın." },
-        { pronoun: "Pişirmek", form: "Cozinhe / Ferva", example: "Cozinhe por vinte minutos.", tr: "Yirmi dakika pişirin." },
-        { pronoun: "Kızartmak", form: "Frite", example: "Frite no azeite quente.", tr: "Sıcak zeytinyağında kızartın." },
-        { pronoun: "Bekletmek", form: "Deixe descansar", example: "Deixe a massa descansar.", tr: "Hamuru dinlendirin." },
-        { pronoun: "Servis", form: "Sirva com / acompanhado de", example: "Sirva com arroz e farofa.", tr: "Pirinç ve farofa ile servis edin." }
+        {pronoun:"bacalhau", form:"morina balığı", example:"O bacalhau é o ingrediente mais usado da cozinha portuguesa.", tr:"Morina balığı Portekiz mutfağının en çok kullanılan malzemesidir."},
+        {pronoun:"pastel de nata", form:"yumurtalı tart", example:"Os pastéis de Belém são os mais famosos do mundo.", tr:"Belém pastéis de nata'sı dünyanın en ünlüsüdür."},
+        {pronoun:"caldo verde", form:"yeşil çorba", example:"O caldo verde é feito com couve, batata e chouriço.", tr:"Caldo verde lahana, patates ve sucuk ile yapılır."},
+        {pronoun:"sardinhas assadas", form:"ızgara sardalya", example:"No Santos Populares come-se sardinhas assadas.", tr:"Santos Populares festivali'nde ızgara sardalya yenir."},
+        {pronoun:"vinho do Porto", form:"Porto şarabı", example:"O vinho do Porto é produzido no Douro.", tr:"Porto şarabı Douro bölgesinde üretilir."},
+        {pronoun:"bica", form:"küçük kahve (espresso)", example:"Uma bica, por favor! Sem açúcar.", tr:"Bir bica, lütfen! Şekersiz."}
       ],
-      note: "Tariflerde 'xícara' = çay bardağı, 'colher de sopa' = yemek kaşığı, 'colher de chá' = çay kaşığı. Bunlar ölçü birimleridir."
+      note: "Santos Populares (Halk Azizleri Festivali) Haziran ayında kutlanır. Aziz António (13 Haziran), Aziz João (24 Haziran) ve Aziz Pedro (29 Haziran) gecelerinde Lizbon sokaklarında ızgara sardalya yenir."
     },
     {
-      title: "Yiyecek Hakkında Fikir Belirtme",
-      explanation: "Bir yemeği değerlendirirken ACHAR (düşünmek/bulmak) çok kullanılır. 'Acho que está gostoso' = Bence lezzetli. ESTAR ile geçici özellikler, SER ile kalıcı nitelikler belirtilir.",
+      title: "Verbos de Culinária — Yemek Pişirme Fiilleri",
+      explanation: "Portekiz mutfağında kullanılan temel pişirme fiilleri.",
       table: [
-        { pronoun: "Acho que...", form: "bence...", example: "Acho que a feijoada é perfeita.", tr: "Bence feijoada mükemmel." },
-        { pronoun: "Na minha opinião", form: "benim görüşüme göre", example: "Na minha opinião, tem muito sal.", tr: "Benim görüşüme göre, çok tuzlu." },
-        { pronoun: "Favorito", form: "Meu prato favorito é...", example: "Meu prato favorito é brigadeiro!", tr: "Favori yemeğim brigadeiro!" },
-        { pronoun: "Experimenta!", form: "Dene!", example: "Experimenta o pão de queijo!", tr: "Peynirli ekmeği dene!" },
-        { pronoun: "Prefiro", form: "tercih ederim", example: "Prefiro moqueca ao churrasco.", tr: "Churrascodan ziyade moquecayı tercih ederim." },
-        { pronoun: "Combinação", form: "combinar com", example: "Açaí combina com granola.", tr: "Açaí granola ile çok gider." }
+        {pronoun:"cozinhar", form:"pişirmek (genel)", example:"Cozinho bacalhau com natas ao fim de semana.", tr:"Hafta sonu kremalı morina yapıyorum."},
+        {pronoun:"assar", form:"fırında/ızgarada pişirmek", example:"As sardinhas assam-se na brasa.", tr:"Sardalyalar kömür ateşinde ızgara yapılır."},
+        {pronoun:"fritar", form:"kızartmak", example:"Frito o bacalhau na frigideira.", tr:"Tavada morina kızartıyorum."},
+        {pronoun:"cozer", form:"haşlamak", example:"Coze as batatas em água com sal.", tr:"Patatesleri tuzlu suda haşlayın."},
+        {pronoun:"temperar", form:"baharatlamak", example:"Tempera com azeite, alho e sal.", tr:"Zeytinyağı, sarımsak ve tuzla baharatlayın."},
+        {pronoun:"marinar", form:"marine etmek", example:"Marina o frango de um dia para o outro.", tr:"Tavuğu bir gün önceden marine edin."}
       ],
-      note: "'Gostoso' = lezzetli (BP informal). 'Delicioso' = daha resmi. 'Saboroso' = lezzetli (tatmin edici)."
+      note: "Portekiz mutfağında zeytinyağı (azeite) her şeyin başıdır. Portekiz, dünya zeytinyağı üretiminde önemli bir oyuncudur — özellikle Alentejo bölgesi."
     },
     {
-      title: "IMPERFECTO (Imperfeito) — Geçmiş Alışkanlıklar",
-      explanation: "Geçmişteki düzenli alışkanlıkları veya süregelen durumları anlatmak için Pretérito Imperfeito kullanılır. '-AR' fiilleri için: -ava/-avas/-ava/-ávamos/-avam. '-ER/-IR' için: -ia/-ias/-ia/-íamos/-iam. 'De criança, comia brigadeiro todo dia' = Çocukken her gün brigadeiro yerdim.",
+      title: "Expressões Gastronómicas — Yemek İfadeleri",
+      explanation: "Yemek yeme ve mutfakla ilgili tipik Portekizce ifadeler.",
       table: [
-        { pronoun: "-AR imper.", form: "-ava", example: "Minha vó cozinhava muito bem.", tr: "Büyükannem çok iyi yemek yapardı." },
-        { pronoun: "-ER imper.", form: "-ia", example: "Comia feijoada todo sábado.", tr: "Her cumartesi feijoada yerdim." },
-        { pronoun: "De criança", form: "geçmiş alışkanlık", example: "De criança, adorava brigadeiro.", tr: "Çocukken brigadeiro'ya bayılırdım." },
-        { pronoun: "Quando era", form: "...iken", example: "Quando era pequeno, comia tudo.", tr: "Küçükken her şeyi yerdim." },
-        { pronoun: "Antes", form: "eskiden", example: "Antes, não gostava de café.", tr: "Eskiden kahveyi sevmezdim." },
-        { pronoun: "Sempre", form: "her zaman (geçmiş)", example: "Sempre almoçávamos juntos.", tr: "Her zaman birlikte öğle yemeği yerdik." }
+        {pronoun:"Está delicioso!", form:"Çok lezzetli!", example:"Este bacalhau à brás está absolutamente delicioso!", tr:"Bu bacalhau à brás inanılmaz lezzetli!"},
+        {pronoun:"Mais alguma coisa?", form:"Başka bir şey?", example:"Quer mais alguma coisa, pode dizer.", tr:"Başka bir şey istiyorsa söyleyebilirsiniz."},
+        {pronoun:"A gosto", form:"Beğeninize göre", example:"Tempere a salada a gosto.", tr:"Salatayı beğeninize göre baharatlayın."},
+        {pronoun:"Bom proveito!", form:"Afiyet olsun!", example:"Bom proveito! Espero que gostem.", tr:"Afiyet olsun! Umarım beğenirsiniz."},
+        {pronoun:"É caseiro/a", form:"Ev yapımı", example:"Este caldo verde é caseiro — fiz eu própria.", tr:"Bu caldo verde ev yapımı — ben yaptım."},
+        {pronoun:"Receita da avó", form:"Nine tarifi", example:"A receita de pastéis da minha avó é segredo.", tr:"Ninemin pastel tarifi sır."}
       ],
-      note: "Imperfeito vs Perfeito: Perfeito = tamamlanmış tek olay ('Comi feijoada ontem'). Imperfeito = alışkanlık/süreç ('Comia todo sábado')."
+      note: "Portekizce'de 'bom proveito' = Türkçe'deki 'afiyet olsun'. İngilizce'de tam karşılığı 'bon appétit' (Fransızcadan). Yemekten önce veya başlarken söylenir."
     }
   ],
   speaking: [
-    { q: "Favori Brezilya yemeğiniz nedir?", a: "Meu prato favorito é [yemek]. Adoro [açıklama]." },
-    { q: "'Çocukken çikolatayı çok severdim' nasıl?", a: "Quando era criança, adorava chocolate." },
-    { q: "Bir yemek tarifi anlatın (basit).", a: "Primeiro, misture o feijão. Depois, adicione água e cozinhe." },
-    { q: "'Bu çok tuzlu' nasıl?", a: "Está muito salgado!" },
-    { q: "'Açaí granola ile harika gider' nasıl?", a: "Açaí combina muito bem com granola!" }
+    {q:"O que é o bacalhau e porquê é tão importante para Portugal?", a:"O bacalhau é morina salgada e seca. Diz-se que há 365 receitas — uma para cada dia do ano. É o prato nacional por excelência."},
+    {q:"Já comeste pastéis de nata? O que são?", a:"Sim! São tarteletes de massa folhada com creme de ovos. Os originais fazem-se na fábrica de Belém desde 1837."},
+    {q:"Qual é a diferença entre uma bica e um galão?", a:"A bica é um expresso curto — muito forte. O galão é café com muito leite quente, servido em copo alto."},
+    {q:"O vinho do Porto bebe-se antes ou depois da refeição?", a:"Geralmente bebe-se como aperitivo (branco seco) ou sobremesa (tawny ou LBV). É um vinho licoroso muito aromático."},
+    {q:"O que se come nos Santos Populares em Lisboa?", a:"Come-se sardinhas assadas na brasa, caldo verde, pão de milho e bebe-se vinho ou cerveja. É uma tradição de junho."}
   ],
   dialogues: [
     {
-      title: "Akşam Yemeği Hazırlığı",
+      title: "Num Café Português",
       lines: [
-        { speaker: "Mãe", text: "Filha, você vai aprender a fazer feijoada hoje!", tr: "Kızım, bugün feijoada yapmayı öğreneceksin!" },
-        { speaker: "Filha", text: "Que emoção! Sempre adorei a sua feijoada.", tr: "Ne heyecan! Her zaman sizin feijoada'nıza bayıldım." },
-        { speaker: "Mãe", text: "Primeiro, deixa o feijão preto de molho desde ontem.", tr: "Önce siyah fasulyeyi dünden beri ıslatıyoruz." },
-        { speaker: "Filha", text: "Já fiz isso! E as carnes, como ficam?", tr: "Bunu yaptım! Etler nasıl pişiyor?" },
-        { speaker: "Mãe", text: "Refoga a linguiça e o bacon primeiro. Depois junta tudo no feijão.", tr: "Önce sucuğu ve baconı kavur. Sonra hepsini fasulyeye ekle." },
-        { speaker: "Filha", text: "Entendi! E a farofa, faço também?", tr: "Anladım! Farofayı da yapacak mıyım?" }
+        {speaker:"Cliente", text:"Bom dia! Uma bica e um pastel de nata, por favor."},
+        {speaker:"Barista", text:"Bom dia! O pastel de nata está quentinho, acabado de sair do forno."},
+        {speaker:"Cliente", text:"Que sorte! Pode polvilhar com canela e açúcar em pó?"},
+        {speaker:"Barista", text:"Claro, como sempre. Quer a bica curta ou normal?"},
+        {speaker:"Cliente", text:"Curta e bem quente, por favor. Que frio está lá fora!"},
+        {speaker:"Barista", text:"Já é o inverno a fazer-se sentir. Aqui está — bom proveito!"}
       ]
     }
   ],
   listening: {
-    text: "A culinária brasileira é uma das mais diversas do mundo, refletindo as influências indígenas, africanas, europeias e asiáticas. A feijoada, considerada o prato nacional, surgiu das cozinhas dos escravizados que aproveitavam as partes menos nobres do porco. O churrasco gaúcho do sul é famoso mundialmente. A Bahia tem a culinária mais marcante, com pratos como moqueca, vatapá e acarajé — todos com influências africanas fortíssimas.",
+    text: "A gastronomia portuguesa foi elevada ao estatuto de Património Cultural Imaterial em várias dimensões. O bacalhau, com as suas centenas de receitas, simboliza a história marítima de Portugal. Os pastéis de nata, criados pelos monges do Mosteiro dos Jerónimos em Belém no século XVIII, tornaram-se um ícone mundial. O vinho do Porto, produzido nas encostas do Douro, é exportado para todo o mundo. A culinária do Alentejo, baseada no azeite, no pão alentejano e nas ervas aromáticas, é conhecida pela sua simplicidade e sabor intenso.",
     questions: [
-      { q: "Brezilya mutfağı hangi kültürleri yansıtıyor?", a: "Yerli, Afrikalı, Avrupalı ve Asyalı etkiler" },
-      { q: "Feijoada nereden geldi?", a: "Köle mutfaklarından, domuzun daha az değerli parçalarından" },
-      { q: "Bahia mutfağının özelliği ne?", a: "Çok güçlü Afrikalı etkiler; moqueca, vatapá, acarajé" }
+      {q:"Onde foram criados os pastéis de nata?", a:"No Mosteiro dos Jerónimos em Belém."},
+      {q:"Onde é produzido o vinho do Porto?", a:"Nas encostas do Douro."},
+      {q:"Em que se baseia a culinária do Alentejo?", a:"No azeite, no pão alentejano e nas ervas aromáticas."}
     ]
   }
 };

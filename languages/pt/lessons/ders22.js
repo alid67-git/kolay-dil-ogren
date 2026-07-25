@@ -1,94 +1,93 @@
-const L22 = {
-  title: "Animais e Natureza",
+var L22 = {
   words: [
-    { en: "o animal", tr: "hayvan", pron: "u animal", bd: "eril; animais = hayvanlar (çoğul)" },
-    { en: "o cachorro / o cão", tr: "köpek", pron: "u kashoru / u kão", bd: "eril; BP: cachorro daha yaygın" },
-    { en: "o gato / a gata", tr: "kedi (e/d)", pron: "u gatu / a gata", bd: "cinsiyet uyumu" },
-    { en: "o pássaro", tr: "kuş", pron: "u pásaru", bd: "eril; passarinho = küçük kuş" },
-    { en: "o peixe", tr: "balık", pron: "u peyshi", bd: "eril" },
-    { en: "a cobra", tr: "yılan", pron: "a kobra", bd: "dişil" },
-    { en: "o macaco", tr: "maymun", pron: "u makaku", bd: "eril; Amazon'da çok" },
-    { en: "o papagaio", tr: "papağan", pron: "u papagayu", bd: "eril; Brasil sembolü" },
-    { en: "a onça", tr: "jaguar / panter", pron: "a õnsa", bd: "dişil; onça-pintada = jaguar" },
-    { en: "o boto / a baleia", tr: "yunus / balina", pron: "u botu / a baleya", bd: "Amazon yununusu" },
-    { en: "a floresta", tr: "orman", pron: "a florıshta", bd: "dişil; floresta tropical = tropikal orman" },
-    { en: "o rio", tr: "nehir / ırmak", pron: "u hiu", bd: "eril; Rio Amazonas = Amazon Nehri" },
-    { en: "a selva / a mata", tr: "yağmur ormanı / çalılık", pron: "a sélva / a mata", bd: "dişil" },
-    { en: "o cerrado", tr: "savana (Brezilya)", pron: "u sehadu", bd: "eril; Brezilya'ya özgü biyom" },
-    { en: "a praia", tr: "sahil", pron: "a praya", bd: "dişil" },
-    { en: "a montanha", tr: "dağ", pron: "a mõntanya", bd: "dişil; Serra = dağ silsilesi" },
-    { en: "o meio ambiente", tr: "çevre", pron: "u meyu ãmbĩntshi", bd: "eril; ambiental = çevresel" },
-    { en: "o desmatamento", tr: "ormansızlaşma", pron: "u deshmatamẽntu", bd: "eril; desmatar = ormanı kesmek" },
-    { en: "Em extinção.", tr: "Nesli tükenme tehlikesinde.", pron: "ẽy ıshtĩsão", bd: "em extinção = yok olma tehlikesinde" },
-    { en: "Proteger a natureza.", tr: "Doğayı korumak.", pron: "protejér a natúreza", bd: "proteção ambiental" }
+    {en:"animal", tr:"hayvan", pron:"ɐniˈmal", bd:"animal"},
+    {en:"dog", tr:"köpek", pron:"ˈkɐ̃u̯", bd:"cão"},
+    {en:"cat", tr:"kedi", pron:"ˈɡɐtu", bd:"gato"},
+    {en:"bird", tr:"kuş", pron:"ˈpɐʃɐɾu", bd:"pássaro"},
+    {en:"horse", tr:"at", pron:"ˈkɐvɐlu", bd:"cavalo"},
+    {en:"fish (pet)", tr:"balık", pron:"ˈpɐʃɨ", bd:"peixe"},
+    {en:"rabbit", tr:"tavşan", pron:"ˈkuɲɐʎu", bd:"coelho"},
+    {en:"wolf", tr:"kurt", pron:"ˈlobu", bd:"lobo"},
+    {en:"stork", tr:"leylek", pron:"ˈsiɡuɲɐ", bd:"cegonha"},
+    {en:"nature", tr:"doğa", pron:"naˈtʃuɾɨzɐ", bd:"natureza"},
+    {en:"forest", tr:"orman", pron:"ˈmɐtɐ / ˈflɔɾɨʃtɐ", bd:"mata / floresta"},
+    {en:"river", tr:"nehir/ırmak", pron:"ˈɾiu", bd:"rio"},
+    {en:"mountain", tr:"dağ", pron:"ˈmõtɐɲɐ / ˈsɛɾɐ", bd:"montanha / serra"},
+    {en:"beach", tr:"plaj", pron:"ˈpɾɐiɐ", bd:"praia"},
+    {en:"sea/ocean", tr:"deniz/okyanus", pron:"ˈmaɾ", bd:"mar"},
+    {en:"island", tr:"ada", pron:"ˈiʎɐ", bd:"ilha"},
+    {en:"park", tr:"park", pron:"ˈpɐɾkɨ", bd:"parque"},
+    {en:"flower", tr:"çiçek", pron:"ˈfloɾ", bd:"flor"},
+    {en:"tree", tr:"ağaç", pron:"ˈaɾvuɾɨ", bd:"árvore"},
+    {en:"cork oak", tr:"mantar meşesi", pron:"suˈbɛɾu", bd:"sobreiro"}
   ],
   grammar: [
     {
-      title: "Hayvan Tanımları — SER ve ESTAR",
-      explanation: "Hayvanları tanımlarken SER (kalıcı özellikler: renk, boyut, tür) ve ESTAR (geçici durumlar: nerede, nasıl bir durumda) kullanılır. Hayvan isimlerinin çoğu düzenli çoğul alır: gato → gatos.",
+      title: "A Natureza de Portugal — Portekiz Doğası",
+      explanation: "Portekiz'in zengin doğal güzellikleri: Atlantik kıyısı, Serra da Estrela dağları, Alentejo ovaları ve Açores-Madeira adaları. Portekiz'in milli hayvanı ise iberyalı vaşaktır (lince-ibérico).",
       table: [
-        { pronoun: "SER (tür/özellik)", form: "ser + sıfat", example: "O cachorro é leal.", tr: "Köpek sadıktır." },
-        { pronoun: "ESTAR (durum)", form: "estar + sıfat", example: "O gato está dormindo.", tr: "Kedi uyuyor." },
-        { pronoun: "Boyut", form: "ser grande/pequeno", example: "A baleia é enorme.", tr: "Balina kocaman." },
-        { pronoun: "Habitat", form: "viver em / morar em", example: "O macaco vive na floresta.", tr: "Maymun ormanda yaşar." },
-        { pronoun: "Beslenme", form: "comer / alimentar-se de", example: "O boto come peixes.", tr: "Yunus balık yer." },
-        { pronoun: "Tehdit", form: "estar em extinção", example: "A onça está em extinção.", tr: "Jaguar nesli tükenmekte." }
+        {pronoun:"sobreiro", form:"mantar meşesi (ulusal ağaç)", example:"Portugal é o maior produtor de cortiça do mundo.", tr:"Portekiz dünyanın en büyük mantar üreticisidir."},
+        {pronoun:"cegonha", form:"leylek (simge)", example:"As cegonhas chegam ao Alentejo na primavera.", tr:"Leylekler ilkbaharda Alentejo'ya gelir."},
+        {pronoun:"lobo-ibérico", form:"iberyalı kurt", example:"O lobo-ibérico existe na Serra da Peneda-Gerês.", tr:"İberyalı kurt Peneda-Gerês dağlarında yaşar."},
+        {pronoun:"lince-ibérico", form:"iberyalı vaşak", example:"O lince-ibérico é uma espécie em perigo.", tr:"İberyalı vaşak tehlike altındaki bir türdür."},
+        {pronoun:"Tejo", form:"en uzun nehir", example:"O rio Tejo atravessa Lisboa e deságua no Atlântico.", tr:"Tejo nehri Lizbon'dan geçer ve Atlantik'e dökülür."},
+        {pronoun:"Açores/Madeira", form:"okyanus adaları", example:"Os Açores e a Madeira são regiões autónomas de Portugal.", tr:"Açores ve Madeira Portekiz'in özerk bölgeleridir."}
       ],
-      note: "Favori evcil hayvan sorusu: 'Tem animais de estimação?' = Evcil hayvanınız var mı? Estimação = sevgi/değer verme."
+      note: "Portekiz dünya mantar üretiminin yaklaşık %50'sini karşılar. Sobreiro (mantar meşesi) Portekiz'in ulusal ağacıdır. Mantar, şarap şişe mantarı, yer kaplaması ve giyim olarak kullanılır."
     },
     {
-      title: "Amazon ve Brezilya Biyoçeşitliliği",
-      explanation: "Brezilya dünyada en fazla biyoçeşitliliğe sahip ülkedir. Altı ana biyom barındırır: Amazônia, Cerrado, Mata Atlântica, Caatinga, Pampa, Pantanal. Bu sözcükleri öğrenmek çevre tartışmalarında temel oluşturur.",
+      title: "Verbos da Natureza — Doğa Fiilleri",
+      explanation: "Doğa ve çevre bağlamında kullanılan fiiller. 'Proteger' (korumak), 'preservar' (muhafaza etmek), 'florescer' (çiçek açmak), 'migrar' (göç etmek).",
       table: [
-        { pronoun: "Amazônia", form: "yağmur ormanı", example: "Maior floresta tropical do mundo.", tr: "Dünyanın en büyük tropikal ormanı." },
-        { pronoun: "Cerrado", form: "savana", example: "Savana brasileira com mil espécies.", tr: "1000'den fazla tür barındıran Brezilya savanası." },
-        { pronoun: "Pantanal", form: "sulak alan", example: "Maior área úmida do planeta.", tr: "Gezegenin en büyük sulak alanı." },
-        { pronoun: "Mata Atlântica", form: "Atlantik ormanı", example: "7% resta, riquíssima.", tr: "Sadece %7'si kaldı, çok zengin biyoçeşitlilik." },
-        { pronoun: "Caatinga", form: "yarı çöl", example: "Único bioma exclusivamente brasileiro.", tr: "Yalnızca Brezilya'ya özgü biyom." },
-        { pronoun: "Pampa", form: "ılıman otlak", example: "Pecuária e natureza única.", tr: "Hayvancılık ve eşsiz doğa." }
+        {pronoun:"florir/florescer", form:"çiçek açmak", example:"Os amendoeiros florescem em fevereiro no Algarve.", tr:"Badem ağaçları Şubat'ta Algarve'de çiçek açar."},
+        {pronoun:"migrar", form:"göç etmek", example:"As cegonhas migram do norte de África para Portugal.", tr:"Leylekler Kuzey Afrika'dan Portekiz'e göç eder."},
+        {pronoun:"proteger", form:"korumak", example:"É importante proteger o lobo-ibérico.", tr:"İberyalı kurtu korumak önemlidir."},
+        {pronoun:"habituar-se a", form:"alışmak", example:"Os animais habituam-se ao clima português.", tr:"Hayvanlar Portekiz iklimine alışır."},
+        {pronoun:"desaparecer", form:"yok olmak", example:"Muitas espécies desaparecem por causa da poluição.", tr:"Pek çok tür kirliliği yüzünden yok oluyor."},
+        {pronoun:"observar", form:"gözlemlemek", example:"Gosto de observar pássaros na natureza.", tr:"Doğada kuş gözlemlemekten hoşlanırım."}
       ],
-      note: "Brasil abriga 10% das espécies do mundo. = Brezilya dünyanın türlerinin %10'una ev sahipliği yapıyor."
+      note: "Portekiz'de doğa gözlemi (birdwatching) giderek popülerleşmektedir. Özellikle Açores Adaları, nadir deniz kuşlarını gözlemlemek için ideal bir destinasyondur."
     },
     {
-      title: "Çevre ve Koruma — Anahtar Kelimeler",
-      explanation: "Çevresel konularda konuşmak için anahtar kelimeler: desmatamento (ormansızlaşma), aquecimento global (küresel ısınma), sustentabilidade (sürdürülebilirlik), reciclagem (geri dönüşüm). Aktif çevreciler 'ambientalistas' olarak adlandırılır.",
+      title: "Descrever a Paisagem — Manzara Tarif Etmek",
+      explanation: "Doğa manzaralarını tarif etmek için kullanılan sıfatlar ve ifadeler.",
       table: [
-        { pronoun: "Ormansızlaşma", form: "desmatamento", example: "O desmatamento na Amazônia é alarmante.", tr: "Amazon'daki ormansızlaşma endişe verici." },
-        { pronoun: "Küresel ısınma", form: "aquecimento global", example: "O aquecimento global afeta todos.", tr: "Küresel ısınma herkesi etkiliyor." },
-        { pronoun: "Geri dönüşüm", form: "reciclagem / reciclar", example: "Recicle papel, plástico e vidro.", tr: "Kağıt, plastik ve camı geri dönüştürün." },
-        { pronoun: "Sürdürülebilirlik", form: "sustentabilidade", example: "Práticas sustentáveis são essenciais.", tr: "Sürdürülebilir pratikler şart." },
-        { pronoun: "Koruma", form: "proteção / preservação", example: "Preservar a natureza é obrigação.", tr: "Doğayı korumak bir yükümlülük." },
-        { pronoun: "Nesli tükenmekte", form: "em extinção / ameaçado", example: "Espécie ameaçada de extinção.", tr: "Nesli tükenme tehlikesindeki tür." }
+        {pronoun:"verde/verdejante", form:"yeşil/yemyeşil", example:"O Minho é uma região muito verdejante.", tr:"Minho çok yeşil bir bölgedir."},
+        {pronoun:"árido/a", form:"çorak/kurak", example:"O Alentejo pode ser árido no verão.", tr:"Alentejo yazın çorak olabilir."},
+        {pronoun:"pitoresco/a", form:"pitoresk", example:"As aldeias de xisto são muito pitorescas.", tr:"Şist köyleri çok pitoresktir."},
+        {pronoun:"imponente", form:"görkemli", example:"A Serra da Estrela tem uma paisagem imponente.", tr:"Serra da Estrela görkemli bir manzaraya sahip."},
+        {pronoun:"selvagem", form:"vahşi/yabani", example:"A costa vicentina é selvagem e bela.", tr:"Vicentina kıyısı vahşi ve güzeldir."},
+        {pronoun:"tranquilo/a", form:"sakin/huzurlu", example:"O ambiente do rio é muito tranquilo.", tr:"Nehir ortamı çok huzurlu."}
       ],
-      note: "Brasil tem uma das legislações ambientais mais avançadas do mundo = Brezilya dünyanın en gelişmiş çevre mevzuatlarından birine sahip."
+      note: "A Costa Vicentina (Sudoeste Alentejano e Costa Vicentina) Avrupa'nın en iyi korunmuş sahil şeritlerinden biridir ve Doğal Park statüsüne sahiptir."
     }
   ],
   speaking: [
-    { q: "Favori hayvanınız nedir?", a: "Meu animal favorito é o [hayvan]. Porque é [özellik]." },
-    { q: "'Jaguar nesli tükenmekte' nasıl?", a: "A onça-pintada está em extinção." },
-    { q: "'Amazon ormanı dünya için çok önemli' nasıl?", a: "A Amazônia é muito importante para o planeta." },
-    { q: "Evcil hayvanınız var mı?", a: "Sim, tenho um cachorro/gato. / Não tenho animais de estimação." },
-    { q: "'Geri dönüşüm yapmak lazım' nasıl?", a: "Precisamos reciclar mais." }
+    {q:"Qual é o animal nacional de Portugal?", a:"O galo de Barcelos é um símbolo cultural importante. O lobo-ibérico é um animal emblemático da fauna portuguesa."},
+    {q:"Portugal tem muitos parques naturais?", a:"Sim! Portugal tem vários parques nacionais e naturais, como o Parque Nacional da Peneda-Gerês, o único parque nacional."},
+    {q:"O que é especial nos Açores?", a:"Os Açores são um arquipélago vulcânico com paisagens únicas — caldeiras, lagos de crateras e uma biodiversidade extraordinária."},
+    {q:"Qual é o maior rio de Portugal?", a:"O Tejo é o rio mais longo da Península Ibérica. Nasce em Espanha e desagua no Atlântico em Lisboa."},
+    {q:"Portugal produz cortiça?", a:"Sim! Portugal é o maior produtor de cortiça do mundo, com os sobreiros do Alentejo e da Estremadura."}
   ],
   dialogues: [
     {
-      title: "Amazon'da Ekoturizm",
+      title: "Uma Visita ao Parque Natural",
       lines: [
-        { speaker: "Guia", text: "Bem-vindos à Amazônia! Aqui vocês vão ver animais incríveis.", tr: "Amazon'a hoş geldiniz! Burada inanılmaz hayvanlar göreceksiniz." },
-        { speaker: "Turista", text: "Que animais podemos encontrar?", tr: "Ne tür hayvanlarla karşılaşabiliriz?" },
-        { speaker: "Guia", text: "Macacos, papagaios, jacarés e até onças, se tivermos sorte.", tr: "Maymunlar, papağanlar, timsahlar ve şanslı olursak jaguar bile." },
-        { speaker: "Turista", text: "E os botos? Já vi fotos lindas!", tr: "Peki yunuslar? Harika fotoğraflar gördüm!" },
-        { speaker: "Guia", text: "Sim! O boto-cor-de-rosa é uma espécie única do Amazon.", tr: "Evet! Pembe yunus Amazon'a özgü bir türdür." },
-        { speaker: "Turista", text: "Espero que nunca sumam. Precisamos proteger!", tr: "Umarım asla yok olmazlar. Korumamız lazım!" }
+        {speaker:"Guia", text:"Bem-vindos ao Parque Nacional da Peneda-Gerês! É o único parque nacional de Portugal."},
+        {speaker:"Visitante", text:"É muito bonito! Que animais podemos ver aqui?"},
+        {speaker:"Guia", text:"Temos lobos-ibéricos, veados, javalis e muitas aves. Com sorte vemos um lobo!"},
+        {speaker:"Visitante", text:"Os lobos são perigosos para os visitantes?"},
+        {speaker:"Guia", text:"Não, fogem dos humanos. São animais tímidos mas essenciais para o ecossistema."},
+        {speaker:"Visitante", text:"Que fauna e flora interessante! Vou fotografar tudo para guardar memória."}
       ]
     }
   ],
   listening: {
-    text: "O Brasil é o país mais biodiverso do mundo. Na Amazônia, vivem cerca de 30% das espécies do planeta, incluindo 1.300 tipos de pássaros e 3.000 espécies de peixes. O boto-cor-de-rosa, ou boto, é um animal único — é o maior golfinho de água doce do mundo e vive apenas nos rios da Amazônia. Infelizmente, o desmatamento e a poluição ameaçam muitas dessas espécies preciosas.",
+    text: "Portugal é um país com uma biodiversidade extraordinária, resultado de uma posição geográfica única — entre o Atlântico e o Mediterrâneo. A flora portuguesa inclui o sobreiro, árvore nacional, que produz a famosa cortiça portuguesa. A fauna ibérica tem espécies únicas como o lince-ibérico e o lobo-ibérico, ambos em risco de extinção. Os Açores, situados no meio do Atlântico, são um paraíso para observação de baleias e polvos-gigantes.",
     questions: [
-      { q: "Amazon'da gezegen türlerinin yüzde kaçı yaşıyor?", a: "Yaklaşık %30" },
-      { q: "Boto nedir?", a: "Dünyanın en büyük tatlı su yunusu; sadece Amazon nehirlerinde" },
-      { q: "Bu türleri ne tehdit ediyor?", a: "Ormansızlaşma ve kirlilik" }
+      {q:"Porque tem Portugal grande biodiversidade?", a:"Pela posição geográfica única entre o Atlântico e o Mediterrâneo."},
+      {q:"Qual é a árvore nacional de Portugal?", a:"O sobreiro."},
+      {q:"O que se pode observar nos Açores?", a:"Baleias e polvos-gigantes."}
     ]
   }
 };

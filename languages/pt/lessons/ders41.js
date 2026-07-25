@@ -1,94 +1,104 @@
-const L41 = {
-  title: "Português Acadêmico",
+var L41 = {
   words: [
-    { en: "a pesquisa", tr: "araştırma", pron: "a peshkiza", bd: "dişil; pesquisador = araştırmacı" },
-    { en: "o artigo", tr: "makale / madde", pron: "u artígu", bd: "eril; artigo científico = bilimsel makale" },
-    { en: "a tese", tr: "tez", pron: "a tezi", bd: "dişil; tese de doutorado = doktora tezi" },
-    { en: "a dissertação", tr: "yüksek lisans tezi", pron: "a dishertasão", bd: "dişil; dissertação de mestrado" },
-    { en: "a hipótese", tr: "hipotez", pron: "a ipótezi", bd: "dişil; levantar hipótese = hipotez kurmak" },
-    { en: "a metodologia", tr: "metodoloji", pron: "a metodolojiya", bd: "dişil; metodologia de pesquisa" },
-    { en: "os dados", tr: "veriler", pron: "us dadu ş", bd: "eril çoğul; analisar os dados = verileri analiz etmek" },
-    { en: "a conclusão", tr: "sonuç / sonuçlama", pron: "a kõklusão", bd: "dişil; concluir = sonuçlandırmak" },
-    { en: "a referência", tr: "kaynak / referans", pron: "a referẽnsya", bd: "dişil; lista de referências = kaynakça" },
-    { en: "a citação", tr: "alıntı", pron: "a sitasão", bd: "dişil; citar = alıntı yapmak" },
-    { en: "o seminário", tr: "seminer", pron: "u seminaryu", bd: "eril; apresentar no seminário = seminerde sunum yapmak" },
-    { en: "o orientador", tr: "danışman (akademik)", pron: "u oriyẽntador", bd: "eril; professora orientadora = dişil" },
-    { en: "analisar", tr: "analiz etmek", pron: "analizár", bd: "düzenli -AR; análise = analiz" },
-    { en: "demonstrar", tr: "göstermek / kanıtlamak", pron: "dẽmonstrár", bd: "düzenli -AR; demonstração = kanıt/gösteri" },
-    { en: "desenvolver", tr: "geliştirmek", pron: "dẽzenvolvér", bd: "düzensiz -ER; desenvolvimento = gelişme" },
-    { en: "embasar", tr: "temellendirmek", pron: "ẽmazár", bd: "düzenli -AR; embasado em = ...temelli" },
-    { en: "confrontar", tr: "karşılaştırmak / yüzleşmek", pron: "kõfrõntár", bd: "düzenli -AR; confrontar dados = verileri kıyaslamak" },
-    { en: "Conforme X argumenta", tr: "X'in savunduğu gibi", pron: "kõfórmi argumenta", bd: "akademik atıf ifadesi" },
-    { en: "Conclui-se que", tr: "Sonuç olarak şu çıkar:", pron: "kõklu-si ki", bd: "akademik sonuç" },
-    { en: "À luz dos dados", tr: "Veriler ışığında", pron: "a lúsh duş daduş", bd: "akademik ifade" }
+    {en:"specialist doctor", tr:"uzman doktor", pron:"ˈɛʃpɨʃjɐˈliʃtɐ", bd:"o/a especialista"},
+    {en:"blood test", tr:"kan testi", pron:"ˈanɐˈliziʃ ɐw ˈsɐŋɡɨ", bd:"as análises ao sangue"},
+    {en:"prescription", tr:"reçete", pron:"ˈʁɛsijtɐ ˈmɛdikɐ", bd:"a receita médica"},
+    {en:"pharmacy", tr:"eczane", pron:"fɐɾˈmasʲɐ", bd:"a farmácia"},
+    {en:"surgery", tr:"ameliyat", pron:"siɾuɾˈʒiɐ", bd:"a cirurgia"},
+    {en:"vaccine", tr:"aşı", pron:"vɐˈsinɐ", bd:"a vacina"},
+    {en:"allergy", tr:"alerji", pron:"ɐˈlɛɾʒiɐ", bd:"a alergia"},
+    {en:"chronic illness", tr:"kronik hastalık", pron:"dueŋsɐ ˈkɾɔnikɐ", bd:"a doença crónica"},
+    {en:"high blood pressure", tr:"yüksek tansiyon", pron:"iˈpeɾtẽsãw", bd:"a hipertensão"},
+    {en:"diabetes", tr:"diyabet", pron:"diɐˈbɛtɨʃ", bd:"a diabetes"},
+    {en:"appointment", tr:"randevu", pron:"kõˈsuɫtɐ", bd:"a consulta"},
+    {en:"waiting room", tr:"bekleme odası", pron:"ˈsɐɫɐ dɨ ˈeʃpeɾɐ", bd:"a sala de espera"},
+    {en:"nurse", tr:"hemşire", pron:"ẽfɨɾˈmeiɾu/ɐ", bd:"o/a enfermeiro/a"},
+    {en:"X-ray", tr:"röntgen", pron:"ɾɐdiuɡɾɐˈfiɐ", bd:"a radiografia"},
+    {en:"pain relief", tr:"ağrı kesici", pron:"ɐnɐɫˈʒɛziku", bd:"o analgésico"},
+    {en:"health centre", tr:"sağlık merkezi", pron:"ˈsẽtɾu dɨ ˈsɐudɨ", bd:"o centro de saúde"},
+    {en:"health insurance", tr:"sağlık sigortası", pron:"seɡuɾu dɨ ˈsɐudɨ", bd:"o seguro de saúde"},
+    {en:"blood pressure", tr:"kan basıncı", pron:"ˈpɾɛsãw ɐɾteɾiˈɐɫ", bd:"a pressão arterial"},
+    {en:"wound / injury", tr:"yara", pron:"ˈfɨɾidɐ", bd:"a ferida"},
+    {en:"fracture", tr:"kırık", pron:"ˈfɾɐtuɾɐ", bd:"a fratura"}
   ],
   grammar: [
     {
-      title: "Akademik Yazı — Resmi Dil ve Yapılar",
-      explanation: "Akademik Portekizce'de belirli yapılar kullanılır: CONFORME (göre), SEGUNDO (göre), TENDO EM VISTA QUE (göz önünde bulundurularak), VALE RESSALTAR QUE (belirtmek gerekir ki), CABE MENCIONAR (bahsetmek yerinde olur). Bu yapılar yazıyı resmi ve güvenilir kılar.",
+      title: "Imperativo com Pronomes Enclíticos (Emir Kipi + Zamir)",
+      explanation: "Avrupa Portekizcesinde emir kipinde zamir fiilden SONRA gelir, tire ile bağlanır. Bu yapı EP'yi BP'den ayıran önemli özelliklerden biridir.",
       table: [
-        { pronoun: "Conforme + isim", form: "...göre", example: "Conforme Silva (2020), isso é comprovado.", tr: "Silva'ya (2020) göre bu kanıtlanmıştır." },
-        { pronoun: "Segundo + isim", form: "...göre", example: "Segundo os dados coletados,", tr: "Toplanan verilere göre," },
-        { pronoun: "Vale ressaltar", form: "Belirtmek gerekir", example: "Vale ressaltar que há limitações.", tr: "Kısıtlamalar olduğunu belirtmek gerekir." },
-        { pronoun: "Cabe mencionar", form: "Bahsetmek yerinde", example: "Cabe mencionar o contexto histórico.", tr: "Tarihi bağlamdan bahsetmek yerinde olur." },
-        { pronoun: "Tendo em vista", form: "Göz önünde bulundurularak", example: "Tendo em vista os resultados,", tr: "Sonuçlar göz önünde bulundurulduğunda," },
-        { pronoun: "Ademais", form: "Bunun yanı sıra", example: "Ademais, outros fatores contribuem.", tr: "Bunun yanı sıra, diğer faktörler de katkıda bulunur." }
+        {pronoun:"tu (olumlu)", form:"Levanta-te!", example:"Levanta-te, por favor.", tr:"Kalk, lütfen."},
+        {pronoun:"você (olumlu)", form:"Sente-se!", example:"Sente-se aqui, por favor.", tr:"Buraya oturun, lütfen."},
+        {pronoun:"tu (olumsuz)", form:"Não te levantes!", example:"Não te levantes ainda.", tr:"Henüz kalkma!"},
+        {pronoun:"você (olumsuz)", form:"Não se sente!", example:"Não se sente aí.", tr:"Oraya oturma!"},
+        {pronoun:"(nós) vamos", form:"Tomemos!", example:"Tomemos os medicamentos.", tr:"İlaçları alalım."},
+        {pronoun:"vocês", form:"Sentem-se!", example:"Sentem-se, por favor.", tr:"Oturun, lütfen."}
       ],
-      note: "Akademik Portekizce'de 1. tekil şahıs 'eu' kullanımı azaltılır, pasif yapı tercih edilir: 'Foi observado que' (Gözlemlendi ki) yerine 'Observei que' (Gözlemledim ki) daha az tercih edilir."
+      note: "Olumsuz emirde zamir fiilden ÖNCE gelir: 'Não te levantes' (Kalkma). Olumlu emirde SONRA gelir: 'Levanta-te' (Kalk). Bu kural kesindir."
     },
     {
-      title: "Edilgen Yapı (Voz Passiva) — Akademik Kullanım",
-      explanation: "Akademik metinlerde edilgen yapı çok yaygındır: 'Os dados foram coletados' (Veriler toplandı), 'A hipótese foi confirmada' (Hipotez doğrulandı). SER+particípio yapısı. Ayrıca SE edilgen: 'Observou-se que...' (Gözlemlendi ki...).",
+      title: "Verbos com Objecto Directo e Indirecto (Doğrudan ve Dolaylı Nesne)",
+      explanation: "Portekizcede iki nesne alan fiillerde zamir sırası önemlidir. Avrupa Portekizcesinde bu zamirler enclítico (sondan) yerleşir.",
       table: [
-        { pronoun: "SER + particípio", form: "Edilgen", example: "Os dados foram analisados.", tr: "Veriler analiz edildi." },
-        { pronoun: "SE + fiil", form: "Edilgen (SE)", example: "Observou-se uma melhora.", tr: "Bir iyileşme gözlemlendi." },
-        { pronoun: "Geçmiş edilgen", form: "foi/foram + part.", example: "A tese foi defendida com sucesso.", tr: "Tez başarıyla savunuldu." },
-        { pronoun: "Şimdiki edilgen", form: "é/são + part.", example: "O método é amplamente utilizado.", tr: "Yöntem yaygın olarak kullanılmaktadır." },
-        { pronoun: "Por quem", form: "Kim tarafından", example: "Desenvolvido por pesquisadores.", tr: "Araştırmacılar tarafından geliştirilmiş." },
-        { pronoun: "Sem agente", form: "Ajan belirtmeden", example: "Foram identificadas três categorias.", tr: "Üç kategori belirlendi." }
+        {pronoun:"dar (vermek)", form:"dou-lhe + o/a", example:"Dou-lhe o medicamento.", tr:"Ona ilacı veriyorum."},
+        {pronoun:"mostrar (göstermek)", form:"mostro-lhe + o/a", example:"Mostro-lhe a receita.", tr:"Ona reçeteyi gösteriyorum."},
+        {pronoun:"explicar (açıklamak)", form:"explico-lhe + o/a", example:"Explico-lhe o tratamento.", tr:"Ona tedaviyi açıklıyorum."},
+        {pronoun:"pedir (istemek)", form:"peço-lhe + que", example:"Peço-lhe que espere.", tr:"Ondan beklemesini istiyorum."},
+        {pronoun:"receitar (reçete yazmak)", form:"receito-lhe + o/a", example:"Receito-lhe antibióticos.", tr:"Ona antibiyotik yazıyorum."},
+        {pronoun:"recomendar (önermek)", form:"recomendo-lhe + o/a", example:"Recomendo-lhe repouso.", tr:"Ona dinlenme öneriyorum."}
       ],
-      note: "SE edilgen (voz passiva sintética) akademik metinde çok yaygın. 'Verificou-se que' = İngilizce 'It was verified that' — çok doğal görünür."
+      note: "'Lhe' = ona/size (hem erkek hem dişi için). EP'de 'dar-lhe' yerine asla 'dar para ele/ela' kullanılmaz — bu BP özelliğidir."
     },
     {
-      title: "Bağlaçlar ve Geçiş İfadeleri",
-      explanation: "Akademik yazıda paragraflar arası akışı sağlamak için bağlaçlar (conjunções) kritiktir. Ekleme: além disso, ademais, outrossim. Karşıtlık: entretanto, contudo, porém, todavia. Sonuç: portanto, logo, assim sendo. Açıklama: ou seja, isto é, a saber.",
+      title: "Conjugação do Verbo DOER (Acımak/Ağrımak)",
+      explanation: "EP'de ağrı ifadesi için 'doer' fiili 'dói-me' yapısıyla kullanılır. Fiilin öznesini vücut bölgesi oluşturur.",
       table: [
-        { pronoun: "Além disso", form: "Bunun yanı sıra", example: "Além disso, outros fatores existem.", tr: "Bunun yanı sıra, diğer faktörler de var." },
-        { pronoun: "Entretanto", form: "Bununla birlikte", example: "Entretanto, há limitações.", tr: "Bununla birlikte, kısıtlamalar var." },
-        { pronoun: "Portanto", form: "Dolayısıyla", example: "Portanto, conclui-se que...", tr: "Dolayısıyla şu sonuca varılır:" },
-        { pronoun: "Ou seja", form: "Yani / Başka bir deyişle", example: "Ou seja, os dados confirmam.", tr: "Yani veriler doğruluyor." },
-        { pronoun: "Todavia", form: "Oysa ki / Ancak", example: "Todavia, o resultado divergiu.", tr: "Oysa ki sonuç farklılaştı." },
-        { pronoun: "Assim sendo", form: "Bu durumda / Böylece", example: "Assim sendo, a hipótese se confirma.", tr: "Bu durumda hipotez doğrulanmaktadır." }
+        {pronoun:"singular", form:"dói-me", example:"Dói-me a cabeça.", tr:"Başım ağrıyor."},
+        {pronoun:"plural", form:"doem-me", example:"Doem-me os joelhos.", tr:"Dizlerim ağrıyor."},
+        {pronoun:"singular (tu)", form:"dói-te", example:"Dói-te o estômago?", tr:"Miiden mi ağrıyor?"},
+        {pronoun:"plural (tu)", form:"doem-te", example:"Doem-te os dentes?", tr:"Dişlerin mi ağrıyor?"},
+        {pronoun:"singular (ele/ela)", form:"dói-lhe", example:"Dói-lhe o peito.", tr:"Göğsü ağrıyor."},
+        {pronoun:"plural (ele/ela)", form:"doem-lhe", example:"Doem-lhe as costas.", tr:"Sırtı ağrıyor."}
       ],
-      note: "'Porém' ve 'contudo' = ancak/bununla birlikte. 'Todavia' daha resmi. BP informal konuşmada 'mas' yeterli, akademikte bunlar gerekli."
+      note: "BP'de 'Minha cabeça está doendo' veya 'Estou com dor de cabeça' denir. EP'de 'Dói-me a cabeça' daha yaygın ve doğal bir ifadedir."
     }
   ],
   speaking: [
-    { q: "Araştırmanızı kısaca tanıtın.", a: "Esta pesquisa tem como objetivo analisar... A metodologia utilizada foi... Os dados foram coletados por meio de..." },
-    { q: "'Veriler hipotezi doğrulayamadı' nasıl?", a: "Os dados não puderam confirmar a hipótese inicial. Foram identificadas outras variáveis." },
-    { q: "Bir kaynağa atıf yapın.", a: "Conforme Silva e Costa (2022) argumentam, o fenômeno tem múltiplas causas." },
-    { q: "Sonuç bölümü için bir cümle yazın.", a: "Conclui-se que a educação é o fator mais relevante neste contexto." },
-    { q: "'Araştırmanın sınırlılıkları şunlardır' nasıl?", a: "Vale ressaltar que esta pesquisa apresenta limitações, como o tamanho da amostra." }
+    {q:"Onde fica o centro de saúde mais próximo?", a:"O centro de saúde fica ali ao fundo, vire à esquerda na rotunda."},
+    {q:"Preciso de marcar uma consulta com um especialista.", a:"Tem de pedir uma referência ao seu médico de família primeiro."},
+    {q:"Tenho de fazer análises ao sangue. Preciso estar em jejum?", a:"Sim, deve estar em jejum pelo menos oito horas antes das análises."},
+    {q:"Estou constipado/a há três dias. O que me recomenda?", a:"Recomendo-lhe repouso, líquidos e este xarope. Se não melhorar em cinco dias, volte cá."},
+    {q:"Tenho alergia à penicilina. É importante saber?", a:"Sim, é muito importante! Vou registar na sua ficha clínica imediatamente."}
   ],
   dialogues: [
     {
-      title: "Tez Savunması Hazırlığı",
+      title: "Na Consulta Médica",
       lines: [
-        { speaker: "Orientadora", text: "Sua dissertação está quase pronta. Precisamos revisar a conclusão.", tr: "Teziniz neredeyse hazır. Sonuç bölümünü gözden geçirmemiz gerekiyor." },
-        { speaker: "Mestranda", text: "Sim. Acho que a argumentação está coerente, mas a conclusão pode ser mais forte.", tr: "Evet. Argümantasyonun tutarlı olduğunu düşünüyorum, ama sonuç daha güçlü olabilir." },
-        { speaker: "Orientadora", text: "Exatamente! Use 'portanto' e 'assim sendo' para conectar melhor as ideias.", tr: "Tam olarak! Fikirleri daha iyi bağlamak için 'dolayısıyla' ve 'bu durumda' kullanın." },
-        { speaker: "Mestranda", text: "Entendido. E as referências? Seguem a ABNT?", tr: "Anladım. Kaynaklar? ABNT'yi takip ediyor mu?" },
-        { speaker: "Orientadora", text: "A maioria sim, mas há duas citações que precisam de ajuste.", tr: "Çoğunluğu evet, ama iki alıntının düzeltilmesi gerekiyor." },
-        { speaker: "Mestranda", text: "Corrijo amanhã cedo. Estou animada com a defesa!", tr: "Yarın sabah düzeltirim. Savunma için heyecanlıyım!" }
+        {speaker:"Médico/a", text:"Bom dia. Em que posso ajudá-lo/la?"},
+        {speaker:"Doente", text:"Bom dia, doutor/a. Dói-me muito o peito e tenho falta de ar desde ontem."},
+        {speaker:"Médico/a", text:"Vou auscultar-lhe. Respire fundo, por favor. E agora expire devagar."},
+        {speaker:"Doente", text:"Está bem. Acha que é grave?"},
+        {speaker:"Médico/a", text:"Vou pedir-lhe uma radiografia e análises ao sangue para despistar qualquer problema sério."},
+        {speaker:"Doente", text:"Muito bem. Obrigado/a, doutor/a."}
+      ]
+    },
+    {
+      title: "Na Farmácia",
+      lines: [
+        {speaker:"Cliente", text:"Boa tarde. Tenho aqui uma receita médica."},
+        {speaker:"Farmacêutico/a", text:"Com certeza. Deixe-me ver... São antibióticos e um anti-inflamatório."},
+        {speaker:"Cliente", text:"Quanto tempo devo tomar os antibióticos?"},
+        {speaker:"Farmacêutico/a", text:"Durante sete dias, mesmo que se sinta melhor antes. Não interrompa o tratamento."},
+        {speaker:"Cliente", text:"E o anti-inflamatório?"},
+        {speaker:"Farmacêutico/a", text:"Tome apenas quando tiver dor, não em jejum. Aqui tem a bula com todas as informações."}
       ]
     }
   ],
   listening: {
-    text: "O Brasil investe significativamente em pesquisa científica, com instituições como FAPESP, CNPq e CAPES financiando projetos em todo o país. A USP — Universidade de São Paulo — é a melhor universidade da América Latina segundo vários rankings internacionais. O sistema de pós-graduação brasileiro é um dos mais desenvolvidos do mundo em desenvolvimento. Áreas como biotecnologia tropical, medicina veterinária e agricultura sustentável são destaques internacionais. A Embrapa, empresa de pesquisa agropecuária, revolucionou a agricultura brasileira e é referência mundial.",
+    text: "O Serviço Nacional de Saúde, o SNS, é o sistema público de saúde de Portugal. Foi criado em 1979 e oferece cuidados de saúde a todos os cidadãos e residentes legais. O acesso é feito através do cartão de utente do SNS. Para uma consulta de clínico geral, deve ir ao seu centro de saúde. Para especialidades, normalmente precisa de uma referência do médico de família. Em caso de urgência, pode ir diretamente ao hospital. O número de emergência em Portugal é o 112, que funciona para situações de risco de vida. O INEM, Instituto Nacional de Emergência Médica, coordena as ambulâncias e o socorro pré-hospitalar.",
     questions: [
-      { q: "Brezilya'da araştırmayı finanse eden kurumlar hangileri?", a: "FAPESP, CNPq ve CAPES" },
-      { q: "USP hangi alanda öne çıkıyor?", a: "Latin Amerika'nın en iyi üniversitesi olarak uluslararası sıralamalarda" },
-      { q: "Embrapa ne yapıyor?", a: "Brezilya tarımını devrimi ve dünya referansı olan tarım araştırmaları" }
+      {q:"Quando foi criado o SNS em Portugal?", a:"O SNS foi criado em 1979."},
+      {q:"O que é necessário para aceder ao SNS?", a:"É necessário o cartão de utente do SNS."},
+      {q:"Qual é o número de emergência em Portugal?", a:"O número de emergência é o 112."}
     ]
   }
 };

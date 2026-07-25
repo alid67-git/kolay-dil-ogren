@@ -1,94 +1,93 @@
-const L19 = {
-  title: "Trabalho e Profissões",
+var L19 = {
   words: [
-    { en: "o trabalho", tr: "iş / çalışma", pron: "u trabalyu", bd: "eril; trabalhar = çalışmak" },
-    { en: "a profissão", tr: "meslek", pron: "a profisão", bd: "dişil; Qual é sua profissão?" },
-    { en: "o médico / a médica", tr: "doktor", pron: "u médzhiku / a médzhika", bd: "cinsiyet uyumu" },
-    { en: "o engenheiro / a engenheira", tr: "mühendis", pron: "u ẽnjeyneyru / a ẽnjeyneyra", bd: "cinsiyet uyumu" },
-    { en: "o professor / a professora", tr: "öğretmen", pron: "u profesór / a profesóra", bd: "cinsiyet uyumu" },
-    { en: "o advogado / a advogada", tr: "avukat", pron: "u advogadu / a advogada", bd: "cinsiyet uyumu" },
-    { en: "o empresário / a empresária", tr: "iş insanı / girişimci", pron: "u ẽmprezáryu / a ẽmprezárya", bd: "cinsiyet uyumu" },
-    { en: "o programador / a programadora", tr: "programcı / yazılımcı", pron: "u programador / a programadora", bd: "cinsiyet uyumu" },
-    { en: "o cozinheiro / a cozinheira", tr: "aşçı / şef", pron: "u kozĩneyru / a kozĩneyra", bd: "cinsiyet uyumu" },
-    { en: "o jornalista / a jornalista", tr: "gazeteci", pron: "u jornalishta / a jornalishta", bd: "tek form — cinsiyet değişmez" },
-    { en: "o artista / a artista", tr: "sanatçı", pron: "u artishta / a artishta", bd: "tek form" },
-    { en: "o funcionário / a funcionária", tr: "memur / çalışan", pron: "u funsionáryu / a funsionárya", bd: "cinsiyet uyumu" },
-    { en: "o chefe / a chefe", tr: "patron / şef / amir", pron: "u shefi / a shefi", bd: "tek form" },
-    { en: "o salário", tr: "maaş", pron: "u saláryu", bd: "eril" },
-    { en: "a empresa", tr: "şirket", pron: "a ẽmpreza", bd: "dişil" },
-    { en: "o escritório", tr: "ofis / büro", pron: "u ıshkritóryu", bd: "eril" },
-    { en: "a reunião", tr: "toplantı", pron: "a heuniaw", bd: "dişil; çoğul: reuniões" },
-    { en: "trabalhar em home office", tr: "evden çalışmak", pron: "trabalyár ẽy om ofishi", bd: "BP'de çok yaygın ifade" },
-    { en: "o prazo", tr: "son tarih / teslim tarihi", pron: "u prazu", bd: "eril; prazo final = kesin son tarih" },
-    { en: "Estou desempregado/a.", tr: "İşsizim.", pron: "ıshto dezemprıgadu/a", bd: "desemprego = işsizlik" }
+    {en:"work/job", tr:"iş", pron:"tɾɐˈbaʎu", bd:"trabalho"},
+    {en:"profession", tr:"meslek", pron:"pɾufisɐ̃u̯", bd:"profissão"},
+    {en:"company", tr:"şirket", pron:"ɨ̃ˈpɾɛzɐ", bd:"empresa"},
+    {en:"boss", tr:"patron/amir", pron:"ʃɛˈfɨ", bd:"chefe"},
+    {en:"colleague", tr:"iş arkadaşı", pron:"kulɛˈɡɐ", bd:"colega"},
+    {en:"salary", tr:"maaş", pron:"sɐˈlaɾiu", bd:"salário"},
+    {en:"contract", tr:"sözleşme", pron:"kõˈtɾɐtu", bd:"contrato"},
+    {en:"interview", tr:"iş görüşmesi", pron:"ɨ̃tɨɾˈvistɐ", bd:"entrevista"},
+    {en:"cv/resume", tr:"özgeçmiş", pron:"kuɾˈikulu ˈvitɐ̃ɨ̯", bd:"curriculum vitae"},
+    {en:"unemployed", tr:"işsiz", pron:"dizɨ̃ˈpɾɛɡadu", bd:"desempregado/a"},
+    {en:"on strike", tr:"grevde", pron:"ɨ̃ ˈɡɾɛvɨ", bd:"em greve"},
+    {en:"overtime", tr:"fazla mesai", pron:"ˈoɾɐʃ ɨkʃˈtɾɐ", bd:"horas extra"},
+    {en:"holiday/leave", tr:"tatil/izin", pron:"fɨˈɾiɐʃ", bd:"férias"},
+    {en:"sick leave", tr:"hastalık izni", pron:"bɐɪ̯ʃɐ ˈmɛdikɐ", bd:"baixa médica"},
+    {en:"promotion", tr:"terfi", pron:"pɾumusɐ̃u̯", bd:"promoção"},
+    {en:"meeting", tr:"toplantı", pron:"ɾɨuˈnjɐ̃u̯", bd:"reunião"},
+    {en:"deadline", tr:"son tarih/teslim", pron:"ˈpɾɐzu", bd:"prazo"},
+    {en:"remote work", tr:"uzaktan çalışma", pron:"tɾɐˈbaʎu ɾɨˈmotu", bd:"trabalho remoto"},
+    {en:"minimum wage", tr:"asgari ücret", pron:"sɐˈlaɾiu ˈminumu", bd:"salário mínimo"},
+    {en:"social security", tr:"sosyal güvenlik", pron:"sɨɡuˈɾɐ̃sɐ suˈsjɐl", bd:"Segurança Social"}
   ],
   grammar: [
     {
-      title: "Meslek Bildirme — SER + Meslek (Artikelsiz!)",
-      explanation: "Mesleği belirtirken 'Sou médico' (ben doktorum) gibi SER kullanılır. ÖNEMLİ: Portekizcede meslek bildirirken belirsiz artikel (um/uma) KULLANILMAZ — İngilizce'deki 'I am A doctor'dan farklıdır. İstisnalar: ünleme veya değiştirici varsa kullanılır.",
+      title: "O Mercado de Trabalho em Portugal — Portekiz İş Piyasası",
+      explanation: "Portekiz'de çalışma hayatıyla ilgili bilgiler. İş başvurusu, sözleşme türleri ve işçi hakları.",
       table: [
-        { pronoun: "Meslek", form: "Sou + meslek (artikelsiz)", example: "Sou professora.", tr: "Öğretmenim." },
-        { pronoun: "Soru", form: "O que você é? / Qual é sua profissão?", example: "O que você faz?", tr: "Ne iş yaparsınız?" },
-        { pronoun: "Nerede", form: "trabalhar em/na/no", example: "Trabalho numa escola.", tr: "Bir okulda çalışıyorum." },
-        { pronoun: "Değiştirici ile", form: "Sou um bom médico.", example: "Ela é uma ótima engenheira.", tr: "O harika bir mühendis. (sıfat var!)" },
-        { pronoun: "Geçmiş meslek", form: "Trabalhei como...", example: "Trabalhei como garçom.", tr: "Garson olarak çalıştım." },
-        { pronoun: "İstihdam durumu", form: "estar empregado/desempregado", example: "Estou empregada.", tr: "Çalışıyorum. (istihdam var)" }
+        {pronoun:"Contrato sem termo", form:"Belirsiz süreli sözleşme", example:"Tenho um contrato sem termo há cinco anos.", tr:"Beş yıldır belirsiz süreli sözleşmem var."},
+        {pronoun:"Contrato a termo", form:"Belirli süreli sözleşme", example:"Comecei com contrato a termo de um ano.", tr:"Bir yıllık belirli süreli sözleşmeyle başladım."},
+        {pronoun:"Salário mínimo", form:"Asgari ücret", example:"O salário mínimo em Portugal aumentou este ano.", tr:"Portekiz'de asgari ücret bu yıl arttı."},
+        {pronoun:"Férias legais", form:"Yasal izin hakkı", example:"Em Portugal, temos direito a 22 dias úteis de férias.", tr:"Portekiz'de 22 iş günü tatil hakkımız var."},
+        {pronoun:"Segurança Social", form:"Sosyal güvenlik", example:"Pago 11% do salário à Segurança Social.", tr:"Maaşımın %11'ini sosyal güvenliğe ödüyorum."},
+        {pronoun:"Subsídio de alimentação", form:"Yemek yardımı", example:"A empresa paga-me subsídio de alimentação.", tr:"Şirket bana yemek yardımı ödiyor."}
       ],
-      note: "Sıfat yoksa meslek artikelsiz: 'Sou médico.' Sıfat varsa artikel gelir: 'Sou um médico experiente.'"
+      note: "Portekiz'de işçiler yılda 14 maaş alır: 12 aylık maaş + tatil ikramiyesi + Noel ikramiyesi. Bu 'subsídio de férias' ve 'subsídio de Natal' olarak bilinir."
     },
     {
-      title: "TRABALHAR — Çalışma Fiili ve İş Hayatı",
-      explanation: "TRABALHAR (çalışmak) düzenli -AR fiildir. Nerede çalıştığınızı, ne kadar çalıştığınızı ve nasıl çalıştığınızı belirtmek için çeşitli preposisyonlar kullanılır.",
+      title: "Profissões — Meslekler",
+      explanation: "Meslek adları Portekizce'de cinsiyete göre değişir. Çoğu meslek erkek (-o) ve dişil (-a) biçime sahiptir. Bazıları değişmez.",
       table: [
-        { pronoun: "Eu trabalho", form: "çalışıyorum", example: "Trabalho oito horas por dia.", tr: "Günde sekiz saat çalışıyorum." },
-        { pronoun: "trabalhar em", form: "bir yerde", example: "Trabalho em São Paulo.", tr: "São Paulo'da çalışıyorum." },
-        { pronoun: "trabalhar como", form: "bir pozisyonda", example: "Trabalho como gerente.", tr: "Müdür olarak çalışıyorum." },
-        { pronoun: "trabalhar para", form: "bir şirkette", example: "Trabalho para a Petrobras.", tr: "Petrobras için çalışıyorum." },
-        { pronoun: "Freelancer", form: "trabalhar por conta própria", example: "Sou freelancer.", tr: "Serbest çalışıyorum." },
-        { pronoun: "Home office", form: "trabalhar de casa", example: "Trabalho de casa desde 2020.", tr: "2020'den beri evden çalışıyorum." }
+        {pronoun:"médico/médica", form:"doktor", example:"A Maria é médica no Hospital de Santa Maria.", tr:"Maria, Santa Maria Hastanesi'nde doktordur."},
+        {pronoun:"professor/professora", form:"öğretmen", example:"O João é professor de matemática.", tr:"João matematik öğretmenidir."},
+        {pronoun:"engenheiro/engenheira", form:"mühendis", example:"Sou engenheira informática.", tr:"Bilgisayar mühendisiyim."},
+        {pronoun:"advogado/advogada", form:"avukat", example:"O meu colega é advogado.", tr:"İş arkadaşım avukat."},
+        {pronoun:"enfermeiro/enfermeira", form:"hemşire", example:"Ela é enfermeira no SNS.", tr:"SNS'de hemşire."},
+        {pronoun:"empresário/empresária", form:"işadamı/kadını", example:"Ele é empresário no setor tecnológico.", tr:"Teknoloji sektöründe işadamı."}
       ],
-      note: "CLT = Türkiye'deki iş kanununa benzer Brezilya çalışma mevzuatı. Muitos brasileiros têm carteira assinada (kayıtlı işçi)."
+      note: "EP'de meslekler için genellikle 'Sou + meslek' (Sou médico/a) kullanılır. 'Eu sou um médico' yerine 'Sou médico' tercih edilir — bu BP ile aynıdır."
     },
     {
-      title: "Gelecek Zaman — IR + Infinitivo (Yakın Gelecek)",
-      explanation: "Portekizcede en yaygın gelecek zaman ifadesi IR + infinitivo yapısıdır: 'Vou viajar' = Seyahat edeceğim. Bu yapı İngilizce 'going to' yapısına benzer. Kesin gelecek için 'futuro simples' (-rei/-rá) da kullanılır.",
+      title: "Verbos do Trabalho — İş Fiilleri",
+      explanation: "Çalışma hayatında kullanılan temel fiiller ve kalıplar.",
       table: [
-        { pronoun: "Eu vou + mastar", form: "yapacağım", example: "Vou entregar o relatório.", tr: "Raporu teslim edeceğim." },
-        { pronoun: "Você vai + mastar", form: "yapacaksınız", example: "Vai participar da reunião?", tr: "Toplantıya katılacak mısınız?" },
-        { pronoun: "Nós vamos + mastar", form: "yapacağız", example: "Vamos assinar o contrato.", tr: "Sözleşmeyi imzalayacağız." },
-        { pronoun: "Eles vão + mastar", form: "yapacaklar", example: "Vão apresentar o projeto.", tr: "Projeyi sunacaklar." },
-        { pronoun: "Futuro simples -AR", form: "falar → falarei", example: "Falarei com o chefe.", tr: "Patronla konuşacağım. (resmi)" },
-        { pronoun: "Futuro simples -ER", form: "fazer → farei", example: "Farei o relatório.", tr: "Raporu hazırlayacağım. (resmi)" }
+        {pronoun:"trabalhar", form:"çalışmak", example:"Trabalho numa empresa de tecnologia.", tr:"Bir teknoloji şirketinde çalışıyorum."},
+        {pronoun:"candidatar-se", form:"başvurmak", example:"Candidatei-me a este emprego há três meses.", tr:"Bu işe üç ay önce başvurdum."},
+        {pronoun:"contratar", form:"işe almak", example:"A empresa contratou dois novos engenheiros.", tr:"Şirket iki yeni mühendis işe aldı."},
+        {pronoun:"despedir", form:"işten çıkarmak", example:"Foi despedido sem justa causa.", tr:"Haksız yere işten çıkarıldı."},
+        {pronoun:"demitir-se", form:"istifa etmek", example:"Demiti-me para ir trabalhar para o estrangeiro.", tr:"Yurt dışında çalışmak için istifa ettim."},
+        {pronoun:"reformar-se", form:"emekli olmak", example:"O meu pai reformou-se aos 65 anos.", tr:"Babam 65 yaşında emekli oldu."}
       ],
-      note: "BP konuşmada 'vou fazer' tercih edilir. 'Farei' = yazılı/resmi. Her ikisi de doğrudur ama register farklıdır."
+      note: "Portekiz'de 'teletrabalho' (uzaktan çalışma) pandemi sonrası çok yaygınlaştı. İş kanununda ('Código do Trabalho') uzaktan çalışma hakkı güvence altındadır."
     }
   ],
   speaking: [
-    { q: "Mesleğinizi söyleyin.", a: "Sou [meslek]. Trabalho em/na/no [yer]." },
-    { q: "'Evden çalışıyorum' nasıl?", a: "Trabalho em home office / de casa." },
-    { q: "'Yarın toplantıya katılacağım' nasıl?", a: "Vou participar da reunião amanhã." },
-    { q: "Birine mesleğini nasıl sorarsınız?", a: "O que você faz? / Qual é sua profissão?" },
-    { q: "'Serbest çalışıyorum' nasıl?", a: "Trabalho por conta própria. / Sou freelancer." }
+    {q:"Qual é a tua profissão?", a:"Sou programador/a. Trabalho numa empresa de software em Lisboa."},
+    {q:"Quantos dias de férias tens por ano?", a:"Tenho 22 dias úteis de férias por ano, como determina a lei portuguesa."},
+    {q:"Trabalhas em teletrabalho ou no escritório?", a:"Trabalho em regime híbrido — três dias no escritório e dois em casa."},
+    {q:"A que horas começa e termina o teu trabalho?", a:"Começo às 9h e termino às 18h. Tenho uma hora para almoçar."},
+    {q:"Qual é o salário mínimo em Portugal?", a:"O salário mínimo nacional (SMN) tem aumentado nos últimos anos. Atualmente é um dos mais baixos da Europa ocidental."}
   ],
   dialogues: [
     {
-      title: "İş Görüşmesi",
+      title: "Entrevista de Emprego",
       lines: [
-        { speaker: "Entrevistador", text: "Bom dia! Fale um pouco sobre você.", tr: "Günaydın! Kendinizden biraz bahsedin." },
-        { speaker: "Candidato", text: "Bom dia! Me chamo André, sou engenheiro de software com cinco anos de experiência.", tr: "Günaydın! Adım André, beş yıl deneyimli yazılım mühendisiyim." },
-        { speaker: "Entrevistador", text: "Por que quer trabalhar aqui?", tr: "Neden burada çalışmak istiyorsunuz?" },
-        { speaker: "Candidato", text: "Admiro muito os produtos da empresa e quero contribuir com minha experiência em inteligência artificial.", tr: "Şirketin ürünlerine çok hayranım ve yapay zeka deneyimimle katkıda bulunmak istiyorum." },
-        { speaker: "Entrevistador", text: "Qual é sua expectativa salarial?", tr: "Maaş beklentiniz nedir?" },
-        { speaker: "Candidato", text: "Estou aberto a negociar. Minha expectativa é em torno de doze mil reais mensais.", tr: "Müzakereye açığım. Beklentim aylık yaklaşık on iki bin real." }
+        {speaker:"Entrevistador", text:"Bom dia! Obrigado por vir. Fale-me um pouco sobre o seu percurso profissional."},
+        {speaker:"Candidata", text:"Bom dia! Licenciei-me em engenharia informática e tenho cinco anos de experiência em desenvolvimento de software."},
+        {speaker:"Entrevistador", text:"Que competências técnicas tem?"},
+        {speaker:"Candidata", text:"Domino Python, Java e trabalho com metodologias ágeis. Tenho experiência em gestão de projetos."},
+        {speaker:"Entrevistador", text:"E quanto às suas expectativas salariais?"},
+        {speaker:"Candidata", text:"Tendo em conta a minha experiência, estaria à espera de um salário entre 2500 e 3000 euros mensais."}
       ]
     }
   ],
   listening: {
-    text: "O mercado de trabalho no Brasil passou por grandes mudanças nos últimos anos. Com a pandemia, o trabalho remoto se popularizou muito, especialmente na área de tecnologia. Hoje, muitas empresas brasileiras oferecem modelos híbridos — parte presencial e parte home office. Os setores que mais contratam são tecnologia da informação, saúde e agronegócio. O salário mínimo nacional é definido anualmente pelo governo federal.",
+    text: "O mercado de trabalho português tem passado por transformações importantes. O desemprego jovem continua a ser um desafio, o que leva muitos portugueses qualificados a emigrar para outros países europeus. No entanto, setores como a tecnologia, o turismo e a saúde têm crescido e criado novos empregos. O salário mínimo nacional tem subido gradualmente, e o teletrabalho tornou-se uma realidade para muitos trabalhadores após a pandemia de 2020.",
     questions: [
-      { q: "Pandemi sonrası ne yaygınlaştı?", a: "Uzaktan çalışma (home office)" },
-      { q: "Hangi sektörler en fazla istihdam yaratıyor?", a: "Bilgi teknolojisi, sağlık, tarım-gıda" },
-      { q: "Asgari ücret kim tarafından belirleniyor?", a: "Federal hükümet, yıllık olarak" }
+      {q:"Qual é o desafio do mercado de trabalho português?", a:"O desemprego jovem."},
+      {q:"Quais setores têm crescido em Portugal?", a:"Tecnologia, turismo e saúde."},
+      {q:"O que aconteceu ao salário mínimo nos últimos anos?", a:"Tem subido gradualmente."}
     ]
   }
 };

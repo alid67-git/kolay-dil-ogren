@@ -1,94 +1,93 @@
-const L20 = {
-  title: "Escola e Educação",
+var L20 = {
   words: [
-    { en: "a escola", tr: "okul", pron: "a ıshkola", bd: "dişil" },
-    { en: "a universidade", tr: "üniversite", pron: "a univershidadshi", bd: "dişil; a faculdade de denir" },
-    { en: "o aluno / a aluna", tr: "öğrenci (e/d)", pron: "u alunu / a aluna", bd: "cinsiyet uyumu" },
-    { en: "o professor / a professora", tr: "öğretmen (e/d)", pron: "u profesór / a profesóra", bd: "cinsiyet uyumu" },
-    { en: "a aula", tr: "ders", pron: "a awla", bd: "dişil; dar aula = ders vermek" },
-    { en: "o caderno", tr: "defter", pron: "u kadérnu", bd: "eril" },
-    { en: "o livro didático", tr: "ders kitabı", pron: "u livru didátiku", bd: "eril" },
-    { en: "a mochila", tr: "sırt çantası", pron: "a moshila", bd: "dişil" },
-    { en: "a caneta / o lápis", tr: "kalem / kurşun kalem", pron: "a kaneta / u lapish", bd: "dişil/eril" },
-    { en: "a prova", tr: "sınav", pron: "a prova", bd: "dişil; fazer prova = sınava girmek" },
-    { en: "a nota", tr: "not / derece", pron: "a nota", bd: "dişil; tirar nota boa = yüksek not almak" },
-    { en: "o dever de casa", tr: "ödev", pron: "u devér dshi kaza", bd: "eril; tarefa = görev/ödev" },
-    { en: "estudar", tr: "çalışmak / okumak (ders)", pron: "ıshtudar", bd: "düzenli -AR; estudo = çalışıyorum" },
-    { en: "aprender", tr: "öğrenmek", pron: "aprendér", bd: "düzenli -ER; aprendo = öğreniyorum" },
-    { en: "ensinar", tr: "öğretmek", pron: "ẽsinar", bd: "düzenli -AR; ensino = öğretiyorum" },
-    { en: "a matéria / a disciplina", tr: "ders konusu / branş", pron: "a matérya / a disiplĩna", bd: "dişil" },
-    { en: "a matemática", tr: "matematik", pron: "a matemátika", bd: "dişil" },
-    { en: "a história", tr: "tarih", pron: "a istórya", bd: "dişil; também: história=hikaye" },
-    { en: "a formatura", tr: "mezuniyet", pron: "a formatúra", bd: "dişil; se formar = mezun olmak" },
-    { en: "a bolsa de estudos", tr: "burs", pron: "a bowsa dshi ıshtuduş", bd: "dişil; bolsista = burslu" }
+    {en:"school", tr:"okul", pron:"ɨʃˈkolɐ", bd:"escola"},
+    {en:"university", tr:"üniversite", pron:"uɲivɨɾsiˈdadɨ", bd:"universidade"},
+    {en:"student", tr:"öğrenci", pron:"ɐluˈnu", bd:"aluno/a"},
+    {en:"teacher/professor", tr:"öğretmen/profesör", pron:"pɾuˈfɛsuɾ", bd:"professor/a"},
+    {en:"subject", tr:"ders/konu", pron:"disipˈlinɐ", bd:"disciplina"},
+    {en:"exam", tr:"sınav", pron:"ɨˈzɐmɨ", bd:"exame"},
+    {en:"test", tr:"test/kısa sınav", pron:"ˈtɛʃtɨ", bd:"teste"},
+    {en:"mark/grade", tr:"not/puan", pron:"ˈnotɐ", bd:"nota"},
+    {en:"homework", tr:"ödev", pron:"tɾɐˈbaʎu dɨ ˈkazɐ", bd:"trabalho de casa"},
+    {en:"library", tr:"kütüphane", pron:"biˈbliotɨkɐ", bd:"biblioteca"},
+    {en:"classroom", tr:"sınıf", pron:"ˈsɐlɐ dɨ ˈɐwlɐ", bd:"sala de aula"},
+    {en:"break/recess", tr:"teneffüs", pron:"ɾɨˈkɾɐiu̯", bd:"recreio"},
+    {en:"primary school", tr:"ilkokul", pron:"ɨʃˈkolɐ pɾiˈmaɾiɐ", bd:"escola primária"},
+    {en:"secondary school", tr:"ortaokul/lise", pron:"ɨʃˈkolɐ sɨkũˈdaɾiɐ", bd:"escola secundária"},
+    {en:"polytechnic", tr:"yüksekokul", pron:"pulitɛˈkniku", bd:"politécnico"},
+    {en:"scholarship", tr:"burs", pron:"buˈlsɐ dɨ ɨʃˈtudus", bd:"bolsa de estudos"},
+    {en:"degree", tr:"diploma/lisans", pron:"liˈsẽsɐ", bd:"licenciatura"},
+    {en:"master's", tr:"yüksek lisans", pron:"mɨʃˈtɾɐdu", bd:"mestrado"},
+    {en:"public school", tr:"devlet okulu", pron:"ɨʃˈkolɐ puˈblikɐ", bd:"escola pública"},
+    {en:"private school", tr:"özel okul", pron:"ɨʃˈkolɐ pɾiˈvɐdɐ", bd:"escola privada"}
   ],
   grammar: [
     {
-      title: "ESTUDAR ve APRENDER — Eğitim Fiilleri",
-      explanation: "ESTUDAR (çalışmak/okumak) ve APRENDER (öğrenmek) eğitim konularında en sık kullanılan fiillerdir. ESTUDAR için 'para' (ne için/ne amacıyla çalışmak) veya direkt konu belirtilir. APRENDER için 'a + infinitivo' yapısı çok işe yarar.",
+      title: "O Sistema de Ensino Português — Portekiz Eğitim Sistemi",
+      explanation: "Portekiz eğitim sistemi: Pré-escolar (3-6 yaş), 1.º Ciclo (ilkokul, 6-10 yaş), 2.º Ciclo (10-12 yaş), 3.º Ciclo (12-15 yaş), Ensino Secundário (15-18 yaş, lise), Ensino Superior (üniversite).",
       table: [
-        { pronoun: "Eu estudo", form: "çalışıyorum", example: "Estudo português há seis meses.", tr: "Altı aydır Portekizce çalışıyorum." },
-        { pronoun: "Você estuda", form: "çalışıyorsunuz", example: "Estuda para a prova?", tr: "Sınava çalışıyor musunuz?" },
-        { pronoun: "Nós estudamos", form: "çalışıyoruz", example: "Estudamos juntos.", tr: "Birlikte çalışıyoruz." },
-        { pronoun: "Eu aprendo", form: "öğreniyorum", example: "Aprendo rápido.", tr: "Hızlı öğreniyorum." },
-        { pronoun: "Aprender a + mastar", form: "nasıl yapacağını öğrenmek", example: "Aprendi a tocar violão.", tr: "Gitar çalmayı öğrendim." },
-        { pronoun: "Ensinar a", form: "nasıl yapılacağını öğretmek", example: "Me ensina a falar português?", tr: "Bana Portekizce öğretir misiniz?" }
+        {pronoun:"1.º ao 4.º ano", form:"1. Döngü (ilkokul)", example:"O meu filho está no 3.º ano de escolaridade.", tr:"Oğlum 3. sınıfta."},
+        {pronoun:"5.º ao 6.º ano", form:"2. Döngü", example:"No 2.º ciclo começa o Inglês.", tr:"2. döngüde İngilizce başlıyor."},
+        {pronoun:"7.º ao 9.º ano", form:"3. Döngü", example:"O exame do 9.º ano é muito importante.", tr:"9. sınıf sınavı çok önemli."},
+        {pronoun:"10.º ao 12.º ano", form:"Ensino Secundário", example:"No secundário escolhe-se a área de estudos.", tr:"Lisede çalışma alanı seçiliyor."},
+        {pronoun:"Licenciatura", form:"Lisans (3 yıl)", example:"A licenciatura dura 3 ou 4 anos.", tr:"Lisans eğitimi 3 ya da 4 yıl sürer."},
+        {pronoun:"Mestrado", form:"Yüksek Lisans (2 yıl)", example:"Fiz mestrado na Universidade de Lisboa.", tr:"Lizbon Üniversitesi'nde yüksek lisans yaptım."}
       ],
-      note: "Há + süre: 'Estudo há dois anos' = İki yıldır çalışıyorum (devam eden eylem). Faz dois anos que estudo. (aynı anlam)"
+      note: "Portekiz'deki en prestijli üniversiteler: Universidade de Lisboa, Universidade do Porto ve Universidade de Coimbra (1290'da kurulmuş, Avrupa'nın en eskilerinden)."
     },
     {
-      title: "Brezilya Eğitim Sistemi",
-      explanation: "Brezilya eğitim sisteminde üç temel seviye vardır: Ensino Fundamental (1.-9. sınıf = ilköğretim), Ensino Médio (10.-12. sınıf = lise), ve Ensino Superior (üniversite). ENEM = Üniversite Giriş Sınavı. FUVEST = USP sınavı.",
+      title: "Verbo ESTUDAR — Çalışmak/Öğrenmek",
+      explanation: "'Estudar' (çalışmak/okumak) ve 'aprender' (öğrenmek) fiilleri eğitim bağlamında sıkça kullanılır. EP'de düzenli çekim kurallarını takip ederler.",
       table: [
-        { pronoun: "İlköğretim", form: "Ensino Fundamental", example: "6 aos 14 anos", tr: "6-14 yaş arası" },
-        { pronoun: "Lise", form: "Ensino Médio", example: "Três anos (15-17 yaş)", tr: "Üç yıl (15-17 yaş)" },
-        { pronoun: "Üniversite sınavı", form: "ENEM", example: "Exame Nacional do Ensino Médio", tr: "Ulusal Ortaöğretim Sınavı" },
-        { pronoun: "Üniversite", form: "Ensino Superior", example: "Graduação/Mestrado/Doutorado", tr: "Lisans/Yüksek Lisans/Doktora" },
-        { pronoun: "Kamu üniversite", form: "universidade pública", example: "USP, UNICAMP, UFRJ", tr: "Brezilya'nın en iyi kamu üniversiteleri" },
-        { pronoun: "Burs", form: "bolsa de estudos (ProUni/FIES)", example: "50% do curso pago", tr: "Özel üniversiteler için yarı/tam burs" }
+        {pronoun:"eu", form:"estudo / aprendo", example:"Estudo português há seis meses.", tr:"Altı aydır Portekizce çalışıyorum."},
+        {pronoun:"tu", form:"estudas / aprendes", example:"Aprendes facilmente os idiomas?", tr:"Dilleri kolay öğreniyor musun?"},
+        {pronoun:"ele/ela", form:"estuda / aprende", example:"Ela estuda medicina na Universidade do Porto.", tr:"Porto Üniversitesi'nde tıp okuyor."},
+        {pronoun:"nós", form:"estudamos / aprendemos", example:"Estudamos juntos para o exame.", tr:"Sınav için birlikte çalışıyoruz."},
+        {pronoun:"vós", form:"estudais / aprendeis", example:"Aprendeis depressa!", tr:"Çabuk öğreniyorsunuz!"},
+        {pronoun:"eles/elas", form:"estudam / aprendem", example:"Eles estudam na biblioteca até tarde.", tr:"Kütüphanede geç saate kadar çalışırlar."}
       ],
-      note: "USP (Universidade de São Paulo) Latin Amerika'nın en iyi üniversitesi olarak kabul edilir."
+      note: "Portekiz'de üniversite eğitimi Erasmus programıyla bağlantılıdır. Binlerce Portekizli öğrenci her yıl Erasmus bursuyla Avrupa'da okur."
     },
     {
-      title: "PRECISAR + Infinitivo — Zorunluluk İfadesi",
-      explanation: "PRECISAR + infinitivo 'yapmak zorunda olmak / gerekiyor' anlamını verir. PRECISAR DE + isim 'bir şeye ihtiyaç duymak' anlamındadır. TER QUE ve DEVER de benzer zorunluluk ifadelerdir.",
+      title: "Notas e Avaliação — Not Sistemi",
+      explanation: "Portekiz'de not sistemi 1-20 skalasındadır (üniversitede). İlköğretimde ise Insuficiente/Suficiente/Bom/Muito Bom/Excelente şeklinde değerlendirme yapılır.",
       table: [
-        { pronoun: "Preciso + mastar", form: "yapmam gerekiyor", example: "Preciso estudar mais.", tr: "Daha fazla çalışmam gerekiyor." },
-        { pronoun: "Você precisa", form: "yapmanız gerekiyor", example: "Precisa entregar o trabalho.", tr: "Ödevi teslim etmeniz gerekiyor." },
-        { pronoun: "Ter que", form: "yapmak zorundayım", example: "Tenho que passar na prova.", tr: "Sınavı geçmem lazım." },
-        { pronoun: "Dever", form: "yapmalı (ahlaki)", example: "Devemos estudar mais.", tr: "Daha fazla çalışmalıyız." },
-        { pronoun: "Não precisa", form: "gerek yok", example: "Não precisa se preocupar.", tr: "Endişelenmenize gerek yok." },
-        { pronoun: "É necessário", form: "gereklidir (resmi)", example: "É necessário ter diploma.", tr: "Diploma zorunludur." }
+        {pronoun:"20 valores", form:"Mükemmel", example:"Tirou 20 no exame de Matemática!", tr:"Matematik sınavında 20 aldı!"},
+        {pronoun:"18-19", form:"Çok iyi", example:"Uma nota de 18 é excelente.", tr:"18 notu mükemmeldir."},
+        {pronoun:"14-17", form:"İyi", example:"Tirei 15 — estou satisfeito.", tr:"15 aldım — memnunum."},
+        {pronoun:"10-13", form:"Yeterli (geçer)", example:"A nota mínima de aprovação é 10.", tr:"Geçer not minimumu 10'dur."},
+        {pronoun:"Abaixo de 10", form:"Reprovado (başarısız)", example:"Reprovei no exame e tenho de repetir.", tr:"Sınavı geçemedim, tekrar etmem lazım."},
+        {pronoun:"Aprovado/Reprovado", form:"Geçti/Kaldı", example:"Fui aprovado em todas as disciplinas!", tr:"Tüm dersleri geçtim!"}
       ],
-      note: "Zorunluluk sıralaması (güçten zayıfa): É obrigatório > Tem que > Precisa > Deve > É bom. Bağlama dikkat!"
+      note: "Portekiz'de 'chumbar' (sınıfta kalmak) yaygın bir ifadedir. 'Tirar boas notas' (iyi not almak) öğrenciler arasında sıkça kullanılır."
     }
   ],
   speaking: [
-    { q: "Ne kadar süredir Portekizce çalışıyorsunuz?", a: "Estudo português há [süre]." },
-    { q: "'Yarın sınavım var, çalışmam lazım' nasıl?", a: "Tenho prova amanhã, preciso estudar." },
-    { q: "Öğrenciye nasıl teşvik edici bir şey söylersiniz?", a: "Você pode! Vai passar na prova com certeza!" },
-    { q: "'Burs aldım' nasıl söylersiniz?", a: "Consegui uma bolsa de estudos!" },
-    { q: "Üniversiteden ne zaman mezun oldunuz?", a: "Me formei em [yıl] na [üniversite]." }
+    {q:"Em que escola andas?", a:"Ando numa escola pública secundária em Lisboa. Estou no 11.º ano."},
+    {q:"Qual é a tua disciplina favorita?", a:"Adoro inglês e história. Matemática é mais difícil para mim."},
+    {q:"Queres ir para a universidade?", a:"Sim, quero estudar engenharia na Universidade de Coimbra."},
+    {q:"Como é o sistema de notas em Portugal?", a:"Na universidade, as notas vão de 0 a 20. É preciso tirar pelo menos 10 para ser aprovado."},
+    {q:"Há muitas universidades públicas em Portugal?", a:"Sim, há várias. As mais conceituadas são Lisboa, Porto e Coimbra."}
   ],
   dialogues: [
     {
-      title: "Ders Çalışma Grubu",
+      title: "Conversas sobre a Escola",
       lines: [
-        { speaker: "Carla", text: "Oi! Você estudou para a prova de amanhã?", tr: "Selam! Yarınki sınava çalıştın mı?" },
-        { speaker: "Bruno", text: "Um pouco. Mas não entendi nada de matemática.", tr: "Biraz. Ama matematikten hiç anlamadım." },
-        { speaker: "Carla", text: "Eu também! A professora explicou muito rápido.", tr: "Ben de! Öğretmen çok hızlı anlattı." },
-        { speaker: "Bruno", text: "Você quer estudar juntos hoje à tarde?", tr: "Bugün öğleden sonra birlikte çalışmak ister misin?" },
-        { speaker: "Carla", text: "Ótima ideia! Posso te ajudar com as fórmulas.", tr: "Harika fikir! Formüllerle sana yardımcı olabilirim." },
-        { speaker: "Bruno", text: "Que bom! Então nos vemos às três na biblioteca?", tr: "Harika! O zaman saat üçte kütüphanede buluşalım mı?" }
+        {speaker:"Carolina", text:"Como correu o exame de história hoje?"},
+        {speaker:"Miguel", text:"Correu bem, acho eu. As perguntas eram sobre o 25 de Abril."},
+        {speaker:"Carolina", text:"Que sorte! Eu estudei tudo sobre os Descobrimentos e não saiu nada disso."},
+        {speaker:"Miguel", text:"Que azar! Estudaste na biblioteca?"},
+        {speaker:"Carolina", text:"Sim, fiquei lá até às 22h. Mas espero ter tirado pelo menos 12."},
+        {speaker:"Miguel", text:"Tens de estudar mais cedo! Vamos estudar juntos para o próximo?"}
       ]
     }
   ],
   listening: {
-    text: "O Brasil investe muito em educação pública. As universidades federais e estaduais são gratuitas e oferecem ótimos cursos. Para entrar, os estudantes precisam fazer o ENEM — Exame Nacional do Ensino Médio. As notas do ENEM são usadas para candidatura ao SISU, que distribui vagas nas universidades públicas. Além disso, o ProUni oferece bolsas em universidades privadas para estudantes de baixa renda.",
+    text: "A Universidade de Coimbra é uma das mais antigas da Europa, fundada em 1290. O seu centro histórico é Património Mundial da UNESCO. Em Portugal, o ensino superior público é acessível e com propinas relativamente baixas comparadas com países como o Reino Unido. O programa Erasmus tem sido muito importante para os estudantes portugueses, permitindo-lhes estudar noutros países europeus e melhorar as suas competências linguísticas.",
     questions: [
-      { q: "Devlet üniversiteleri nasıl?", a: "Ücretsiz ve iyi kaliteli" },
-      { q: "ENEM notları ne işe yarar?", a: "SISU aracılığıyla kamu üniversitelerine başvurmak için" },
-      { q: "ProUni nedir?", a: "Düşük gelirli öğrencilere özel üniversiteler için burs programı" }
+      {q:"Quando foi fundada a Universidade de Coimbra?", a:"Em 1290."},
+      {q:"Qual é o estatuto do centro histórico de Coimbra?", a:"Património Mundial da UNESCO."},
+      {q:"O que permite o programa Erasmus aos estudantes?", a:"Estudar noutros países europeus e melhorar competências linguísticas."}
     ]
   }
 };

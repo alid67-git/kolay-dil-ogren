@@ -1,94 +1,93 @@
-const L30 = {
-  title: "Música e Cultura Brasileira",
+var L30 = {
   words: [
-    { en: "a música", tr: "müzik", pron: "a múzika", bd: "dişil" },
-    { en: "o samba", tr: "samba", pron: "u sãmba", bd: "eril; ritmo+dansa; Brezilya sembolü" },
-    { en: "a bossa nova", tr: "bossa nova", pron: "a bosa nova", bd: "dişil; jazz+samba; dünya etkisi" },
-    { en: "o forró", tr: "forró (kuzeydoğu dansı)", pron: "u foho", bd: "eril; arrastar o pé = forró dans etmek" },
-    { en: "o funk carioca", tr: "funk carioca (Rio müziği)", pron: "u fũki kariyoka", bd: "eril; Rio favela kültürü" },
-    { en: "o axé", tr: "axé (Bahia müziği)", pron: "u ashé", bd: "eril; Salvador Karnaval müziği" },
-    { en: "o pagode", tr: "pagode (samimi samba türü)", pron: "u pagódhi", bd: "eril; rodas de samba" },
-    { en: "o sertanejo", tr: "sertanejo (country Brezilya)", pron: "u sertanéju", bd: "eril; en popüler müzik türü" },
-    { en: "o Carnaval", tr: "Karnaval", pron: "u karnavaw", bd: "eril; dünyanın en büyük festivali" },
-    { en: "o bloco", tr: "karnaval grubu (sokak)", pron: "u bloku", bd: "eril; bloco de rua = sokak karnavalı" },
-    { en: "a escola de samba", tr: "samba okulu", pron: "a ıshkola dshi sãmba", bd: "dişil; Sambódromo'da yarışır" },
-    { en: "o instrumento", tr: "çalgı aleti", pron: "u ĩshtrumẽntu", bd: "eril" },
-    { en: "o violão", tr: "gitar (akustik)", pron: "u vjolão", bd: "eril; Brezilya müziğinin kalbi" },
-    { en: "o tambor / o surdo", tr: "davul", pron: "u tãmbor / u surdu", bd: "eril; surdo = karnaval davulu" },
-    { en: "a percussão", tr: "vurmalı çalgılar", pron: "a perkusão", bd: "dişil" },
-    { en: "cantar", tr: "şarkı söylemek", pron: "kãntár", bd: "düzenli -AR; canto = söylüyorum" },
-    { en: "dançar", tr: "dans etmek", pron: "dãnsár", bd: "düzenli -AR; danço = dans ediyorum" },
-    { en: "ensaiar", tr: "prova yapmak / prova vermek", pron: "ẽsayár", bd: "düzenli -AR; ensaio = prova" },
-    { en: "Que ritmo!", tr: "Ne ritim!", pron: "ke hitmu", bd: "beğeni ifadesi" },
-    { en: "Pula, pula, pula!", tr: "Zıpla, zıpla, zıpla!", pron: "pula", bd: "karnaval şarkı sözleri" }
+    {en:"music", tr:"müzik", pron:"ˈmuzikɐ", bd:"música"},
+    {en:"fado", tr:"fado (Portekiz müziği)", pron:"ˈfadu", bd:"fado"},
+    {en:"fadista", tr:"fado sanatçısı", pron:"fɐˈdiʃtɐ", bd:"fadista"},
+    {en:"guitar (Portuguese)", tr:"Portekiz gitarı", pron:"ɡiˈtɐɾɐ puɾtuˈɡɛzɐ", bd:"guitarra portuguesa"},
+    {en:"culture", tr:"kültür", pron:"kulˈtuɾɐ", bd:"cultura"},
+    {en:"art", tr:"sanat", pron:"ˈaɾtɨ", bd:"arte"},
+    {en:"tile (azulejo)", tr:"mavi-beyaz Portekiz çinisi", pron:"ɐˈzulɨʒu", bd:"azulejo"},
+    {en:"literature", tr:"edebiyat", pron:"litɨɾɐˈtuɾɐ", bd:"literatura"},
+    {en:"poetry", tr:"şiir", pron:"puɨˈziɐ", bd:"poesia"},
+    {en:"poet", tr:"şair", pron:"puˈɛtɐ", bd:"poeta"},
+    {en:"writer", tr:"yazar", pron:"ɨʃˈkɾituɾ", bd:"escritor/a"},
+    {en:"painter", tr:"ressam", pron:"piˈtoɾ", bd:"pintor/a"},
+    {en:"sculptor", tr:"heykeltıraş", pron:"ɨʃkulˈtoɾ", bd:"escultor/a"},
+    {en:"monument", tr:"anıt", pron:"munuˈmẽtu", bd:"monumento"},
+    {en:"heritage", tr:"miras", pron:"pɐtɾiˈmoniu", bd:"património"},
+    {en:"UNESCO", tr:"UNESCO", pron:"uˈnɛʃku", bd:"UNESCO"},
+    {en:"festival", tr:"festival", pron:"fɨʃtiˈval", bd:"festival"},
+    {en:"discovery", tr:"keşif", pron:"dɨʃkuˈbɨɾtɐ", bd:"descoberta"},
+    {en:"Age of Discoveries", tr:"Keşifler Çağı", pron:"ˈɛɾɐ duʃ dɨʃkuˈbɨɾtɐʃ", bd:"Era dos Descobrimentos"},
+    {en:"revolution", tr:"devrim", pron:"ɾɨvuluˈsɐ̃u̯", bd:"revolução"}
   ],
   grammar: [
     {
-      title: "Subjuntivo Presente — İstek ve Dua İfadeleri",
-      explanation: "Portekizcede Subjuntivo (dilek kipi) önemli bir kiptir. İstek, dua, şüphe ve duygu ifadelerinde kullanılır: 'Espero que você venha!' = Geleceğini umuyorum! 'Tomara que corra tudo bem!' = Her şeyin yolunda gitmesini dilerim!",
+      title: "A Cultura Portuguesa — Portekiz Kültürü",
+      explanation: "Portekiz kültürünün temel unsurları: fado, azulejos, literatura (Fernando Pessoa, Luís de Camões), Descobrimentos (Keşifler Çağı) ve 25 de Abril Devrimi.",
       table: [
-        { pronoun: "Espero que + subj.", form: "umuyorum ki", example: "Espero que o show seja lindo!", tr: "Gösterinin harika olmasını umuyorum!" },
-        { pronoun: "Tomara que", form: "keşke / inşallah (BP)", example: "Tomara que não chova no Carnaval!", tr: "Karnaval'da yağmur yağmaması için parmak basıyorum!" },
-        { pronoun: "Que + subj.", form: "olsun ki / keşke", example: "Que a festa seja incrível!", tr: "Parti harika olsun!" },
-        { pronoun: "É importante que", form: "önemli ki", example: "É importante que você dance!", tr: "Dans etmeniz önemli!" },
-        { pronoun: "Quero que", form: "istiyorum ki", example: "Quero que ele cante mais.", tr: "Daha fazla şarkı söylemesini istiyorum." },
-        { pronoun: "Subj. -AR", form: "cante / dance / fale", example: "Que o samba continue!", tr: "Samba devam etsin!" }
+        {pronoun:"Fado", form:"UNESCO Mirası (2011)", example:"O fado é Património Imaterial da UNESCO desde 2011.", tr:"Fado 2011'den beri UNESCO Somut Olmayan Mirası."},
+        {pronoun:"Azulejo", form:"mavi-beyaz çini", example:"Os azulejos azuis decoram fachadas e interiores em Portugal.", tr:"Mavi azulejo'lar Portekiz'de cephe ve iç mekânları süsler."},
+        {pronoun:"Fernando Pessoa", form:"büyük şair (1888-1935)", example:"Fernando Pessoa escreveu sob vários heterónimos.", tr:"Fernando Pessoa birçok takma adla yazdı."},
+        {pronoun:"Luís de Camões", form:"epik şair (1525-1580)", example:"Os Lusíadas de Camões celebra os Descobrimentos.", tr:"Camões'in Lusíadas'ı Keşifleri kutlar."},
+        {pronoun:"Descobrimentos", form:"15-16. yy. keşifler", example:"Portugal descobriu o caminho marítimo para a Índia.", tr:"Portekiz Hindistan'a deniz yolunu keşfetti."},
+        {pronoun:"25 de Abril", form:"1974 devrimi", example:"A Revolução dos Cravos restaurou a democracia.", tr:"Karanfil Devrimi demokrasiyi yeniden kurdu."}
       ],
-      note: "Subjuntivo presente: -AR→ -e (cante), -ER→ -a (beba), -IR→ -a (parta). SER düzensiz: seja. ESTAR: esteja."
+      note: "Fernando Pessoa en ünlü Portekizli şairdir ve birçok 'heteronym' (takma kişilik) altında yazdı: Alberto Caeiro, Ricardo Reis, Álvaro de Campos. Her birinin farklı felsefesi vardı."
     },
     {
-      title: "Müzik ve Dans Hakkında Konuşma",
-      explanation: "Müzik tercihleri için GOSTAR DE ve ADORAR. Bir müzik türünü dinlemek için OUVIR (dinlemek — düzensiz). Dans için DANÇAR. Konser için IR AO SHOW veya ASSISTIR A UM SHOW kullanılır.",
+      title: "Pretérito Imperfeito — Geçmişte Süregelen Eylem",
+      explanation: "Geçmişte süregelen ya da tekrarlanan eylemler için 'Pretérito Imperfeito' kullanılır. -ar → -ava/-avas/-ava/-ávamos/-áveis/-avam; -er/-ir → -ia/-ias/-ia/-íamos/-íeis/-iam.",
       table: [
-        { pronoun: "Ouvir (dinlemek)", form: "ouço / ouve / ouvimos", example: "Ouço samba todo dia!", tr: "Her gün samba dinliyorum!" },
-        { pronoun: "Gostar de", form: "sevmek", example: "Gosto muito de bossa nova.", tr: "Bossa novayı çok seviyorum." },
-        { pronoun: "Preferir", form: "tercih etmek", example: "Prefiro forró ao funk.", tr: "Funka karşı forróyu tercih ederim." },
-        { pronoun: "Tocar", form: "çalmak (enstrüman)", example: "Toco violão há dez anos.", tr: "On yıldır gitar çalıyorum." },
-        { pronoun: "Ir ao show", form: "konsere gitmek", example: "Vou ao show do Seu Jorge.", tr: "Seu Jorge konserine gidiyorum." },
-        { pronoun: "Dançar", form: "dans etmek", example: "Danço samba desde criança.", tr: "Çocukluğumdan beri samba dans ediyorum." }
+        {pronoun:"eu (cantar)", form:"cantava", example:"O Amália cantava fado com a alma.", tr:"Amália fado'yu yürekten söylerdi."},
+        {pronoun:"tu (pintar)", form:"pintavas", example:"Tu pintavas azulejos em criança?", tr:"Çocukken azulejo boyar mıydın?"},
+        {pronoun:"ele/ela (escrever)", form:"escrevia", example:"Pessoa escrevia de noite na sua toca.", tr:"Pessoa, yuvasında geceleri yazardı."},
+        {pronoun:"nós (ouvir)", form:"ouvíamos", example:"Ouvíamos fado nos serões de família.", tr:"Aile akşamlarında fado dinlerdik."},
+        {pronoun:"vós (visitar)", form:"visitáveis", example:"Visitáveis o museu todos os verões?", tr:"Her yaz müzeyi ziyaret eder miydiniz?"},
+        {pronoun:"eles/elas (viver)", form:"viviam", example:"Os fadistas viviam na Mouraria de Lisboa.", tr:"Fado sanatçıları Lizbon'un Mouraria'sında yaşardı."}
       ],
-      note: "OUVIR düzensiz: ouço (eu), ouve (você), ouvimos (nós), ouvem (eles). TOCAR = çalmak/dokunmak."
+      note: "Amália Rodrigues (1920-1999) tarihin en büyük fadista'sıdır. 'A Voz de Portugal' (Portekiz'in Sesi) olarak bilinir. Sesi dünya genelinde fado'yu tanıttı."
     },
     {
-      title: "Karnaval Terminolojisi ve Kültürel Bağlam",
-      explanation: "Brezilya Karnavalı dünyanın en büyük festivalidir. Rio'da Sambódromo'da samba okulları yarışır. Salvador'da bloco'lar sokakları doldurur. Olinda'da dev muñecas (başlar) geçit yapar. Her şehrin kendine özgü karnaval geleneği vardır.",
+      title: "Expressões Culturais — Kültürel İfadeler",
+      explanation: "Kültür ve sanat hakkında konuşurken kullanılan ifadeler.",
       table: [
-        { pronoun: "Sambódromo", form: "samba yarışma yeri", example: "As escolas desfilam no Sambódromo.", tr: "Okullar Sambódromo'da geçit yapar." },
-        { pronoun: "Rainha", form: "kraliçe (samba okulu)", example: "A rainha de bateria dança na frente.", tr: "Bateria kraliçesi önde dans eder." },
-        { pronoun: "Bloco", form: "sokak karnaval grubu", example: "O bloco sai às oito da manhã.", tr: "Bloco sabah sekizde çıkar." },
-        { pronoun: "Fantasia", form: "kostüm", example: "Que fantasia linda!", tr: "Ne güzel kostüm!" },
-        { pronoun: "Folia", form: "karnaval şenliği", example: "A folia dura quatro dias.", tr: "Şenlik dört gün sürer." },
-        { pronoun: "Pulo do Carnaval", form: "karnaval ruhu / eğlence", example: "O pulo do Carnaval é incrível.", tr: "Karnaval ruhu inanılmaz." }
+        {pronoun:"É Património da UNESCO", form:"UNESCO Mirası", example:"A Universidade de Coimbra é Património da UNESCO.", tr:"Coimbra Üniversitesi UNESCO Mirası."},
+        {pronoun:"data de", form:"tarihlenmek", example:"O Mosteiro dos Jerónimos data do século XVI.", tr:"Jerónimos Manastırı 16. yüzyıla tarihlenir."},
+        {pronoun:"foi construído/a em", form:"yapıldı", example:"A Torre de Belém foi construída em 1516.", tr:"Belém Kulesi 1516'da yapıldı."},
+        {pronoun:"representa", form:"temsil etmek", example:"O galo de Barcelos representa a fé e a justiça.", tr:"Barcelos horozu inanç ve adaleti temsil eder."},
+        {pronoun:"é símbolo de", form:"simgesi olmak", example:"O fado é símbolo da alma portuguesa.", tr:"Fado, Portekiz ruhunun simgesidir."},
+        {pronoun:"foi reconhecido em", form:"tanındı", example:"O fado foi reconhecido em 2011 pela UNESCO.", tr:"Fado 2011'de UNESCO tarafından tanındı."}
       ],
-      note: "'Carnaval' kelimesi 'carne + vale' (et hoşçakal) olarak yorumlanır — Paskalya öncesi Kataniksin (oruç) başlangıcı."
+      note: "Portekiz'in UNESCO Dünya Mirası Alanları arasında: Belém Kulesi, Jerónimos Manastırı, Sintra tarihi merkezi, Porto tarihi merkezi, Évora ve Coimbra Üniversitesi bulunur."
     }
   ],
   speaking: [
-    { q: "Favori Brezilya müzik türünüz nedir?", a: "Adoro [samba/bossa nova/forró]! É muito [ritimante/romântico]." },
-    { q: "'Geleceğini umuyorum' nasıl?", a: "Espero que você venha!" },
-    { q: "Bir enstrüman çalıyor musunuz?", a: "Sim, toco [enstrüman]. / Não toco nenhum instrumento." },
-    { q: "'Her gün müzik dinliyorum' nasıl?", a: "Ouço música todo dia." },
-    { q: "Karnavalı açıklayın.", a: "O Carnaval é um festival de música, dança e fantasia no Brasil." }
+    {q:"O que é o fado e como surgiu?", a:"O fado é o género musical mais emblemático de Portugal. Surgiu em Lisboa no século XIX, nas tastas da Mouraria e Alfama. É melancólico e expressivo."},
+    {q:"Quem é Fernando Pessoa?", a:"Fernando Pessoa é o maior poeta português do século XX. Escreveu em inglês, português e sob vários nomes — Alberto Caeiro, Ricardo Reis e Álvaro de Campos."},
+    {q:"O que são os azulejos?", a:"São painéis de cerâmica pintada, geralmente azuis e brancos, que decoram edifícios, igrejas e estações de comboio. São únicos na arquitetura portuguesa."},
+    {q:"O que foram os Descobrimentos?", a:"Foi o período dos séculos XV e XVI em que Portugal explorou e mapeou grande parte do mundo — África, Brasil, Índia, Japão. Vasco da Gama e Pedro Álvares Cabral foram figuras centrais."},
+    {q:"O que se celebra a 25 de Abril?", a:"A Revolução dos Cravos de 1974, que derrubou a ditadura de 48 anos e restaurou a democracia. Os cravos vermelhos tornaram-se o símbolo da liberdade."}
   ],
   dialogues: [
     {
-      title: "Karnaval Planları",
+      title: "Numa Casa de Fado",
       lines: [
-        { speaker: "Fabio", text: "Você vai ao Carnaval este ano?", tr: "Bu yıl Karnaval'a gidecek misiniz?" },
-        { speaker: "Helena", text: "Claro! Vou para Salvador pela primeira vez. Estou animadíssima!", tr: "Tabii! İlk kez Salvador'a gidiyorum. Çok heyecanlıyım!" },
-        { speaker: "Fabio", text: "Que ótimo! Salvador é incrível. O axé e os blocos são fantásticos!", tr: "Harika! Salvador inanılmaz. Axé ve blocolar harika!" },
-        { speaker: "Helena", text: "Já escolheu sua fantasia?", tr: "Kostümünüzü seçtiniz mi?" },
-        { speaker: "Fabio", text: "Sim! Vou de palhaço. E você, vai de quê?", tr: "Evet! Palyaço kılığına gireceğim. Siz ne olacaksınız?" },
-        { speaker: "Helena", text: "Vou de fada! Tomara que não chova muito durante o bloco.", tr: "Peri kızı olacağım! Bloco sırasında çok yağmur yağmaması için parmak basıyorum." }
+        {speaker:"Turista", text:"Boa noite! É a minha primeira vez a ouvir fado ao vivo."},
+        {speaker:"Fadista", text:"Bem-vindo! O fado é uma experiência única. Vai sentir algo especial."},
+        {speaker:"Turista", text:"Que instrumentos são esses além das guitarras?"},
+        {speaker:"Fadista", text:"Temos a guitarra portuguesa — a de doze cordas — e a viola baixo. São os instrumentos do fado."},
+        {speaker:"Turista", text:"A música parece muito melancólica. É assim?"},
+        {speaker:"Fadista", text:"Sim, o fado é a música da saudade. Mas tem também alegria, amor e esperança. É a alma de Portugal."}
       ]
     }
   ],
   listening: {
-    text: "A bossa nova nasceu no Rio de Janeiro no final dos anos 1950. Ela combina o ritmo do samba com a harmonia do jazz americano. Tom Jobim e João Gilberto são os grandes nomes. A música 'Garota de Ipanema' é a segunda música mais regravada do mundo, depois de 'Yesterday' dos Beatles. A bossa nova conquistou o mundo inteiro e ainda hoje é sinônimo de elegância e sofisticação brasileira.",
+    text: "O fado foi inscrito na Lista do Património Cultural Imaterial da Humanidade da UNESCO em 2011. Este género musical, nascido em Lisboa no século XIX, caracteriza-se pela guitarra portuguesa de 12 cordas, pela viola e pela voz expressiva do fadista. Amália Rodrigues internacionalizou o fado no século XX, e artistas como Mariza, Ana Moura e Salvador Sobral continuam a renovar este género. Os azulejos, outra marca da identidade portuguesa, decoram fachadas, estações de comboio e igrejas desde o século XV.",
     questions: [
-      { q: "Bossa nova nerede ve ne zaman doğdu?", a: "1950'lerin sonunda Rio de Janeiro'da" },
-      { q: "Bossa novayı ne oluşturuyor?", a: "Samba ritmi + Amerikan caz armonisi" },
-      { q: "'Garota de Ipanema' dünya rekoru için nasıl?", a: "Beatles'ın 'Yesterday'inden sonra en çok yeniden kaydedilen ikinci şarkı" }
+      {q:"Quando foi o fado inscrito na UNESCO?", a:"Em 2011."},
+      {q:"Que instrumento é característico do fado?", a:"A guitarra portuguesa de 12 cordas."},
+      {q:"Quem internacionalizou o fado no século XX?", a:"Amália Rodrigues."}
     ]
   }
 };

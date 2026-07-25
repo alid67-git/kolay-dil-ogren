@@ -1,94 +1,93 @@
-const L6 = {
-  title: "Casa e Móveis",
+var L6 = {
   words: [
-    { en: "a casa", tr: "ev", pron: "a kaza", bd: "dişil" },
-    { en: "o apartamento", tr: "daire", pron: "u apartamẽntu", bd: "eril" },
-    { en: "o quarto", tr: "yatak odası", pron: "u kuartu", bd: "eril" },
-    { en: "a sala de estar", tr: "oturma odası", pron: "a sala dshi ıshtar", bd: "dişil" },
-    { en: "a cozinha", tr: "mutfak", pron: "a kozĩnya", bd: "dişil" },
-    { en: "o banheiro", tr: "banyo / tuvalet", pron: "u banyeyru", bd: "BP: banheiro; EP: casa de banho" },
-    { en: "a varanda", tr: "balkon / veranda", pron: "a varãnda", bd: "dişil" },
-    { en: "o jardim", tr: "bahçe", pron: "u jardĩm", bd: "eril; çoğul: jardins" },
-    { en: "a cama", tr: "yatak", pron: "a kama", bd: "dişil" },
-    { en: "o sofá", tr: "kanepe / koltuk", pron: "u sofá", bd: "eril; aksan: vurgu burada" },
-    { en: "a mesa", tr: "masa", pron: "a meza", bd: "dişil" },
-    { en: "a cadeira", tr: "sandalye", pron: "a kadeyra", bd: "dişil" },
-    { en: "o armário", tr: "dolap", pron: "u armáryu", bd: "eril" },
-    { en: "a geladeira", tr: "buzdolabı", pron: "a jeladeyra", bd: "BP; EP: frigorífico" },
-    { en: "o fogão", tr: "ocak / fırın", pron: "u fogão", bd: "eril; çoğul: fogões" },
-    { en: "a janela", tr: "pencere", pron: "a janela", bd: "dişil" },
-    { en: "a porta", tr: "kapı", pron: "a porta", bd: "dişil" },
-    { en: "o chão", tr: "zemin / yer", pron: "u shão", bd: "eril" },
-    { en: "o teto", tr: "tavan", pron: "u tétu", bd: "eril" },
-    { en: "a parede", tr: "duvar", pron: "a paradshi", bd: "dişil" }
+    {en:"house/home", tr:"ev", pron:"ˈkazɐ", bd:"casa"},
+    {en:"flat/apartment", tr:"daire", pron:"ɐpɐɾˈtamẽtu", bd:"apartamento"},
+    {en:"room", tr:"oda", pron:"ˈkwɐɾtu", bd:"quarto"},
+    {en:"living room", tr:"oturma odası", pron:"ˈsalɐ dɨ ɨʃˈtaɾ", bd:"sala de estar"},
+    {en:"kitchen", tr:"mutfak", pron:"kuˈziɲɐ", bd:"cozinha"},
+    {en:"bathroom", tr:"banyo", pron:"ˈkazɐ dɨ ˈbɐɲu", bd:"casa de banho"},
+    {en:"fridge", tr:"buzdolabı", pron:"fɾiɡuˈɾifiku", bd:"frigorífico"},
+    {en:"table", tr:"masa", pron:"ˈmezɐ", bd:"mesa"},
+    {en:"chair", tr:"sandalye", pron:"ˈkadɐɾɐ", bd:"cadeira"},
+    {en:"sofa", tr:"kanepe", pron:"ˈsofɐ", bd:"sofá"},
+    {en:"bed", tr:"yatak", pron:"ˈkɐmɐ", bd:"cama"},
+    {en:"wardrobe", tr:"dolap", pron:"ɡuɐɾˈdɐɾupɐ", bd:"guarda-roupa"},
+    {en:"window", tr:"pencere", pron:"ˈʒɐnɨlɐ", bd:"janela"},
+    {en:"door", tr:"kapı", pron:"ˈpoɾtɐ", bd:"porta"},
+    {en:"floor", tr:"zemin/kat", pron:"ˈʃɐɨ̯u", bd:"chão"},
+    {en:"ceiling", tr:"tavan", pron:"ˈtɨtu", bd:"teto"},
+    {en:"stairs", tr:"merdiven", pron:"ɨʃˈkɐdɐʃ", bd:"escadas"},
+    {en:"garden", tr:"bahçe", pron:"ˈʒɐɾdĩ", bd:"jardim"},
+    {en:"garage", tr:"garaj", pron:"ɡɐˈɾɐʒɨ", bd:"garagem"},
+    {en:"lift/elevator", tr:"asansör", pron:"ɨliˈvɐduɾ", bd:"elevador"}
   ],
   grammar: [
     {
-      title: "MORAR ve FICAR — Konum Bildirme",
-      explanation: "Portekizcede 'oturmak/yaşamak' için MORAR kullanılır. 'Bulunmak/olmak' (konum) için FICAR veya ESTAR kullanılır. MORAR düzenli -AR fiillerini takip eder. Adres belirtirken 'em + şehir', 'em + semt' yapısı kullanılır.",
+      title: "Há / Existe — Var/Yok",
+      explanation: "Portekizce'de 'há' ve 'existe/existem' ifadeleri Türkçe 'var/yok' anlamına gelir. 'Há' değişmez; 'existe' tekil, 'existem' çoğul nesneler için kullanılır. Avrupa Portekizcesi'nde olumsuz için 'não há' kullanılır.",
       table: [
-        { pronoun: "Eu", form: "moro", example: "Moro em São Paulo.", tr: "São Paulo'da yaşıyorum." },
-        { pronoun: "Você / Ele / Ela", form: "mora", example: "Ela mora num apartamento.", tr: "Bir dairede yaşıyor." },
-        { pronoun: "Nós", form: "moramos", example: "Moramos perto do centro.", tr: "Merkeze yakın yaşıyoruz." },
-        { pronoun: "Vocês / Eles / Elas", form: "moram", example: "Eles moram numa casa.", tr: "Bir evde yaşıyorlar." },
-        { pronoun: "Konum: ficar", form: "fica em / fica perto", example: "O banco fica ali.", tr: "Banka şurada." },
-        { pronoun: "Adres", form: "na Rua + isim", example: "Moro na Rua das Flores.", tr: "Çiçekler Sokağı'nda yaşıyorum." }
+        {pronoun:"Olumlu (tek)", form:"Há um quarto.", example:"Há uma casa de banho grande.", tr:"Büyük bir banyo var."},
+        {pronoun:"Olumlu (çoğul)", form:"Há dois quartos.", example:"Há três janelas na sala.", tr:"Oturma odasında üç pencere var."},
+        {pronoun:"Olumsuz (tek)", form:"Não há elevador.", example:"Não há garagem.", tr:"Garaj yok."},
+        {pronoun:"Olumsuz (çoğul)", form:"Não há escadas.", example:"Não há móveis novos.", tr:"Yeni mobilya yok."},
+        {pronoun:"Soru", form:"Há...?", example:"Há frigorífico na cozinha?", tr:"Mutfakta buzdolabı var mı?"},
+        {pronoun:"Existe/Existem", form:"Existe um jardim.", example:"Existem muitos apartamentos.", tr:"Çok sayıda daire var."}
       ],
-      note: "'Num' = em + um (bir'in içinde), 'numa' = em + uma. Bu birleşimler zorunludur ve ayrı yazılmaz."
+      note: "EP'de 'frigorífico' Brezilya Portekizcesi'ndeki 'geladeira'nın karşılığıdır. 'Casa de banho' ise BP'deki 'banheiro'nun karşılığıdır."
     },
     {
-      title: "Evin Bölümleri — Preposition: em + artigo",
-      explanation: "Preposisyon 'em' artikelle birleşerek 'no/na/nos/nas' şeklini alır (em + o = no, em + a = na). Evin içindeki yerleri belirtirken bu birleşik formlar kullanılır.",
+      title: "Preposições de Lugar — Yer Edatları",
+      explanation: "Yer belirtmek için kullanılan temel edatlar: em (içinde/üzerinde), em cima de (üstünde), em baixo de (altında), ao lado de (yanında), à frente de (önünde), atrás de (arkasında), entre (arasında).",
       table: [
-        { pronoun: "em + o = no", form: "eril tekil", example: "no quarto / no banheiro", tr: "yatak odasında / banyoda" },
-        { pronoun: "em + a = na", form: "dişil tekil", example: "na cozinha / na sala", tr: "mutfakta / oturma odasında" },
-        { pronoun: "em + os = nos", form: "eril çoğul", example: "nos quartos", tr: "yatak odalarında" },
-        { pronoun: "em + as = nas", form: "dişil çoğul", example: "nas janelas", tr: "pencerelerde" },
-        { pronoun: "Soru: onde?", form: "Onde está/fica?", example: "Onde está o banheiro?", tr: "Banyo nerede?" },
-        { pronoun: "Cevap", form: "É a primeira porta.", example: "Fica no corredor.", tr: "Koridorda." }
+        {pronoun:"em + o = no", form:"no quarto", example:"A cama está no quarto.", tr:"Yatak odada."},
+        {pronoun:"em + a = na", form:"na cozinha", example:"O frigorífico fica na cozinha.", tr:"Buzdolabı mutfakta."},
+        {pronoun:"em cima de", form:"sobre/em cima", example:"O livro está em cima da mesa.", tr:"Kitap masanın üstünde."},
+        {pronoun:"em baixo de", form:"debaixo de", example:"O gato está debaixo da cadeira.", tr:"Kedi sandalyenin altında."},
+        {pronoun:"ao lado de", form:"ao lado", example:"O sofá fica ao lado da janela.", tr:"Kanepe pencerenin yanında."},
+        {pronoun:"entre", form:"entre X e Y", example:"A mesa fica entre a cozinha e a sala.", tr:"Masa mutfak ile salon arasında."}
       ],
-      note: "Diğer birleşimler: de + o = do, de + a = da, de + os = dos, de + as = das. para + o = para o (birleşmez!)"
+      note: "EP'de 'em cima de' ve 'debaixo de' günlük konuşmada yaygın kullanılır. 'Sobre' daha resmi bağlamlarda tercih edilir."
     },
     {
-      title: "TER ve HAVER — Var/Yok İfadesi",
-      explanation: "Portekizcede 'var' demek için iki yol vardır: TEM (tem/há) ve HÁ. 'Tem' günlük Brezilya Portekizcesinde 'há'nın yerini almıştır. 'Há um banheiro' (resmi/Avrupa) = 'Tem um banheiro' (günlük BP) = Bir banyo var.",
+      title: "Verbo TER — Sahip Olmak (Ev Bağlamında)",
+      explanation: "Avrupa Portekizcesi'nde 'ter' fiili sahip olmak anlamında kullanılır. Tu (sen) için 'tens', ele/ela için 'tem', nós için 'temos', vós için 'tendes', eles için 'têm'.",
       table: [
-        { pronoun: "Var (tekil)", form: "tem / há", example: "Tem uma cama grande.", tr: "Büyük bir yatak var." },
-        { pronoun: "Var (çoğul)", form: "tem / há", example: "Tem muitos quartos.", tr: "Çok oda var." },
-        { pronoun: "Yok", form: "não tem / não há", example: "Não tem varanda.", tr: "Balkon yok." },
-        { pronoun: "Soru", form: "Tem...?", example: "Tem garagem?", tr: "Garaj var mı?" },
-        { pronoun: "Cevap evet", form: "Tem sim!", example: "Tem sim, é grande!", tr: "Var, hem de büyük!" },
-        { pronoun: "Cevap hayır", form: "Não tem.", example: "Infelizmente não tem.", tr: "Maalesef yok." }
+        {pronoun:"eu", form:"tenho", example:"Eu tenho um apartamento em Lisboa.", tr:"Lizbon'da bir dairem var."},
+        {pronoun:"tu", form:"tens", example:"Tu tens uma casa de banho grande?", tr:"Büyük bir banyonuz var mı?"},
+        {pronoun:"ele/ela", form:"tem", example:"Ela tem um jardim bonito.", tr:"Onun güzel bir bahçesi var."},
+        {pronoun:"nós", form:"temos", example:"Nós temos dois quartos.", tr:"İki odamız var."},
+        {pronoun:"vós", form:"tendes", example:"Vós tendes garagem?", tr:"Garajınız var mı?"},
+        {pronoun:"eles/elas", form:"têm", example:"Eles têm um apartamento com elevador.", tr:"Asansörlü bir daireleri var."}
       ],
-      note: "'Há' zaman ifadesinde de kullanılır: 'Há dois anos' = İki yıl önce / İki yıldır."
+      note: "Avrupa Portekizcesi'nde 'tu' (sen) günlük kullanımda çok yaygındır. 'Você' daha resmi ya da Brezilya Portekizcesi'ne özgüdür."
     }
   ],
   speaking: [
-    { q: "Você mora em casa ou apartamento?", a: "Moro em (casa/apartamento). Tem [sayı] quartos." },
-    { q: "Como se diz 'Mutfak nerede?'", a: "Onde fica a cozinha?" },
-    { q: "'Oturma odasında' nasıl dersiniz?", a: "Na sala de estar." },
-    { q: "Evinizde ne var? 3 şey sayın.", a: "Tem uma cama, uma mesa e um sofá." },
-    { q: "'Garaj var mı?' sorusunu cevaplayın.", a: "Sim, tem garagem! / Não, infelizmente não tem." }
+    {q:"Onde fica a casa de banho?", a:"A casa de banho fica no fim do corredor."},
+    {q:"A tua casa tem jardim?", a:"Sim, temos um jardim pequeno com flores."},
+    {q:"Quantos quartos tem o apartamento?", a:"O apartamento tem três quartos e duas casas de banho."},
+    {q:"Há elevador no prédio?", a:"Não, não há elevador. Há apenas escadas."},
+    {q:"O frigorífico está na cozinha?", a:"Sim, o frigorífico fica junto ao fogão."}
   ],
   dialogues: [
     {
-      title: "Yeni Ev Arayışı",
+      title: "Apartamento para Arrendar",
       lines: [
-        { speaker: "Imobiliária", text: "Bom dia! Posso ajudar?", tr: "Günaydın! Yardımcı olabilir miyim?" },
-        { speaker: "Cliente", text: "Sim, estou procurando um apartamento para alugar.", tr: "Evet, kiralık daire arıyorum." },
-        { speaker: "Imobiliária", text: "Quantos quartos precisa?", tr: "Kaç odalı istiyorsunuz?" },
-        { speaker: "Cliente", text: "Preciso de dois quartos e uma cozinha grande.", tr: "İki yatak odası ve büyük bir mutfak istiyorum." },
-        { speaker: "Imobiliária", text: "Temos um ótimo apartamento! Tem varanda e garagem.", tr: "Harika bir dairemiz var! Balkon ve garaj var." },
-        { speaker: "Cliente", text: "Perfeito! Fica em que bairro?", tr: "Mükemmel! Hangi semtte?" }
+        {speaker:"Senhor Costa", text:"Bom dia! Venho ver o apartamento para arrendar."},
+        {speaker:"Senhoria", text:"Bom dia! Entre, por favor. O apartamento tem três assoalhadas."},
+        {speaker:"Senhor Costa", text:"Há casa de banho com banheira ou duche?"},
+        {speaker:"Senhoria", text:"Tem duche. A casa de banho fica ao lado do quarto principal."},
+        {speaker:"Senhor Costa", text:"A cozinha tem frigorífico e fogão incluídos?"},
+        {speaker:"Senhoria", text:"Sim, tem frigorífico, fogão e máquina de lavar. Tudo incluído."}
       ]
     }
   ],
   listening: {
-    text: "Meu apartamento novo fica no terceiro andar. Tem dois quartos, uma sala grande, uma cozinha moderna e um banheiro. Na sala tem um sofá cinza e uma televisão grande. A cozinha tem uma geladeira nova e um fogão elétrico. Não tem varanda, mas tem uma janela enorme com vista para o parque.",
+    text: "O apartamento fica no quinto andar de um prédio com elevador, no centro de Lisboa. Tem três quartos, uma sala de estar ampla e duas casas de banho. A cozinha está equipada com frigorífico, fogão e máquina de lavar loiça. Há ainda uma varanda com vista para o Tejo. O condomínio tem garagem e jardim comum.",
     questions: [
-      { q: "Daire kaçıncı katta?", a: "Üçüncü katta" },
-      { q: "Kaç oda var?", a: "İki yatak odası, salon, mutfak, banyo" },
-      { q: "Balkon var mı? Neden telafi ediyor?", a: "Yok, ama parka bakan büyük pencere var" }
+      {q:"Em que andar fica o apartamento?", a:"No quinto andar."},
+      {q:"Quantas casas de banho tem?", a:"Duas casas de banho."},
+      {q:"O que se vê da varanda?", a:"O rio Tejo."}
     ]
   }
 };

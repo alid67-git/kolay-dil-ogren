@@ -1,94 +1,93 @@
-const L14 = {
-  title: "Dias, Meses e Datas",
+var L14 = {
   words: [
-    { en: "segunda-feira", tr: "Pazartesi", pron: "segũnda feyra", bd: "2. pazar günü anlamında" },
-    { en: "terça-feira", tr: "Salı", pron: "tersa feyra", bd: "3. pazar günü" },
-    { en: "quarta-feira", tr: "Çarşamba", pron: "kuarta feyra", bd: "4. pazar günü" },
-    { en: "quinta-feira", tr: "Perşembe", pron: "kĩnta feyra", bd: "5. pazar günü" },
-    { en: "sexta-feira", tr: "Cuma", pron: "seshta feyra", bd: "6. pazar günü" },
-    { en: "sábado", tr: "Cumartesi", pron: "sábadu", bd: "eril; feira yok" },
-    { en: "domingo", tr: "Pazar", pron: "domĩngu", bd: "eril; feira yok; 1. gün" },
-    { en: "janeiro", tr: "Ocak", pron: "janeyru", bd: "eril; küçük harf!" },
-    { en: "fevereiro", tr: "Şubat", pron: "fevereiru", bd: "eril; Karnaval ayı" },
-    { en: "março", tr: "Mart", pron: "marsu", bd: "eril" },
-    { en: "abril", tr: "Nisan", pron: "abril", bd: "eril" },
-    { en: "maio", tr: "Mayıs", pron: "mayu", bd: "eril" },
-    { en: "junho", tr: "Haziran", pron: "junyu", bd: "eril; festa junina ayı" },
-    { en: "julho", tr: "Temmuz", pron: "julyu", bd: "eril; Brezilya kışının ortası" },
-    { en: "agosto", tr: "Ağustos", pron: "agoshtu", bd: "eril" },
-    { en: "setembro", tr: "Eylül", pron: "setẽmbru", bd: "eril; bağımsızlık: 7 Eylül" },
-    { en: "outubro", tr: "Ekim", pron: "owtubru", bd: "eril" },
-    { en: "novembro", tr: "Kasım", pron: "novẽmbru", bd: "eril" },
-    { en: "dezembro", tr: "Aralık", pron: "dezẽmbru", bd: "eril; Noel + yaz = Brezilya" },
-    { en: "Que dia é hoje?", tr: "Bugün günlerden ne?", pron: "ke dzhia é oji", bd: "tarih sorusu" }
+    {en:"Monday", tr:"Pazartesi", pron:"ˈsɨɡũdɐ ˈfɐɪ̯ɾɐ", bd:"segunda-feira"},
+    {en:"Tuesday", tr:"Salı", pron:"ˈtɛɾsɐ ˈfɐɪ̯ɾɐ", bd:"terça-feira"},
+    {en:"Wednesday", tr:"Çarşamba", pron:"ˈkwɐɾtɐ ˈfɐɪ̯ɾɐ", bd:"quarta-feira"},
+    {en:"Thursday", tr:"Perşembe", pron:"ˈkĩ̃tɐ ˈfɐɪ̯ɾɐ", bd:"quinta-feira"},
+    {en:"Friday", tr:"Cuma", pron:"ˈsɛʃtɐ ˈfɐɪ̯ɾɐ", bd:"sexta-feira"},
+    {en:"Saturday", tr:"Cumartesi", pron:"ˈsɐbɐdu", bd:"sábado"},
+    {en:"Sunday", tr:"Pazar", pron:"ˈdumĩɡu", bd:"domingo"},
+    {en:"January", tr:"Ocak", pron:"ʒɐˈnɐɪ̯ɾu", bd:"janeiro"},
+    {en:"February", tr:"Şubat", pron:"fɨˈvɾɐɪ̯ɾu", bd:"fevereiro"},
+    {en:"March", tr:"Mart", pron:"ˈmɐɾsu", bd:"março"},
+    {en:"April", tr:"Nisan", pron:"ɐˈbɾil", bd:"abril"},
+    {en:"May", tr:"Mayıs", pron:"ˈmɐiu̯", bd:"maio"},
+    {en:"June", tr:"Haziran", pron:"ˈʒuɲu", bd:"junho"},
+    {en:"July", tr:"Temmuz", pron:"ˈʒuʎu", bd:"julho"},
+    {en:"August", tr:"Ağustos", pron:"ˈɐɡuʃtu", bd:"agosto"},
+    {en:"September", tr:"Eylül", pron:"sɨˈtẽbɾu", bd:"setembro"},
+    {en:"October", tr:"Ekim", pron:"uˈtubɾu", bd:"outubro"},
+    {en:"November", tr:"Kasım", pron:"nuˈvẽbɾu", bd:"novembro"},
+    {en:"December", tr:"Aralık", pron:"dɨˈzẽbɾu", bd:"dezembro"},
+    {en:"year", tr:"yıl", pron:"ˈɐnu", bd:"ano"}
   ],
   grammar: [
     {
-      title: "Günler ve Tarih Söyleme",
-      explanation: "Portekizcede günler 'feira' (Pazar günü) sistemine dayanır: segunda-feira = ikinci gün (Pazartesi), terça=3., quarta=4., quinta=5., sexta=6. Hafta sonu günleri (sábado ve domingo) bu sisteme dahil değildir. Günler küçük harfle yazılır.",
+      title: "Datas em Português Europeu — Tarih Söyleme",
+      explanation: "EP'de tarih söylenişi: gün + 'de' + ay + 'de' + yıl. Ay isimleri küçük harfle yazılır. Gün için sıra sayısı sadece 1. gün için kullanılır ('primeiro').",
       table: [
-        { pronoun: "Bugün", form: "Hoje é + gün", example: "Hoje é segunda-feira.", tr: "Bugün Pazartesi." },
-        { pronoun: "Yarın", form: "Amanhã é + gün", example: "Amanhã é terça.", tr: "Yarın Salı." },
-        { pronoun: "Dün", form: "Ontem foi + gün", example: "Ontem foi domingo.", tr: "Dün Pazar'dı." },
-        { pronoun: "Belirli gün", form: "na + gün (dişil)", example: "na segunda-feira", tr: "Pazartesi günü" },
-        { pronoun: "Hafta sonu", form: "no sábado/domingo", example: "no sábado", tr: "Cumartesi günü" },
-        { pronoun: "Her X günü", form: "todo + gün", example: "todo domingo", tr: "Her Pazar" }
+        {pronoun:"1. gün", form:"primeiro de...", example:"Hoje é o primeiro de março.", tr:"Bugün 1 Mart."},
+        {pronoun:"Diğer günler", form:"número cardinal", example:"O meu aniversário é a 15 de junho.", tr:"Doğum günüm 15 Haziran."},
+        {pronoun:"Yıl ile", form:"gün/mês/ano", example:"Nasceu a 3 de abril de 1990.", tr:"3 Nisan 1990'da doğdu."},
+        {pronoun:"Soru", form:"Que dia é hoje?", example:"Hoje é quarta-feira, 7 de fevereiro.", tr:"Bugün Çarşamba, 7 Şubat."},
+        {pronoun:"Em + mês", form:"ayda olmak", example:"Em dezembro celebramos o Natal.", tr:"Aralık'ta Noel'i kutlarız."},
+        {pronoun:"No ano de", form:"yılda olmak", example:"No ano de 2024 houve eleições.", tr:"2024 yılında seçimler oldu."}
       ],
-      note: "Dikkat: 'na segunda' (Pazartesi günü) — dişil artikel kullanılır çünkü 'feira' dişildir. 'no sábado' — eril."
+      note: "EP'de tarih yazımı: 7/2/2024 = 7 de fevereiro de 2024. Portekizce'de aylar küçük harfle yazılır. Türkçe'nin aksine, haftanın günleri de küçük harfle yazılır."
     },
     {
-      title: "Ay ve Tarih Formatı",
-      explanation: "Tarihler Portekizcede gün/ay/yıl formatında söylenir. 'Estamos em + ay' = Şimdi [ay]dayız. Ay isimleri küçük harfle yazılır ve erildir. Tarih için 'o dia + sayı + de + ay' yapısı kullanılır.",
+      title: "Dias da Semana — Haftanın Günleri",
+      explanation: "Portekizce günlerin isimleri Latince'den gelir ve sayısal sıralamayı takip eder. Pazar (domingo) 1. gün değil tatil günüdür. Hafta içi günleri için 'dias úteis', hafta sonu için 'fim de semana' kullanılır.",
       table: [
-        { pronoun: "Tarih sorusu", form: "Qual é a data de hoje?", example: "Qual é a data de hoje?", tr: "Bugünün tarihi nedir?" },
-        { pronoun: "Tarih cevabı", form: "É o dia + sayı + de + ay", example: "É o dia vinte e dois de março.", tr: "22 Mart." },
-        { pronoun: "Ay sorusu", form: "Em que mês estamos?", example: "Estamos em julho.", tr: "Temmuz'dayız." },
-        { pronoun: "Yıl", form: "ano de + yıl", example: "em dois mil e vinte e cinco", tr: "2025'te" },
-        { pronoun: "Doğum günü", form: "Quando é seu aniversário?", example: "É em março.", tr: "Martta." },
-        { pronoun: "1. gün", form: "o primeiro", example: "primeiro de janeiro", tr: "1 Ocak (birinci)" }
+        {pronoun:"na segunda-feira", form:"Pazartesi'de", example:"Na segunda-feira tenho reunião.", tr:"Pazartesi toplantım var."},
+        {pronoun:"às terças-feiras", form:"her Salı", example:"Às terças-feiras vou ao ginásio.", tr:"Her Salı spor salonuna giderim."},
+        {pronoun:"ao fim de semana", form:"hafta sonu", example:"Ao fim de semana descansamos.", tr:"Hafta sonu dinleniriz."},
+        {pronoun:"durante a semana", form:"hafta içi", example:"Durante a semana trabalho das 9 às 18.", tr:"Hafta içi 9'dan 18'e çalışırım."},
+        {pronoun:"ontem/hoje/amanhã", form:"dün/bugün/yarın", example:"Ontem foi domingo. Hoje é segunda.", tr:"Dün Pazar'dı. Bugün Pazartesi."},
+        {pronoun:"próximo/último", form:"gelecek/geçen", example:"Na próxima sexta-feira há feriado.", tr:"Gelecek Cuma tatil var."}
       ],
-      note: "Sadece 1. gün için 'primeiro' (sıra sayısı) kullanılır. Diğer günler için cardinal sayılar: dois, três, quatro..."
+      note: "Portekizce'de haftanın günleri aslında sayılara dayanır: segunda (ikinci), terça (üçüncü)... feria Latince'de 'bayram günü' anlamına geliyordu."
     },
     {
-      title: "Zamansal İfadeler — Geçmiş, Şimdi, Gelecek",
-      explanation: "Zaman zarfları cümlelere bağlam katar. Portekizcede zaman belirteçleri cümlenin başında veya sonunda kullanılabilir. 'Hoje' (bugün), 'ontem' (dün), 'amanhã' (yarın) en temel olanlarıdır.",
+      title: "Preposições de Tempo — Zaman Edatları",
+      explanation: "Zamanı belirtmek için kullanılan edatlar: em (ay/yıl için), a (gün/tarih için), de...a (bir dönem için), há (önce/geçmişten beri).",
       table: [
-        { pronoun: "Geçmiş", form: "ontem, semana passada, mês passado", example: "Ontem choveu.", tr: "Dün yağmur yağdı." },
-        { pronoun: "Şimdi", form: "hoje, agora, atualmente", example: "Hoje estou ocupado.", tr: "Bugün meşgulüm." },
-        { pronoun: "Gelecek", form: "amanhã, semana que vem, próximo", example: "Amanhã vou viajar.", tr: "Yarın seyahat edeceğim." },
-        { pronoun: "Sıklık", form: "sempre, às vezes, nunca", example: "Às vezes chove à tarde.", tr: "Bazen öğleden sonra yağmur yağar." },
-        { pronoun: "Önce/Sonra", form: "antes de / depois de", example: "antes do almoço", tr: "öğle yemeğinden önce" },
-        { pronoun: "Ne zaman", form: "quando?", example: "Quando você chega?", tr: "Ne zaman geliyorsunuz?" }
+        {pronoun:"em + mês/ano", form:"ayda/yılda", example:"Em outubro vai de férias.", tr:"Ekim'de tatile gidiyor."},
+        {pronoun:"a + dia/data", form:"tarihte", example:"A reunião é a 15 de setembro.", tr:"Toplantı 15 Eylül'de."},
+        {pronoun:"de...a", form:"...den...a", example:"Trabalho de segunda a sexta.", tr:"Pazartesiden Cumaya çalışırım."},
+        {pronoun:"há + tempo", form:"önce", example:"Há três dias não comi.", tr:"Üç gündür yemedim."},
+        {pronoun:"daqui a + tempo", form:"sonra/içinde", example:"Daqui a duas semanas é Natal.", tr:"İki hafta sonra Noel."},
+        {pronoun:"desde + data", form:"beri", example:"Vivo em Lisboa desde 2010.", tr:"2010'dan beri Lizbon'da yaşıyorum."}
       ],
-      note: "Que vem (gelecek): semana que vem = gelecek hafta. Passado/a (geçmiş): semana passada = geçen hafta."
+      note: "EP'de 'há' çok kullanışlıdır: 'Há dois dias' = 'iki gün önce' veya 'iki gündür'. Fark bağlamdan anlaşılır."
     }
   ],
   speaking: [
-    { q: "Bugün günlerden ne?", a: "Hoje é [gün]-feira. / Hoje é sábado/domingo." },
-    { q: "'15 Ağustos' nasıl söylenir?", a: "O dia quinze de agosto." },
-    { q: "Doğum gününüz ne zaman?", a: "Meu aniversário é em [ay], dia [sayı]." },
-    { q: "'Her Çarşamba' nasıl?", a: "Toda quarta-feira." },
-    { q: "'Geçen hafta' ve 'gelecek hafta' nasıl?", a: "Semana passada / Semana que vem." }
+    {q:"Que dia da semana é hoje?", a:"Hoje é quinta-feira, 24 de outubro."},
+    {q:"Quando é o teu aniversário?", a:"O meu aniversário é a 8 de março. É no mesmo dia que o Dia da Mulher!"},
+    {q:"Em que mês costumas ir de férias?", a:"Costumo ir de férias em agosto porque o tempo é melhor."},
+    {q:"Qual é o feriado favorito dos portugueses?", a:"O Natal e o 25 de Abril são os feriados mais importantes para os portugueses."},
+    {q:"Há quanto tempo estudas português?", a:"Estudo português há seis meses. Ainda tenho muito para aprender!"}
   ],
   dialogues: [
     {
-      title: "Randevu Alma",
+      title: "Marcar um Encontro",
       lines: [
-        { speaker: "Recepcionista", text: "Bom dia! Clínica São Lucas, em que posso ajudar?", tr: "Günaydın! São Lucas Kliniği, nasıl yardımcı olabilirim?" },
-        { speaker: "Paciente", text: "Gostaria de marcar uma consulta com o Dr. Rodrigues.", tr: "Dr. Rodrigues ile bir randevu almak istiyorum." },
-        { speaker: "Recepcionista", text: "Claro! Qual seria o melhor dia para você?", tr: "Tabii! Hangi gün size en uygun?" },
-        { speaker: "Paciente", text: "Prefiro no final da semana — quinta ou sexta.", tr: "Haftanın sonunu tercih ederim — Perşembe veya Cuma." },
-        { speaker: "Recepcionista", text: "Temos sexta-feira, dia doze, às quatorze horas.", tr: "Cuma günü 12'si var, saat 14:00." },
-        { speaker: "Paciente", text: "Perfeito! Pode confirmar meu nome: Carlos Mendes.", tr: "Mükemmel! Adımı kaydeder misiniz: Carlos Mendes." }
+        {speaker:"Beatriz", text:"Olá Filipe! Quando é que podes encontrar-te comigo?"},
+        {speaker:"Filipe", text:"Esta semana estou muito ocupado. Que tal na próxima semana?"},
+        {speaker:"Beatriz", text:"Na quarta-feira de manhã tenho tempo livre."},
+        {speaker:"Filipe", text:"Quarta é difícil. Preferes quinta ou sexta à tarde?"},
+        {speaker:"Beatriz", text:"Quinta à tarde está bem! A que horas?"},
+        {speaker:"Filipe", text:"Às 15h no café da Baixa. Combinado?"}
       ]
     }
   ],
   listening: {
-    text: "O Brasil tem muitas datas comemorativas importantes. O Carnaval acontece em fevereiro ou março, antes da Quaresma. O Dia da Independência é celebrado no dia sete de setembro. O Natal é comemorado no dia vinte e cinco de dezembro, mas no verão brasileiro — o que é muito diferente para os europeus! A Festa Junina acontece em junho e julho, com danças típicas e comidas tradicionais.",
+    text: "Portugal tem vários feriados nacionais ao longo do ano. O 25 de Abril celebra a Revolução dos Cravos de 1974, que restaurou a democracia após 48 anos de ditadura. O 10 de Junho é o Dia de Portugal, coincidindo com a morte de Camões, o maior poeta português. O Natal é celebrado a 25 de dezembro e o Carnaval ocorre geralmente em fevereiro ou março, dependendo da Páscoa.",
     questions: [
-      { q: "Bağımsızlık Günü tarihi?", a: "7 Eylül" },
-      { q: "Noel hangi mevsimde?", a: "Brezilya yazında" },
-      { q: "Festa Junina hangi aylarda?", a: "Haziran ve Temmuz" }
+      {q:"O que se celebra a 25 de Abril?", a:"A Revolução dos Cravos de 1974."},
+      {q:"Qual é o feriado do 10 de Junho?", a:"O Dia de Portugal."},
+      {q:"Quando ocorre o Carnaval?", a:"Em fevereiro ou março."}
     ]
   }
 };

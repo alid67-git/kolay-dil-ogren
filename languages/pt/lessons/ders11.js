@@ -1,94 +1,93 @@
-const L11 = {
-  title: "Partes do Corpo",
+var L11 = {
   words: [
-    { en: "a cabeça", tr: "kafa / baş", pron: "a kabésa", bd: "dişil" },
-    { en: "o cabelo", tr: "saç", pron: "u kabélu", bd: "eril" },
-    { en: "o rosto / a cara", tr: "yüz", pron: "u hoshu / a kara", bd: "BP: rosto; EP: cara" },
-    { en: "o olho", tr: "göz", pron: "u olyu", bd: "eril; olhos = gözler (çoğul)" },
-    { en: "o nariz", tr: "burun", pron: "u narísh", bd: "eril" },
-    { en: "a boca", tr: "ağız", pron: "a boka", bd: "dişil" },
-    { en: "o dente", tr: "diş", pron: "u dẽntshi", bd: "eril; dentes = dişler" },
-    { en: "o ouvido / a orelha", tr: "kulak (iç/dış)", pron: "u ouvidu / a orelya", bd: "ouvido=iç kulak, orelha=dış kulak" },
-    { en: "o pescoço", tr: "boyun", pron: "u peskósu", bd: "eril" },
-    { en: "o ombro", tr: "omuz", pron: "u ombru", bd: "eril" },
-    { en: "o braço", tr: "kol", pron: "u brasu", bd: "eril" },
-    { en: "a mão", tr: "el", pron: "a mão", bd: "dişil; çoğul: mãos" },
-    { en: "o dedo", tr: "parmak", pron: "u dédu", bd: "eril; dedo do pé = ayak parmağı" },
-    { en: "o peito", tr: "göğüs", pron: "u peytu", bd: "eril" },
-    { en: "a barriga", tr: "karın", pron: "a barriga", bd: "dişil; BP günlük kullanım" },
-    { en: "as costas", tr: "sırt", pron: "as koshtash", bd: "dişil çoğul — her zaman çoğul" },
-    { en: "a perna", tr: "bacak", pron: "a pérna", bd: "dişil" },
-    { en: "o joelho", tr: "diz", pron: "u jwelyu", bd: "eril" },
-    { en: "o pé", tr: "ayak", pron: "u pé", bd: "eril; pés = ayaklar" },
-    { en: "a pele", tr: "cilt / deri", pron: "a péli", bd: "dişil" }
+    {en:"head", tr:"kafa/baş", pron:"kɐˈbɛsɐ", bd:"cabeça"},
+    {en:"hair", tr:"saç", pron:"kɐˈbɛlu", bd:"cabelo"},
+    {en:"eye", tr:"göz", pron:"ˈolu", bd:"olho"},
+    {en:"ear", tr:"kulak", pron:"ˈoɾɛʎɐ", bd:"orelha"},
+    {en:"nose", tr:"burun", pron:"ˈnaɾiz̠", bd:"nariz"},
+    {en:"mouth", tr:"ağız", pron:"ˈbokɐ", bd:"boca"},
+    {en:"tooth/teeth", tr:"diş/dişler", pron:"ˈdẽtɨ/ˈdẽtɨʃ", bd:"dente/dentes"},
+    {en:"neck", tr:"boyun", pron:"ˈpɛʃkusu", bd:"pescoço"},
+    {en:"shoulder", tr:"omuz", pron:"ˈombɾu", bd:"ombro"},
+    {en:"arm", tr:"kol", pron:"ˈbɾɐsu", bd:"braço"},
+    {en:"hand", tr:"el", pron:"ˈmɐ̃u̯", bd:"mão"},
+    {en:"finger", tr:"parmak", pron:"ˈdedu", bd:"dedo"},
+    {en:"chest", tr:"göğüs", pron:"ˈpɐɪ̯tu", bd:"peito"},
+    {en:"back", tr:"sırt", pron:"ˈkɔʃtɐʃ", bd:"costas"},
+    {en:"stomach", tr:"karın/mide", pron:"ˈbɐɾɾiɡɐ", bd:"barriga"},
+    {en:"leg", tr:"bacak", pron:"ˈpɛɾnɐ", bd:"perna"},
+    {en:"knee", tr:"diz", pron:"ˈʒoɛʎu", bd:"joelho"},
+    {en:"foot", tr:"ayak", pron:"ˈpɛ", bd:"pé"},
+    {en:"skin", tr:"deri/cilt", pron:"ˈpɛlɨ", bd:"pele"},
+    {en:"heart", tr:"kalp", pron:"kuˈɾɐsɐ̃u̯", bd:"coração"}
   ],
   grammar: [
     {
-      title: "DOER — Ağrımak (Vücut Ağrısı)",
-      explanation: "Vücut ağrılarını belirtmek için DOER (ağrımak) fiili kullanılır. Bu fiil kişi değil, ağrıyan organ bakımından çekimlenir: 'Minha cabeça dói' (Başım ağrıyor) veya 'Minhas costas doem' (Sırtım ağrıyor). Ayrıca 'Estou com dor de...' kalıbı da çok yaygındır.",
+      title: "Dói-me / Tenho dores — Ağrı İfade Etmek",
+      explanation: "Avrupa Portekizcesi'nde ağrı/acı ifadesi için 'doer' fiili ters yapıda kullanılır: 'dói-me a cabeça' (kafam ağrıyor). Ençlise kuralı geçerlidir — zamir fiilden sonra gelir.",
       table: [
-        { pronoun: "Tekil organ", form: "dói", example: "Meu ombro dói muito.", tr: "Omzum çok ağrıyor." },
-        { pronoun: "Çoğul organ", form: "doem", example: "Meus dentes doem.", tr: "Dişlerim ağrıyor." },
-        { pronoun: "Estou com dor de", form: "ağrım var", example: "Estou com dor de cabeça.", tr: "Baş ağrım var." },
-        { pronoun: "Estou com dor de", form: "diş ağrısı", example: "Estou com dor de dente.", tr: "Diş ağrım var." },
-        { pronoun: "Soru", form: "Onde dói?", example: "Onde está a dor?", tr: "Nerede ağrıyor?" },
-        { pronoun: "Şiddet", form: "muito / um pouco", example: "Dói muito / dói um pouco.", tr: "Çok ağrıyor / biraz ağrıyor." }
+        {pronoun:"dói-me", form:"(bana) ağrıyor (tek)", example:"Dói-me a cabeça.", tr:"Başım ağrıyor."},
+        {pronoun:"doem-me", form:"(bana) ağrıyor (çoğul)", example:"Doem-me as costas.", tr:"Sırtım ağrıyor."},
+        {pronoun:"dói-te", form:"(sana) ağrıyor", example:"Dói-te o joelho?", tr:"Dizin mi ağrıyor?"},
+        {pronoun:"dói-lhe", form:"(ona) ağrıyor", example:"Dói-lhe o estômago.", tr:"Midesi ağrıyor."},
+        {pronoun:"dói-nos", form:"(bize) ağrıyor", example:"Dói-nos o pescoço.", tr:"Boynumuz ağrıyor."},
+        {pronoun:"tenho dores de", form:"ağrım var", example:"Tenho dores de cabeça desde ontem.", tr:"Dünden beri baş ağrım var."}
       ],
-      note: "'Me dói o pé' = Ayağım ağrıyor. 'Doi' yerine 'dói' (aksan) kullanılır — Brezilya standardı."
+      note: "Bu yapı BP'den farklıdır: BP'de 'minha cabeça está doendo' denilirken EP'de 'dói-me a cabeça' denir. EP her zaman ençlise (zamir sonra) kullanır!"
     },
     {
-      title: "ESTAR COM — Semptom ve His İfadeleri",
-      explanation: "Semptomları belirtmek için 'ESTAR COM + isim' çok yaygındır. Bu yapı geçici durumları ifade eder (estar kullanımı). Ateş, mide bulantısı, baş dönmesi gibi birçok semptom bu yapıyla aktarılır.",
+      title: "Possessivos com o Corpo — Vücut ile İyelik",
+      explanation: "EP'de vücut organlarından söz ederken iyelik sıfatı genellikle kullanılmaz; yerine belirli article (o/a) yeterlidir. İyeliği vurgulamak gerekirse 'o meu/a minha' + organ kullanılır.",
       table: [
-        { pronoun: "Ateş", form: "estar com febre", example: "Estou com febre.", tr: "Ateşim var." },
-        { pronoun: "Öksürük", form: "estar com tosse", example: "Está com tosse?", tr: "Öksürüğünüz var mı?" },
-        { pronoun: "Nezle", form: "estar com resfriado", example: "Estou com resfriado.", tr: "Nezlem var." },
-        { pronoun: "Mide bulantısı", form: "estar com náusea", example: "Estou com náusea.", tr: "Midem bulanıyor." },
-        { pronoun: "Baş dönmesi", form: "estar com tontura", example: "Estou com tontura.", tr: "Başım dönüyor." },
-        { pronoun: "Alerji", form: "estar com alergia", example: "Estou com alergia.", tr: "Alerjim tuttu." }
+        {pronoun:"Artigo (normal)", form:"o/a + organ", example:"Lavei a cara esta manhã.", tr:"Bu sabah yüzümü yıkadım."},
+        {pronoun:"İyelik vurgu", form:"o meu/a minha + organ", example:"A minha mão está fria.", tr:"Elim soğuk."},
+        {pronoun:"Plural vücut", form:"os meus/as minhas", example:"Os meus pés estão cansados.", tr:"Ayaklarım yorgun."},
+        {pronoun:"Soru (tu)", form:"o teu/a tua", example:"Como está o teu joelho?", tr:"Dizin nasıl?"},
+        {pronoun:"Üçüncü şahıs", form:"o seu/a sua", example:"Ele partiu o seu braço.", tr:"Kolunu kırdı."},
+        {pronoun:"Refleksif", form:"se + verbo", example:"Ela cortou-se no dedo.", tr:"Parmağını kesti."}
       ],
-      note: "'Estou me sentindo mal.' = Kendimi iyi hissetmiyorum. 'Preciso ir ao médico.' = Doktora gitmeliyim."
+      note: "EP'nin önemli özelliği: 'o meu braço' (belirli article + iyelik). BP'de sadece 'meu braço' denir; EP'de article zorunludur!"
     },
     {
-      title: "Vücut Bölümlerini Tanımlama — Fiziksel Özellikler",
-      explanation: "Fiziksel özellikleri tanımlarken SER (kalıcı özellik) kullanılır. Saç rengi, göz rengi, boy gibi kalıcı nitelikler için SER tercih edilir. 'Ela tem olhos azuis' (Mavi gözleri var) veya 'Ela é de olhos azuis' (Mavi gözlü).",
+      title: "Adjetivos Físicos — Fiziksel Tanımlama",
+      explanation: "Fiziksel özellikleri tarif etmek için kullanılan sıfatlar. Bunlar kişinin kalıcı özelliklerini belirtir, bu yüzden genellikle 'ser' fiiliyle kullanılır.",
       table: [
-        { pronoun: "Saç rengi", form: "ter cabelo + renk", example: "Tenho cabelo castanho.", tr: "Kahverengi saçım var." },
-        { pronoun: "Göz rengi", form: "ter olhos + renk", example: "Ela tem olhos verdes.", tr: "Yeşil gözleri var." },
-        { pronoun: "Boy", form: "ser alto/a, baixo/a", example: "Sou alto e magro.", tr: "Uzun ve ince yapılıyım." },
-        { pronoun: "Kilo", form: "ser gordo/a, magro/a", example: "Ele é um pouco gordo.", tr: "Biraz kilolu." },
-        { pronoun: "Saç tipi", form: "ter cabelo liso/cacheado", example: "Tem cabelo cacheado.", tr: "Kıvırcık saçı var." },
-        { pronoun: "Aksesuarlar", form: "usar + aksesuar", example: "Usa óculos e barba.", tr: "Gözlük ve sakalı var." }
+        {pronoun:"alto/baixo", form:"uzun/kısa (boy)", example:"O Pedro é alto e magro.", tr:"Pedro uzun boylu ve zayıf."},
+        {pronoun:"gordo/magro", form:"şişman/zayıf", example:"Ela é magra e tem cabelo castanho.", tr:"O zayıf ve kahverengi saçlı."},
+        {pronoun:"loiro/moreno", form:"sarışın/esmer", example:"Tens olhos azuis e és loiro.", tr:"Mavi gözlüsün ve sarışınsın."},
+        {pronoun:"careca", form:"kel (değişmez)", example:"O meu pai é careca.", tr:"Babam kel."},
+        {pronoun:"jovem/velho", form:"genç/yaşlı", example:"A avó parece jovem.", tr:"Büyükannem genç görünüyor."},
+        {pronoun:"bonito/feio", form:"güzel/çirkin", example:"Que bebé bonito!", tr:"Ne güzel bebek!"}
       ],
-      note: "Renk kısaltmaları: castanho (kahverengi), louro/loiro (sarı), ruivo (kızıl), preto (siyah), cinza (gri/ak)."
+      note: "EP'de 'giro/a' (harika/çok güzel) ve 'fixe' (havalı) argosunda çok kullanılır. 'Que giro!' = 'Ne güzel/harika!'"
     }
   ],
   speaking: [
-    { q: "Başınız ağrıyor — nasıl söylersiniz?", a: "Estou com dor de cabeça. / Minha cabeça dói." },
-    { q: "'Gözlerim mavi' nasıl?", a: "Meus olhos são azuis. / Tenho olhos azuis." },
-    { q: "Doktora gidiyorsunuz. Ne söylersiniz?", a: "Estou com dor de garganta e febre." },
-    { q: "'Sırtım ağrıyor' nasıl?", a: "Minhas costas doem. / Estou com dor nas costas." },
-    { q: "Bir kişiyi fiziksel olarak tanımlayın.", a: "Ela é alta, tem cabelo preto e olhos castanhos." }
+    {q:"Onde te dói?", a:"Dói-me muito a barriga desde esta manhã."},
+    {q:"Como é o teu cabelo?", a:"Tenho cabelo castanho e curto."},
+    {q:"Tens olhos castanhos ou azuis?", a:"Tenho olhos verdes. São bastante raros."},
+    {q:"Dói-te alguma coisa?", a:"Sim, doem-me as costas. Passei o dia sentado."},
+    {q:"Como se diz 'joelho' em inglês?", a:"Joelho diz-se 'knee' em inglês."}
   ],
   dialogues: [
     {
-      title: "Doktor Muayenesi",
+      title: "Na Farmácia",
       lines: [
-        { speaker: "Médico", text: "Bom dia! O que está sentindo?", tr: "Günaydın! Nasıl hissediyorsunuz?" },
-        { speaker: "Paciente", text: "Estou com dor de garganta e febre desde ontem.", tr: "Dünden beri boğaz ağrısı ve ateşim var." },
-        { speaker: "Médico", text: "Quanto de febre? Está tossindo?", tr: "Kaç ateşiniz var? Öksürüyor musunuz?" },
-        { speaker: "Paciente", text: "Trinta e oito vírgula cinco. E sim, estou tossindo muito.", tr: "Otuz sekiz buçuk. Evet, çok öksürüyorum." },
-        { speaker: "Médico", text: "Vou examinar sua garganta. Abra bem a boca.", tr: "Boğazınıza bakacağım. Ağzınızı iyice açın." },
-        { speaker: "Médico", text: "Está inflamada. Vou receitar um antibiótico.", tr: "İltihaplanmış. Bir antibiyotik yazacağım." }
+        {speaker:"Cliente", text:"Boa tarde. Dói-me imenso a garganta há dois dias."},
+        {speaker:"Farmacêutico", text:"Boa tarde. Tem febre também?"},
+        {speaker:"Cliente", text:"Não tenho febre, mas tenho dores de cabeça e o nariz entupido."},
+        {speaker:"Farmacêutico", text:"Parece uma constipação. Recomendo este xarope e estes comprimidos."},
+        {speaker:"Cliente", text:"Preciso de receita médica?"},
+        {speaker:"Farmacêutico", text:"Não, estes medicamentos vendem-se sem receita. Descanse bastante e beba muita água."}
       ]
     }
   ],
   listening: {
-    text: "Hoje não estou me sentindo bem. Acordei com dor de cabeça e um pouco de febre. Minha garganta também dói quando eu engulo. Estou com tosse seca há dois dias. Minha mãe diz que preciso ir ao médico, mas eu acho que é só um resfriado comum. Vou tomar um remédio e descansar bastante.",
+    text: "O corpo humano é uma máquina extraordinária. Os olhos permitem-nos ver o mundo em cores e formas. Os ouvidos captam sons e ajudam-nos a manter o equilíbrio. O coração bate cerca de cem mil vezes por dia, bombeando sangue para todo o corpo. As mãos são instrumentos incríveis — com os nossos dedos podemos criar obras de arte, tocar música ou simplesmente cumprimentar alguém com um aperto de mão.",
     questions: [
-      { q: "Hangi semptomları var?", a: "Baş ağrısı, biraz ateş, boğaz ağrısı, kuru öksürük" },
-      { q: "Öksürük ne zamandan beri var?", a: "İki gündür" },
-      { q: "Annesi ne tavsiye ediyor?", a: "Doktora gitmesini" }
+      {q:"Quantas vezes bate o coração por dia?", a:"Cerca de cem mil vezes."},
+      {q:"Para que servem os ouvidos além de ouvir?", a:"Para manter o equilíbrio."},
+      {q:"O que podemos fazer com as mãos?", a:"Criar obras de arte, tocar música ou cumprimentar alguém."}
     ]
   }
 };

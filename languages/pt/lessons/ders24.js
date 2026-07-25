@@ -1,94 +1,94 @@
-const L24 = {
-  title: "No Banco e Finanças",
+var L24 = {
   words: [
-    { en: "o banco", tr: "banka", pron: "u bãnku", bd: "eril" },
-    { en: "a conta corrente", tr: "vadesiz hesap / cari hesap", pron: "a kõnta kohẽntshi", bd: "dişil" },
-    { en: "a poupança", tr: "tasarruf hesabı", pron: "a popãnsa", bd: "dişil; guardar dinheiro = para biriktirmek" },
-    { en: "o saldo", tr: "bakiye", pron: "u sawdu", bd: "eril; verificar saldo = bakiye kontrol etmek" },
-    { en: "o saque", tr: "para çekme", pron: "u saki", bd: "eril; sacar = para çekmek" },
-    { en: "o depósito", tr: "para yatırma", pron: "u depózitu", bd: "eril; depositar = yatırmak" },
-    { en: "a transferência", tr: "havale / transfer", pron: "a trãsferẽnsia", bd: "dişil; transferir = transfer etmek" },
-    { en: "o PIX", tr: "PIX (anlık ödeme sistemi)", pron: "u piksh", bd: "eril; Brezilya'ya özgü anlık transfer" },
-    { en: "o cartão de crédito", tr: "kredi kartı", pron: "u kartão dshi kréditu", bd: "eril" },
-    { en: "o cartão de débito", tr: "banka kartı / debit kart", pron: "u kartão dshi débitu", bd: "eril" },
-    { en: "o caixa eletrônico / ATM", tr: "ATM / banka otomatı", pron: "u kaysha eletroniku", bd: "eril" },
-    { en: "a taxa", tr: "ücret / vergi / faiz", pron: "a tasha", bd: "dişil; taxa de juros = faiz oranı" },
-    { en: "o empréstimo", tr: "kredi / borç", pron: "u ẽmpréstimu", bd: "eril; pedir empréstimo = kredi çekmek" },
-    { en: "a dívida", tr: "borç", pron: "a dzhívida", bd: "dişil; estar endividado = borçlu olmak" },
-    { en: "o orçamento", tr: "bütçe", pron: "u orshamẽntu", bd: "eril; fazer orçamento = bütçe yapmak" },
-    { en: "economizar", tr: "tasarruf etmek", pron: "ekonomizar", bd: "düzenli -AR" },
-    { en: "investir", tr: "yatırım yapmak", pron: "ĩveshchír", bd: "düzensiz -IR; invisto = yatırım yapıyorum" },
-    { en: "a inflação", tr: "enflasyon", pron: "a ĩflasão", bd: "dişil" },
-    { en: "o câmbio", tr: "döviz kuru / kur", pron: "u kãmbyu", bd: "eril; casa de câmbio = döviz bürosu" },
-    { en: "Qual é o câmbio hoje?", tr: "Bugün kur ne?", pron: "kuaw é u kãmbyu oji", bd: "döviz sorusu" }
+    {en:"bank", tr:"banka", pron:"ˈbɐ̃ku", bd:"banco"},
+    {en:"account", tr:"hesap", pron:"ˈkõtɐ", bd:"conta"},
+    {en:"current account", tr:"vadesiz hesap", pron:"ˈkõtɐ ˈoɾdiɲɐɾiɐ", bd:"conta à ordem"},
+    {en:"savings account", tr:"vadeli hesap", pron:"ˈkõtɐ puˈpɐ̃sɐ", bd:"conta poupança"},
+    {en:"ATM/cash machine", tr:"ATM/bankamatik", pron:"multibˈɐ̃ku", bd:"Multibanco"},
+    {en:"card", tr:"kart", pron:"ˈkɐɾtɐ̃u̯", bd:"cartão"},
+    {en:"debit card", tr:"banka kartı", pron:"ˈkɐɾtɐ̃u̯ dɨ dɨˈbitu", bd:"cartão de débito"},
+    {en:"credit card", tr:"kredi kartı", pron:"ˈkɐɾtɐ̃u̯ dɨ ˈkɾɛditu", bd:"cartão de crédito"},
+    {en:"transfer", tr:"havale", pron:"tɾɐ̃ˈsfɨɾẽsiɐ", bd:"transferência"},
+    {en:"withdrawal", tr:"para çekme", pron:"lɨvɐ̃ˈtɐmẽtu", bd:"levantamento"},
+    {en:"deposit", tr:"para yatırma", pron:"dɨˈpozitu", bd:"depósito"},
+    {en:"loan", tr:"kredi/borç", pron:"ɨ̃ˈpɾɛʃtimu", bd:"empréstimo"},
+    {en:"interest rate", tr:"faiz oranı", pron:"ˈtɐʃɐ dɨ ʒuɾus", bd:"taxa de juros"},
+    {en:"invoice", tr:"fatura", pron:"fɐˈtuɾɐ", bd:"fatura"},
+    {en:"tax", tr:"vergi", pron:"iˈpuʃtu", bd:"imposto"},
+    {en:"VAT", tr:"KDV", pron:"ˈiva", bd:"IVA"},
+    {en:"euros", tr:"euro", pron:"ˈɛuɾus", bd:"euros"},
+    {en:"budget", tr:"bütçe", pron:"uɾsɐˈmẽtu", bd:"orçamento"},
+    {en:"invoice/receipt", tr:"makbuz", pron:"ɾɨˈsibu", bd:"recibo"},
+    {en:"homebanking", tr:"İnternet bankacılığı", pron:"ˈoum bˈɐ̃kiŋ", bd:"homebanking"}
   ],
   grammar: [
     {
-      title: "PIX — Brezilya'nın Anlık Ödeme Sistemi",
-      explanation: "PIX, Brezilya Merkez Bankası'nın 2020'de başlattığı anlık ödeme sistemidir. 7/24 çalışır, ücretsizdir ve saniyeler içinde tamamlanır. 'Mandar um PIX' = PIX göndermek. 'Chave PIX' = PIX anahtarı (CPF, telefon, e-posta veya chave aleatória).",
+      title: "O Sistema Bancário Português — Bankacılık Sistemi",
+      explanation: "Portekiz'de bankacılık sistemi: Multibanco (ATM ağı), MB Way (mobil ödeme), homebanking. Portekiz Euro bölgesindedir ve bankalar Euribor faiz oranlarına tabidir.",
       table: [
-        { pronoun: "PIX göndermek", form: "mandar um PIX", example: "Vou te mandar um PIX agora.", tr: "Sana şimdi PIX göndereceğim." },
-        { pronoun: "PIX almak", form: "receber um PIX", example: "Recebi o PIX, obrigado!", tr: "PIX'i aldım, teşekkürler!" },
-        { pronoun: "PIX anahtarı", form: "chave PIX", example: "Qual é sua chave PIX?", tr: "PIX anahtarın ne?" },
-        { pronoun: "Hesap aktarma", form: "transferência bancária", example: "Prefiro transferência ao cheque.", tr: "Çekten ziyade havaleyi tercih ederim." },
-        { pronoun: "Güvenilik", form: "é seguro?", example: "O PIX é totalmente seguro.", tr: "PIX tamamen güvenlidir." },
-        { pronoun: "Limit", form: "limite de transferência", example: "Tem limite noturno.", tr: "Gece limiti var." }
+        {pronoun:"Multibanco", form:"ATM/ödeme ağı", example:"Levantei dinheiro no Multibanco.", tr:"ATM'den para çektim."},
+        {pronoun:"MB Way", form:"mobil ödeme", example:"Transferi 20 euros via MB Way.", tr:"MB Way ile 20 euro gönderdim."},
+        {pronoun:"homebanking", form:"internet bankacılığı", example:"Faço tudo pelo homebanking do meu banco.", tr:"Her şeyi bankanın internet bankacılığıyla yapıyorum."},
+        {pronoun:"IVA", form:"KDV", example:"O IVA normal em Portugal é de 23%.", tr:"Portekiz'de normal KDV oranı %23."},
+        {pronoun:"Conta à ordem", form:"vadesiz hesap", example:"Tenho conta à ordem no Millennium BCP.", tr:"Millennium BCP'de vadesiz hesabım var."},
+        {pronoun:"NIB/IBAN", form:"hesap numarası", example:"Qual é o teu IBAN para a transferência?", tr:"Havale için IBAN'ın nedir?"}
       ],
-      note: "PIX devrimsel bir sistem. Brezilya'da 'vai no PIX?' = Kartla mı ödeyeceksin? anlamında kullanılmaya başlandı."
+      note: "Portekiz'de büyük bankalar: Caixa Geral de Depósitos (devlet bankası), Millennium BCP, Novo Banco, Santander Portugal, BPI. Multibanco ağı ATM işlemleri için kullanılır."
     },
     {
-      title: "Bankada Konuşma — Para ve Hesap İşlemleri",
-      explanation: "Bankada işlem yaparken çeşitli kalıplar kullanılır. QUERER (istemek), PRECISAR (ihtiyaç duymak), PODER (yapabilmek) bu bağlamda çok işe yarar. Belge gösterme: 'Preciso apresentar o CPF' (CPF'mi sunmam gerekiyor).",
+      title: "Verbos Bancários — Bankacılık Fiilleri",
+      explanation: "Bankacılık işlemlerini ifade eden fiiller.",
       table: [
-        { pronoun: "Hesap açmak", form: "abrir uma conta", example: "Quero abrir uma conta corrente.", tr: "Cari hesap açmak istiyorum." },
-        { pronoun: "Para çekmek", form: "sacar dinheiro", example: "Quero sacar duzentos reais.", tr: "İki yüz real çekmek istiyorum." },
-        { pronoun: "Para yatırmak", form: "depositar", example: "Vou depositar este cheque.", tr: "Bu çeki yatıracağım." },
-        { pronoun: "Bakiye kontrol", form: "verificar saldo", example: "Posso verificar meu saldo?", tr: "Bakiyemi kontrol edebilir miyim?" },
-        { pronoun: "Bozuk para", form: "trocar dinheiro", example: "Pode me trocar essa nota?", tr: "Bu banknotu bozabilir misiniz?" },
-        { pronoun: "Döviz bozdurma", form: "cambiar / trocar moeda", example: "Quero trocar dólares por reais.", tr: "Doları reale bozdurmak istiyorum." }
+        {pronoun:"abrir uma conta", form:"hesap açmak", example:"Quero abrir uma conta à ordem.", tr:"Vadesiz hesap açmak istiyorum."},
+        {pronoun:"levantar dinheiro", form:"para çekmek", example:"Levantei 200 euros no Multibanco.", tr:"ATM'den 200 euro çektim."},
+        {pronoun:"depositar", form:"para yatırmak", example:"Depositei o cheque no balcão.", tr:"Çeki sayaçta yatırdım."},
+        {pronoun:"transferir", form:"havale yapmak", example:"Transferi o dinheiro para a tua conta.", tr:"Parayı senin hesabına havale ettim."},
+        {pronoun:"pagar a prestações", form:"taksitli ödemek", example:"Pago o carro a prestações mensais.", tr:"Arabayı aylık taksitle ödüyorum."},
+        {pronoun:"consultar o saldo", form:"bakiye sorgulamak", example:"Consultei o saldo pelo homebanking.", tr:"İnternet bankacılığıyla bakiyeyi sorguladım."}
       ],
-      note: "CPF = Cadastro de Pessoa Física (Türkiye'deki TC kimlik numarası gibi). Bankada her işlemde gereklidir."
+      note: "EP'de 'levantar dinheiro' (para çekmek) kullanılır. BP'de 'sacar dinheiro' denir. 'Multibanco' Portekiz'e özgü ATM ağı adıdır."
     },
     {
-      title: "Finansal Kelime Hazinesi — Bütçe ve Yatırım",
-      explanation: "Kişisel finans yönetimi için anahtar kelimeler: renda (gelir), gasto/despesa (harcama), orçamento (bütçe), investimento (yatırım), reserva de emergência (acil fon). Brezilya'da finansal okuryazarlık giderek önem kazanmaktadır.",
+      title: "Impostos e Finanças — Vergiler ve Finans",
+      explanation: "Portekiz'de vergi sistemi. 'Finanças' (vergi dairesi), 'IRS' (gelir vergisi), 'IRC' (kurumlar vergisi), 'IVA' (KDV), 'IMI' (emlak vergisi).",
       table: [
-        { pronoun: "Gelir", form: "renda / salário", example: "Minha renda mensal é X.", tr: "Aylık gelirm X." },
-        { pronoun: "Harcama", form: "gasto / despesa", example: "Meus gastos mensais são altos.", tr: "Aylık harcamalarım yüksek." },
-        { pronoun: "Bütçe", form: "fazer um orçamento", example: "Preciso controlar o orçamento.", tr: "Bütçemi kontrol etmem gerekiyor." },
-        { pronoun: "Yatırım", form: "investir em / aplicar", example: "Invisto em ações.", tr: "Hisse senetlerine yatırım yapıyorum." },
-        { pronoun: "Acil fon", form: "reserva de emergência", example: "Tenho três salários de reserva.", tr: "Üç maaşlık acil fonum var." },
-        { pronoun: "Faiz", form: "juros / taxa de juros", example: "A taxa de juros está alta.", tr: "Faiz oranı yüksek." }
+        {pronoun:"IRS", form:"gelir vergisi", example:"Faço a declaração de IRS em abril.", tr:"Nisan'da gelir vergisi beyanı yapıyorum."},
+        {pronoun:"IVA normal", form:"%23 KDV", example:"A maioria dos bens tem IVA de 23%.", tr:"Çoğu malda %23 KDV var."},
+        {pronoun:"IVA reduzido", form:"%6 indirimli KDV", example:"Alimentos têm IVA reduzido de 6%.", tr:"Gıda ürünlerinde %6 indirimli KDV var."},
+        {pronoun:"NIF", form:"vergi numarası", example:"Preciso do teu NIF para a fatura.", tr:"Fatura için vergi numarana ihtiyacım var."},
+        {pronoun:"Portal das Finanças", form:"vergi portalı", example:"Submeti o IRS pelo Portal das Finanças.", tr:"IRS'i Finanças Portalı üzerinden sundum."},
+        {pronoun:"reembolso", form:"iade/geri ödeme", example:"Recebi um reembolso do IRS este ano.", tr:"Bu yıl gelir vergisinden iade aldım."}
       ],
-      note: "Selic = Brezilya merkez bankasının temel faiz oranı. CDI = en yaygın yatırım göstergesi. Her ikisi de haberlerde çok çıkar."
+      note: "Portekiz'de 'pedir fatura' (fatura istemek) kültürel bir alışkanlıktır. Faturaları e-fatura sistemine bağlı NIF numarasıyla almak, vergi iadesine katkı sağlar."
     }
   ],
   speaking: [
-    { q: "'PIX anahtarınız nedir?' nasıl sorarsınız?", a: "Qual é a sua chave PIX?" },
-    { q: "Bankada 300 real çekmek istiyorsunuz.", a: "Quero sacar trezentos reais, por favor." },
-    { q: "'Bakiyemi kontrol etmek istiyorum' nasıl?", a: "Gostaria de verificar meu saldo." },
-    { q: "Dolar-Real kuru sorusu nasıl?", a: "Qual é o câmbio do dólar hoje?" },
-    { q: "'Harcamalarım çok yüksek' nasıl?", a: "Meus gastos estão muito altos. Preciso economizar." }
+    {q:"Onde fica o Multibanco mais próximo?", a:"Há um Multibanco na esquina, mesmo em frente ao café."},
+    {q:"O que é o MB Way?", a:"É uma aplicação de pagamento móvel portuguesa. Com o número de telemóvel transferes dinheiro instantaneamente."},
+    {q:"Posso abrir conta num banco português sendo estrangeiro?", a:"Sim, com passaporte e NIF. Muitos bancos permitem abrir conta online também."},
+    {q:"Como se paga IVA em Portugal?", a:"O IVA está incluído nos preços ao consumidor. As empresas fazem as declarações trimestralmente."},
+    {q:"O que é o NIF?", a:"É o Número de Identificação Fiscal — o número de contribuinte. É necessário para quase todas as transações formais."}
   ],
   dialogues: [
     {
-      title: "Banka Ziyareti",
+      title: "No Banco",
       lines: [
-        { speaker: "Atendente", text: "Bom dia! Em que posso ajudar?", tr: "Günaydın! Nasıl yardımcı olabilirim?" },
-        { speaker: "Cliente", text: "Quero abrir uma conta corrente e uma poupança.", tr: "Cari hesap ve tasarruf hesabı açmak istiyorum." },
-        { speaker: "Atendente", text: "Claro! Precisa de CPF, RG e comprovante de residência.", tr: "Tabii! CPF, nüfus cüzdanı ve ikametgah belgesi gerekiyor." },
-        { speaker: "Cliente", text: "Tenho tudo aqui. Também quero um cartão de débito.", tr: "Hepsi yanımda. Ayrıca banka kartı da istiyorum." },
-        { speaker: "Atendente", text: "Perfeito! O cartão chega em cinco dias úteis.", tr: "Mükemmel! Kart beş iş günü içinde gelir." },
-        { speaker: "Cliente", text: "Posso usar o PIX desde já?", tr: "PIX'i hemen kullanabilir miyim?" }
+        {speaker:"Funcionário", text:"Bom dia! Em que posso ajudá-lo?"},
+        {speaker:"Cliente", text:"Bom dia! Queria abrir uma conta à ordem. Que documentos preciso?"},
+        {speaker:"Funcionário", text:"Precisa do passaporte ou BI, o NIF e um comprovativo de morada."},
+        {speaker:"Cliente", text:"Tenho tudo. Também quero ativar o MB Way. Como funciona?"},
+        {speaker:"Funcionário", text:"Descarrega a aplicação, associa o cartão e o número de telemóvel. É muito simples."},
+        {speaker:"Cliente", text:"E o homebanking também fico com acesso?"},
+        {speaker:"Funcionário", text:"Sim, configuramos tudo hoje. Receberá os dados de acesso por SMS."}
       ]
     }
   ],
   listening: {
-    text: "O PIX revolucionou os pagamentos no Brasil. Lançado em novembro de 2020, o PIX permite transferências instantâneas vinte e quatro horas por dia, sete dias por semana, sem cobrar nada para pessoas físicas. Em menos de dois anos, o PIX se tornou o meio de pagamento mais utilizado no Brasil, superando o cartão de crédito e o dinheiro em espécie. Hoje, quase todos os brasileiros têm uma chave PIX cadastrada.",
+    text: "O sistema Multibanco é um dos mais avançados e convenientes da Europa. Criado em 1985, hoje permite além de levantar dinheiro, pagar serviços, recarregar o telemóvel, comprar bilhetes e muito mais — tudo num único terminal. O MB Way, lançado em 2014, revolucionou os pagamentos móveis em Portugal. Portugal tem uma das maiores taxas de utilização de pagamentos eletrónicos da Europa, com o numerário em declínio gradual.",
     questions: [
-      { q: "PIX ne zaman başlatıldı?", a: "Kasım 2020" },
-      { q: "PIX'in avantajı ne?", a: "7/24 anlık transfer, bireyler için ücretsiz" },
-      { q: "PIX neyi geçti?", a: "Kredi kartı ve nakit parayı en çok kullanılan ödeme yöntemi olarak" }
+      {q:"Quando foi criado o Multibanco?", a:"Em 1985."},
+      {q:"Quando foi lançado o MB Way?", a:"Em 2014."},
+      {q:"O que se pode fazer no Multibanco além de levantar dinheiro?", a:"Pagar serviços, recarregar o telemóvel, comprar bilhetes."}
     ]
   }
 };

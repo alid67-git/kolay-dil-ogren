@@ -1,94 +1,93 @@
-const L26 = {
-  title: "Emergências e Segurança",
+var L26 = {
   words: [
-    { en: "a emergência", tr: "acil durum", pron: "a emerjẽnsia", bd: "dişil; pronto-socorro = acil servis" },
-    { en: "o bombeiro", tr: "itfaiyeci", pron: "u bõmbeyru", bd: "eril; Corpo de Bombeiros = itfaiye" },
-    { en: "a polícia", tr: "polis", pron: "a polísya", bd: "dişil; policial = polis memuru" },
-    { en: "a ambulância", tr: "ambulans", pron: "a ãmbulãnsia", bd: "dişil; chamar ambulância = ambulans çağırmak" },
-    { en: "o hospital", tr: "hastane", pron: "u oshpital", bd: "eril; UPA = Acil Yardım Birimi" },
-    { en: "o acidente", tr: "kaza", pron: "u asidẽntshi", bd: "eril; acidente de carro = trafik kazası" },
-    { en: "o incêndio", tr: "yangın", pron: "u ĩsẽndyu", bd: "eril; pegar fogo = yanmak" },
-    { en: "o ladrão / o assaltante", tr: "hırsız / soyguncu", pron: "u ladrão / u asaltãntshi", bd: "eril" },
-    { en: "o roubo / o furto", tr: "soygun / hırsızlık", pron: "u hobu / u furtu", bd: "roubo=şiddet, furto=şiddetsiz" },
-    { en: "o socorro!", tr: "İmdat!", pron: "u sokuhu", bd: "Socorro! = İmdat! Yardım!" },
-    { en: "Me ajuda! / Ajuda!", tr: "Yardım edin!", pron: "mi ajuda", bd: "yardım isteği" },
-    { en: "Chame a polícia!", tr: "Polisi çağırın!", pron: "shami a polísya", bd: "emir: chamar = çağırmak" },
-    { en: "o número de emergência", tr: "acil numarası", pron: "u número dshi emerjẽnsia", bd: "190=polis, 192=ambulans, 193=itfaiye" },
-    { en: "o ferimento", tr: "yara / yaralanma", pron: "u ferĩmẽntu", bd: "eril; ferido = yaralı" },
-    { en: "o curativos / bandagem", tr: "yara bandı / sargı", pron: "u kurativuş", bd: "eril; primeiros socorros = ilk yardım" },
-    { en: "a segurança", tr: "güvenlik", pron: "a segurãnsa", bd: "dişil; seguro = güvenli" },
-    { en: "o perigo", tr: "tehlike", pron: "u perĩgu", bd: "eril; perigoso = tehlikeli" },
-    { en: "perdi minha carteira.", tr: "Cüzdanımı kaybettim.", pron: "perdshi minya kartetra", bd: "perder = kaybetmek" },
-    { en: "Passei mal.", tr: "Kötü hissettim. / Başım döndü.", pron: "pasey maw", bd: "passar mal = kötü hissetmek" },
-    { en: "Está tudo bem?", tr: "Her şey yolunda mı?", pron: "ıshta tudu bẽy", bd: "birini kontrol etmek" }
+    {en:"emergency", tr:"acil durum", pron:"ɨ̃mɨɾˈʒẽsiɐ", bd:"emergência"},
+    {en:"help!", tr:"yardım!", pron:"suˈkoɾu", bd:"socorro!"},
+    {en:"fire", tr:"yangın", pron:"iɲˈsẽdiu", bd:"incêndio"},
+    {en:"accident", tr:"kaza", pron:"ɐsiˈdẽtɨ", bd:"acidente"},
+    {en:"theft", tr:"hırsızlık", pron:"ˈɾoubu", bd:"roubo"},
+    {en:"police", tr:"polis", pron:"puˈliʃiɐ", bd:"polícia"},
+    {en:"GNR", tr:"jandarma", pron:"ˌʒɛnɛˈɛɾɨ", bd:"GNR"},
+    {en:"PSP", tr:"şehir polisi", pron:"ˌpeɛˈsɛpɨ", bd:"PSP"},
+    {en:"fire brigade", tr:"itfaiye", pron:"buˈbɐɪ̯ɾus", bd:"bombeiros"},
+    {en:"ambulance", tr:"ambulans", pron:"ɐ̃buˈlɐ̃sɐ", bd:"ambulância"},
+    {en:"hospital", tr:"hastane", pron:"uʃˈpitɐl", bd:"hospital"},
+    {en:"emergency number", tr:"acil servis numarası", pron:"ˈsẽtu duzɨ", bd:"112"},
+    {en:"lost", tr:"kaybolmak", pron:"pɨɾˈdidu", bd:"perdido/a"},
+    {en:"injured", tr:"yaralı", pron:"fɨˈɾidu", bd:"ferido/a"},
+    {en:"danger", tr:"tehlike", pron:"pɨˈɾiɡu", bd:"perigo"},
+    {en:"safe", tr:"güvende", pron:"ɨ̃ siɡuˈɾɐ̃sɐ", bd:"em segurança"},
+    {en:"witness", tr:"tanık", pron:"tɨʃtɨˈmuɲɐ", bd:"testemunha"},
+    {en:"report (police)", tr:"suç duyurusu", pron:"kɨˈiʃɐ", bd:"queixa"},
+    {en:"complaint", tr:"şikayet", pron:"ɾɨklɐˈmɐsɐ̃u̯", bd:"reclamação"},
+    {en:"insurance", tr:"sigorta", pron:"siˈɡuɾu", bd:"seguro"}
   ],
   grammar: [
     {
-      title: "Acil Durumda Kullanılan Fiiller",
-      explanation: "Acil durumlarda hızlı ve net konuşmak gerekir. CHAMAR (çağırmak), LIGAR (aramak), AJUDAR (yardım etmek), LEVAR (götürmek) en kritik fiillerdir. Emir kipi (imperativo) acil durumda sık kullanılır.",
+      title: "Números de Emergência — Acil Numaralar (Portugal)",
+      explanation: "Portekiz'de acil durum numaraları. En önemli numara 112'dir ve polis, ambulans ve itfaiye için geçerlidir. GNR kırsal jandarma, PSP ise şehir polisidir.",
       table: [
-        { pronoun: "Çağırmak", form: "Chame a + servis", example: "Chame a ambulância!", tr: "Ambulans çağırın!" },
-        { pronoun: "Telefon etmek", form: "Liga para o + numara", example: "Liga para o 192!", tr: "192'yi arayın!" },
-        { pronoun: "Yardım etmek", form: "Me ajuda!", example: "Alguém me ajuda, por favor!", tr: "Birisi bana yardım etsin!" },
-        { pronoun: "Götürmek", form: "Leva ao hospital", example: "Precisamos levá-la ao hospital.", tr: "Onu hastaneye götürmeliyiz." },
-        { pronoun: "Kalmak", form: "Fica calmo/a!", example: "Fica calmo! A ajuda está a caminho.", tr: "Sakin ol! Yardım geliyor." },
-        { pronoun: "Haber vermek", form: "Avisa / Informa", example: "Avisa alguém de confiança.", tr: "Güvendiğiniz birine haber verin." }
+        {pronoun:"112", form:"genel acil servis", example:"Para qualquer emergência ligue 112.", tr:"Her acil durum için 112'yi arayın."},
+        {pronoun:"GNR", form:"jandarma (kırsal)", example:"A GNR patrulha as estradas nacionais.", tr:"GNR ulusal yolları devriye gezer."},
+        {pronoun:"PSP", form:"şehir polisi", example:"A PSP atua nas áreas urbanas.", tr:"PSP kentsel alanlarda görev yapar."},
+        {pronoun:"Bombeiros", form:"itfaiye", example:"Os bombeiros chegaram em dez minutos.", tr:"İtfaiye on dakikada geldi."},
+        {pronoun:"INEM", form:"tıbbi acil servis", example:"O INEM enviou uma ambulância.", tr:"INEM bir ambulans gönderdi."},
+        {pronoun:"SOS Vítima", form:"mağdur desteği", example:"O número 116006 é o SOS Vítima.", tr:"116006 numarası SOS Mağdur hattıdır."}
       ],
-      note: "Brezilya acil numaraları: 190 = Polícia, 192 = SAMU (ambulans), 193 = Bombeiros (itfaiye), 156 = belediye."
+      note: "Portekiz'de 112 tek acil servis numarasıdır. Brezilya'daki 190 (polis), 192 (ambulans), 193 (itfaiye) ayrı numaraları yoktur. 112 tek numara ile tüm servisler aranır."
     },
     {
-      title: "Pretérito Perfeito — Geçmiş Olayları Anlatmak",
-      explanation: "Acil durum veya olay anlatırken geçmiş zaman Pretérito Perfeito kullanılır. Düzenli fiiller: falar→falei/falou, perder→perdi/perdeu. Düzensizler: ir→fui/foi, ver→vi/viu, ser→fui/foi.",
+      title: "Descrever uma Emergência — Acil Durum Anlatmak",
+      explanation: "Acil servisi ararken ya da olay yeri bildirirken kullanılan ifadeler.",
       table: [
-        { pronoun: "-AR fiil geçmiş", form: "-ei / -ou / -amos / -aram", example: "Chamei a polícia. / Ela chamou.", tr: "Polisi aradım. / O aradı." },
-        { pronoun: "-ER fiil geçmiş", form: "-i / -eu / -emos / -eram", example: "Perdi minha bolsa.", tr: "Çantamı kaybettim." },
-        { pronoun: "VER geçmişi", form: "vi / viu / vimos / viram", example: "Vi o acidente.", tr: "Kazayı gördüm." },
-        { pronoun: "IR/SER geçmişi", form: "fui / foi / fomos / foram", example: "Foi um susto enorme!", tr: "Büyük bir korku oldu!" },
-        { pronoun: "ESTAR geçmişi", form: "estive / esteve / estivemos", example: "Estive no hospital.", tr: "Hastanede oldum." },
-        { pronoun: "Zaman zarfı", form: "ontem / de repente", example: "De repente ouvi um barulho.", tr: "Aniden bir ses duydum." }
+        {pronoun:"Houve um acidente", form:"kaza oldu", example:"Houve um acidente na autoestrada A1.", tr:"A1 otoyolunda kaza oldu."},
+        {pronoun:"Há um incêndio", form:"yangın var", example:"Há um incêndio no edifício da esquina!", tr:"Köşedeki binada yangın var!"},
+        {pronoun:"Preciso de ajuda", form:"yardıma ihtiyacım var", example:"Preciso de ajuda — há uma pessoa ferida!", tr:"Yardıma ihtiyacım var — yaralı biri var!"},
+        {pronoun:"Estou na rua X", form:"konumumu bildirmek", example:"Estou na Rua Augusta, número 45, Lisboa.", tr:"Lisboa, Rua Augusta, numara 45'teyim."},
+        {pronoun:"Fui roubado/a", form:"soyuldum", example:"Fui roubado — roubaram-me a carteira.", tr:"Soyuldum — cüzdanımı çaldılar."},
+        {pronoun:"Perdi-me", form:"kayboldum", example:"Perdi-me e não sei onde estou.", tr:"Kayboldum ve nerede olduğumu bilmiyorum."}
       ],
-      note: "'De repente' = ansızın/birden. 'Logo em seguida' = hemen ardından. Olay anlatımında çok kullanılır."
+      note: "Portekiz'de polise suç bildirmek için 'queixa' yapılır. Yabancılar için Linha do Emigrante (707 282 080) danışma hattı vardır."
     },
     {
-      title: "Güvenlik ve Önlem İfadeleri",
-      explanation: "Güvenliğinizi sağlamak için tavsiye ve uyarı ifadeleri önemlidir. 'Cuidado!' (Dikkat!), 'Não faça isso!' (Bunu yapmayın!), 'É perigoso' (Tehlikeli) gibi ifadeler kritiktir.",
+      title: "Passado Simples — Geçmiş Zaman (Pretérito Perfeito Simples)",
+      explanation: "Acil durumlarda yaşananları anlatmak için geçmiş zaman (Pretérito Perfeito Simples) kullanılır. Düzenli fiiller: -ar → -ei/-aste/-ou; -er/-ir → -i/-este/-eu.",
       table: [
-        { pronoun: "Dikkat", form: "Cuidado!", example: "Cuidado com os bolsos!", tr: "Ceplerinize dikkat edin!" },
-        { pronoun: "Tehlikeli", form: "É perigoso", example: "Esta área é perigosa à noite.", tr: "Bu bölge geceleri tehlikeli." },
-        { pronoun: "Güvende", form: "Estou em segurança", example: "Estou bem e em segurança.", tr: "İyiyim ve güvendeyim." },
-        { pronoun: "Yardım", form: "Preciso de ajuda", example: "Você pode me ajudar?", tr: "Yardım edebilir misiniz?" },
-        { pronoun: "Tavsiye", form: "Tome cuidado com...", example: "Tome cuidado com seus pertences.", tr: "Eşyalarınıza dikkat edin." },
-        { pronoun: "İzin", form: "com licença / com sua permissão", example: "Com licença, preciso passar.", tr: "Affedersiniz, geçmem lazım." }
+        {pronoun:"eu (falar)", form:"falei", example:"Falei com a polícia ontem.", tr:"Dün polisle konuştum."},
+        {pronoun:"tu (perder)", form:"perdeste", example:"Perdeste o passaporte?", tr:"Pasaportunu mu kaybettin?"},
+        {pronoun:"ele/ela (acontecer)", form:"aconteceu", example:"O acidente aconteceu às 14h.", tr:"Kaza saat 14:00'de oldu."},
+        {pronoun:"nós (ligar)", form:"ligámos", example:"Ligámos para o 112 imediatamente.", tr:"Hemen 112'yi aradık."},
+        {pronoun:"vós (chamar)", form:"chamastes", example:"Vós chamastes os bombeiros?", tr:"İtfaiyeyi siz mi çağırdınız?"},
+        {pronoun:"eles/elas (chegar)", form:"chegaram", example:"Os bombeiros chegaram rápido.", tr:"İtfaiye hızlıca geldi."}
       ],
-      note: "Cuidado = dikkat (isim ve ünlem). 'Tome cuidado' = Dikkatli olun. 'Está com cuidado?' = Dikkatli misiniz?"
+      note: "EP'de 'nós' için geçmiş zaman -ámos/-êmos/-imos ekiyle yapılır: 'falámos', 'bebemos', 'partimos'. BP'de 'falamos' (geniş zaman ile aynı) kullanılır — EP bu ikisini ayırır!"
     }
   ],
   speaking: [
-    { q: "'Ambulans çağırın!' nasıl?", a: "Chame a ambulância! Ligue para o 192!" },
-    { q: "'Cüzdanımı kaybettim' nasıl?", a: "Perdi minha carteira! Pode me ajudar?" },
-    { q: "Birinin yardımına ihtiyacınız var nasıl?", a: "Preciso de ajuda! / Me ajuda, por favor!" },
-    { q: "'Bu bölge tehlikeli' nasıl?", a: "Esta área é perigosa. Tome cuidado." },
-    { q: "Polisi nasıl çağırırsınız?", a: "Ligo para o 190! / Chame a polícia!" }
+    {q:"O que fazes se vires um acidente na estrada?", a:"Ligo imediatamente para o 112. Não mexo nas vítimas e sinalizo a estrada se for seguro fazê-lo."},
+    {q:"Fui roubado em Lisboa. O que devo fazer?", a:"Dirija-se à esquadra da PSP mais próxima e faça uma queixa. Guarde o número da queixa para a seguradora."},
+    {q:"Qual é o número de emergência em Portugal?", a:"O único número de emergência em Portugal é o 112. Funciona para polícia, bombeiros e ambulância."},
+    {q:"O que significa GNR?", a:"GNR significa Guarda Nacional Republicana — é a polícia de segurança pública em zonas rurais e estradas."},
+    {q:"E se não falar português bem numa emergência?", a:"O 112 tem operadores em várias línguas. Pode dizer 'Falo inglês' ou 'Falo alemão' e tentam ajudar."}
   ],
   dialogues: [
     {
-      title: "Trafik Kazası",
+      title: "Chamada de Emergência",
       lines: [
-        { speaker: "Testemunha", text: "Meu Deus! Houve um acidente ali!", tr: "Tanrım! Orada bir kaza oldu!" },
-        { speaker: "Passante", text: "Chama o SAMU agora! Ligue 192!", tr: "Hemen SAMU'yu arayın! 192'yi arayın!" },
-        { speaker: "Testemunha", text: "Já liguei! Estão vindo. O motorista está ferido.", tr: "Aradım! Geliyorlar. Sürücü yaralı." },
-        { speaker: "Passante", text: "Não mova ele! Pode piorar o ferimento.", tr: "Onu hareket ettirmeyin! Yarayı kötüleştirebilir." },
-        { speaker: "Testemunha", text: "Certo! Você tem primeiros socorros?", tr: "Doğru! İlk yardım biliyor musunuz?" },
-        { speaker: "Passante", text: "Sim, já fiz um curso. Vou ajudar até a ambulância chegar.", tr: "Evet, kurs yaptım. Ambulans gelene kadar yardım edeceğim." }
+        {speaker:"Operadora 112", text:"112, qual é a sua emergência?"},
+        {speaker:"Cidadão", text:"Houve um acidente de carro na A5, saída de Cascais. Há pelo menos dois feridos."},
+        {speaker:"Operadora 112", text:"Estão conscientes? Conseguem mover-se?"},
+        {speaker:"Cidadão", text:"Um está consciente mas com dores. O outro está inconsciente."},
+        {speaker:"Operadora 112", text:"Não mova o inconsciente. Estamos a enviar uma ambulância. Qual é a quilometragem?"},
+        {speaker:"Cidadão", text:"Estamos no quilómetro 23, sentido Lisboa. Vou acender os 4 piscas do meu carro para sinalizar."}
       ]
     }
   ],
   listening: {
-    text: "O Brasil tem três números de emergência principais: cento e noventa para a polícia, cento e noventa e dois para o SAMU que é o serviço de ambulância, e cento e noventa e três para os bombeiros. Em muitas cidades, o aplicativo 'Onde Eu Moro' ou o '190' permitem fazer boletim de ocorrência online. Para turistas, é importante guardar esses números e também o número do consulado do seu país.",
+    text: "Em caso de emergência em Portugal, o número a marcar é sempre o 112. Este número único funciona para qualquer tipo de emergência — acidentes, incêndios, problemas de saúde ou situações de crime. A chamada é gratuita e pode ser feita mesmo sem saldo no telemóvel. Os operadores do 112 encaminham a chamada para o serviço adequado: PSP, GNR, INEM ou Bombeiros. Portugal tem uma boa rede de serviços de emergência, com tempos de resposta rápidos nas áreas urbanas.",
     questions: [
-      { q: "Ambulans numarası?", a: "192 (SAMU)" },
-      { q: "Online ihbar için ne kullanılabilir?", a: "'190' uygulaması" },
-      { q: "Turistlerin kaydetmesi gereken nedir?", a: "Acil numaraları ve ülkelerinin konsolosluk numarası" }
+      {q:"Qual é o único número de emergência em Portugal?", a:"112."},
+      {q:"É necessário ter saldo para ligar para o 112?", a:"Não, a chamada é gratuita mesmo sem saldo."},
+      {q:"Que serviços coordena o 112?", a:"PSP, GNR, INEM e Bombeiros."}
     ]
   }
 };

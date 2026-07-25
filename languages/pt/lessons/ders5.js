@@ -1,94 +1,94 @@
 const L5 = {
-  title: "Família e Relacionamentos",
+  title: "Família e Relações",
   words: [
-    { en: "a família", tr: "aile", pron: "a famílya", bd: "dişil" },
-    { en: "o pai", tr: "baba", pron: "u pay", bd: "eril" },
-    { en: "a mãe", tr: "anne", pron: "a mãy", bd: "dişil; til (~) burun sesi" },
-    { en: "o filho", tr: "oğul", pron: "u filyu", bd: "eril" },
-    { en: "a filha", tr: "kız çocuğu", pron: "a filya", bd: "dişil" },
-    { en: "o irmão", tr: "erkek kardeş", pron: "u irmão", bd: "eril; çoğul: irmãos" },
-    { en: "a irmã", tr: "kız kardeş", bd: "dişil; çoğul: irmãs", pron: "a irmã" },
-    { en: "o avô", tr: "büyükbaba", pron: "u avô", bd: "eril; aksan: uzun o" },
-    { en: "a avó", tr: "büyükanne", pron: "a avó", bd: "dişil; aksan: açık o" },
-    { en: "o marido", tr: "koca / eş (erkek)", pron: "u maridu", bd: "eril" },
-    { en: "a esposa / a mulher", tr: "karı / eş (kadın)", pron: "a ıspoza / a mulyér", bd: "dişil" },
-    { en: "o tio", tr: "amca / dayı", pron: "u tiu", bd: "eril (her ikisi için)" },
-    { en: "a tia", tr: "hala / teyze", pron: "a tia", bd: "dişil" },
-    { en: "o primo / a prima", tr: "erkek / kız kuzen", pron: "u primu / a prima", bd: "cinsiyet uyumu" },
-    { en: "o sobrinho / a sobrinha", tr: "erkek / kız yeğen", pron: "u sobrinyu / a sobrinya", bd: "cinsiyet uyumu" },
-    { en: "o neto / a neta", tr: "erkek / kız torun", pron: "u nétu / a néta", bd: "cinsiyet uyumu" },
-    { en: "os pais", tr: "ebeveynler (anne-baba)", pron: "us paysh", bd: "pais = pai çoğulu; AYRI: 'pais' de ülkeler" },
-    { en: "os avós", tr: "büyükanne ve büyükbaba", pron: "us avósh", bd: "avô+avó çoğulu birleşik" },
-    { en: "o namorado / a namorada", tr: "erkek / kız arkadaş", pron: "u namoradu / a namorada", bd: "namorar = sevgililik" },
-    { en: "casado / casada", tr: "evli (eril/dişil)", pron: "kazadu / kazada", bd: "solteiro/solteira = bekar" }
+    { en: "o pai", tr: "baba", pron: "u pay", bd: "eril; o pai = the father; papá = papa (EP)" },
+    { en: "a mãe", tr: "anne", pron: "a mã", bd: "dişil; mamã = mama (EP)" },
+    { en: "o irmão / a irmã", tr: "erkek kardeş / kız kardeş", pron: "u irmão / a irmã", bd: "cinsiyet uyumu; irmãos = kardeşler" },
+    { en: "o avô / a avó", tr: "büyükbaba / büyükanı", pron: "u avô / a avó", bd: "aksan farkı önemli! ô/ó" },
+    { en: "o filho / a filha", tr: "oğul / kız çocuk", pron: "u filyu / a filya", bd: "cinsiyet uyumu" },
+    { en: "o tio / a tia", tr: "amca/dayı/enişte / teyze/hala/yenge", pron: "u tiyu / a tiya", bd: "cinsiyet uyumu" },
+    { en: "o primo / a prima", tr: "erkek kuzen / kız kuzen", pron: "u primu / a prima", bd: "cinsiyet uyumu" },
+    { en: "o marido", tr: "koca / eş (erkek)", pron: "u maridu", bd: "eril; cônjuge = cinsiyet nötr eş" },
+    { en: "a esposa / a mulher", tr: "karı / eş (kadın)", pron: "a ıshpoza / a mulyer", bd: "dişil; mulher = hem kadın hem eş" },
+    { en: "o sogro / a sogra", tr: "kayınpeder / kayınvalide", pron: "u sogru / a sogra", bd: "cinsiyet uyumu" },
+    { en: "o genro / a nora", tr: "damat / gelin", pron: "u jẽnru / a nora", bd: "cinsiyet uyumu" },
+    { en: "os pais", tr: "anne baba / ebeveynler", pron: "uş paysh", bd: "pai çoğulu; pais = ebeveynler" },
+    { en: "o namorado / a namorada", tr: "erkek arkadaş / kız arkadaş", pron: "u namorádu / a namoráda", bd: "sevgili" },
+    { en: "casado / casada", tr: "evli", pron: "kazadu / kazada", bd: "SER ile; casamento = düğün/evlilik" },
+    { en: "solteiro / solteira", tr: "bekar", pron: "sowteyrü / sowteyrra", bd: "SER ile" },
+    { en: "divorciado / divorciada", tr: "boşanmış", pron: "divoşiadu", bd: "SER ile" },
+    { en: "viúvo / viúva", tr: "dul (erkek/kadın)", pron: "viuvu / viuva", bd: "SER ile" },
+    { en: "o casal", tr: "çift", pron: "u kazal", bd: "eril; casal feliz = mutlu çift" },
+    { en: "a família numerosa", tr: "kalabalık aile", pron: "a famílya numoroza", bd: "dişil" },
+    { en: "Somos uma família unida.", tr: "Birbirimize bağlı bir aileyiz.", pron: "somuş uma famílya unida", bd: "aile tanımı" }
   ],
   grammar: [
     {
-      title: "Aile Hakkında Konuşmak — TER ve SER ile",
-      explanation: "Aile üyelerinden bahsederken TER (sahip olmak) ve SER (olmak) kullanılır. 'Tenho um irmão' = Bir erkek kardeşim var. 'Sou filha única' = Tek çocuğum (kız). Possessif sıfatlar (meu, minha vb.) ise sahipliği belirtir.",
+      title: "Sở hữu Zamirleri — Possessivos (EP)",
+      explanation: "EP'de possessivos artikoyla kullanılır: o meu pai (benim babam), a minha mãe (benim annem). Tekil: meu/minha (benim), teu/tua (senin — tu ile), seu/sua (onun/sizin). Çoğul: nosso/nossa (bizim), vosso/vossa (sizin — vós ile), seu/sua (onların). Artikoyla kullanımı EP'yi karakterize eder.",
       table: [
-        { pronoun: "Eu tenho", form: "sahip olmak", example: "Tenho dois irmãos.", tr: "İki erkek kardeşim var." },
-        { pronoun: "Meu / Minha", form: "benim (e/d)", example: "meu pai / minha mãe", tr: "babam / annem" },
-        { pronoun: "Seu / Sua", form: "sizin / onun", example: "seu irmão / sua irmã", tr: "erkek/kız kardeşi" },
-        { pronoun: "Nosso / Nossa", form: "bizim", example: "nossa família", tr: "ailemiz" },
-        { pronoun: "Soru: tem?", form: "Você tem...?", example: "Você tem filhos?", tr: "Çocuğunuz var mı?" },
-        { pronoun: "Soy filho/a", form: "sıra", example: "Sou o mais velho.", tr: "En büyüğüm." }
+        { pronoun: "meu/minha", form: "Benim (eril/dişil)", example: "o meu pai / a minha mãe", tr: "benim babam / benim annem" },
+        { pronoun: "teu/tua", form: "Senin (tu)", example: "o teu irmão / a tua irmã", tr: "senin kardeşin" },
+        { pronoun: "seu/sua", form: "Onun / Sizin", example: "o seu filho / a sua filha", tr: "onun oğlu/kızı" },
+        { pronoun: "nosso/nossa", form: "Bizim", example: "a nossa família", tr: "bizim ailemiz" },
+        { pronoun: "vosso/vossa", form: "Sizin (vós)", example: "o vosso avô", tr: "sizin büyükbabanız" },
+        { pronoun: "seu/sua (eles)", form: "Onların", example: "os seus filhos", tr: "onların çocukları" }
       ],
-      note: "Seu/Sua hem 'sizin' hem de 'onun' anlamına gelir. Belirsizlik durumunda 'dele/dela' (onun) tercih edilir."
+      note: "EP'de artikoyla possessivo: 'o meu livro' (BR'de 'meu livro' — artikosuz). EP'de artiko zorunludur. Dikkat: 'seu/sua' hem onun hem sizin hem onların anlamına gelir — bağlamdan anlaşılır."
     },
     {
-      title: "İyelik Zamiri — Possessivos",
-      explanation: "İyelik zamirleri hem isimden önce hem de sonra kullanılabilir. İsimlerin cinsiyetiyle uyum sağlarlar. Portekizcede iyelik zamiri genellikle belirli artikelle birlikte kullanılır: 'o meu pai' (babam — Avrupa BP) veya 'meu pai' (Brezilya BP — artikel çoğu zaman düşer).",
+      title: "Aile Hakkında Konuşma — Yapılar",
+      explanation: "Aile tanımı için TER (sahip olmak) ve SER kullanılır. 'Tenho dois irmãos' (İki kardeşim var). 'O meu pai é engenheiro' (Babam mühendis). Yaş için TER: 'O meu avô tem oitenta anos.' Medeni durum için SER: 'Os meus pais são casados há trinta anos.'",
       table: [
-        { pronoun: "1. tekil", form: "meu / minha", example: "meu carro / minha casa", tr: "arabam / evim" },
-        { pronoun: "2. tekil", form: "seu / sua", example: "seu livro / sua caneta", tr: "kitabın / kaleminiz" },
-        { pronoun: "3. tekil", form: "seu/sua veya dele/dela", example: "o carro dele / a casa dela", tr: "onun arabası / evi" },
-        { pronoun: "1. çoğul", form: "nosso / nossa", example: "nosso time / nossa escola", tr: "takımımız / okulumuz" },
-        { pronoun: "2. çoğul", form: "seu / sua (vocês)", example: "seus filhos", tr: "çocuklarınız" },
-        { pronoun: "3. çoğul", form: "deles / delas", example: "a casa deles", tr: "onların evi (erkekler)" }
+        { pronoun: "TER + aile", form: "Sahip olmak", example: "Tenho uma irmã e dois irmãos.", tr: "Bir kız bir erkek iki kardeşim var." },
+        { pronoun: "SER + durum", form: "Medeni hal", example: "Os meus pais são casados.", tr: "Annem babam evli." },
+        { pronoun: "TER + yaş", form: "Yaş", example: "A minha avó tem setenta anos.", tr: "Büyükannem yetmiş yaşında." },
+        { pronoun: "SER + meslek", form: "Meslek", example: "O meu tio é professor.", tr: "Amcam öğretmen." },
+        { pronoun: "MORAR + yer", form: "Nerede yaşıyor", example: "A minha família mora no Porto.", tr: "Ailem Porto'da yaşıyor." },
+        { pronoun: "CHAMAR-SE", form: "Adı ne", example: "A minha mãe chama-se Maria.", tr: "Annemin adı Maria." }
       ],
-      note: "BP'de (Brezilya) 'seu pai' belirsiz olabilir. Netlik için: 'o pai dele' (onun babası) tercih edin."
+      note: "'Morar' = EP'de yaşamak/oturmak (BR: morar da kullanılır). 'Viver' daha genel. 'Habitar' resmi. EP: 'Onde moras?' (nerede oturuyorsun?). Sokak adresi: 'Moro na Rua Augusta, número cinco.'"
     },
     {
-      title: "İlişki Durumu ve Medeni Hal",
-      explanation: "Medeni hal için SER fiili kullanılır. Brezilya'da 'namorado/a' sevgili demektir (nişanlı değil). 'Noivo/a' nişanlı, 'marido/esposa' evli çift anlamına gelir. 'Ficar com alguém' ise 'birileriyle olmak' (BP'ye özgü ifade) anlamındadır.",
+      title: "EP Sosyal Yapı — Português Aile Kültürü",
+      explanation: "Portekiz kültüründe aile çok önemlidir. Büyük aile toplantıları (almoço de família — aile öğle yemeği) hafta sonları yaygındır. 'O jantar de Natal' (Noel yemeği) kutsal bir gelenek. 'O padrinho / a madrinha' (vaftiz babası/annesi) sosyal ağın önemli parçaları.",
       table: [
-        { pronoun: "Bekar", form: "ser solteiro/a", example: "Sou solteira.", tr: "Bekarım. (kadın)" },
-        { pronoun: "Evli", form: "ser casado/a", example: "Ele é casado.", tr: "O evlidir." },
-        { pronoun: "Boşanmış", form: "ser divorciado/a", example: "Ela é divorciada.", tr: "O boşanmış." },
-        { pronoun: "Nişanlı", form: "ser noivo/a", example: "Somos noivos.", tr: "Nişanlıyız." },
-        { pronoun: "Sevgilisi var", form: "ter namorado/a", example: "Tenho namorada.", tr: "Kız arkadaşım var." },
-        { pronoun: "Birlikte yaşıyor", form: "morar junto", example: "Moramos juntos.", tr: "Birlikte yaşıyoruz." }
+        { pronoun: "Padrinho/Madrinha", form: "Vaftiz ebeveyn", example: "O meu padrinho é o meu tio.", tr: "Vaftiz babam amcam." },
+        { pronoun: "Cunhado/Cunhada", form: "Kayınbirader/baldız", example: "A minha cunhada é médica.", tr: "Kayınım doktor." },
+        { pronoun: "Sobrinho/Sobrinha", form: "Yeğen (erkek/kız)", example: "Tenho três sobrinhos.", tr: "Üç yeğenim var." },
+        { pronoun: "Almoço em família", form: "Aile öğle yemeği", example: "Ao domingo, almoçamos em família.", tr: "Pazar günleri ailece öğle yemeği yeriz." },
+        { pronoun: "Jantar de Natal", form: "Noel yemeği", example: "O jantar de Natal é sagrado.", tr: "Noel yemeği kutsal bir gelenektir." },
+        { pronoun: "Avós (büyükanne/baba)", form: "Torun bakımı", example: "Os avós tomam conta dos netos.", tr: "Büyükanne ve büyükbaba torunlara bakıyor." }
       ],
-      note: "BP günlük dil: 'Tô namorando' = Birileriyle çıkıyorum. 'Ficamos' = Öpüştük/birlikteyiz (tek seferlik)."
+      note: "Portekiz'de nüfus azalması ve göç nedeniyle aile yapısı değişiyor. Ancak pek çok aile hâlâ büyüklerle yakın yaşıyor. 'Família alargada' = geniş aile — Portekiz'de hâlâ yaygın."
     }
   ],
   speaking: [
-    { q: "Sua família é grande?", a: "Sim, tenho três irmãos e muitos primos! / Não, somos só três." },
-    { q: "Seus pais moram com você?", a: "Sim, moramos juntos. / Não, moram em outra cidade." },
-    { q: "'Annem güzel' nasıl dersiniz?", a: "Minha mãe é bonita." },
-    { q: "Evli misiniz?", a: "Sim, sou casado/a. / Não, sou solteiro/a." },
-    { q: "Kaç kardeşiniz var?", a: "Tenho [sayı] irmão(s)/irmã(s)." }
+    { q: "Ailenizi tanıtın.", a: "A minha família é composta pelo meu pai, a minha mãe e a minha irmã. Moramos em [şehir]." },
+    { q: "Büyükannenizi tarif edin.", a: "A minha avó tem [yaş] anos. É muito simpática e cozinha muito bem." },
+    { q: "'Kardeşim evli ve iki çocuğu var' nasıl?", a: "O meu irmão é casado e tem dois filhos." },
+    { q: "Medeni durumunuzu belirtin.", a: "Sou solteiro/a. / Sou casado/a. / Estou num relacionamento." },
+    { q: "Portekizce'de 'aile yemeği' geleneğini anlatın.", a: "Em Portugal, ao domingo, a família reúne-se para o almoço. É uma tradição muito importante." }
   ],
   dialogues: [
     {
       title: "Aile Fotoğrafı",
       lines: [
-        { speaker: "Camila", text: "Quem são essas pessoas na foto?", tr: "Fotoğraftaki bu kişiler kimler?" },
-        { speaker: "Rafael", text: "Essa é minha família! Esses são meus pais.", tr: "Bu benim ailem! Bunlar annem ve babam." },
-        { speaker: "Camila", text: "E esses dois meninos?", tr: "Bu iki çocuk kimler?" },
-        { speaker: "Rafael", text: "São meus irmãos. O mais velho tem vinte anos.", tr: "Erkek kardeşlerim. En büyüğü yirmi yaşında." },
-        { speaker: "Camila", text: "Você tem irmã?", tr: "Kız kardeşiniz var mı?" },
-        { speaker: "Rafael", text: "Não, somos três irmãos. Mas tenho muitas primas!", tr: "Hayır, üç erkek kardeşiz. Ama çok kız kuzenum var!" }
+        { speaker: "Sofia", text: "Quem são estas pessoas na fotografia?", tr: "Fotoğraftaki bu kişiler kim?" },
+        { speaker: "André", text: "São os meus pais. O meu pai chama-se António e a minha mãe chama-se Lurdes.", tr: "Benim annem babam. Babamın adı António, annemin adı Lurdes." },
+        { speaker: "Sofia", text: "E esta criança? É teu irmão?", tr: "Bu çocuk? Kardeşin mi?" },
+        { speaker: "André", text: "Não, é o meu primo João. Tem oito anos. É muito engraçado!", tr: "Hayır, kuzenim João. Sekiz yaşında. Çok komik!" },
+        { speaker: "Sofia", text: "A tua avó também está na foto. Que simpática parece!", tr: "Büyükannen de fotoğrafta var. Ne kadar sempatik görünüyor!" },
+        { speaker: "André", text: "A minha avó tem setenta e cinco anos e é a melhor cozinheira do mundo!", tr: "Büyükannem yetmiş beş yaşında ve dünyanın en iyi aşçısı!" }
       ]
     }
   ],
   listening: {
-    text: "Me chamo Beatriz e vou falar sobre minha família. Somos cinco: meus pais, meus dois irmãos e eu. Minha mãe é professora e meu pai é engenheiro. Meu irmão mais velho é casado e tem uma filha linda. Meu irmão mais novo ainda é solteiro. Nos finais de semana, toda a família se reúne na casa da minha avó.",
+    text: "A família ocupa um lugar central na sociedade portuguesa. Apesar das mudanças sociais das últimas décadas, os laços familiares continuam muito fortes. O domingo é o dia da família por excelência: é comum reunirem-se para o almoço, frequentemente em casa dos avós. Portugal tem uma das taxas de natalidade mais baixas da Europa, o que levou a políticas de apoio às famílias. A emigração também afetou muito as famílias portuguesas — há gerações que cresceram com os pais a trabalhar no estrangeiro, especialmente em França, Alemanha ou no Brasil.",
     questions: [
-      { q: "Ailede kaç kişi var?", a: "Beş" },
-      { q: "Büyük ağabeyinin durumu?", a: "Evli, bir kız çocuğu var" },
-      { q: "Hafta sonları nerede toplanıyorlar?", a: "Büyükannenin evinde" }
+      { q: "Pazar günleri Portekiz'de aile için ne ifade eder?", a: "Ailenin bir araya geldiği gün, genellikle büyükanne/büyükbaba evinde öğle yemeği" },
+      { q: "Portekiz'deki aile yapısını etkileyen nedir?", a: "Düşük doğum oranı ve göç — özellikle Fransa ve Almanya'ya" },
+      { q: "Portekizli ailelerde büyükanne/büyükbabanın rolü ne?", a: "Merkezi bir rol — haftalık yemekler, torunlara bakım" }
     ]
   }
 };

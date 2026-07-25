@@ -1,94 +1,93 @@
-const L10 = {
-  title: "Roupas e Moda",
+var L10 = {
   words: [
-    { en: "a roupa", tr: "kıyafet / giysi", pron: "a hopa", bd: "dişil; genel" },
-    { en: "a camiseta", tr: "tişört", pron: "a kamizéta", bd: "dişil; BP'de çok yaygın" },
-    { en: "a camisa", tr: "gömlek", pron: "a kamiza", bd: "dişil; düğmeli" },
-    { en: "a calça", tr: "pantolon", pron: "a kawsa", bd: "dişil; calça jeans = kot" },
-    { en: "o vestido", tr: "elbise", pron: "u veshtidu", bd: "eril" },
-    { en: "a saia", tr: "etek", pron: "a saya", bd: "dişil" },
-    { en: "o casaco", tr: "kaban / ceket", pron: "u kazaku", bd: "eril" },
-    { en: "o moletom", tr: "eşofman üstü / sweatshirt", pron: "u molетõ", bd: "eril; BP günlük" },
-    { en: "a blusa", tr: "bluz / üst", pron: "a bluza", bd: "dişil" },
-    { en: "o short", tr: "şort", pron: "u shorti", bd: "eril; İngilizce'den" },
-    { en: "o tênis", tr: "spor ayakkabı / sneaker", pron: "u tênish", bd: "eril; tekil ve çoğul aynı" },
-    { en: "a sandália", tr: "sandalet", pron: "a sãndálya", bd: "dişil" },
-    { en: "o sapato", tr: "ayakkabı", pron: "u sapatu", bd: "eril" },
-    { en: "a bota", tr: "bot / çizme", pron: "a bota", bd: "dişil" },
-    { en: "o cinto", tr: "kemer", pron: "u sĩntu", bd: "eril" },
-    { en: "o chapéu", tr: "şapka", pron: "u shapéu", bd: "eril; boné = şapka (beyzbol)" },
-    { en: "a bolsa", tr: "çanta / el çantası", pron: "a bowsa", bd: "dişil; mochila = sırt çantası" },
-    { en: "o óculos", tr: "gözlük", pron: "u ókulush", bd: "eril çoğul — her zaman çoğul" },
-    { en: "Estou usando...", tr: "...giyiyorum / ...takıyorum", pron: "ıshto uzãndu", bd: "usar = giymek, kullanmak" },
-    { en: "Combina bem.", tr: "İyi gidiyor / Yakışıyor.", pron: "kõbĩna bẽy", bd: "combinar = kombinlemek, uymak" }
+    {en:"shirt", tr:"gömlek", pron:"ˈkɐmiʒɐ", bd:"camisa"},
+    {en:"trousers/pants", tr:"pantolon", pron:"ˈkɐlsɐʃ", bd:"calças"},
+    {en:"skirt", tr:"etek", pron:"ˈsɐɪ̯ɐ", bd:"saia"},
+    {en:"dress", tr:"elbise", pron:"ˈvɛʃtidu", bd:"vestido"},
+    {en:"jacket", tr:"ceket", pron:"ˈkɐzɐkɐ", bd:"casaco"},
+    {en:"coat", tr:"palto/kaban", pron:"ˈkɐzɐkɐ ɡɾɐ̃dɨ", bd:"casaco (comprido)"},
+    {en:"jumper/sweater", tr:"kazak", pron:"ˈkɐzɐku", bd:"camisola"},
+    {en:"shoes", tr:"ayakkabı", pron:"sɐˈpɐtuʃ", bd:"sapatos"},
+    {en:"boots", tr:"çizme", pron:"ˈbotɐʃ", bd:"botas"},
+    {en:"trainers", tr:"spor ayakkabı", pron:"ˈtɛniʃ", bd:"ténis"},
+    {en:"socks", tr:"çorap", pron:"ˈmɐjɐʃ", bd:"meias"},
+    {en:"hat", tr:"şapka", pron:"ˈʃɐpɛw̃", bd:"chapéu"},
+    {en:"scarf", tr:"atkı/eşarp", pron:"ʃɐˈɾfu", bd:"cachecol"},
+    {en:"gloves", tr:"eldiven", pron:"ˈluvɐʃ", bd:"luvas"},
+    {en:"belt", tr:"kemer", pron:"ˈsiɲtu", bd:"cinto"},
+    {en:"suit", tr:"takım elbise", pron:"ˈfɐtu", bd:"fato"},
+    {en:"tie", tr:"kravat", pron:"ɡɾɐˈvɐtɐ", bd:"gravata"},
+    {en:"underwear", tr:"iç çamaşırı", pron:"ɾupɐ ˈĩtiɾɐ", bd:"roupa interior"},
+    {en:"swimwear", tr:"mayo/kostüm", pron:"ˈfɐtu dɨ bɐɲu", bd:"fato de banho"},
+    {en:"raincoat", tr:"yağmurluk", pron:"ɐ̃ˈpɐɾɐ ʃuvɐ", bd:"impermeável"}
   ],
   grammar: [
     {
-      title: "USAR ve VESTIR — Giymek/Kullanmak",
-      explanation: "USAR (kullanmak/giymek) en geniş anlamlı fiildir: ayakkabı, gözlük, gömlek, kemer gibi her şey için. VESTIR (giydirmek/giymek) biraz daha resmi, beden giysileri için tercih edilir. ESTAR USANDO (şu an giymek) süreç bildirimi içindir.",
+      title: "Adjetivos de Roupa — Kıyafet Sıfatları",
+      explanation: "Kıyafetleri tanımlamak için kullanılan sıfatlar cinsiyete göre değişir. Tekil erkek: -o, tekil dişil: -a, çoğul erkek: -os, çoğul dişil: -as. Sıfat isimden sonra gelir.",
       table: [
-        { pronoun: "Eu uso", form: "giyiyorum / kullanıyorum", example: "Uso óculos desde criança.", tr: "Çocukluğumdan beri gözlük kullanıyorum." },
-        { pronoun: "Você usa", form: "giyiyorsunuz", example: "Que número de sapato usa?", tr: "Kaç numara ayakkabı giyiyorsunuz?" },
-        { pronoun: "Ela veste", form: "giyiyor (üst giysi)", example: "Ela veste um vestido lindo.", tr: "Güzel bir elbise giyiyor." },
-        { pronoun: "Estou usando", form: "şu an giyiyorum", example: "Estou usando uma camisa azul.", tr: "Mavi bir gömlek giyiyorum (şu an)." },
-        { pronoun: "Cor + roupa", form: "sıfat uyumu", example: "uma calça preta", tr: "siyah bir pantolon" },
-        { pronoun: "Combinação", form: "combinar com", example: "Esta blusa combina com essa calça?", tr: "Bu bluz bu pantolonla gider mi?" }
+        {pronoun:"confortável", form:"Tekil/çoğul: -eis", example:"Estas calças são confortáveis.", tr:"Bu pantolon rahat."},
+        {pronoun:"elegante", form:"Tekil/çoğul: -es", example:"O fato é muito elegante.", tr:"Takım elbise çok şık."},
+        {pronoun:"largo/larga", form:"Büyük beden", example:"Esta saia está larga.", tr:"Bu etek büyük (bol)."},
+        {pronoun:"apertado/a", form:"Küçük beden", example:"O sapato está apertado.", tr:"Ayakkabı dar (sıkı)."},
+        {pronoun:"comprido/a", form:"Uzun", example:"O casaco é comprido.", tr:"Palto uzun."},
+        {pronoun:"curto/a", form:"Kısa", example:"O vestido é muito curto.", tr:"Elbise çok kısa."}
       ],
-      note: "Ayakkabı numarası: 'Calço número 38.' (calcei = ayakkabı giymek). Kıyafet bedeni: 'Uso tamanho M/G/GG.'"
+      note: "EP'de 'camisola' (kazak) ile 'camisa' (gömlek) karıştırılmamalıdır! 'Fato' ise 'takım elbise' anlamına gelir — BP'deki 'terno'nun karşılığı."
     },
     {
-      title: "Giysi Açıklama — Renk, Materyal, Desen",
-      explanation: "Giysileri tanımlarken renk, materyal (kumaş) ve deseni belirtmek gerekebilir. Sıfatlar ismin ardından gelir. Materyal için 'de + materyal' yapısı kullanılır: 'uma camisa de algodão' = pamuklu bir gömlek.",
+      title: "Verbos VESTIR e USAR — Giymek ve Kullanmak",
+      explanation: "'Vestir' (giymek — bir eylemi ifade eder) ve 'usar/trajar' (takmak/kullanmak — alışkanlığı ifade eder) arasındaki fark EP'de önemlidir.",
       table: [
-        { pronoun: "Materyal", form: "de + materyal", example: "uma blusa de seda", tr: "ipek bir bluz" },
-        { pronoun: "Pamuk", form: "de algodão", example: "uma camiseta de algodão", tr: "pamuklu bir tişört" },
-        { pronoun: "Deri", form: "de couro/couro sintético", example: "uma bolsa de couro", tr: "deri çanta" },
-        { pronoun: "Desen: çizgili", form: "listrado/a", example: "uma camisa listrada", tr: "çizgili gömlek" },
-        { pronoun: "Desen: noktalı", form: "com bolinhas", example: "uma saia com bolinhas", tr: "puanlı etek" },
-        { pronoun: "Düz renk", form: "liso/a", example: "uma calça lisa preta", tr: "düz siyah pantolon" }
+        {pronoun:"eu", form:"visto / uso", example:"Visto sempre roupa escura para trabalhar.", tr:"İş için her zaman koyu renkli kıyafet giyerim."},
+        {pronoun:"tu", form:"vestes / usas", example:"Tu usas sempre chapéu no inverno?", tr:"Kışın her zaman şapka takar mısın?"},
+        {pronoun:"ele/ela", form:"veste / usa", example:"Ela veste um vestido vermelho.", tr:"Kırmızı bir elbise giyiyor."},
+        {pronoun:"nós", form:"vestimos / usamos", example:"Usamos fato aos domingos.", tr:"Pazar günleri takım elbise giyeriz."},
+        {pronoun:"vós", form:"vestis / usais", example:"Vestis roupa informal no escritório?", tr:"Ofiste rahat kıyafet giyer misiniz?"},
+        {pronoun:"eles/elas", form:"vestem / usam", example:"Eles usam ténis portugueses.", tr:"Portekiz yapımı spor ayakkabı kullanırlar."}
       ],
-      note: "VELUDO = kadife, LINHO = keten, LÃ = yün, POLIÉSTER = polyester. Bakım etiketinde bu kelimeleri görebilirsiniz."
+      note: "Portekiz'de 'Fly London' ve 'Fly' gibi markalar Portekiz yapımı uluslararası ayakkabı markaları arasındadır."
     },
     {
-      title: "Alışverişte Beden ve Uyum Kontrolü",
-      explanation: "CABER (sığmak/uymak) ve SERVIR (uymak/yakışmak) kıyafet denemesinde kullanılır. 'Cabe bem' = İyi oturuyor. 'Não cabe' = Olmuyor/Girmiyor. 'Ficou ótimo em você!' = Size çok yakıştı!",
+      title: "Cores — Renkler (EP Sıfat Uyumu)",
+      explanation: "Renkler cinsiyete göre değişir. Bazı renkler değişmez (rosa, laranja, bege, castanho). EP'de 'cinzento' (gri) kullanılır, 'cinza' değil.",
       table: [
-        { pronoun: "Caber bem", form: "uymak", example: "Esta calça cabe perfeitamente.", tr: "Bu pantolon mükemmel oturuyor." },
-        { pronoun: "Não caber", form: "uymamak", example: "Não cabe, está apertado.", tr: "Olmuyor, dar geliyor." },
-        { pronoun: "Ficar bem", form: "yakışmak", example: "Fica muito bem em você!", tr: "Size çok yakışıyor!" },
-        { pronoun: "Ficar mal", form: "yakışmamak", example: "Essa cor não fica bem em mim.", tr: "Bu renk bana yakışmıyor." },
-        { pronoun: "Servir", form: "uymak (beden)", example: "Esse tamanho serve?", tr: "Bu beden olur mu?" },
-        { pronoun: "Ficar com", form: "almaya karar vermek", example: "Vou ficar com este.", tr: "Bunu alıyorum." }
+        {pronoun:"cinzento/a", form:"gri (EP)", example:"Tenho um casaco cinzento.", tr:"Gri bir montum var."},
+        {pronoun:"castanho/a", form:"kahverengi (EP)", example:"Botas castanhas, por favor.", tr:"Kahverengi botlar, lütfen."},
+        {pronoun:"azul-marinho", form:"lacivert", example:"Um fato azul-marinho é clássico.", tr:"Lacivert takım elbise klasiktir."},
+        {pronoun:"cor-de-rosa", form:"pembe", example:"A camisola cor-de-rosa é gira.", tr:"Pembe kazak çok şirin."},
+        {pronoun:"às riscas", form:"çizgili", example:"Prefiro camisa às riscas.", tr:"Çizgili gömlek tercih ederim."},
+        {pronoun:"às bolinhas", form:"puanlı", example:"Uma saia às bolinhas azuis.", tr:"Mavi puanlı bir etek."}
       ],
-      note: "'Ficou perfeito!' = Mükemmel oldu! Türkçe'deki 'üstünüze çok yakıştı' eşdeğeridir."
+      note: "EP'de 'cinzento' kullanılır (BP: 'cinza'); 'castanho' kullanılır (BP: 'marrom'). 'Giro/a' ise EP argosunda 'çok güzel/harika' anlamına gelir."
     }
   ],
   speaking: [
-    { q: "O que você está usando hoje?", a: "Estou usando uma camiseta azul e uma calça jeans." },
-    { q: "'Bu elbise size çok yakışıyor' nasıl?", a: "Esse vestido fica muito bem em você!" },
-    { q: "Başka beden ister misiniz?", a: "Tem um tamanho maior/menor?" },
-    { q: "Bu pantolon bana dar geliyor nasıl?", a: "Esta calça está apertada. Tem uma maior?" },
-    { q: "'Bunu alıyorum' nasıl dersiniz?", a: "Vou ficar com este/esta." }
+    {q:"O que vestes normalmente para o trabalho?", a:"Visto fato e gravata durante a semana. Ao fim de semana uso roupa mais casual."},
+    {q:"Qual é a tua cor favorita de roupa?", a:"Gosto muito de azul-marinho e cinzento. São cores versáteis."},
+    {q:"Achas que a moda portuguesa é especial?", a:"Sim! Portugal tem marcas de calçado muito reconhecidas mundialmente."},
+    {q:"O que usas no inverno em Lisboa?", a:"Um casaco comprido, cachecol e luvas. O inverno em Lisboa pode ser frio e húmido."},
+    {q:"Preferes comprar roupa em loja ou online?", a:"Prefiro em loja para poder experimentar. Mas às vezes compro online nas saldos."}
   ],
   dialogues: [
     {
-      title: "Moda Sohbeti",
+      title: "Escolhendo Roupa para uma Ocasião",
       lines: [
-        { speaker: "Mariana", text: "Amei seu vestido! De onde é?", tr: "Elbiseni çok sevdim! Nereden?" },
-        { speaker: "Julia", text: "Obrigada! Comprei numa loja aqui perto.", tr: "Teşekkürler! Yakınlardaki bir mağazadan aldım." },
-        { speaker: "Mariana", text: "Ficou lindo! É de algodão?", tr: "Çok güzel durmuş! Pamuklu mu?" },
-        { speaker: "Julia", text: "Sim, de algodão com um pouco de linho. Muito confortável!", tr: "Evet, biraz keten karışımı pamuk. Çok rahat!" },
-        { speaker: "Mariana", text: "Que cor bonita! Combina com sua bolsa.", tr: "Ne güzel renk! Çantanla da gidiyor." },
-        { speaker: "Julia", text: "Verdade! Você deveria ir lá. Tem muita promoção.", tr: "Doğru! Oraya gitmelisiniz. Çok kampanya var." }
+        {speaker:"Sofia", text:"Tenho um casamento no sábado e não sei o que vestir."},
+        {speaker:"Marta", text:"Para um casamento formal, um vestido elegante ou um fato de senhora seria perfeito."},
+        {speaker:"Sofia", text:"Tenho um vestido azul-marinho comprido. Achas adequado?"},
+        {speaker:"Marta", text:"É perfeito! Com sapatos de salto e uma bolsa pequena fica muito elegante."},
+        {speaker:"Sofia", text:"E o casaco? Pode ser frio à noite em junho."},
+        {speaker:"Marta", text:"Um blazer cinzento por cima fica muito giro e protege do frio."}
       ]
     }
   ],
   listening: {
-    text: "No Brasil, a moda é muito variada por causa do clima tropical. No verão, as pessoas usam roupas leves: camisetas, shorts, sandálias e vestidos. No inverno do sul do país, usam casacos e blusas mais grossas. São Paulo tem uma cena de moda muito forte — é considerada a capital da moda da América Latina. As marcas brasileiras são famosas pela qualidade e pelo design criativo.",
+    text: "Portugal é um dos maiores exportadores mundiais de calçado de qualidade. Marcas portuguesas como Fly London e outras são reconhecidas internacionalmente pela sua qualidade e design. Em Lisboa e no Porto, existem bairros históricos com lojas de moda independentes que vendem peças únicas feitas por estilistas portugueses. Os saldos de inverno e verão são uma excelente oportunidade para comprar roupa de qualidade a preços mais baixos.",
     questions: [
-      { q: "Yaz aylarında ne giyilir?", a: "Tişört, şort, sandalet, elbise" },
-      { q: "Hangi şehir moda başkenti sayılıyor?", a: "São Paulo" },
-      { q: "Brezilya markalarının özelliği ne?", a: "Kalite ve yaratıcı tasarım" }
+      {q:"O que exporta Portugal em termos de moda?", a:"Calçado de qualidade."},
+      {q:"Em que cidades existem lojas de moda independentes?", a:"Lisboa e Porto."},
+      {q:"Quando é que os saldos de verão começam?", a:"A 1 de julho (referência da aula anterior — em julho)."}
     ]
   }
 };

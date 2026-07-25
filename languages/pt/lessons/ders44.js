@@ -1,94 +1,104 @@
-const L44 = {
-  title: "Expressões Idiomáticas",
+var L44 = {
   words: [
-    { en: "chutar o balde", tr: "çıldırmak / kontrolü kaybetmek", pron: "shutár u bawchi", bd: "lit: kovayı tekmelemek; quando alguém perde o controle" },
-    { en: "dar uma mãozinha", tr: "yardım etmek / el atmak", pron: "dar uma mãozinha", bd: "lit: küçük el uzatmak; informal yardım" },
-    { en: "pagar o pato", tr: "bedeli ödemek / günah keçisi olmak", pron: "pagár u patu", bd: "lit: ördeği ödemek; culpado = suçlanan" },
-    { en: "entrar pelo cano", tr: "mahvolmak / işler ters gitmek", pron: "ẽtrár pelu kanu", bd: "lit: boruya girmek; tudo deu errado" },
-    { en: "fazer vista grossa", tr: "görmezden gelmek", pron: "fazér vishta grosa", bd: "lit: kalın gözle bakmak; ignorar" },
-    { en: "estar por fora", tr: "habersiz olmak / modası geçmiş", pron: "ıshtar por fora", bd: "lit: dışarıda olmak; não saber de nada" },
-    { en: "bater papo", tr: "sohbet etmek / muhabbet etmek", pron: "batér papu", bd: "lit: lafı dökmek; conversa informal (BP)" },
-    { en: "dar com os burros n'água", tr: "başarısız olmak / boşa çıkmak", pron: "dar kõ uş burush nágwa", bd: "lit: eşeklerle suya düşmek; falhar completamente" },
-    { en: "meter os pés pelas mãos", tr: "beceriksizlik etmek / işi batırmak", pron: "metér us pésh pelash mãosh", bd: "lit: ellerin yerine ayakları koymak; errar feio" },
-    { en: "tirar o cavalinho da chuva", tr: "hayalini bırakmak", pron: "tirár u kavalinyu da shuva", bd: "lit: küçük atı yağmurdan çıkarmak; desistir da ideia" },
-    { en: "a vaca foi para o brejo", tr: "iş çığrından çıktı / berbat oldu", pron: "a vaka foy para u bréju", bd: "lit: inek bataklığa gitti; situação crítica" },
-    { en: "ficar de mãos abanando", tr: "eli boş kalmak", pron: "fikár dshi mãosh abanãndu", bd: "lit: el sallayarak kalmak; sem resultado" },
-    { en: "não é mole não", tr: "kolay değil / zorlu iş", pron: "não é moli não", bd: "BP; dupla negação vurgulayıcı" },
-    { en: "pisar no tomate", tr: "yanlış bir şey yapmak / pot kırmak", pron: "pizár nu tomatshi", bd: "lit: domatese basmak; gafe = pot kırma" },
-    { en: "engolir sapo", tr: "yutturmak / kötüye katlanmak", pron: "ẽgolír sapu", bd: "lit: kurbağa yutmak; aguentar situação ruim" },
-    { en: "perder o fio da meada", tr: "konuyu kaybetmek / aklı karışmak", pron: "perdér u fyu da myada", bd: "lit: yumağın ipini kaybetmek; confundir" },
-    { en: "botar a boca no trombone", tr: "bağırmak / şikayet etmek", pron: "botár a boka nu trõboni", bd: "lit: ağzını trompete koymak; reclamar alto" },
-    { en: "Tá ligado?", tr: "Anlıyor musun? / Biliyor musun?", pron: "ta ligadu", bd: "BP gençlik dili; 'entende?' anlamında" },
-    { en: "Cada macaco no seu galho.", tr: "Herkes kendi işine baksın.", pron: "kada makaku nu sew galyu", bd: "lit: her maymun kendi dalında; 'keep to yourself'" },
-    { en: "Quem não arrisca, não petisca.", tr: "Göze almayan alamaz.", pron: "kẽy não arishka não petishka", bd: "lit: riske girmeyen atıştıramaz; 'nothing ventured, nothing gained'" }
+    {en:"philosophy", tr:"felsefe", pron:"filuˈzufiɐ", bd:"a filosofia"},
+    {en:"thought / thinking", pron:"pẽˈsɐmẽtu", tr:"düşünce", bd:"o pensamento"},
+    {en:"reason", tr:"akıl / sebep", pron:"ɾɐˈzãw", bd:"a razão"},
+    {en:"freedom", tr:"özgürlük", pron:"libeɾˈdɐdɨ", bd:"a liberdade"},
+    {en:"truth", tr:"gerçek / doğru", pron:"veɾˈdɐdɨ", bd:"a verdade"},
+    {en:"identity", tr:"kimlik", pron:"idẽtiˈdɐdɨ", bd:"a identidade"},
+    {en:"memory", tr:"bellek / anı", pron:"meˈmɔɾiɐ", bd:"a memória"},
+    {en:"sadness / longing", tr:"hüzün / özlem", pron:"sɐwˈdɐdɨ", bd:"a saudade"},
+    {en:"destiny / fate", tr:"kader", pron:"deʃˈtinu", bd:"o destino"},
+    {en:"soul", tr:"ruh", pron:"ˈaɫmɐ", bd:"a alma"},
+    {en:"poetry", tr:"şiir", pron:"puɨˈziɐ", bd:"a poesia"},
+    {en:"existentialism", tr:"varoluşçuluk", pron:"eziʃtẽsiɐˈlizmu", bd:"o existencialismo"},
+    {en:"nation", tr:"ulus / millet", pron:"nɐˈsãw", bd:"a nação"},
+    {en:"saudosism", tr:"Saudosizm (Port. felsefi akım)", pron:"sɐwˈduzizmu", bd:"o saudosismo"},
+    {en:"pessimism", tr:"karamsarlık", pron:"peˈsimizmu", bd:"o pessimismo"},
+    {en:"hope", tr:"umut", pron:"eˈʃpeɾɐ̃sɐ", bd:"a esperança"},
+    {en:"consciousness", tr:"bilinç", pron:"kuʃiẽˈsiɐ", bd:"a consciência"},
+    {en:"heteronym", tr:"heterönim (Pessoa'nın kişilikleri)", pron:"eteɾɔˈnimu", bd:"o heterónimo"},
+    {en:"longing / yearning", tr:"özlem / hasret", pron:"ˈɐ̃ʃiu", bd:"o anseio"},
+    {en:"questioning / doubt", tr:"sorgulama / şüphe", pron:"kweʃtiuˈnɐmẽtu", bd:"o questionamento"}
   ],
   grammar: [
     {
-      title: "Deyimleri Bağlama Uydurma",
-      explanation: "Deyimlerin anlamını kavramak için bağlamı anlamak şarttır. Deyimler değişmez ifadelerdir — sözcüksel anlam yerine mecazi anlam taşırlar. 'Chutar o balde' fiziksek değil, 'kontrolü kaybetmek' anlamına gelir. Deyimlerde fiil zamanı değiştirilebilir: 'chutar' → 'chutou' (chutou o balde = kontrolü kaybetti).",
+      title: "Infinitivo Pessoal (Kişili Mastar) — Portekizcenin Özgün Yapısı",
+      explanation: "Infinitivo pessoal sadece Portekizcede var olan, diğer Roman dillerinde bulunmayan bir yapıdır. Özne ile mastara kişi eki eklenir.",
       table: [
-        { pronoun: "Chutar o balde", form: "Kontrolü kaybetmek", example: "Chutou o balde e saiu gritando.", tr: "Kontrolü kaybedip bağırarak çıktı." },
-        { pronoun: "Pagar o pato", form: "Bedel ödemek", example: "Não fiz nada, mas paguei o pato.", tr: "Hiçbir şey yapmadım ama bedelini ödedim." },
-        { pronoun: "Engolir sapo", form: "Katlanmak", example: "Preciso engolir sapo no trabalho.", tr: "İşte kötüye katlanmak zorundayım." },
-        { pronoun: "Bater papo", form: "Sohbet etmek", example: "Vamos bater um papo depois?", tr: "Sonra bir muhabbet edelim mi?" },
-        { pronoun: "Fazer vista grossa", form: "Görmezden gelmek", example: "O chefe fez vista grossa.", tr: "Patron görmezden geldi." },
-        { pronoun: "Estar por fora", form: "Habersiz olmak", example: "Estava por fora das novidades.", tr: "Haberlerden habersizdi." }
+        {pronoun:"eu", form:"falar (değişmez)", example:"É bom eu pensar antes de falar.", tr:"Konuşmadan önce düşünmem iyi olur."},
+        {pronoun:"tu", form:"falares (+es)", example:"É importante tu leres filosofia.", tr:"Felsefe okumanız önemlidir."},
+        {pronoun:"ele/ela", form:"falar (değişmez)", example:"Para ele ser livre, deve pensar.", tr:"Özgür olabilmek için düşünmesi gerekir."},
+        {pronoun:"nós", form:"falarmos (+mos)", example:"Antes de decidirmos, reflitamos.", tr:"Karar vermeden önce düşünelim."},
+        {pronoun:"vós", form:"falardes (+des)", example:"É preciso vós aprenderdes.", tr:"Öğrenmeniz gereklidir."},
+        {pronoun:"eles/elas", form:"falarem (+em)", example:"Para elas compreenderem a vida.", tr:"Hayatı anlamaları için."}
       ],
-      note: "Deyimler sözlükte aranmaz — bütünü anlaşılır. 'Dar com os burros n'água' = 'dar' 'burros' 'água' kelimeleri yardımcı olmaz; mecazi bütünü öğrenilmelidir."
+      note: "Infinitivo pessoal, özne belirsiz olmadığında zorunludur. 'Para eu fazer' (benim yapmam için), 'sem eles saberem' (onlar bilmeden) gibi yapılarda kullanılır. BP'de de mevcuttur."
     },
     {
-      title: "BP'ye Özgü Deyimler — Bölgesel Farklılıklar",
-      explanation: "Brezilya Portekizcesi'nde bölgeye göre deyimler değişir. São Paulo: 'Mano, que situação!' (Abi ne durum!). Rio: 'Cara, que vacilão!' (Dostum ne pot!). Bahia: 'Ê baiana!' (Ne güzel!). Nordeste: 'Oxe!' (Vay be!). Her bölgenin kendine özgü deyimleri var.",
+      title: "Fernando Pessoa — Heterónimos ve Yazı Stilleri",
+      explanation: "Fernando Pessoa (1888–1935) Portekiz edebiyatının en büyük şairidir. Farklı kişilik ve yazı stilleriyle birden fazla 'heterónimo' yarattı.",
       table: [
-        { pronoun: "Mano / Cara", form: "Abi / Dostum (hitap)", example: "Mano, você viu isso?", tr: "Abi, bunu gördün mü?" },
-        { pronoun: "Oxe!", form: "Vay be! (Nordeste)", example: "Oxe! Que barato!", tr: "Vay be! Ne ucuz!" },
-        { pronoun: "Uai!", form: "Ya?! / Neden? (Minas)", example: "Uai, você não vem?", tr: "Ya, gelmiyor musun?" },
-        { pronoun: "Véio / Véia", form: "Yaşlı (sevecen hitap)", example: "Véio, me ajuda aqui!", tr: "İhtiyar, burada yardım et!" },
-        { pronoun: "Arretado", form: "Harika / Çok iyi (Nordeste)", example: "Esse sertanejo é arretado!", tr: "Bu sertanejo harika!" },
-        { pronoun: "Maneiro", form: "Harika / Güzel (BP gençlik)", example: "Que ideia maneira!", tr: "Ne güzel fikir!" }
+        {pronoun:"Alberto Caeiro", form:"Pastoral şiir", example:"Não tenho filosofia: tenho sentidos.", tr:"Felsefem yok: duyularım var."},
+        {pronoun:"Ricardo Reis", form:"Klasik, Latince etki", example:"Sábio é o que se contenta.", tr:"Tatmin olan kişi akıllıdır."},
+        {pronoun:"Álvaro de Campos", form:"Fütürist, serbest şiir", example:"Não sou nada. Nunca serei nada.", tr:"Hiçbir şey değilim. Asla olmayacağım."},
+        {pronoun:"Bernardo Soares", form:"Nesir şiir (Livro do Desassossego)", example:"A saudade é o amor que fica.", tr:"Saudade, kalan aşktır."},
+        {pronoun:"Fernando Pessoa ele-próprio", form:"Kişisel şiir", example:"Não sou. Sou o intervalo.", tr:"Ben değilim. Ben ara/fasılayım."},
+        {pronoun:"Ortónimo", form:"Pessoa'nın kendi adıyla yazdığı", example:"O amor é um fogo que arde sem se ver.", tr:"Aşk, görünmeden yanan bir ateştir."}
       ],
-      note: "'Mano' = São Paulo gençlik dili. 'Cara' = Rio ve genel BP. 'Oxe' ve 'Uai' bölgesele ünlemler — yabancıları güldürür!"
+      note: "Heterónimo, sahte ad (pseudónimo) değildir. Her heterónim farklı biyografi, felsefe ve yazı tarzına sahip bağımsız bir kişiliktir. Pessoa'nın Mensagem'i hayatında yayımlanan tek Portekizce kitabıdır."
     },
     {
-      title: "Hayvan Deyimleri — Expressões com Animais",
-      explanation: "Portekizce'de pek çok deyim hayvan içerir: 'Cada macaco no seu galho' (her maymun kendi dalında), 'pagar o pato' (ördek ödemek), 'dar com os burros n'água' (eşeklerle suya), 'engolir sapo' (kurbağa yutmak). Hayvanın sembolik anlamı kültüreldir.",
+      title: "Saudade — Felsefi ve Dilbilimsel Boyut",
+      explanation: "'Saudade' Portekizceye özgü, doğrudan çevrilemeyen bir kavramdır. UNESCO tarafından 'insanlığın sözlü ve somut olmayan mirası' olarak kabul edilmiştir.",
       table: [
-        { pronoun: "Macaco", form: "Maymun = kendi işi", example: "Cada macaco no seu galho!", tr: "Herkes kendi işine baksın!" },
-        { pronoun: "Pato", form: "Ördek = suçlanan", example: "Você vai pagar o pato?", tr: "Sen bedeli ödemek zorunda mısın?" },
-        { pronoun: "Sapo", form: "Kurbağa = kötülük", example: "Engole esse sapo e fica quieto.", tr: "Bu kötülüğü yut ve sus." },
-        { pronoun: "Gato", form: "Kedi = çekici biri", example: "Ela é um gatão!", tr: "O çok çekici biri! (erkek için)" },
-        { pronoun: "Burro", form: "Eşek = aptal veya iş", example: "Dei com os burros n'água.", tr: "İşi batırdım." },
-        { pronoun: "Cobra", form: "Yılan = kötü niyetli", example: "Esse cara é uma cobra!", tr: "Bu adam çok kötü niyetli!" }
+        {pronoun:"ter saudade de", form:"ter + saudade + de", example:"Tenho saudade de Portugal.", tr:"Portekiz'i özlüyorum."},
+        {pronoun:"sentir saudade", form:"sentir + saudade", example:"Sinto muita saudade de ti.", tr:"Seni çok özlüyorum."},
+        {pronoun:"com saudade", form:"advérbio", example:"Olhou com saudade para o mar.", tr:"Denize özlemle baktı."},
+        {pronoun:"cheio/a de saudade", form:"adjetivo", example:"Estou cheio/a de saudades.", tr:"Özlem dolu."},
+        {pronoun:"saudosismo", form:"movimento filosófico", example:"O saudosismo é uma escola filosófica portuguesa.", tr:"Saudosizm Portekiz felsefi akımıdır."},
+        {pronoun:"nas letras do fado", form:"fado + saudade", example:"O fado expressa a saudade portuguesa.", tr:"Fado, Portekiz saudade'sini dile getirir."}
       ],
-      note: "'Gato/Gatona' = çekici biri (BP informal). 'Que gato!' (ne yakışıklı!). 'Que gatona!' (ne güzel!). Hayvan metaforları kültüre özgü."
+      note: "'Saudade' hem özlemi hem de bir özlemin getirdiği tatlı acıyı ifade eder. Artık uzakta olan, geçmiş ya da hiç olmamış şeylere duyulan derin duygusal özlem. Galego-Portekizcedeki 'soidade'den gelir."
     }
   ],
   speaking: [
-    { q: "'Patron benim işlerimde suçu başkasına yükledi' nasıl deyimle anlatın?", a: "O chefe me fez pagar o pato! Nem fui eu que errei." },
-    { q: "Arkadaşınızı sohbete davet edin.", a: "Vamos bater um papo? Faz tempo que não nos vemos!" },
-    { q: "'Konuyu kaybettim, nereden devam ediyordum' nasıl?", a: "Perdi o fio da meada... onde eu estava mesmo? Ah, sim!" },
-    { q: "'Bu haberden hiç haberim yoktu' deyimle anlatın.", a: "Estava completamente por fora! Ninguém me contou nada." },
-    { q: "'Göze almayan alamaz' deyimini kullanın.", a: "Quem não arrisca, não petisca! Vai lá e tenta!" }
+    {q:"Quem é Fernando Pessoa e por que é importante?", a:"Fernando Pessoa foi o maior poeta português do século XX. Criou múltiplas identidades literárias chamadas heterónimos, cada um com estilo e filosofia próprios. A sua obra influenciou a literatura mundial."},
+    {q:"Como se explica a saudade a um estrangeiro?", a:"A saudade é uma emoção tipicamente portuguesa: é uma mistura de saudosismo, nostalgia, melancolia e esperança. É sentir falta de algo ou alguém com um certo prazer na dor dessa ausência."},
+    {q:"O que é o saudosismo como movimento filosófico?", a:"O saudosismo é um movimento filosófico e literário português do início do século XX, liderado por Teixeira de Pascoaes. Propõe a saudade como traço essencial da alma portuguesa e base de uma identidade nacional."},
+    {q:"Que outros filósofos portugueses importantes existem?", a:"Além de Pessoa, destacam-se Eduardo Lourenço, estudioso da identidade portuguesa, Álvaro Ribeiro e a tradição do sebastianismo, que expressa a esperança messiânica no regresso de um rei salvador."},
+    {q:"Como se diz 'penso, logo existo' em português?", a:"'Penso, logo existo' é a tradução de 'Cogito, ergo sum' de Descartes. Esta frase é o ponto de partida do racionalismo moderno."}
   ],
   dialogues: [
     {
-      title: "İş Yerinde Deyim Sohbeti",
+      title: "Uma Conversa Filosófica num Café de Lisboa",
       lines: [
-        { speaker: "Raquel", text: "Cara, que situação! O projeto deu com os burros n'água.", tr: "Dostum, ne durum! Proje tamamen battı." },
-        { speaker: "Tiago", text: "Sério? O que aconteceu? Você ficou por fora?", tr: "Ciddi misin? Ne oldu? Haberdar değil miydin?" },
-        { speaker: "Raquel", text: "Total! Fiz vista grossa para os sinais de alerta e agora vou pagar o pato.", tr: "Tamamen! Uyarı işaretlerini görmezden geldim ve şimdi bedelini ödeyeceğim." },
-        { speaker: "Tiago", text: "Não é mole não. Mas calma — tirar o cavalinho da chuva agora não resolve.", tr: "Kolay değil. Ama sakin ol — şimdi vazgeçmek çözüm değil." },
-        { speaker: "Raquel", text: "Tem razão. Preciso engolir esse sapo e buscar uma solução.", tr: "Haklısın. Bu duruma katlanıp bir çözüm bulmam lazım." },
-        { speaker: "Tiago", text: "Isso! Quem não arrisca, não petisca. Vai lá e bota a boca no trombone com o diretor.", tr: "İşte bu! Göze almayan alamaz. Git ve direktörle konuşmandan şikayet et." }
+        {speaker:"Ana", text:"Tens lido o Livro do Desassossego do Pessoa? É perturbador mas belíssimo."},
+        {speaker:"Rui", text:"Li alguns fragmentos. Ele diz que somos todos ficções de nós próprios. Concordas?"},
+        {speaker:"Ana", text:"Em parte, sim. Somos o que contamos sobre nós mesmos. A nossa identidade é uma narrativa."},
+        {speaker:"Rui", text:"E a saudade? Achas que é mesmo uma emoção única ou é universal com outro nome?"},
+        {speaker:"Ana", text:"Acho que é universal no fundo, mas os portugueses elevaram-na a filosofia de vida, a forma de estar no mundo."},
+        {speaker:"Rui", text:"É isso mesmo. O fado não é tristeza — é a beleza encontrada na perda. É a saudade cantada."}
+      ]
+    },
+    {
+      title: "Na Livraria",
+      lines: [
+        {speaker:"Cliente", text:"Procuro um livro para perceber melhor a identidade portuguesa. O que me recomenda?"},
+        {speaker:"Livreiro/a", text:"Para começar, 'Portugal como Destino' de Eduardo Lourenço é excelente. É uma análise profunda do carácter português."},
+        {speaker:"Cliente", text:"E de Fernando Pessoa, por onde começo?"},
+        {speaker:"Livreiro/a", text:"Comece pelo 'Livro do Desassossego' de Bernardo Soares — é mais acessível. Depois, as 'Odes' de Ricardo Reis."},
+        {speaker:"Cliente", text:"Existe algo sobre o fado e a saudade do ponto de vista filosófico?"},
+        {speaker:"Livreiro/a", text:"Sim, 'O Labirinto da Saudade' de Eduardo Lourenço é precisamente sobre isso. É leitura obrigatória."}
       ]
     }
   ],
   listening: {
-    text: "As expressões idiomáticas são uma das partes mais fascinantes e mais difíceis de uma língua. No Brasil, elas variam não só de região para região, mas também de geração para geração. Expressões que eram comuns nas décadas de 1970 e 1980 já soam antigas para os jovens. Os jovens brasileiros de hoje criaram um léxico totalmente novo com influência das redes sociais e do inglês. Palavras como 'surtir' no sentido de 'pirar' (enlouquecer), 'lacrar' (mandar bem) e 'shippar' (torcer por um casal) são parte do vocabulário jovem atual.",
+    text: "Fernando Pessoa nasceu em Lisboa em 1888 e morreu em 1935. É considerado um dos maiores poetas da língua portuguesa e uma das figuras mais importantes da literatura mundial do século XX. A característica mais original da sua obra é a criação de heterónimos — personalidades literárias completamente distintas com biografias, estilos e filosofias próprias. Os três principais são Alberto Caeiro, o poeta da natureza; Ricardo Reis, o poeta clássico; e Álvaro de Campos, o poeta modernista. Para além destes, escreveu como Bernardo Soares o chamado 'Livro do Desassossego', uma obra fragmentária sobre a consciência e a identidade. A sua única obra publicada em vida em português foi 'Mensagem', em 1934, um ano antes de morrer.",
     questions: [
-      { q: "Brezilya deyimleri nasıl değişiyor?", a: "Bölgeden bölgeye ve kuşaktan kuşağa farklılaşıyor" },
-      { q: "Güncel genç Brezilya dilini etkileyen nedir?", a: "Sosyal medya ve İngilizce etkisi" },
-      { q: "Genç jargondan üç örnek?", a: "Surtir (çıldırmak), lacrar (harika yapmak), shippar (bir çifti desteklemek)" }
+      {q:"Quando nasceu e quando morreu Fernando Pessoa?", a:"Fernando Pessoa nasceu em 1888 e morreu em 1935."},
+      {q:"Quais são os três principais heterónimos de Pessoa?", a:"Os três principais heterónimos são Alberto Caeiro, Ricardo Reis e Álvaro de Campos."},
+      {q:"Qual foi a única obra em português publicada por Pessoa em vida?", a:"A única obra em português publicada em vida foi 'Mensagem', em 1934."}
     ]
   }
 };

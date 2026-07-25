@@ -1,94 +1,104 @@
-const L45 = {
-  title: "Gírias Brasileiras",
+var L45 = {
   words: [
-    { en: "cara / mano", tr: "abi / dostum (hitap)", pron: "kara / manu", bd: "BP informal; cara = genel, mano = SP gençlik" },
-    { en: "massa / maneiro", tr: "harika / süper", pron: "masa / maneyru", bd: "BP informal; 'massa' = Nordeste+" },
-    { en: "saudade", tr: "özlem (özgün duygu)", pron: "sowdadshi", bd: "Türkçe'de karşılığı yok; çok derin özlem" },
-    { en: "grana", tr: "para (argo)", pron: "grana", bd: "informal; 'dinheiro' daha formal" },
-    { en: "trampo", tr: "iş (argo)", pron: "trãmpu", bd: "informal; 'trabalho' daha formal; trampar = çalışmak" },
-    { en: "rolar", tr: "olmak / gerçekleşmek", pron: "rolár", bd: "BP; 'vai rolar uma festa' = parti olacak" },
-    { en: "mó / da hora", tr: "çok / harika", pron: "mó / da ora", bd: "BP gençlik; 'mó barato' = çok ucuz/çok iyi" },
-    { en: "zoar", tr: "dalga geçmek / takılmak", pron: "zoar", bd: "BP; 'tô zoando' = şaka yapıyorum" },
-    { en: "colar", tr: "gelmek / uğramak", pron: "kolár", bd: "BP gençlik; 'cola aqui' = buraya gel" },
-    { en: "bolado / chateado", tr: "sinirli / üzgün", pron: "boladu / shatshadu", bd: "informal; 'tô bolado' = kafam bozuk" },
-    { en: "tá ligado?", tr: "anlıyor musun? / biliyor musun?", pron: "ta ligadu", bd: "BP; 'sabe?' anlamında" },
-    { en: "show!", tr: "süper! / harika!", pron: "show", bd: "BP çok yaygın; 'tá show' = harika" },
-    { en: "arregou", tr: "korktu / çekildi / geri adım attı", pron: "arregou", bd: "BP; 'arreou' da denir; desistiu por medo" },
-    { en: "dar um gelo", tr: "birini soğuk davranmak / birine havayı vermek", pron: "dar um jélu", bd: "lit: buz vermek; ignorar alguém" },
-    { en: "me deu um branco", tr: "beyaz bastı / aklım durdu", pron: "mi dew um brãku", bd: "lit: bana bir beyaz verdi; esquecer tudo de repente" },
-    { en: "o barato", tr: "durum / şey (genel)", pron: "u baratu", bd: "BP; 'que barato!' = ne güzel! / ne iyi! (ironic veya sincere)" },
-    { en: "pegar no tranco", tr: "hız kazanmak / işlere girmek", pron: "pegár nu trãku", bd: "começar bem uma tarefa" },
-    { en: "de boa", tr: "rahat / tamam", pron: "dshi boa", bd: "BP; 'tô de boa' = rahatım / iyiyim" },
-    { en: "bora!", tr: "hadi gidelim! / hadi!", pron: "bora", bd: "'vamos embora' kısaltması; ação imediata" },
-    { en: "Que foi?", tr: "Ne oldu? / Nedir?", pron: "ki foy", bd: "BP günlük; olayı soran ifade" }
+    {en:"Portuguese language", tr:"Portekizce dili", pron:"ˈliŋɡwɐ puɾtuˈɡezɐ", bd:"a língua portuguesa"},
+    {en:"dialect", tr:"lehçe / ağız", pron:"diɐˈletu", bd:"o dialeto"},
+    {en:"accent", tr:"aksan / vurgu", pron:"ɐˈsẽtu", bd:"o sotaque"},
+    {en:"vocabulary", tr:"sözcük dağarcığı", pron:"vukɐbuˈlaɾiu", bd:"o vocabulário"},
+    {en:"grammar", tr:"dilbilgisi", pron:"ˈɡɾɐmɐtikɐ", bd:"a gramática"},
+    {en:"pronunciation", tr:"telaffuz", pron:"pɾunũsiɐˈsãw", bd:"a pronúncia"},
+    {en:"mother tongue", tr:"anadil", pron:"ˈliŋɡwɐ maˈteɾnɐ", bd:"a língua materna"},
+    {en:"official language", tr:"resmi dil", pron:"ˈliŋɡwɐ ufiˈsiɐɫ", bd:"a língua oficial"},
+    {en:"Lusophone", tr:"Portekizce konuşan", pron:"luzuˈfõni", bd:"lusófono/a"},
+    {en:"CPLP", tr:"Portekizce konuşan ülkeler topluluğu", pron:"sepeˈlɐpe", bd:"a CPLP"},
+    {en:"spelling reform", tr:"imla reformu", pron:"ɾefuɾmɐ uɾtuɡɾɐˈfikɐ", bd:"a reforma ortográfica"},
+    {en:"translation", tr:"çeviri", pron:"tɾɐduˈsãw", bd:"a tradução"},
+    {en:"interpreter", tr:"tercüman", pron:"ĩteɾpɾeˈtɨ", bd:"o/a intérprete"},
+    {en:"conjugation", tr:"fiil çekimi", pron:"kõʒuɡɐˈsãw", bd:"a conjugação"},
+    {en:"declension", tr:"çekim (isim)", pron:"dɨkliˈnɐsãw", bd:"a declinação"},
+    {en:"spelling", tr:"yazım / imla", pron:"uɾtuɡɾɐˈfiɐ", bd:"a ortografia"},
+    {en:"phonetics", tr:"sesbilim / fonetik", pron:"fuˈnɛtikɐ", bd:"a fonética"},
+    {en:"subjunctive", tr:"dilek kipi", pron:"ʒuˈsĩtivu", bd:"o conjuntivo"},
+    {en:"enclitic pronoun", tr:"sona gelen zamir (EP özelliği)", pron:"pɾuˈnomɨ eŋˈklitiku", bd:"o pronome enclítico"},
+    {en:"language community", tr:"dil topluluğu", pron:"kumuniˈdɐdɨ liŋɡuˈiʃtikɐ", bd:"a comunidade linguística"}
   ],
   grammar: [
     {
-      title: "BP Argo — Kayıt Düzeyleri (Registros)",
-      explanation: "Portekizce dört kayıt düzeyinde kullanılır: Formal (iş/akademi), Informal (günlük arkadaşça), Coloquial (konuşma dili), Gíria (argo). Argo bağlama göre kullanılır — iş görüşmesinde değil, arkadaşlar arasında. 'Eu estou bem' (formal) vs. 'Tô de boa' (argo). İkisi de Portekizce ama farklı bağlamlarda.",
+      title: "Diferenças entre o Português Europeu e o Português Brasileiro",
+      explanation: "Avrupa Portekizcesi (PE) ve Brezilya Portekizcesi (PB) arasındaki temel farklar. Her iki varyant da standart Portekizcenin geçerli biçimleridir.",
       table: [
-        { pronoun: "Formal", form: "Estou bem.", example: "Estou muito bem, obrigado.", tr: "Çok iyiyim, teşekkürler." },
-        { pronoun: "Informal", form: "Tô bem.", example: "Tô bem, e você?", tr: "İyiyim, ya sen?" },
-        { pronoun: "Coloquial", form: "Tô bem legal.", example: "Tô bem legal, valeu!", tr: "Gayet iyiyim, sağ ol!" },
-        { pronoun: "Gíria", form: "Tô de boa.", example: "Tô de boa, relaxado.", tr: "Rahatım, sakinim." },
-        { pronoun: "Bağlam farkı", form: "Trampo (argo)", example: "Cansado do trampo hoje.", tr: "Bugün işten yoruldum." },
-        { pronoun: "Bağlam farkı", form: "Trabalho (formal)", example: "Meu trabalho é exigente.", tr: "İşim zorlu." }
+        {pronoun:"Gerúndio", form:"PE: a + infinitivo / PB: -ndo", example:"PE: Estou a falar. / PB: Estou falando.", tr:"PE: Konuşuyorum. / PB: Konuşuyorum."},
+        {pronoun:"Pronome", form:"PE: enclítico / PB: próclítico", example:"PE: Diga-me. / PB: Me diga.", tr:"PE: Bana söyleyin. / PB: Bana söyleyin."},
+        {pronoun:"Tu/você", form:"PE: tu diário / PB: você preferido", example:"PE: Tu falas. / PB: Você fala.", tr:"PE: Sen konuşursun. / PB: Sen konuşursun."},
+        {pronoun:"Vocabulário", form:"PE / PB diferente", example:"PE: autocarro / PB: ônibus", tr:"PE: otobüs / PB: otobüs"},
+        {pronoun:"Fonética", form:"PE: vogais reduzidas", example:"PE: 'fazer' → [fɐˈzeɾ] (belirsiz)", tr:"PE sesliler daha az belirgin"},
+        {pronoun:"Ortografia", form:"Acordo de 2009 unifica", example:"PE: facto → fato (após acordo)", tr:"2009 anlaşması bazıları birleştirdi"}
       ],
-      note: "DICA: Gençlerin konuştuklarını anlamak için gíria şarttır. Ama resmi ortamda kullanmamak da önemlidir. Kayıt uyumu = sosyal yetkinlik."
+      note: "2009 Ortografi Anlaşması (Acordo Ortográfico) PE ve PB yazımını kısmen birleştirdi. 'Facto' → 'fato', 'acção' → 'ação' gibi değişiklikler yapıldı. Ancak konuşma dili farklılıkları devam etmektedir."
     },
     {
-      title: "Kısaltmalar ve Söyleyiş Değişimleri (BP Fonetik Argo)",
-      explanation: "BP'de konuşma dilinde bazı sesler düşer veya değişir: 'Estou' → 'Tô', 'Você' → 'Cê', 'Para' → 'Pra', 'Está' → 'Tá', 'Não' → 'Num' (güneyde), 'Vamos embora' → 'Bora'. Bu kısaltmalar doğal konuşmada çok yaygındır.",
+      title: "A Língua Portuguesa no Mundo — CPLP",
+      explanation: "Portekizce, dünyada yaklaşık 260 milyon kişinin anadili olan 6. büyük dildir. CPLP (Comunidade dos Países de Língua Portuguesa) 9 üye ülkeden oluşur.",
       table: [
-        { pronoun: "Estou → Tô", form: "Fiil kısaltması", example: "Tô indo agora.", tr: "Şimdi gidiyorum." },
-        { pronoun: "Você → Cê", form: "Zamir kısaltması", example: "Cê vai vir?", tr: "Gelecek misin?" },
-        { pronoun: "Para → Pra", form: "Edat kısaltması", example: "Vou pra casa.", tr: "Eve gidiyorum." },
-        { pronoun: "Está → Tá", form: "Fiil kısaltması", example: "Tá bom! Então vai.", tr: "Tamam! O zaman git." },
-        { pronoun: "Vamos → Bora", form: "Eylem kısaltması", example: "Bora logo, tô com fome!", tr: "Hadi çabuk, acıktım!" },
-        { pronoun: "Não → Num", form: "Olumsuzlama (G.Br.)", example: "Num sei não.", tr: "Bilmiyorum." }
+        {pronoun:"Portugal", form:"~10 milyon", example:"Portekiz Portekizcesi — kaynak varyant", tr:"Avrupa Portekizcesi"},
+        {pronoun:"Brasil", form:"~215 milyon", example:"En büyük Portekizce konuşan ülke", tr:"Brezilya Portekizcesi"},
+        {pronoun:"Angola", form:"~35 milyon", example:"Afrika'nın en büyük PE konuşan ülkesi", tr:"Angola Portekizcesi"},
+        {pronoun:"Moçambique", form:"~33 milyon", example:"Portekizce resmi dil", tr:"Mozambik Portekizcesi"},
+        {pronoun:"Cabo Verde", form:"~560 bin", example:"Kriolu da konuşulur", tr:"Yeşilburun Portekizcesi"},
+        {pronoun:"Timor-Leste", form:"~1,3 milyon", example:"2002'den beri resmi dil", tr:"Doğu Timor Portekizcesi"}
       ],
-      note: "'Num' = 'não' (güney/interior Brezilya). 'Cê' = 'você' (MG, SP yaygın). Bunlar hatalı değil — standart dışı ama çok doğal BP."
+      note: "CPLP'nin diğer üyeleri: Guiné-Bissau, São Tomé e Príncipe, Guiné Equatorial. Portekizce, BM'nin 6 resmi dilinden biri değil ama Afrika Birliği ve MERCOSUL'un resmi dilidir."
     },
     {
-      title: "Fonksiyonel Argo Fiilleri",
-      explanation: "BP'de bazı argo fiiller çok işlevlidir: ROLAR (gerçekleşmek), ZOAR (dalga geçmek), COLAR (uğramak/gelmek), TRAMPAR (çalışmak), ARREOU/ARREGOU (korkmak/vazgeçmek), LACRAR (harika bir şey yapmak). Bunları cümle içinde kullanabilmek günlük konuşmada büyük avantaj sağlar.",
+      title: "Pronúncia do Português Europeu — Vogais Átonas",
+      explanation: "Avrupa Portekizcesini diğer Portekizce varyantlarından en çok ayıran özellik, vurgusuz hecelerdeki seslilerin zayıflaması veya neredeyse yok olmasıdır.",
       table: [
-        { pronoun: "Rolar", form: "Olmak/gerçekleşmek", example: "Vai rolar uma festa amanhã.", tr: "Yarın bir parti olacak." },
-        { pronoun: "Zoar", form: "Dalga geçmek", example: "Tô zoando, tava de brincadeira!", tr: "Dalga geçiyordum, şakaydı!" },
-        { pronoun: "Colar", form: "Uğramak/gelmek", example: "Cola aqui em casa hoje!", tr: "Bugün eve uğra!" },
-        { pronoun: "Trampar", form: "Çalışmak (argo)", example: "Preciso trampar muito hoje.", tr: "Bugün çok çalışmam lazım." },
-        { pronoun: "Lacrar", form: "Harika yapmak", example: "Ela lacrou no palco!", tr: "Sahnede muhteşemdi!" },
-        { pronoun: "Arreou/Arregou", form: "Korkmak/vazgeçmek", example: "Arreou na hora da prova.", tr: "Sınav anında geri adım attı." }
+        {pronoun:"'e' átono → [ɨ]", form:"quase mudo", example:"'fazer' → [fɐˈzeɾ] ('a' duyulur, 'e' belirsiz)", tr:"Vurgusuz 'e' neredeyse duyulmaz"},
+        {pronoun:"'o' átono → [u]", form:"[u] sesi", example:"'bolo' → [ˈbolu] (son 'o' = 'u')", tr:"Sözcük sonundaki 'o' = 'u' okunur"},
+        {pronoun:"'a' tónico → [a]", form:"açık [a]", example:"'falar' → [fɐˈlaɾ] (son 'a' açık)", tr:"Vurgulu 'a' açık söylenir"},
+        {pronoun:"consoantes finais", form:"[ɾ] uvular", example:"'falar' son 'r' → [ɾ] (gırtlak)", tr:"Sözcük sonu 'r' boğazdan gelir"},
+        {pronoun:"'lh' dígrafo", form:"[ʎ]", example:"'trabalho' → [tɾɐˈbaʎu]", tr:"'lh' = Türkçe 'ly' benzeri"},
+        {pronoun:"'nh' dígrafo", form:"[ɲ]", example:"'vinho' → [ˈviɲu]", tr:"'nh' = Türkçe 'ny' benzeri (damak n'si)"}
       ],
-      note: "'Lacrar' = internet + show business dilinden gelir. 'Arreou' = 'arriou' (sallıverdi) dari metonimía. BP gíria hızla değişir!"
+      note: "PE'nin seslisi zayıflatan bu özelliği, Portekizceyi Fransızcaya benzetir. PB'de ise tüm sesliler daha açık ve net telaffuz edilir. Bu nedenle PE yabancılar için daha zor anlaşılır sayılır."
     }
   ],
   speaking: [
-    { q: "Arkadaşınıza argo ile 'hadi gidelim, acıktım' deyin.", a: "Bora logo, tô com uma fome danada! Que foi, cê vai ou não vai?" },
-    { q: "'Bugün işten çok yoruldum' argoyla anlatın.", a: "Cara, que trampo pesado hoje! Tô de boa agora, mas foi mó cansativo." },
-    { q: "'Neden gelmedin?' sorusuna cevap verin.", a: "Cara, me deu um branco! Esqueci completamente. Mó vacilo meu." },
-    { q: "Bir arkadaşınızın harika bir şey yaptığını anlatın.", a: "Mano, ela lacrou na apresentação! Foi show! Todo mundo ficou de boca aberta." },
-    { q: "'Rahatım, sorun yok' argoyla nasıl söylersiniz?", a: "Tô de boa! Num tem problema não. Tá tranquilo." }
+    {q:"Quantas pessoas falam português no mundo?", a:"Aproximadamente 260 milhões de pessoas falam português como língua materna. É a sexta língua mais falada do mundo e a mais falada no hemisfério sul."},
+    {q:"Qual é a diferença entre o português europeu e o brasileiro?", a:"As principais diferenças estão na pronúncia, no uso dos pronomes e no vocabulário. Por exemplo, no português europeu usamos 'autocarro', enquanto no Brasil dizem 'ônibus'."},
+    {q:"O que é a CPLP?", a:"A CPLP é a Comunidade dos Países de Língua Portuguesa, uma organização internacional que reúne os nove países onde o português é língua oficial."},
+    {q:"Porque é que o português europeu parece mais difícil de perceber?", a:"Porque no português europeu as vogais átonas são muito reduzidas ou quase mudas. Isso torna a fala mais rápida e menos clara para quem está a aprender."},
+    {q:"O Acordo Ortográfico mudou muito o português europeu?", a:"Sim, introduziu algumas mudanças como a eliminação das consoantes mudas em palavras como 'facto' que passou a 'fato' e 'acção' que passou a 'ação'. Mas as mudanças foram polémicas em Portugal."}
   ],
   dialogues: [
     {
-      title: "Arkadaş Sohbeti (Tam Argo)",
+      title: "Uma Aula de Português para Estrangeiros",
       lines: [
-        { speaker: "Lucas", text: "Eaí, cara! Vai rolar a balada do Rafael sábado. Cê vai?", tr: "Naber abi! Rafael'in partisi cumartesi olacak. Gidecek misin?" },
-        { speaker: "Pedro", text: "Ah, tô sabendo! Quero muito ir, mas tô sem grana essa semana.", tr: "Aa, duydum! Çok gitmek istiyorum ama bu hafta param yok." },
-        { speaker: "Lucas", text: "De boa! A entrada é de graça. Só precisa cola lá pelas dez.", tr: "Sorun değil! Giriş bedava. Sadece onda uğraman yeterli." },
-        { speaker: "Pedro", text: "Show! Bora! Mas mano, cê sabe se vai ter comida? Tô com uma fome danada.", tr: "Harika! Gidelim! Ama abi, yemek olacak mı biliyor musun? Çok acıktım." },
-        { speaker: "Lucas", text: "Acho que vai rolar petisco sim. Cê arregou de almoçar hoje?", tr: "Sanırım atıştırmalık olacak. Bugün öğle yemeğini kaçırdın mı?" },
-        { speaker: "Pedro", text: "Total, tava trampar até tarde. Tô de boa agora, bora logo!", tr: "Tamamen, geç saate kadar çalışıyordum. Şimdi rahatım, hadi gidelim!" }
+        {speaker:"Professora", text:"Bom dia a todos. Hoje vamos falar sobre as diferenças entre o português europeu e o brasileiro."},
+        {speaker:"Aluno/a", text:"Professora, porque é que os brasileiros dizem 'estou fazendo' e os portugueses dizem 'estou a fazer'?"},
+        {speaker:"Professora", text:"Boa pergunta! No português europeu, usamos 'estar a + infinitivo' para o gerúndio. No Brasil, usam o gerúndio direto em '-ndo'."},
+        {speaker:"Aluno/a", text:"E os pronomes? Ouvi que são diferentes também."},
+        {speaker:"Professora", text:"Exatamente. Em Portugal, o pronome vem depois do verbo: 'diga-me'. No Brasil, vem antes: 'me diga'."},
+        {speaker:"Aluno/a", text:"Obrigado/a, professora. É mais fácil perceber agora!"}
+      ]
+    },
+    {
+      title: "Entre Amigos — Sobre a Língua",
+      lines: [
+        {speaker:"Pedro", text:"Sabes que o português é a língua mais falada no hemisfério sul?"},
+        {speaker:"Sofia", text:"A sério? Mais do que o espanhol?"},
+        {speaker:"Pedro", text:"Sim! O Brasil tem mais de 200 milhões de habitantes. O espanhol divide-se por mais países mas com populações menores."},
+        {speaker:"Sofia", text:"E os outros países lusófonos? Angola, Moçambique..."},
+        {speaker:"Pedro", text:"São ao todo nove países na CPLP. E cada um tem o seu sotaque e algumas palavras diferentes."},
+        {speaker:"Sofia", text:"Nunca pensei que o português fosse tão... global!"}
       ]
     }
   ],
   listening: {
-    text: "A gíria brasileira é um fenômeno linguístico vivo e em constante mudança. Ela reflete a criatividade do povo brasileiro e absorve influências de diversas fontes: o funk carioca, o rap, as comunidades indígenas e africanas, e mais recentemente as redes sociais. Palavras como 'firmeza' do Rio, 'massa' do Nordeste e 'mano' de São Paulo mostram como o Brasil é linguisticamente diverso. As gerações mais jovens criam novas palavras quase semanalmente. Um pesquisador chamou esse fenômeno de 'neologia popular' — a criação espontânea de palavras pelo povo.",
+    text: "O português é uma das grandes línguas internacionais. Originou-se no noroeste da Península Ibérica, na região que hoje é a Galiza e o norte de Portugal. Durante os séculos XV e XVI, com as Descobertas Portuguesas, a língua espalhou-se pela África, Ásia e América do Sul. Hoje, é a língua oficial de nove países: Portugal, Brasil, Angola, Moçambique, Cabo Verde, Guiné-Bissau, São Tomé e Príncipe, Guiné Equatorial e Timor-Leste. A CPLP, Comunidade dos Países de Língua Portuguesa, foi fundada em 1996 para promover a cooperação entre estes países. O acordo ortográfico de 2009 tentou unificar a escrita do português em todos os países, mas com algumas diferenças ainda persistentes entre Portugal e o Brasil.",
     questions: [
-      { q: "Brezilya argosu hangi kaynaklardan besleniyor?", a: "Funk carioca, rap, yerli ve Afrikalı topluluklar, sosyal medya" },
-      { q: "Bölgesel argo örnekleri neler?", a: "'Firmeza' (Rio), 'massa' (Kuzeydoğu), 'mano' (São Paulo)" },
-      { q: "Araştırmacı gençlerin dil yaratıcılığını nasıl adlandırıyor?", a: "'Halk neolojisi' — kelime yaratmanın spontane halk süreci" }
+      {q:"Onde se originou a língua portuguesa?", a:"O português originou-se no noroeste da Península Ibérica, na região da Galiza e norte de Portugal."},
+      {q:"Quando foi fundada a CPLP?", a:"A CPLP foi fundada em 1996."},
+      {q:"Quando foi assinado o acordo ortográfico?", a:"O acordo ortográfico foi assinado em 2009."}
     ]
   }
 };

@@ -1,94 +1,93 @@
-const L28 = {
-  title: "Descrevendo Pessoas",
+var L28 = {
   words: [
-    { en: "alto / alta", tr: "uzun boylu", pron: "awtu / awta", bd: "cinsiyet uyumu" },
-    { en: "baixo / baixa", tr: "kısa boylu", pron: "bayshu / baysha", bd: "cinsiyet uyumu" },
-    { en: "magro / magra", tr: "ince yapılı", pron: "magru / magra", bd: "cinsiyet uyumu" },
-    { en: "gordo / gorda", tr: "kilolu", pron: "gordu / gorda", bd: "cinsiyet uyumu; gordinho = tombul (sevecen)" },
-    { en: "jovem", tr: "genç", pron: "jovẽy", bd: "tek form; oposto: idoso/idosa" },
-    { en: "idoso / idosa", tr: "yaşlı", pron: "idozu / idoza", bd: "daha saygılı; velho = eski/yaşlı" },
-    { en: "bonito / bonita", tr: "güzel / yakışıklı", pron: "bonitu / bonita", bd: "cinsiyet uyumu" },
-    { en: "feio / feia", tr: "çirkin", pron: "féyu / féya", bd: "cinsiyet uyumu" },
-    { en: "simpático / simpática", tr: "sempatik / cana yakın", pron: "sĩmpátiku / sĩmpátika", bd: "cinsiyet uyumu" },
-    { en: "antipático / antipática", tr: "antipatik / soğuk", pron: "ãntipátiku", bd: "cinsiyet uyumu" },
-    { en: "inteligente", tr: "zeki / akıllı", pron: "ĩtelijẽntshi", bd: "tek form" },
-    { en: "engraçado / engraçada", tr: "komik / eğlenceli", pron: "ẽngraçadu / ẽngraçada", bd: "cinsiyet uyumu" },
-    { en: "tímido / tímida", tr: "utangaç / çekingen", pron: "tímidu / tímida", bd: "cinsiyet uyumu" },
-    { en: "extrovertido / extrovertida", tr: "dışa dönük", pron: "ıshtroverchidu", bd: "cinsiyet uyumu" },
-    { en: "confiável", tr: "güvenilir", pron: "kõfjável", bd: "tek form; çoğul: confiáveis" },
-    { en: "teimoso / teimosa", tr: "inatçı", pron: "teymózu / teymóza", bd: "cinsiyet uyumu" },
-    { en: "generoso / generosa", tr: "cömert", pron: "jenerózu / jeneróza", bd: "cinsiyet uyumu" },
-    { en: "Ele tem os olhos castanhos.", tr: "Kahverengi gözleri var.", pron: "eli tẽy us olyyush kashtãnyush", bd: "fiziksel tanım" },
-    { en: "Ela é loira e tem cabelo liso.", tr: "Sarışın ve düz saçlı.", pron: "ela é loyra", bd: "loira = sarışın kadın" },
-    { en: "Na minha opinião...", tr: "Benim görüşüme göre...", pron: "na mĩnya opĩnião", bd: "fikir belirtme" }
+    {en:"tall", tr:"uzun (boy)", pron:"ˈaltu", bd:"alto"},
+    {en:"short", tr:"kısa (boy)", pron:"ˈbɐʃu", bd:"baixo"},
+    {en:"thin/slim", tr:"zayıf/ince", pron:"ˈmɐɡɾu", bd:"magro"},
+    {en:"fat/overweight", tr:"şişman/kilolu", pron:"ˈɡoɾdu", bd:"gordo"},
+    {en:"young", tr:"genç", pron:"ˈʒuvẽ", bd:"jovem"},
+    {en:"old", tr:"yaşlı", pron:"ˈvɛʎu", bd:"velho"},
+    {en:"handsome", tr:"yakışıklı", pron:"ˈbonitu", bd:"bonito"},
+    {en:"beautiful", tr:"güzel", pron:"ˈbɛlɐ / ˈbonitu", bd:"bela / bonita"},
+    {en:"blonde", tr:"sarışın", pron:"ˈloiɾu", bd:"loiro/a"},
+    {en:"dark-haired", tr:"esmer/koyu saçlı", pron:"muˈɾɛnu", bd:"moreno/a"},
+    {en:"curly hair", tr:"kıvırcık saç", pron:"kɐbɛlu ˈɾizu", bd:"cabelo frisado"},
+    {en:"straight hair", tr:"düz saç", pron:"kɐˈbɛlu ˈlizu", bd:"cabelo liso"},
+    {en:"beard", tr:"sakal", pron:"ˈbɐɾbɐ", bd:"barba"},
+    {en:"moustache", tr:"bıyık", pron:"biˈɡodɨ", bd:"bigode"},
+    {en:"glasses", tr:"gözlük", pron:"okuˈlaɾɨʃ", bd:"óculos"},
+    {en:"freckles", tr:"çil", pron:"ˈpɾɐɡɐʃ", bd:"sardas"},
+    {en:"dimples", tr:"gamze", pron:"kuˈvɐʃ", bd:"covas"},
+    {en:"personality", tr:"kişilik", pron:"pɨɾsuˈnɐlidadɨ", bd:"personalidade"},
+    {en:"kind/nice", tr:"nazik/iyi kalpli", pron:"siˈpɐtiku", bd:"simpático"},
+    {en:"intelligent", tr:"zeki", pron:"ĩtɨliˈʒẽtɨ", bd:"inteligente"}
   ],
   grammar: [
     {
-      title: "Fiziksel Tanımlama — SER ve TER",
-      explanation: "Birinin fiziksel özelliklerini tanımlamak için SER (genel, kalıcı özellikler) ve TER (sahiplik) kullanılır. 'Ela é loira' (Sarışındır) SER ile. 'Ela tem olhos azuis' (Mavi gözleri var) TER ile. Her ikisi de doğrudur.",
+      title: "SER vs ESTAR para Descrição — Ser ve Estar Farkı",
+      explanation: "'Ser' kalıcı özellikleri anlatır (boy, saç rengi, kişilik), 'estar' geçici durumları anlatır (mood, geçici görünüm). Bu fark EP'de çok önemlidir.",
       table: [
-        { pronoun: "Boy", form: "ser + sıfat", example: "Ele é muito alto.", tr: "Çok uzun boylu." },
-        { pronoun: "Vücut yapısı", form: "ser magro/gordo", example: "Ela é bem magrinha.", tr: "Oldukça ince yapılı." },
-        { pronoun: "Saç rengi", form: "ser loiro/moreno/ruivo", example: "Sou moreno de olhos escuros.", tr: "Esmer, koyu gözlüyüm." },
-        { pronoun: "Saç tipi", form: "ter cabelo + tip", example: "Tem cabelo cacheado e comprido.", tr: "Uzun, kıvırcık saçları var." },
-        { pronoun: "Göz rengi", form: "ter olhos + renk", example: "Tem olhos verdes lindíssimos.", tr: "Çok güzel yeşil gözleri var." },
-        { pronoun: "Yaş", form: "parecer + yaş", example: "Parece ter uns trinta anos.", tr: "Otuz yaşlarında görünüyor." }
+        {pronoun:"SER — kalıcı", form:"ser alto/a", example:"O Paulo é alto e tem cabelo castanho.", tr:"Paulo uzun boylu ve kahverengi saçlı."},
+        {pronoun:"SER — kişilik", form:"ser simpático/a", example:"A minha professora é muito simpática.", tr:"Öğretmenim çok nazik."},
+        {pronoun:"SER — menşe", form:"ser português/a", example:"O Cristiano Ronaldo é português.", tr:"Cristiano Ronaldo Portekizlidir."},
+        {pronoun:"ESTAR — geçici", form:"estar cansado/a", example:"Ela está com uma aparência cansada hoje.", tr:"Bugün yorgun görünüyor."},
+        {pronoun:"ESTAR — durum", form:"estar bem/mal", example:"Estás muito bem hoje! Novo corte de cabelo?", tr:"Bugün çok iyi görünüyorsun! Yeni saç kesimi mi?"},
+        {pronoun:"SER vs ESTAR", form:"fark", example:"Ele é gordo (kalıcı) / Está gordo (son zamanlarda kilolu)", tr:"O şişman (kalıcı) / Kilolu (son zamanlarda)"}
       ],
-      note: "Saç rengi: loiro/loira (sarı), castanho (kahve), preto (siyah), ruivo/ruiva (kızıl), grisalho (gri/ak)."
+      note: "EP'de 'ser' ve 'estar' farkı BP ile aynıdır, ancak EP'de bölgesel varyasyonlar olabilir. 'Estar' geçici durumlar için her zaman doğru tercihtir."
     },
     {
-      title: "Kişilik Tanımları — Karakter Sıfatları",
-      explanation: "Birinin karakterini tanımlarken SER (kalıcı kişilik) veya ESTAR (geçici ruh hali) kullanılır. 'Ele é sério' = Ciddi biri (karakter). 'Ele está sério hoje' = Bugün ciddi (geçici).",
+      title: "Adjetivos de Personalidade — Kişilik Sıfatları",
+      explanation: "Portekizce'de kişilik özelliklerini tarif etmek için kullanılan sıfatlar.",
       table: [
-        { pronoun: "Pozitif özellikler", form: "ser + sıfat", example: "É uma pessoa muito generosa.", tr: "Çok cömert biri." },
-        { pronoun: "Negatif özellikler", form: "ser + sıfat", example: "Infelizmente é muito teimoso.", tr: "Maalesef çok inatçı." },
-        { pronoun: "Geçici durum", form: "estar + sıfat", example: "Ele está estressado hoje.", tr: "Bugün stresli." },
-        { pronoun: "Görünüş", form: "parecer + sıfat", example: "Parece ser uma boa pessoa.", tr: "İyi biri gibi görünüyor." },
-        { pronoun: "Benzerlik", form: "parecido com / igual a", example: "É parecido com o pai.", tr: "Babasına benziyor." },
-        { pronoun: "Karakter zıtlığı", form: "por fora... por dentro", example: "É tímido por fora mas animado por dentro.", tr: "Dışarıdan çekingen ama içeriden coşkulu." }
+        {pronoun:"simpático/a", form:"nazik/sempatik", example:"Os portugueses são muito simpáticos com os estrangeiros.", tr:"Portekizliler yabancılara çok naziktir."},
+        {pronoun:"extrovertido/a", form:"dışa dönük", example:"Ela é extrovertida e faz amigos facilmente.", tr:"Dışa dönük biri ve kolayca arkadaş edinir."},
+        {pronoun:"introvertido/a", form:"içe dönük", example:"Ele é introvertido mas muito leal.", tr:"İçe dönük ama çok sadık."},
+        {pronoun:"teimoso/a", form:"inatçı", example:"O meu irmão é muito teimoso.", tr:"Erkek kardeşim çok inatçı."},
+        {pronoun:"trabalhador/a", form:"çalışkan", example:"É uma pessoa muito trabalhadora e dedicada.", tr:"Çok çalışkan ve adanmış biri."},
+        {pronoun:"bem-humorado/a", form:"neşeli/güler yüzlü", example:"Gosto de pessoas bem-humoradas.", tr:"Neşeli insanlardan hoşlanırım."}
       ],
-      note: "Birini nazikçe tanımlamak: 'É uma pessoa muito especial.' = Çok özel biri. Sert tanımlardan kaçının!"
+      note: "EP'de 'fixer/fixe' (havalı/cool) argosunda sıklıkla kullanılır. 'Que fixe!' = 'Ne harika!' anlamında günlük dilde çok yaygındır."
     },
     {
-      title: "Karşılaştırma ve Zıtlık — Mais... do que / Tão... como",
-      explanation: "İki kişiyi karşılaştırırken 'mais... do que' (daha... -dan) veya 'tão... como' (o kadar... gibi) kullanılır. 'Mais alto do que' = daha uzun. 'Tão simpático quanto/como' = o kadar sempatik.",
+      title: "Comparação de Pessoas — Kişi Karşılaştırması",
+      explanation: "İki kişiyi karşılaştırmak için 'mais...do que', 'tão...como', 'mais...que' yapıları kullanılır.",
       table: [
-        { pronoun: "Daha... -dan", form: "mais + sıfat + do que", example: "Ela é mais alta do que eu.", tr: "O benden daha uzun." },
-        { pronoun: "O kadar... gibi", form: "tão + sıfat + como", example: "É tão inteligente como você.", tr: "Senin kadar zeki." },
-        { pronoun: "Daha az", form: "menos + sıfat + do que", example: "Sou menos extrovertido.", tr: "Daha az dışa dönüğüm." },
-        { pronoun: "En... (üstünlük)", form: "o/a mais + sıfat", example: "É o mais engraçado da turma.", tr: "Sınıfın en komik." },
-        { pronoun: "bom→melhor", form: "melhor do que", example: "Ela canta melhor do que eu.", tr: "O benden daha iyi şarkı söylüyor." },
-        { pronoun: "ruim→pior", form: "pior do que", example: "Minha caligrafia é pior.", tr: "El yazım daha kötü." }
+        {pronoun:"mais alto/a do que", form:"daha uzun", example:"A Ana é mais alta do que o Pedro.", tr:"Ana, Pedro'dan daha uzun."},
+        {pronoun:"tão simpático/a como", form:"o kadar nazik", example:"Ela é tão simpática como a irmã.", tr:"Kız kardeşi kadar nazik."},
+        {pronoun:"menos tímido/a que", form:"daha az utangaç", example:"Hoje estou menos tímido do que antes.", tr:"Bugün eskisinden daha az utangacım."},
+        {pronoun:"o mais / a mais", form:"en", example:"É o mais inteligente da turma.", tr:"Sınıfın en zekisi."},
+        {pronoun:"o menos / a menos", form:"en az", example:"É a menos barulhenta da família.", tr:"Ailenin en az gürültücüsü."},
+        {pronoun:"igualmente + adj.", form:"eşit derecede", example:"São igualmente talentosos.", tr:"Eşit derecede yetenekliler."}
       ],
-      note: "BP'de 'tão... quanto' da kullanılır: 'Tão bonita quanto você.' = Senin kadar güzel. Quanto ve Como eşdeğer burada."
+      note: "Portekizce karşılaştırmalarda 'do que' kullanımına dikkat edin: 'mais alto do que' (daha uzun); bazı kısa yapılarda 'do' düşebilir: 'mais alto que'."
     }
   ],
   speaking: [
-    { q: "Kendinizi fiziksel olarak tanımlayın.", a: "Sou [boy], tenho cabelo [renk/tip] e olhos [renk]." },
-    { q: "En iyi arkadaşınızın karakterini anlatın.", a: "É muito [sıfat] e [sıfat]. É uma pessoa [sıfat]." },
-    { q: "'O benden daha uzun' nasıl?", a: "Ele/ela é mais alto/a do que eu." },
-    { q: "'Bu sınıfın en zekisi' nasıl?", a: "É o/a mais inteligente da turma." },
-    { q: "'Saçları sarı ve gözleri mavi' nasıl?", a: "Tem cabelo loiro e olhos azuis." }
+    {q:"Como és fisicamente?", a:"Sou moreno/a, tenho cabelo encaracolado e olhos castanhos. Uso óculos desde criança."},
+    {q:"Descreve a tua personalidade.", a:"Sou uma pessoa introvertida mas simpática. Sou muito trabalhador/a e gosto de ser organizado/a."},
+    {q:"Como é o teu melhor amigo/a?", a:"O meu melhor amigo é alto, loiro e com barba. É muito bem-humorado e faz-me sempre rir."},
+    {q:"O que é que mais valorizas numa pessoa?", a:"Valorizo muito a honestidade, a lealdade e o sentido de humor. A beleza física é menos importante."},
+    {q:"Como são os portugueses em geral?", a:"Os portugueses são geralmente reservados no início mas muito hospitaleiros quando te conhecem bem. São orgulhosos da sua cultura."}
   ],
   dialogues: [
     {
-      title: "Birini Tanıtma",
+      title: "Descrevendo uma Pessoa",
       lines: [
-        { speaker: "Pedro", text: "Oi Carla! Deixa eu te apresentar meu amigo Lucas.", tr: "Merhaba Carla! Arkadaşım Lucas'ı sana tanıtayım." },
-        { speaker: "Carla", text: "Olá Lucas! É um prazer!", tr: "Merhaba Lucas! Tanışmak bir zevk!" },
-        { speaker: "Lucas", text: "Igualmente! Pedro me falou muito bem de você.", tr: "Benim de! Pedro sizden çok iyi bahsetti." },
-        { speaker: "Carla", text: "Que simpático você é! Você dois são muito parecidos!", tr: "Ne sempatiksiniz! İkiniz çok benziyorsunuz!" },
-        { speaker: "Pedro", text: "Ah é? Todo mundo fala isso! Somos amigos há dez anos.", tr: "Öyle mi? Herkes bunu söylüyor! On yıldır arkadaşız." },
-        { speaker: "Lucas", text: "É verdade! Mas eu sou mais alto e mais bonito!", tr: "Doğru! Ama ben daha uzun ve daha yakışıklıyım!" }
+        {speaker:"Ana", text:"Viste a nova colega do departamento de marketing?"},
+        {speaker:"Luís", text:"Ainda não. Como é ela?"},
+        {speaker:"Ana", text:"É alta, morena, com cabelo curto e liso. Usa óculos de massa preta."},
+        {speaker:"Luís", text:"E como é a personalidade dela?"},
+        {speaker:"Ana", text:"Parece muito simpática e extrovertida. Já conhece toda a gente!"},
+        {speaker:"Luís", text:"Que bem! Precisávamos de mais energia positiva na equipa."}
       ]
     }
   ],
   listening: {
-    text: "Os brasileiros são conhecidos por serem muito expressivos e calorosos na comunicação. Não é raro que dois amigos se encontrem e demorem uma hora conversando sobre a vida. A hospitalidade é uma característica marcante — um brasileiro raramente deixará um visitante sem oferecer café, comida ou ajuda. A diversidade étnica do Brasil também se reflete nas pessoas: há brasileiros com traços europeus, africanos, indígenas e asiáticos — uma mistura única no mundo.",
+    text: "Os portugueses são frequentemente descritos como um povo caloroso mas reservado. No primeiro contacto, podem parecer tímidos ou distantes, mas rapidamente se tornam amigáveis e acolhedores. Os lisboetas, em particular, têm uma reputação de serem um pouco mais frios do que os nortenhos, mas isto é um estereótipo que não se aplica a todos. O que une os portugueses é o orgulho na sua história, na sua gastronomia, na saudade e no fado.",
     questions: [
-      { q: "Brezilyalıların iletişim tarzı nasıl?", a: "Çok ifadeli ve sıcakkanlı" },
-      { q: "Brezilyalı misafirperverliğinin özelliği ne?", a: "Kahve, yemek veya yardım sunmadan geçiştirmek nadirdir" },
-      { q: "Brezilya halkının etnik çeşitliliğini açıklayın.", a: "Avrupalı, Afrikalı, Yerli ve Asyalı kökenli karışımı" }
+      {q:"Como são descritos os portugueses no primeiro contacto?", a:"Reservados ou tímidos."},
+      {q:"Como ficam os portugueses após o primeiro contacto?", a:"Amigáveis e acolhedores."},
+      {q:"O que une os portugueses?", a:"O orgulho na história, gastronomia, saudade e fado."}
     ]
   }
 };

@@ -1,94 +1,93 @@
-const L9 = {
-  title: "Fazer Compras",
+var L9 = {
   words: [
-    { en: "a loja", tr: "dükkan / mağaza", pron: "a loja", bd: "dişil; genel" },
-    { en: "o supermercado", tr: "süpermarket", pron: "u supermerkadu", bd: "eril" },
-    { en: "o shopping", tr: "alışveriş merkezi", pron: "u shopĩng", bd: "eril; İngilizce'den alıntı" },
-    { en: "o vendedor / a vendedora", tr: "satıcı (e/d)", pron: "u vendedor / a vendedora", bd: "cinsiyet uyumu" },
-    { en: "o preço", tr: "fiyat", pron: "u présu", bd: "eril" },
-    { en: "o desconto", tr: "indirim", pron: "u deskõntu", bd: "eril; Tem desconto? = İndirim var mı?" },
-    { en: "a promoção", tr: "kampanya / promosyon", pron: "a promosão", bd: "dişil; çoğul: promoções" },
-    { en: "a vitrine", tr: "vitrin", pron: "a vitrĩni", bd: "dişil" },
-    { en: "o provador", tr: "soyunma odası", pron: "u provador", bd: "eril; BP: provador" },
-    { en: "o número / o tamanho", tr: "numara / beden", pron: "u número / u tamãnyu", bd: "ayakkabı/kıyafet için" },
-    { en: "Cabe bem.", tr: "İyi oturuyor / Uyuyor.", pron: "kabi bẽy", bd: "caber = uymak, sığmak" },
-    { en: "Está apertado.", tr: "Dar geliyor.", pron: "ıshta apertadu", bd: "apertado = dar, sıkı" },
-    { en: "Está folgado.", tr: "Bol geliyor.", pron: "ıshta folgadu", bd: "folgado = bol, gevşek" },
-    { en: "o troco", tr: "para üstü", pron: "u troku", bd: "eril; Tem troco? = Bozuk paranız var mı?" },
-    { en: "a nota", tr: "banknot / kağıt para", pron: "a nota", bd: "dişil; nota de cem = yüzlük" },
-    { en: "a moeda", tr: "bozuk para / madeni para", pron: "a moeda", bd: "dişil; moeda = para birimi de" },
-    { en: "Vou levar.", tr: "Alıyorum. (Götürüyorum.)", pron: "vo levar", bd: "satın alma kararı" },
-    { en: "Só estou olhando.", tr: "Sadece bakıyorum.", pron: "só ıshto olyãndu", bd: "satıcıyı atlatma cümlesi" },
-    { en: "Tem em outro tamanho?", tr: "Başka bedeni var mı?", pron: "tẽy ẽy outru tamãnyu", bd: "ölçü sorma" },
-    { en: "Tem em outra cor?", tr: "Başka rengi var mı?", pron: "tẽy ẽy outra kor", bd: "renk sorma" }
+    {en:"shop/store", tr:"dükkan/mağaza", pron:"ˈlozɐ", bd:"loja"},
+    {en:"market", tr:"pazar/market", pron:"mɨɾˈkadu", bd:"mercado"},
+    {en:"supermarket", tr:"süpermarket", pron:"supɨɾmɨɾˈkadu", bd:"supermercado"},
+    {en:"shopping centre", tr:"alışveriş merkezi", pron:"ˈsɛ̃tɾu ˈkumɨɾʃiɐl", bd:"centro comercial"},
+    {en:"price", tr:"fiyat", pron:"ˈpɾɛsu", bd:"preço"},
+    {en:"discount", tr:"indirim", pron:"dɨʃˈkõtu", bd:"desconto"},
+    {en:"sale", tr:"indirimli satış", pron:"ˈsolduʃ", bd:"saldos"},
+    {en:"cash", tr:"nakit", pron:"diɲˈɐɨ̯ɾu", bd:"dinheiro"},
+    {en:"receipt", tr:"fiş/makbuz", pron:"ɾɨˈsibu", bd:"recibo"},
+    {en:"size", tr:"beden/numara", pron:"ˈtɐɲu", bd:"tamanho"},
+    {en:"to try on", tr:"denemek", pron:"ɨ̃ˈpɾovaɾ", bd:"experimentar"},
+    {en:"fitting room", tr:"soyunma odası", pron:"ˈkazɐ dɨ pɾoˈvaʃ", bd:"casa de provas"},
+    {en:"expensive", tr:"pahalı", pron:"ˈkaɾu", bd:"caro"},
+    {en:"cheap", tr:"ucuz", pron:"bɐˈɾɐtu", bd:"barato"},
+    {en:"change (money)", tr:"para üstü", pron:"ˈtɾoku", bd:"troco"},
+    {en:"bag", tr:"torba/çanta", pron:"ˈsɐku", bd:"saco"},
+    {en:"queue", tr:"kuyruk/sıra", pron:"ˈfilɐ", bd:"fila"},
+    {en:"cashier", tr:"kasiyer", pron:"ˈkɐʃɐ", bd:"caixa"},
+    {en:"exchange", tr:"değişim/takas", pron:"tɾoku", bd:"troca"},
+    {en:"loyalty card", tr:"sadakat kartı", pron:"ˈkɐɾtɐ dɨ ˈpõtuʃ", bd:"cartão de pontos"}
   ],
   grammar: [
     {
-      title: "IR Fiili — Gitmek (Düzensiz)",
-      explanation: "IR (gitmek) en sık kullanılan düzensiz fiillerden biridir. Hem hareket hem de gelecek zaman (vou + mastar) için kullanılır. 'Vou ao mercado' = Markete gidiyorum. 'Vou comprar' = Satın alacağım (yakın gelecek).",
+      title: "Verbos de Compras — Alışveriş Fiilleri",
+      explanation: "Alışverişle ilgili temel fiiller: comprar (satın almak), vender (satmak), pagar (ödemek), trocar (değiştirmek), devolver (iade etmek), experimentar (denemek).",
       table: [
-        { pronoun: "Eu", form: "vou", example: "Vou ao shopping amanhã.", tr: "Yarın alışveriş merkezine gidiyorum." },
-        { pronoun: "Você / Ele / Ela", form: "vai", example: "Ela vai à loja.", tr: "Mağazaya gidiyor." },
-        { pronoun: "Nós", form: "vamos", example: "Vamos ao supermercado?", tr: "Süpermarkete gidelim mi?" },
-        { pronoun: "Vocês / Eles", form: "vão", example: "Vão comprar roupas.", tr: "Kıyafet satın alacaklar." },
-        { pronoun: "IR + mastar = gelecek", form: "vou + infinitivo", example: "Vou pagar com dinheiro.", tr: "Nakit ödeyeceğim." },
-        { pronoun: "a = preposição + artigo", form: "a + a = à", example: "Vou à farmácia.", tr: "Eczaneye gidiyorum." }
+        {pronoun:"comprar", form:"eu compro / tu compras", example:"Compro estas calças, por favor.", tr:"Bu pantolonu alıyorum, lütfen."},
+        {pronoun:"pagar", form:"eu pago / tu pagas", example:"Pago com Multibanco.", tr:"Multibanco ile ödüyorum."},
+        {pronoun:"trocar", form:"eu troco / tu trocas", example:"Posso trocar este casaco?", tr:"Bu montu değiştirebilir miyim?"},
+        {pronoun:"devolver", form:"eu devolvo / tu devolves", example:"Quero devolver estas botas.", tr:"Bu botları iade etmek istiyorum."},
+        {pronoun:"experimentar", form:"eu experimento / tu experimentas", example:"Posso experimentar este vestido?", tr:"Bu elbiseyi deneyebilir miyim?"},
+        {pronoun:"custar", form:"custa / custam", example:"Quanto custa este casaco?", tr:"Bu mont ne kadar?"}
       ],
-      note: "'a + a = à' (dişil) ve 'a + o = ao' (eril). Örnek: 'Vou ao banco / Vou à loja.' — Birleşim zorunludur!"
+      note: "EP'de alışverişte Multibanco (ATM ağı) ve MB Way (mobil ödeme) çok yaygındır. Nakit de kabul edilir ancak kartla ödeme giderek daha yaygın hale gelmektedir."
     },
     {
-      title: "COMPRAR, PAGAR, VENDER — Alışveriş Fiilleri",
-      explanation: "Alışverişte temel fiiller: COMPRAR (satın almak), PAGAR (ödemek), VENDER (satmak), TROCAR (değiştirmek), DEVOLVER (iade etmek). Hepsi düzenli -AR fiilleridir.",
+      title: "Adjetivos de Comparação — Karşılaştırma Sıfatları",
+      explanation: "Fiyat ve ürün karşılaştırmaları için: mais (daha fazla), menos (daha az), tão...como (o kadar...gibi), mais...do que (daha...dan), o mais (en).",
       table: [
-        { pronoun: "Eu compro", form: "satın alıyorum", example: "Compro um presente para ela.", tr: "Ona hediye alıyorum." },
-        { pronoun: "Você paga", form: "ödüyorsunuz", example: "Como vai pagar?", tr: "Nasıl ödeyeceksiniz?" },
-        { pronoun: "Ele vende", form: "satıyor", example: "Ele vende frutas.", tr: "Meyve satıyor." },
-        { pronoun: "Trocar", form: "değiştirmek", example: "Posso trocar este produto?", tr: "Bu ürünü değiştirebilir miyim?" },
-        { pronoun: "Devolver", form: "iade etmek", example: "Quero devolver essa blusa.", tr: "Bu bluzu iade etmek istiyorum." },
-        { pronoun: "Economizar", form: "tasarruf etmek", example: "Preciso economizar dinheiro.", tr: "Para biriktirmem gerekiyor." }
+        {pronoun:"mais + adj.", form:"mais caro/a", example:"Esta camisa é mais cara do que aquela.", tr:"Bu gömlek ondan daha pahalı."},
+        {pronoun:"menos + adj.", form:"menos caro/a", example:"Este modelo é menos caro.", tr:"Bu model daha ucuz."},
+        {pronoun:"tão + adj. + como", form:"igualdade", example:"Este sapato é tão bonito como aquele.", tr:"Bu ayakkabı o kadar güzel."},
+        {pronoun:"o/a mais", form:"superlativo", example:"É o mais barato da loja.", tr:"Mağazanın en ucuzu."},
+        {pronoun:"o/a menos", form:"superlativo negativo", example:"É o menos elegante.", tr:"En az zarif olan."},
+        {pronoun:"Irregular: bom", form:"melhor", example:"Esta qualidade é melhor.", tr:"Bu kalite daha iyi."}
       ],
-      note: "-AR fiil çekimi: -o, -a, -amos, -am. COMPRAR: compro, compra, compramos, compram."
+      note: "Portekiz'de 'saldos' (indirim sezonu) genellikle Ocak ve Temmuz aylarında başlar ve büyük indirimlere sahne olur."
     },
     {
-      title: "PRECISAR DE — İhtiyaç Duymak",
-      explanation: "PRECISAR DE 'ihtiyaç duymak' anlamına gelir ve mutlaka DE preposisyonuyla kullanılır. Hem isim hem de fiil mastarıyla kullanılabilir. Bu alışverişte çok işe yarar bir kalıptır.",
+      title: "Quantificadores e Medidas — Niceleyiciler ve Ölçüler",
+      explanation: "Alışverişte miktar ifade etmek için kullanılan yapılar: um par de (bir çift), uma dúzia de (düzine), meio quilo de (yarım kilo), uma garrafa de (bir şişe).",
       table: [
-        { pronoun: "Eu preciso de", form: "ihtiyacım var", example: "Preciso de um presente.", tr: "Bir hediyeye ihtiyacım var." },
-        { pronoun: "Você precisa de", form: "ihtiyacınız var", example: "Precisa de ajuda?", tr: "Yardıma ihtiyacınız var mı?" },
-        { pronoun: "Nós precisamos de", form: "ihtiyacımız var", example: "Precisamos de mais tempo.", tr: "Daha fazla zamana ihtiyacımız var." },
-        { pronoun: "Eles precisam de", form: "ihtiyaçları var", example: "Precisam de dinheiro.", tr: "Paraya ihtiyaçları var." },
-        { pronoun: "preciso + infinitivo", form: "yapmam gerekiyor", example: "Preciso comprar um presente.", tr: "Hediye almam gerekiyor." },
-        { pronoun: "Soru soru", form: "De que precisa?", example: "De que você precisa?", tr: "Neye ihtiyacınız var?" }
+        {pronoun:"par", form:"um par de", example:"Quero um par de sapatos número 40.", tr:"40 numara bir çift ayakkabı istiyorum."},
+        {pronoun:"quilo", form:"um quilo de", example:"Dê-me um quilo de laranjas.", tr:"Bir kilo portakal verin."},
+        {pronoun:"garrafa", form:"uma garrafa de", example:"Uma garrafa de vinho tinto, por favor.", tr:"Bir şişe kırmızı şarap, lütfen."},
+        {pronoun:"pacote", form:"um pacote de", example:"Um pacote de café.", tr:"Bir paket kahve."},
+        {pronoun:"dúzia", form:"uma dúzia de", example:"Uma dúzia de ovos, por favor.", tr:"Bir düzine yumurta, lütfen."},
+        {pronoun:"caixa", form:"uma caixa de", example:"Uma caixa de pastéis de nata.", tr:"Bir kutu pastel de nata."}
       ],
-      note: "'Preciso de ajuda' = 'Yardıma ihtiyacım var.' PRECISAR + mastar (DE olmadan): 'Preciso ir.' = Gitmeliyim."
+      note: "Portekiz'de bakkallar (mercearias) ve geleneksel pazarlar (mercados) hâlâ büyük şehirlerde aktiftir. Mercado da Ribeira ve Mercado do Bolhão meşhur örneklerdir."
     }
   ],
   speaking: [
-    { q: "Mağazaya girmek istemiyorsunuz. Satıcıya ne dersiniz?", a: "Só estou olhando, obrigado/a!" },
-    { q: "Kıyafetin başka rengi var mı?", a: "Tem em outra cor?" },
-    { q: "'Yarın alışveriş merkezine gideceğim' nasıl?", a: "Vou ao shopping amanhã." },
-    { q: "Ödeme sorusu: 'Kartla ödeyebilir miyim?'", a: "Posso pagar com cartão?" },
-    { q: "İndirim var mı?", a: "Tem desconto? / Tem alguma promoção?" }
+    {q:"Quanto custa este casaco?", a:"Custa oitenta e cinco euros. Está em saldo — tinha cento e vinte."},
+    {q:"Tem em tamanho M?", a:"Deixe-me ver... Sim, temos o tamanho M nesta cor."},
+    {q:"Posso pagar com MB Way?", a:"Sim, claro. Também aceitamos Visa e Multibanco."},
+    {q:"Posso trocar se não servir?", a:"Tem 30 dias para trocar com o recibo."},
+    {q:"Onde fica a caixa?", a:"A caixa fica no fundo da loja, ao lado da saída."}
   ],
   dialogues: [
     {
-      title: "Kıyafet Mağazasında",
+      title: "Na Loja de Roupa",
       lines: [
-        { speaker: "Vendedora", text: "Boa tarde! Posso ajudar?", tr: "İyi günler! Yardımcı olabilir miyim?" },
-        { speaker: "Cliente", text: "Sim! Estou procurando uma calça jeans.", tr: "Evet! Bir kot pantolon arıyorum." },
-        { speaker: "Vendedora", text: "Que número você usa?", tr: "Kaç beden kullanırsınız?" },
-        { speaker: "Cliente", text: "Uso quarenta e dois. Tem em azul escuro?", a: "Kırk iki kullanıyorum. Koyu mavide var mı?" },
-        { speaker: "Vendedora", text: "Temos sim! Quer experimentar no provador?", tr: "Var! Soyunma odasında denemek ister misiniz?" },
-        { speaker: "Cliente", text: "Sim, por favor. Quanto custa?", tr: "Evet, lütfen. Ne kadar?" }
+        {speaker:"Empregada", text:"Bom dia! Posso ajudá-la?"},
+        {speaker:"Cliente", text:"Bom dia! Estou à procura de um vestido para uma festa."},
+        {speaker:"Empregada", text:"Temos várias opções. Que tamanho usa?"},
+        {speaker:"Cliente", text:"Uso o S. Posso experimentar este azul?"},
+        {speaker:"Empregada", text:"Claro! A casa de provas fica ali à direita."},
+        {speaker:"Cliente", text:"Fica-me bem! Vou levar. Aceita cartão Multibanco?"}
       ]
     }
   ],
   listening: {
-    text: "Hoje fui às compras com minha amiga. Fomos ao shopping do centro da cidade. Ela precisava de um presente para o aniversário da mãe dela. Vimos várias lojas mas nada estava bom. Finalmente, encontramos uma loja de joias onde compramos um colar lindo por cento e cinquenta reais. Estava em promoção — cinquenta por cento de desconto!",
+    text: "Em Portugal, as lojas dos centros comerciais normalmente abrem das 10h às 23h, incluindo fins de semana. As lojas do centro histórico das cidades podem ter horários mais reduzidos e fechar ao domingo. Os saldos de inverno começam a 2 de janeiro e os de verão a 1 de julho. O pagamento com Multibanco é universal em Portugal, e o MB Way — a aplicação de pagamento móvel — é cada vez mais popular entre os mais jovens.",
     questions: [
-      { q: "Ne satın aldılar?", a: "Güzel bir kolye" },
-      { q: "Neden o dükkânı seçtiler?", a: "Promosyonda — yüzde elli indirim" },
-      { q: "Orijinal fiyat ne kadardı?", a: "300 real (150 = %50 indirimli)" }
+      {q:"A que horas abrem as lojas dos centros comerciais?", a:"Às 10 horas."},
+      {q:"Quando começam os saldos de verão?", a:"A 1 de julho."},
+      {q:"Qual é a aplicação de pagamento móvel popular?", a:"MB Way."}
     ]
   }
 };

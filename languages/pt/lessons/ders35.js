@@ -1,94 +1,93 @@
-const L35 = {
-  title: "Na Farmácia",
+var L35 = {
   words: [
-    { en: "a farmácia", tr: "eczane", pron: "a farmásya", bd: "dişil; farmácia de plantão = nöbetçi eczane" },
-    { en: "o remédio", tr: "ilaç", pron: "u remédyu", bd: "eril; tomar remédio = ilaç almak" },
-    { en: "o medicamento", tr: "ilaç (daha resmi)", pron: "u medikamẽntu", bd: "eril; receita de medicamento = ilaç reçetesi" },
-    { en: "a receita", tr: "reçete", pron: "a reseyta", bd: "dişil; receita médica = doktor reçetesi" },
-    { en: "a dor de cabeça", tr: "baş ağrısı", pron: "a dor dshi kabésa", bd: "dişil; cefaleia = daha teknik" },
-    { en: "a febre", tr: "ateş", pron: "a fébri", bd: "dişil; estar com febre = ateşi olmak" },
-    { en: "a tosse", tr: "öksürük", pron: "a tossi", bd: "dişil; tossir = öksürmek" },
-    { en: "o resfriado", tr: "nezle / soğuk algınlığı", pron: "u reshfriadu", bd: "eril; estar resfriado = nezleli olmak" },
-    { en: "a alergia", tr: "alerji", pron: "a alerjiya", bd: "dişil; ter alergia a = ...alerjisi olmak" },
-    { en: "o antiinflamatório", tr: "antienflamatuar", pron: "u ãtiĩflamatoryu", bd: "eril; para inflamação" },
-    { en: "o analgésico", tr: "ağrı kesici", pron: "u analjéziku", bd: "eril; paracetamol, ibuprofeno" },
-    { en: "o antibiótico", tr: "antibiyotik", pron: "u ãtibiotiku", bd: "eril; só com receita = sadece reçeteyle" },
-    { en: "a pomada", tr: "merhem / krem", pron: "a pomada", bd: "dişil; pomada para queimadura = yanık için krem" },
-    { en: "o curativo", tr: "yara bandı / pansuman", pron: "u kurativu", bd: "eril; fazer curativo = pansuman yapmak" },
-    { en: "o comprimido", tr: "tablet / hap", pron: "u kõprimidu", bd: "eril; tomar dois comprimidos" },
-    { en: "o xarope", tr: "şurup", pron: "u sharópi", bd: "eril; xarope para tosse = öksürük şurubu" },
-    { en: "a cápsula", tr: "kapsül", pron: "a kapsula", bd: "dişil; cápsula de gelatina" },
-    { en: "a dosagem", tr: "dozaj", pron: "a dozajẽy", bd: "dişil; dosagem correta = doğru dozaj" },
-    { en: "Preciso de algo para...", tr: "...için bir şeye ihtiyacım var", pron: "presízu dshi awgu para", bd: "eczanede ilk cümle" },
-    { en: "Posso comprar sem receita?", tr: "Reçetesiz alabilir miyim?", pron: "posu kõprár sẽy reseyta", bd: "serbest satış sorusu" }
+    {en:"relationship", tr:"ilişki", pron:"ɾɨlɐˈsɐ̃u̯", bd:"relação"},
+    {en:"friendship", tr:"arkadaşlık/dostluk", pron:"ɐmiˈzadɨ", bd:"amizade"},
+    {en:"love", tr:"aşk/sevgi", pron:"ɐˈmoɾ", bd:"amor"},
+    {en:"couple", tr:"çift", pron:"ˈkɐzɐl", bd:"casal"},
+    {en:"boyfriend/girlfriend", tr:"erkek/kız arkadaş", pron:"nɐˈmoɾadu/nɐˈmoɾɐdɐ", bd:"namorado/namorada"},
+    {en:"engagement", tr:"nişan", pron:"nuˈivɐdu", bd:"noivado"},
+    {en:"fiancé/e", tr:"nişanlı", pron:"nuˈivu/nuˈivɐ", bd:"noivo/noiva"},
+    {en:"wedding ring", tr:"alyans", pron:"ɐˈliɐ̃sɨ", bd:"aliança"},
+    {en:"honeymoon", tr:"balayı", pron:"luɐ ˈdɨ ˈmɛl", bd:"lua de mel"},
+    {en:"separation", tr:"ayrılık", pron:"sɨpɐɾɐˈsɐ̃u̯", bd:"separação"},
+    {en:"divorce", tr:"boşanma", pron:"diˈvoɾsiu", bd:"divórcio"},
+    {en:"to date", tr:"çıkmak", pron:"nɐmuˈɾaɾ", bd:"namorar"},
+    {en:"to propose", tr:"evlenme teklif etmek", pron:"pɨˈdiɾ ɨ̃ kɐˈzɐmẽtu", bd:"pedir em casamento"},
+    {en:"single", tr:"bekar", pron:"soˈlɐɪ̯ɾu/soˈlɐɪ̯ɾɐ", bd:"solteiro/solteira"},
+    {en:"married", tr:"evli", pron:"kɐˈzadu/kɐˈzadɐ", bd:"casado/casada"},
+    {en:"widowed", tr:"dul", pron:"ˈviuvu/ˈviuvɐ", bd:"viúvo/viúva"},
+    {en:"trust", tr:"güven", pron:"kõˈfjɐ̃sɐ", bd:"confiança"},
+    {en:"loyalty", tr:"sadakat", pron:"liɐlˈdadɨ", bd:"lealdade"},
+    {en:"argument", tr:"tartışma", pron:"diʃkuˈʃɐ̃u̯", bd:"discussão"},
+    {en:"reconciliation", tr:"barışma", pron:"ɾɨkõsiliɐˈsɐ̃u̯", bd:"reconciliação"}
   ],
   grammar: [
     {
-      title: "Semptom Anlatma — ESTAR COM ve SENTIR",
-      explanation: "Eczanede veya doktorda semptomları anlatmak için ESTAR COM (belirtisi olmak) ve SENTIR (hissetmek) kullanılır. 'Estou com febre' = Ateşim var. 'Sinto dor no peito' = Göğsümde ağrı var. 'Faz dois dias que' = İki gündür böyleyim.",
+      title: "Verbos de Relação — İlişki Fiilleri",
+      explanation: "İlişki ve duygusal bağlar için kullanılan temel fiiller EP'de.",
       table: [
-        { pronoun: "Estar com febre", form: "Ateşi olmak", example: "Estou com febre desde ontem.", tr: "Dünden beri ateşim var." },
-        { pronoun: "Estar com dor", form: "Ağrısı olmak", example: "Estou com dor de cabeça forte.", tr: "Çok şiddetli baş ağrım var." },
-        { pronoun: "Sentir enjoo", form: "Mide bulantısı", example: "Estou sentindo enjoo.", tr: "Mide bulantısı hissediyorum." },
-        { pronoun: "Faz X dias que", form: "Süredir böyle", example: "Faz três dias que estou tossindo.", tr: "Üç gündür öksürüyorum." },
-        { pronoun: "Alergia a", form: "Alerji", example: "Tenho alergia a penicilina.", tr: "Penisiline alerjim var." },
-        { pronoun: "Piorou", form: "Kötüleşti", example: "A dor piorou de noite.", tr: "Ağrı geceleri daha da kötüleşti." }
+        {pronoun:"namorar com", form:"biriyle çıkmak", example:"Namoro com a Catarina há dois anos.", tr:"İki yıldır Catarina ile çıkıyorum."},
+        {pronoun:"apaixonar-se por", form:"birine aşık olmak", example:"Apaixonei-me por ele ao primeiro olhar.", tr:"İlk bakışta ona aşık oldum."},
+        {pronoun:"casar(-se) com", form:"evlenmek", example:"Casámo-nos em junho na Quinta da Malveira.", tr:"Haziran'da Quinta da Malveira'da evlendik."},
+        {pronoun:"separar-se de", form:"ayrılmak", example:"Separaram-se depois de dez anos juntos.", tr:"On yıl birlikteliğin ardından ayrıldılar."},
+        {pronoun:"divorciar-se de", form:"boşanmak", example:"Divorciou-se e ficou com a custódia dos filhos.", tr:"Boşandı ve çocukların velayetini aldı."},
+        {pronoun:"reconciliar-se com", form:"barışmak", example:"Reconciliaram-se depois da discussão.", tr:"Tartışmadan sonra barıştılar."}
       ],
-      note: "'Enjoo' = mide bulantısı (BP). 'Tonteira' = baş dönmesi. 'Fraqueza' = halsizlik. 'Coceira' = kaşıntı."
+      note: "EP'de 'namorar' = 'sevgilisi olmak' (çıkmak). 'Namorado/a' = sevgili. Evlilik için 'casar(-se)' kullanılır. 'Noivo/noiva' hem nişanlı hem de damat/gelin anlamına gelebilir."
     },
     {
-      title: "İlaç Kullanım Talimatları — Emir Kipi",
-      explanation: "İlaç talimatları imperativo (emir kipi) veya infinitivo ile verilir. 'Tome dois comprimidos' = İki tablet alın. 'Não tome com leite' = Sütle içmeyin. 'Repita a cada oito horas' = Her sekiz saatte bir tekrarlayın.",
+      title: "Pretérito Perfeito Composto — Yakın Geçmiş",
+      explanation: "EP'de 'ter + particípio passado' (bileşik geçmiş) hâlâ devam eden veya yakın geçmişe ait eylemleri anlatmak için kullanılır.",
       table: [
-        { pronoun: "Tome", form: "Alın (tome = tomar emir)", example: "Tome um comprimido de manhã.", tr: "Sabah bir tablet alın." },
-        { pronoun: "Não tome", form: "Almayın", example: "Não tome com o estômago vazio.", tr: "Aç mideye almayın." },
-        { pronoun: "Repita", form: "Tekrarlayın", example: "Repita a cada seis horas.", tr: "Her altı saatte bir tekrarlayın." },
-        { pronoun: "Guarde", form: "Saklayın", example: "Guarde na geladeira.", tr: "Buzdolabında saklayın." },
-        { pronoun: "Evite", form: "Kaçının", example: "Evite álcool durante o tratamento.", tr: "Tedavi süresince alkolden kaçının." },
-        { pronoun: "Complete", form: "Tamamlayın", example: "Complete o ciclo de antibióticos.", tr: "Antibiyotik kürünü tamamlayın." }
+        {pronoun:"eu", form:"tenho + pp.", example:"Tenho namorado com ela há um mês.", tr:"Bir aydır onunla çıkıyorum."},
+        {pronoun:"tu", form:"tens + pp.", example:"Tens pensado nele ultimamente?", tr:"Son zamanlarda onu düşünüyor musun?"},
+        {pronoun:"ele/ela", form:"tem + pp.", example:"Ela tem estado muito feliz desde que se casou.", tr:"Evlendiğinden beri çok mutlu."},
+        {pronoun:"nós", form:"temos + pp.", example:"Temos vivido momentos muito especiais juntos.", tr:"Birlikte çok özel anlar yaşıyoruz."},
+        {pronoun:"vós", form:"tendes + pp.", example:"Tendes discutido muito ultimamente?", tr:"Son zamanlarda çok tartışıyor musunuz?"},
+        {pronoun:"eles/elas", form:"têm + pp.", example:"Têm-se amado há vinte anos.", tr:"Yirmi yıldır sevişiyorlar."}
       ],
-      note: "Düzenli -AR imperativos: falar→fale, tomar→tome, guardar→guarde. -ER: beber→beba, comer→coma. -IR: abrir→abra."
+      note: "EP'de 'Pretérito Perfeito Composto' ile 'Pretérito Perfeito Simples' arasındaki fark çok önemlidir: 'fiz' (tamamlandı), 'tenho feito' (devam ediyor veya sıklıkla yapılmış)."
     },
     {
-      title: "Sağlık Sigortası ve Sistem — SUS ve Özel",
-      explanation: "Brezilya'da iki sağlık sistemi var: SUS (Sistema Único de Saúde = Ulusal Sağlık Sistemi, ücretsiz) ve plano de saúde (özel sigorta). 'Tenho plano de saúde' = Özel sigortam var. Bu farkı anlatmak için SER (sistem türü) ve TER (sahiplik) kullanılır.",
+      title: "Expressões de Amor — Aşk İfadeleri",
+      explanation: "Romantik ilişkilerde kullanılan Portekizce ifadeler ve deyimler.",
       table: [
-        { pronoun: "SUS", form: "público, gratuito", example: "Fui ao posto pelo SUS.", tr: "SUS ile sağlık merkezine gittim." },
-        { pronoun: "Plano de saúde", form: "özel sigorta", example: "Meu plano cobre essa consulta.", tr: "Sigortam bu muayeneyi kapsıyor." },
-        { pronoun: "Posto de saúde", form: "SUS klinik", example: "O posto fica perto de casa.", tr: "Klinik eve yakın." },
-        { pronoun: "Consulta", form: "Muayene randevusu", example: "Marquei consulta para amanhã.", tr: "Yarın için muayene randevusu aldım." },
-        { pronoun: "Particular", form: "Özel ödeme", example: "Vou pagar particular desta vez.", tr: "Bu sefer kendim ödeyeceğim." },
-        { pronoun: "Farmácia popular", form: "Devlet eczanesi", example: "Na Farmácia Popular é mais barato.", tr: "Farmácia Popular'da daha ucuz." }
+        {pronoun:"Amo-te.", form:"Seni seviyorum (EP).", example:"Amo-te mais do que tudo.", tr:"Seni her şeyden çok seviyorum."},
+        {pronoun:"Gosto muito de ti.", form:"Senden çok hoşlanıyorum.", example:"Gosto muito de ti — és especial.", tr:"Senden çok hoşlanıyorum — özelsin."},
+        {pronoun:"Tens saudades minhas?", form:"Beni özlüyor musun?", example:"Tenho saudades tuas quando estás longe.", tr:"Uzaktayken seni özlüyorum."},
+        {pronoun:"Faz-me feliz.", form:"Beni mutlu ediyor.", example:"A tua companhia faz-me feliz.", tr:"Senin yanında olmak beni mutlu ediyor."},
+        {pronoun:"Quero ficar contigo.", form:"Seninle olmak istiyorum.", example:"Quero ficar contigo para sempre.", tr:"Seninle sonsuza kadar olmak istiyorum."},
+        {pronoun:"Casar-me-ia contigo.", form:"Seninle evlenirdim (cond.)", example:"Casar-me-ia contigo na lua se pudesse!", tr:"Yapabilseydim seninle ayda evlenirdim!"}
       ],
-      note: "SUS = Brezilya anayasasında güvence altında evrensel sağlık hakkı. 'Farmácia Popular' = devletin sübvanse ettiği eczane programı."
+      note: "EP'de 'Amo-te' (Seni seviyorum) daha resmi ve güçlü bir ifadedir. Günlük dilde 'Gosto muito de ti' daha sık kullanılır. 'Amo-te' çok derin sevgi için saklıdır."
     }
   ],
   speaking: [
-    { q: "Eczaneye gidip baş ağrısı için bir şey isteyin.", a: "Boa tarde! Preciso de algo para dor de cabeça. Pode me recomendar?" },
-    { q: "'Üç gündür öksürüyorum' nasıl?", a: "Faz três dias que estou tossindo. Está piorando." },
-    { q: "Alerjinizi belirtin.", a: "Tenho alergia a aspirina. Tem uma alternativa?" },
-    { q: "İlaç talimatını sorun.", a: "Como devo tomar esse remédio? Quantos comprimidos por dia?" },
-    { q: "'Reçetesiz satılıyor mu?' nasıl?", a: "Posso comprar sem receita médica?" }
+    {q:"Como conheceste o teu namorado/namorada?", a:"Conhecemo-nos num curso de português! Ficámos a falar durante horas e decidimos trocar números."},
+    {q:"Quantos anos namoraram antes de casar?", a:"Namorámos quatro anos antes de nos casarmos. Queríamos conhecer-nos bem antes do grande passo."},
+    {q:"Qual é o segredo de uma relação duradoura?", a:"Na minha opinião, são a comunicação, a confiança e o respeito mútuo. E também o sentido de humor!"},
+    {q:"Em Portugal as pessoas casam novos ou mais velhos?", a:"A idade média para o primeiro casamento em Portugal tem subido. Muitos casam perto dos 30 anos, primeiro namoram vários anos."},
+    {q:"Como se pede alguém em casamento em Portugal?", a:"Não há uma tradição única. Alguns fazem pedidos elaborados, outros preferem um momento íntimo. O importante é a sinceridade."}
   ],
   dialogues: [
     {
-      title: "Eczanede",
+      title: "Conversa de Casal",
       lines: [
-        { speaker: "Cliente", text: "Boa tarde! Estou com febre e dor de garganta há dois dias.", tr: "İyi günler! İki gündür ateşim ve boğaz ağrım var." },
-        { speaker: "Farmacêutica", text: "Entendido. Você tem receita médica?", tr: "Anladım. Doktor reçeteniz var mı?" },
-        { speaker: "Cliente", text: "Não. Fui ao médico, mas ainda não recebi a receita.", tr: "Hayır. Doktora gittim ama reçeteyi henüz almadım." },
-        { speaker: "Farmacêutica", text: "Para febre, posso dar paracetamol sem receita. Para a garganta, temos pastilhas.", tr: "Ateş için, reçetesiz parasetamol verebilirim. Boğaz için pastillerimiz var." },
-        { speaker: "Cliente", text: "Ótimo! Tenho alergia a ibuprofeno, tudo bem?", tr: "Harika! İbuprofene alerjim var, sorun olur mu?" },
-        { speaker: "Farmacêutica", text: "Não tem problema! O paracetamol é diferente. Tome um comprimido a cada seis horas.", tr: "Sorun yok! Parasetamol farklı. Her altı saatte bir tablet alın." }
+        {speaker:"Rodrigo", text:"Catarina, tenho algo importante para te dizer."},
+        {speaker:"Catarina", text:"Estás a assustar-me! O que é?"},
+        {speaker:"Rodrigo", text:"Nada de mau! Namoro contigo há três anos e estou muito feliz."},
+        {speaker:"Catarina", text:"Eu também! És a pessoa mais importante da minha vida."},
+        {speaker:"Rodrigo", text:"Por isso... queria perguntar-te se queres casar comigo?"},
+        {speaker:"Catarina", text:"Rodrigo! Sim, claro que sim! Amo-te muito! Que surpresa incrível!"}
       ]
     }
   ],
   listening: {
-    text: "O Sistema Único de Saúde, o SUS, é um dos maiores sistemas de saúde pública do mundo. Criado pela Constituição de 1988, garante atendimento gratuito a todos os brasileiros. O SUS realiza milhões de consultas, cirurgias e vacinas por ano. Porém, enfrenta desafios como superlotação e falta de recursos. Por isso, muitos brasileiros que podem pagar optam por planos de saúde privados. A Farmácia Popular, programa do governo, oferece medicamentos essenciais com até noventa por cento de desconto.",
+    text: "Os padrões de relacionamento em Portugal têm mudado muito nas últimas décadas. A coabitação antes do casamento tornou-se muito comum, especialmente nas cidades. A idade média para o primeiro casamento subiu significativamente — muitos portugueses casam perto dos 30 anos. O divórcio aumentou, mas os casamentos civis e os casamentos religiosos continuam a ter importância cultural. Os casamentos entre pessoas do mesmo sexo são legais em Portugal desde 2010, o que torna Portugal um dos países mais progressistas nesta matéria.",
     questions: [
-      { q: "SUS ne zaman ve nasıl kuruldu?", a: "1988 Anayasası ile kuruldu, tüm Brezilyalılara ücretsiz sağlık hakkı tanıdı" },
-      { q: "SUS'un karşılaştığı zorluklar neler?", a: "Aşırı kalabalık ve kaynak eksikliği" },
-      { q: "Farmácia Popular programı ne sağlıyor?", a: "Temel ilaçlarda yüzde 90'a kadar indirim" }
+      {q:"O que se tornou comum em Portugal antes do casamento?", a:"A coabitação (viver juntos antes de casar)."},
+      {q:"Desde quando são legais os casamentos entre pessoas do mesmo sexo em Portugal?", a:"Desde 2010."},
+      {q:"Qual é a tendência da idade de casamento em Portugal?", a:"Tem subido — muitos casam perto dos 30 anos."}
     ]
   }
 };

@@ -1,94 +1,104 @@
-const L49 = {
-  title: "Conversação Livre — Domínio Total",
+var L49 = {
   words: [
-    { en: "o poliglota", tr: "çok dilli kişi", pron: "u poliglota", bd: "eril/dişil; saber várias línguas" },
-    { en: "a lusofonia", tr: "Portekiz dili dünyası", pron: "a luzofõniya", bd: "dişil; países lusófonos = Portekizce konuşulan ülkeler" },
-    { en: "o Brasil", tr: "Brezilya", pron: "u Brazíw", bd: "eril; brasileiro/a = Brezilyalı" },
-    { en: "Portugal", tr: "Portekiz", pron: "Portugaw", bd: "eril; português/portuguesa = Portekizli" },
-    { en: "Angola", tr: "Angola", pron: "Ãgola", bd: "dişil; angolano/a = Angolalı" },
-    { en: "Moçambique", tr: "Mozambik", pron: "Mosãmbiki", bd: "eril; moçambicano/a" },
-    { en: "Cabo Verde", tr: "Yeşil Burun Adaları", pron: "Kabu Vérdi", bd: "eril; cabo-verdiano/a" },
-    { en: "a CPLP", tr: "Portekiz dili ülkeleri topluluğu", pron: "a sé-pé-éli-pé", bd: "Comunidade dos Países de Língua Portuguesa" },
-    { en: "a maravilha", tr: "mucize / harika", pron: "a maravilyha", bd: "dişil; que maravilha! = ne harika!" },
-    { en: "a conquista", tr: "başarı / fetih", pron: "a kõkishta", bd: "dişil; parabéns pela conquista!" },
-    { en: "a jornada", tr: "yolculuk / süreç", pron: "a jornada", bd: "dişil; jornada de aprendizado = öğrenme yolculuğu" },
-    { en: "a perseverança", tr: "sebat / azim", pron: "a perseverãnsa", bd: "dişil; perseverar = sebat etmek" },
-    { en: "o amadurecimento", tr: "olgunlaşma", pron: "u amaduresimẽntu", bd: "eril; amadurecer = olgunlaşmak" },
-    { en: "a gratidão", tr: "minnet / şükran", pron: "a gratidão", bd: "dişil; ser grato = minnettar olmak" },
-    { en: "celebrar", tr: "kutlamak", pron: "selebrar", bd: "düzenli -AR; celebração = kutlama" },
-    { en: "alcançar", tr: "ulaşmak / elde etmek", pron: "awkãnsár", bd: "düzenli -AR; alcançar a fluência = akıcılığa ulaşmak" },
-    { en: "superar", tr: "aşmak / üstesinden gelmek", pron: "superár", bd: "düzenli -AR; superar desafios = zorlukları aşmak" },
-    { en: "Parabéns pela conquista!", tr: "Başarın için tebrikler!", pron: "parabẽysh pela kõkishta", bd: "kutlama ifadesi" },
-    { en: "O mundo é seu!", tr: "Dünya senin!", pron: "u mũndu é sew", bd: "motivasyon / başarı ifadesi" },
-    { en: "Até logo, mundo lusófono!", tr: "Görüşmek üzere, Portekizce dünya!", pron: "até logu mũndu luzófonу", bd: "veda ve kutlama" }
+    {en:"fluency", tr:"akıcılık", pron:"fluẽˈsiɐ", bd:"a fluência"},
+    {en:"to express oneself", tr:"kendini ifade etmek", pron:"iʃpɾɨˈmɨɾ-sɨ", bd:"expressar-se"},
+    {en:"to communicate", tr:"iletişim kurmak", pron:"kumuniˈkɐɾ", bd:"comunicar"},
+    {en:"to interact", tr:"etkileşmek / iletişmek", pron:"ĩtɨɾɐˈʒiɾ", bd:"interagir"},
+    {en:"to argue / discuss", tr:"tartışmak / görüş alışverişi", pron:"ɐɾɡuˈmẽtɐɾ", bd:"argumentar"},
+    {en:"to negotiate", tr:"müzakere etmek", pron:"nɨɡusiˈɐɾ", bd:"negociar"},
+    {en:"to debate", tr:"tartışmak / münazara", pron:"dɨbɐˈteɾ", bd:"debater"},
+    {en:"to summarise", tr:"özetlemek", pron:"ɾɨzuˈmiɾ", bd:"resumir"},
+    {en:"to elaborate", tr:"ayrıntılandırmak", pron:"ilɐbuˈɾɐɾ", bd:"elaborar"},
+    {en:"to convince", tr:"ikna etmek", pron:"kõvẽˈseɾ", bd:"convencer"},
+    {en:"to refute", tr:"çürütmek / reddetmek", pron:"ɾɨˈfutɐɾ", bd:"refutar"},
+    {en:"complex", tr:"karmaşık", pron:"kõˈplɛksu", bd:"complexo/a"},
+    {en:"subtle", tr:"ince / örtük", pron:"ˈsutiɫ", bd:"subtil"},
+    {en:"nuanced", tr:"nüanslı", pron:"nuɐ̃ˈsɐdu", bd:"nuançado/a"},
+    {en:"coherent", tr:"tutarlı / mantıklı", pron:"kuɨˈɾẽtɨ", bd:"coerente"},
+    {en:"succinct", tr:"öz / kısa ve öz", pron:"suˈsĩtu", bd:"sucinto/a"},
+    {en:"persuasive", tr:"ikna edici", pron:"pɨɾˈswazɨvu", bd:"persuasivo/a"},
+    {en:"rhetoric", tr:"retorik / söylem sanatı", pron:"ʁɨˈtɔɾikɐ", bd:"a retórica"},
+    {en:"point of view", tr:"bakış açısı", pron:"ˈpõtu dɨ ˈviʃtɐ", bd:"o ponto de vista"},
+    {en:"conclusion", tr:"sonuç", pron:"kõkluˈzãw", bd:"a conclusão"}
   ],
   grammar: [
     {
-      title: "Serbest Konuşma — Tüm Zamanları Birlikte Kullanma",
-      explanation: "Gerçek dil kullanımında tüm zamanlar bir arada gelir. Bir hikaye anlatırken: Imperfeito (arka plan: 'Era uma tarde ensolarada...'), Perfeito (olay: 'De repente, chegou...'), Presente (yorum: 'Hoje, ainda lembro...'), Futuro (sonuç: 'Nunca vou esquecer...'). Bu zaman karışımı akıcılığın işaretidir.",
+      title: "Revisão: Os Tempos Verbais do Português Europeu",
+      explanation: "Portekiz Portekizcesinin temel zaman kiplerini ve kullanımlarını gözden geçiriyoruz.",
       table: [
-        { pronoun: "Era (imper.)", form: "Arka plan", example: "Era uma noite tranquila.", tr: "Sakin bir geceydi." },
-        { pronoun: "De repente (perf.)", form: "Olay", example: "De repente, ele chegou.", tr: "Aniden o geldi." },
-        { pronoun: "Hoje (pres.)", form: "Şimdiki yorum", example: "Hoje sei que foi especial.", tr: "Bugün özel olduğunu biliyorum." },
-        { pronoun: "Vai (ir+inf.)", form: "Gelecek", example: "Vai ficar na memória.", tr: "Hafızada kalacak." },
-        { pronoun: "Devia ter (cond.)", form: "Pişmanlık", example: "Devia ter ficado mais tempo.", tr: "Daha fazla kalmalıydım." },
-        { pronoun: "Espero que (subj.)", form: "Dilek", example: "Espero que aconteça de novo.", tr: "Tekrar olmasını umuyorum." }
+        {pronoun:"Pres. Indicativo", form:"falo / como / parto", example:"Falo português todos os dias.", tr:"Her gün Portekizce konuşuyorum."},
+        {pronoun:"Pret. Perfeito Simples", form:"falei / comi / parti", example:"Falei com ele ontem.", tr:"Dün onunla konuştum."},
+        {pronoun:"Pret. Imperfeito", form:"falava / comia / partia", example:"Em criança, falava muito.", tr:"Çocukken çok konuşurdum."},
+        {pronoun:"Futuro Simples", form:"falarei / comerei / partirei", example:"Falarei consigo amanhã.", tr:"Yarın sizinle konuşacağım."},
+        {pronoun:"Condicional", form:"falaria / comeria / partiria", example:"Falaria, mas não tenho tempo.", tr:"Konuşurdum ama zamanım yok."},
+        {pronoun:"Conjuntivo Presente", form:"fale / coma / parta", example:"Espero que fales comigo.", tr:"Seninle konuşmanı umuyorum."}
       ],
-      note: "Akıcı konuşma = zamanları doğal geçişlerle kullanmak. Hata yapmak normaldir. Natives de zaman zaman gramer hataları yapar — iletişim asıl hedeftir!"
+      note: "EP'de 'estou a falar' (gerúndio com a + infinitivo) ile 'falo' arasında nüans farkı var. 'Estou a falar' = şu an konuşuyor olmak (eylem sürüyor). 'Falo' = genel alışkanlık."
     },
     {
-      title: "Lusofonia — Portekiz Dili Konuşulan Dünya",
-      explanation: "Portekizce dünyada 9 ülkenin resmi dilidir: Brezilya, Portekiz, Angola, Moçambique, Cabo Verde, São Tomé e Príncipe, Guiné-Bissau, Guiné Equatorial, Timor-Leste. 250+ milyon konuşan. Her ülkede farklı aksan ve kültür var. CPLP (Comunidade dos Países de Língua Portuguesa) bu ülkeleri bir araya getiriyor.",
+      title: "Estruturas para Debate e Argumentação (Tartışma Yapıları)",
+      explanation: "C1-C2 düzeyinde Portekizce konuşmak için tartışma ve argümantasyon ifadeleri.",
       table: [
-        { pronoun: "Brasil", form: "210M konuşan", example: "O maior país lusófono.", tr: "En büyük Portekizce konuşan ülke." },
-        { pronoun: "Portugal", form: "10M", example: "Berço da língua portuguesa.", tr: "Portekizce'nin beşiği." },
-        { pronoun: "Angola", form: "35M", example: "Maior país lusófono em África.", tr: "Afrika'nın en büyük Portekizce ülkesi." },
-        { pronoun: "Moçambique", form: "32M", example: "Português convive com 40+ línguas.", tr: "Portekizce 40+ dille birlikte yaşıyor." },
-        { pronoun: "Cabo Verde", form: "580K", example: "Bossa nova influência a música.", tr: "Bossa nova müziği etkiliyor." },
-        { pronoun: "Timor-Leste", form: "1.3M", example: "Língua oficial desde 2002.", tr: "2002'den beri resmi dil." }
+        {pronoun:"Apresentar opinião", form:"Na minha perspetiva...", example:"Na minha perspetiva, o turismo beneficia mais do que prejudica.", tr:"Benim bakış açımdan, turizm zarar vermekten çok fayda sağlar."},
+        {pronoun:"Concordar parcialmente", form:"Concordo em parte, mas...", example:"Concordo em parte, mas há que considerar os efeitos negativos.", tr:"Kısmen katılıyorum, ama olumsuz etkileri de göz önünde bulundurmak gerekir."},
+        {pronoun:"Discordar educadamente", form:"Permita-me discordar...", example:"Permita-me discordar: os dados mostram o contrário.", tr:"Müsaade edin ayrı düşüneyim: veriler tam tersini gösteriyor."},
+        {pronoun:"Dar exemplos", form:"A título de exemplo...", example:"A título de exemplo, veja-se o caso de Lisboa.", tr:"Örnek olarak, Lizbon örneğine bakalım."},
+        {pronoun:"Concluir", form:"Em suma, / Em conclusão...", example:"Em suma, o português europeu é uma língua rica e complexa.", tr:"Özetle, Avrupa Portekizcesi zengin ve karmaşık bir dildir."},
+        {pronoun:"Ceder a palavra", form:"Dê-me licença que...", example:"Dê-me licença que termine o raciocínio.", tr:"Düşüncemi tamamlamama izin verin."}
       ],
-      note: "Portekizce, dünyada 3.-6. en çok konuşulan dil (kaynağa göre değişir). Avrupa'da İngilizce'den sonra en yaygın Batı dili. İnternet içeriğinin ~%4'ü Portekizce."
+      note: "Resmi tartışmalarda 'tu' yerine 'você' veya doğrudan isim/unvan kullanılır. 'Permita-me' (izin veriniz) çok resmi; 'posso dizer?' (söyleyebilir miyim?) daha az resmi ama kibarca."
     },
     {
-      title: "Kültürel Köprü — Türkçe ile Karşılaştırma",
-      explanation: "Türkçe ile Portekizce arasında ilginç benzerlikler var: Her ikisi de zengin fiil çekim sistemine sahip. Türkçe'de özne atlanabilir (bağlamdan anlaşılır); Portekizce'de de özellikle BP'de 'eu' sıkça atlanır. 'Vou ao mercado' = 'Markete gidiyorum' — öznesi yok ama açık. Her iki dil de oldukça ifade zenginliğine sahip.",
+      title: "Síntese das Características do Português Europeu",
+      explanation: "Avrupa Portekizcesinin öğrendiğimiz temel özelliklerinin özet tablosu.",
       table: [
-        { pronoun: "Özne düşürme", form: "BP'de yaygın", example: "Fui lá. (= Ben gittim)", tr: "Fui lá. (Özneli: 'Eu fui lá')" },
-        { pronoun: "Fiil çekimi", form: "Bağlam sağlar", example: "Fui, foste, foi, fomos, foram.", tr: "Fiil, kişiyi belli eder." },
-        { pronoun: "Vurgu", form: "İkisi de zengin", example: "'Que saudade!' = çok yüklü anlam.", tr: "Tek kelimede derin duygu." },
-        { pronoun: "Sosyal dil", form: "İkisi de sıcak", example: "Hospitalidade e misafirperverlik.", tr: "Her ikisi de misafirperverliği sever." },
-        { pronoun: "Edatlar", form: "Portekizce + zor", example: "Gostar DE, depender DE.", tr: "Türkçe'de hal ekleri; PT'de edatlar." },
-        { pronoun: "Kelime düzeni", form: "Esnek", example: "Eu te amo. / Te amo eu. (poetic)", tr: "Her ikisinde de kelime düzeni esnek." }
+        {pronoun:"Gerúndio", form:"estar a + infinitivo", example:"Estou a estudar português.", tr:"Portekizce çalışıyorum."},
+        {pronoun:"Pronome", form:"enclítico: verb-me", example:"Diga-me / Chamo-me", tr:"Bana söyleyin / Adım..."},
+        {pronoun:"Pronome pessoal", form:"tu (diário)", example:"Tu falas muito bem!", tr:"Çok iyi konuşuyorsun!"},
+        {pronoun:"Possessivo", form:"artigo + possessivo", example:"O meu livro / A minha casa", tr:"Benim kitabım / Benim evim"},
+        {pronoun:"Vocabulário EP", form:"autocarro, telemóvel...", example:"Apanhei o autocarro e liguei pelo telemóvel.", tr:"Otobüse bindim ve telefonla aradım."},
+        {pronoun:"Vocabulário cultural", form:"SNS, Multibanco, 112", example:"Ligo para o 112 e pago com o Multibanco.", tr:"112'yi arıyorum ve Multibanco ile ödüyorum."}
       ],
-      note: "Türkçe konuşanların Portekizce öğrenmesi için avantaj: her iki dil de zengin fiil sistemi, sıcak kültürel iletişim tarzı. Zorluk: cinsiyet sistemi, subjuntivo, crase."
+      note: "Parabéns! Chegaste ao fim do curso de Português Europeu. Continua a praticar: ouve fado, vê filmes portugueses, lê o Público ou o Jornal de Notícias, e fala com falantes nativos. A fluência vem com a prática!"
     }
   ],
   speaking: [
-    { q: "Kendinizi Portekizce olarak tam ve doğal bir şekilde tanıtın.", a: "Olá! Me chamo [isim]. Sou de [yer], tenho [yaş] anos e aprendi português porque adoro a cultura brasileira." },
-    { q: "Brezilya'ya hiç gitseniz ne yapmak isterdiniz?", a: "Se fosse ao Brasil, visitaria o Rio, comeria feijoada, ouviria ao vivo samba e tentaria surfar!" },
-    { q: "Portekizce öğrenmenin size katkısı ne oldu?", a: "Aprendi português abriu minha mente para uma nova cultura, novas pessoas e novas possibilidades." },
-    { q: "Bir Brezilyalı arkadaşa Türkiye'yi tanıtın.", a: "A Turquia é um país incrível — tem história milenar, culinária deliciosa e povo muito caloroso!" },
-    { q: "Bu kursu bir arkadaşınıza tavsiye edin.", a: "Recomendo muito! O curso é completo, detalhado e prático. Vai te transformar!" }
+    {q:"Como podes descrever o teu percurso de aprendizagem do português europeu?", a:"Comecei com o vocabulário básico e as saudações. Depois aprendi gramática, como os tempos verbais, o conjuntivo e as estruturas específicas do português europeu, como o gerúndio com 'estar a' e os pronomes enclíticos."},
+    {q:"Quais são as maiores diferenças que encontraste entre o português europeu e o brasileiro?", a:"As maiores diferenças são na pronúncia, muito mais fechada no europeu, no gerúndio — 'estou a fazer' vs 'estou fazendo' — e no vocabulário: 'autocarro' vs 'ônibus', 'telemóvel' vs 'celular', 'casa de banho' vs 'banheiro'."},
+    {q:"Se tivesses de recomendar Portugal a alguém, o que dirias?", a:"Diria que Portugal é um país de contrastes encantadores: tem história milenar e modernidade, praia e montanha, cidades vibrantes como Lisboa e Porto e aldeias tranquilas no Alentejo e no Minho. E o povo é caloroso e hospitaleiro."},
+    {q:"Como é que o conceito de 'saudade' reflete a identidade portuguesa?", a:"A saudade é o coração da identidade portuguesa. Reflete uma relação especial com o tempo e a memória, um amor pelo que passou ou pelo que poderia ter sido. Manifesta-se no fado, na literatura de Pessoa e na própria forma como os portugueses veem o mundo."},
+    {q:"O que planeias fazer para continuar a melhorar o teu português?", a:"Planeio ouvir podcasts em português europeu, ver séries portuguesas, ler jornais como o Público, praticar com falantes nativos e, se possível, visitar Portugal para viver a língua e a cultura de perto."}
   ],
   dialogues: [
     {
-      title: "Son Konuşma — Başarı Kutlaması",
+      title: "Entrevista de Emprego em Lisboa",
       lines: [
-        { speaker: "Professor", text: "Uau! Que jornada incrível você fez! Do zero ao avançado em português!", tr: "Vay be! Ne inanılmaz bir yolculuk yaptınız! Sıfırdan ileri düzeye Portekizce!" },
-        { speaker: "Aluno", text: "Não acredito que cheguei até aqui. No primeiro dia, mal sabia dizer olá!", tr: "Buraya kadar geldiğime inanamıyorum. İlk gün, merhaba demeyi bile bilmiyordum!" },
-        { speaker: "Professor", text: "E agora? Você fala sobre política, cultura, gramática avançada... Que conquista!", tr: "Şimdi ne? Siyaset, kültür, ileri dilbilgisi hakkında konuşuyorsunuz... Ne başarı!" },
-        { speaker: "Aluno", text: "O mais bonito foi descobrir o Brasil. A cultura, a música, a comida... Me apaixonei!", tr: "En güzel şey Brezilya'yı keşfetmekti. Kültür, müzik, yemek... Hayran kaldım!" },
-        { speaker: "Professor", text: "O mundo lusófono agora é seu! Portugal, Angola, Moçambique — tudo ao alcance!", tr: "Portekizce dünya artık sizin! Portekiz, Angola, Mozambik — hepsi elinizin altında!" },
-        { speaker: "Aluno", text: "Muito obrigado! Continuarei praticando. Até logo, mundo lusófono! O mundo é meu!", tr: "Çok teşekkürler! Pratik yapmaya devam edeceğim. Görüşmek üzere, Portekizce dünya! Dünya benim!" }
+        {speaker:"Entrevistador/a", text:"Bom dia. Obrigado/a por vir. Pode falar-me um pouco sobre si?"},
+        {speaker:"Candidato/a", text:"Bom dia. Com muito prazer. Tenho 28 anos, sou licenciado/a em Gestão e tenho cinco anos de experiência na área de marketing digital."},
+        {speaker:"Entrevistador/a", text:"Excelente. Porque é que se candidatou a esta posição na nossa empresa?"},
+        {speaker:"Candidato/a", text:"A vossa empresa tem uma reputação excelente no setor e o projeto em que trabalharia alinha-se perfeitamente com as minhas competências e objetivos de carreira."},
+        {speaker:"Entrevistador/a", text:"Quais considera serem os seus pontos fortes e as suas áreas de melhoria?"},
+        {speaker:"Candidato/a", text:"Os meus pontos fortes são a capacidade analítica e o trabalho em equipa. Quanto às áreas de melhoria, estou a trabalhar para desenvolver competências de gestão de projetos de maior escala."}
+      ]
+    },
+    {
+      title: "Conversa de Despedida — Fim do Curso",
+      lines: [
+        {speaker:"Professora", text:"Chegámos ao fim do nosso curso de português europeu. Como se sentem?"},
+        {speaker:"Aluno/a 1", text:"Sinto-me muito mais confiante! No início tinha medo de falar mas agora até consigo discutir temas complexos."},
+        {speaker:"Aluno/a 2", text:"Eu aprendi não só a língua mas também a cultura. Agora percebo porque é que os portugueses são como são!"},
+        {speaker:"Professora", text:"Fico muito satisfeita de ouvir isso. Lembrem-se: a fluência vem com a prática constante."},
+        {speaker:"Aluno/a 1", text:"Obrigado/a por tudo, professora. Foi uma jornada incrível."},
+        {speaker:"Professora", text:"O prazer foi meu. Boa sorte! E espero que possam um dia visitar Portugal — vão adorar!"}
       ]
     }
   ],
   listening: {
-    text: "Você chegou ao final desta jornada linguística extraordinária. Começou do zero e agora é capaz de se comunicar em português brasileiro com confiança. Lembre-se: a fluência é um processo, não um destino. Continue assistindo séries, ouvindo música, conversando com brasileiros e mergulhando na lusofonia. O Brasil é um país que abraça quem chega com curiosidade e coração aberto. Você não apenas aprendeu uma língua — você ganhou acesso a uma das culturas mais vibrantes, criativas e acolhedoras do mundo. Parabéns, e bem-vindo ao mundo lusófono! O mundo é seu.",
+    text: "Chegaste ao fim do curso de Português Europeu. Ao longo destas quarenta e nove lições, aprendeste não só a gramática e o vocabulário da língua, mas também a cultura, a história, a gastronomia e os costumes de Portugal. Aprendeste que o português europeu tem características únicas: o gerúndio com 'estar a', os pronomes enclíticos, o uso frequente do 'tu' e um vocabulário próprio diferente do português brasileiro. Conheceste figuras como Fernando Pessoa e Luís de Camões, aprendeste sobre a Revolução dos Cravos e as Descobertas Portuguesas, e mergulhaste na saudade e no fado. Agora tens as ferramentas para comunicar com os cerca de dez milhões de falantes nativos de Portugal e compreender o mundo lusófono na sua expressão mais antiga. Continua a praticar — o português é uma língua viva, rica e bela. Boa sorte na tua jornada linguística!",
     questions: [
-      { q: "Akıcılığı sürdürmek için neler önerildi?", a: "Dizi izlemek, müzik dinlemek, Brezilyalılarla konuşmak, Lusofonia'ya dalmak" },
-      { q: "Bu kursta dil öğrenmenin ötesinde ne kazanıldı?", a: "Dünyanın en canlı, yaratıcı ve sıcakkanlı kültürlerinden birine erişim" },
-      { q: "Lusofonia'ya hoş geldiniz sözü ne anlama geliyor?", a: "Portekizce konuşulan tüm ülkeleri (Brezilya, Portekiz, Angola vb.) kapsayan geniş kültür ailesine katılım" }
+      {q:"Quais são as características únicas do português europeu mencionadas?", a:"O gerúndio com 'estar a', os pronomes enclíticos, o uso frequente do 'tu' e vocabulário próprio diferente do português brasileiro."},
+      {q:"Quantos falantes nativos tem Portugal?", a:"Portugal tem cerca de dez milhões de falantes nativos."},
+      {q:"O que o curso ensinOU além da gramática e vocabulário?", a:"O curso ensinou também a cultura, a história, a gastronomia e os costumes de Portugal."}
     ]
   }
 };

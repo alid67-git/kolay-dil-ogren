@@ -1,94 +1,93 @@
-const L34 = {
-  title: "Turismo no Brasil",
+var L34 = {
   words: [
-    { en: "o turista", tr: "turist", pron: "u turistsha", bd: "eril/dişil; turismo = turizm" },
-    { en: "o guia turístico", tr: "rehber (turizm)", pron: "u giya turistiku", bd: "eril; guia = rehber" },
-    { en: "o passeio", tr: "gezi / yürüyüş", pron: "u paseyyu", bd: "eril; fazer um passeio = gezi yapmak" },
-    { en: "a atração", tr: "turistik yer", pron: "a atrasão", bd: "dişil; atração turística" },
-    { en: "o litoral", tr: "kıyı şeridi", pron: "u litoraw", bd: "eril; orla marítima da BR" },
-    { en: "a trilha", tr: "patika / yürüyüş yolu", pron: "a trilyha", bd: "dişil; trilha ecológica = ekolojik patika" },
-    { en: "a cachoeira", tr: "şelale", pron: "a kashoeyra", bd: "dişil; tomar banho de cachoeira = şelalede yıkanmak" },
-    { en: "o Cristo Redentor", tr: "Kurtarıcı İsa heykeli", pron: "u Krishtu Redẽntor", bd: "eril; Rio'nun simgesi" },
-    { en: "as Cataratas do Iguaçu", tr: "Iguaçu Şelaleleri", pron: "as kataratash du Iguashu", bd: "dişil çoğul; UNESCO mirası" },
-    { en: "a Floresta Amazônica", tr: "Amazon Ormanı", pron: "a Floresta Amazõnika", bd: "dişil; maior floresta tropical" },
-    { en: "a pousada", tr: "küçük pansiyon / butik otel", pron: "a pozada", bd: "dişil; tipik BR konaklama" },
-    { en: "a reserva", tr: "rezervasyon", pron: "a rezerva", bd: "dişil; fazer reserva = rezervasyon yapmak" },
-    { en: "o roteiro", tr: "rota / güzergah", pron: "u roteyru", bd: "eril; roteiro turístico = turistik güzergah" },
-    { en: "a temporada", tr: "sezon / dönem", pron: "a tẽporada", bd: "dişil; alta/baixa temporada = yüksek/düşük sezon" },
-    { en: "visitar", tr: "ziyaret etmek", pron: "vizitár", bd: "düzenli -AR; visitei = ziyaret ettim" },
-    { en: "explorar", tr: "keşfetmek", pron: "eghsplorar", bd: "düzenli -AR; exploração = keşif" },
-    { en: "fotografar", tr: "fotoğraf çekmek", pron: "fotografar", bd: "düzenli -AR; tirar foto da denir" },
-    { en: "Que lugar incrível!", tr: "Ne harika yer!", pron: "ke lugar ĩkrível", bd: "beğeni ifadesi" },
-    { en: "Vale muito a pena!", tr: "Kesinlikle değer!", pron: "vali multu a pena", bd: "tavsiye için" },
-    { en: "Não perca isso!", tr: "Bunu kaçırmayın!", pron: "não pérsa isu", bd: "perca = perder'in emir kipi" }
+    {en:"family celebration", tr:"aile kutlaması", pron:"fɨʃtɐ ˈfɐmiliɐɾ", bd:"festa familiar"},
+    {en:"wedding", tr:"düğün", pron:"kɐˈzɐmẽtu", bd:"casamento"},
+    {en:"baptism", tr:"vaftiz", pron:"bɐtiˈzɐdu", bd:"batizado"},
+    {en:"birthday", tr:"doğum günü", pron:"ɐniˈvɨɾsaɾiu", bd:"aniversário"},
+    {en:"Christmas", tr:"Noel", pron:"nɐˈtɐl", bd:"Natal"},
+    {en:"Easter", tr:"Paskalya", pron:"ˈpɐʃkuɐ", bd:"Páscoa"},
+    {en:"New Year", tr:"Yeni Yıl", pron:"ɐnu ˈnovu", bd:"Ano Novo"},
+    {en:"Santos Populares", tr:"Halk Azizleri festivali", pron:"ˈsɐ̃tuʃ pupuˈlaɾɨʃ", bd:"Santos Populares"},
+    {en:"godfather", tr:"vaftiz babası", pron:"pɐˈdɾĩu", bd:"padrinho"},
+    {en:"godmother", tr:"vaftiz anası", pron:"mɐˈdɾiɲɐ", bd:"madrinha"},
+    {en:"toast", tr:"kadeh kaldırma", pron:"bɨˈbɛɾ ɐ ˈsɐudɨ dɨ", bd:"beber à saúde de"},
+    {en:"gift", tr:"hediye", pron:"pɾɨˈzẽtɨ", bd:"presente"},
+    {en:"invitation", tr:"davet", pron:"kõˈvitɨ", bd:"convite"},
+    {en:"congratulations", tr:"tebrikler", pron:"pɐɾɐˈbeɲʃ", bd:"parabéns"},
+    {en:"anniversary", tr:"yıldönümü", pron:"ɐniˈvɨɾsaɾiu", bd:"aniversário"},
+    {en:"December 8th", tr:"Meryem Ana Günü (tatil)", pron:"ˈoitu dɨ dɨˈzẽbɾu", bd:"8 de dezembro"},
+    {en:"Carnival", tr:"Karnaval", pron:"kɐɾnɐˈval", bd:"Carnaval"},
+    {en:"All Saints Day", tr:"Azizler Günü", pron:"ˈdiu dɨ ˈtodus uʃ ˈsɐ̃tuʃ", bd:"Dia de Todos os Santos"},
+    {en:"Epiphany", tr:"Üçkrallar Günü", pron:"ˈdiu dɨ ˈɾɐɪʃ", bd:"Dia de Reis"},
+    {en:"manger scene", tr:"doğum sahnesi", pron:"pɾɨˈzɛpiu", bd:"presépio"}
   ],
   grammar: [
     {
-      title: "Planlama ve Öneri — Futuro do Presente",
-      explanation: "Brezilya'da turizm planlarken Futuro do Presente (yakın gelecek için também IR+infinitivo) kullanılır. Düzenli gelecek zaman: -AR → -arei/-ará/-aremos/-arão. VISITAR → visitarei/visitará. Ayrıca 'Que tal visitar...?' = ...ziyaret etsek nasıl? öneri için kullanılır.",
+      title: "Festas e Tradições Portuguesas — Festivaller",
+      explanation: "Portekiz'in en önemli festivalleri ve gelenekleri. Santos Populares Haziran'da, Natal (Noel) Aralık'ta, Páscoa (Paskalya) ilkbaharda kutlanır.",
       table: [
-        { pronoun: "Visitarei", form: "-arei (eu)", example: "Visitarei o Cristo amanhã.", tr: "Yarın Kurtarıcı İsa'yı ziyaret edeceğim." },
-        { pronoun: "Veremos", form: "-emos (nós)", example: "Veremos o pôr do sol na praia.", tr: "Sahilde günbatımını izleyeceğiz." },
-        { pronoun: "Que tal + inf.", form: "Öneri", example: "Que tal fazer a trilha de manhã?", tr: "Sabah yürüyüş yapmaya ne dersiniz?" },
-        { pronoun: "Vamos + inf.", form: "Öneri/Plan", example: "Vamos explorar o Pelourinho!", tr: "Pelourinho'yu keşfedelim!" },
-        { pronoun: "E se + imper.", form: "Şartlı öneri", example: "E se fôssemos às Cataratas?", tr: "Şelalelere gitsek ya?" },
-        { pronoun: "Pretendo + inf.", form: "Niyet", example: "Pretendo visitar a Amazônia.", tr: "Amazon'u ziyaret etmeyi planlıyorum." }
+        {pronoun:"Santos Populares", form:"Halk Azizleri (Haziran)", example:"Em junho, Lisboa festeja os Santos Populares com sardinhas.", tr:"Haziran'da Lizbon, sardalyayla Santos Populares'i kutlar."},
+        {pronoun:"Natal", form:"Noel (25 Aralık)", example:"No Natal, a família junta-se para o bacalhau cozido.", tr:"Noel'de aile haşlanmış morina balığı için bir araya gelir."},
+        {pronoun:"Páscoa", form:"Paskalya (ilkbahar)", example:"Na Páscoa, comem-se ovos de chocolate e folar.", tr:"Paskalya'da çikolata yumurta ve folar yenir."},
+        {pronoun:"Carnaval", form:"Şubat/Mart", example:"Torres Vedras tem o melhor Carnaval de Portugal.", tr:"Torres Vedras'ın Karnavalı Portekiz'in en iyisidir."},
+        {pronoun:"25 de Abril", form:"Ulusal Tatil", example:"O 25 de Abril celebra-se com desfiles e cravos.", tr:"25 Nisan geçit törenleri ve karanfillerle kutlanır."},
+        {pronoun:"Dia de Reis (6 de jan.)", form:"Üçkrallar Günü", example:"No Dia de Reis come-se o Bolo-Rei.", tr:"Üçkrallar Günü'nde Bolo-Rei yenir."}
       ],
-      note: "BP'de futuro do presente yerine IR+infinitivo çok daha yaygındır: 'Vou visitar' (natural) → 'Visitarei' (resmi/yazılı)."
+      note: "Bolo-Rei (Kral Pastası) Portekiz'de Noel döneminden Üçkrallar Günü'ne (6 Ocak) kadar yenen geleneksel bir pastadır. İçindeki küçük sürpriz figürü bulan kişi bir sonraki yıl pastayı almayı teklif eder."
     },
     {
-      title: "Brezilya Bölgelerini Anlatma",
-      explanation: "Brezilya 5 bölgeye ayrılır: Norte (Kuzey), Nordeste (Kuzeydoğu), Centro-Oeste (Orta-Batı), Sudeste (Güneydoğu), Sul (Güney). Her bölgenin farklı kültürü, iklimi ve dili var. Bölge anlatımında SER (özellik), FICAR (konum), TER (varlık) kullanılır.",
+      title: "Desejos e Saudações — Dilekler ve Selamlar",
+      explanation: "Özel günlerde kullanılan dilekler ve tebrik ifadeleri.",
       table: [
-        { pronoun: "Norte", form: "Amazon bölgesi", example: "O Norte fica na Amazônia.", tr: "Kuzey, Amazon'da bulunur." },
-        { pronoun: "Nordeste", form: "Sertão + praias", example: "O Nordeste tem praias lindas.", tr: "Kuzeydoğu'da güzel plajlar var." },
-        { pronoun: "Sudeste", form: "SP, RJ, MG, ES", example: "O Sudeste é mais industrializado.", tr: "Güneydoğu daha sanayileşmiş." },
-        { pronoun: "Sul", form: "Frio / europeu", example: "O Sul tem clima mais frio.", tr: "Güney daha soğuk iklime sahip." },
-        { pronoun: "Centro-Oeste", form: "Cerrado + Pantanal", example: "O Pantanal fica no Centro-Oeste.", tr: "Pantanal, Orta-Batı'da yer alır." },
-        { pronoun: "Ficar em", form: "Konum belirtme", example: "Salvador fica na Bahia.", tr: "Salvador, Bahia'da yer alır." }
+        {pronoun:"Feliz Natal!", form:"Mutlu Noeller!", example:"Feliz Natal e Próspero Ano Novo!", tr:"Mutlu Noeller ve Mutlu Yeni Yıl!"},
+        {pronoun:"Feliz Páscoa!", form:"Mutlu Paskalya!", example:"Feliz Páscoa para ti e para a tua família!", tr:"Sana ve ailene Mutlu Paskalya!"},
+        {pronoun:"Parabéns!", form:"Tebrikler!/İyi günler!", example:"Parabéns pelo teu aniversário! Muitos parabéns!", tr:"Doğum günün kutlu olsun! Çok tebrikler!"},
+        {pronoun:"Beber à saúde de", form:"... şerefine içmek", example:"Bebemos à saúde dos noivos!", tr:"Gelinle damadın şerefine içiyoruz!"},
+        {pronoun:"Muitas felicidades!", form:"Çok mutluluklar!", example:"Muitas felicidades para o vosso casamento!", tr:"Düğününüzde çok mutluluklar!"},
+        {pronoun:"Boa Sorte!", form:"İyi şanslar!", example:"Boa sorte no exame amanhã!", tr:"Yarınki sınavda iyi şanslar!"}
       ],
-      note: "'Fica' ile konum: 'Onde fica o Museu do Amanhã?' = Yarın Müzesi nerede? 'Fica no Centro do Rio.' = Rio merkezdedir."
+      note: "EP'de 'parabéns' hem doğum günü tebriği hem de genel tebrik olarak kullanılır. Doğum günü şarkısı da 'Parabéns a você' diye başlar — tıpkı İngilizce Happy Birthday gibi."
     },
     {
-      title: "Geçmiş Tatil Deneyimleri — Pretérito Perfeito ve Imperfeito",
-      explanation: "Geçmişte yapılan seyahat anılarını anlatmak için iki geçmiş zaman kullanılır: Perfeito (tamamlanmış eylem: 'fui', 'vi', 'comi') ve Imperfeito (süregelen durum: 'o hotel era bonito', 'a praia estava vazia').",
+      title: "Condicional para Convites — Davet için Koşullu Kip",
+      explanation: "Kibarca davet etmek için 'condicional' kullanılır. 'Gostavas de vir?' (Gelmek ister misin?), 'Seria possível?' (Mümkün olur muydu?).",
       table: [
-        { pronoun: "Perfeito: fui", form: "Gittim", example: "Fui ao Rio no carnaval.", tr: "Karnaval'da Rio'ya gittim." },
-        { pronoun: "Perfeito: vi", form: "Gördüm", example: "Vi o Cristo de perto!", tr: "Kurtarıcı İsa'yı yakından gördüm!" },
-        { pronoun: "Imperfeito: era", form: "Özellik (geçmiş)", example: "O hotel era muito confortável.", tr: "Otel çok konforluydu." },
-        { pronoun: "Imperfeito: tinha", form: "Vardı (geçmiş)", example: "Tinha muita gente na praia.", tr: "Plajda çok insan vardı." },
-        { pronoun: "Perfeito+imper.", form: "Birlikte", example: "Quando cheguei, chovía.", tr: "Vardığımda yağmur yağıyordu." },
-        { pronoun: "Adorei", form: "Çok beğendim", example: "Adorei a comida nordestina!", tr: "Kuzeydoğu yemeğini çok beğendim!" }
+        {pronoun:"Gostaria de convidar-te", form:"davet etmek isterim", example:"Gostaria de convidar-te para o meu casamento.", tr:"Düğünüme seni davet etmek isterim."},
+        {pronoun:"Podias vir?", form:"gelebilir misin?", example:"Podias vir ao aniversário no sábado?", tr:"Cumartesi doğum günümüze gelebilir misin?"},
+        {pronoun:"Seria possível", form:"mümkün olur muydu", example:"Seria possível ficares para jantar?", tr:"Akşam yemeğine kalman mümkün olur muydu?"},
+        {pronoun:"Teríamos muito gosto", form:"çok memnun olurduk", example:"Teríamos muito gosto em tê-los connosco.", tr:"Sizi aramızda görmekten çok memnun olurduk."},
+        {pronoun:"Preferirias", form:"tercih eder miydin", example:"Preferirias a cerimónia de manhã ou à tarde?", tr:"Töreni sabah mı yoksa öğleden sonra mı tercih ederdin?"},
+        {pronoun:"Virias de longe?", form:"uzaktan mı gelirdin", example:"Virias de propósito para o casamento?", tr:"Düğün için özellikle mi gelirdin?"}
       ],
-      note: "Anlatıda denge: Perfeito = olay ('Fui à cachoeira'), Imperfeito = fon/bağlam ('Fazia calor, o sol brilhava')."
+      note: "Portekizli düğünlerde 'convidados' (davetliler) genellikle çok fazladır. Büyük aileler ve köy geleneğine sahip kesimler yüzlerce kişilik düğün yapar."
     }
   ],
   speaking: [
-    { q: "En çok hangi Brezilya şehrini ziyaret etmek istersiniz?", a: "Gostaria de visitar [Rio/Salvador/Manaus]. Adoraria ver [atração]." },
-    { q: "'Şelalelere gitmeye değer mi?' sorusunu cevaplayın.", a: "Com certeza! Vale muito a pena. As Cataratas são impressionantes!" },
-    { q: "Geçmiş bir tatili anlatın.", a: "Fui para [destino]. O lugar era [sıfat] e tinha [özellik]. Adorei!" },
-    { q: "'Yüksek sezonda fiyatlar çok pahalı' nasıl?", a: "Na alta temporada os preços são muito altos. Prefiro viajar na baixa temporada." },
-    { q: "Turist için iki öneri verin.", a: "Não perca o [yer]! E prove a [yemek] — é incrível!" }
+    {q:"Como se celebra o Natal em Portugal?", a:"No Natal a família reúne-se na véspera, a 24 de dezembro, para a ceia de Natal. O prato principal é o bacalhau cozido com grão e batatas. Depois de meia-noite abre-se os presentes."},
+    {q:"O que são os Santos Populares?", a:"São festas populares em junho, em honra dos santos António, João e Pedro. Em Lisboa, a noite de 12 para 13 de junho é especial — há música, sardinhadas e marchas populares."},
+    {q:"O Carnaval é festejado em Portugal?", a:"Sim! Torres Vedras, Loulé e Ovar têm os Carnavais mais famosos. Há desfiles de carros alegóricos e muito disfarce."},
+    {q:"O que se come na Páscoa em Portugal?", a:"Come-se folar (pão doce com ovos) e o famoso cabrito assado (assado de cabrito). No fim, chocolates e amêndoas confeitadas."},
+    {q:"Como se diz parabéns em português?", a:"Diz-se 'Parabéns!' ou 'Muitos parabéns!' num aniversário. Para festas em geral, 'Felicitações!' também é usado."}
   ],
   dialogues: [
     {
-      title: "Brezilya Seyahat Planı",
+      title: "Festa de Aniversário",
       lines: [
-        { speaker: "Mia", text: "Finalmente! Vou viajar para o Brasil no mês que vem. Não sei por onde começar.", tr: "Sonunda! Gelecek ay Brezilya'ya gideceğim. Nereden başlayacağımı bilmiyorum." },
-        { speaker: "Carlos", text: "Que ótimo! Quanto tempo você terá?", tr: "Harika! Ne kadar zamanın olacak?" },
-        { speaker: "Mia", text: "Duas semanas. Pensei em Rio e Salvador. O que você recomenda?", tr: "İki hafta. Rio ve Salvador düşündüm. Ne tavsiye edersiniz?" },
-        { speaker: "Carlos", text: "Ótima escolha! No Rio, não perca o Cristo e Lapa. Salvador tem o Pelourinho lindo.", tr: "Harika seçim! Rio'da Kurtarıcı İsa'yı ve Lapa'yı kaçırmayın. Salvador'da Pelourinho çok güzel." },
-        { speaker: "Mia", text: "E quanto tempo em cada cidade?", tr: "Her şehirde ne kadar zaman geçirmeli?" },
-        { speaker: "Carlos", text: "Rio merece uma semana. Salvador, quatro ou cinco dias. Aproveite muito!", tr: "Rio bir haftayı hak ediyor. Salvador, dört ya da beş gün. Çok iyi eğlenceler!" }
+        {speaker:"Sofia", text:"Parabéns, Miguel! Muitos parabéns! Quantos anos fazes hoje?"},
+        {speaker:"Miguel", text:"Obrigado, Sofia! Faço 30 anos. Já sou velho!"},
+        {speaker:"Sofia", text:"Que nada! Os 30 anos são uma década fantástica. Aqui está o teu presente."},
+        {speaker:"Miguel", text:"Oh, não devias! Que bonita surpresa. Posso abrir já?"},
+        {speaker:"Sofia", text:"Claro! Espero que gostes. Já vamos beber à tua saúde?"},
+        {speaker:"Miguel", text:"Com certeza! À minha saúde e à de todos os presentes. Obrigado por virem!"}
       ]
     }
   ],
   listening: {
-    text: "O Brasil recebe milhões de turistas por ano, especialmente atraídos pelas praias, pela natureza e pelo Carnaval. As Cataratas do Iguaçu, no Paraná, são consideradas umas das maravilhas naturais do mundo — mais largas do que as cataratas do Niágara. O Pantanal, maior zona úmida do planeta, oferece um dos melhores ecoturismos do mundo, com onças-pintadas, araras e capivaras. A Amazônia, com mais de cinco milhões de quilômetros quadrados de floresta, é destino de pesquisadores e aventureiros do mundo inteiro.",
+    text: "A época natalícia em Portugal começa no início de dezembro com a decoração das cidades e o Mercado de Natal. A 8 de dezembro, Dia da Imaculada Conceição, feriado nacional, é tradicional montar o presépio e a árvore de Natal. A noite de consoada, a 24 de dezembro, é passada em família com a ceia de bacalhau. A 6 de janeiro, Dia de Reis, come-se o Bolo-Rei — uma coroa de pão doce com frutos cristalizados que esconde uma fava e uma figurinha.",
     questions: [
-      { q: "Brezilya'yı turistlerin neden ziyaret ettiği?", a: "Plajlar, doğa ve Karnaval" },
-      { q: "Iguaçu Şelaleleri hakkında ne söylendi?", a: "Niagara Şelalelerinden daha geniş, dünyanın doğal harikalarından" },
-      { q: "Pantanal'ın özelliği ne?", a: "Dünyanın en büyük sulak alanı; onca pintada, aralar, kapibara ile ekoturizm" }
+      {q:"Quando é o feriado da Imaculada Conceição?", a:"A 8 de dezembro."},
+      {q:"O que se come na noite de consoada?", a:"Bacalhau."},
+      {q:"O que esconde o Bolo-Rei?", a:"Uma fava e uma figurinha."}
     ]
   }
 };

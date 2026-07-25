@@ -1,94 +1,94 @@
 const L2 = {
   title: "Artigos e Ser/Estar",
   words: [
-    { en: "o livro", tr: "kitap (erkek)", pron: "u livru", bd: "o=eril tekil belirli artikel" },
-    { en: "a casa", tr: "ev (dişil)", pron: "a kaza", bd: "a=dişil tekil belirli artikel" },
-    { en: "um homem", tr: "bir adam", pron: "ũ omẽy", bd: "um=eril tekil belirsiz artikel" },
-    { en: "uma mulher", tr: "bir kadın", pron: "uma mulyér", bd: "uma=dişil tekil belirsiz artikel" },
-    { en: "os livros", tr: "kitaplar", pron: "us livrus", bd: "os=eril çoğul artikel" },
-    { en: "as casas", tr: "evler", pron: "as kazas", bd: "as=dişil çoğul artikel" },
-    { en: "Eu sou brasileiro", tr: "Ben Brezilyalıyım", pron: "ew so brazilêyru", bd: "sou=ser fiilinin ben çekimi" },
-    { en: "Ela é bonita", tr: "O (kadın) güzel", pron: "ela é bonita", bd: "é=ser fiilinin o/siz çekimi" },
-    { en: "Eu estou bem", tr: "İyiyim (şu an)", pron: "ew ısto bẽy", bd: "estou=estar fiilinin ben çekimi" },
-    { en: "Você está cansado", tr: "Siz yorgunsunuz (şu an)", pron: "vosê ıshta kãzadu", bd: "está=estar fiilinin siz çekimi" },
-    { en: "O carro é vermelho", tr: "Araba kırmızıdır", pron: "u kahu é vermelyu", bd: "ser: kalıcı özellik" },
-    { en: "A comida está quente", tr: "Yemek sıcak (şu an)", pron: "a komida ıshta kẽntshi", bd: "estar: geçici durum" },
-    { en: "Nós somos amigos", tr: "Biz arkadaşız", pron: "nos somus amigus", bd: "somos=ser/biz" },
-    { en: "Eles estão em casa", tr: "Onlar evdeler (şu an)", pron: "elis ıshtão ẽy kaza", bd: "estão=estar/onlar" },
-    { en: "Ela é médica", tr: "O doktordur (meslek)", pron: "ela é médzhika", bd: "ser: meslek → artikel yok" },
-    { en: "Você é de onde?", tr: "Siz nerelisiniz?", pron: "vosê é dshi ôndshi", bd: "ser: köken/menşe" },
-    { en: "Eu sou de Ankara", tr: "Ben Ankaralıyım", pron: "ew so dshi Ankara", bd: "ser+de: şehir/ülke köken" },
-    { en: "O tempo está frio", tr: "Hava soğuk (şu an)", pron: "u tẽmpu ıshta friu", bd: "estar: hava durumu" },
-    { en: "Ela está feliz", tr: "O mutlu (şu an)", pron: "ela ıshta felis", bd: "estar: geçici duygu" },
-    { en: "Tudo bem?", tr: "Her şey yolunda mı?", pron: "tudu bẽy", bd: "tudo=her şey; bem=iyi" }
+    { en: "o / a", tr: "belirli artiko (eril/dişil)", pron: "u / a", bd: "EP: o (eril), a (dişil); os/as çoğul" },
+    { en: "um / uma", tr: "belirsiz artiko", pron: "ũ / uma", bd: "eril: um livro; dişil: uma mesa" },
+    { en: "o livro", tr: "kitap", pron: "u livru", bd: "eril; os livros = kitaplar" },
+    { en: "a mesa", tr: "masa", pron: "a méza", bd: "dişil; as mesas = masalar" },
+    { en: "o homem", tr: "adam / erkek", pron: "u omẽy", bd: "eril; os homens = erkekler" },
+    { en: "a mulher", tr: "kadın", pron: "a mulyér", bd: "dişil; as mulheres" },
+    { en: "o menino / a menina", tr: "erkek çocuk / kız çocuk", pron: "u mıninu / a mınina", bd: "cinsiyet çifti" },
+    { en: "português / portuguesa", tr: "Portekizli (e/k)", pron: "purtuγésh / purtuγéza", bd: "milliyet sıfatı; cinsiyet uyumu" },
+    { en: "feliz", tr: "mutlu", pron: "fılísh", bd: "tek form (e/k aynı); çoğul: felizes" },
+    { en: "cansado / cansada", tr: "yorgun", pron: "kãzadu / kãzada", bd: "ESTAR ile; geçici durum" },
+    { en: "médico / médica", tr: "doktor", pron: "médiku / médika", bd: "SER ile; meslek" },
+    { en: "estudante", tr: "öğrenci", pron: "ıshtuddãnt", bd: "tek form; SER ile" },
+    { en: "bonito / bonita", tr: "güzel / yakışıklı", pron: "bunitu / bunita", bd: "cinsiyet uyumu; SER veya ESTAR" },
+    { en: "aqui", tr: "burada", pron: "akí", bd: "yer belirteci; ESTAR aqui" },
+    { en: "ali / lá", tr: "orada / uzakta", pron: "alí / lá", bd: "uzaklık derecesi; ali = orta, lá = uzak" },
+    { en: "hoje", tr: "bugün", pron: "oji", bd: "zaman zarfı; hoje estou bem" },
+    { en: "sempre", tr: "her zaman", pron: "sẽmpr", bd: "zaman zarfı; SER ile kalıcı" },
+    { en: "agora", tr: "şimdi", pron: "agóra", bd: "zaman zarfı; ESTAR ile geçici" },
+    { en: "muito", tr: "çok", pron: "muytu", bd: "miktar zarfı; muito bem = çok iyi" },
+    { en: "também", tr: "de / da", pron: "tãbẽy", bd: "ekleme; Eu também sou português." }
   ],
   grammar: [
     {
-      title: "Portekizce Artikleri: o/a/os/as & um/uma",
-      explanation: "Portekizcede her ismin bir cinsiyeti vardır (eril veya dişil). Belirli artikleri 'the' gibi çalışır. Belirsiz artikleri 'a/an' gibi çalışır. İsimlerin büyük çoğunluğu -o ile bitiyorsa eril, -a ile bitiyorsa dişildir.",
+      title: "Artigos Definidos e Indefinidos",
+      explanation: "Portekizce'de her ismin cinsiyeti vardır. Belirli artiko: o (eril tekil), a (dişil tekil), os (eril çoğul), as (dişil çoğul). Belirsiz: um (eril), uma (dişil), uns (eril çoğul), umas (dişil çoğul). EP'de artikolar çok kullanılır; özel isimlerde de: 'o João', 'a Maria'.",
       table: [
-        { pronoun: "Tekil Eril", form: "o / um", example: "o livro / um livro", tr: "kitap / bir kitap" },
-        { pronoun: "Tekil Dişil", form: "a / uma", example: "a casa / uma casa", tr: "ev / bir ev" },
-        { pronoun: "Çoğul Eril", form: "os / uns", example: "os livros / uns livros", tr: "kitaplar / birkaç kitap" },
-        { pronoun: "Çoğul Dişil", form: "as / umas", example: "as casas / umas casas", tr: "evler / birkaç ev" },
-        { pronoun: "İstisna -a eril", form: "o / um", example: "o dia / o mapa", tr: "gün / harita (eril!)" },
-        { pronoun: "İstisna -o dişil", form: "a / uma", example: "a mão / a foto", tr: "el / fotoğraf (dişil!)" }
+        { pronoun: "Eril tekil", form: "o / um", example: "o livro / um livro", tr: "kitap / bir kitap" },
+        { pronoun: "Dişil tekil", form: "a / uma", example: "a mesa / uma mesa", tr: "masa / bir masa" },
+        { pronoun: "Eril çoğul", form: "os / uns", example: "os livros / uns livros", tr: "kitaplar / bazı kitaplar" },
+        { pronoun: "Dişil çoğul", form: "as / umas", example: "as mesas / umas mesas", tr: "masalar / bazı masalar" },
+        { pronoun: "İsimle", form: "o/a + isim", example: "o João é simpático.", tr: "João sempatik." },
+        { pronoun: "Contração", form: "de + o = do", example: "Sou do Porto.", tr: "Porto'luyum." }
       ],
-      note: "Kural: -ade, -agem, -ção, -são ile biten isimler genellikle dişildir. -ema, -ista ile bitenler genellikle erildir."
+      note: "EP'de özel isimlerden önce artiko kullanmak çok yaygındır: 'a Maria veio' (Maria geldi). Türkçe'de bu yok! Ayrıca de+o=do, de+a=da, em+o=no, em+a=na contrações (birleşimler) zorunludur."
     },
     {
-      title: "SER Fiili — Kalıcı Özellikler",
-      explanation: "SER fiili Türkçedeki 'olmak' fiiline karşılık gelir ve kalıcı özellikleri, kimliği, kökeni, mesleği, dini ve zamanı belirtmek için kullanılır. Yani değişmeyen gerçekler için SER kullanılır.",
+      title: "SER ve ESTAR — İki Türlü 'Olmak'",
+      explanation: "Portekizce'nin en önemli ayrımı: SER (kalıcı/tanımlayıcı) ve ESTAR (geçici/konum). SER: kimlik, milliyet, meslek, kalıcı özellik. ESTAR: ruh hali, konum, geçici durum. 'Sou português' (kalıcı — Portekizliyim) vs. 'Estou cansado' (geçici — yorgunum şu an).",
       table: [
-        { pronoun: "Eu", form: "sou", example: "Eu sou professor.", tr: "Ben öğretmenim." },
-        { pronoun: "Você / Ele / Ela", form: "é", example: "Ela é brasileira.", tr: "O Brezilyalıdır." },
-        { pronoun: "Nós", form: "somos", example: "Nós somos amigos.", tr: "Biz arkadaşız." },
-        { pronoun: "Vocês / Eles / Elas", form: "são", example: "Eles são médicos.", tr: "Onlar doktordur." },
-        { pronoun: "Meslek (artikel yok)", form: "ser + meslek", example: "Sou médico. (um yok!)", tr: "Doktorum. (bir değil!)" },
-        { pronoun: "Köken", form: "ser + de", example: "Sou de Türkiye.", tr: "Türkiye'denim." }
+        { pronoun: "SER — kimlik", form: "sou / és / é", example: "Sou estudante.", tr: "Öğrenciyim. (kalıcı)" },
+        { pronoun: "SER — milliyet", form: "sou / és / é", example: "Ela é portuguesa.", tr: "O Portekizli." },
+        { pronoun: "ESTAR — ruh hali", form: "estou / estás / está", example: "Estou feliz hoje.", tr: "Bugün mutluyum. (geçici)" },
+        { pronoun: "ESTAR — konum", form: "estou / estás / está", example: "Estou em Lisboa.", tr: "Lizbon'dayım." },
+        { pronoun: "SER — meslek", form: "é / são", example: "Ele é médico.", tr: "O doktor. (meslek = kalıcı)" },
+        { pronoun: "ESTAR — durum", form: "está / estão", example: "Ela está doente.", tr: "O hasta. (geçici)" }
       ],
-      note: "SER kullanım alanları: KİMLİK (isim, uyruk), KÖKENİ (nereli), MESLEK, KALİTE (renk, boyut, malzeme), ZAMAN (saat, tarih)."
+      note: "Kural: SER = KİMSİN? (kimlik, milliyet, meslek, kalıcı özellik). ESTAR = NASILSIN? NEREDESIN? (durum, konum, geçici hal). 'O café é bom' (kahve genelde iyi) vs. 'O café está quente' (kahve şu an sıcak)."
     },
     {
-      title: "ESTAR Fiili — Geçici Durumlar",
-      explanation: "ESTAR fiili de 'olmak' anlamına gelir ancak geçici durum, konum, ruh hali ve şu andaki koşullar için kullanılır. SER ile ESTAR arasındaki fark Portekizce öğrenmenin en kritik konusudur!",
+      title: "SER ve ESTAR Tam Çekim",
+      explanation: "SER geniş zaman: sou, és, é, somos, sois, são. ESTAR geniş zaman: estou, estás, está, estamos, estais, estão. EP'de TU formu çok kullanılır: tu és (SER) ve tu estás (ESTAR). Olumsuz: não sou, não estou.",
       table: [
-        { pronoun: "Eu", form: "estou", example: "Estou cansado hoje.", tr: "Bugün yorgunum (geçici)." },
-        { pronoun: "Você / Ele / Ela", form: "está", example: "Ela está feliz agora.", tr: "O şu an mutlu." },
-        { pronoun: "Nós", form: "estamos", example: "Estamos em casa.", tr: "Evdeyiz (konum)." },
-        { pronoun: "Vocês / Eles / Elas", form: "estão", example: "Estão com fome.", tr: "Onlar aç (şu an)." },
-        { pronoun: "Konum için", form: "estar + em", example: "O banco está ali.", tr: "Banka şurada (konum)." },
-        { pronoun: "Süreç için", form: "estar + gerúndio", example: "Estou estudando.", tr: "Çalışıyorum (şu an)." }
+        { pronoun: "eu", form: "sou / estou", example: "Sou turco. Estou bem.", tr: "Türküm. İyiyim." },
+        { pronoun: "tu", form: "és / estás", example: "Tu és simpático. Estás bem?", tr: "Sempatiksin. İyi misin?" },
+        { pronoun: "você/ele/ela", form: "é / está", example: "Ele é alto. Está cansado.", tr: "Uzun boylu. Yorgun." },
+        { pronoun: "nós", form: "somos / estamos", example: "Somos amigos. Estamos juntos.", tr: "Arkadaşız. Birlikteyiz." },
+        { pronoun: "vocês", form: "são / estão", example: "Vocês são estudantes?", tr: "Siz öğrenci misiniz?" },
+        { pronoun: "eles/elas", form: "são / estão", example: "Elas estão em casa.", tr: "Onlar evdeler." }
       ],
-      note: "Önemli fark: 'Ele é nervoso' (kişiliği gergin) vs 'Ele está nervoso' (şu an gergin). SER=doğa, ESTAR=durum."
+      note: "ESTAR ile konum: Estou EM Lisboa. Está NO escritório. (em + o = no; em + a = na). SER ile meslek: artiko kullanılmaz! 'Sou médico' (NOT 'Sou um médico')."
     }
   ],
   speaking: [
-    { q: "Qual é o artigo de 'livro'?", a: "O artigo é 'o' — o livro." },
-    { q: "Como se diz 'Ben doktorum' com SER?", a: "Eu sou médico. (Meslek için artikel yok!)" },
-    { q: "Como se diz 'Şu an yorgunum' com ESTAR?", a: "Eu estou cansado agora." },
-    { q: "SER ou ESTAR: 'Ela é bonita'?", a: "SER — kalıcı özellik (güzel kişiliği)." },
-    { q: "SER ou ESTAR: 'A sopa está quente'?", a: "ESTAR — geçici durum (şu an sıcak)." }
+    { q: "'O güzel ama şu an yorgun' cümlesini SER/ESTAR ile söyleyin.", a: "Ela é bonita mas está cansada agora." },
+    { q: "Kendinizi tanıtın (ülke, meslek, şimdiki hal).", a: "Sou turco/a, sou estudante e estou muito bem, obrigado/a!" },
+    { q: "'Burada mısın?' sorusunu sorun.", a: "Estás aqui? / Está aqui?" },
+    { q: "Portekizce'de 'masa' için cümle kurun.", a: "A mesa é grande. / Há uma mesa aqui." },
+    { q: "'Meslek kalıcı, his geçici' örneği verin.", a: "Sou professor (kalıcı). Estou cansado hoje (geçici)." }
   ],
   dialogues: [
     {
-      title: "Bir Tanışmada",
+      title: "SER mi ESTAR mı?",
       lines: [
-        { speaker: "Ana", text: "Olá! Você é daqui?", tr: "Merhaba! Siz buradan mısınız?" },
-        { speaker: "Pedro", text: "Não, eu sou de São Paulo. E você?", tr: "Hayır, ben São Paulo'danum. Ya siz?" },
-        { speaker: "Ana", text: "Sou de Lisboa, mas estou aqui a trabalho.", tr: "Lizbon'danum ama iş için buradayım." },
-        { speaker: "Pedro", text: "Ah, que interessante! Você é jornalista?", tr: "Ah, ne ilginç! Gazeteci misiniz?" },
-        { speaker: "Ana", text: "Não, sou professora. E você, o que é?", tr: "Hayır, öğretmenim. Siz ne iş yaparsınız?" },
-        { speaker: "Pedro", text: "Sou engenheiro. Estou muito cansado hoje!", tr: "Mühendisim. Bugün çok yorgunum!" }
+        { speaker: "Rita", text: "Pedro, estás bem? Pareces cansado.", tr: "Pedro, iyi misin? Yorgun görünüyorsun." },
+        { speaker: "Pedro", text: "Estou um pouco cansado, sim. Trabalhei muito hoje.", tr: "Biraz yorgunum, evet. Bugün çok çalıştım." },
+        { speaker: "Rita", text: "Ah, és sempre tão trabalhador!", tr: "Ah, her zaman bu kadar çalışkansın!" },
+        { speaker: "Pedro", text: "Sou, é verdade! Mas hoje estou mesmo exausto.", tr: "Evet, doğru! Ama bugün gerçekten bitkin düştüm." },
+        { speaker: "Rita", text: "Descansa! Onde está a tua mochila?", tr: "Dinlen! Çantan nerede?" },
+        { speaker: "Pedro", text: "Está ali, em cima da cadeira.", tr: "Orada, sandalyenin üstünde." }
       ]
     }
   ],
   listening: {
-    text: "Eu me chamo Carlos. Sou brasileiro e sou de Recife. Sou médico e trabalho num hospital grande. Agora estou em São Paulo porque estou num congresso médico. Estou muito contente por estar aqui!",
+    text: "Em português, a diferença entre SER e ESTAR é fundamental. SER é usado para características permanentes — a identidade, a nacionalidade, a profissão. ESTAR é usado para estados temporários — como nos sentimos, onde estamos neste momento. Esta distinção não existe em inglês ou turco, por isso é um dos maiores desafios para os aprendentes. Com a prática, torna-se natural. Em Portugal, ouvimos muito 'Como estás?' entre amigos e 'Como está?' em contextos formais, usando o pronome 'tu' ou 'você' respetivamente.",
     questions: [
-      { q: "Carlos nereli?", a: "Recife'li / Brezilyalı" },
-      { q: "Carlos'un mesleği ne?", a: "Doktor" },
-      { q: "Şu an nerede?", a: "São Paulo'da" }
+      { q: "SER hangi durumlarda kullanılır?", a: "Kimlik, milliyet, meslek gibi kalıcı özellikler için" },
+      { q: "ESTAR hangi durumlarda kullanılır?", a: "Geçici durumlar için — nasıl hissettiğimiz, nerede olduğumuz" },
+      { q: "EP'de informal soru nasıl sorulur?", a: "'Como estás?' — tu ile informal; 'Como está?' — você ile resmi" }
     ]
   }
 };

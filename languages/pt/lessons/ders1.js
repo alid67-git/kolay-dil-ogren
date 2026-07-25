@@ -1,214 +1,95 @@
-// ders1.js — Portuguese Lesson 1: Greetings & Introductions (Cumprimentos e Apresentações)
 const L1 = {
-  words:[
-    {id:'w1', en:'Olá', ro:'o-LÁ', tr:'Merhaba',
-     tip:'Her ortamda kullanılan evrensel selamlama.', ctx:'Resmi ve samimi her ortamda geçerli.',
-     examples:[{en:'Olá!', tr:'Merhaba!',
-       bd:[{ro:'Olá',tr:'Merhaba',role:'greeting',note:'Portekizcenin en yaygın selamı. BP\'de "ó-lá" şeklinde telaffuz edilir.'}]}]},
-    {id:'w2', en:'Bom dia', ro:'bom JI-a', tr:'Günaydın',
-     tip:'Sabah selamlaması — öğlene kadar.', ctx:'Resmi ve samimi her ortamda.',
-     examples:[{en:'Bom dia!', tr:'Günaydın!',
-       bd:[{ro:'Bom',tr:'İyi',role:'K',note:'Erkil (masculino) sıfat — dia (gün) erkil olduğu için bom.'},
-           {ro:'dia',tr:'gün',role:'O',note:'Gün — erkil isim. Dişil olsaydı "Boa" kullanılırdı.'}]}]},
-    {id:'w3', en:'Boa tarde', ro:'boa TAR-ji', tr:'İyi günler / İyi öğleden sonralar',
-     tip:'Öğleden sonra selamlaması.', ctx:'~12:00–18:00 arası.',
-     examples:[{en:'Boa tarde!', tr:'İyi günler!',
-       bd:[{ro:'Boa',tr:'İyi',role:'K',note:'Dişil (feminino) sıfat — tarde (öğleden sonra) dişil olduğu için boa.'},
-           {ro:'tarde',tr:'öğleden sonra',role:'O',note:'Dişil isim — boa ile uyum zorunlu.'}]}]},
-    {id:'w4', en:'Boa noite', ro:'boa NOY-ti', tr:'İyi akşamlar / İyi geceler',
-     tip:'Akşam selamı ve vedası.', ctx:'~18:00\'dan itibaren, ve yatmadan önce.',
-     examples:[{en:'Boa noite!', tr:'İyi akşamlar!',
-       bd:[{ro:'Boa',tr:'İyi',role:'K',note:'Dişil — noite (gece) dişil olduğu için boa.'},
-           {ro:'noite',tr:'gece',role:'O',note:'Hem selamlama hem veda olarak kullanılabilir.'}]}]},
-    {id:'w5', en:'Tchau', ro:'CHAU', tr:'Güle güle / Hoşça kal',
-     tip:'Samimi veda.', ctx:'Arkadaş, aile — her yaştan.',
-     examples:[{en:'Tchau!', tr:'Hoşça kal!',
-       bd:[{ro:'Tchau',tr:'Güle güle',role:'farewell',note:'İtalyan "ciao"dan gelir. BP\'de en yaygın samimi veda.'}]}]},
-    {id:'w6', en:'Até logo', ro:'a-TÉ LO-gu', tr:'Görüşürüz',
-     tip:'Yakın zamanda görüşme veda ifadesi.', ctx:'Resmi ve samimi ortamda.',
-     examples:[{en:'Até logo!', tr:'Görüşürüz!',
-       bd:[{ro:'Até',tr:'...e kadar',role:'K',note:'Zaman edatı.'},
-           {ro:'logo',tr:'yakında',role:'K',note:'Kısa süre sonra görüşme anlamı.'}]}]},
-    {id:'w7', en:'Obrigado', ro:'o-bri-GA-du', tr:'Teşekkür ederim (erkek)',
-     tip:'Erkek konuşmacı kullanır. Kadın: Obrigada.', ctx:'Her yerde.',
-     examples:[{en:'Obrigado!', tr:'Teşekkür ederim!',
-       bd:[{ro:'Obrigado',tr:'Teşekkürler',role:'courtesy',note:'Erkek (m) → Obrigado. Kadın (f) → Obrigada. Konuşmacının cinsiyetine göre değişir.'}]}]},
-    {id:'w8', en:'Obrigada', ro:'o-bri-GA-da', tr:'Teşekkür ederim (kadın)',
-     tip:'Kadın konuşmacı kullanır.', ctx:'Her yerde.',
-     examples:[{en:'Obrigada!', tr:'Teşekkür ederim!',
-       bd:[{ro:'Obrigada',tr:'Teşekkürler',role:'courtesy',note:'Kadın (f) → Obrigada. Konuşmacının cinsiyeti belirler, muhatap değil.'}]}]},
-    {id:'w9', en:'De nada', ro:'ji NA-da', tr:'Rica ederim',
-     tip:'Teşekküre standart cevap.', ctx:'"Obrigado/a"ya karşılık.',
-     examples:[{en:'De nada.', tr:'Rica ederim.',
-       bd:[{ro:'De nada',tr:'Hiç değil / Rica ederim',role:'courtesy',note:'Nada = hiçbir şey. "Obrigado" → "De nada" en yaygın karşılıktır.'}]}]},
-    {id:'w10', en:'Por favor', ro:'por fa-VOR', tr:'Lütfen',
-     tip:'Nezaket kelimesi.', ctx:'İstek yaparken.',
-     examples:[{en:'Por favor.', tr:'Lütfen.',
-       bd:[{ro:'Por',tr:'için',role:'K',note:'Amaç edatı.'},
-           {ro:'favor',tr:'lütuf / iyilik',role:'O',note:'"Lütfen" = "bir iyilik için" demektir.'}]}]},
-    {id:'w11', en:'Com licença', ro:'kom li-SEN-sa', tr:'Affedersiniz / İzin verir misiniz?',
-     tip:'Geçmek veya dikkat çekmek için.', ctx:'Kalabalık, resmi ortam.',
-     examples:[{en:'Com licença.', tr:'Affedersiniz.',
-       bd:[{ro:'Com',tr:'ile',role:'K',note:'Araç edatı.'},
-           {ro:'licença',tr:'izin',role:'O',note:'Fiziksel geçiş veya dikkat çekme — "Desculpe"den daha resmi.'}]}]},
-    {id:'w12', en:'Desculpe', ro:'des-KUL-pi', tr:'Özür dilerim / Pardon',
-     tip:'Hafif özür veya dikkat çekmek için.', ctx:'Günlük konuşma.',
-     examples:[{en:'Desculpe!', tr:'Özür dilerim!',
-       bd:[{ro:'Desculpe',tr:'Özür dilerim',role:'courtesy',note:'Samimi: Desculpa. Resmi: Desculpe. Yanlışlık veya dikkat çekme için.'}]}]},
-    {id:'w13', en:'Meu nome é...', ro:'meu NO-mi é', tr:'Benim adım...',
-     tip:'Kendini tanıtma — resmi.', ctx:'İş, resmi ortam.',
-     examples:[{en:'Meu nome é Ali.', tr:'Benim adım Ali.',
-       bd:[{ro:'Meu',tr:'Benim',role:'K',note:'Erkil sahiplik sıfatı. Kadın da kullanabilir — nome erkil isimdir.'},
-           {ro:'nome',tr:'isim / ad',role:'O',note:'Erkil isim → meu.'},
-           {ro:'é',tr:'-dır / -im',role:'V',note:'ser fiilinin 3. tekil çekimi. İngilizcede "is" gibi.'},
-           {ro:'Ali',tr:'Ali',role:'name',note:'Özel isim.'}]}]},
-    {id:'w14', en:'Me chamo...', ro:'mi SHA-mu', tr:'Adım... / Ben ... olarak biliniyorum',
-     tip:'Daha doğal konuşma dili formu.', ctx:'Günlük konuşma.',
-     examples:[{en:'Me chamo Ana.', tr:'Adım Ana.',
-       bd:[{ro:'Me',tr:'beni / kendimi',role:'K',note:'Dönüşlü zamir — chamar-se fiilinden.'},
-           {ro:'chamo',tr:'çağırırlar',role:'V',note:'chamar-se fiilinin eu (ben) çekimi.'},
-           {ro:'Ana',tr:'Ana',role:'name',note:'Özel isim.'}]}]},
-    {id:'w15', en:'Como vai?', ro:'KO-mu vai', tr:'Nasılsın? (genel)',
-     tip:'Günlük hal hatır sorusu.', ctx:'Arkadaş, tanıdık.',
-     examples:[{en:'Como vai?', tr:'Nasılsın?',
-       bd:[{ro:'Como',tr:'Nasıl',role:'question',note:'Soru zarfı.'},
-           {ro:'vai',tr:'gidiyor',role:'V',note:'ir (gitmek) fiilinin você/ele/ela çekimi. "Nasıl gidiyor?" = "Nasılsın?"'}]}]},
-    {id:'w16', en:'Tudo bem?', ro:'TU-du bém', tr:'Her şey yolunda mı?',
-     tip:'BP\'de çok yaygın samimi soru.', ctx:'Arkadaşlar arası.',
-     examples:[{en:'Tudo bem?', tr:'Her şey yolunda mı?',
-       bd:[{ro:'Tudo',tr:'Her şey',role:'S',note:'Belirsiz zamir.'},
-           {ro:'bem',tr:'iyi / yolunda',role:'adj',note:'Cevap: Tudo bem! (Her şey yolunda!)'}]}]},
-    {id:'w17', en:'Prazer', ro:'pra-ZER', tr:'Memnun oldum',
-     tip:'Tanışma ifadesi.', ctx:'İlk tanışmada.',
-     examples:[{en:'Prazer!', tr:'Memnun oldum!',
-       bd:[{ro:'Prazer',tr:'Zevk / Memnuniyet',role:'phrase',note:'Prazer em conhecê-lo/la kısaltması. Erkek için: conhecê-lo, kadın için: conhecê-la.'}]}]},
-    {id:'w18', en:'Muito prazer', ro:'MUI-tu pra-ZER', tr:'Çok memnun oldum',
-     tip:'Tanışmada daha güçlü memnuniyet ifadesi.', ctx:'Resmi tanışma.',
-     examples:[{en:'Muito prazer em conhecê-la!', tr:'Tanıştığıma çok memnun oldum!',
-       bd:[{ro:'Muito',tr:'çok',role:'K',note:'Zarfı güçlendirici — "çok".'},
-           {ro:'prazer',tr:'memnuniyet',role:'O',note:'Em conhecê-lo/la = onu tanımaktan.'}]}]},
-    {id:'w19', en:'Até mais', ro:'a-TÉ mais', tr:'Görüşmek üzere',
-     tip:'Biraz daha belirsiz veda.', ctx:'Günlük veda.',
-     examples:[{en:'Até mais!', tr:'Görüşmek üzere!',
-       bd:[{ro:'Até',tr:'...a kadar',role:'K',note:'Zaman edatı.'},
-           {ro:'mais',tr:'daha fazla / sonra',role:'K',note:'Daha sonra görüşmek üzere.'}]}]},
-    {id:'w20', en:'Boa sorte', ro:'boa SOR-ti', tr:'İyi şanslar',
-     tip:'Uğurlama ve teşvik ifadesi.', ctx:'Sınav, iş, önemli an öncesi.',
-     examples:[{en:'Boa sorte!', tr:'İyi şanslar!',
-       bd:[{ro:'Boa',tr:'İyi',role:'K',note:'Dişil — sorte (şans) dişil olduğu için boa.'},
-           {ro:'sorte',tr:'şans',role:'O',note:'Dişil isim.'}]}]}
+  title: "Cumprimentos e Apresentações",
+  words: [
+    { en: "Bom dia!", tr: "Günaydın!", pron: "bõ diya", bd: "sabah selamlama; até ao meio-dia" },
+    { en: "Boa tarde!", tr: "İyi günler! (öğleden sonra)", pron: "boa tard", bd: "öğleden sonra; tarde = öğle/akşam arası" },
+    { en: "Boa noite!", tr: "İyi akşamlar! / İyi geceler!", pron: "boa noyt", bd: "akşam ve gece; hem selamlama hem veda" },
+    { en: "Olá!", tr: "Merhaba!", pron: "olá", bd: "her zaman; en yaygın selamlama" },
+    { en: "Tudo bem?", tr: "İyi misiniz? / Nasılsınız?", pron: "tudu bẽy", bd: "'tudo bem?' → 'tudo bem!' yanıt" },
+    { en: "Como está?", tr: "Nasılsınız? (resmi)", pron: "komu shtá", bd: "resmi; você/o senhor/a senhora ile" },
+    { en: "Como te chamas?", tr: "Adın ne? (tu ile)", pron: "komu t' shamu ş", bd: "informal; EP'de tu çok yaygın" },
+    { en: "Chamo-me...", tr: "Adım...", pron: "shamu-mi", bd: "EP: fiil-pronomi sırası; 'Chamo-me Ana'" },
+    { en: "Muito prazer!", tr: "Çok memnun oldum!", pron: "muytu prazér", bd: "tanışma; prazer = zevk/memnuniyet" },
+    { en: "Igualmente!", tr: "Ben de! / Karşılıklı!", pron: "igualméntı", bd: "Muito prazer'e cevap" },
+    { en: "De onde és?", tr: "Nerelisin? (tu ile)", pron: "dı ond ésh", bd: "informal; tu conjugation: tu és" },
+    { en: "Sou de...", tr: "...lıyım / ...denim", pron: "sow dı", bd: "SER; Sou de Lisboa / Sou português" },
+    { en: "Fala português?", tr: "Portekizce konuşuyor musunuz?", pron: "fala purtuγésh", bd: "você ile; informal: Falas português?" },
+    { en: "Um pouco.", tr: "Biraz.", pron: "ũ poku", bd: "dil seviyesi; falo um pouco de português" },
+    { en: "Não entendo.", tr: "Anlamıyorum.", pron: "não ẽtẽndu", bd: "entender; não compreendo da kullanılır" },
+    { en: "Pode repetir?", tr: "Tekrar edebilir misiniz?", pron: "pod rıpıtír", bd: "poder; nazik istek" },
+    { en: "Fale mais devagar.", tr: "Daha yavaş konuşun.", pron: "fal maysh dıvagár", bd: "imperativo; devagar = yavaş" },
+    { en: "Até logo!", tr: "Görüşürüz!", pron: "até logu", bd: "kısa veda; até = kadar" },
+    { en: "Adeus!", tr: "Hoşça kalın! (kalıcı veda)", pron: "adéush", bd: "kalıcı ayrılış; tchau daha günlük" },
+    { en: "Com licença.", tr: "Müsaadenizle / Pardon.", pron: "kõ lisẽnsa", bd: "nezaket; geçerken veya dikkat çekmek için" }
   ],
-
-  grammar:[
-    {id:'g1', title:'Selamlama — Günün Saatine Göre', title_en:'Greetings by Time of Day',
-     explanation:'Portekizcede selamlama günün saatine göre değişir. "Bom/Boa" = iyi; ardından zaman kelimesi gelir ve cinsiyetle uyum zorunludur. Bom dia (gün erkil), Boa tarde / Boa noite (tarde ve noite dişil). Her zaman kullanılabilen: Olá. Vedalaşmak için: Tchau (samimi), Até logo / Até mais (genel), Boa noite (akşam/gece vedası).',
-     table:[
-       {pronoun:'Sabah (~06-12)', form:'Bom dia', example:'Bom dia! Como vai?', tr:'Günaydın! Nasılsın?'},
-       {pronoun:'Öğleden sonra (~12-18)', form:'Boa tarde', example:'Boa tarde, senhora.', tr:'İyi günler, hanımefendi.'},
-       {pronoun:'Akşam/Gece (~18+)', form:'Boa noite', example:'Boa noite! Até amanhã.', tr:'İyi geceler! Yarına kadar.'},
-       {pronoun:'Her zaman', form:'Olá', example:'Olá! Tudo bem?', tr:'Merhaba! Her şey yolunda mı?'},
-       {pronoun:'Samimi veda', form:'Tchau / Até logo', example:'Tchau! Até logo!', tr:'Hoşça kal! Görüşürüz!'},
-       {pronoun:'Resmi veda', form:'Até mais / Até amanhã', example:'Até amanhã!', tr:'Yarına kadar! Görüşmek üzere!'}
-     ],
-     note:'"Bom dia" → dia erkil → bom. "Boa tarde/noite" → tarde ve noite dişil → boa. Cinsiyet uyumu Portekizcede temeldir.'},
-    {id:'g2', title:'Você vs Tu — Resmi ve Samimi Hitap', title_en:'Você vs Tu — Formal and Informal Address',
-     explanation:'Brezilya Portekizcesinde (BP) hitap karmaşıktır. "Você" teknik olarak 3. tekil şahıs gibi çekim alır ama "sen" anlamında kullanılır — BP\'nin en yaygın hitabıdır. "Tu" EP\'de (Avrupa Portekizcesi) yaygındır; BP\'de Rio Grande do Sul gibi bazı bölgelerde kullanılır. Resmi konuşmada "O senhor" (erkek) / "A senhora" (kadın) daha saygılıdır.',
-     table:[
-       {pronoun:'Samimi (BP)', form:'Você', example:'Você fala português?', tr:'Portekizce konuşuyor musun?'},
-       {pronoun:'Samimi (EP)', form:'Tu', example:'Tu falas português?', tr:'Portekizce konuşuyor musun?'},
-       {pronoun:'Resmi (erkek)', form:'O senhor', example:'O senhor fala português?', tr:'Portekizce konuşuyor musunuz? (Bay)'},
-       {pronoun:'Resmi (kadın)', form:'A senhora', example:'A senhora é brasileira?', tr:'Siz Brezilyalı mısınız? (Bayan)'},
-       {pronoun:'Tanışma', form:'Prazer / Muito prazer', example:'Muito prazer em conhecê-lo!', tr:'Çok memnun oldum!'},
-       {pronoun:'Cevap', form:'O prazer é meu', example:'O prazer é meu!', tr:'Asıl ben memnun oldum!'}
-     ],
-     note:'BP\'de "você" dinamik: hem resmi hem samimi. Cümledeki fiil 3. tekil çekim alır: "Você fala" (tu konuşursun gibi değil, ele fala gibi).'},
-    {id:'g3', title:'Chamar-se — Kendini Tanıtma Fiili', title_en:'Chamar-se — Reflexive Verb for Names',
-     explanation:'"Chamar-se" = adı olmak (kelimenin tam anlamıyla "kendini çağırmak"). Dönüşlü fiildir: her şahıs için özne + dönüşlü zamir (me, te, se, nos, se) kullanılır. "Me chamo Ali" = Benim adım Ali. Soru: "Como você se chama?" veya "Qual é o seu nome?" Alternatif: "Meu nome é..." daha resmi.',
-     table:[
-       {pronoun:'eu (ben)', form:'me chamo', example:'Me chamo Ali.', tr:'Benim adım Ali.'},
-       {pronoun:'você/ele/ela (sen/o/o)', form:'se chama', example:'Como você se chama?', tr:'Adın ne?'},
-       {pronoun:'nós (biz)', form:'nos chamamos', example:'Nos chamamos Ana e Pedro.', tr:'Bizim adımız Ana ve Pedro.'},
-       {pronoun:'vocês/eles/elas (siz/onlar)', form:'se chamam', example:'Como vocês se chamam?', tr:'Adlarınız ne?'},
-       {pronoun:'Resmi soru', form:'Qual é o seu nome?', example:'Qual é o seu nome, por favor?', tr:'Adınız nedir, lütfen?'},
-       {pronoun:'Resmi cevap', form:'Meu nome é...', example:'Meu nome é Ana Lima.', tr:'Benim adım Ana Lima.'}
-     ],
-     note:'"Me chamo" daha doğal konuşma dili; "Meu nome é" daha resmi. BP\'de "seu nome" = "senin/sizin adın". Dönüşlü zamir fiilden önce (me/se) veya sonra (chamar-me) kullanılabilir.'}
+  grammar: [
+    {
+      title: "SER — Olmak Fiili (Kimlik ve Köken)",
+      explanation: "Portekizce'de SER (olmak) kimliği, milliyeti ve mesleği anlatır. Avrupa Portekizcesi'nde TU (senin) günlük hayatta çok yaygındır: tu és (sensin). Resmi için você é / o senhor é / a senhora é. SER geniş zaman: sou, és, é, somos, sois, são.",
+      table: [
+        { pronoun: "eu", form: "sou", example: "Sou português.", tr: "Portekizliyim." },
+        { pronoun: "tu", form: "és", example: "És de Lisboa?", tr: "Lizbon'dan mısın?" },
+        { pronoun: "você / ele / ela", form: "é", example: "Ela é professora.", tr: "O öğretmen." },
+        { pronoun: "nós", form: "somos", example: "Somos estudantes.", tr: "Biz öğrenciyiz." },
+        { pronoun: "vocês", form: "são", example: "Vocês são ingleses?", tr: "Siz İngiliz misiniz?" },
+        { pronoun: "eles / elas", form: "são", example: "Eles são amigos.", tr: "Onlar arkadaş." }
+      ],
+      note: "EP'de TU çok yaygındır — Brezilya'da você daha yaygın, ama Portekiz'de tu günlük konuşmanın standartıdır. O SENHOR / A SENHORA daha resmi hitap biçimidir."
+    },
+    {
+      title: "Karşılama ve Veda İfadeleri",
+      explanation: "Portekizce'de karşılama zamana göre değişir: Bom dia (sabah), Boa tarde (öğleden sonra), Boa noite (akşam/gece). Veda: Até logo (yakında görüşürüz), Até amanhã (yarına kadar), Adeus (hoşça kal — kalıcı). Portekiz'de sosyal karşılaşmada bir veya iki yanak öpüşmesi yaygındır.",
+      table: [
+        { pronoun: "Sabah", form: "Bom dia!", example: "Bom dia, Sr. Silva!", tr: "Günaydın, Bay Silva!" },
+        { pronoun: "Öğleden sonra", form: "Boa tarde!", example: "Boa tarde! Como está?", tr: "İyi günler! Nasılsınız?" },
+        { pronoun: "Akşam", form: "Boa noite!", example: "Boa noite! Descanse bem.", tr: "İyi geceler! İyi dinlenmeler." },
+        { pronoun: "Kısa veda", form: "Até logo!", example: "Até logo, amanhã!", tr: "Görüşürüz, yarın!" },
+        { pronoun: "Kalıcı veda", form: "Adeus!", example: "Adeus! Boa sorte!", tr: "Hoşça kal! İyi şanslar!" },
+        { pronoun: "Günlük veda", form: "Tchau / Até já!", example: "Tchau! Até já!", tr: "Bay bay! Birazdan görüşürüz!" }
+      ],
+      note: "EP'de 'beijinho' (yanak öpüşmesi) yaygın bir selamlama ritüelidir. Lisboa ve çevresinde genellikle iki öpüşme, bazı bölgelerde bir. İş ortamında el sıkışma tercih edilir."
+    },
+    {
+      title: "EP Özelliği: Pronomi Sırası (Enclítico)",
+      explanation: "Avrupa Portekizcesi'nin en belirgin özelliği: afirmatif cümlelerde zamir fiilden SONRA gelir. 'Chamo-me João' (Adım João) — 'me chamo' değil! Brezilya'da tam tersi. Olumsuzda ve bağlaçlı yapılarda zamir ÖNCE gelir: 'Não me chamo Pedro.'",
+      table: [
+        { pronoun: "Afirmatif", form: "fiil-pronomi", example: "Chamo-me Ana.", tr: "Adım Ana." },
+        { pronoun: "Olumsuz", form: "pronomi-fiil", example: "Não me chamo Pedro.", tr: "Adım Pedro değil." },
+        { pronoun: "Soru", form: "fiil-pronomi", example: "Chama-se João?", tr: "Adı João mu?" },
+        { pronoun: "Que/como sonra", form: "pronomi-fiil", example: "Que me diz?", tr: "Ne dersiniz?" },
+        { pronoun: "Veda", form: "fiil-pronomi", example: "Vejo-te amanhã!", tr: "Yarın görüşürüz!" },
+        { pronoun: "Tanışma", form: "fiil-pronomi", example: "Apresento-me: sou a Maria.", tr: "Tanıştırayım: Maria'yım." }
+      ],
+      note: "Bu kural EP'yi diğer dillerden ayıran en önemli özelliktir. Brezilya'da 'Me chamo', Portekiz'de 'Chamo-me'. Pratik yapmak gerekir!"
+    }
   ],
-
-  speaking:[
-    {id:'sp1', en:'Olá! Bom dia!', tr:'Merhaba! Günaydın!', prompt:'Selamla'},
-    {id:'sp2', en:'Me chamo Ali. E você?', tr:'Adım Ali. Ya sen?', prompt:'Kendini tanıt ve karşı tarafın adını sor'},
-    {id:'sp3', en:'Muito prazer em conhecê-lo!', tr:'Tanıştığıma çok memnun oldum!', prompt:'Tanışma ifadesi söyle',
-     gramNote:'Chamar-se dönüşlü fiili — me chamo = benim adım. Prazer em conhecê-lo = onu tanımaktan zevk.'},
-    {id:'sp4', en:'Obrigado! De nada.', tr:'Teşekkürler! Rica ederim.', prompt:'Teşekkür et ve cevapla'},
-    {id:'sp5', en:'Tchau! Até logo!', tr:'Hoşça kal! Görüşürüz!', prompt:'Vedalaş'}
+  speaking: [
+    { q: "Kendinizi Portekizce tanıtın.", a: "Olá! Chamo-me [isim]. Sou de [yer]. Tenho [yaş] anos e falo um pouco de português." },
+    { q: "'Adın ne?' sorusunu sorun (informal).", a: "Como te chamas? / Qual é o teu nome?" },
+    { q: "'Anlamıyorum, daha yavaş konuşun' nasıl?", a: "Não entendo. Pode falar mais devagar, por favor?" },
+    { q: "Birini tanıştırın.", a: "Apresento-te o meu amigo João. João, este é o Carlos. Muito prazer!" },
+    { q: "Sabah karşılaşma diyaloğu kurun.", a: "Bom dia! Tudo bem? — Tudo bem, obrigado/a. E tu?" }
   ],
-
-  dialogues:[
-    {id:'d1', title:'İlk Tanışma', title_en:'First Meeting',
-     lines:[
-       {speaker:'A', gender:'m', en:'Olá! Bom dia!', tr:'Merhaba! Günaydın!',
-        gramNote:'İki selamlama bir arada — samimi ve doğal.',
-        bd:[{ro:'Olá',tr:'Merhaba',role:'greeting',note:'Her ortamda geçerli.'},
-            {ro:'Bom dia',tr:'Günaydın',role:'greeting',note:'Gün erkil → bom.'}]},
-       {speaker:'B', gender:'f', en:'Bom dia! Tudo bem?', tr:'Günaydın! Her şey yolunda mı?',
-        gramNote:'"Tudo bem?" = Her şey iyi mi? Çok yaygın BP selamlaması.',
-        bd:[{ro:'Tudo',tr:'Her şey',role:'S',note:'Belirsiz zamir.'},
-            {ro:'bem',tr:'iyi',role:'adj',note:'Cevap: Tudo bem! veya Tudo ótimo!'}]},
-       {speaker:'A', gender:'m', en:'Tudo bem, obrigado! Me chamo Pedro. E você?', tr:'Her şey yolunda, teşekkürler! Adım Pedro. Ya siz?',
-        gramNote:'Cevap + tanıtma + karşı tarafa sorma kalıbı.',
-        bd:[{ro:'Tudo bem',tr:'Her şey yolunda',role:'phrase',note:'Standart olumlu cevap.'},
-            {ro:'obrigado',tr:'teşekkürler',role:'courtesy',note:'Erkek konuşmacı → obrigado.'},
-            {ro:'Me chamo',tr:'Adım',role:'V',note:'chamar-se fiili — me = beni.'},
-            {ro:'E você?',tr:'Ya siz?',role:'question',note:'Karşı tarafa sorma.'}]},
-       {speaker:'B', gender:'f', en:'Me chamo Ana Lima. Muito prazer!', tr:'Adım Ana Lima. Çok memnun oldum!',
-        gramNote:'İsim + soyad + tanışma ifadesi. BP\'de soyad söylemek yaygın.',
-        bd:[{ro:'Me chamo',tr:'Adım',role:'V',note:'chamar-se.'},
-            {ro:'Ana Lima',tr:'Ana Lima',role:'name',note:'Ad + soyad.'},
-            {ro:'Muito prazer',tr:'Çok memnun oldum',role:'phrase',note:'Resmi ve samimi her ortamda.'}]},
-       {speaker:'A', gender:'m', en:'O prazer é meu! Até logo, Ana!', tr:'Asıl ben memnun oldum! Görüşürüz, Ana!',
-        gramNote:'"O prazer é meu" = "memnuniyet benim". Vedada isim eklemek samimi bir dokunuş.',
-        bd:[{ro:'O prazer é meu',tr:'Asıl ben memnun oldum',role:'phrase',note:'Muhatabın Muito prazer\'ine karşılık.'},
-            {ro:'Até logo',tr:'Görüşürüz',role:'farewell',note:'Yakın zamanda görüşme.'}]},
-       {speaker:'B', gender:'f', en:'Tchau, Pedro! Até mais!', tr:'Hoşça kal, Pedro! Görüşmek üzere!',
-        gramNote:'Samimi veda — Tchau + isim.',
-        bd:[{ro:'Tchau',tr:'Hoşça kal',role:'farewell',note:'Samimi veda — İtalyan ciao\'dan.'},
-            {ro:'Até mais',tr:'Görüşmek üzere',role:'farewell',note:'Biraz daha belirsiz zaman — "sonra görüşürüz".'}]}
-     ]},
-    {id:'d2', title:'Hal Hatır', title_en:'How Are You',
-     lines:[
-       {speaker:'A', gender:'f', en:'Boa tarde! Como vai?', tr:'İyi günler! Nasılsın?',
-        gramNote:'"Como vai?" = nasıl gidiyor? Günlük hal hatır sorusu.',
-        bd:[{ro:'Boa tarde',tr:'İyi günler',role:'greeting',note:'Tarde dişil → boa.'},
-            {ro:'Como vai?',tr:'Nasılsın?',role:'question',note:'ir fiilinin você/ele/ela çekimi.'}]},
-       {speaker:'B', gender:'m', en:'Vou bem, obrigado. E você?', tr:'İyiyim, teşekkürler. Ya siz?',
-        gramNote:'"Vou bem" = iyiyim (kelimenin tam anlamıyla: iyi gidiyorum). ir fiili.',
-        bd:[{ro:'Vou',tr:'gidiyorum',role:'V',note:'ir fiilinin eu çekimi — "Vou bem" = iyiyim.'},
-            {ro:'bem',tr:'iyi',role:'adj',note:'Durum zarfı.'},
-            {ro:'obrigado',tr:'teşekkürler',role:'courtesy',note:'Erkek konuşmacı.'},
-            {ro:'E você?',tr:'Ya siz?',role:'question',note:'Karşılık sorma.'}]},
-       {speaker:'A', gender:'f', en:'Ótimo! Por favor, qual é o seu nome?', tr:'Harika! Lütfen, adınız nedir?',
-        gramNote:'"Qual é o seu nome?" = resmi isim sorusu. Qual = hangi/ne.',
-        bd:[{ro:'Ótimo',tr:'Harika',role:'adj',note:'Çok iyi, mükemmel anlamında.'},
-            {ro:'Por favor',tr:'Lütfen',role:'courtesy',note:'Nezaket ifadesi.'},
-            {ro:'Qual é',tr:'Ne / Nedir',role:'question',note:'Kimlik sorusunda "Como" yerine "Qual" tercih edilir.'},
-            {ro:'o seu nome',tr:'sizin adınız',role:'O',note:'o = belirli artikel, seu = sizin.'}]},
-       {speaker:'B', gender:'m', en:'Meu nome é Carlos. Muito prazer!', tr:'Benim adım Carlos. Çok memnun oldum!',
-        gramNote:'Resmi tanıtma kalıbı: Meu nome é + isim.',
-        bd:[{ro:'Meu nome é',tr:'Benim adım',role:'V',note:'Resmi form.'},
-            {ro:'Carlos',tr:'Carlos',role:'name',note:'Özel isim.'},
-            {ro:'Muito prazer',tr:'Çok memnun oldum',role:'phrase',note:'Tanışma ifadesi.'}]}
-     ]}
+  dialogues: [
+    {
+      title: "Havalimanında Tanışma",
+      lines: [
+        { speaker: "Ana", text: "Bom dia! Desculpe, é português?", tr: "Günaydın! Pardon, Portekizli misiniz?" },
+        { speaker: "Miguel", text: "Sim! Sou do Porto. E a menina?", tr: "Evet! Porto'luyum. Siz?" },
+        { speaker: "Ana", text: "Sou turca. Chamo-me Ana. Muito prazer!", tr: "Türküm. Adım Ana. Çok memnun oldum!" },
+        { speaker: "Miguel", text: "Igualmente! Falas muito bem português!", tr: "Ben de! Portekizceyi çok iyi konuşuyorsun!" },
+        { speaker: "Ana", text: "Obrigada! Ainda estou a aprender.", tr: "Teşekkürler! Hâlâ öğreniyorum." },
+        { speaker: "Miguel", text: "Ótimo! Bem-vinda a Portugal!", tr: "Harika! Portekiz'e hoş geldin!" }
+      ]
+    }
   ],
-
-  listening:[
-    {id:'li1', audio:'', transcript:'Olá! Me chamo Maria. Muito prazer em conhecê-lo! Tudo bem?',
-     tr:'Merhaba! Adım Maria. Tanıştığıma çok memnun oldum! Her şey yolunda mı?',
-     questions:[
-       {q:'Qual é o nome dela?', opts:['Ana','Maria','Pedro','Carlos'], answer:1, tr:'Onun adı ne?'},
-       {q:'O que ela diz depois do nome?', opts:['Tchau!','Obrigada!','Muito prazer!','Bom dia!'], answer:2, tr:'İsminden sonra ne diyor?'},
-       {q:'Qual pergunta ela faz no final?', opts:['Como vai?','Tudo bem?','Qual é o seu nome?','De onde você é?'], answer:1, tr:'En sonda hangi soruyu soruyor?'}
-     ]}
-  ]
+  listening: {
+    text: "Portugal é um país no sudoeste da Europa, na Península Ibérica. Lisboa é a capital e a maior cidade. O português é falado por mais de 250 milhões de pessoas em todo o mundo — em Portugal, Brasil, Angola, Moçambique, Cabo Verde e outros países. O português europeu tem características próprias: pronúncia diferente do Brasil, vocabulário específico e certas estruturas gramaticais únicas, como a colocação dos pronomes depois do verbo. Os portugueses são conhecidos pela sua hospitalidade e pela sua ligação profunda à cultura, à história e ao fado.",
+    questions: [
+      { q: "Portekiz nerede bulunuyor?", a: "Güneybatı Avrupa'da, İber Yarımadası'nda" },
+      { q: "Avrupa Portekizcesi'nin belirgin özelliği nedir?", a: "Farklı telaffuz, özgün sözcük hazinesi ve zamirlerin fiilden sonra gelmesi" },
+      { q: "Portekizliler nasıl tanımlanıyor?", a: "Misafirperver, kültür ve tarihe bağlı, fado ile özdeşleşen" }
+    ]
+  }
 };
 LESSONS[1] = L1;

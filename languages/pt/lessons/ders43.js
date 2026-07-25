@@ -1,94 +1,104 @@
-const L43 = {
-  title: "Questões Ambientais",
+var L43 = {
   words: [
-    { en: "o meio ambiente", tr: "çevre", pron: "u meyyu ãbyẽntshi", bd: "eril; preservar o meio ambiente = çevreyi korumak" },
-    { en: "o desmatamento", tr: "ormansızlaşma", pron: "u deshmatamẽntu", bd: "eril; desmatar = ormanı tahrip etmek" },
-    { en: "a queimada", tr: "yangın (orman)", pron: "a keymada", bd: "dişil; queimadas na Amazônia = Amazon yangınları" },
-    { en: "a poluição", tr: "kirlilik / kirlenme", pron: "a polusão", bd: "dişil; poluição do ar = hava kirliliği" },
-    { en: "o efeito estufa", tr: "sera etkisi", pron: "u efeytu ıshtufa", bd: "eril; aquecimento global = küresel ısınma" },
-    { en: "as mudanças climáticas", tr: "iklim değişikliği", pron: "as mudãnsash klimátikas", bd: "dişil çoğul; muito urgente" },
-    { en: "a biodiversidade", tr: "biyolojik çeşitlilik", pron: "a biodyversidadshi", bd: "dişil; BR tem a maior biodiversidade" },
-    { en: "o ecossistema", tr: "ekosistem", pron: "u ekosishterma", bd: "eril; ecossistemas frágeis" },
-    { en: "a sustentabilidade", tr: "sürdürülebilirlik", pron: "a sustẽtabilidadshi", bd: "dişil; desenvolvimento sustentável" },
-    { en: "a reciclagem", tr: "geri dönüşüm", pron: "a resiklajẽy", bd: "dişil; reciclar = geri dönüştürmek" },
-    { en: "a energia renovável", tr: "yenilenebilir enerji", pron: "a enerjiya renovável", bd: "dişil; solar e eólica = güneş ve rüzgar" },
-    { en: "o lixo", tr: "çöp", pron: "u líxu", bd: "eril; jogar lixo = çöp atmak; lixão = çöplük" },
-    { en: "o agrotóxico", tr: "tarım ilacı / pestisit", pron: "u agrotóxiku", bd: "eril; uso excessivo de agrotóxicos" },
-    { en: "o pantanal", tr: "pantanal (sulak alan)", pron: "u pantanaw", bd: "eril; maior área úmida do mundo" },
-    { en: "preservar", tr: "korumak / saklamak", pron: "prezervár", bd: "düzenli -AR; preservação = koruma" },
-    { en: "poluir", tr: "kirletmek", pron: "polwír", bd: "düzensiz -IR; poluiu; poluição" },
-    { en: "desmatar", tr: "ormanı tahrip etmek", pron: "deshmatár", bd: "düzenli -AR; desmatamento = ormansızlaşma" },
-    { en: "Precisamos agir agora!", tr: "Şimdi harekete geçmeliyiz!", pron: "presizamuş ajir agorá", bd: "çevre aktivizmi sloganı" },
-    { en: "A natureza agradece.", tr: "Doğa teşekkür eder.", pron: "a naturéza agradési", bd: "çevre kampanya ifadesi" },
-    { en: "Salve a Amazônia!", tr: "Amazon'u kurtarın!", pron: "sawvi a Amazõnya", bd: "aktivizm sloganı" }
+    {en:"economy", tr:"ekonomi", pron:"ikunuˈmiɐ", bd:"a economia"},
+    {en:"market", tr:"pazar / piyasa", pron:"mɨɾˈkɐdu", bd:"o mercado"},
+    {en:"company / firm", tr:"şirket", pron:"ẽpɾeˈzɐ", bd:"a empresa"},
+    {en:"profit", tr:"kâr", pron:"ˈluʃɾu", bd:"o lucro"},
+    {en:"loss", tr:"zarar", pron:"pɾeˈʒuizu", bd:"o prejuízo"},
+    {en:"investment", tr:"yatırım", pron:"ĩveʃtiˈmẽtu", bd:"o investimento"},
+    {en:"tax", tr:"vergi", pron:"ĩˈpuʃtu", bd:"o imposto"},
+    {en:"VAT", tr:"KDV", pron:"ivɐ", bd:"o IVA"},
+    {en:"interest rate", tr:"faiz oranı", pron:"ˈtɐʃɐ dɨ ʒuɾu", bd:"a taxa de juro"},
+    {en:"unemployment", tr:"işsizlik", pron:"deˈzẽpɾeɡu", bd:"o desemprego"},
+    {en:"salary / wage", tr:"maaş", pron:"sɐˈlaɾiu", bd:"o salário"},
+    {en:"minimum wage", tr:"asgari ücret", pron:"sɐˈlaɾiu miˈnimu", bd:"o salário mínimo"},
+    {en:"inflation", tr:"enflasyon", pron:"ĩflɐˈsãw", bd:"a inflação"},
+    {en:"export", tr:"ihracat", pron:"iʃpuɾˈtɐsãw", bd:"a exportação"},
+    {en:"import", tr:"ithalat", pron:"impuɾˈtɐsãw", bd:"a importação"},
+    {en:"budget", tr:"bütçe", pron:"uɾˈsɐmẽtu", bd:"o orçamento"},
+    {en:"revenue / income", tr:"gelir", pron:"ɾɨˈditu", bd:"o rendimento"},
+    {en:"invoice", tr:"fatura", pron:"ˈfɐtuɾɐ", bd:"a fatura"},
+    {en:"shareholder", tr:"hissedar", pron:"ɐsiuˈniʃtɐ", bd:"o/a acionista"},
+    {en:"stock exchange", tr:"borsa", pron:"ˈbuɾsɐ", bd:"a bolsa"}
   ],
   grammar: [
     {
-      title: "Çevre Sorunlarını Anlatma — Yapılar",
-      explanation: "Çevre sorunlarını anlatmak için EDİLGEN (voz passiva) çok yaygındır: 'A floresta está sendo destruída' (Orman tahrip edilmektedir). ESTAR + SENDO + particípio = süreç edilgeni. Ayrıca 'Cada vez mais' (giderek daha fazla) ve 'Cada vez menos' (giderek daha az) trend anlatımında kullanılır.",
+      title: "Futuro do Conjuntivo (Gelecek Zaman Dilek Kipi)",
+      explanation: "Bu kip Portekizcenin kendine özgü özelliğidir ve BP'de de kullanılır. 'Quando', 'se', 'enquanto', 'assim que', 'logo que' gibi zaman ve koşul bağlaçlarıyla kullanılır.",
       table: [
-        { pronoun: "Está sendo + part.", form: "Edilgen süreç", example: "A floresta está sendo desmatada.", tr: "Orman tahrip edilmektedir." },
-        { pronoun: "Cada vez mais", form: "Giderek daha fazla", example: "Cada vez mais áreas são queimadas.", tr: "Giderek daha fazla alan yakılmaktadır." },
-        { pronoun: "Cada vez menos", form: "Giderek daha az", example: "Cada vez menos animais sobrevivem.", tr: "Giderek daha az hayvan hayatta kalıyor." },
-        { pronoun: "Se não agirmos", form: "Harekete geçmezsek", example: "Se não agirmos, será tarde demais.", tr: "Harekete geçmezsek çok geç olacak." },
-        { pronoun: "Estima-se que", form: "Tahmin ediliyor ki", example: "Estima-se que mil espécies estejam ameaçadas.", tr: "Bin türün tehlike altında olduğu tahmin ediliyor." },
-        { pronoun: "Em risco de extinção", form: "Yok olma tehlikesinde", example: "O mico-leão-dourado está em risco.", tr: "Altın aslan tamarin yok olma tehlikesinde." }
+        {pronoun:"eu", form:"falar / vender / partir", example:"Quando falar com o diretor, aviso-te.", tr:"Müdürle konuştuğumda sana haber veririm."},
+        {pronoun:"tu", form:"falares / venderes / partires", example:"Se venderes a empresa, ganhas muito.", tr:"Şirketi satarsan çok kazanırsın."},
+        {pronoun:"ele/ela", form:"falar / vender / partir", example:"Assim que ele chegar, começamos.", tr:"O gelir gelmez, başlarız."},
+        {pronoun:"nós", form:"falarmos / vendermos / partirmos", example:"Logo que investirmos, crescemos.", tr:"Yatırım yapar yapmaz büyürüz."},
+        {pronoun:"eles/elas", form:"falarem / venderem / partirem", example:"Enquanto trabalharem, receberão.", tr:"Çalıştıkları sürece alacaklar."},
+        {pronoun:"irregular: ser/ir", form:"for / fores / for", example:"Se for possível, faça-o hoje.", tr:"Mümkünse bugün yapın."}
       ],
-      note: "'Estima-se que + subjuntivo' = tahmini edilgen. 'Calcula-se que...' (hesaplanıyor ki) bilimsel metinlerde çok kullanılır."
+      note: "Futuro do conjuntivo, İngilizce veya Türkçede karşılığı olmayan bir kiptir. 'Quando vier' (geldiğinde, geleceğinde), 'se vier' (gelirse) gibi kullanılır. Present tense yerine kullanmak hata verir."
     },
     {
-      title: "Çözüm Önerileri — İradi Yapılar",
-      explanation: "Çözüm önerileri için 'É necessário que' (gerekli ki — subjuntivo), 'Precisamos + infinitivo' (yapmamız lazım), 'Deveríamos + infinitivo' (yapmalıyız), 'Que tal + infinitivo?' (ne dersiniz — öneri) kullanılır.",
+      title: "Discurso Indirecto (Dolaylı Anlatım)",
+      explanation: "Dolaylı anlatımda zaman uyumu (consecutio temporum) önemlidir. Avrupa Portekizcesinde bu kurallar titizlikle uygulanır.",
       table: [
-        { pronoun: "É necessário que", form: "Gereklidir ki + subj.", example: "É necessário que preservemos as florestas.", tr: "Ormanları korumamız gereklidir." },
-        { pronoun: "Precisamos + inf.", form: "Lazım", example: "Precisamos reduzir as emissões.", tr: "Emisyonları azaltmamız lazım." },
-        { pronoun: "Deveríamos + inf.", form: "Yapmalıyız", example: "Deveríamos investir em energia solar.", tr: "Güneş enerjisine yatırım yapmalıyız." },
-        { pronoun: "A solução é + inf.", form: "Çözüm... etmektir", example: "A solução é reciclar mais.", tr: "Çözüm daha fazla geri dönüştürmektir." },
-        { pronoun: "Em vez de + inf.", form: "...yerine", example: "Em vez de desmatar, devemos reflorestar.", tr: "Orman kesmek yerine ağaçlandırmalıyız." },
-        { pronoun: "Que tal + inf.", form: "Öneri", example: "Que tal usar sacola reutilizável?", tr: "Yeniden kullanılabilir çanta kullansak nasıl?" }
+        {pronoun:"presente → imperfeito", form:"diz que → disse que", example:"Ele diz que vem. → Ele disse que vinha.", tr:"Geliyor diyor. → Geliyordu dedi."},
+        {pronoun:"futuro → condicional", form:"dirá → disse que", example:"Ela dirá sim. → Ela disse que diria sim.", tr:"Evet diyecek. → Evet diyeceğini söyledi."},
+        {pronoun:"imperativo → infinitivo", form:"Vem! → pediu-lhe que", example:"'Vem!' → Pediu-lhe que viesse.", tr:"'Gel!' → Ondan gelmesini istedi."},
+        {pronoun:"agora → naquele momento", form:"agora → então", example:"'Agora estou ocupado.' → Disse que então estava ocupado.", tr:"'Şimdi meşgulüm.' → O an meşgul olduğunu söyledi."},
+        {pronoun:"hoje → naquele dia", form:"hoje → naquele dia", example:"'Hoje assino.' → Disse que naquele dia assinava.", tr:"'Bugün imzalıyorum.' → O gün imzalayacağını söyledi."},
+        {pronoun:"aqui → ali/lá", form:"aqui → ali", example:"'Trabalho aqui.' → Disse que trabalhava ali.", tr:"'Burada çalışıyorum.' → Orada çalıştığını söyledi."}
       ],
-      note: "É necessário / É importante / É fundamental / É urgente — hepsi SUBJUNTIVO ister! Bu kalıplar siyasi/çevresel konuşmalarda sıktır."
+      note: "Dolaylı anlatımda yer ve zaman zarfları da değişir: aqui→ali/lá, agora→então/naquele momento, hoje→naquele dia, amanhã→no dia seguinte."
     },
     {
-      title: "Brezilya'nın Çevre Biyomları",
-      explanation: "Brezilya dünyanın en zengin biyoçeşitliliğine sahip ülkedir. Altı ana biyom: Amazônia (kuzey), Cerrado (iç), Mata Atlântica (sahil), Caatinga (kuzeydoğu), Pampa (güney) ve Pantanal (merkez-batı). Her biyomun kendine özgü flora ve faunası var.",
+      title: "Números Grandes e Percentagens (Büyük Sayılar ve Yüzdeler)",
+      explanation: "Ekonomi konuşmalarında büyük sayılar ve yüzdeler çok kullanılır. EP ve BP'de bazı sayı ifadeleri farklıdır.",
       table: [
-        { pronoun: "Amazônia", form: "Tropikal yağmur ormanı", example: "Amazônia tem 20% da água doce do mundo.", tr: "Amazon, dünyanın tatlı suyunun %20'sine sahip." },
-        { pronoun: "Cerrado", form: "Savanah/ova", example: "O Cerrado é o berço das águas.", tr: "Cerrado, suların beşiğidir." },
-        { pronoun: "Mata Atlântica", form: "Atlantik ormanı", example: "Mata Atlântica perdeu 85% da cobertura.", tr: "Atlantik Ormanı örtüsünün %85'ini kaybetti." },
-        { pronoun: "Caatinga", form: "Kurak çalılık", example: "A Caatinga é exclusiva do Brasil.", tr: "Caatinga yalnızca Brezilya'ya özgü." },
-        { pronoun: "Pampa", form: "Pampalar", example: "O Pampa é famoso pela pecuária.", tr: "Pampa hayvancılıkla ünlüdür." },
-        { pronoun: "Pantanal", form: "Sulak alan", example: "O Pantanal tem onças e araras.", tr: "Pantanal'da jaguar ve macaw kuşu var." }
+        {pronoun:"mil", form:"1.000", example:"O salário mínimo é de mil euros.", tr:"Asgari ücret bin eurodur."},
+        {pronoun:"dez mil", form:"10.000", example:"A empresa tem dez mil funcionários.", tr:"Şirketin on bin çalışanı var."},
+        {pronoun:"cem mil", form:"100.000", example:"O apartamento custa cem mil euros.", tr:"Daire yüz bin euroya mal olur."},
+        {pronoun:"um milhão", form:"1.000.000", example:"O lucro foi de um milhão de euros.", tr:"Kâr bir milyon euro oldu."},
+        {pronoun:"percentagem", form:"por cento (%)", example:"O IVA é de vinte e três por cento.", tr:"KDV yüzde yirmi üçtür."},
+        {pronoun:"vírgula (décimal)", form:",", example:"A taxa é de dois vírgula cinco por cento.", tr:"Oran yüzde iki virgül beştir."}
       ],
-      note: "Mata Atlântica: Brezilya'nın en tehdit altındaki biyomu. Başlangıçta Brezilya'nın neredeyse yarısını kaplarken, artık yalnızca %12-15'i kalmış."
+      note: "EP'de ondalık ayırıcı virgüldür (,) nokta değil: 2,5% = dois vírgula cinco por cento. Binler için nokta kullanılır: 1.000 = mil. BP aynı kuralı kullanır."
     }
   ],
   speaking: [
-    { q: "Amazon yangınları hakkında görüşünüzü belirtin.", a: "As queimadas na Amazônia são devastadoras. Precisamos de políticas mais rigorosas de proteção." },
-    { q: "Çevre için üç öneri verin.", a: "Deveríamos reciclar mais, usar menos plástico e investir em energia renovável." },
-    { q: "'İklim değişikliği acil bir sorun' nasıl?", a: "As mudanças climáticas são urgentes. É necessário que todos ajam agora." },
-    { q: "Pantanal neden önemli?", a: "O Pantanal é a maior área úmida do mundo e abriga espécies únicas. Sua preservação é vital." },
-    { q: "Günlük yaşamda çevreyi nasıl koruyabilirsiniz?", a: "Uso sacola reutilizável, separo o lixo para reciclagem e reduzo o consumo de água." }
+    {q:"Qual é o salário mínimo em Portugal atualmente?", a:"O salário mínimo nacional em Portugal tem vindo a aumentar progressivamente, atingindo os 870 euros mensais em 2024."},
+    {q:"O que é o IVA e qual é a taxa normal?", a:"O IVA é o Imposto sobre o Valor Acrescentado. A taxa normal é de 23%, mas há taxas reduzidas de 13% e 6% para certos produtos."},
+    {q:"Portugal é um país desenvolvido economicamente?", a:"Portugal é um país de rendimento alto, membro da zona euro desde 2002, embora tenha sofrido uma crise económica grave entre 2010 e 2014."},
+    {q:"Quais são as principais exportações portuguesas?", a:"Portugal exporta principalmente automóveis e componentes, máquinas, cortiça, vinho, calçado, têxteis e produtos alimentares."},
+    {q:"O que é necessário para criar uma empresa em Portugal?", a:"É necessário ter um NIF, escolher a forma jurídica, registar na Conservatória do Registo Comercial e, se aplicável, inscrever-se na Segurança Social."}
   ],
   dialogues: [
     {
-      title: "Çevre Tartışması",
+      title: "Reunião de Negócios",
       lines: [
-        { speaker: "Ambientalista", text: "O desmatamento na Amazônia aumentou muito. É uma tragédia ambiental!", tr: "Amazon'da ormansızlaşma çok arttı. Bu çevresel bir trajedi!" },
-        { speaker: "Fazendeiro", text: "Entendo a preocupação, mas precisamos desenvolver economicamente também.", tr: "Endişeyi anlıyorum, ama ekonomik olarak da gelişmemiz gerekiyor." },
-        { speaker: "Ambientalista", text: "Claro, mas em vez de desmatar, podemos ter agropecuária sustentável.", tr: "Elbette, ama orman kesmek yerine sürdürülebilir çiftçilik yapabiliriz." },
-        { speaker: "Fazendeiro", text: "Isso custa mais caro. Não é fácil para o pequeno produtor.", tr: "Bu daha pahalıya mal oluyor. Küçük üretici için kolay değil." },
-        { speaker: "Ambientalista", text: "Por isso precisamos de políticas públicas. Incentivos para quem preserva.", tr: "Bu yüzden kamu politikalarına ihtiyacımız var. Koruyanlara teşvik." },
-        { speaker: "Fazendeiro", text: "Nesse ponto, concordo. Sem apoio do governo, é quase impossível.", tr: "Bu konuda katılıyorum. Hükümet desteği olmadan, neredeyse imkansız." }
+        {speaker:"Diretor/a", text:"Bom dia a todos. Vamos analisar os resultados do último trimestre."},
+        {speaker:"Contabilista", text:"As receitas cresceram 12% face ao mesmo período do ano anterior. O lucro líquido aumentou 8%."},
+        {speaker:"Diretor/a", text:"Muito bem. E quanto às despesas? Conseguimos reduzi-las?"},
+        {speaker:"Gestor/a", text:"Reduzimos os custos operacionais em 5%, principalmente através da digitalização de processos."},
+        {speaker:"Diretor/a", text:"Excelente. Qual é a proposta para o investimento no próximo trimestre?"},
+        {speaker:"Contabilista", text:"Propomos investir 15% das receitas em tecnologia e 10% em formação de pessoal."}
+      ]
+    },
+    {
+      title: "No Balcão do Banco",
+      lines: [
+        {speaker:"Cliente", text:"Boa tarde. Queria obter informações sobre um crédito para o meu negócio."},
+        {speaker:"Bancário/a", text:"Com certeza. Que tipo de negócio tem e de que montante necessita?"},
+        {speaker:"Cliente", text:"Tenho uma pequena empresa de construção e preciso de 50.000 euros para equipamento."},
+        {speaker:"Bancário/a", text:"Temos várias linhas de crédito para PME. A taxa de juro atual está entre 4% e 6% ao ano."},
+        {speaker:"Cliente", text:"E quais são os documentos necessários?"},
+        {speaker:"Bancário/a", text:"Precisa da declaração de IRS dos últimos dois anos, os balancetes da empresa e o plano de negócios."}
       ]
     }
   ],
   listening: {
-    text: "A Amazônia é frequentemente chamada de 'pulmão do mundo' — não porque produza oxigênio para todo o planeta, mas porque absorve quantidades enormes de dióxido de carbono. O Brasil tem 60% da Amazônia dentro de seu território. O desmatamento ilegal é uma das grandes ameaças: entre 2019 e 2022, a taxa de desmatamento aumentou significativamente. Em resposta, o Brasil criou o IBAMA — Instituto Brasileiro do Meio Ambiente — para fiscalizar e aplicar multas. A COP30, conferência climática global, será sediada em Belém do Pará em 2025.",
+    text: "A economia portuguesa passou por grandes transformações nas últimas décadas. Após a crise financeira de 2010 a 2014, Portugal implementou um programa de ajustamento económico que resultou numa recuperação notável. O turismo tornou-se um dos pilares da economia, representando uma parte significativa do PIB. O setor tecnológico tem crescido rapidamente, com Lisboa a tornar-se um polo de startups europeias — o Web Summit, o maior evento de tecnologia do mundo, realiza-se em Lisboa desde 2016. As principais empresas exportadoras incluem a Autoeuropa, que produz automóveis Volkswagen em Palmela, e várias empresas do setor corticeiro, já que Portugal produz mais de metade da cortiça mundial.",
     questions: [
-      { q: "Amazon neden 'dünyanın akciğeri' olarak adlandırılıyor?", a: "Büyük miktarda karbondioksiti emdiği için" },
-      { q: "Amazon'un ne kadarı Brezilya'da?", a: "%60'ı" },
-      { q: "COP30 nerede ve ne zaman düzenlenecek?", a: "2025'te Belém do Pará'da" }
+      {q:"Quando ocorreu a crise financeira em Portugal?", a:"A crise financeira ocorreu entre 2010 e 2014."},
+      {q:"Desde quando se realiza o Web Summit em Lisboa?", a:"O Web Summit realiza-se em Lisboa desde 2016."},
+      {q:"O que produz a Autoeuropa em Palmela?", a:"A Autoeuropa produz automóveis Volkswagen em Palmela."}
     ]
   }
 };

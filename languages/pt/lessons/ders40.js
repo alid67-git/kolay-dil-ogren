@@ -1,94 +1,93 @@
-const L40 = {
-  title: "Opiniões e Debates",
+var L40 = {
   words: [
-    { en: "a opinião", tr: "görüş / fikir", pron: "a opĩnião", bd: "dişil; dar opinião = görüş belirtmek" },
-    { en: "o argumento", tr: "argüman / kanıt", pron: "u argumentu", bd: "eril; argumento forte = güçlü argüman" },
-    { en: "o debate", tr: "tartışma / münazara", pron: "u debatshi", bd: "eril; debater = tartışmak" },
-    { en: "a polêmica", tr: "tartışmalı konu / polemik", pron: "a polémika", bd: "dişil; assunto polêmico = tartışmalı konu" },
-    { en: "o preconceito", tr: "önyargı", pron: "u prikõseitu", bd: "eril; preconceituoso = önyargılı" },
-    { en: "a desigualdade", tr: "eşitsizlik", pron: "a dezigualdadshi", bd: "dişil; desigualdade social" },
-    { en: "a corrupção", tr: "yolsuzluk / rüşvet", pron: "a korupsão", bd: "dişil; corrupto = yolsuz" },
-    { en: "a democracia", tr: "demokrasi", pron: "a demokratsiya", bd: "dişil; democrático = demokratik" },
-    { en: "a liberdade", tr: "özgürlük", pron: "a liberdadshi", bd: "dişil; liberdade de expressão = ifade özgürlüğü" },
-    { en: "a justiça", tr: "adalet", pron: "a jushtisha", bd: "dişil; injustiça = haksızlık; justo = adil" },
-    { en: "concordar com", tr: "katılmak", pron: "kõkordár kõ", bd: "düzenli -AR; concordo = katılıyorum" },
-    { en: "discordar de", tr: "katılmamak", pron: "dishkordár dshi", bd: "düzenli -AR; discordo = katılmıyorum" },
-    { en: "defender", tr: "savunmak", pron: "defẽndér", bd: "düzenli -ER; defendo = savunuyorum" },
-    { en: "criticar", tr: "eleştirmek", pron: "kritikár", bd: "düzenli -AR; crítica = eleştiri" },
-    { en: "apoiar", tr: "desteklemek", pron: "apoyár", bd: "düzenli -AR; apoio = destek" },
-    { en: "refutar", tr: "çürütmek", pron: "refutár", bd: "düzenli -AR; refutar um argumento" },
-    { en: "questionar", tr: "sorgulamak", pron: "kestyonár", bd: "düzenli -AR; questiono = sorguluyorum" },
-    { en: "Em minha opinião...", tr: "Benim görüşüme göre...", pron: "ẽy mĩnya opĩnião", bd: "fikir açma" },
-    { en: "Discordo respeitosamente.", tr: "Saygıyla katılmıyorum.", pron: "dishkórdu reshpeytozamẽntshi", bd: "kibar itiraz" },
-    { en: "Há dois lados nisso.", tr: "Bu konunun iki tarafı var.", pron: "a doys ladus nishtu", bd: "denge görüşü" }
+    {en:"immigration", tr:"göç/göçmenlik", pron:"imiɡɾɐˈsɐ̃u̯", bd:"imigração"},
+    {en:"emigration", tr:"dış göç", pron:"ɨmiɡɾɐˈsɐ̃u̯", bd:"emigração"},
+    {en:"expat", tr:"yurt dışında yaşayan", pron:"ɨkʃpɐˈtɾiadu", bd:"expatriado"},
+    {en:"residence permit", tr:"oturma izni", pron:"ɐutuɾizɐˈsɐ̃u̯ dɨ ɾɨziˈdẽsiɐ", bd:"autorização de residência"},
+    {en:"visa", tr:"vize", pron:"ˈvizɐ", bd:"visto"},
+    {en:"citizenship", tr:"vatandaşlık", pron:"sidɐˈdɐniɐ", bd:"cidadania"},
+    {en:"integration", tr:"entegrasyon", pron:"ĩtɨɡɾɐˈsɐ̃u̯", bd:"integração"},
+    {en:"diaspora", tr:"diaspora", pron:"diˈɐʃpuɾɐ", bd:"diáspora"},
+    {en:"AIMA", tr:"göçmenlik ajansı", pron:"ˈaimɐ", bd:"AIMA"},
+    {en:"NIF", tr:"vergi numarası", pron:"ˈnif", bd:"NIF"},
+    {en:"SEF (former)", tr:"yabancılar ve sınır servisi", pron:"ˈsɛf", bd:"SEF"},
+    {en:"golden visa", tr:"altın vize", pron:"ˈviʃtu ˈouru", bd:"visto gold"},
+    {en:"digital nomad visa", tr:"dijital göçebe vizesi", pron:"ˈviʃtu noˈmɐdɐ diʒiˈtal", bd:"visto nómada digital"},
+    {en:"language course", tr:"dil kursu", pron:"kuɾsu dɨ ˈliŋɡwɐ", bd:"curso de língua"},
+    {en:"recognition of degree", tr:"diploma denkliği", pron:"ɾɨkunɨsiˈmẽtu dɨ dipluˈmɐ", bd:"reconhecimento de diploma"},
+    {en:"portuguese community abroad", tr:"yurt dışındaki Portekizliler", pron:"kumuniˈdadɨ puɾtuˈɡɛzɐ nu ɨʃtɾɐ̃ˈʒɐɪ̯ɾu", bd:"comunidade portuguesa no estrangeiro"},
+    {en:"returnee", tr:"geri dönen", pron:"ɾɨtuɾˈnɐdu", bd:"retornado"},
+    {en:"multicultural", tr:"çok kültürlü", pron:"multikul͡tuˈɾɐl", bd:"multicultural"},
+    {en:"social security number", tr:"sosyal güvenlik numarası", pron:"ˈnumɨɾu dɨ siɡuˈɾɐ̃sɐ suˈsjɐl", bd:"número de Segurança Social"},
+    {en:"housing", tr:"konut", pron:"ɐbitɐˈsɐ̃u̯", bd:"habitação"}
   ],
   grammar: [
     {
-      title: "Görüş Bildirme — Yapılar ve İfadeler",
-      explanation: "Portekizce'de görüş bildirmek için çeşitli yapılar kullanılır: ACHAR QUE (düşünmek), ACREDITAR QUE (inanmak), CONCORDAR COM (katılmak), DISCORDAR DE (katılmamak). Subjuntivo bazen görüş cümlelerinde gerekir: 'Espero que seja verdade' (gerçek olmasını umuyorum).",
+      title: "Imigração em Portugal — Göç ve Entegrasyon",
+      explanation: "Portekiz son yıllarda hem göç alan hem de veren bir ülkedir. Düşük maliyeti, güvenliği ve yaşam kalitesiyle pek çok yabancıyı çekmektedir.",
       table: [
-        { pronoun: "Acho que + ind.", form: "Düşünmek", example: "Acho que a situação vai melhorar.", tr: "Durumun düzeleceğini düşünüyorum." },
-        { pronoun: "Acredito que", form: "İnanmak", example: "Acredito que todos merecem chances.", tr: "Herkesin fırsatı hak ettiğine inanıyorum." },
-        { pronoun: "Na minha visão", form: "Benim bakışıma göre", example: "Na minha visão, isso é injusto.", tr: "Benim bakışıma göre bu adaletsiz." },
-        { pronoun: "Do meu ponto de vista", form: "Benim açımdan", example: "Do meu ponto de vista, precisamos agir.", tr: "Benim açımdan harekete geçmemiz gerekiyor." },
-        { pronoun: "É minha convicção que", form: "Kanaatim", example: "É minha convicção que a educação muda tudo.", tr: "Eğitimin her şeyi değiştirdiğine inancım var." },
-        { pronoun: "Pode ser que", form: "Olabilir ki", example: "Pode ser que eu esteja errado.", tr: "Yanılıyor olabilirim." }
+        {pronoun:"AIMA", form:"Ajans (2023'ten itibaren)", example:"A AIMA substituiu o SEF em 2023.", tr:"AIMA 2023'te SEF'in yerini aldı."},
+        {pronoun:"NIF", form:"zorunlu vergi numarası", example:"Para abrir conta num banco precisa do NIF.", tr:"Banka hesabı açmak için NIF gerekir."},
+        {pronoun:"Visto de Nómada Digital", form:"uzaktan çalışma vizesi", example:"O visto de nómada digital permite trabalhar remotamente em Portugal.", tr:"Dijital göçebe vizesi Portekiz'de uzaktan çalışmaya izin verir."},
+        {pronoun:"Autorização de residência", form:"oturma izni", example:"Após um ano pode pedir autorização de residência.", tr:"Bir yılın ardından oturma izni başvurabilirsiniz."},
+        {pronoun:"Cidadania portuguesa", form:"vatandaşlık", example:"Após 5 anos pode pedir cidadania portuguesa.", tr:"5 yılın ardından Portekiz vatandaşlığı için başvurabilirsiniz."},
+        {pronoun:"Programa Regressar", form:"geri dönüş programı", example:"O Programa Regressar incentiva portugueses a voltarem.", tr:"Programa Regressar, Portekizlilerin geri dönmesini teşvik eder."}
       ],
-      note: "ACHAR QUE + indicativo (fikir): 'Acho que é verdade.' ACHAR QUE + subjuntivo (şüphe/duygu): 'Não acho que seja certo.' (olumsuz sonrası subjuntivo!)"
+      note: "Portekiz vatandaşlığı için 5 yıl yasal ikamet gerekir. Portekiz Yahudi asıllı kişilere 5 yıllık ikamet olmaksızın vatandaşlık tanıyan nadir ülkelerden biridir (Sefarad Yahudileri için)."
     },
     {
-      title: "Karşı Fikir Bildirme — Kibarca İtiraz",
-      explanation: "Karşı fikir bildirmek için önce karşı tarafı anlamak önemlidir: 'Entendo seu ponto, mas...' (Görüşünüzü anlıyorum, ancak...), 'Com todo o respeito...' (Tam bir saygıyla...), 'Embora concordo parcialmente...' (Kısmen katılsam da...). Bu yapılar tartışmayı nazik tutar.",
+      title: "Conjuntivo Imperfeito — Geçmiş Dilek Kipi",
+      explanation: "Gerçekleşmemiş veya şüpheli geçmiş olaylar için 'Conjuntivo Imperfeito' (Pretérito Imperfeito do Conjuntivo) kullanılır. -ar → -asse; -er/-ir → -esse/-isse.",
       table: [
-        { pronoun: "Entendo, mas...", form: "Anlıyorum, ama...", example: "Entendo seu ponto, mas discordo.", tr: "Görüşünüzü anlıyorum, ama katılmıyorum." },
-        { pronoun: "Com respeito...", form: "Saygıyla...", example: "Com todo respeito, isso não procede.", tr: "Tam bir saygıyla, bu tutmuyor." },
-        { pronoun: "Embora + subj.", form: "...olsa da", example: "Embora entenda, não concordo.", tr: "Anlasam da, katılmıyorum." },
-        { pronoun: "Por outro lado", form: "Öte yandan", example: "Por outro lado, há benefícios.", tr: "Öte yandan, faydaları da var." },
-        { pronoun: "Nem sempre", form: "Her zaman değil", example: "Nem sempre é tão simples assim.", tr: "Her zaman bu kadar basit değil." },
-        { pronoun: "Há exceções", form: "İstisnalar var", example: "Há exceções a toda regra.", tr: "Her kuralın istisnası var." }
+        {pronoun:"falar → falasse", form:"eu/ele falasse", example:"Gostaria que toda a gente falasse português.", tr:"Herkesin Portekizce konuşmasını isterdim."},
+        {pronoun:"ter → tivesse", form:"eu/ele tivesse", example:"Se eu tivesse o visto, ficaria mais tempo.", tr:"Vizemiz olsaydı daha uzun kalırdım."},
+        {pronoun:"ser → fosse", form:"eu/ele fosse", example:"Mesmo que fosse difícil, tentaria integrar-me.", tr:"Zor olsa bile entegre olmaya çalışırdım."},
+        {pronoun:"poder → pudesse", form:"eu/ele pudesse", example:"Se pudesse, trabalharia em Portugal.", tr:"Yapabilseydim Portekiz'de çalışırdım."},
+        {pronoun:"vir → viesse", form:"eu/ele viesse", example:"Pediam que eu viesse com todos os documentos.", tr:"Tüm belgelerle gelmemi istiyorlardı."},
+        {pronoun:"querer → quisesse", form:"eu/ele quisesse", example:"Caso quisesse ficar, precisava de visto.", tr:"Kalmak isteseydi vizesi olması gerekiyordu."}
       ],
-      note: "'Embora' = 'although/even though' — her zaman SUBJUNTIVO istiyor: 'Embora seja difícil...' (zor olsa da). Çok yaygın bir bağlaç!"
+      note: "Conjuntivo Imperfeito genellikle 'se' (eğer), 'gostaria que', 'era necessário que', 'caso' gibi yapılardan sonra kullanılır. Bu kip EP'de BP'den daha sistematik biçimde uygulanır."
     },
     {
-      title: "Brezilya'nın Güncel Sosyal Konuları",
-      explanation: "Brezilya'nın en çok tartışılan konular: desigualdade (eşitsizlik), corrupção (yolsuzluk), racismo (ırkçılık), meio ambiente (çevre), saúde pública (halk sağlığı). Bu konularda fikir bildirmek için siyasi tarafsız dil önemlidir.",
+      title: "Experiência de Imigrar — Göç Deneyimi",
+      explanation: "Göç deneyimini ifade etmek için kullanılan EP ifadeler.",
       table: [
-        { pronoun: "Desigualdade", form: "Sosyal eşitsizlik", example: "O Brasil tem grande desigualdade social.", tr: "Brezilya'da büyük sosyal eşitsizlik var." },
-        { pronoun: "Corrupção", form: "Yolsuzluk", example: "A corrupção afeta o desenvolvimento.", tr: "Yolsuzluk gelişimi olumsuz etkiliyor." },
-        { pronoun: "Racismo", form: "Irkçılık", example: "O racismo estrutural existe no Brasil.", tr: "Brezilya'da yapısal ırkçılık var." },
-        { pronoun: "Meio ambiente", form: "Çevre", example: "A Amazônia precisa de mais proteção.", tr: "Amazon daha fazla korumaya ihtiyaç duyuyor." },
-        { pronoun: "Educação", form: "Eğitim", example: "Investir em educação é a solução.", tr: "Eğitime yatırım çözümdür." },
-        { pronoun: "Saúde pública", form: "Halk sağlığı", example: "O SUS precisa de mais recursos.", tr: "SUS'un daha fazla kaynağa ihtiyacı var." }
+        {pronoun:"adaptar-se a", form:"uyum sağlamak", example:"Adaptei-me bem à vida portuguesa.", tr:"Portekiz yaşamına iyi uyum sağladım."},
+        {pronoun:"sentir falta de", form:"özlemini çekmek", example:"Sinto falta da comida do meu país.", tr:"Ülkemin yemeğinin özlemini çekiyorum."},
+        {pronoun:"criar raízes", form:"kök salmak", example:"Ao fim de três anos, criei raízes em Lisboa.", tr:"Üç yılın sonunda Lizbon'da kök saldum."},
+        {pronoun:"barreira linguística", form:"dil engeli", example:"No início havia uma barreira linguística.", tr:"Başlangıçta bir dil engeli vardı."},
+        {pronoun:"fazer amizades", form:"arkadaş edinmek", example:"Fiz amizades com portugueses e outros imigrantes.", tr:"Portekizlilerle ve diğer göçmenlerle arkadaşlık kurdum."},
+        {pronoun:"sentir-se em casa", form:"kendini evde hissetmek", example:"Agora sinto-me completamente em casa em Portugal.", tr:"Artık Portekiz'de tamamen evimde hissediyorum."}
       ],
-      note: "Siyasi tartışmalarda BP'de PASSANDO PELO VIÉS IDEOLÓGICO (ideolojik önyargıyı geçmek) ifadesi dikkatli kullanılır. Tarafsız kalmak önemlidir."
+      note: "Portugal'da yaklaşık 700.000 kayıtlı yabancı var. En büyük topluluklar Brezilya, Angola, Ukrayna, İngiltere ve diğer AB ülkelerinden gelmektedir."
     }
   ],
   speaking: [
-    { q: "Sosyal medyanın gençler üzerindeki etkisi hakkında görüşünüzü belirtin.", a: "Na minha opinião, tem efeitos positivos e negativos. Por um lado, conecta as pessoas. Por outro, causa ansiedade." },
-    { q: "Çevre koruması konusunda bir argüman yapın.", a: "Acredito que proteger a Amazônia é fundamental. Ela regula o clima do planeta inteiro." },
-    { q: "Karşı bir görüşü kibarca çürütün.", a: "Entendo seu ponto, mas há outro lado. Nem sempre os dados mostram isso." },
-    { q: "'Eşitsizlik büyük bir sorun' nasıl ifade edersiniz?", a: "A desigualdade social é um dos maiores desafios do Brasil. Precisamos de políticas públicas eficazes." },
-    { q: "Bir görüşle hemfikir olun ama bir şart ekleyin.", a: "Concordo em parte, mas é preciso considerar o contexto mais amplo." }
+    {q:"O que preciso para viver legalmente em Portugal?", a:"Precisa de NIF, número de Segurança Social e, dependendo da origem, um visto ou autorização de residência. A AIMA trata destes pedidos."},
+    {q:"Portugal tem programa para atrair nómadas digitais?", a:"Sim! O visto de nómada digital permite trabalhar remotamente em Portugal desde 2022. Exige prova de rendimento mínimo."},
+    {q:"Quantos anos preciso para pedir cidadania portuguesa?", a:"Normalmente 5 anos de residência legal contínua. Com casamento com cidadão português, o prazo pode ser menor."},
+    {q:"Portugal é um país multicultural?", a:"Cada vez mais! Lisboa especialmente tem uma grande diversidade. Há comunidades brasileiras, africanas, asiáticas e de toda a Europa."},
+    {q:"Quais são as maiores dificuldades para um imigrante em Portugal?", a:"O acesso à habitação, especialmente em Lisboa, é o maior problema atual. Também a burocracia pode ser lenta."}
   ],
   dialogues: [
     {
-      title: "Sosyal Medya Tartışması",
+      title: "Experiência de Um Imigrante",
       lines: [
-        { speaker: "Paulo", text: "Acho que as redes sociais fazem mais mal do que bem. O que você acha?", tr: "Sosyal medyanın iyiden çok zarar yaptığını düşünüyorum. Siz ne düşünüyorsunuz?" },
-        { speaker: "Marta", text: "Discordo! Na minha opinião, depende do uso. Podem conectar e informar.", tr: "Katılmıyorum! Benim görüşüme göre, kullanıma bağlı. Bağlantı kurup bilgilendirebilirler." },
-        { speaker: "Paulo", text: "Entendo seu ponto, mas o vício em tela é real. Especialmente entre jovens.", tr: "Görüşünüzü anlıyorum, ama ekran bağımlılığı gerçek. Özellikle gençler arasında." },
-        { speaker: "Marta", text: "Concordo que o vício é um problema. Mas as ferramentas em si não são más.", tr: "Bağımlılığın sorun olduğuna katılıyorum. Ama araçların kendisi kötü değil." },
-        { speaker: "Paulo", text: "Há dois lados nisso. Talvez regulação seja a resposta?", tr: "Bu konunun iki tarafı var. Belki düzenleme cevaptır?" },
-        { speaker: "Marta", text: "Boa ideia! Regulação e educação digital desde cedo. Concordamos no fundo!", tr: "Güzel fikir! Erken yaştan itibaren düzenleme ve dijital eğitim. Özünde hemfikiriz!" }
+        {speaker:"Paulo (brasileiro)", text:"Já vivo em Lisboa há três anos. No início foi difícil, mas agora sinto-me bem."},
+        {speaker:"Colega portuguesa", text:"O que foi mais difícil no início?"},
+        {speaker:"Paulo", text:"A burocracia foi um pesadelo! E encontrar habitação acessível em Lisboa foi muito complicado."},
+        {speaker:"Colega", text:"Isso é um problema para toda a gente, não só para os imigrantes. A habitação está cara."},
+        {speaker:"Paulo", text:"É verdade. Mas o resto foi positivo — as pessoas são simpáticas e adaptei-me bem ao estilo de vida."},
+        {speaker:"Colega", text:"E o português europeu foi difícil de aprender depois do brasileiro?"}
       ]
     }
   ],
   listening: {
-    text: "O Brasil é um dos países mais desiguais do mundo. O índice de Gini, que mede a desigualdade de renda, coloca o Brasil entre os mais altos do planeta. Historicamente, essa desigualdade tem raízes na escravidão e na concentração de terra. Porém, programas como o Bolsa Família contribuíram para reduzir a pobreza extrema. O debate sobre cotas raciais nas universidades públicas é um dos mais acalorados: defensores dizem que corrigem injustiças históricas; críticos questionam se são a melhor abordagem.",
+    text: "Portugal tornou-se nos últimos anos um destino muito atrativo para imigrantes e expatriados de todo o mundo. A qualidade de vida, a segurança, o clima e os custos relativamente acessíveis (comparados com o Reino Unido, França ou Alemanha) atraem cada vez mais estrangeiros. A comunidade de nómadas digitais cresceu exponencialmente, especialmente em Lisboa e no Algarve. No entanto, a crise habitacional, com preços das casas e rendas muito elevados, é um desafio crescente tanto para imigrantes como para portugueses.",
     questions: [
-      { q: "Brezilya'daki eşitsizliğin tarihsel kökenleri neler?", a: "Kölelik ve toprak yoğunlaşması" },
-      { q: "Bolsa Família ne yaptı?", a: "Aşırı yoksulluğu azaltmaya katkıda bulundu" },
-      { q: "Üniversitelerde ırk kotaları tartışmasının iki tarafı ne?", a: "Savunucular: tarihsel haksızlıkları düzeltiyor. Eleştirmenler: en iyi yaklaşım olup olmadığını sorgular" }
+      {q:"O que atrai imigrantes para Portugal?", a:"Qualidade de vida, segurança, clima e custos relativamente acessíveis."},
+      {q:"Onde se concentram os nómadas digitais em Portugal?", a:"Em Lisboa e no Algarve."},
+      {q:"Qual é o principal problema para quem quer viver em Portugal?", a:"A crise habitacional — preços altos de casas e rendas."}
     ]
   }
 };

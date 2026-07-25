@@ -1,94 +1,93 @@
-const L7 = {
-  title: "Comida e Bebidas",
+var L7 = {
   words: [
-    { en: "o arroz", tr: "pirinç / pilav", pron: "u ahosh", bd: "eril; Brezilya'nın temel gıdası" },
-    { en: "o feijão", tr: "fasulye", pron: "u feyjão", bd: "eril; arroz com feijão = milli yemek" },
-    { en: "a carne", tr: "et", pron: "a karni", bd: "dişil; genel et" },
-    { en: "o frango", tr: "tavuk", pron: "u frãngu", bd: "eril" },
-    { en: "o peixe", tr: "balık", pron: "u peyshi", bd: "eril" },
-    { en: "o pão", tr: "ekmek", pron: "u pão", bd: "eril; çoğul: pães" },
-    { en: "o queijo", tr: "peynir", pron: "u keyju", bd: "eril" },
-    { en: "o ovo", tr: "yumurta", pron: "u ovu", bd: "eril; çoğul: ovos" },
-    { en: "a fruta", tr: "meyve", pron: "a fruta", bd: "dişil; genel" },
-    { en: "o legume / a verdura", tr: "sebze", pron: "u legumi / a verdura", bd: "genel sebze" },
-    { en: "a água", tr: "su", pron: "a agua", bd: "dişil; a água (artikel şart)" },
-    { en: "o suco", tr: "meyve suyu", pron: "u suku", bd: "BP: suco; EP: sumo" },
-    { en: "o café", tr: "kahve", pron: "u kafé", bd: "eril; café com leite = sütlü kahve" },
-    { en: "o leite", tr: "süt", pron: "u leyti", bd: "eril" },
-    { en: "a cerveja", tr: "bira", pron: "a serveja", bd: "dişil" },
-    { en: "o vinho", tr: "şarap", pron: "u vinyu", bd: "eril; vinho tinto=kırmızı, branco=beyaz" },
-    { en: "Eu tenho fome.", tr: "Açım. (açlığım var)", pron: "ew tẽnyu fomi", bd: "ter fome = aç olmak" },
-    { en: "Eu tenho sede.", tr: "Susadım. (susuzluğum var)", pron: "ew tẽnyu sédshi", bd: "ter sede = susamak" },
-    { en: "Está delicioso!", tr: "Çok lezzetli!", pron: "ıshta deliziozu", bd: "estar: geçici durum" },
-    { en: "Bom apetite!", tr: "Afiyet olsun!", pron: "bõ apetítshi", bd: "yemek başlarken söylenir" }
+    {en:"bread", tr:"ekmek", pron:"ˈpɐ̃u̯", bd:"pão"},
+    {en:"meat", tr:"et", pron:"ˈkaɾnɨ", bd:"carne"},
+    {en:"fish", tr:"balık", pron:"ˈpɐʃɨ", bd:"peixe"},
+    {en:"chicken", tr:"tavuk", pron:"ˈfɾɐŋɡu", bd:"frango"},
+    {en:"egg", tr:"yumurta", pron:"ˈovu", bd:"ovo"},
+    {en:"milk", tr:"süt", pron:"ˈlɐjtɨ", bd:"leite"},
+    {en:"cheese", tr:"peynir", pron:"ˈkɐɨ̯ju", bd:"queijo"},
+    {en:"butter", tr:"tereyağı", pron:"mɐ̃ˈtɐjɡɐ", bd:"manteiga"},
+    {en:"fruit", tr:"meyve", pron:"ˈfɾutɐ", bd:"fruta"},
+    {en:"vegetable", tr:"sebze", pron:"lɨˈɡumɨ", bd:"legume"},
+    {en:"water", tr:"su", pron:"ˈaɡwɐ", bd:"água"},
+    {en:"juice", tr:"meyve suyu", pron:"ˈsumu", bd:"sumo"},
+    {en:"coffee", tr:"kahve", pron:"ˈkafɨ", bd:"café"},
+    {en:"wine", tr:"şarap", pron:"ˈviɲu", bd:"vinho"},
+    {en:"beer", tr:"bira", pron:"ˈsɨɾˌvɛʒɐ", bd:"cerveja"},
+    {en:"ice cream", tr:"dondurma", pron:"ʒɨˈladu", bd:"gelado"},
+    {en:"cake", tr:"pasta/kek", pron:"ˈboʊ̯lu", bd:"bolo"},
+    {en:"soup", tr:"çorba", pron:"ˈsopɐ", bd:"sopa"},
+    {en:"rice", tr:"pirinç", pron:"ˈaɾuz̠", bd:"arroz"},
+    {en:"salt cod", tr:"tuzlu morina", pron:"bɐˈkɐʎu", bd:"bacalhau"}
   ],
   grammar: [
     {
-      title: "GOSTAR DE — Sevmek (yiyecekler ve içecekler)",
-      explanation: "Portekizcede 'sevmek' için GOSTAR kullanılır, ancak mutlaka 'de' preposisyonuyla gelir: 'Gosto de pizza' (Pizza severim). Bu AMAR'dan farklıdır (amar = derin aşk sevgisi). Yiyecek tercihlerini ifade etmek için GOSTAR DE en yaygın kullanımdır.",
+      title: "Verbos COMER e BEBER — Yemek ve İçmek",
+      explanation: "İkinci çekim (-er) fiillerin Avrupa Portekizcesi'ndeki çekimi: comer (yemek) ve beber (içmek). Tu (sen) formu günlük EP'de vazgeçilmezdir.",
       table: [
-        { pronoun: "Eu", form: "gosto de", example: "Gosto de arroz com feijão.", tr: "Pirinç pilakisi severim." },
-        { pronoun: "Você / Ele / Ela", form: "gosta de", example: "Ela gosta de frango.", tr: "Tavuğu sever." },
-        { pronoun: "Nós", form: "gostamos de", example: "Gostamos de fruta.", tr: "Meyve severiz." },
-        { pronoun: "Vocês / Eles", form: "gostam de", example: "Gostam de café?", tr: "Kahve sever misiniz?" },
-        { pronoun: "Olumsuz", form: "não gosto de", example: "Não gosto de cebola.", tr: "Soğan sevmem." },
-        { pronoun: "Çok sevmek", form: "adoro", example: "Adoro chocolate!", tr: "Çikolataya bayılıyorum!" }
+        {pronoun:"eu", form:"como / bebo", example:"Eu como bacalhau ao almoço.", tr:"Öğle yemeğinde morina balığı yerim."},
+        {pronoun:"tu", form:"comes / bebes", example:"Tu bebes sumo de laranja?", tr:"Portakal suyu içiyor musun?"},
+        {pronoun:"ele/ela", form:"come / bebe", example:"Ela come um gelado todos os dias.", tr:"Her gün dondurma yer."},
+        {pronoun:"nós", form:"comemos / bebemos", example:"Nós bebemos vinho verde ao jantar.", tr:"Akşam yemeğinde vinho verde içeriz."},
+        {pronoun:"vós", form:"comeis / bebeis", example:"Vós comeis sopa ao jantar?", tr:"Akşam yemeğinde çorba yer misiniz?"},
+        {pronoun:"eles/elas", form:"comem / bebem", example:"Eles comem pão com manteiga.", tr:"Ekmek ve tereyağı yerler."}
       ],
-      note: "'Gostar de' + fiil mastar: 'Gosto de comer.' = Yemeyi severim. 'Gosta de cozinhar?' = Yemek yapmayı sever misiniz?"
+      note: "Vinho verde (yeşil şarap) kuzey Portekiz'e özgü hafif, taze bir şaraptır. Bacalhau ise Portekiz mutfağının simgesidir — 365'ten fazla tarifle hazırlanır!"
     },
     {
-      title: "QUERER ve PEDIR — İstemek ve Sipariş Vermek",
-      explanation: "Restoran veya kafeteryada sipariş verirken QUERER (istemek) veya PEDIR (istemek/sipariş vermek) kullanılır. Kibarca istemek için 'Eu queria...' (isterdim — koşullu) daha nazik bir ifadedir. 'Por favor' her zaman kullanılabilir.",
+      title: "Artigos Partitivos — Miktar Bildirme",
+      explanation: "Portekizce'de yiyecek/içecek miktarını belirtmek için 'um pouco de' (biraz), 'muito/a' (çok), 'nada de' (hiç) ve 'bastante' (oldukça fazla) kullanılır.",
       table: [
-        { pronoun: "Eu quero", form: "istiyorum", example: "Quero um suco de laranja.", tr: "Portakal suyu istiyorum." },
-        { pronoun: "Eu queria", form: "isterim/isterdim (kibarca)", example: "Queria um café, por favor.", tr: "Bir kahve isterim, lütfen." },
-        { pronoun: "Eu gostaria de", form: "çok kibar", example: "Gostaria de ver o cardápio.", tr: "Menüye bakmak isterim." },
-        { pronoun: "Pedir", form: "sipariş vermek", example: "Vou pedir o prato do dia.", tr: "Günün yemeğini sipariş edeceğim." },
-        { pronoun: "Para mim", form: "benim için", example: "Para mim, uma água.", tr: "Benim için bir su." },
-        { pronoun: "Está incluído?", form: "dahil mi?", example: "O serviço está incluído?", tr: "Servis dahil mi?" }
+        {pronoun:"um pouco de", form:"biraz", example:"Quero um pouco de queijo.", tr:"Biraz peynir istiyorum."},
+        {pronoun:"muito/muita", form:"çok (miktarı)", example:"Há muito pão em Portugal.", tr:"Portekiz'de çok ekmek var."},
+        {pronoun:"muitos/muitas", form:"çok (sayı)", example:"Há muitos legumes no mercado.", tr:"Pazarda çok sebze var."},
+        {pronoun:"pouco/pouca", form:"az", example:"Bebo pouco café.", tr:"Az kahve içerim."},
+        {pronoun:"bastante", form:"oldukça fazla", example:"Ela come bastante fruta.", tr:"Oldukça fazla meyve yer."},
+        {pronoun:"nada de", form:"hiç", example:"Não como nada de carne.", tr:"Hiç et yemem."}
       ],
-      note: "'Me traz...' = 'Getirir misiniz...' (BP'de çok yaygın garson çağırma ifadesi)."
+      note: "EP'de 'sumo' Brezilya Portekizcesi'ndeki 'suco'nun karşılığıdır. 'Gelado' ise BP'deki 'sorvete' yerine kullanılır."
     },
     {
-      title: "TER FOME/SEDE — Açlık ve Susuzluk",
-      explanation: "Açlık ve susuzluk Portekizcede 'sahip olmak (ter)' fiiliyle ifade edilir — tıpkı Türkçedeki 'açlığım var' gibi. Aynı yapı sıcaklık (ter calor/frio) ve uyku (ter sono) için de geçerlidir.",
+      title: "Gostar de — Sevmek / Hoşlanmak",
+      explanation: "'Gostar de' fiili 'sevmek' anlamına gelir ve EP'de çok kullanılır. 'De' edatından sonra isim veya mastar gelir. Olumsuz için 'não gostar de' kullanılır.",
       table: [
-        { pronoun: "ter fome", form: "aç olmak", example: "Estou com fome! / Tenho fome!", tr: "Açım! (BP'de 'estar com fome' daha yaygın)" },
-        { pronoun: "ter sede", form: "susamak", example: "Estou com sede.", tr: "Susadım." },
-        { pronoun: "ter calor", form: "sıcak olmak", example: "Tenho muito calor.", tr: "Çok sıcak." },
-        { pronoun: "ter frio", form: "üşümek", example: "Estou com frio.", tr: "Üşüyorum." },
-        { pronoun: "ter sono", form: "uykulu olmak", example: "Estou com sono.", tr: "Uykum var." },
-        { pronoun: "BP farkı", form: "estar com vs ter", example: "Estou com fome (BP yaygın)", tr: "'com' BP'de tercih edilir" }
+        {pronoun:"eu", form:"gosto de", example:"Gosto muito de bacalhau.", tr:"Morina balığını çok severim."},
+        {pronoun:"tu", form:"gostas de", example:"Tu gostas de gelado?", tr:"Dondurma sever misin?"},
+        {pronoun:"ele/ela", form:"gosta de", example:"Ela não gosta de sopa.", tr:"Çorbayı sevmiyor."},
+        {pronoun:"nós", form:"gostamos de", example:"Gostamos de vinho do Porto.", tr:"Porto şarabını severiz."},
+        {pronoun:"vós", form:"gostais de", example:"Gostais de pastéis de nata?", tr:"Pastel de nata sever misiniz?"},
+        {pronoun:"eles/elas", form:"gostam de", example:"Eles gostam de comer peixe.", tr:"Balık yemeyi severler."}
       ],
-      note: "BP'de 'Estou com fome' daha doğal, 'Tenho fome' daha resmi/Avrupa etkisi. İkisi de doğrudur."
+      note: "Pastéis de nata (yumurtalı muhallebi tatlısı) Portekiz'in ulusal tatlısıdır. Lisbon'un Belém semtinde icat edilmiştir."
     }
   ],
   speaking: [
-    { q: "Do que você gosta para o café da manhã?", a: "Gosto de pão com queijo e um café com leite." },
-    { q: "Como pede água no restaurante?", a: "Me traz uma água, por favor! / Queria uma água." },
-    { q: "'Çikolataya bayılıyorum' nasıl?", a: "Adoro chocolate!" },
-    { q: "Açsanız nasıl dersiniz?", a: "Estou com fome! / Tenho fome!" },
-    { q: "'Meyve suyu istemiyorum' nasıl?", a: "Não quero suco." }
+    {q:"Do que gostas ao pequeno-almoço?", a:"Gosto de pão com manteiga e um café com leite."},
+    {q:"Comes bacalhau frequentemente?", a:"Sim, como bacalhau pelo menos uma vez por semana."},
+    {q:"Preferes sumo ou água?", a:"Prefiro água. Bebo sumo ao fim de semana."},
+    {q:"O que é típico comer ao almoço em Portugal?", a:"Ao almoço come-se sopa, prato principal com arroz ou batatas e sobremesa."},
+    {q:"Gostas de gelado?", a:"Adoro gelado, especialmente de baunilha e chocolate."}
   ],
   dialogues: [
     {
-      title: "Restoran Siparişi",
+      title: "No Mercado",
       lines: [
-        { speaker: "Garçom", text: "Boa noite! O que vão querer?", tr: "İyi akşamlar! Ne istersiniz?" },
-        { speaker: "Cliente 1", text: "Para mim, o arroz com feijão e frango, por favor.", tr: "Benim için pirinç, fasulye ve tavuk lütfen." },
-        { speaker: "Cliente 2", text: "Eu queria o peixe grelhado. Está fresco hoje?", tr: "Izgara balık isterim. Bugün taze mi?" },
-        { speaker: "Garçom", text: "Fresquíssimo! Chegou hoje de manhã.", tr: "Çok taze! Bu sabah geldi." },
-        { speaker: "Cliente 1", text: "Para beber, dois sucos de maracujá.", tr: "İçecek olarak iki maracuja suyu." },
-        { speaker: "Garçom", text: "Ótimo! Bom apetite para vocês!", tr: "Harika! Afiyet olsun!" }
+        {speaker:"Cliente", text:"Bom dia! Queria um quilo de bacalhau salgado."},
+        {speaker:"Vendedor", text:"Bom dia! Temos bacalhau do Porto e do Noruega. Qual prefere?"},
+        {speaker:"Cliente", text:"Do Porto, por favor. Também quero uns legumes frescos."},
+        {speaker:"Vendedor", text:"Temos couves, cenouras e batatas hoje. Estão muito frescos."},
+        {speaker:"Cliente", text:"Ótimo! Dê-me meio quilo de cenouras e um de batatas."},
+        {speaker:"Vendedor", text:"Mais alguma coisa? Temos pastéis de nata acabados de fazer."}
       ]
     }
   ],
   listening: {
-    text: "O café da manhã brasileiro é muito gostoso! Geralmente tem pão de queijo, fruta fresca, ovos mexidos e claro, muito café! Eu adoro pão de queijo com manteiga. No almoço, a maioria dos brasileiros come arroz com feijão, carne ou frango e salada. É simples mas muito nutritivo. No jantar, comemos mais leve: uma sopa ou salada.",
+    text: "A gastronomia portuguesa é conhecida mundialmente pela sua riqueza e variedade. O bacalhau é o ingrediente mais emblemático — diz-se que há 365 formas de o cozinhar. O caldo verde, feito com couve galega e chouriço, é uma sopa tradicional do norte do país. De sobremesa, os pastéis de nata são irresistíveis. Para beber, o vinho verde do Minho e o vinho do Porto são os mais famosos.",
     questions: [
-      { q: "Tipik Brezilya kahvaltısında ne var?", a: "Peynirli ekmek, taze meyve, karışık yumurta ve kahve" },
-      { q: "Öğle yemeğinin temel yemeği ne?", a: "Pirinç ve fasulye (arroz com feijão)" },
-      { q: "Akşam yemeğinde ne yenilir?", a: "Çorba veya salata (daha hafif)" }
+      {q:"Quantas formas de cozinhar bacalhau existem?", a:"365 formas."},
+      {q:"O que contém o caldo verde?", a:"Couve galega e chouriço."},
+      {q:"Qual é o vinho mais famoso do norte de Portugal?", a:"O vinho verde do Minho."}
     ]
   }
 };

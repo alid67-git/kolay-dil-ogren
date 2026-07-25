@@ -1,94 +1,93 @@
-const L25 = {
-  title: "Direções e Navegação",
+var L25 = {
   words: [
-    { en: "a direção", tr: "yön / tarif", pron: "a diresão", bd: "dişil; à direita = sağda" },
-    { en: "à direita", tr: "sağa / sağda", pron: "a diréyta", bd: "vire à direita = sağa dönün" },
-    { en: "à esquerda", tr: "sola / solda", pron: "a ıshkérda", bd: "vire à esquerda = sola dönün" },
-    { en: "em frente", tr: "karşıda / önde", pron: "ẽy frẽntshi", bd: "em frente ao banco = bankanın karşısında" },
-    { en: "atrás de", tr: "arkasında", pron: "atrash dshi", bd: "atrás do parque = parkın arkasında" },
-    { en: "ao lado de", tr: "yanında", pron: "aw ladu dshi", bd: "ao lado da escola = okulun yanında" },
-    { en: "perto de", tr: "yakınında", pron: "pértu dshi", bd: "perto do metrô = metronun yakınında" },
-    { en: "longe de", tr: "uzağında", pron: "lõnji dshi", bd: "longe do aeroporto = havalimanından uzak" },
-    { en: "em cima de / sobre", tr: "üstünde", pron: "ẽy sĩma dshi / sobri", bd: "em cima da mesa = masanın üstünde" },
-    { en: "embaixo de", tr: "altında", pron: "ẽmbayshu dshi", bd: "embaixo da cama = yatağın altında" },
-    { en: "o semáforo", tr: "trafik ışığı", pron: "u semaforu", bd: "eril; no semáforo = ışıkta" },
-    { en: "a esquina", tr: "köşe / kavşak", pron: "a ıshkĩna", bd: "dişil; na esquina = köşede" },
-    { en: "a rua", tr: "sokak / cadde", pron: "a hua", bd: "dişil; Rua das Flores = Çiçekler Sokağı" },
-    { en: "a avenida", tr: "bulvar", pron: "a avenida", bd: "dişil; Av. Paulista = ünlü Brezilya bulvarı" },
-    { en: "a praça", tr: "meydan / park", pron: "a prasa", bd: "dişil; Praça da Sé = ünlü meydan" },
-    { en: "a ponte", tr: "köprü", pron: "a põntshi", bd: "dişil" },
-    { en: "o cruzamento", tr: "kavşak", pron: "u kruzamẽntu", bd: "eril; sinais = trafik işaretleri" },
-    { en: "Como chego a...?", tr: "...e nasıl gidebilirim?", pron: "komo shégu a", bd: "yol tarifi sorusu" },
-    { en: "Fica a quantos metros?", a: "Kaç metre uzakta?", pron: "fika a kuãntus métrus", bd: "mesafe sorusu" },
-    { en: "Pode me indicar o caminho?", tr: "Yolu gösterebilir misiniz?", pron: "pódshi mi ĩdikar u kamĩnyu", bd: "nazik tarif isteği" }
+    {en:"left", tr:"sol", pron:"ɨʃˈkɛɾdɐ", bd:"esquerda"},
+    {en:"right", tr:"sağ", pron:"diˈɾɐɪ̯tɐ", bd:"direita"},
+    {en:"straight ahead", tr:"düz/ileri", pron:"ɨ̃ ˈfɾẽtɨ", bd:"em frente"},
+    {en:"turn", tr:"dönmek", pron:"viˈɾaɾ", bd:"virar"},
+    {en:"crossroads", tr:"kavşak", pron:"kɾuˈzɐmẽtu", bd:"cruzamento"},
+    {en:"roundabout", tr:"döner kavşak", pron:"ɾuˈtuɲdɐ", bd:"rotunda"},
+    {en:"traffic light", tr:"trafik lambası", pron:"siˈmafoɾu", bd:"semáforo"},
+    {en:"bridge", tr:"köprü", pron:"ˈpõtɨ", bd:"ponte"},
+    {en:"square", tr:"meydan", pron:"ˈpɾɐsɐ", bd:"praça"},
+    {en:"street", tr:"sokak/cadde", pron:"ˈɾuɐ", bd:"rua"},
+    {en:"avenue", tr:"bulvar", pron:"ɐvɨˈnidɐ", bd:"avenida"},
+    {en:"map", tr:"harita", pron:"ˈmɐpɐ", bd:"mapa"},
+    {en:"GPS", tr:"GPS/navigasyon", pron:"ˌʒɨpɨˈɛs", bd:"GPS"},
+    {en:"address", tr:"adres", pron:"ɨ̃dɨˈɾɛsu", bd:"endereço"},
+    {en:"postcode", tr:"posta kodu", pron:"ˈkodiɡu puˈʃtɐl", bd:"código postal"},
+    {en:"neighbourhood", tr:"mahalle", pron:"bɐɪ̯ˈɾu", bd:"bairro"},
+    {en:"north", tr:"kuzey", pron:"ˈnoɾtɨ", bd:"norte"},
+    {en:"south", tr:"güney", pron:"ˈsul", bd:"sul"},
+    {en:"east", tr:"doğu", pron:"ˈlɛʃtɨ", bd:"leste"},
+    {en:"west", tr:"batı", pron:"ˈoɛʃtɨ", bd:"oeste"}
   ],
   grammar: [
     {
-      title: "Preposisyonlar ve Yer Bildirimi",
-      explanation: "Yer bildirmek için çeşitli preposisyonlar kullanılır. 'Em' (içinde/üstünde/yanında gibi genel konum), preposisyonlar + artikel birleşimleri oluşturur: em + o = no, em + a = na. Yer tamlamalarında 'de' bağlacı kullanılır.",
+      title: "Dar e Pedir Direções — Yön Tarif Etmek",
+      explanation: "EP'de yön tarif etmek için kullanılan yapılar. 'Virar à esquerda/direita' (sola/sağa dönmek), 'seguir em frente' (düz gitmek), 'passar por' (geçmek).",
       table: [
-        { pronoun: "no / na", form: "em + o/a", example: "O banco está no centro.", tr: "Banka merkezde." },
-        { pronoun: "perto de", form: "yakınında", example: "Fica perto da estação.", tr: "İstasyonun yakınında." },
-        { pronoun: "em frente a", form: "karşısında", example: "Em frente ao correio.", tr: "Postanemin karşısında." },
-        { pronoun: "atrás de", form: "arkasında", example: "Atrás do supermercado.", tr: "Süpermarketin arkasında." },
-        { pronoun: "ao lado de", form: "yanında", example: "Ao lado da farmácia.", tr: "Eczanenin yanında." },
-        { pronoun: "entre", form: "arasında", example: "Entre o parque e a escola.", tr: "Park ve okul arasında." }
+        {pronoun:"Virar à esquerda", form:"sola dönmek", example:"Vire à esquerda no semáforo.", tr:"Trafik lambalarında sola dönün."},
+        {pronoun:"Virar à direita", form:"sağa dönmek", example:"Vire à direita na rotunda.", tr:"Döner kavşakta sağa dönün."},
+        {pronoun:"Seguir em frente", form:"düz gitmek", example:"Siga sempre em frente até à praça.", tr:"Meydana kadar düz gidin."},
+        {pronoun:"Passar por", form:"geçmek", example:"Passa pelo cruzamento e fica à direita.", tr:"Kavşaktan geç ve sağda kalır."},
+        {pronoun:"Fica a X metros", form:"X metre ileride", example:"Fica a duzentos metros daqui.", tr:"Buradan 200 metre ileride."},
+        {pronoun:"Não pode perder", form:"kaçıramazsınız", example:"É o edifício azul — não pode perder!", tr:"Mavi bina — kaçıramazsınız!"}
       ],
-      note: "'À direita' = sağda (à = a+a birleşimi). 'Do lado direito' = sağ tarafta. Her ikisi de kullanılır."
+      note: "Lizbon'da dikkat edilmesi gereken bölgeler: Alfama (tarihi bölge, dar sokaklar), Baixa (şehir merkezi), Chiado (alışveriş), Belém (müzeler ve pastéis de Belém)."
     },
     {
-      title: "Yol Tarifi Verme — Emir ve Öneri",
-      explanation: "Yol tarifi verirken emir kipi (imperativo) veya 'você + presente' kullanılır. Pratik tarif sırasında 'vira' (dönün), 'segue' (devam edin), 'passa' (geçin) gibi fiiller kullanılır. BP'de imperativo yerine presente modu tercih edilir.",
+      title: "Imperativo para Direções — Yön İçin Emir Kipi",
+      explanation: "Yön tarif etmek için sıkça emir kipi kullanılır. Formal/resmi bağlamlarda 'você' için subjuntivo emir (vire, siga, passe), informal/arkadaş için 'tu' (vira, segue, passa).",
       table: [
-        { pronoun: "Düz git", form: "Vai reto / Siga em frente", example: "Siga em frente por dois quarteirões.", tr: "İki blok düz gidin." },
-        { pronoun: "Sağa dön", form: "Vire à direita", example: "Vire à direita no semáforo.", tr: "Işıkta sağa dönün." },
-        { pronoun: "Sola dön", form: "Vire à esquerda", example: "Vire à esquerda na esquina.", tr: "Köşede sola dönün." },
-        { pronoun: "Geç", form: "Passa a/o...", example: "Passa a farmácia.", tr: "Eczaneyi geçin." },
-        { pronoun: "Dur", form: "Para em frente a...", example: "Para em frente ao banco.", tr: "Bankanın önünde durun." },
-        { pronoun: "Mesafe", form: "Fica a X metros/minutos", example: "Fica a duzentos metros.", tr: "İki yüz metre ötede." }
+        {pronoun:"você — vire", form:"resmi emir", example:"Vire à esquerda na primeira rua.", tr:"İlk sokakta sola dönün."},
+        {pronoun:"você — siga", form:"resmi — seguir", example:"Siga pela Avenida da Liberdade.", tr:"Avenida da Liberdade'den devam edin."},
+        {pronoun:"você — passe", form:"resmi — passar", example:"Passe a ponte e continue.", tr:"Köprüden geçin ve devam edin."},
+        {pronoun:"tu — vira", form:"informal — virar", example:"Vira à direita na rotunda.", tr:"Döner kavşakta sağa dön."},
+        {pronoun:"tu — segue", form:"informal — seguir", example:"Segue em frente uns cem metros.", tr:"Yaklaşık yüz metre düz git."},
+        {pronoun:"tu — sobe/desce", form:"yüksel/alçal", example:"Sobe a rua íngreme até ao topo.", tr:"Dik yokuşu tepesine kadar çık."}
       ],
-      note: "Quarteirão = bir blok (iki kavşak arası mesafe). 'Dois quarteirões' = iki blok. BP'de çok kullanılır."
+      note: "Lizbon'un tarihi semti Alfama çok dik sokaklara sahiptir. 'Subir' (çıkmak) ve 'descer' (inmek) yön tariflerinde sıkça kullanılır."
     },
     {
-      title: "FICAR — Konum ve Keşif İfadeleri",
-      explanation: "Yerlerin konumunu açıklamak için FICAR (bulunmak/olmak) en pratik fiildir. 'Onde fica...?' = '... nerede?' sorusu ile başlayan yön sormalar çok yaygındır. Cevaplar genellikle FICAR veya ESTAR ile verilir.",
+      title: "Localização — Konum Bildirme",
+      explanation: "Bir yerin konumunu bildirmek için kullanılan preposisyonlar ve ifadeler.",
       table: [
-        { pronoun: "Onde fica?", form: "nerede?", example: "Onde fica a Avenida Paulista?", tr: "Paulista Bulvarı nerede?" },
-        { pronoun: "Fica aqui perto.", form: "burada yakın", example: "Fica a dois minutos daqui.", tr: "Buradan iki dakika." },
-        { pronoun: "Não conheço.", form: "bilmiyorum", example: "Não conheço essa rua.", tr: "Bu sokağı tanımıyorum." },
-        { pronoun: "Google Maps", form: "ver no mapa", example: "Deixa eu ver no mapa.", tr: "Haritaya bakayım." },
-        { pronoun: "Perdido", form: "kaybolmak", example: "Estou perdido! Me ajuda?", tr: "Kayboldum! Yardım eder misiniz?" },
-        { pronoun: "Referência", form: "um ponto de referência", example: "Tem um McDonalds ali.", tr: "Orada bir McDonalds var." }
+        {pronoun:"fica em / fica na", form:"konumda olmak", example:"O Museu do Azulejo fica na Madre de Deus.", tr:"Azulejo Müzesi Madre de Deus'ta."},
+        {pronoun:"perto de", form:"yakınında", example:"O hotel fica perto do Marquês de Pombal.", tr:"Otel Marquês de Pombal'ın yakınında."},
+        {pronoun:"longe de", form:"uzağında", example:"Está longe do centro histórico.", tr:"Tarihi merkezden uzakta."},
+        {pronoun:"entre X e Y", form:"X ile Y arasında", example:"Fica entre a Praça do Comércio e o Rossio.", tr:"Praça do Comércio ile Rossio arasında."},
+        {pronoun:"em frente a", form:"karşısında", example:"O café fica em frente à estação.", tr:"Kafe istasyonun karşısında."},
+        {pronoun:"ao fundo de", form:"sonunda", example:"A loja fica ao fundo da rua.", tr:"Mağaza sokağın sonunda."}
       ],
-      note: "'Você tem um mapa?' = Haritanız var mı? 'Usa o GPS!' = GPS'i kullan! BP'de GPS'e 'ge-pê-esse' denir."
+      note: "Lizbon'un ünlü meydan ve caddeleri: Praça do Comércio (nehir kenarı), Avenida da Liberdade (ana bulvar), Rossio (şehir merkezi meydanı), Largo do Chiado (sanat bölgesi)."
     }
   ],
   speaking: [
-    { q: "'Kayboldum, yardım eder misiniz?' nasıl?", a: "Estou perdido/a! Pode me ajudar?" },
-    { q: "'Trafik ışığında sağa dönün' tarifi verin.", a: "Vire à direita no semáforo." },
-    { q: "Postane nerede sorusu nasıl?", a: "Onde fica os Correios?" },
-    { q: "'İki blok düz gidin' nasıl?", a: "Siga em frente por dois quarteirões." },
-    { q: "'Banka süpermarketin yanında' nasıl?", a: "O banco fica ao lado do supermercado." }
+    {q:"Com licença, como é que se vai para o Museu do Azulejo?", a:"Segue em frente pela Rua Augusto e depois vira à direita. É uns quinhentos metros."},
+    {q:"O Castelo de São Jorge fica longe daqui?", a:"Não, fica na colina acima. Tens de subir a Rua do Castelo. São uns 10 minutos a pé."},
+    {q:"Há um Multibanco perto?", a:"Sim, há um mesmo à esquina, no Banco CTT, ao lado da farmácia."},
+    {q:"Qual é o código postal de Lisboa?", a:"O código postal de Lisboa começa com 1. Por exemplo, 1000-001 Lisboa."},
+    {q:"Que aplicação usas para navegar em Lisboa?", a:"Uso o Google Maps ou o Waze. Ambos funcionam bem e têm informação sobre trânsito em tempo real."}
   ],
   dialogues: [
     {
-      title: "Turistin Yol Sorması",
+      title: "Pedindo Direções na Rua",
       lines: [
-        { speaker: "Turista", text: "Com licença! Sabe me dizer onde fica a Praça da Sé?", tr: "Affedersiniz! Sé Meydanı'nın nerede olduğunu söyler misiniz?" },
-        { speaker: "Morador", text: "Claro! Vai reto nessa rua por três quarteirões.", tr: "Tabii! Bu sokakta üç blok düz gidin." },
-        { speaker: "Turista", text: "Reto, tudo bem. E depois?", tr: "Düz, anladım. Sonra?" },
-        { speaker: "Morador", text: "Depois vira à esquerda na Avenida São João.", tr: "Sonra São João Bulvarı'nda sola dönün." },
-        { speaker: "Turista", text: "À esquerda na São João. E a praça fica do lado?", tr: "Solda São João'da. Meydan orada mı?" },
-        { speaker: "Morador", text: "Isso! Fica a uns duzentos metros. Não tem erro!", tr: "Evet! Yaklaşık iki yüz metre. Kaçıramazsınız!" }
+        {speaker:"Turista", text:"Bom dia! Pode ajudar-me? Estou à procura da Praça do Comércio."},
+        {speaker:"Lisboeta", text:"Claro! Está muito perto. Siga esta rua até ao semáforo."},
+        {speaker:"Turista", text:"Depois do semáforo?"},
+        {speaker:"Lisboeta", text:"Vire à esquerda e siga sempre em frente. Em menos de cinco minutos chega ao rio."},
+        {speaker:"Turista", text:"Obrigada! E o Elevador de Santa Justa, fica por aí?"},
+        {speaker:"Lisboeta", text:"Sim! Quando chegar à Praça do Comércio, vire à direita e siga pela Rua Augusta. É ao fundo da rua."}
       ]
     }
   ],
   listening: {
-    text: "A Avenida Paulista é o coração financeiro e cultural de São Paulo. Com quase três quilômetros de extensão, ela é linhada por arranha-céus, museus como o MASP, restaurantes e lojas de luxo. Nos finais de semana, a avenida é fechada para carros e fica aberta apenas para pedestres, ciclistas e patinadores. O metrô da linha vermelha tem estação embaixo da avenida — é muito fácil chegar lá!",
+    text: "Lisboa é uma cidade de sete colinas, o que torna a navegação um pouco especial. Os bairros históricos como a Alfama e a Mouraria têm ruas estreitas e íngremes que nem sempre aparecem corretamente nos GPS. Por isso, muitos visitantes optam por explorar a pé com um mapa impresso ou perguntar aos moradores locais. A Avenida da Liberdade é a principal artéria da cidade, ladeada de árvores e edifícios do século XIX. A Praça do Comércio, junto ao rio Tejo, é o ponto de chegada e partida de muitos percursos turísticos.",
     questions: [
-      { q: "Paulista Bulvarı'nın uzunluğu nedir?", a: "Yaklaşık üç kilometre" },
-      { q: "Hafta sonları ne oluyor?", a: "Araçlara kapatılıyor, yayalara, bisikletçilere açık" },
-      { q: "Metroya binmek için hangi hat?", a: "Kırmızı hat" }
+      {q:"Por que é especial navegar em Lisboa?", a:"Por ser uma cidade de sete colinas com ruas estreitas e íngremes."},
+      {q:"Qual é a principal artéria de Lisboa?", a:"A Avenida da Liberdade."},
+      {q:"Onde fica a Praça do Comércio?", a:"Junto ao rio Tejo."}
     ]
   }
 };

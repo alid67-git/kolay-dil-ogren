@@ -1,94 +1,93 @@
-const L36 = {
-  title: "Verbos Irregulares Avançados",
+var L36 = {
   words: [
-    { en: "trazer", tr: "getirmek", pron: "trazér", bd: "düzensiz; trago/trouxe; trazer algo = bir şey getirmek" },
-    { en: "caber", tr: "sığmak", pron: "kabér", bd: "düzensiz; caibo/coube; não cabe = sığmıyor" },
-    { en: "querer", tr: "istemek", pron: "kerér", bd: "düzensiz; quero/quis; quer = istiyor (você)" },
-    { en: "saber", tr: "bilmek (öğrenilmiş)", pron: "sabér", bd: "düzensiz; sei/soube; vs. conhecer" },
-    { en: "conhecer", tr: "tanımak / bilmek (kişisel)", pron: "konyesér", bd: "düzensiz; conheço/conheceu" },
-    { en: "medir", tr: "ölçmek", pron: "medír", bd: "düzensiz -IR; meço; medir a temperatura" },
-    { en: "mentir", tr: "yalan söylemek", pron: "mẽntír", bd: "düzensiz -IR; minto/mintiu; a mentira = yalan" },
-    { en: "fugir", tr: "kaçmak", pron: "fujír", bd: "düzensiz; fujo/fugiu; fugir de perigo = tehlikeden kaçmak" },
-    { en: "ouvir", tr: "duymak / dinlemek", pron: "ovír", bd: "düzensiz; ouço/ouviu; vs. escutar" },
-    { en: "vir", tr: "gelmek", pron: "vir", bd: "muito düzensiz; venho/vim; vs. ir" },
-    { en: "pôr", tr: "koymak", pron: "por", bd: "düzensiz; ponho/pus; oposto: tirar" },
-    { en: "ver", tr: "görmek", pron: "ver", bd: "düzensiz; vejo/vi; rever = tekrar görmek" },
-    { en: "dar", tr: "vermek", pron: "dar", bd: "düzensiz; dou/dei; dar uma volta = gezintiye çıkmak" },
-    { en: "ler", tr: "okumak", pron: "ler", bd: "düzensiz -ER; leio/leu; leitura = okuma" },
-    { en: "crer", tr: "inanmak", pron: "krer", bd: "düzensiz; creio/creu; creio que sim = evet diye inanıyorum" },
-    { en: "perder", tr: "kaybetmek", pron: "perdér", bd: "düzensiz; perco/perdeu; perder tempo = vakit kaybetmek" },
-    { en: "manter", tr: "korumak / sürdürmek", pron: "mãntér", bd: "TER gibi düzensiz; mantenho/manteve" },
-    { en: "obter", tr: "elde etmek", pron: "obtér", bd: "TER gibi; obtenho/obteve" },
-    { en: "Não sei não.", tr: "Bilmiyorum.", pron: "não sey não", bd: "BP günlük; çift olumsuzlama emphatic" },
-    { en: "Quem sabe!", tr: "Kim bilir! / Belki!", pron: "kẽy sabi", bd: "olasılık ifadesi" }
+    {en:"media", tr:"medya", pron:"ˈmɛdiɐ", bd:"média"},
+    {en:"newspaper", tr:"gazete", pron:"ʒuɾˈnɐl", bd:"jornal"},
+    {en:"magazine", tr:"dergi", pron:"ɾɨˈviʃtɐ", bd:"revista"},
+    {en:"television", tr:"televizyon", pron:"tɨliˈvizɐ̃u̯", bd:"televisão"},
+    {en:"radio", tr:"radyo", pron:"ˈɾadiu", bd:"rádio"},
+    {en:"podcast", tr:"podcast", pron:"ˈpɔdˌkɑːst", bd:"podcast"},
+    {en:"news", tr:"haberler", pron:"nutiˈsiɐʃ", bd:"notícias"},
+    {en:"journalist", tr:"gazeteci", pron:"ʒuɾnɐˈliʃtɐ", bd:"jornalista"},
+    {en:"headline", tr:"başlık/manşet", pron:"titˈulu", bd:"título"},
+    {en:"interview", tr:"röportaj", pron:"ɨ̃tɨɾˈvistɐ", bd:"entrevista"},
+    {en:"opinion", tr:"görüş", pron:"upiˈnjɐ̃u̯", bd:"opinião"},
+    {en:"fake news", tr:"yanlış haber", pron:"nutiˈsiɐʃ ˈfɐlʃɐʃ", bd:"notícias falsas"},
+    {en:"subscribe", tr:"abone olmak", pron:"ɐsuˈnaɾ", bd:"assinar"},
+    {en:"advertisement", tr:"reklam", pron:"ɐnuˈ̃siu", bd:"anúncio"},
+    {en:"broadcast", tr:"yayın", pron:"ɨ̃ˈmisɐ̃u̯", bd:"emissão"},
+    {en:"streaming", tr:"yayın akışı", pron:"ʃˈtɾimiŋ", bd:"streaming"},
+    {en:"RTP", tr:"devlet televizyonu", pron:"ˌɛɾˈteˈpe", bd:"RTP"},
+    {en:"SIC / TVI", tr:"özel kanallar", pron:"ˈsis / ˈtɛvi", bd:"SIC / TVI"},
+    {en:"Público", tr:"saygın gazete", pron:"ˈpubliku", bd:"Público"},
+    {en:"Jornal de Notícias", tr:"kuzey gazetesi", pron:"ʒuɾˈnal dɨ nuˈtisiɐʃ", bd:"Jornal de Notícias"}
   ],
   grammar: [
     {
-      title: "SABER vs CONHECER — İki Türlü Bilmek",
-      explanation: "Portekizce'de 'bilmek' için iki fiil var: SABER (öğrenilmiş bilgi, beceri, gerçek) ve CONHECER (kişi/yer tanımak, aşinalık). 'Sei falar português' = Portekizce konuşmasını biliyorum. 'Conheço o João' = João'yu tanıyorum. Benzer şekilde İspanyolca'daki saber/conocer ayrımı.",
+      title: "Os Media Portugueses — Portekiz Medyası",
+      explanation: "Portekiz medyası hakkında temel bilgiler. RTP (Rádio e Televisão de Portugal) devlet yayıncısıdır. SIC ve TVI özel televizyon kanallarıdır. Público ve Jornal de Notícias en saygın gazetelerdir.",
       table: [
-        { pronoun: "Saber + inf.", form: "Beceri bilgisi", example: "Sei tocar violão.", tr: "Gitar çalmasını biliyorum." },
-        { pronoun: "Saber + que", form: "Gerçek bilgisi", example: "Sei que você tem razão.", tr: "Haklı olduğunu biliyorum." },
-        { pronoun: "Conhecer + kişi", form: "Kişi tanımak", example: "Conheço a diretora pessoalmente.", tr: "Direktörü şahsen tanıyorum." },
-        { pronoun: "Conhecer + yer", form: "Yer tanımak", example: "Você conhece Salvador?", tr: "Salvador'u biliyor musunuz?" },
-        { pronoun: "Não sei", form: "Bilmiyorum", example: "Não sei quando ele chega.", tr: "Ne zaman geleceğini bilmiyorum." },
-        { pronoun: "Não conheço", form: "Tanımıyorum", example: "Não conheço essa cidade.", tr: "O şehri tanımıyorum." }
+        {pronoun:"RTP", form:"devlet yayıncı", example:"A RTP transmite o Telejornal às 20h.", tr:"RTP saat 20:00'de ana haber bültenini yayınlar."},
+        {pronoun:"SIC / TVI", form:"özel kanallar", example:"A SIC e a TVI têm muitos programas de entretenimento.", tr:"SIC ve TVI'nin çok sayıda eğlence programı var."},
+        {pronoun:"Público / Expresso", form:"gazete/haftalık", example:"O Público é um jornal de referência em Portugal.", tr:"Público Portekiz'in saygın bir gazetesidir."},
+        {pronoun:"Rádio Comercial", form:"popüler radyo", example:"A Rádio Comercial é a mais ouvida de Portugal.", tr:"Rádio Comercial Portekiz'in en çok dinlenen radyosudur."},
+        {pronoun:"RTP Internacional", form:"uluslararası kanal", example:"A RTP Internacional chega a 70 países.", tr:"RTP Internacional 70 ülkeye ulaşıyor."},
+        {pronoun:"notícias falsas", form:"yanlış haberler", example:"Verificar as fontes é essencial para combater notícias falsas.", tr:"Kaynakları doğrulamak yanlış haberlerle mücadelede şarttır."}
       ],
-      note: "SABER geniş zaman: sei, sabe, sabemos, sabem. Geçmiş: soube/soubemos. CONHECER: conheço, conhece, conhecemos, conhecem."
+      note: "Portekiz'de medya özgürlüğü anayasal güvence altındadır. RSF (Sınır Tanımayan Gazeteciler) sıralamasında Portekiz genellikle üst sıralarda yer alır."
     },
     {
-      title: "VIR (gelmek) ve IR (gitmek) — Tam Çekim",
-      explanation: "VIR (gelmek) Portekizce'nin en düzensiz fiillerinden biridir. Geniş zaman: venho, vem, vimos, vêm. Geçmiş: vim, veio, viemos, vieram. IR ile zıt anlam: 'Vou lá' (Oraya gidiyorum) vs. 'Vem cá' (Buraya gel). İkisi de BP'de çok yoğun kullanılır.",
+      title: "Voz Passiva — Edilgen Yapı",
+      explanation: "Haberlerde sıklıkla edilgen yapı (voz passiva) kullanılır. Yapı: ser + particípio passado + por (kimse tarafından).",
       table: [
-        { pronoun: "Venho (eu)", form: "Geliyorum", example: "Venho amanhã cedo.", tr: "Yarın erken geliyorum." },
-        { pronoun: "Vem (você)", form: "Geliyor musun?", example: "Você vem à festa?", tr: "Partiye geliyor musun?" },
-        { pronoun: "Vimos (nós)", form: "Geldik", example: "Viemos de ônibus.", tr: "Otobüsle geldik." },
-        { pronoun: "Vim (pretérito)", form: "Geldim", example: "Vim ontem de São Paulo.", tr: "Dün São Paulo'dan geldim." },
-        { pronoun: "Veio (pretérito)", form: "Geldi", example: "Ela veio de surpresa!", tr: "Sürpriz geldi!" },
-        { pronoun: "Vem cá!", form: "Buraya gel!", example: "Vem cá, preciso falar.", tr: "Buraya gel, konuşmam lazım." }
+        {pronoun:"Presente", form:"é + pp.", example:"A notícia é publicada pelo Público.", tr:"Haber Público tarafından yayınlanıyor."},
+        {pronoun:"Pretérito Perfeito", form:"foi + pp.", example:"A lei foi aprovada pela Assembleia.", tr:"Kanun Meclis tarafından onaylandı."},
+        {pronoun:"Imperfeito", form:"era + pp.", example:"O discurso era transmitido ao vivo.", tr:"Konuşma canlı yayınlanıyordu."},
+        {pronoun:"Futuro", form:"será + pp.", example:"O relatório será publicado amanhã.", tr:"Rapor yarın yayınlanacak."},
+        {pronoun:"Com agente (por)", form:"por + agente", example:"O prémio foi entregue pelo Presidente.", tr:"Ödül Cumhurbaşkanı tarafından verildi."},
+        {pronoun:"Sem agente", form:"sem 'por'", example:"O incêndio foi controlado ao final do dia.", tr:"Yangın günün sonunda kontrol altına alındı."}
       ],
-      note: "VIR gerundio: vindo. Particípio: vindo. ADVIR (kaynaklanmak), PROVIR (gelmek, kaynak), CONVIR (uymak) — hepsi VIR'den türer."
+      note: "Haberlerde ve resmi yazışmalarda edilgen yapı çok yaygındır. EP'de edilgen yapı hem formal hem de günlük dilde kullanılır."
     },
     {
-      title: "PÔR (koymak) ve Türevleri",
-      explanation: "PÔR Portekizce'de yalnız başına çekilir ve aynı zamanda COMPOR, PROPOR, SUPOR, IMPOR gibi bileşik fiillerin temelidir. Geniş: ponho, põe, pomos, põem. Geçmiş: pus, pôs, pusemos, puseram. Aksan önemli: por (edat) vs. pôr (fiil).",
+      title: "Expressar Opinião — Görüş Bildirme",
+      explanation: "Medya haberlerini tartışırken görüş bildirmek için kullanılan ifadeler.",
       table: [
-        { pronoun: "Ponho (eu)", form: "Koyuyorum", example: "Ponho a chave na mesa.", tr: "Anahtarı masaya koyuyorum." },
-        { pronoun: "Põe (você)", form: "Koyuyor", example: "Ela põe açúcar no café.", tr: "Kahvesine şeker koyuyor." },
-        { pronoun: "Pus (pretérito)", form: "Koydum", example: "Pus os documentos na pasta.", tr: "Belgeleri klasöre koydum." },
-        { pronoun: "Compor", form: "Bestelemek", example: "Ele compõe músicas lindas.", tr: "Güzel müzikler bestiyor." },
-        { pronoun: "Propor", form: "Önermek", example: "Proponho uma solução diferente.", tr: "Farklı bir çözüm öneriyorum." },
-        { pronoun: "Supor", form: "Varsaymak", example: "Suponho que ele vem amanhã.", tr: "Yarın geleceğini varsayıyorum." }
+        {pronoun:"Na minha opinião", form:"Benim görüşüme göre", example:"Na minha opinião, os media devem ser imparciais.", tr:"Benim görüşüme göre medya tarafsız olmalı."},
+        {pronoun:"Acho que", form:"Düşünüyorum ki", example:"Acho que as redes sociais são uma fonte pouco fiável.", tr:"Sosyal medyanın güvenilmez bir kaynak olduğunu düşünüyorum."},
+        {pronoun:"Segundo o jornal", form:"Gazeteye göre", example:"Segundo o jornal Público, as eleições são em outubro.", tr:"Público gazetesine göre seçimler Ekim'de."},
+        {pronoun:"É verdade que", form:"Doğru ki", example:"É verdade que há muita desinformação online.", tr:"Çevrimiçi çok fazla yanlış bilgi olduğu doğru."},
+        {pronoun:"Duvido que + subj.", form:"Şüphe ediyorum ki", example:"Duvido que a notícia seja completamente verdadeira.", tr:"Haberin tamamen doğru olduğundan şüphe ediyorum."},
+        {pronoun:"É importante verificar", form:"Doğrulamak önemli", example:"É importante verificar as fontes antes de partilhar.", tr:"Paylaşmadan önce kaynakları doğrulamak önemli."}
       ],
-      note: "POR (edat, serbest aksan) vs. PÔR (fiil, şapkalı): 'por favor' (lütfen) vs. 'vou pôr' (koyacağım). Yanlış kullanım sık görülür!"
+      note: "Portekizce'de subjuntivo (subj. = dilek/irade/şüphe kipi) görüş bildirirken sıkça gerekir: 'Duvido que seja verdade' (doğru olduğundan şüphe ediyorum)."
     }
   ],
   speaking: [
-    { q: "'Portekizce konuşmasını biliyorum' nasıl?", a: "Sei falar português! Ainda estou aprendendo, mas já me viro." },
-    { q: "Rio de Janeiro'yu hiç gidip görmediğinizi sorun.", a: "Você conhece o Rio? / Você já foi ao Rio de Janeiro?" },
-    { q: "'Anahtarı nereye koyduğumu bilmiyorum' nasıl?", a: "Não sei onde pus a chave! Sumiu!" },
-    { q: "'O burada olmak lazım' nasıl?", a: "Ele deveria vir aqui. / Ele precisa vir aqui." },
-    { q: "'Kim bilir belki geleceğim' nasıl?", a: "Quem sabe! Talvez eu venha na próxima semana." }
+    {q:"Onde te informas sobre as notícias?", a:"Leio o Público online e ouço a Antena 1 no carro. Também sigo alguns jornalistas no Twitter."},
+    {q:"Achas que as redes sociais são um bom meio de informação?", a:"Não completamente. Há muita desinformação. Prefiro fontes tradicionais com edição profissional."},
+    {q:"Qual é o telejornal mais visto em Portugal?", a:"O Telejornal da RTP1 e o Jornal da Noite da SIC são os mais vistos no horário nobre."},
+    {q:"Como distingues uma notícia falsa?", a:"Verifico a fonte, a data, e se outros meios publicam a mesma notícia. Uso o Polígrafo — é um site português de fact-checking."},
+    {q:"Os portugueses leem muito jornal?", a:"O consumo de imprensa em papel diminuiu muito. Mas o consumo de notícias online aumentou significativamente."}
   ],
   dialogues: [
     {
-      title: "Fiil Karışıklığı",
+      title: "Falando sobre Notícias",
       lines: [
-        { speaker: "Estudante", text: "Professor, não entendo a diferença entre saber e conhecer.", tr: "Profesör, saber ile conhecer arasındaki farkı anlamıyorum." },
-        { speaker: "Professor", text: "Boa pergunta! Saber é para informação e habilidade. Conhecer, para pessoas e lugares.", tr: "Güzel soru! Saber bilgi ve beceri içindir. Conhecer ise kişi ve yerler için." },
-        { speaker: "Estudante", text: "Então: 'Sei que você é professor' e 'Conheço o professor'?", tr: "Öyleyse: 'Sizin öğretmen olduğunuzu biliyorum' ve 'Öğretmeni tanıyorum'?" },
-        { speaker: "Professor", text: "Perfeito! E 'Sei tocar piano' — habilidade. 'Conheço São Paulo' — cidade.", tr: "Mükemmel! Ve 'Piyano çalmasını biliyorum' — beceri. 'São Paulo'yu tanıyorum' — şehir." },
-        { speaker: "Estudante", text: "E o verbo vir? Eu venho, ele vem… é muito difícil!", tr: "Peki vir fiili? Ben venho, o vem... çok zor!" },
-        { speaker: "Professor", text: "Pratique! Hoje você veio à aula, e amanhã você virá de novo. Simples!", tr: "Pratik yapın! Bugün derse geldiniz, yarın tekrar geleceksiniz. Basit!" }
+        {speaker:"Bruno", text:"Viste as notícias esta manhã? Há um novo escândalo político."},
+        {speaker:"Marta", text:"Vi um título mas não li o artigo. De que se trata?"},
+        {speaker:"Bruno", text:"Segundo o Público, um ministro teria recebido comissões ilegais."},
+        {speaker:"Marta", text:"Teria? É apenas uma suspeita então. Há que aguardar a investigação."},
+        {speaker:"Bruno", text:"Tens razão. Hoje em dia é difícil separar factos de especulação nos media."},
+        {speaker:"Marta", text:"Por isso é importante ler várias fontes e não tirar conclusões precipitadas."}
       ]
     }
   ],
   listening: {
-    text: "A língua portuguesa tem muitos verbos irregulares, especialmente os mais usados no dia a dia. Verbos como ser, estar, ter, ir, vir, fazer, querer e saber são altamente irregulares porque são os mais antigos da língua. Em linguística, é comum que os verbos mais frequentes sejam os mais irregulares — porque são tão usados que não precisaram seguir regras analógicas. Um falante nativo de português usa centenas de formas irregulares sem nem perceber. Para aprendizes, a dica é: pratique os mais comuns com frases do dia a dia.",
+    text: "A RTP, Rádio e Televisão de Portugal, é o serviço público de rádio e televisão de Portugal. Fundada em 1955, a RTP1 é o canal generalista mais antigo do país. A RTP Internacional leva o sinal para portugueses em todo o mundo. A liberdade de imprensa é um valor fundamental consagrado na Constituição de 1976, e Portugal é regularmente classificado entre os países com maior liberdade de imprensa pela organização Repórteres Sem Fronteiras.",
     questions: [
-      { q: "Neden en sık kullanılan fiiller en düzensiz?", a: "Çok kullanıldıkları için analojik kurallara uymak zorunda kalmadılar" },
-      { q: "En düzensiz Portekizce fiillerin örnekleri?", a: "ser, estar, ter, ir, vir, fazer, querer, saber" },
-      { q: "Öğrenciler için tavsiye ne?", a: "En yaygın düzensiz fiilleri günlük cümlelerle pratik yapmak" }
+      {q:"Quando foi fundada a RTP?", a:"Em 1955."},
+      {q:"O que faz a RTP Internacional?", a:"Leva o sinal para portugueses em todo o mundo."},
+      {q:"O que garante a liberdade de imprensa em Portugal?", a:"A Constituição de 1976."}
     ]
   }
 };

@@ -1,94 +1,93 @@
-const L16 = {
-  title: "Transporte e Viagem",
+var L16 = {
   words: [
-    { en: "o transporte", tr: "ulaşım / taşıma", pron: "u trãshporti", bd: "eril" },
-    { en: "o ônibus", tr: "otobüs", pron: "u onibush", bd: "eril; EP: autocarro" },
-    { en: "o metrô", tr: "metro", pron: "u metró", bd: "eril; BP büyük şehirlerde yaygın" },
-    { en: "o trem", tr: "tren", pron: "u trẽy", bd: "eril; intercidade = şehirlerarası" },
-    { en: "o avião", tr: "uçak", pron: "u avião", bd: "eril; çoğul: aviões" },
-    { en: "o carro", tr: "araba", pron: "u kahu", bd: "eril" },
-    { en: "a moto", tr: "motosiklet", pron: "a motu", bd: "dişil; motocicleta = tam form" },
-    { en: "a bicicleta / a bike", tr: "bisiklet", pron: "a bisikleta / a bike", bd: "dişil; bike BP günlük" },
-    { en: "o táxi / o Uber", tr: "taksi / Uber", pron: "u táksi / u uber", bd: "eril; Uber BP'de çok yaygın" },
-    { en: "a passagem", tr: "bilet", pron: "a pasajem", bd: "dişil; passagem de avião = uçak bileti" },
-    { en: "a estação", tr: "istasyon / durak", pron: "a ıshtasão", bd: "dişil; ponto de ônibus = otobüs durağı" },
-    { en: "a rodoviária", tr: "otogar", pron: "a hodovyárya", bd: "dişil; BP'ye özgü" },
-    { en: "o aeroporto", tr: "havalimanı", pron: "u aeroportu", bd: "eril" },
-    { en: "o trânsito", tr: "trafik / yoğunluk", pron: "u trãnzitu", bd: "eril; Tem trânsito. = Trafik var." },
-    { en: "o engarrafamento", tr: "trafik sıkışıklığı", pron: "u ẽngarrafamẽntu", bd: "eril; 'congestionamento' de denir" },
-    { en: "a viagem", tr: "yolculuk / seyahat", pron: "a vjajẽy", bd: "dişil; viajar = seyahat etmek" },
-    { en: "Quanto tempo leva?", tr: "Ne kadar sürer?", pron: "kuãntu tẽmpu leva", bd: "yolculuk süresi sorusu" },
-    { en: "Onde fica o ponto?", tr: "Durak nerede?", pron: "ôndshi fika u põntu", bd: "otobüs durağı sorusu" },
-    { en: "Preciso trocar de linha.", tr: "Hat değiştirmem gerekiyor.", pron: "presizu trokar dshi linya", bd: "aktarma" },
-    { en: "Boa viagem!", tr: "İyi yolculuklar!", pron: "boa vjajẽy", bd: "vedalaşma ifadesi" }
+    {en:"bus", tr:"otobüs", pron:"ɐutuˈkaɾu", bd:"autocarro"},
+    {en:"train", tr:"tren", pron:"kõˈboiu̯", bd:"comboio"},
+    {en:"metro/subway", tr:"metro", pron:"ˈmɛtɾu", bd:"metro"},
+    {en:"tram", tr:"tramvay", pron:"ˈɛlɛtɾiku", bd:"eléctrico"},
+    {en:"taxi", tr:"taksi", pron:"ˈtɐksi", bd:"táxi"},
+    {en:"ferry", tr:"feribot", pron:"ˈbɐɾku", bd:"barco"},
+    {en:"bicycle", tr:"bisiklet", pron:"biˈsiklɨtɐ", bd:"bicicleta"},
+    {en:"car", tr:"araba", pron:"ˈkɐɾu", bd:"carro"},
+    {en:"ticket", tr:"bilet", pron:"biˈlɛtɨ", bd:"bilhete"},
+    {en:"ticket machine", tr:"bilet makinesi", pron:"mɐˈkinɐ dɨ biˈlɛtɨʃ", bd:"máquina de bilhetes"},
+    {en:"stop/station", tr:"durak/istasyon", pron:"pɐˈɾɐʒẽ / ɨʃtɐˈsɐ̃u̯", bd:"paragem / estação"},
+    {en:"platform", tr:"peron", pron:"plɐˈtɐfuɾmɐ", bd:"plataforma"},
+    {en:"departure", tr:"kalkış", pron:"pɐɾˈtidɐ", bd:"partida"},
+    {en:"arrival", tr:"varış", pron:"ʃɨˈɡɐdɐ", bd:"chegada"},
+    {en:"delay", tr:"gecikme", pron:"ɐtɾɐˈzu", bd:"atraso"},
+    {en:"connection", tr:"aktarma", pron:"liˈɡɐsɐ̃u̯", bd:"ligação"},
+    {en:"monthly pass", tr:"aylık abonman", pron:"pɐˈsɨ mẽˈzɐl", bd:"passe mensal"},
+    {en:"toll", tr:"otoyol ücreti", pron:"pɐˈʒẽ", bd:"portagem"},
+    {en:"motorway", tr:"otoyol", pron:"ɐutoˈestɾɐdɐ", bd:"autoestrada"},
+    {en:"roundabout", tr:"kavşak/döner", pron:"ɾuˈtuɲdɐ", bd:"rotunda"}
   ],
   grammar: [
     {
-      title: "Ulaşım Araçları — de + araç",
-      explanation: "Ulaşım araçlarını belirtmek için 'de + araç' preposisyonu kullanılır: 'de ônibus' (otobüsle), 'de metrô' (metroyla), 'de carro' (arabayla). Ancak 'a pé' (yürüyerek) için 'de' kullanılmaz.",
+      title: "Transportes em Portugal — EP Terminoloji",
+      explanation: "Portekiz'e özgü ulaşım terminolojisi. 'Autocarro' (otobüs), 'comboio' (tren), 'eléctrico' (tramvay) kesinlikle BP'den farklıdır. Lizbon'da eléctrico (28 numaralı tramvay) ikonik bir ulaşım aracıdır.",
       table: [
-        { pronoun: "Otobüsle", form: "de ônibus", example: "Vou de ônibus para o trabalho.", tr: "İşe otobüsle gidiyorum." },
-        { pronoun: "Metroyla", form: "de metrô", example: "Prefiro de metrô.", tr: "Metroyu tercih ederim." },
-        { pronoun: "Arabayla", form: "de carro", example: "Ele foi de carro.", tr: "Arabayla gitti." },
-        { pronoun: "Uçakla", form: "de avião", example: "Viajamos de avião.", tr: "Uçakla seyahat ettik." },
-        { pronoun: "Yürüyerek", form: "a pé", example: "Vou a pé, é pertinho.", tr: "Yürüyerek gidiyorum, yakın." },
-        { pronoun: "Taksiyle", form: "de táxi / de Uber", example: "Chame um Uber.", tr: "Uber çağır." }
+        {pronoun:"autocarro", form:"otobüs (EP)", example:"Apanhei o autocarro 28 para Belém.", tr:"Belém'e 28 numaralı otobüsü yakaladım."},
+        {pronoun:"comboio", form:"tren (EP)", example:"O comboio para o Porto parte às 9h.", tr:"Porto'ya giden tren saat 9'da kalkıyor."},
+        {pronoun:"eléctrico", form:"tramvay (EP)", example:"O eléctrico 28 passa pela Alfama.", tr:"28 numaralı tramvay Alfama'dan geçiyor."},
+        {pronoun:"metro", form:"metro (aynı)", example:"Tomo o metro para o trabalho.", tr:"İşe metroyla gidiyorum."},
+        {pronoun:"barco", form:"feribot (Tejo)", example:"Apanho o barco para Cacilhas.", tr:"Cacilhas'a feribot alıyorum."},
+        {pronoun:"comboio suburbano", form:"banliyö treni", example:"CP serve os subúrbios de Lisboa.", tr:"CP Lizbon banliyölerine hizmet eder."}
       ],
-      note: "BP'de Uber çok yaygın. 'Chamar um Uber' (Uber çağırmak) günlük dilde sıkça kullanılır."
+      note: "Lizbon'da ikonik eléctrico 28 hattı tarihi semtlerden geçer. Biletler VIVA Viagem kartıyla alınabilir. Porto'da ise Andante kart sistemi kullanılır."
     },
     {
-      title: "PEGAR — Almak / Binmek (Ulaşım)",
-      explanation: "PEGAR (almak/tutmak/binmek) fiili BP'de çok çok yaygındır. 'Pegar o ônibus' = otobüse binmek. 'Pegar a estrada' = yola koyulmak. Bu fiil İngilizce 'take' gibi çok amaçlıdır.",
+      title: "Apanhar / Tomar Transporte — Taşıma Araçlarını Kullanmak",
+      explanation: "'Apanhar' (tutmak/yakalamak) EP'de ulaşım araçlarına binmek için kullanılır. 'Tomar' da kullanılabilir. 'Andar de' ise bir araç türüyle düzenli seyahat etmeyi ifade eder.",
       table: [
-        { pronoun: "Eu pego", form: "biniyorum / alıyorum", example: "Pego o metrô todo dia.", tr: "Her gün metroya biniyorum." },
-        { pronoun: "Você pega", form: "biniyorsunuz", example: "Você pega qual linha?", tr: "Hangi hattı kullanıyorsunuz?" },
-        { pronoun: "Nós pegamos", form: "biniyoruz", example: "Pegamos o trem das oito.", tr: "Sekiz saatlik trene biniyoruz." },
-        { pronoun: "Pegar engarrafamento", form: "trafiğe yakalanmak", example: "Peguei muito trânsito.", tr: "Çok trafiğe takıldım." },
-        { pronoun: "Pegar gripe", form: "grip olmak", example: "Peguei uma gripe.", tr: "Grip oldum." },
-        { pronoun: "Pegar o caminho", form: "yol bulmak", example: "Pegou o caminho errado.", tr: "Yanlış yolu tuttu." }
+        {pronoun:"apanhar + araç", form:"binerken (tek sefer)", example:"Apanho o metro na Marquês.", tr:"Marquês'te metroya biniyorum."},
+        {pronoun:"tomar + araç", form:"binerken (genel)", example:"Tomo sempre o autocarro.", tr:"Her zaman otobüse binerim."},
+        {pronoun:"andar de + araç", form:"düzenli kullanım", example:"Ando de bicicleta para o trabalho.", tr:"İşe bisikletle giderim."},
+        {pronoun:"mudar de linha", form:"hat değiştirmek", example:"Muda na Baixa-Chiado.", tr:"Baixa-Chiado'da hat değiştir."},
+        {pronoun:"perder o comboio", form:"treni kaçırmak", example:"Perdi o comboio das 10h.", tr:"Sabah 10'daki treni kaçırdım."},
+        {pronoun:"comprar bilhete", form:"bilet almak", example:"Compro o bilhete na máquina.", tr:"Bileti makineden alıyorum."}
       ],
-      note: "PEGAR tam bir çok amaçlı fiildir BP'de. 'Pegar' aynı zamanda 'almak' anlamında da kullanılır: 'Pega minha caneta.' = Kalemimi al."
+      note: "Portekiz'de ulaşım kartları: Lisboa Card (turistler için), VIVA Viagem (Lizbon metrosu), Andante (Porto). Tüm toplu taşıma araçları bu kartlarla kullanılabilir."
     },
     {
-      title: "FICAR — Kalmak / Olmak (Konum ve Durum)",
-      explanation: "FICAR (kalmak/olmak) hem konum hem de geçici durum için kullanılır. 'O aeroporto fica longe?' = Havalimanı uzak mı? 'Fico com raiva no trânsito.' = Trafikte sinirleniyorum.",
+      title: "Perguntar Direções no Transporte — Yön Sorma",
+      explanation: "Toplu taşımada yön sormak için kullanılan ifadeler. 'Onde fica a paragem?' (Durak nerede?), 'Qual é o próximo comboio para...?' (Bir sonraki tren ne zaman?)",
       table: [
-        { pronoun: "Konum", form: "ficar + konum zarfı", example: "O terminal fica à esquerda.", tr: "Terminal solda." },
-        { pronoun: "Mesafe", form: "ficar + perto/longe", example: "Fica longe daqui?", tr: "Buradan uzak mı?" },
-        { pronoun: "Durum", form: "ficar + sıfat", example: "Fiquei perdido no metrô.", tr: "Metroda kayboldum." },
-        { pronoun: "Bekleme", form: "ficar esperando", example: "Fiquei esperando uma hora.", tr: "Bir saat bekledim." },
-        { pronoun: "Kalmak", form: "ficar em + yer", example: "Fico em casa hoje.", tr: "Bugün evde kalıyorum." },
-        { pronoun: "Olmak (dönüşüm)", form: "ficar + sıfat", example: "Ficou feliz com a notícia.", tr: "Habere sevindi." }
+        {pronoun:"Onde fica...?", form:"nerede?", example:"Onde fica a paragem do autocarro?", tr:"Otobüs durağı nerede?"},
+        {pronoun:"A que horas parte...?", form:"ne zaman kalkar?", example:"A que horas parte o próximo comboio?", tr:"Bir sonraki tren ne zaman kalkıyor?"},
+        {pronoun:"Quanto tempo demora?", form:"ne kadar sürer?", example:"Quanto tempo demora até ao Porto?", tr:"Porto'ya kadar ne kadar sürer?"},
+        {pronoun:"Tenho de mudar?", form:"aktarma yapmak zorunda mıyım?", example:"Tenho de mudar de linha?", tr:"Hat değiştirmek zorunda mıyım?"},
+        {pronoun:"Onde devo sair?", form:"nerede inmeliyim?", example:"Onde devo sair para o Parque das Nações?", tr:"Parque das Nações için nerede inmeliyim?"},
+        {pronoun:"Validou o bilhete?", form:"bilet geçerli mi?", example:"Lembre-se de validar o bilhete!", tr:"Bileti doğrulamayı unutmayın!"}
       ],
-      note: "FICAR vs ESTAR: her ikisi de 'olmak' anlamına gelir ama FICAR değişimi vurgular: 'Fiquei nervoso' (sinirle(n)dim)."
+      note: "Portekiz'de bilet validasyonu (geçerleme) zorunludur. Geçersiz biletle seyahat cezaya tabidir. 'Fiscal' (denetçi) aracın içinde kontrol yapabilir."
     }
   ],
   speaking: [
-    { q: "'Havalimanına nasıl gidebilirim?' nasıl?", a: "Como posso ir ao aeroporto? De ônibus ou de metrô?" },
-    { q: "Trene biniyorsunuz — nasıl söylersiniz?", a: "Pego o trem para o centro." },
-    { q: "'Ulaşım uzak mı?' nasıl sorarsınız?", a: "Fica longe daqui?" },
-    { q: "Trafik çok yoğun — nasıl söylersiniz?", a: "Tem muito trânsito / Peguei engarrafamento." },
-    { q: "'İyi yolculuklar!' nasıl?", a: "Boa viagem!" }
+    {q:"Como vais normalmente para o trabalho?", a:"Ando de metro. É mais rápido do que o autocarro por causa do trânsito."},
+    {q:"Quanto custa um bilhete de comboio para o Porto?", a:"Depende do horário. Pode custar entre 25 e 60 euros num Alfa Pendular."},
+    {q:"O eléctrico 28 para em Belém?", a:"Não, o 28 vai de Martim Moniz à Prazeres. Para Belém, apanha o 15E."},
+    {q:"Há metro em todas as cidades portuguesas?", a:"Não. Há metro em Lisboa e Porto. Outras cidades têm autocarro e comboio."},
+    {q:"O que é o Alfa Pendular?", a:"É o comboio rápido da CP que liga Lisboa ao Porto em cerca de três horas."}
   ],
   dialogues: [
     {
-      title: "Yol Tarifi",
+      title: "Na Estação do Comboio",
       lines: [
-        { speaker: "Turista", text: "Com licença! Como chego ao centro histórico?", tr: "Affedersiniz! Tarihi merkeze nasıl gidebilirim?" },
-        { speaker: "Morador", text: "Pode ir de metrô! Pega a linha verde.", tr: "Metroyla gidebilirsiniz! Yeşil hattı alın." },
-        { speaker: "Turista", text: "Onde fica a estação mais próxima?", tr: "En yakın istasyon nerede?" },
-        { speaker: "Morador", text: "Ali na esquina. Fica a dois minutos a pé.", tr: "Şurada köşede. Yürüyerek iki dakika." },
-        { speaker: "Turista", text: "Preciso trocar de linha?", tr: "Hat değiştirmem gerekiyor mu?" },
-        { speaker: "Morador", text: "Não! Direto até a estação Sé. Boa viagem!", tr: "Hayır! Sé İstasyonuna direkt. İyi yolculuklar!" }
+        {speaker:"Turista", text:"Com licença! A que horas parte o próximo comboio para Sintra?"},
+        {speaker:"Funcionário", text:"O próximo comboio para Sintra parte às 11h20 da plataforma 4."},
+        {speaker:"Turista", text:"Quanto custa o bilhete?"},
+        {speaker:"Funcionário", text:"São 2,25 euros. Pode comprar na máquina ou na bilheteira."},
+        {speaker:"Turista", text:"Quanto tempo demora a viagem?"},
+        {speaker:"Funcionário", text:"Cerca de 40 minutos. Não se esqueça de validar o bilhete antes de entrar!"}
       ]
     }
   ],
   listening: {
-    text: "São Paulo tem um dos maiores sistemas de metrô da América Latina, com seis linhas e mais de cem estações. O metrô é rápido e eficiente, mas nas horas de pico fica muito cheio. Muitos paulistanos preferem usar o aplicativo de Uber ou de táxi para evitar o trânsito. A cidade tem fama de ter um dos piores trânsitos do mundo — em horário de pico, pode levar horas para percorrer poucos quilômetros.",
+    text: "Lisboa tem uma rede de transportes públicos bastante completa. O metro tem quatro linhas e cobre grande parte da cidade. Os autocarros da Carris chegam a todos os bairros. Os eléctricos históricos, especialmente o famoso 28, percorrem as zonas mais pitorescas da cidade. Para atravessar o Tejo, há barcos que ligam Lisboa a Cacilhas, Barreiro e Montijo. O Comboio de Sintra, que parte do Rossio, é muito popular entre turistas.",
     questions: [
-      { q: "São Paulo metrosunun kaç hattı var?", a: "Altı hat" },
-      { q: "Metronun dezavantajı ne?", a: "Yoğun saatlerde çok kalabalık" },
-      { q: "São Paulo neden ünlü?", a: "Dünyanın en kötü trafiklerinden biri" }
+      {q:"Quantas linhas tem o metro de Lisboa?", a:"Quatro linhas."},
+      {q:"Qual é a empresa de autocarros de Lisboa?", a:"Carris."},
+      {q:"De onde parte o comboio para Sintra?", a:"Do Rossio."}
     ]
   }
 };

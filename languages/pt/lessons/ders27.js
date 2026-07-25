@@ -1,94 +1,93 @@
-const L27 = {
-  title: "Emoções e Sentimentos",
+var L27 = {
   words: [
-    { en: "feliz", tr: "mutlu", pron: "felish", bd: "tek form; Estou feliz!" },
-    { en: "triste", tr: "üzgün", pron: "tríshtshi", bd: "tek form; Estou triste." },
-    { en: "animado / animada", tr: "heyecanlı / coşkulu", pron: "animadu / animada", bd: "cinsiyet uyumu" },
-    { en: "cansado / cansada", tr: "yorgun", pron: "kãsadu / kãsada", bd: "cinsiyet uyumu" },
-    { en: "preocupado / preocupada", tr: "endişeli", pron: "preokupadu / preokupada", bd: "cinsiyet uyumu" },
-    { en: "assustado / assustada", tr: "korkmuş", pron: "ashushtadu / ashushtada", bd: "cinsiyet uyumu" },
-    { en: "com raiva", tr: "sinirli / öfkeli", pron: "kõ hayva", bd: "estar com raiva = sinirli olmak" },
-    { en: "envergonhado / a", tr: "utanmış", pron: "ẽvergonyadu", bd: "cinsiyet uyumu" },
-    { en: "surpreso / surpresa", tr: "şaşırmış", pron: "surprézu / surpréza", bd: "cinsiyet uyumu" },
-    { en: "apaixonado / apaixonada", tr: "aşık", pron: "apayshonadhu", bd: "cinsiyet uyumu; apaixonar-se = aşık olmak" },
-    { en: "saudade", tr: "özlem (Portekizce'ye özgü)", pron: "sawdadshi", bd: "dişil; çevrilmesi zor duygu" },
-    { en: "orgulhoso / orgulhosa", tr: "gururlu", pron: "orgulyyozu / orgulyyoza", bd: "cinsiyet uyumu" },
-    { en: "Que pena!", tr: "Ne yazık! / Çok üzücü!", pron: "ke péna", bd: "sempati ifadesi" },
-    { en: "Que saudade!", tr: "Ne kadar özledim!", pron: "ke sawdadshi", bd: "güçlü özlem ifadesi" },
-    { en: "Fico com inveja!", tr: "Kıskanıyorum!", pron: "fiku kõ ĩveja", bd: "inveja = kıskançlık" },
-    { en: "Deu uma saudade.", tr: "Özlem bastırdı. (deyim)", pron: "dew uma sawdadshi", bd: "ani özlem hissi" },
-    { en: "Estou arrasado/a.", tr: "Mahvoldum. / Harap oldum.", pron: "ıshto ahasadu", bd: "çok üzgün, perişan" },
-    { en: "Estou nas nuvens!", tr: "Bulutların üstündeyim! (mutlu)", pron: "ıshto nash nuvẽysh", bd: "çok mutlu deyim" },
-    { en: "Vai passar.", tr: "Geçer.", pron: "vay pasár", bd: "teselli ifadesi" },
-    { en: "Conte comigo!", tr: "Bana güvenin! / Yanınızdayım!", pron: "kõntshi komĩgu", bd: "destek ifadesi" }
+    {en:"happiness", tr:"mutluluk", pron:"fɨliˈsidadɨ", bd:"felicidade"},
+    {en:"sadness", tr:"üzüntü", pron:"tɾiʃˈtɛzɐ", bd:"tristeza"},
+    {en:"love", tr:"sevgi/aşk", pron:"ɐˈmoɾ", bd:"amor"},
+    {en:"fear", tr:"korku", pron:"ˈmedu", bd:"medo"},
+    {en:"anger", tr:"öfke", pron:"ˈɾɐivɐ", bd:"raiva"},
+    {en:"surprise", tr:"sürpriz/şaşkınlık", pron:"suɾˈpɾɛzɐ", bd:"surpresa"},
+    {en:"joy", tr:"sevinç", pron:"ɐˈlɨɡɾiɐ", bd:"alegria"},
+    {en:"nostalgia/longing", tr:"özlem/saudade", pron:"sɐuˈdadɨ", bd:"saudade"},
+    {en:"boredom", tr:"sıkıntı", pron:"ˈtɛdiu", bd:"tédio"},
+    {en:"pride", tr:"gurur", pron:"uɾˈɡuʎu", bd:"orgulho"},
+    {en:"shame", tr:"utanç", pron:"ˈvɐɾɡuɲɐ", bd:"vergonha"},
+    {en:"jealousy", tr:"kıskançlık", pron:"siˈumɨ", bd:"ciúme"},
+    {en:"anxiety", tr:"kaygı/anksiyete", pron:"ɐ̃ˈʒuʃtiɐ", bd:"angústia"},
+    {en:"relief", tr:"rahatlama", pron:"ɐˈliviu", bd:"alívio"},
+    {en:"hope", tr:"umut", pron:"ɨʃpɨˈɾɐ̃sɐ", bd:"esperança"},
+    {en:"loneliness", tr:"yalnızlık", pron:"suliˈdɐ̃u̯", bd:"solidão"},
+    {en:"compassion", tr:"şefkat/acıma", pron:"kõpɐˈʃɐ̃u̯", bd:"compaixão"},
+    {en:"gratitude", tr:"minnet/şükran", pron:"ɡɾɐtiˈdɐ̃u̯", bd:"gratidão"},
+    {en:"courage", tr:"cesaret", pron:"kuˈɾɐʒẽ", bd:"coragem"},
+    {en:"calm", tr:"sakinlik", pron:"ˈkɐlmɐ", bd:"calma"}
   ],
   grammar: [
     {
-      title: "ESTAR COM + Duygu İsimleri",
-      explanation: "Geçici duygu durumlarını ifade etmek için ESTAR COM + duygu ismi veya doğrudan ESTAR + sıfat kullanılır. BP'de her ikisi de yaygındır. 'Estar com medo' = korkmak, 'estar com raiva' = sinirli olmak.",
+      title: "SAUDADE — Portekizce'nin En Özel Kelimesi",
+      explanation: "'Saudade' Portekizce'nin en özel kelimesidir ve tam karşılığı başka dillerde yoktur. Geçmiş, olmayan ya da belki hiç olmayacak birine/bir şeye duyulan özlem, hüzün ve mutluluk karışımı bir duyguyu ifade eder. Portekizlilerin ruhunun özüdür.",
       table: [
-        { pronoun: "Korku", form: "estar com medo", example: "Estou com medo do escuro.", tr: "Karanlıktan korkuyorum." },
-        { pronoun: "Kıskançlık", form: "estar com ciúme", example: "Está com ciúme?", tr: "Kıskanıyor musunuz?" },
-        { pronoun: "Utanma", form: "estar com vergonha", example: "Estou com vergonha.", tr: "Utanıyorum." },
-        { pronoun: "Sıkılma", form: "estar entediado / com tédio", example: "Estou entediado hoje.", tr: "Bugün sıkıldım." },
-        { pronoun: "Sürpriz", form: "estar surpreso", example: "Fiquei surpreso com a notícia.", tr: "Haberle şaşırdım." },
-        { pronoun: "Umut", form: "estar esperançoso", example: "Estou esperançoso para o futuro.", tr: "Gelecek için umutluyum." }
+        {pronoun:"Saudade de pessoa", form:"kişiye özlem", example:"Tenho saudades do meu avô que faleceu.", tr:"Hayatını kaybeden dedemin özlemini çekiyorum."},
+        {pronoun:"Saudade de lugar", form:"yere özlem", example:"Tenho saudades de Lisboa quando estou fora.", tr:"Dışarıdayken Lizbon'un özlemini çekiyorum."},
+        {pronoun:"Saudade de tempo", form:"zamana özlem", example:"Tenho saudades da infância sem preocupações.", tr:"Tasasız çocukluğumun özlemini çekiyorum."},
+        {pronoun:"Ter saudades de", form:"özlemini çekmek", example:"Tens saudades dos teus amigos?", tr:"Arkadaşlarının özlemini çekiyor musun?"},
+        {pronoun:"Matar as saudades", form:"özlemi gidermek", example:"Fui a Portugal matar as saudades.", tr:"Özlemi gidermek için Portekiz'e gittim."},
+        {pronoun:"Saudade no fado", form:"fadoda saudade", example:"O fado é a música da saudade portuguesa.", tr:"Fado, Portekiz saudade'sinin müziğidir."}
       ],
-      note: "FICAR + duygu = dönüşüm: 'Fiquei triste' = Üzüldüm (o anda). ESTAR = süregelen durum: 'Estou triste' = Şu an üzgünüm."
+      note: "'Saudade' UNESCO tarafından Portekiz'in somut olmayan kültürel mirasının bir parçası olarak tanınmıştır. 'Fado' müziği ve 'saudade' duygusu birbirinden ayrılamaz."
     },
     {
-      title: "SAUDADE — Portekizce'ye Özgü Duygu",
-      explanation: "Saudade, Portekizce'ye özgü bir duygudur: geçmişte yaşanan güzel anların, kişilerin veya yerlerin özlemiyle karışık hüzün. 'Tenho saudades de você' = Seni özledim. Bu kelime dünyanın en güzel kelimeleri arasında gösterilir.",
+      title: "Estar + Adjetivo de Emoção — Duyguları İfade Etmek",
+      explanation: "Duyguları ifade etmek için 'estar' + sıfat kullanılır. Kısa süreli duygular için 'estar', kalıcı karakter özellikleri için 'ser' kullanılır.",
       table: [
-        { pronoun: "Özlemek", form: "ter saudade de", example: "Tenho saudade da minha cidade.", tr: "Şehrimi özlüyorum." },
-        { pronoun: "Çok özledim", form: "Que saudade!", example: "Que saudade de você!", tr: "Seni ne kadar özledim!" },
-        { pronoun: "Özlem saldı", form: "Bater saudade", example: "Bateu uma saudade da infância.", tr: "Çocukluğumun özlemi saldı." },
-        { pronoun: "Matan saudade", form: "Matar a saudade", example: "Vou lá matar a saudade!", tr: "Özlemi gidermek için gidiyorum!" },
-        { pronoun: "Saudade giderilmesi", form: "curar / matar saudade", example: "Esse abraço matou minha saudade.", tr: "Bu kucaklaşma özlemimi giderdi." },
-        { pronoun: "Çoğul", form: "saudades", example: "Tenho muitas saudades de você.", tr: "Seni çok özledim." }
+        {pronoun:"estar feliz", form:"mutlu olmak", example:"Estou muito feliz com a notícia!", tr:"Haberle çok mutluyum!"},
+        {pronoun:"estar triste", form:"üzgün olmak", example:"Está triste porque o amigo foi embora.", tr:"Arkadaşı gittiği için üzgün."},
+        {pronoun:"estar com medo", form:"korkmak", example:"Estou com medo do exame amanhã.", tr:"Yarınki sınavdan korkuyorum."},
+        {pronoun:"estar zangado/a", form:"kızgın olmak", example:"Estás zangado comigo? O que fiz?", tr:"Benimle kızgın mısın? Ne yaptım?"},
+        {pronoun:"estar emocionado/a", form:"duygusal/heyecanlı olmak", example:"Fiquei emocionada a ver o Fado.", tr:"Fado dinlerken duygulandım."},
+        {pronoun:"sentir-se bem/mal", form:"iyi/kötü hissetmek", example:"Como te sentes hoje?", tr:"Bugün nasıl hissediyorsun?"}
       ],
-      note: "Saudade kelimesinin tam karşılığı başka dillerde yoktur. Türkçe 'hasret' yakın ama tam değil — saudade daha karmaşık bir duygu."
+      note: "EP'de 'zangado/a' (kızgın) kullanılır. 'Fico emocionado/a' ise hem 'heyecanlandım' hem 'duygulandım' anlamına gelebilir — bağlama göre anlaşılır."
     },
     {
-      title: "Sempati ve Empati İfadeleri",
-      explanation: "Birisini teselli ederken veya sevincini paylaşırken belirli kalıplar kullanılır. Portekizcede sosyal zeka için bu ifadeler çok önemlidir.",
+      title: "Expressões Emocionais — Duygusal İfadeler",
+      explanation: "Günlük konuşmada duygularını ifade etmek için kullanılan EP kalıpları ve deyimler.",
       table: [
-        { pronoun: "Üzüntü", form: "Que pena! / Que triste!", example: "Que pena que aconteceu isso!", tr: "Bu olması ne yazık!" },
-        { pronoun: "Teselli", form: "Vai passar. / Fica tranquilo/a.", example: "Fica tranquila, vai passar.", tr: "Sakin ol, geçecek." },
-        { pronoun: "Sevinç paylaşma", form: "Que ótimo! / Que bom!", example: "Que ótimo! Estou feliz por você!", tr: "Harika! Senin için sevindim!" },
-        { pronoun: "Empati", form: "Eu entendo. / Sei como é.", example: "Sei como é difícil.", tr: "Ne kadar zor olduğunu biliyorum." },
-        { pronoun: "Destek", form: "Conte comigo!", example: "Se precisar, conte comigo.", tr: "İhtiyacınız olursa, yanınızdayım." },
-        { pronoun: "Tebrik", form: "Parabéns! / Meus parabéns!", example: "Parabéns pela conquista!", tr: "Başarınız için tebrikler!" }
+        {pronoun:"Que alegria!", form:"Ne sevinç!", example:"Que alegria! Passaste no exame!", tr:"Ne sevinç! Sınavı geçtin!"},
+        {pronoun:"Estou nas nuvens", form:"Bulutların üzerindeyim (çok mutluyum)", example:"Estou nas nuvens desde que soube a notícia.", tr:"Haberi öğrendiğimden beri bulutların üzerindeyim."},
+        {pronoun:"Que saudade!", form:"Ne özlem!", example:"Que saudade! Não te via há anos!", tr:"Ne özlem! Seni yıllardır görmemiştim!"},
+        {pronoun:"Fiquei sem palavras", form:"Söz kalmadı", example:"Fiquei sem palavras quando o vi.", tr:"Onu görünce söz kalmadı."},
+        {pronoun:"Deu-me um aperto no coração", form:"Yüreğim sıkıştı", example:"Ver isso deu-me um aperto no coração.", tr:"Bunu görmek yüreğimi sıkıştırdı."},
+        {pronoun:"Estou orgulhoso/a de", form:"Gurur duyuyorum", example:"Estou muito orgulhosa de ti!", tr:"Seninle çok gurur duyuyorum!"}
       ],
-      note: "'Torcendo por você!' = Seni destekliyorum! / Başarılar! (Literalmente: Senin için torcendo ediyorum = BP'de 'torcer por' = destek vermek anlamındadır.)"
+      note: "Portekizliler duygularını ifade etmekte oldukça açık bir kültüre sahiptir. 'Saudade' duygusu sadece üzüntü değil — içinde tatlı bir hüzün barındıran, geçmişi seven bir duygudur."
     }
   ],
   speaking: [
-    { q: "Arkadaşınız kötü hissediyor. Ne söylersiniz?", a: "Que pena! Vai passar. Conte comigo!" },
-    { q: "Saudade'yi açıklayın.", a: "É um sentimento de longing — a tristeza misturada com amor pelo que foi." },
-    { q: "'Çok mutluyum' nasıl?", a: "Estou muito feliz! / Estou nas nuvens!" },
-    { q: "Birini tebrik etmek için?", a: "Parabéns! Estou muito feliz por você!" },
-    { q: "'Eski şehrimi çok özlüyorum' nasıl?", a: "Tenho muita saudade da minha cidade." }
+    {q:"O que é exatamente a saudade?", a:"A saudade é uma emoção única — é a nostalgia de algo ou alguém que amamos e que está ausente. Pode ser doce e triste ao mesmo tempo."},
+    {q:"Quando sentes saudade?", a:"Sinto saudade dos meus pais quando estou longe. E sinto saudade do verão quando chega o inverno frio."},
+    {q:"O fado tem relação com a saudade?", a:"Sim, profundamente. O fado é a expressão musical da saudade portuguesa — é melancólico e belo ao mesmo tempo."},
+    {q:"Como se diz em português: estou nervoso?", a:"Diz-se 'estou nervoso/a' ou 'estou ansioso/a'. Também se pode dizer 'estou com os nervos à flor da pele'."},
+    {q:"É verdade que os portugueses são mais melancólicos?", a:"Há quem diga isso! O fado e a saudade fazem parte da identidade cultural. Mas os portugueses também são alegres e hospitaleiros."}
   ],
   dialogues: [
     {
-      title: "Duygu Paylaşımı",
+      title: "Uma Conversa sobre Saudade",
       lines: [
-        { speaker: "Sofia", text: "Oi! Você está bem? Parece preocupada.", tr: "Selam! İyi misin? Endişeli görünüyorsun." },
-        { speaker: "Beatriz", text: "Não muito. Estou com saudade da minha família. Faz três meses que não os vejo.", tr: "Pek değil. Ailem için özlem çekiyorum. Üç aydır görmüyorum onları." },
-        { speaker: "Sofia", text: "Que pena! Sei como é difícil ficar longe de quem amamos.", tr: "Ne yazık! Sevdiklerimizden uzak durmanın ne kadar zor olduğunu biliyorum." },
-        { speaker: "Beatriz", text: "É mesmo. Mas semana que vem vou visitá-los. Estou animadíssima!", tr: "Öyle. Ama gelecek hafta ziyaret edeceğim. Çok heyecanlıyım!" },
-        { speaker: "Sofia", text: "Que bom! Vai matar a saudade toda!", tr: "Ne güzel! Tüm özlemi gidereceksin!" },
-        { speaker: "Beatriz", text: "Com certeza! Só de pensar já estou nas nuvens!", tr: "Kesinlikle! Sadece düşünmek bile bulutların üstünde hissettiriyor beni!" }
+        {speaker:"Sofia", text:"Hoje ouvi fado pela primeira vez. Fiquei completamente emocionada."},
+        {speaker:"Carlos", text:"O fado tem esse efeito. É a música da nossa alma."},
+        {speaker:"Sofia", text:"Há uma palavra para esse sentimento... saudade, certo?"},
+        {speaker:"Carlos", text:"Exatamente! A saudade é o coração do fado. É uma emoção que não existe noutros idiomas."},
+        {speaker:"Sofia", text:"Que palavra bonita. Eu também sinto algo assim quando penso na minha terra."},
+        {speaker:"Carlos", text:"Então já sabes o que é a saudade! É universal, mesmo sendo uma palavra portuguesa."}
       ]
     }
   ],
   listening: {
-    text: "A saudade é considerada a alma da cultura portuguesa e brasileira. Essa palavra descreve um sentimento melancólico e nostálgico — a presença do que está ausente. Os poetas portugueses sempre escreveram sobre saudade, e no Brasil, o samba e a bossa nova expressam esse sentimento profundamente. 'Garota de Ipanema' de Tom Jobim é uma música cheia de saudade e amor — tornou-se famosa no mundo todo.",
+    text: "A saudade é um dos conceitos mais estudados da língua portuguesa. Não tem tradução direta noutros idiomas — o inglês 'longing', o alemão 'Sehnsucht' ou o espanhol 'nostalgia' captam apenas parte do significado. A saudade pode ser de uma pessoa, de um lugar, de uma época ou até de algo que nunca existiu mas que se deseja. O escritor Fernando Pessoa chamou à saudade 'a quintessência da alma portuguesa'. O fado, reconhecido como Património Imaterial da Humanidade pela UNESCO em 2011, é a expressão musical desta emoção.",
     questions: [
-      { q: "Saudade kültürel olarak ne anlama geliyor?", a: "Portekiz ve Brezilya kültürünün ruhu" },
-      { q: "Saudade hangi müzik türlerinde ifade ediliyor?", a: "Samba ve bossa nova" },
-      { q: "'Garota de Ipanema' neden ünlü?", a: "Saudade ve aşkla dolu, dünya genelinde tanınan bir şarkı" }
+      {q:"Existe uma tradução direta de 'saudade' noutros idiomas?", a:"Não, não tem tradução direta."},
+      {q:"O que disse Fernando Pessoa sobre a saudade?", a:"Chamou-lhe 'a quintessência da alma portuguesa'."},
+      {q:"Quando foi o fado reconhecido pela UNESCO?", a:"Em 2011."}
     ]
   }
 };

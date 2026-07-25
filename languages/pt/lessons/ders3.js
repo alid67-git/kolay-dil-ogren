@@ -1,94 +1,94 @@
 const L3 = {
-  title: "Números 1-50 e Contagem",
+  title: "Números e Contagem",
   words: [
-    { en: "um / uma", tr: "bir (eril/dişil)", pron: "ũ / uma", bd: "1 — cinsiyet uyumu var" },
-    { en: "dois / duas", tr: "iki (eril/dişil)", pron: "doysh / duas", bd: "2 — cinsiyet uyumu var" },
-    { en: "três", tr: "üç", pron: "tresh", bd: "3" },
-    { en: "quatro", tr: "dört", pron: "kuatru", bd: "4" },
-    { en: "cinco", tr: "beş", pron: "sĩnku", bd: "5" },
-    { en: "seis", tr: "altı", pron: "seysh", bd: "6" },
-    { en: "sete", tr: "yedi", pron: "sétshi", bd: "7" },
-    { en: "oito", tr: "sekiz", pron: "oytu", bd: "8" },
-    { en: "nove", tr: "dokuz", pron: "nóvi", bd: "9" },
-    { en: "dez", tr: "on", pron: "desh", bd: "10" },
-    { en: "vinte", tr: "yirmi", pron: "vĩntshi", bd: "20" },
-    { en: "trinta", tr: "otuz", pron: "trĩnta", bd: "30" },
-    { en: "quarenta", tr: "kırk", bd: "40", pron: "kuarẽnta" },
-    { en: "cinquenta", tr: "elli", pron: "sĩkuẽnta", bd: "50" },
-    { en: "cem", tr: "yüz", pron: "sẽy", bd: "100 — tam yüz için cem" },
-    { en: "primeiro / primeira", tr: "birinci (eril/dişil)", pron: "primeyru / primeyra", bd: "sıra sayısı" },
-    { en: "segundo / segunda", tr: "ikinci", pron: "segũndu / segũnda", bd: "sıra sayısı" },
-    { en: "Quantos anos você tem?", tr: "Kaç yaşındasınız?", pron: "kuãntus ãnus vosê tẽy", bd: "ter = sahip olmak (yaş için)" },
-    { en: "Tenho vinte e cinco anos.", tr: "Yirmi beş yaşındayım.", pron: "tẽnyu vĩntshi i sĩnku ãnus", bd: "tenho=ter/ben" },
-    { en: "Quanto custa?", tr: "Kaça tutar? / Fiyatı nedir?", pron: "kuãntu kushta", bd: "alışveriş ifadesi" }
+    { en: "zero", tr: "sıfır", pron: "zéru", bd: "eril; zero graus = sıfır derece" },
+    { en: "um / uma", tr: "bir", pron: "ũ / uma", bd: "cinsiyet uyumu; um livro / uma cadeira" },
+    { en: "dois / duas", tr: "iki", pron: "doysh / duas", bd: "cinsiyet uyumu; dois homens / duas mulheres" },
+    { en: "três", tr: "üç", pron: "trésh", bd: "değişmez" },
+    { en: "quatro", tr: "dört", pron: "kwatru", bd: "değişmez" },
+    { en: "cinco", tr: "beş", pron: "sĩku", bd: "değişmez" },
+    { en: "seis", tr: "altı", pron: "seysh", bd: "değişmez" },
+    { en: "sete", tr: "yedi", pron: "sét", bd: "EP: son 'e' çok kısalır veya düşer" },
+    { en: "oito", tr: "sekiz", pron: "oytu", bd: "değişmez" },
+    { en: "nove", tr: "dokuz", pron: "nov", bd: "EP: son 'e' düşer" },
+    { en: "dez", tr: "on", pron: "désh", bd: "değişmez" },
+    { en: "vinte", tr: "yirmi", pron: "vĩt", bd: "EP: son 'e' düşer" },
+    { en: "trinta", tr: "otuz", pron: "trĩta", bd: "değişmez" },
+    { en: "cem", tr: "yüz", pron: "sẽy", bd: "tam 100; cento e um = 101 (birleşimde cento)" },
+    { en: "mil", tr: "bin", pron: "mil", bd: "değişmez; dois mil = iki bin" },
+    { en: "primeiro / primeira", tr: "birinci", pron: "primeyru / primeyra", bd: "cinsiyet uyumu; sıra sayısı" },
+    { en: "segundo / segunda", tr: "ikinci", pron: "sıgũdu / sıgũda", bd: "cinsiyet uyumu" },
+    { en: "Que horas são?", tr: "Saat kaç?", pron: "kı ôrash são", bd: "saat sorma; EP'de çok kullanılır" },
+    { en: "Tenho X anos.", tr: "X yaşındayım.", pron: "tẽnyu X anuş", bd: "TER fiili yaş için" },
+    { en: "Quanto custa?", tr: "Ne kadar? / Fiyatı ne?", pron: "kwãtu kushta", bd: "alışverişte temel soru" }
   ],
   grammar: [
     {
-      title: "1'den 20'ye Temel Sayılar",
-      explanation: "Portekizcede sayılar genel olarak düzenlidir ancak 1, 2 ve 21 gibi bileşik sayılarda cinsiyet uyumu gereklidir. 11-15 arası sayılar özel isimler alır (onze, doze, treze, catorze, quinze). 16-19 arası: 'dez e seis' yerine 'dezasseis' gibi birleşik formlar kullanılır (BP: dezesseis).",
+      title: "Sayılar 1–20 ve Kombinasyonlar",
+      explanation: "Portekizce sayılar: 1 (um/uma), 2 (dois/duas), 3 (três), 4 (quatro), 5 (cinco), 6 (seis), 7 (sete), 8 (oito), 9 (nove), 10 (dez), 11 (onze), 12 (doze), 13 (treze), 14 (catorze), 15 (quinze), 16 (dezasseis — EP), 17 (dezassete), 18 (dezoito), 19 (dezanove), 20 (vinte). NOT: EP'de 16=dezasseis (BR'de dezesseis).",
       table: [
-        { pronoun: "1–5", form: "um, dois, três, quatro, cinco", example: "um livro, duas casas", tr: "bir kitap, iki ev (uyum!)" },
-        { pronoun: "6–10", form: "seis, sete, oito, nove, dez", example: "seis alunos, dez reais", tr: "altı öğrenci, on real" },
-        { pronoun: "11–15", form: "onze, doze, treze, catorze, quinze", example: "onze pessoas", tr: "on bir kişi" },
-        { pronoun: "16–20", form: "dezesseis, dezessete, dezoito, dezenove, vinte", example: "dezoito anos", tr: "on sekiz yaş" },
-        { pronoun: "Cinsiyet uyumu", form: "um/uma, dois/duas, vinte e um/uma", example: "vinte e uma pessoas", tr: "yirmi bir kişi (dişil)" },
-        { pronoun: "Sıra sayısı", form: "primeiro, segundo, terceiro...", example: "o primeiro dia", tr: "birinci gün" }
+        { pronoun: "11-15", form: "onze a quinze", example: "onze, doze, treze, catorze, quinze", tr: "11, 12, 13, 14, 15" },
+        { pronoun: "16-19 (EP)", form: "dezasseis...", example: "dezasseis, dezassete, dezoito, dezanove", tr: "16, 17, 18, 19 (EP formu)" },
+        { pronoun: "Onluklar", form: "vinte, trinta...", example: "vinte, trinta, quarenta, cinquenta", tr: "20, 30, 40, 50" },
+        { pronoun: "60-90", form: "sessenta...", example: "sessenta, setenta, oitenta, noventa", tr: "60, 70, 80, 90" },
+        { pronoun: "Bileşik", form: "e ile", example: "vinte e um, trinta e dois", tr: "21, 32 — 'e' bağlacı ile" },
+        { pronoun: "100+", form: "cem / cento", example: "cem; cento e cinco", tr: "100; 105 — birleşimde cento" }
       ],
-      note: "Brezilya Portekizcesinde 16=dezesseis, Avrupa Portekizcesinde 16=dezasseis. Bu derste BP kullanıyoruz."
+      note: "EP'de 16=dezasseis (not dezesseis), 17=dezassete (not dezessete). Bu BR ile fark. YÜZ: tam 100 = cem; 100'den büyük = cento (cento e um = 101)."
     },
     {
-      title: "20'den 100'e Onluklar ve Bileşik Sayılar",
-      explanation: "Onluklar (20, 30, 40...) düzenli bir yapıya sahiptir. Bileşik sayılar 'e' (ve) bağlacıyla oluşturulur: vinte e três (23). 100 için 'cem' kullanılır; ancak 101, 102... için 'cento' kullanılır: cento e um.",
+      title: "TER — Yaş ve Sahiplik",
+      explanation: "Portekizce'de yaş TER (sahip olmak) fiili ile söylenir: 'Tenho vinte anos' (Yirmi yaşındayım — lit: yirmi yılım var). TER geniş zaman: tenho, tens, tem, temos, tendes, têm. Sahiplik: Tenho um carro (arabam var). Aile: Tenho um irmão (erkek kardeşim var).",
       table: [
-        { pronoun: "20", form: "vinte", example: "vinte reais", tr: "yirmi real" },
-        { pronoun: "30", form: "trinta", example: "trinta dias", tr: "otuz gün" },
-        { pronoun: "40", form: "quarenta", example: "quarenta anos", tr: "kırk yaş" },
-        { pronoun: "50", form: "cinquenta", example: "cinquenta pessoas", tr: "elli kişi" },
-        { pronoun: "Bileşik", form: "vinte e [sayı]", example: "vinte e três = 23", tr: "yirmi üç" },
-        { pronoun: "100 / 101+", form: "cem / cento e...", example: "cem reais / cento e um", tr: "yüz real / yüz bir" }
+        { pronoun: "eu", form: "tenho", example: "Tenho vinte e cinco anos.", tr: "Yirmi beş yaşındayım." },
+        { pronoun: "tu", form: "tens", example: "Quantos anos tens?", tr: "Kaç yaşındasın?" },
+        { pronoun: "você/ele/ela", form: "tem", example: "Ela tem trinta anos.", tr: "Otuz yaşında." },
+        { pronoun: "nós", form: "temos", example: "Temos um cão.", tr: "Bir köpeğimiz var." },
+        { pronoun: "vocês", form: "têm", example: "Vocês têm filhos?", tr: "Çocuğunuz var mı?" },
+        { pronoun: "eles/elas", form: "têm", example: "Eles têm dois carros.", tr: "İki arabaları var." }
       ],
-      note: "Para birimi: R$ = Real (Brezilya). 'Quanto custa?' = Kaç para? Fiyat sorarken kullanılır."
+      note: "TER EP çok önemli: tenho, tens, tem — dikkat: vocês têm (şapkalı!) vs. você tem. 'Tens razão!' = Haklısın! — EP'de çok yaygın."
     },
     {
-      title: "TER Fiili ile Yaş Söyleme (Kaç Yaşında?)",
-      explanation: "Portekizcede yaş 'ter' (sahip olmak) fiiliyle ifade edilir: 'Tenho 25 anos' = '25 yaşlarım' (25 yaşım var). Türkçe gibi yaş 'var' ile söylenir. TER aynı zamanda sahipliği de ifade eder.",
+      title: "Fiyat ve Para — Euro Sistemi",
+      explanation: "Portekiz Euro kullanır. Fiyat sormak: Quanto custa? (Ne kadar?), Quanto é? (Kaça?). Yanıt: Custa dois euros (İki Euro'ya mal olur). Custa caro (Pahalı). Custa barato (Ucuz). Para birimi: euro (€), cêntimo (kuruş).",
       table: [
-        { pronoun: "Eu", form: "tenho", example: "Tenho trinta anos.", tr: "Otuz yaşındayım." },
-        { pronoun: "Você / Ele / Ela", form: "tem", example: "Ela tem vinte e dois anos.", tr: "O yirmi iki yaşında." },
-        { pronoun: "Nós", form: "temos", example: "Temos dois filhos.", tr: "İki çocuğumuz var." },
-        { pronoun: "Vocês / Eles / Elas", form: "têm", example: "Eles têm um carro.", tr: "Onların bir arabası var." },
-        { pronoun: "Soru", form: "Quantos anos...?", example: "Quantos anos você tem?", tr: "Kaç yaşındasınız?" },
-        { pronoun: "Sahiplik", form: "ter + isim", example: "Tenho um irmão.", tr: "Bir erkek kardeşim var." }
+        { pronoun: "Soru", form: "Quanto custa?", example: "Quanto custa este livro?", tr: "Bu kitap ne kadar?" },
+        { pronoun: "Yanıt", form: "Custa X euros.", example: "Custa cinco euros.", tr: "Beş Euro'ya mal olur." },
+        { pronoun: "Pahalı", form: "É caro.", example: "Está caro! Tem mais barato?", tr: "Pahalı! Daha ucuzu var mı?" },
+        { pronoun: "Ucuz", form: "É barato.", example: "Que barato! Levo dois.", tr: "Ne ucuz! İki tane alıyorum." },
+        { pronoun: "Toplam", form: "Ao todo / No total", example: "Ao todo são dez euros.", tr: "Toplam on Euro." },
+        { pronoun: "Ödeme", form: "Pago com cartão.", example: "Posso pagar com Multibanco?", tr: "Multibanco ile ödeyebilir miyim?" }
       ],
-      note: "têm (vocês/eles) aksan işareti alır, tem (ele/você) almaz. Telaffuz farkı: têm=[tẽy], tem=[tẽy] — aynı sesletilir!"
+      note: "Multibanco = Portekiz'e özgü ATM/ödeme sistemi. MB Way = mobil ödeme uygulaması. Portekiz'de çok yaygın. 'Levantei dinheiro no Multibanco' = ATM'den para çektim."
     }
   ],
   speaking: [
-    { q: "Quantos anos você tem?", a: "Tenho [yaşınız] anos. (örn: Tenho trinta anos.)" },
-    { q: "'23' nasıl söylenir Portekizcede?", a: "Vinte e três." },
-    { q: "Quanto custa este livro? — R$ 45 yanıt ver.", a: "Custa quarenta e cinco reais." },
-    { q: "'İki kitap' nasıl söylenir?", a: "Dois livros. (eril)" },
-    { q: "'Yirmi bir kadın' nasıl söylenir?", a: "Vinte e uma mulheres. (dişil uyumu!)" }
+    { q: "Telefon numaranızı söyleyin.", a: "O meu número é: dois, dois, um, cinco, três, sete, oito, nove." },
+    { q: "Yaşınızı sorun ve söyleyin.", a: "Quantos anos tens? — Tenho [yaş] anos." },
+    { q: "'Bu kitap kaç euro?' sorup yanıtlayın.", a: "Quanto custa este livro? — Custa oito euros e cinquenta." },
+    { q: "Sıra sayısı kullanın.", a: "Moro no segundo andar, porta número três." },
+    { q: "'İki bilet lütfen' nasıl?", a: "Dois bilhetes, por favor. Quanto é ao todo?" }
   ],
   dialogues: [
     {
-      title: "Yaş ve Fiyat",
+      title: "Dükkânda",
       lines: [
-        { speaker: "Loja", text: "Boa tarde! Posso ajudar?", tr: "İyi günler! Yardımcı olabilir miyim?" },
-        { speaker: "Cliente", text: "Quanto custa esta camiseta?", tr: "Bu tişört ne kadar?" },
-        { speaker: "Loja", text: "Custa cinquenta e cinco reais.", tr: "Elli beş real." },
-        { speaker: "Cliente", text: "E aquela ali?", tr: "Peki şuradaki?" },
-        { speaker: "Loja", text: "Aquela custa quarenta reais.", tr: "O kırk real." },
-        { speaker: "Cliente", text: "Vou levar as duas! Tenho um desconto?", tr: "İkisini de alıyorum! İndirimim var mı?" }
+        { speaker: "Cliente", text: "Bom dia! Quanto custa esta camisola?", tr: "Günaydın! Bu kazak ne kadar?" },
+        { speaker: "Vendedor", text: "Bom dia! Custa vinte e cinco euros.", tr: "Günaydın! Yirmi beş Euro'ya mal olur." },
+        { speaker: "Cliente", text: "Está um pouco caro. Tem desconto?", tr: "Biraz pahalı. İndirim var mı?" },
+        { speaker: "Vendedor", text: "Temos vinte por cento de desconto esta semana!", tr: "Bu hafta yüzde yirmi indirimiz var!" },
+        { speaker: "Cliente", text: "Ótimo! Então fica em vinte euros. Levo!", tr: "Harika! O zaman yirmi Euro oluyor. Alıyorum!" },
+        { speaker: "Vendedor", text: "Perfeito! Paga em dinheiro ou com cartão?", tr: "Mükemmel! Nakit mi kart ile mi ödüyorsunuz?" }
       ]
     }
   ],
   listening: {
-    text: "Minha família é grande! Tenho três irmãos e duas irmãs. Meu pai tem cinquenta e dois anos e minha mãe tem quarenta e oito. Temos um apartamento com quatro quartos. Moro aqui há vinte anos.",
+    text: "Os números são fundamentais em qualquer língua. Em Portugal, usamos o sistema decimal como na maioria dos países europeus. A moeda é o euro, dividido em cêntimos. Uma particularidade do português europeu é que os números dezasseis, dezassete e dezanove são diferentes do português brasileiro, que diz dezesseis, dezessete e dezenove. Para os preços, dizemos 'custa' ou 'são' — por exemplo, 'são cinco euros' ou 'custa três euros e cinquenta cêntimos'. O Multibanco é o sistema de pagamento eletrónico mais usado em Portugal.",
     questions: [
-      { q: "Kaç kardeşi var?", a: "Beş: üç erkek, iki kız" },
-      { q: "Babasının yaşı?", a: "Elli iki" },
-      { q: "Dairede kaç oda var?", a: "Dört" }
+      { q: "EP ile BR arasında sayı farkı olan örnekler?", a: "16: dezasseis (EP) / dezesseis (BR); 17: dezassete (EP) / dezessete (BR)" },
+      { q: "Portekiz'de kullanılan para birimi ne?", a: "Euro (€), cêntimo (kuruş)" },
+      { q: "Portekiz'de en yaygın ödeme sistemi ne?", a: "Multibanco — elektronik ödeme sistemi" }
     ]
   }
 };
