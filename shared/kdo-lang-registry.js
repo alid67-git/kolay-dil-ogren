@@ -670,6 +670,62 @@ window.KDO_LANG_REGISTRY = {
     "rtl": false,
     "cjk": false,
     "lessonsCount": 20
+  },
+  "pt": {
+    "code": "pt",
+    "kdoTarget": "pt",
+    "prefix": "pt1_",
+    "storageBrand": "portuguese_",
+    "flag": "🇧🇷",
+    "nameTr": "Kolay Portekizce",
+    "nameEn": "Easy Portuguese Learning",
+    "title": "Kolay Portekizce Öğrenme",
+    "lessonsPath": "languages/pt/lessons",
+    "tts": "pt-BR",
+    "ttsAlt": "pt-PT",
+    "ttsPrefix": "pt",
+    "googleVoiceF": "pt-BR-Neural2-A",
+    "googleVoiceM": "pt-BR-Neural2-B",
+    "targetLabelTr": "Portekizce",
+    "targetLabelEn": "Portuguese",
+    "l2Meta": {
+      "title": "Artigos & ser/estar",
+      "title_en": "Articles & ser/estar",
+      "subtitle": "o/a/um/uma — adım adım",
+      "subtitle_en": "o/a/um/uma — step by step"
+    },
+    "targetUi": {
+      "tr": {
+        "test_dir_en2tr": "Portekizce → Anlam",
+        "test_dir_tr2en": "Anlam → Portekizce",
+        "translate_placeholder": "Portekizce veya Türkçe yaz...",
+        "translate_tip": "Portekizce veya Türkçe bir kelime veya cümle yaz.",
+        "settings_voices": "🔊 Portekizce Sesleri",
+        "pron_col_english": "Portekizce",
+        "num_info": "Portekizcede binlik nokta kullanılır: 1.000. Karta dokun → sesini duy 🔊",
+        "calc_info": "Herhangi bir sayıyı gir — Portekizce karşılığı anında çıkar. 🔊 ile seslendir.",
+        "review_q_en2tr": "🇧🇷 Portekizce → Türkçe",
+        "review_q_tr2en": "🇹🇷 Türkçe → Portekizce"
+      },
+      "en": {
+        "test_dir_en2tr": "Portuguese → Meaning",
+        "test_dir_tr2en": "Meaning → Portuguese",
+        "translate_placeholder": "Type Portuguese or Turkish...",
+        "translate_tip": "Type a Portuguese or Turkish word or sentence.",
+        "settings_voices": "🔊 Portuguese Voices",
+        "pron_col_english": "Portuguese",
+        "num_info": "Portuguese uses period for thousands: 1.000. Tap a card to hear it 🔊",
+        "calc_info": "Enter any number — instant Portuguese equivalent. Tap 🔊 to hear.",
+        "review_q_en2tr": "🇧🇷 Portuguese → Turkish",
+        "review_q_tr2en": "🇹🇷 Turkish → Portuguese"
+      }
+    },
+    "legacy": false,
+    "legacyUrl": null,
+    "enLesson2Migration": false,
+    "extras": [],
+    "rtl": false,
+    "cjk": false
   }
 };
 
@@ -745,6 +801,11 @@ window.KDO_TRANSLATE_BY_LANG = {
     "fallback": "en",
     "lessonTargetField": "sw",
     "lessonBaseField": "tr"
+  },
+  "pt": {
+    "target": "pt",
+    "pattern": "[àâãçéêíõóú]|(\\b(o|a|os|as|um|uma|eu|tu|ele|ela|nós|você|vocês|olá|obrigado|sim|não|é|são|com|para|por|em|que)\\b)",
+    "flags": "i"
   }
 };
 
