@@ -82,13 +82,13 @@ var L10 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal é um dos maiores exportadores mundiais de calçado de qualidade. Marcas portuguesas como Fly London e outras são reconhecidas internacionalmente pela sua qualidade e design. Em Lisboa e no Porto, existem bairros históricos com lojas de moda independentes que vendem peças únicas feitas por estilistas portugueses. Os saldos de inverno e verão são uma excelente oportunidade para comprar roupa de qualidade a preços mais baixos.",
     questions: [
       {q:"O que exporta Portugal em termos de moda?", a:"Calçado de qualidade."},
       {q:"Em que cidades existem lojas de moda independentes?", a:"Lisboa e Porto."},
       {q:"Quando é que os saldos de verão começam?", a:"A 1 de julho (referência da aula anterior — em julho)."}
     ]
-  }
+  }]
 };
 LESSONS[10] = L10;

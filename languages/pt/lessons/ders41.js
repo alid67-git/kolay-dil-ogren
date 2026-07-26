@@ -93,13 +93,13 @@ var L41 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O Serviço Nacional de Saúde, o SNS, é o sistema público de saúde de Portugal. Foi criado em 1979 e oferece cuidados de saúde a todos os cidadãos e residentes legais. O acesso é feito através do cartão de utente do SNS. Para uma consulta de clínico geral, deve ir ao seu centro de saúde. Para especialidades, normalmente precisa de uma referência do médico de família. Em caso de urgência, pode ir diretamente ao hospital. O número de emergência em Portugal é o 112, que funciona para situações de risco de vida. O INEM, Instituto Nacional de Emergência Médica, coordena as ambulâncias e o socorro pré-hospitalar.",
     questions: [
       {q:"Quando foi criado o SNS em Portugal?", a:"O SNS foi criado em 1979."},
       {q:"O que é necessário para aceder ao SNS?", a:"É necessário o cartão de utente do SNS."},
       {q:"Qual é o número de emergência em Portugal?", a:"O número de emergência é o 112."}
     ]
-  }
+  }]
 };
 LESSONS[41] = L41;

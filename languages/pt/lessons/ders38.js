@@ -82,13 +82,13 @@ var L38 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O setor agrícola português tem vindo a transformar-se nos últimos anos. O Alentejo tornou-se uma das maiores regiões de olivais do mundo, abastecendo mercados europeus e asiáticos com azeite de qualidade. A viticultura portuguesa, com denominações como o Vinho Verde, o Douro, o Alentejo e o Dão, ganha cada vez mais reconhecimento internacional. A cortiça continua a ser um produto único — os sobreiros do Minho, do Alentejo e da Estremadura fornecem metade da cortiça mundial.",
     questions: [
       {q:"O que o Alentejo fornece aos mercados europeus e asiáticos?", a:"Azeite de qualidade."},
       {q:"Qual é a quota mundial de cortiça de Portugal?", a:"Metade da cortiça mundial."},
       {q:"Quais são as principais denominações de vinho portuguesas?", a:"Vinho Verde, Douro, Alentejo e Dão."}
     ]
-  }
+  }]
 };
 LESSONS[38] = L38;

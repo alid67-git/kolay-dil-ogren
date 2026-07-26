@@ -82,13 +82,13 @@ var L16 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Lisboa tem uma rede de transportes públicos bastante completa. O metro tem quatro linhas e cobre grande parte da cidade. Os autocarros da Carris chegam a todos os bairros. Os eléctricos históricos, especialmente o famoso 28, percorrem as zonas mais pitorescas da cidade. Para atravessar o Tejo, há barcos que ligam Lisboa a Cacilhas, Barreiro e Montijo. O Comboio de Sintra, que parte do Rossio, é muito popular entre turistas.",
     questions: [
       {q:"Quantas linhas tem o metro de Lisboa?", a:"Quatro linhas."},
       {q:"Qual é a empresa de autocarros de Lisboa?", a:"Carris."},
       {q:"De onde parte o comboio para Sintra?", a:"Do Rossio."}
     ]
-  }
+  }]
 };
 LESSONS[16] = L16;

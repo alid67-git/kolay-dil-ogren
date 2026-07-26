@@ -82,13 +82,13 @@ var L20 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A Universidade de Coimbra é uma das mais antigas da Europa, fundada em 1290. O seu centro histórico é Património Mundial da UNESCO. Em Portugal, o ensino superior público é acessível e com propinas relativamente baixas comparadas com países como o Reino Unido. O programa Erasmus tem sido muito importante para os estudantes portugueses, permitindo-lhes estudar noutros países europeus e melhorar as suas competências linguísticas.",
     questions: [
       {q:"Quando foi fundada a Universidade de Coimbra?", a:"Em 1290."},
       {q:"Qual é o estatuto do centro histórico de Coimbra?", a:"Património Mundial da UNESCO."},
       {q:"O que permite o programa Erasmus aos estudantes?", a:"Estudar noutros países europeus e melhorar competências linguísticas."}
     ]
-  }
+  }]
 };
 LESSONS[20] = L20;

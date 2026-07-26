@@ -82,13 +82,13 @@ var L28 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Os portugueses são frequentemente descritos como um povo caloroso mas reservado. No primeiro contacto, podem parecer tímidos ou distantes, mas rapidamente se tornam amigáveis e acolhedores. Os lisboetas, em particular, têm uma reputação de serem um pouco mais frios do que os nortenhos, mas isto é um estereótipo que não se aplica a todos. O que une os portugueses é o orgulho na sua história, na sua gastronomia, na saudade e no fado.",
     questions: [
       {q:"Como são descritos os portugueses no primeiro contacto?", a:"Reservados ou tímidos."},
       {q:"Como ficam os portugueses após o primeiro contacto?", a:"Amigáveis e acolhedores."},
       {q:"O que une os portugueses?", a:"O orgulho na história, gastronomia, saudade e fado."}
     ]
-  }
+  }]
 };
 LESSONS[28] = L28;

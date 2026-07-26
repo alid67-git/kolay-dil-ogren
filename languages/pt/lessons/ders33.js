@@ -82,13 +82,13 @@ var L33 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal tem sido pioneiro nas energias renováveis na Europa. Em 2016, o país funcionou durante mais de quatro dias consecutivos apenas com eletricidade produzida por fontes renováveis — sol, vento e água. As energias eólica e solar têm crescido muito, e Portugal pretende atingir a neutralidade carbónica até 2045. No entanto, os incêndios florestais continuam a ser um desafio enorme, especialmente nos verões cada vez mais quentes e secos.",
     questions: [
       {q:"O que aconteceu em Portugal em 2016 em relação às energias renováveis?", a:"Funcionou mais de quatro dias seguidos só com energia renovável."},
       {q:"Até quando pretende Portugal atingir a neutralidade carbónica?", a:"Até 2045."},
       {q:"Qual é o grande desafio ambiental de Portugal no verão?", a:"Os incêndios florestais."}
     ]
-  }
+  }]
 };
 LESSONS[33] = L33;

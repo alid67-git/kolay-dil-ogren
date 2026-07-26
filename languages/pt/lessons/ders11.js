@@ -82,13 +82,13 @@ var L11 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O corpo humano é uma máquina extraordinária. Os olhos permitem-nos ver o mundo em cores e formas. Os ouvidos captam sons e ajudam-nos a manter o equilíbrio. O coração bate cerca de cem mil vezes por dia, bombeando sangue para todo o corpo. As mãos são instrumentos incríveis — com os nossos dedos podemos criar obras de arte, tocar música ou simplesmente cumprimentar alguém com um aperto de mão.",
     questions: [
       {q:"Quantas vezes bate o coração por dia?", a:"Cerca de cem mil vezes."},
       {q:"Para que servem os ouvidos além de ouvir?", a:"Para manter o equilíbrio."},
       {q:"O que podemos fazer com as mãos?", a:"Criar obras de arte, tocar música ou cumprimentar alguém."}
     ]
-  }
+  }]
 };
 LESSONS[11] = L11;

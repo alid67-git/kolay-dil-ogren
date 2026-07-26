@@ -82,13 +82,13 @@ var L12 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O Serviço Nacional de Saúde português foi criado em 1979 e garante acesso universal à saúde. Os cidadãos registam-se num centro de saúde da sua área e têm um médico de família atribuído. Para situações urgentes, existe a urgência hospitalar ou o número 112 para emergências. Nos últimos anos, o SNS digital permite marcar consultas e ver resultados de análises online através do Portal do SNS.",
     questions: [
       {q:"Quando foi criado o SNS?", a:"Em 1979."},
       {q:"Qual é o número de emergência?", a:"112."},
       {q:"O que permite fazer o SNS digital?", a:"Marcar consultas e ver resultados de análises online."}
     ]
-  }
+  }]
 };
 LESSONS[12] = L12;

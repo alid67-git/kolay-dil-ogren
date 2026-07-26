@@ -82,13 +82,13 @@ var L39 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O Mosteiro dos Jerónimos, em Belém, é considerado a obra-prima da arquitetura manuelina e está classificado como Património Mundial da UNESCO desde 1983. Construído por ordem de Dom Manuel I, foi financiado com os lucros do comércio das especiarias trazidas da Índia por Vasco da Gama. O mosteiro alberga os túmulos de Vasco da Gama e do poeta Luís de Camões. Junto ao mosteiro fica a antiga fábrica dos Pastéis de Belém, onde se fabricam os famosos pastéis de nata desde 1837.",
     questions: [
       {q:"Quando foi classificado o Mosteiro dos Jerónimos como UNESCO?", a:"Em 1983."},
       {q:"Como foi financiado o mosteiro?", a:"Com os lucros do comércio das especiarias da Índia."},
       {q:"Quem está enterrado no mosteiro?", a:"Vasco da Gama e Luís de Camões."}
     ]
-  }
+  }]
 };
 LESSONS[39] = L39;

@@ -82,13 +82,13 @@ var L27 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A saudade é um dos conceitos mais estudados da língua portuguesa. Não tem tradução direta noutros idiomas — o inglês 'longing', o alemão 'Sehnsucht' ou o espanhol 'nostalgia' captam apenas parte do significado. A saudade pode ser de uma pessoa, de um lugar, de uma época ou até de algo que nunca existiu mas que se deseja. O escritor Fernando Pessoa chamou à saudade 'a quintessência da alma portuguesa'. O fado, reconhecido como Património Imaterial da Humanidade pela UNESCO em 2011, é a expressão musical desta emoção.",
     questions: [
       {q:"Existe uma tradução direta de 'saudade' noutros idiomas?", a:"Não, não tem tradução direta."},
       {q:"O que disse Fernando Pessoa sobre a saudade?", a:"Chamou-lhe 'a quintessência da alma portuguesa'."},
       {q:"Quando foi o fado reconhecido pela UNESCO?", a:"Em 2011."}
     ]
-  }
+  }]
 };
 LESSONS[27] = L27;

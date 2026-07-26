@@ -82,13 +82,13 @@ var L34 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A época natalícia em Portugal começa no início de dezembro com a decoração das cidades e o Mercado de Natal. A 8 de dezembro, Dia da Imaculada Conceição, feriado nacional, é tradicional montar o presépio e a árvore de Natal. A noite de consoada, a 24 de dezembro, é passada em família com a ceia de bacalhau. A 6 de janeiro, Dia de Reis, come-se o Bolo-Rei — uma coroa de pão doce com frutos cristalizados que esconde uma fava e uma figurinha.",
     questions: [
       {q:"Quando é o feriado da Imaculada Conceição?", a:"A 8 de dezembro."},
       {q:"O que se come na noite de consoada?", a:"Bacalhau."},
       {q:"O que esconde o Bolo-Rei?", a:"Uma fava e uma figurinha."}
     ]
-  }
+  }]
 };
 LESSONS[34] = L34;

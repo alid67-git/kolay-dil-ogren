@@ -82,13 +82,13 @@ var L40 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal tornou-se nos últimos anos um destino muito atrativo para imigrantes e expatriados de todo o mundo. A qualidade de vida, a segurança, o clima e os custos relativamente acessíveis (comparados com o Reino Unido, França ou Alemanha) atraem cada vez mais estrangeiros. A comunidade de nómadas digitais cresceu exponencialmente, especialmente em Lisboa e no Algarve. No entanto, a crise habitacional, com preços das casas e rendas muito elevados, é um desafio crescente tanto para imigrantes como para portugueses.",
     questions: [
       {q:"O que atrai imigrantes para Portugal?", a:"Qualidade de vida, segurança, clima e custos relativamente acessíveis."},
       {q:"Onde se concentram os nómadas digitais em Portugal?", a:"Em Lisboa e no Algarve."},
       {q:"Qual é o principal problema para quem quer viver em Portugal?", a:"A crise habitacional — preços altos de casas e rendas."}
     ]
-  }
+  }]
 };
 LESSONS[40] = L40;

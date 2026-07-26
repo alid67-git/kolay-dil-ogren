@@ -82,13 +82,13 @@ var L31 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal foi eleito o Melhor Destino Turístico do Mundo pelos World Travel Awards por vários anos consecutivos. O país oferece uma combinação única de história milenar, praias magníficas, gastronomia de excelência e uma relação qualidade-preço excelente. Lisboa foi considerada uma das melhores cidades para nómadas digitais e residentes estrangeiros. O enoturismo no Vale do Douro, o golfe no Algarve e o surf na costa atlântica atraem visitantes de todo o mundo.",
     questions: [
       {q:"Que prémio ganhou Portugal nos World Travel Awards?", a:"Melhor Destino Turístico do Mundo."},
       {q:"O que atrai os nómadas digitais para Lisboa?", a:"A combinação de qualidade de vida, clima e preços acessíveis."},
       {q:"Que atividade é popular no Vale do Douro?", a:"Enoturismo (turismo de vinho)."}
     ]
-  }
+  }]
 };
 LESSONS[31] = L31;

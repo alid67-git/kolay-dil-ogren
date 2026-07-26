@@ -82,13 +82,13 @@ var L22 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal é um país com uma biodiversidade extraordinária, resultado de uma posição geográfica única — entre o Atlântico e o Mediterrâneo. A flora portuguesa inclui o sobreiro, árvore nacional, que produz a famosa cortiça portuguesa. A fauna ibérica tem espécies únicas como o lince-ibérico e o lobo-ibérico, ambos em risco de extinção. Os Açores, situados no meio do Atlântico, são um paraíso para observação de baleias e polvos-gigantes.",
     questions: [
       {q:"Porque tem Portugal grande biodiversidade?", a:"Pela posição geográfica única entre o Atlântico e o Mediterrâneo."},
       {q:"Qual é a árvore nacional de Portugal?", a:"O sobreiro."},
       {q:"O que se pode observar nos Açores?", a:"Baleias e polvos-gigantes."}
     ]
-  }
+  }]
 };
 LESSONS[22] = L22;

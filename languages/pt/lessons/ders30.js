@@ -82,13 +82,13 @@ var L30 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O fado foi inscrito na Lista do Património Cultural Imaterial da Humanidade da UNESCO em 2011. Este género musical, nascido em Lisboa no século XIX, caracteriza-se pela guitarra portuguesa de 12 cordas, pela viola e pela voz expressiva do fadista. Amália Rodrigues internacionalizou o fado no século XX, e artistas como Mariza, Ana Moura e Salvador Sobral continuam a renovar este género. Os azulejos, outra marca da identidade portuguesa, decoram fachadas, estações de comboio e igrejas desde o século XV.",
     questions: [
       {q:"Quando foi o fado inscrito na UNESCO?", a:"Em 2011."},
       {q:"Que instrumento é característico do fado?", a:"A guitarra portuguesa de 12 cordas."},
       {q:"Quem internacionalizou o fado no século XX?", a:"Amália Rodrigues."}
     ]
-  }
+  }]
 };
 LESSONS[30] = L30;

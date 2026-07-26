@@ -93,13 +93,13 @@ var L47 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal é um país localizado na Península Ibérica, no extremo sudoeste da Europa. Com cerca de 92.000 quilómetros quadrados e 10 milhões de habitantes, é um país de dimensão moderada mas com uma costa atlântica extensa de cerca de 1.800 quilómetros. Para além do território continental, Portugal inclui dois arquipélagos atlânticos: os Açores, formados por nove ilhas de origem vulcânica, e a Madeira, com a sua paisagem exuberante de levadas e laurissilva. O ponto mais ocidental da Europa continental é o Cabo da Roca, em Portugal. O clima é mediterrânico no sul e atlântico no norte, com invernos suaves e verões quentes e secos. O Algarve, no sul, é um dos destinos turísticos mais populares da Europa.",
     questions: [
       {q:"Qual é a área total de Portugal continental?", a:"Portugal tem cerca de 92.000 quilómetros quadrados."},
       {q:"Que dois arquipélagos fazem parte de Portugal?", a:"Os Açores e a Madeira fazem parte de Portugal."},
       {q:"Qual é o ponto mais ocidental da Europa continental?", a:"O ponto mais ocidental da Europa continental é o Cabo da Roca, em Portugal."}
     ]
-  }
+  }]
 };
 LESSONS[47] = L47;

@@ -82,13 +82,13 @@ var L9 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Em Portugal, as lojas dos centros comerciais normalmente abrem das 10h às 23h, incluindo fins de semana. As lojas do centro histórico das cidades podem ter horários mais reduzidos e fechar ao domingo. Os saldos de inverno começam a 2 de janeiro e os de verão a 1 de julho. O pagamento com Multibanco é universal em Portugal, e o MB Way — a aplicação de pagamento móvel — é cada vez mais popular entre os mais jovens.",
     questions: [
       {q:"A que horas abrem as lojas dos centros comerciais?", a:"Às 10 horas."},
       {q:"Quando começam os saldos de verão?", a:"A 1 de julho."},
       {q:"Qual é a aplicação de pagamento móvel popular?", a:"MB Way."}
     ]
-  }
+  }]
 };
 LESSONS[9] = L9;

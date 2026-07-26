@@ -82,13 +82,13 @@ var L32 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A Revolução dos Cravos, de 25 de abril de 1974, foi um dos momentos mais marcantes da história europeia do século XX. Um golpe militar derrubou o regime ditatorial do Estado Novo, que durava desde 1933. Sem violência significativa, os soldados colocaram cravos vermelhos nos canos das espingardas — símbolo da paz e da liberdade. Portugal tornou-se rapidamente numa democracia parlamentar e aderiu à Comunidade Europeia em 1986, integrando-se no projeto europeu.",
     questions: [
       {q:"Quando foi a Revolução dos Cravos?", a:"A 25 de abril de 1974."},
       {q:"Porque se chama 'dos Cravos'?", a:"Porque os soldados colocaram cravos vermelhos nas espingardas como símbolo de paz."},
       {q:"Quando aderiu Portugal à Comunidade Europeia?", a:"Em 1986."}
     ]
-  }
+  }]
 };
 LESSONS[32] = L32;

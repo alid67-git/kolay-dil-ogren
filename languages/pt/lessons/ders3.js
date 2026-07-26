@@ -83,13 +83,13 @@ const L3 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Os números são fundamentais em qualquer língua. Em Portugal, usamos o sistema decimal como na maioria dos países europeus. A moeda é o euro, dividido em cêntimos. Uma particularidade do português europeu é que os números dezasseis, dezassete e dezanove são diferentes do português brasileiro, que diz dezesseis, dezessete e dezenove. Para os preços, dizemos 'custa' ou 'são' — por exemplo, 'são cinco euros' ou 'custa três euros e cinquenta cêntimos'. O Multibanco é o sistema de pagamento eletrónico mais usado em Portugal.",
     questions: [
       { q: "EP ile BR arasında sayı farkı olan örnekler?", a: "16: dezasseis (EP) / dezesseis (BR); 17: dezassete (EP) / dezessete (BR)" },
       { q: "Portekiz'de kullanılan para birimi ne?", a: "Euro (€), cêntimo (kuruş)" },
       { q: "Portekiz'de en yaygın ödeme sistemi ne?", a: "Multibanco — elektronik ödeme sistemi" }
     ]
-  }
+  }]
 };
 LESSONS[3] = L3;

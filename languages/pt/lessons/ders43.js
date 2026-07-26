@@ -93,13 +93,13 @@ var L43 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A economia portuguesa passou por grandes transformações nas últimas décadas. Após a crise financeira de 2010 a 2014, Portugal implementou um programa de ajustamento económico que resultou numa recuperação notável. O turismo tornou-se um dos pilares da economia, representando uma parte significativa do PIB. O setor tecnológico tem crescido rapidamente, com Lisboa a tornar-se um polo de startups europeias — o Web Summit, o maior evento de tecnologia do mundo, realiza-se em Lisboa desde 2016. As principais empresas exportadoras incluem a Autoeuropa, que produz automóveis Volkswagen em Palmela, e várias empresas do setor corticeiro, já que Portugal produz mais de metade da cortiça mundial.",
     questions: [
       {q:"Quando ocorreu a crise financeira em Portugal?", a:"A crise financeira ocorreu entre 2010 e 2014."},
       {q:"Desde quando se realiza o Web Summit em Lisboa?", a:"O Web Summit realiza-se em Lisboa desde 2016."},
       {q:"O que produz a Autoeuropa em Palmela?", a:"A Autoeuropa produz automóveis Volkswagen em Palmela."}
     ]
-  }
+  }]
 };
 LESSONS[43] = L43;

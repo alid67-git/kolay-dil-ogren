@@ -82,13 +82,13 @@ var L6 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O apartamento fica no quinto andar de um prédio com elevador, no centro de Lisboa. Tem três quartos, uma sala de estar ampla e duas casas de banho. A cozinha está equipada com frigorífico, fogão e máquina de lavar loiça. Há ainda uma varanda com vista para o Tejo. O condomínio tem garagem e jardim comum.",
     questions: [
       {q:"Em que andar fica o apartamento?", a:"No quinto andar."},
       {q:"Quantas casas de banho tem?", a:"Duas casas de banho."},
       {q:"O que se vê da varanda?", a:"O rio Tejo."}
     ]
-  }
+  }]
 };
 LESSONS[6] = L6;

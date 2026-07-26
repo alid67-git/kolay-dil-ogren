@@ -82,13 +82,13 @@ var L18 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal tem uma vasta oferta de alojamento para todos os gostos e bolsas. Além dos hotéis clássicos, existem as pousadas históricas — instaladas em mosteiros, castelos e palácios — que oferecem uma experiência única. Para viajantes com menos orçamento, os hostels de Lisboa e do Porto são conhecidos mundialmente pela sua qualidade e ambiente. O alojamento local, como Airbnb, cresceu muito nos últimos anos, especialmente em Lisboa e no Algarve.",
     questions: [
       {q:"O que são as pousadas históricas?", a:"Alojamentos instalados em mosteiros, castelos e palácios."},
       {q:"Como são os hostels portugueses?", a:"Conhecidos mundialmente pela qualidade e ambiente."},
       {q:"Onde cresceu mais o alojamento local?", a:"Em Lisboa e no Algarve."}
     ]
-  }
+  }]
 };
 LESSONS[18] = L18;

@@ -83,13 +83,13 @@ const L1 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal é um país no sudoeste da Europa, na Península Ibérica. Lisboa é a capital e a maior cidade. O português é falado por mais de 250 milhões de pessoas em todo o mundo — em Portugal, Brasil, Angola, Moçambique, Cabo Verde e outros países. O português europeu tem características próprias: pronúncia diferente do Brasil, vocabulário específico e certas estruturas gramaticais únicas, como a colocação dos pronomes depois do verbo. Os portugueses são conhecidos pela sua hospitalidade e pela sua ligação profunda à cultura, à história e ao fado.",
     questions: [
       { q: "Portekiz nerede bulunuyor?", a: "Güneybatı Avrupa'da, İber Yarımadası'nda" },
       { q: "Avrupa Portekizcesi'nin belirgin özelliği nedir?", a: "Farklı telaffuz, özgün sözcük hazinesi ve zamirlerin fiilden sonra gelmesi" },
       { q: "Portekizliler nasıl tanımlanıyor?", a: "Misafirperver, kültür ve tarihe bağlı, fado ile özdeşleşen" }
     ]
-  }
+  }]
 };
 LESSONS[1] = L1;

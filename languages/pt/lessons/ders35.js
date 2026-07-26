@@ -82,13 +82,13 @@ var L35 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Os padrões de relacionamento em Portugal têm mudado muito nas últimas décadas. A coabitação antes do casamento tornou-se muito comum, especialmente nas cidades. A idade média para o primeiro casamento subiu significativamente — muitos portugueses casam perto dos 30 anos. O divórcio aumentou, mas os casamentos civis e os casamentos religiosos continuam a ter importância cultural. Os casamentos entre pessoas do mesmo sexo são legais em Portugal desde 2010, o que torna Portugal um dos países mais progressistas nesta matéria.",
     questions: [
       {q:"O que se tornou comum em Portugal antes do casamento?", a:"A coabitação (viver juntos antes de casar)."},
       {q:"Desde quando são legais os casamentos entre pessoas do mesmo sexo em Portugal?", a:"Desde 2010."},
       {q:"Qual é a tendência da idade de casamento em Portugal?", a:"Tem subido — muitos casam perto dos 30 anos."}
     ]
-  }
+  }]
 };
 LESSONS[35] = L35;

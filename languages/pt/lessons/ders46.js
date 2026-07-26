@@ -93,13 +93,13 @@ var L46 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A história de Portugal começa com a fundação do condado portucalense no século XI e a proclamação do reino em 1143, com D. Afonso Henriques. Durante os séculos XV e XVI, Portugal viveu a sua época de ouro com as Descobertas Marítimas. Navegadores portugueses circunavegaram África, chegaram à Índia, ao Brasil e ao Japão, criando o primeiro império global da história. Luís de Camões imortalizou estas conquistas na epopeia 'Os Lusíadas', publicada em 1572. Depois de um período de declínio, a monarquia foi abolida em 1910 e instalou-se a Primeira República. O Estado Novo, a ditadura de Salazar, durou de 1933 a 1974, quando a Revolução dos Cravos restaurou a democracia. Em 1986, Portugal entrou para a União Europeia, entrando numa nova fase de modernização.",
     questions: [
       {q:"Quando foi fundado o Reino de Portugal?", a:"O Reino de Portugal foi proclamado em 1143, com D. Afonso Henriques."},
       {q:"O que Camões imortalizou em 'Os Lusíadas'?", a:"Camões imortalizou as Descobertas Marítimas portuguesas, publicando o poema em 1572."},
       {q:"Quando Portugal entrou na União Europeia?", a:"Portugal entrou na União Europeia (então CEE) em 1986."}
     ]
-  }
+  }]
 };
 LESSONS[46] = L46;
