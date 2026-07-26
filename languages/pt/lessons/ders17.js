@@ -82,13 +82,13 @@ var L17 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O Aeroporto Humberto Delgado de Lisboa é o maior aeroporto de Portugal e um importante hub transatlântico. Está situado a apenas 7 quilómetros do centro da cidade e é servido pelo metro — Linha Vermelha — com acesso direto ao centro. A TAP Air Portugal, a companhia aérea nacional, opera a partir deste aeroporto para mais de 90 destinos em todo o mundo, incluindo ligações frequentes ao Brasil e às ilhas atlânticas dos Açores e da Madeira.",
     questions: [
       {q:"A que distância do centro está o aeroporto?", a:"A 7 quilómetros."},
       {q:"Qual é a linha de metro para o aeroporto?", a:"Linha Vermelha."},
       {q:"Para onde voa a TAP?", a:"Para mais de 90 destinos, incluindo Brasil, Açores e Madeira."}
     ]
-  }
+  }]
 };
 LESSONS[17] = L17;

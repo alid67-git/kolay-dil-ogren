@@ -82,13 +82,13 @@ var L21 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O desporto em Portugal tem uma longa tradição. O futebol é o desporto rei, com clubes como Benfica, Sporting CP e FC Porto com adeptos apaixonados. Mas Portugal destaca-se também no surf — a praia da Nazaré é famosa pelas maiores ondas surfadas do mundo, e Peniche acolhe regularmente o campeonato mundial. No atletismo, o maratonista Rosa Mota e o ciclista João Almeida são exemplos do sucesso português.",
     questions: [
       {q:"Quais são os três grandes clubes de futebol português?", a:"Benfica, Sporting CP e FC Porto."},
       {q:"Porque é famosa a Nazaré?", a:"Pelas maiores ondas surfadas do mundo."},
       {q:"Que cidade acolhe o campeonato mundial de surf?", a:"Peniche."}
     ]
-  }
+  }]
 };
 LESSONS[21] = L21;

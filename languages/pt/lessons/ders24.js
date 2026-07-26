@@ -83,13 +83,13 @@ var L24 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O sistema Multibanco é um dos mais avançados e convenientes da Europa. Criado em 1985, hoje permite além de levantar dinheiro, pagar serviços, recarregar o telemóvel, comprar bilhetes e muito mais — tudo num único terminal. O MB Way, lançado em 2014, revolucionou os pagamentos móveis em Portugal. Portugal tem uma das maiores taxas de utilização de pagamentos eletrónicos da Europa, com o numerário em declínio gradual.",
     questions: [
       {q:"Quando foi criado o Multibanco?", a:"Em 1985."},
       {q:"Quando foi lançado o MB Way?", a:"Em 2014."},
       {q:"O que se pode fazer no Multibanco além de levantar dinheiro?", a:"Pagar serviços, recarregar o telemóvel, comprar bilhetes."}
     ]
-  }
+  }]
 };
 LESSONS[24] = L24;

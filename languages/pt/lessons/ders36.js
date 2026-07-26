@@ -82,13 +82,13 @@ var L36 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A RTP, Rádio e Televisão de Portugal, é o serviço público de rádio e televisão de Portugal. Fundada em 1955, a RTP1 é o canal generalista mais antigo do país. A RTP Internacional leva o sinal para portugueses em todo o mundo. A liberdade de imprensa é um valor fundamental consagrado na Constituição de 1976, e Portugal é regularmente classificado entre os países com maior liberdade de imprensa pela organização Repórteres Sem Fronteiras.",
     questions: [
       {q:"Quando foi fundada a RTP?", a:"Em 1955."},
       {q:"O que faz a RTP Internacional?", a:"Leva o sinal para portugueses em todo o mundo."},
       {q:"O que garante a liberdade de imprensa em Portugal?", a:"A Constituição de 1976."}
     ]
-  }
+  }]
 };
 LESSONS[36] = L36;

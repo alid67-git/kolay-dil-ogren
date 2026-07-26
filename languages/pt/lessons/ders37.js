@@ -82,13 +82,13 @@ var L37 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal tem uma longa tradição de contribuição científica. Egas Moniz recebeu o Prémio Nobel de Medicina em 1949 pela descoberta da leucotomia pré-frontal. Hoje, instituições como o Instituto Gulbenkian de Ciência, o Champalimaud Centre for the Unknown e vários laboratórios universitários contribuem para a investigação mundial em áreas como a oncologia, a neurociência e a oceanografia. O Web Summit, realizado em Lisboa desde 2016, transformou Portugal num polo de inovação tecnológica reconhecido globalmente.",
     questions: [
       {q:"Que prémio recebeu Egas Moniz?", a:"O Prémio Nobel de Medicina em 1949."},
       {q:"Em que áreas se destaca a investigação portuguesa?", a:"Oncologia, neurociência e oceanografia."},
       {q:"Desde quando se realiza o Web Summit em Lisboa?", a:"Desde 2016."}
     ]
-  }
+  }]
 };
 LESSONS[37] = L37;

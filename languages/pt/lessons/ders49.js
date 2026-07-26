@@ -93,13 +93,13 @@ var L49 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Chegaste ao fim do curso de Português Europeu. Ao longo destas quarenta e nove lições, aprendeste não só a gramática e o vocabulário da língua, mas também a cultura, a história, a gastronomia e os costumes de Portugal. Aprendeste que o português europeu tem características únicas: o gerúndio com 'estar a', os pronomes enclíticos, o uso frequente do 'tu' e um vocabulário próprio diferente do português brasileiro. Conheceste figuras como Fernando Pessoa e Luís de Camões, aprendeste sobre a Revolução dos Cravos e as Descobertas Portuguesas, e mergulhaste na saudade e no fado. Agora tens as ferramentas para comunicar com os cerca de dez milhões de falantes nativos de Portugal e compreender o mundo lusófono na sua expressão mais antiga. Continua a praticar — o português é uma língua viva, rica e bela. Boa sorte na tua jornada linguística!",
     questions: [
       {q:"Quais são as características únicas do português europeu mencionadas?", a:"O gerúndio com 'estar a', os pronomes enclíticos, o uso frequente do 'tu' e vocabulário próprio diferente do português brasileiro."},
       {q:"Quantos falantes nativos tem Portugal?", a:"Portugal tem cerca de dez milhões de falantes nativos."},
       {q:"O que o curso ensinOU além da gramática e vocabulário?", a:"O curso ensinou também a cultura, a história, a gastronomia e os costumes de Portugal."}
     ]
-  }
+  }]
 };
 LESSONS[49] = L49;

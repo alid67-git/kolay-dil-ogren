@@ -93,13 +93,13 @@ var L44 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Fernando Pessoa nasceu em Lisboa em 1888 e morreu em 1935. É considerado um dos maiores poetas da língua portuguesa e uma das figuras mais importantes da literatura mundial do século XX. A característica mais original da sua obra é a criação de heterónimos — personalidades literárias completamente distintas com biografias, estilos e filosofias próprias. Os três principais são Alberto Caeiro, o poeta da natureza; Ricardo Reis, o poeta clássico; e Álvaro de Campos, o poeta modernista. Para além destes, escreveu como Bernardo Soares o chamado 'Livro do Desassossego', uma obra fragmentária sobre a consciência e a identidade. A sua única obra publicada em vida em português foi 'Mensagem', em 1934, um ano antes de morrer.",
     questions: [
       {q:"Quando nasceu e quando morreu Fernando Pessoa?", a:"Fernando Pessoa nasceu em 1888 e morreu em 1935."},
       {q:"Quais são os três principais heterónimos de Pessoa?", a:"Os três principais heterónimos são Alberto Caeiro, Ricardo Reis e Álvaro de Campos."},
       {q:"Qual foi a única obra em português publicada por Pessoa em vida?", a:"A única obra em português publicada em vida foi 'Mensagem', em 1934."}
     ]
-  }
+  }]
 };
 LESSONS[44] = L44;

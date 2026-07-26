@@ -93,13 +93,13 @@ var L48 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O português europeu tem uma riqueza de expressões idiomáticas que refletem a cultura e o temperamento português. Uma das mais representativas é o 'desenrascanço', que descreve a capacidade tipicamente portuguesa de resolver situações difíceis com criatividade e improviso, mesmo sem ter todos os recursos necessários. Esta qualidade foi até considerada por alguns estudiosos como uma competência cultural distinta. Outras expressões reveladoras são 'saudade' para o estado emocional de nostalgia e anseio, e 'fado' que não é apenas um género musical mas também uma forma de aceitar o destino com resignação. A riqueza do vocabulário informal português, com palavras como 'fixe', 'giro' e 'porreiro', que não têm equivalentes exatos noutras línguas, também espelha a identidade cultural do país.",
     questions: [
       {q:"O que é o 'desenrascanço'?", a:"O desenrascanço é a capacidade de resolver situações difíceis com criatividade e improviso, mesmo sem todos os recursos necessários."},
       {q:"O que reflete o vocabulário informal português como 'fixe' e 'giro'?", a:"Reflete a identidade cultural do país — são palavras sem equivalentes exatos noutras línguas."},
       {q:"Como é que 'fado' vai além da música?", a:"'Fado' é também uma forma de aceitar o destino com resignação, sendo uma filosofia de vida além de ser um género musical."}
     ]
-  }
+  }]
 };
 LESSONS[48] = L48;

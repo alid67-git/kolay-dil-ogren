@@ -82,13 +82,13 @@ var L13 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal tem um dos climas mais agradáveis da Europa. Com mais de 300 dias de sol por ano em certas regiões, é um destino turístico muito procurado. O Algarve, a sul, tem verões quentes e secos com praias de areia dourada. O norte do país, incluindo o Porto, é mais verde e húmido, com chuvas frequentes no outono e inverno. A Serra da Estrela é a única montanha onde neva regularmente, sendo um destino de ski popular.",
     questions: [
       {q:"Quantos dias de sol tem Portugal por ano em certas regiões?", a:"Mais de 300 dias."},
       {q:"Como é o clima no Algarve?", a:"Verões quentes e secos com praias de areia dourada."},
       {q:"Onde se pode fazer ski em Portugal?", a:"Na Serra da Estrela."}
     ]
-  }
+  }]
 };
 LESSONS[13] = L13;

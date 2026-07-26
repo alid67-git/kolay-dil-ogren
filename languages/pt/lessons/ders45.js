@@ -93,13 +93,13 @@ var L45 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O português é uma das grandes línguas internacionais. Originou-se no noroeste da Península Ibérica, na região que hoje é a Galiza e o norte de Portugal. Durante os séculos XV e XVI, com as Descobertas Portuguesas, a língua espalhou-se pela África, Ásia e América do Sul. Hoje, é a língua oficial de nove países: Portugal, Brasil, Angola, Moçambique, Cabo Verde, Guiné-Bissau, São Tomé e Príncipe, Guiné Equatorial e Timor-Leste. A CPLP, Comunidade dos Países de Língua Portuguesa, foi fundada em 1996 para promover a cooperação entre estes países. O acordo ortográfico de 2009 tentou unificar a escrita do português em todos os países, mas com algumas diferenças ainda persistentes entre Portugal e o Brasil.",
     questions: [
       {q:"Onde se originou a língua portuguesa?", a:"O português originou-se no noroeste da Península Ibérica, na região da Galiza e norte de Portugal."},
       {q:"Quando foi fundada a CPLP?", a:"A CPLP foi fundada em 1996."},
       {q:"Quando foi assinado o acordo ortográfico?", a:"O acordo ortográfico foi assinado em 2009."}
     ]
-  }
+  }]
 };
 LESSONS[45] = L45;

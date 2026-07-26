@@ -82,13 +82,13 @@ var L23 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal tem uma das mais altas taxas de penetração de smartphones na Europa. O MB Way tornou-se o método de pagamento móvel mais popular, usado por milhões de portugueses. O governo português oferece serviços digitais avançados — é possível fazer a declaração de IRS, aceder ao SNS24 e assinar documentos legalmente com a Chave Móvel Digital. Portugal foi considerado um dos melhores destinos europeus para trabalho remoto, atraindo nómadas digitais de todo o mundo.",
     questions: [
       {q:"O que é o MB Way?", a:"O método de pagamento móvel mais popular em Portugal."},
       {q:"O que permite a Chave Móvel Digital?", a:"Assinar documentos legalmente e aceder a serviços digitais do governo."},
       {q:"Porque atrai Portugal nómadas digitais?", a:"Foi considerado um dos melhores destinos europeus para trabalho remoto."}
     ]
-  }
+  }]
 };
 LESSONS[23] = L23;

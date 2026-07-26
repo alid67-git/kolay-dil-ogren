@@ -82,13 +82,13 @@ var L26 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Em caso de emergência em Portugal, o número a marcar é sempre o 112. Este número único funciona para qualquer tipo de emergência — acidentes, incêndios, problemas de saúde ou situações de crime. A chamada é gratuita e pode ser feita mesmo sem saldo no telemóvel. Os operadores do 112 encaminham a chamada para o serviço adequado: PSP, GNR, INEM ou Bombeiros. Portugal tem uma boa rede de serviços de emergência, com tempos de resposta rápidos nas áreas urbanas.",
     questions: [
       {q:"Qual é o único número de emergência em Portugal?", a:"112."},
       {q:"É necessário ter saldo para ligar para o 112?", a:"Não, a chamada é gratuita mesmo sem saldo."},
       {q:"Que serviços coordena o 112?", a:"PSP, GNR, INEM e Bombeiros."}
     ]
-  }
+  }]
 };
 LESSONS[26] = L26;

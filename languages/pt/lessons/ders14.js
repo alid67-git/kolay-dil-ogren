@@ -82,13 +82,13 @@ var L14 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Portugal tem vários feriados nacionais ao longo do ano. O 25 de Abril celebra a Revolução dos Cravos de 1974, que restaurou a democracia após 48 anos de ditadura. O 10 de Junho é o Dia de Portugal, coincidindo com a morte de Camões, o maior poeta português. O Natal é celebrado a 25 de dezembro e o Carnaval ocorre geralmente em fevereiro ou março, dependendo da Páscoa.",
     questions: [
       {q:"O que se celebra a 25 de Abril?", a:"A Revolução dos Cravos de 1974."},
       {q:"Qual é o feriado do 10 de Junho?", a:"O Dia de Portugal."},
       {q:"Quando ocorre o Carnaval?", a:"Em fevereiro ou março."}
     ]
-  }
+  }]
 };
 LESSONS[14] = L14;

@@ -83,13 +83,13 @@ const L2 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Em português, a diferença entre SER e ESTAR é fundamental. SER é usado para características permanentes — a identidade, a nacionalidade, a profissão. ESTAR é usado para estados temporários — como nos sentimos, onde estamos neste momento. Esta distinção não existe em inglês ou turco, por isso é um dos maiores desafios para os aprendentes. Com a prática, torna-se natural. Em Portugal, ouvimos muito 'Como estás?' entre amigos e 'Como está?' em contextos formais, usando o pronome 'tu' ou 'você' respetivamente.",
     questions: [
       { q: "SER hangi durumlarda kullanılır?", a: "Kimlik, milliyet, meslek gibi kalıcı özellikler için" },
       { q: "ESTAR hangi durumlarda kullanılır?", a: "Geçici durumlar için — nasıl hissettiğimiz, nerede olduğumuz" },
       { q: "EP'de informal soru nasıl sorulur?", a: "'Como estás?' — tu ile informal; 'Como está?' — você ile resmi" }
     ]
-  }
+  }]
 };
 LESSONS[2] = L2;

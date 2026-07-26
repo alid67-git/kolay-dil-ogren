@@ -82,13 +82,13 @@ var L15 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A rotina diária dos portugueses tem algumas características típicas. O pequeno-almoço é simples: uma bica ou um galão com torradas ou um pastel. O almoço é a refeição principal, geralmente entre a uma e as duas da tarde, e pode durar uma hora. O jantar é tardio para quem vem de outros países — normalmente entre as 20h e as 22h. Nas cidades, muitos portugueses comem fora ao almoço, seja num restaurante ou num café.",
     questions: [
       {q:"O que come um português típico ao pequeno-almoço?", a:"Uma bica ou galão com torradas ou pastel."},
       {q:"A que horas é o almoço?", a:"Entre a uma e as duas da tarde."},
       {q:"A que horas jantam os portugueses?", a:"Entre as 20h e as 22h."}
     ]
-  }
+  }]
 };
 LESSONS[15] = L15;

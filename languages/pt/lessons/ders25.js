@@ -82,13 +82,13 @@ var L25 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Lisboa é uma cidade de sete colinas, o que torna a navegação um pouco especial. Os bairros históricos como a Alfama e a Mouraria têm ruas estreitas e íngremes que nem sempre aparecem corretamente nos GPS. Por isso, muitos visitantes optam por explorar a pé com um mapa impresso ou perguntar aos moradores locais. A Avenida da Liberdade é a principal artéria da cidade, ladeada de árvores e edifícios do século XIX. A Praça do Comércio, junto ao rio Tejo, é o ponto de chegada e partida de muitos percursos turísticos.",
     questions: [
       {q:"Por que é especial navegar em Lisboa?", a:"Por ser uma cidade de sete colinas com ruas estreitas e íngremes."},
       {q:"Qual é a principal artéria de Lisboa?", a:"A Avenida da Liberdade."},
       {q:"Onde fica a Praça do Comércio?", a:"Junto ao rio Tejo."}
     ]
-  }
+  }]
 };
 LESSONS[25] = L25;

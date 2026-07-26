@@ -82,13 +82,13 @@ var L19 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "O mercado de trabalho português tem passado por transformações importantes. O desemprego jovem continua a ser um desafio, o que leva muitos portugueses qualificados a emigrar para outros países europeus. No entanto, setores como a tecnologia, o turismo e a saúde têm crescido e criado novos empregos. O salário mínimo nacional tem subido gradualmente, e o teletrabalho tornou-se uma realidade para muitos trabalhadores após a pandemia de 2020.",
     questions: [
       {q:"Qual é o desafio do mercado de trabalho português?", a:"O desemprego jovem."},
       {q:"Quais setores têm crescido em Portugal?", a:"Tecnologia, turismo e saúde."},
       {q:"O que aconteceu ao salário mínimo nos últimos anos?", a:"Tem subido gradualmente."}
     ]
-  }
+  }]
 };
 LESSONS[19] = L19;

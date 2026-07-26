@@ -82,13 +82,13 @@ var L8 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "Em Portugal, almoçar e jantar fora é um hábito muito comum. Os restaurantes normalmente servem uma ementa de almoço com prato do dia, bebida e sobremesa a um preço fixo acessível. Ao jantar, é habitual começar com uma entrada, depois o prato principal e terminar com sobremesa ou café. A gorjeta não é obrigatória, mas deixar alguns euros para o empregado é sinal de satisfação. O pagamento com Multibanco é aceite em quase todos os restaurantes.",
     questions: [
       {q:"O que inclui o menu de almoço?", a:"Prato do dia, bebida e sobremesa."},
       {q:"Como se chama o serviço de pagamento típico português?", a:"Multibanco."},
       {q:"A gorjeta é obrigatória em Portugal?", a:"Não, não é obrigatória."}
     ]
-  }
+  }]
 };
 LESSONS[8] = L8;

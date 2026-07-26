@@ -93,13 +93,13 @@ var L42 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A Constituição da República Portuguesa de 1976 é a lei fundamental do país, aprovada após a Revolução de 25 de Abril de 1974. Garante direitos fundamentais como a liberdade de expressão, o direito à habitação, à educação e à saúde. O sistema judicial português inclui os tribunais judiciais, os tribunais administrativos e o Tribunal Constitucional. Em Portugal, a polícia divide-se principalmente em dois corpos: a PSP, que atua nos centros urbanos, e a GNR, que tem competência nas zonas rurais e nas estradas. Qualquer cidadão que seja detido tem direito a ser assistido por um advogado, incluindo um advogado nomeado oficiosamente se não tiver meios para pagar.",
     questions: [
       {q:"Quando foi aprovada a Constituição Portuguesa?", a:"A Constituição foi aprovada em 1976, após a Revolução de 25 de Abril de 1974."},
       {q:"Qual é a diferença de atuação entre a PSP e a GNR?", a:"A PSP atua nos centros urbanos e a GNR tem competência nas zonas rurais e nas estradas."},
       {q:"O que acontece se um detido não tiver meios para pagar um advogado?", a:"Tem direito a um advogado nomeado oficiosamente (de ofício)."}
     ]
-  }
+  }]
 };
 LESSONS[42] = L42;

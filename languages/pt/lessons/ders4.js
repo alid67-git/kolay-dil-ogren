@@ -83,13 +83,13 @@ const L4 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "As cores têm um papel muito importante na cultura portuguesa. A bandeira nacional tem verde e vermelho, com o azul e branco do escudo. O azul e branco também dominam os azulejos — os famosos painéis de cerâmica que decoram igrejas, estações e fachadas de edifícios em todo o país. O preto é a cor do fado, a música da alma portuguesa. Os trajes tradicionais, como os de Viana do Castelo, são ricos em bordados coloridos. Em Portugal, o cinzento é uma cor muito comum nas cidades históricas — as calçadas portuguesas em preto e branco são um símbolo nacional.",
     questions: [
       { q: "Portekiz bayrağının renkleri neler?", a: "Yeşil ve kırmızı, altın renkli armadisizin üstünde" },
       { q: "Azulejos nedir?", a: "Kilise, istasyon ve bina cephelerini süsleyen ünlü seramik paneller (mavi-beyaz)" },
       { q: "Fado'nun rengi ne ve neden?", a: "Siyah — Portekiz ruhunun müziği fado'nun rengi" }
     ]
-  }
+  }]
 };
 LESSONS[4] = L4;

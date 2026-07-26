@@ -83,13 +83,13 @@ const L5 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A família ocupa um lugar central na sociedade portuguesa. Apesar das mudanças sociais das últimas décadas, os laços familiares continuam muito fortes. O domingo é o dia da família por excelência: é comum reunirem-se para o almoço, frequentemente em casa dos avós. Portugal tem uma das taxas de natalidade mais baixas da Europa, o que levou a políticas de apoio às famílias. A emigração também afetou muito as famílias portuguesas — há gerações que cresceram com os pais a trabalhar no estrangeiro, especialmente em França, Alemanha ou no Brasil.",
     questions: [
       { q: "Pazar günleri Portekiz'de aile için ne ifade eder?", a: "Ailenin bir araya geldiği gün, genellikle büyükanne/büyükbaba evinde öğle yemeği" },
       { q: "Portekiz'deki aile yapısını etkileyen nedir?", a: "Düşük doğum oranı ve göç — özellikle Fransa ve Almanya'ya" },
       { q: "Portekizli ailelerde büyükanne/büyükbabanın rolü ne?", a: "Merkezi bir rol — haftalık yemekler, torunlara bakım" }
     ]
-  }
+  }]
 };
 LESSONS[5] = L5;

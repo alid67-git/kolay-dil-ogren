@@ -82,13 +82,13 @@ var L29 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A gastronomia portuguesa foi elevada ao estatuto de Património Cultural Imaterial em várias dimensões. O bacalhau, com as suas centenas de receitas, simboliza a história marítima de Portugal. Os pastéis de nata, criados pelos monges do Mosteiro dos Jerónimos em Belém no século XVIII, tornaram-se um ícone mundial. O vinho do Porto, produzido nas encostas do Douro, é exportado para todo o mundo. A culinária do Alentejo, baseada no azeite, no pão alentejano e nas ervas aromáticas, é conhecida pela sua simplicidade e sabor intenso.",
     questions: [
       {q:"Onde foram criados os pastéis de nata?", a:"No Mosteiro dos Jerónimos em Belém."},
       {q:"Onde é produzido o vinho do Porto?", a:"Nas encostas do Douro."},
       {q:"Em que se baseia a culinária do Alentejo?", a:"No azeite, no pão alentejano e nas ervas aromáticas."}
     ]
-  }
+  }]
 };
 LESSONS[29] = L29;

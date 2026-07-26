@@ -82,13 +82,13 @@ var L7 = {
       ]
     }
   ],
-  listening: {
+  listening: [{
     text: "A gastronomia portuguesa é conhecida mundialmente pela sua riqueza e variedade. O bacalhau é o ingrediente mais emblemático — diz-se que há 365 formas de o cozinhar. O caldo verde, feito com couve galega e chouriço, é uma sopa tradicional do norte do país. De sobremesa, os pastéis de nata são irresistíveis. Para beber, o vinho verde do Minho e o vinho do Porto são os mais famosos.",
     questions: [
       {q:"Quantas formas de cozinhar bacalhau existem?", a:"365 formas."},
       {q:"O que contém o caldo verde?", a:"Couve galega e chouriço."},
       {q:"Qual é o vinho mais famoso do norte de Portugal?", a:"O vinho verde do Minho."}
     ]
-  }
+  }]
 };
 LESSONS[7] = L7;
