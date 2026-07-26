@@ -676,16 +676,16 @@ window.KDO_LANG_REGISTRY = {
     "kdoTarget": "pt",
     "prefix": "pt1_",
     "storageBrand": "portuguese_",
-    "flag": "🇧🇷",
+    "flag": "🇵🇹",
     "nameTr": "Kolay Portekizce",
     "nameEn": "Easy Portuguese Learning",
     "title": "Kolay Portekizce Öğrenme",
     "lessonsPath": "languages/pt/lessons",
-    "tts": "pt-BR",
-    "ttsAlt": "pt-PT",
+    "tts": "pt-PT",
+    "ttsAlt": "pt-BR",
     "ttsPrefix": "pt",
-    "googleVoiceF": "pt-BR-Neural2-A",
-    "googleVoiceM": "pt-BR-Neural2-B",
+    "googleVoiceF": "pt-PT-Standard-A",
+    "googleVoiceM": "pt-PT-Standard-B",
     "targetLabelTr": "Portekizce",
     "targetLabelEn": "Portuguese",
     "l2Meta": {
@@ -704,7 +704,7 @@ window.KDO_LANG_REGISTRY = {
         "pron_col_english": "Portekizce",
         "num_info": "Portekizcede binlik nokta kullanılır: 1.000. Karta dokun → sesini duy 🔊",
         "calc_info": "Herhangi bir sayıyı gir — Portekizce karşılığı anında çıkar. 🔊 ile seslendir.",
-        "review_q_en2tr": "🇧🇷 Portekizce → Türkçe",
+        "review_q_en2tr": "🇵🇹 Portekizce → Türkçe",
         "review_q_tr2en": "🇹🇷 Türkçe → Portekizce"
       },
       "en": {
@@ -716,7 +716,7 @@ window.KDO_LANG_REGISTRY = {
         "pron_col_english": "Portuguese",
         "num_info": "Portuguese uses period for thousands: 1.000. Tap a card to hear it 🔊",
         "calc_info": "Enter any number — instant Portuguese equivalent. Tap 🔊 to hear.",
-        "review_q_en2tr": "🇧🇷 Portuguese → Turkish",
+        "review_q_en2tr": "🇵🇹 Portuguese → Turkish",
         "review_q_tr2en": "🇹🇷 Turkish → Portuguese"
       }
     },
