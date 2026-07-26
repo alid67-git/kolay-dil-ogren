@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <link rel="apple-touch-icon" href="/kolay-dil-ogren/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,7 +20,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .english{}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:14px 16px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;max-width:100%;min-width:0;}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:calc(env(safe-area-inset-top) + 14px) 16px 14px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;max-width:100%;min-width:0;}
 .brand-wrap{display:flex;flex:1 1 auto;min-width:0;flex-direction:column;line-height:1.2;}
 .brand{font-size:17px;font-weight:700;white-space:normal;overflow-wrap:anywhere;line-height:1.15;}
 .brand-dev{font-size:10px;font-weight:600;color:#fef9c3;letter-spacing:.04em;margin-top:6px;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.18);} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
@@ -68,7 +68,7 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d948
 .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.04em;white-space:nowrap;margin-right:2px;}
 
 /* NAV */
-nav{position:sticky;top:54px;z-index:49;display:flex;gap:6px;padding:10px 14px;background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06);max-width:100%;}
+nav{position:sticky;top:calc(env(safe-area-inset-top) + 54px);z-index:49;display:flex;gap:6px;padding:10px 14px;background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06);max-width:100%;}
 .nbtn{padding:8px 12px;border:none;background:#f0f0f0;border-radius:16px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;}
 .nbtn.active{background:#0d9488;color:white;}
 
@@ -336,7 +336,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 .ex-texts[data-word-idx]:hover{background:#f0fdf9;}
 
 @media (max-width:420px){
-  header{padding:10px 8px;gap:6px;}
+  header{padding:calc(env(safe-area-inset-top) + 10px) 8px 10px;gap:6px;}
   .brand{font-size:13px;}
   .brand-dev{font-size:9px;margin-top:3px;}
   .vbadge{display:none;}
@@ -344,7 +344,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
   .pbar-label{font-size:8px;}
   .header-actions{gap:4px;}
   .hbtn{padding:6px 8px;font-size:13px;}
-  nav{top:45px;padding:8px 10px;}
+  nav{top:calc(env(safe-area-inset-top) + 45px);padding:8px 10px;}
   main{padding:10px;}
   .lesson-card{padding:12px 10px;gap:9px;border-radius:12px;}
   .lthumb{width:42px;height:42px;font-size:23px;border-radius:12px;}
