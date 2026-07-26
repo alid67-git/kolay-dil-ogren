@@ -9,12 +9,14 @@
     tk: 'learn.html?t=tk', th: 'tayca-v3.html', en: 'learn.html?t=en',
     de: 'learn.html?t=de', it: 'learn.html?t=it', es: 'learn.html?t=es',
     fr: 'learn.html?t=fr', ru: 'learn.html?t=ru', ar: 'learn.html?t=ar',
-    zh: 'learn.html?t=zh', ha: 'learn.html?t=ha', sw: 'learn.html?t=sw'
+    zh: 'learn.html?t=zh', ha: 'learn.html?t=ha', sw: 'learn.html?t=sw',
+    pt: 'learn.html?t=pt'
   };
   var LANG_KEYS = {
     tk: 'tk1_lang', th: 'tv3_lang', en: 'en1_lang', de: 'de1_lang',
     it: 'it1_lang', es: 'es1_lang', fr: 'fr1_lang', ru: 'ru1_lang',
-    ar: 'ar1_lang', zh: 'zh1_lang', ha: 'ha1_lang', sw: 'sw1_lang'
+    ar: 'ar1_lang', zh: 'zh1_lang', ha: 'ha1_lang', sw: 'sw1_lang',
+    pt: 'pt1_lang'
   };
   var HUB_UI = {
     tr: { title: 'Dil değiştir', locale: 'Arayüz dili', target: 'Öğrenilecek dil', apply: 'Uygula', cancel: 'İptal' },
@@ -114,6 +116,7 @@
       '      <option value="ru">🇷🇺 Rusça</option>',
       '      <option value="ar">🇸🇦 Arapça</option>',
       '      <option value="zh">🇨🇳 Çince</option>',
+      '      <option value="pt">🇵🇹 Portekizce</option>',
       '    </select></div>',
       '  <div class="lang-hub-actions">',
       '    <button type="button" class="lang-hub-cancel" id="lang-hub-cancel-btn">İptal</button>',
