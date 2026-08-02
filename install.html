@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link rel="manifest" href="/kolay-dil-ogren/manifest.json">
+<meta name="theme-color" content="#0d9488">
+<title>Kolay Dil Öğren — Yükle</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:linear-gradient(135deg,#0d9488,#2563eb);padding:24px;color:white;text-align:center}
+.card{background:white;color:#172033;border-radius:20px;padding:32px 24px;max-width:360px;width:100%;
+  box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.icon{width:96px;height:96px;border-radius:22px;margin:0 auto 16px;display:block}
+h1{font-size:22px;font-weight:800;color:#134e4a;margin-bottom:6px}
+.sub{font-size:14px;color:#667085;margin-bottom:24px;line-height:1.5}
+.btn-install{width:100%;padding:16px;border:0;border-radius:14px;background:#0d9488;
+  color:white;font-size:17px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #0a7568;
+  margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px}
+.btn-install:active{transform:translateY(2px);box-shadow:0 2px 0 #0a7568}
+.btn-open{width:100%;padding:14px;border:1.5px solid #e5e7eb;border-radius:14px;
+  background:white;color:#134e4a;font-size:15px;font-weight:700;cursor:pointer}
+.steps{margin-top:20px;text-align:left;font-size:13px;color:#667085;line-height:1.8;
+  background:#f8fafc;border-radius:12px;padding:14px 16px;display:none}
+.steps strong{color:#0d9488}
+.badge{display:inline-block;background:#dcfce7;color:#166534;font-size:11px;font-weight:700;
+  padding:3px 10px;border-radius:20px;margin-bottom:16px}
+#status{font-size:12px;color:#888;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="card">
+  <img class="icon" src="/kolay-dil-ogren/icon-192.png" alt="KDO">
+  <div class="badge">✓ Ücretsiz</div>
+  <h1>Kolay Dil Öğren</h1>
+  <p class="sub">12 dil — tam dersler, detaylı gramer,<br>alıştırma ve SRS. İnternet gerekmez.</p>
+
+  <button class="btn-install" id="btn-install" onclick="doInstall()">
+    <span style="font-size:22px">⬇️</span> Uygulamayı Yükle
+  </button>
+  <button class="btn-open" onclick="location.href='/kolay-dil-ogren/'">
+    Tarayıcıda Aç
+  </button>
+
+  <div class="steps" id="steps">
+    <strong>Manuel yükleme:</strong><br>
+    1. Chrome menüsüne dokun (⋮)<br>
+    2. <strong>"Ana ekrana ekle"</strong> veya <strong>"Uygulamayı yükle"</strong> seç<br>
+    3. Onayla — bitti!
+  </div>
+  <div id="status"></div>
+</div>
+
+<script>
+let deferredPrompt = null;
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  document.getElementById('status').textContent = '✓ Yüklemeye hazır';
+});
+
+async function doInstall() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    if (outcome === 'accepted') {
+      document.getElementById('btn-install').textContent = '✓ Yüklendi!';
+      document.getElementById('btn-install').style.background = '#16a34a';
+    }
+  } else {
+    document.getElementById('steps').style.display = 'block';
+    document.getElementById('status').textContent = 'Chrome ⋮ menüsünden ekleyebilirsiniz.';
+  }
+}
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/kolay-dil-ogren/sw.js');
+}
+
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  document.getElementById('btn-install').textContent = '✓ Zaten Yüklü — Aç';
+  document.getElementById('btn-install').onclick = () => location.href = '/kolay-dil-ogren/';
+}
+</script>
+</body>
+</html>
