@@ -25,29 +25,46 @@ jobs:
         uses: android-actions/setup-android@v3
         with:
           accept-android-sdk-licenses: true
-          packages: 'cmdline-tools;latest platform-tools build-tools;34.0.0 platforms;android-34'
+          packages: 'platform-tools build-tools;34.0.0 platforms;android-34'
 
       - name: Install Bubblewrap
         run: npm install -g @bubblewrap/cli
 
-      - name: Configure Bubblewrap
+      - name: Build clean Android SDK for bubblewrap
         run: |
+          CLEAN=/tmp/bw-sdk
+          mkdir -p "$CLEAN/cmdline-tools/latest"
+          mkdir -p "$CLEAN/licenses"
+
+          # Find the best numeric cmdline-tools version in the real SDK
+          CT="$ANDROID_HOME/cmdline-tools"
+          echo "Available cmdline-tools: $(ls $CT)"
+          BEST=$(ls "$CT" | grep -E '^[0-9]' | sort -V | tail -1)
+          # Fall back to 'latest' if no numeric version exists
+          [ -z "$BEST" ] && BEST="latest"
+          echo "Using cmdline-tools version: $BEST"
+
+          # COPY (not symlink) so sdkmanager resolves its home to /tmp/bw-sdk
+          cp -r "$CT/$BEST/." "$CLEAN/cmdline-tools/latest/"
+          chmod +x "$CLEAN/cmdline-tools/latest/bin/"*
+
+          # Symlink the already-installed SDK components
+          ln -sf "$ANDROID_HOME/build-tools"    "$CLEAN/build-tools"
+          ln -sf "$ANDROID_HOME/platforms"      "$CLEAN/platforms"
+          ln -sf "$ANDROID_HOME/platform-tools" "$CLEAN/platform-tools"
+
+          # Copy accepted licenses
+          cp "$ANDROID_HOME/licenses/"* "$CLEAN/licenses/" 2>/dev/null || true
+
+          # Accept any missing licenses via sdkmanager in the clean SDK
+          yes | "$CLEAN/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$CLEAN" --licenses 2>&1 | tail -5
+
+          echo "Clean sdkmanager version: $($CLEAN/cmdline-tools/latest/bin/sdkmanager --sdk_root=$CLEAN --version 2>&1)"
+
+          # Point bubblewrap at the clean SDK
           mkdir -p ~/.bubblewrap
-          CT_DIR="$ANDROID_HOME/cmdline-tools"
-          echo "cmdline-tools dirs: $(ls $CT_DIR)"
-          # Runner pre-installs an old 'cmdline-tools/latest'; the action installs
-          # a newer version (e.g. 16.0) but sdkmanager puts it in 'latest-2'.
-          # Force-replace 'latest' with the highest numeric (newest working) version.
-          BEST=$(ls "$CT_DIR" | grep -E '^[0-9]' | sort -V | tail -1)
-          echo "Best numeric version: $BEST"
-          if [ -n "$BEST" ]; then
-            rm -rf "$CT_DIR/latest"
-            ln -sf "$CT_DIR/$BEST" "$CT_DIR/latest"
-            echo "Forced: cmdline-tools/latest -> $BEST"
-          fi
-          echo "{\"jdkPath\":\"$JAVA_HOME\",\"androidSdkPath\":\"$ANDROID_HOME\"}" > ~/.bubblewrap/config.json
+          echo "{\"jdkPath\":\"$JAVA_HOME\",\"androidSdkPath\":\"$CLEAN\"}" > ~/.bubblewrap/config.json
           echo "Config: $(cat ~/.bubblewrap/config.json)"
-          echo "sdkmanager version: $($ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --version 2>&1)"
 
       - name: Prepare keystore
         run: |
