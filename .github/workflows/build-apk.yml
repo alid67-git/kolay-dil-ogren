@@ -28,7 +28,7 @@ jobs:
           packages: 'platform-tools build-tools;34.0.0 platforms;android-34'
 
       - name: Install Bubblewrap
-        run: npm install -g @bubblewrap/cli
+        run: npm install -g @bubblewrap/cli@1.21.1
 
       - name: Build clean Android SDK for bubblewrap
         run: |
@@ -75,10 +75,27 @@ jobs:
           # Accept licenses
           yes | "$CLEAN/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$CLEAN" --licenses 2>&1 | tail -3
 
-          # Show what bubblewrap's validation actually checks
+          # Show what bubblewrap's validation actually checks (use npm root -g for correct path)
           echo "=== bubblewrap AndroidSdkTools validation ==="
-          BWFILE=$(find /usr/local/lib/node_modules/@bubblewrap -name "AndroidSdkTools.js" 2>/dev/null | head -1)
-          [ -n "$BWFILE" ] && grep -n "androidSdk isn't correct\|validateAndroid\|sdkmanager" "$BWFILE" | head -20 || echo "File not found"
+          NPMROOT=$(npm root -g 2>/dev/null || echo "")
+          echo "npm global root: $NPMROOT"
+          BWFILE=$(find "$NPMROOT/@bubblewrap" -name "AndroidSdkTools.js" 2>/dev/null | head -1)
+          echo "Found: $BWFILE"
+          [ -n "$BWFILE" ] && grep -n "androidSdk isn't correct\|validateAndroid\|sdkmanager\|access\|exists" "$BWFILE" | head -30 || echo "File not found in $NPMROOT"
+
+          # Node.js exact replication of bubblewrap's fs.access check
+          echo "=== Node.js access check ==="
+          node << 'NODEEOF'
+const fs = require('fs');
+const path = require('path');
+const sdk = '/tmp/bw-sdk';
+const mgr = path.join(sdk, 'cmdline-tools', 'latest', 'bin', 'sdkmanager');
+console.log('existsSync:', fs.existsSync(mgr));
+try { fs.accessSync(mgr, fs.constants.R_OK | fs.constants.X_OK); console.log('accessSync R|X: OK'); }
+catch(e) { console.log('accessSync FAIL:', e.message); }
+try { const s = fs.lstatSync(mgr); console.log('mode:', s.mode.toString(8), 'size:', s.size); }
+catch(e) { console.log('lstat FAIL:', e.message); }
+NODEEOF
 
           # Point bubblewrap at the clean SDK
           mkdir -p ~/.bubblewrap
