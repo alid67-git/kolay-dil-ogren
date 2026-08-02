@@ -1,0 +1,100 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          accept-android-sdk-licenses: true
+          packages: 'build-tools;34.0.0 platforms;android-34'
+
+      - name: Install Bubblewrap
+        run: npm install -g @bubblewrap/cli
+
+      - name: Prepare keystore
+        run: |
+          if [ -n "$KEYSTORE_B64" ]; then
+            echo "$KEYSTORE_B64" | base64 -d > kdo.keystore
+          else
+            keytool -genkey -v \
+              -keystore kdo.keystore \
+              -alias kdo \
+              -keyalg RSA -keysize 2048 -validity 10000 \
+              -storepass android \
+              -keypass android \
+              -dname "CN=Kolay Dil Ogren,O=Ali Dincir,C=TR"
+          fi
+          SHA256=$(keytool -list -v -keystore kdo.keystore -alias kdo \
+            -storepass android 2>/dev/null | grep "SHA256:" | awk '{print $2}')
+          echo "SHA256=$SHA256" >> $GITHUB_ENV
+          echo "Signing fingerprint: $SHA256"
+        env:
+          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+
+      - name: Update assetlinks.json with real fingerprint
+        run: |
+          cat > .well-known/assetlinks.json << ENDJSON
+          [{
+            "relation": ["delegate_permission/common.handle_all_urls"],
+            "target": {
+              "namespace": "android_app",
+              "package_name": "io.alid67.kolaydilogren",
+              "sha256_cert_fingerprints": ["${SHA256}"]
+            }
+          }]
+          ENDJSON
+
+      - name: Build TWA APK
+        run: |
+          bubblewrap build \
+            --skipPwaValidation \
+            --manifest twa-manifest.json
+        env:
+          BUBBLEWRAP_KEYSTORE_PASSWORD: android
+          BUBBLEWRAP_KEY_PASSWORD: android
+
+      - name: Locate and rename APK
+        run: |
+          APK_PATH=$(find . -path "*/build/outputs/apk/*/*.apk" | head -1)
+          echo "Found APK: $APK_PATH"
+          cp "$APK_PATH" KolayDilOgren.apk
+
+      - name: Delete old release if exists
+        run: |
+          gh release delete android-latest --yes 2>/dev/null || true
+          git push origin :refs/tags/android-latest 2>/dev/null || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create GitHub Release with APK
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: android-latest
+          name: "Android APK — Kolay Dil Öğren"
+          body: |
+            📱 **Kolay Dil Öğren** Android uygulaması
+
+            ⬇️ `KolayDilOgren.apk` dosyasını indirin ve kurun.
+
+            > ℹ️ Kurulum: Ayarlar → Güvenlik → Bilinmeyen kaynaklardan yüklemeye izin ver
+          files: KolayDilOgren.apk
+          token: ${{ secrets.GITHUB_TOKEN }}
