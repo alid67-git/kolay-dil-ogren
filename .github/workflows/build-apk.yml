@@ -85,17 +85,15 @@ jobs:
 
           # Node.js exact replication of bubblewrap's fs.access check
           echo "=== Node.js access check ==="
-          node << 'NODEEOF'
-const fs = require('fs');
-const path = require('path');
-const sdk = '/tmp/bw-sdk';
-const mgr = path.join(sdk, 'cmdline-tools', 'latest', 'bin', 'sdkmanager');
-console.log('existsSync:', fs.existsSync(mgr));
-try { fs.accessSync(mgr, fs.constants.R_OK | fs.constants.X_OK); console.log('accessSync R|X: OK'); }
-catch(e) { console.log('accessSync FAIL:', e.message); }
-try { const s = fs.lstatSync(mgr); console.log('mode:', s.mode.toString(8), 'size:', s.size); }
-catch(e) { console.log('lstat FAIL:', e.message); }
-NODEEOF
+          node -e "
+            const fs = require('fs');
+            const mgr = '/tmp/bw-sdk/cmdline-tools/latest/bin/sdkmanager';
+            console.log('existsSync:', fs.existsSync(mgr));
+            try { fs.accessSync(mgr, fs.constants.R_OK | fs.constants.X_OK); console.log('accessSync R|X: OK'); }
+            catch(e) { console.log('accessSync FAIL:', e.message); }
+            try { const s = fs.lstatSync(mgr); console.log('mode:', s.mode.toString(8), 'size:', s.size); }
+            catch(e) { console.log('lstat FAIL:', e.message); }
+          "
 
           # Point bubblewrap at the clean SDK
           mkdir -p ~/.bubblewrap
