@@ -33,18 +33,21 @@ jobs:
       - name: Configure Bubblewrap
         run: |
           mkdir -p ~/.bubblewrap
-          # bubblewrap requires cmdline-tools/latest — create symlink if missing
           CT_DIR="$ANDROID_HOME/cmdline-tools"
-          if [ -d "$CT_DIR" ] && [ ! -d "$CT_DIR/latest" ]; then
-            LATEST=$(ls "$CT_DIR" | grep -v latest | sort -V | tail -1)
-            if [ -n "$LATEST" ]; then
-              ln -s "$CT_DIR/$LATEST" "$CT_DIR/latest"
-              echo "Symlinked cmdline-tools/$LATEST -> latest"
-            fi
+          echo "cmdline-tools dirs: $(ls $CT_DIR)"
+          # Runner pre-installs an old 'cmdline-tools/latest'; the action installs
+          # a newer version (e.g. 16.0) but sdkmanager puts it in 'latest-2'.
+          # Force-replace 'latest' with the highest numeric (newest working) version.
+          BEST=$(ls "$CT_DIR" | grep -E '^[0-9]' | sort -V | tail -1)
+          echo "Best numeric version: $BEST"
+          if [ -n "$BEST" ]; then
+            rm -rf "$CT_DIR/latest"
+            ln -sf "$CT_DIR/$BEST" "$CT_DIR/latest"
+            echo "Forced: cmdline-tools/latest -> $BEST"
           fi
           echo "{\"jdkPath\":\"$JAVA_HOME\",\"androidSdkPath\":\"$ANDROID_HOME\"}" > ~/.bubblewrap/config.json
           echo "Config: $(cat ~/.bubblewrap/config.json)"
-          echo "SDK dirs: $(ls $ANDROID_HOME)"
+          echo "sdkmanager version: $($ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --version 2>&1)"
 
       - name: Prepare keystore
         run: |
