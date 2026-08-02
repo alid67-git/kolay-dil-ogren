@@ -66,6 +66,11 @@ jobs:
           echo "{\"jdkPath\":\"$JAVA_HOME\",\"androidSdkPath\":\"$CLEAN\"}" > ~/.bubblewrap/config.json
           echo "Config: $(cat ~/.bubblewrap/config.json)"
 
+          # Override Android SDK env vars so sdkmanager (called by bubblewrap)
+          # resolves to the clean SDK — not the original ANDROID_HOME with latest-2
+          echo "ANDROID_HOME=$CLEAN" >> $GITHUB_ENV
+          echo "ANDROID_SDK_ROOT=$CLEAN" >> $GITHUB_ENV
+
       - name: Prepare keystore
         run: |
           if [ -n "$KEYSTORE_B64" ]; then
