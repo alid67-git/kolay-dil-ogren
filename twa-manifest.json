@@ -1,0 +1,40 @@
+{
+  "packageId": "io.alid67.kolaydilogren",
+  "host": "alid67-git.github.io",
+  "name": "Kolay Dil Öğren",
+  "launcherName": "KDO",
+  "display": "standalone",
+  "themeColor": "#0d9488",
+  "navigationColor": "#0d9488",
+  "navigationColorDark": "#134e4a",
+  "navigationDividerColor": "#0d9488",
+  "navigationDividerColorDark": "#134e4a",
+  "backgroundColor": "#0d9488",
+  "startUrl": "/kolay-dil-ogren/",
+  "iconUrl": "https://alid67-git.github.io/kolay-dil-ogren/icon-512.png",
+  "maskableIconUrl": "https://alid67-git.github.io/kolay-dil-ogren/icon-512.png",
+  "monochromeIconUrl": "https://alid67-git.github.io/kolay-dil-ogren/icon-192.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "kdo.keystore",
+    "alias": "kdo"
+  },
+  "appVersion": "1",
+  "appVersionName": "3.0.57",
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://alid67-git.github.io/kolay-dil-ogren/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": { "enabled": false },
+    "playBilling": { "enabled": false }
+  },
+  "alphaDependencies": { "enabled": false },
+  "enableNotifications": false,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://alid67-git.github.io/kolay-dil-ogren/",
+  "minSdkVersion": 21,
+  "orientation": "portrait",
+  "fingerprints": []
+}
