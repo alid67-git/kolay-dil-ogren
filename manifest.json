@@ -1,0 +1,28 @@
+{
+  "name": "Kolay Dil Öğren",
+  "short_name": "KDO",
+  "description": "12 dil öğrenme uygulaması — tam dersler, detaylı gramer, alıştırma ve SRS.",
+  "start_url": "/kolay-dil-ogren/",
+  "scope": "/kolay-dil-ogren/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d9488",
+  "theme_color": "#0d9488",
+  "lang": "tr",
+  "icons": [
+    {
+      "src": "/kolay-dil-ogren/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/kolay-dil-ogren/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "lifestyle"],
+  "screenshots": []
+}

@@ -5,9 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="color-scheme" content="light dark">
 <link rel="apple-touch-icon" href="/kolay-dil-ogren/apple-touch-icon.png">
+<link rel="manifest" href="/kolay-dil-ogren/manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Kolay Dil Öğren">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0d9488">
 <title>Kolay Dil Ogren</title>
 <style>
 *{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#0d9488,#2563eb);padding:20px}
@@ -162,5 +164,6 @@ function launch(){
 document.getElementById('go').addEventListener('click',launch);
 </script>
 <script src="shared/kdo-analytics.js?v=3.0.48"></script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/kolay-dil-ogren/sw.js');}</script>
 </body>
 </html>
