@@ -2,13 +2,13 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <link rel="apple-touch-icon" href="/kolay-dil-ogren/apple-touch-icon.png">
 <link rel="manifest" href="/kolay-dil-ogren/manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Kolay Dil Öğren">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0d9488">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
@@ -22,7 +22,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .english{}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:22px 16px 14px;display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;max-width:100%;min-width:0;}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;max-width:100%;min-width:0;}
 .brand-wrap{display:flex;flex:1 1 auto;min-width:0;flex-direction:column;line-height:1.2;}
 .brand{font-size:17px;font-weight:700;white-space:normal;overflow-wrap:anywhere;line-height:1.15;}
 .brand-dev{font-size:10px;font-weight:600;color:#fef9c3;letter-spacing:.04em;margin-top:6px;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.18);} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
@@ -70,7 +70,7 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d948
 .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.04em;white-space:nowrap;margin-right:2px;}
 
 /* NAV */
-nav{position:sticky;top:54px;z-index:49;display:flex;gap:6px;padding:10px 14px;background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06);max-width:100%;}
+nav{position:sticky;top:calc(54px + env(safe-area-inset-top,0px));z-index:49;display:flex;gap:6px;padding:10px max(14px,env(safe-area-inset-right,0px)) 10px max(14px,env(safe-area-inset-left,0px));background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06);max-width:100%;}
 .nbtn{padding:8px 12px;border:none;background:#f0f0f0;border-radius:16px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;}
 .nbtn.active{background:#0d9488;color:white;}
 
@@ -244,7 +244,7 @@ main th,main td{overflow-wrap:anywhere;word-break:break-word;}
 /* MODAL */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:flex-end;}
 .overlay.open{display:flex;}
-.modal{background:white;border-radius:16px 16px 0 0;padding:20px;width:100%;max-width:100%;max-height:80vh;overflow-y:auto;overflow-x:hidden;}
+.modal{background:white;border-radius:16px 16px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));width:100%;max-width:100%;max-height:80vh;overflow-y:auto;overflow-x:hidden;}
 .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
 .modal-title{font-size:16px;font-weight:700;}
 .modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:#999;}
@@ -323,7 +323,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 
 /* BONUS ACCORDION */
 /* SCROLL TO TOP */
-#scroll-top-btn{position:fixed;bottom:22px;right:16px;width:42px;height:42px;border-radius:50%;background:#0d9488;color:white;border:none;font-size:20px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);display:none;align-items:center;justify-content:center;z-index:99;transition:opacity .2s;}
+#scroll-top-btn{position:fixed;bottom:calc(22px + env(safe-area-inset-bottom,0px));right:max(16px,env(safe-area-inset-right,0px));width:42px;height:42px;border-radius:50%;background:#0d9488;color:white;border:none;font-size:20px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);display:none;align-items:center;justify-content:center;z-index:99;transition:opacity .2s;}
 #scroll-top-btn.show{display:flex;}
 
 .bonus-header{background:linear-gradient(135deg,#f0fdf9,#e0f2f1);border:2px solid #0d9488;border-radius:12px;padding:14px 16px;margin-bottom:8px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:.15s;}
@@ -338,7 +338,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 .ex-texts[data-word-idx]:hover{background:#f0fdf9;}
 
 @media (max-width:420px){
-  header{padding:18px 8px 10px;gap:6px;}
+  header{padding:calc(10px + env(safe-area-inset-top,0px)) max(8px,env(safe-area-inset-right,0px)) 10px max(8px,env(safe-area-inset-left,0px));gap:6px;}
   .brand{font-size:13px;}
   .brand-dev{font-size:9px;margin-top:3px;}
   .vbadge{display:none;}
@@ -346,7 +346,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
   .pbar-label{font-size:8px;}
   .header-actions{gap:4px;}
   .hbtn{padding:6px 8px;font-size:13px;}
-  nav{top:45px;padding:8px 10px;}
+  nav{top:calc(45px + env(safe-area-inset-top,0px));padding:8px max(10px,env(safe-area-inset-right,0px)) 8px max(10px,env(safe-area-inset-left,0px));}
   main{padding:10px;}
   .lesson-card{padding:12px 10px;gap:9px;border-radius:12px;}
   .lthumb{width:42px;height:42px;font-size:23px;border-radius:12px;}
@@ -556,7 +556,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 /* =================== EXERCISE OVERLAY (Duolingo-style) =================== */
 #exercise-overlay{display:none;position:fixed;inset:0;background:white;z-index:500;flex-direction:column;overflow:hidden;}
 #exercise-overlay.open{display:flex;}
-.ex-topbar{display:flex;align-items:center;gap:12px;padding:14px 16px 10px;flex-shrink:0;}
+.ex-topbar{display:flex;align-items:center;gap:12px;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));flex-shrink:0;}
 .ex-close-btn{background:none;border:none;font-size:22px;color:#afafaf;cursor:pointer;padding:4px 8px;border-radius:6px;line-height:1;}
 .ex-pb-wrap{flex:1;height:16px;background:#e5e5e5;border-radius:8px;overflow:hidden;}
 .ex-pb-fill{height:100%;background:#58cc02;border-radius:8px;transition:width .4s ease;}
@@ -606,7 +606,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 .ex-bank-btn:active{transform:translateY(2px);box-shadow:none;}
 .ex-bank-btn.used{opacity:.35;pointer-events:none;}
 /* Footer */
-.ex-footer{flex-shrink:0;padding:12px 16px 20px;background:white;border-top:2px solid #f0f0f0;}
+.ex-footer{flex-shrink:0;padding:12px max(16px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:white;border-top:2px solid #f0f0f0;}
 .ex-feedback-bar{border-radius:14px;padding:12px 16px;margin-bottom:12px;display:none;}
 .ex-feedback-bar.correct{display:flex;align-items:flex-start;gap:10px;background:#d7ffb8;border:2px solid #58cc02;}
 .ex-feedback-bar.wrong{display:flex;align-items:flex-start;gap:10px;background:#ffdfe0;border:2px solid #ff4b4b;}
@@ -4817,7 +4817,7 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
 
 <!-- LESSON STARS OVERLAY -->
 <div id="lstar-overlay" style="display:none;position:fixed;inset:0;background:white;z-index:500;flex-direction:column;overflow:hidden;">
-  <div style="display:flex;align-items:center;gap:10px;padding:14px 16px 10px;border-bottom:1.5px solid #f0f0f0;flex-shrink:0;">
+  <div style="display:flex;align-items:center;gap:10px;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));border-bottom:1.5px solid #f0f0f0;flex-shrink:0;">
     <button onclick="closeLessonStars()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#777;line-height:1;padding:0 4px;">←</button>
     <div id="lstar-title" style="font-size:15px;font-weight:700;color:#333;flex:1;"></div>
     <div id="lstar-count" style="font-size:12px;color:#888;"></div>
