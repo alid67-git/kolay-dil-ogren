@@ -47,12 +47,12 @@ function toRegistryEntry(L) {
     prefix: L.prefix,
     storageBrand: L.storageBrand,
     flag: L.flag,
-    nameTr: PLATFORM_BRAND.nameTr,
-    nameEn: PLATFORM_BRAND.nameEn,
-    title: PLATFORM_BRAND.title,
-    titleEn: PLATFORM_BRAND.titleEn,
-    nameTh: PLATFORM_BRAND.nameTh,
-    titleTh: PLATFORM_BRAND.titleTh,
+    nameTr: L.nameTr || PLATFORM_BRAND.nameTr,
+    nameEn: L.nameEn || PLATFORM_BRAND.nameEn,
+    title: L.title || PLATFORM_BRAND.title,
+    titleEn: L.titleEn || PLATFORM_BRAND.titleEn,
+    nameTh: L.nameTh || PLATFORM_BRAND.nameTh,
+    titleTh: L.titleTh || PLATFORM_BRAND.titleTh,
     lessonsPath: L.lessonsPath,
     tts: L.tts,
     ttsAlt: L.ttsAlt,
@@ -121,6 +121,17 @@ window.KDO_bootLang = function () {
   window.KDO_TARGET = t;
   window.KDO_CFG = cfg;
   window.KDO_PREFIX = cfg.prefix;
+  window.KDO_PLATFORM_BRAND = {
+    flag: cfg.flag || '',
+    nameTr: cfg.nameTr,
+    nameEn: cfg.nameEn,
+    title: cfg.title,
+    titleEn: cfg.titleEn || cfg.title,
+    nameTh: cfg.nameTh,
+    titleTh: cfg.titleTh,
+    targetLabelTr: cfg.targetLabelTr,
+    targetLabelEn: cfg.targetLabelEn
+  };
   var tr = window.KDO_TRANSLATE_BY_LANG[t];
   if (tr) {
     window.KDO_TRANSLATE = {
@@ -134,6 +145,7 @@ window.KDO_bootLang = function () {
   localStorage.setItem('kdo:target', cfg.kdoTarget || t);
   if (cfg.title) document.title = cfg.title;
   if (typeof KDO_fixTv3CrossMigration === 'function') KDO_fixTv3CrossMigration(cfg.prefix);
+  if (typeof KDO_onLangBoot === 'function') KDO_onLangBoot(cfg);
   return true;
 };
 `;
