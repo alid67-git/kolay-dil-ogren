@@ -754,7 +754,7 @@ const KDO_CFG = window.KDO_CFG;
 const APP_VERSION = window.KDO_APP_VERSION || window.KDO_PLATFORM_VERSION;
 
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
-let appLang = localStorage.getItem('kdo:locale') || localStorage.getItem(PREFIX+'lang') || (typeof KDO_detectLocaleSync==='function'?KDO_detectLocaleSync():'tr');
+let appLang = localStorage.getItem('kdo:locale') || localStorage.getItem(PREFIX+'lang') || 'tr';
 
 const UI_LOCAL = {
   tr:{
