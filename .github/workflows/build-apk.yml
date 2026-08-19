@@ -67,13 +67,9 @@ jobs:
       - name: Prepare keystore
         run: |
           if [ -n "$KEYSTORE_B64" ]; then
-            python3 -c "
-import base64, os, sys
-raw = os.environ['KEYSTORE_B64']
-clean = ''.join(raw.split())  # remove all whitespace
-data = base64.b64decode(clean)
-sys.stdout.buffer.write(data)
-" > kdo.keystore
+            echo "$KEYSTORE_B64" | python3 -c \
+              "import base64,sys; sys.stdout.buffer.write(base64.b64decode(sys.stdin.read().strip()))" \
+              > kdo.keystore
             echo "Keystore size: $(wc -c < kdo.keystore) bytes"
             KPASS="${KEYSTORE_PASSWORD:-kdo2024release}"
           else
