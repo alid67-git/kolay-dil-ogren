@@ -27,7 +27,7 @@ main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0
 /* HEADER */
 header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;max-width:100%;min-width:0;}
 .brand-wrap{display:flex;flex:1 1 auto;min-width:0;flex-direction:column;line-height:1.2;}
-.brand{font-size:17px;font-weight:700;white-space:normal;overflow-wrap:anywhere;line-height:1.15;}
+.brand{font-size:17px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;line-height:1.15;}
 .brand-dev{font-size:10px;font-weight:600;color:#fef9c3;letter-spacing:.04em;margin-top:6px;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.18);} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
 /* YARDIM MODALİ */
 .htab{background:none;border:none;padding:9px 13px;font-size:12px;font-weight:700;color:#888;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:.15s;}
@@ -392,9 +392,14 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 
 @media (orientation:landscape) and (max-height:520px){
-  header{position:relative;top:0;padding-top:calc(8px + env(safe-area-inset-top,0px));}
-  nav{position:relative;top:0;flex-wrap:nowrap;overflow-x:auto;}
-  main{flex:1 1 auto;overflow-y:auto;min-height:0;padding:10px;}
+  body{flex-direction:row;flex-wrap:wrap;align-content:stretch;max-width:none;width:100%;}
+  header{position:relative;top:0;width:min(38vw,220px);min-height:100dvh;flex-direction:column;align-items:flex-start;gap:8px;padding-top:calc(8px + env(safe-area-inset-top,0px));border-bottom:none;border-right:3px solid #0f766e;flex-shrink:0;}
+  .brand-wrap{width:100%;}
+  .pbar-wrap{width:100%;flex:0 0 auto;max-width:none;}
+  .header-actions{flex-wrap:wrap;width:100%;}
+  nav{position:relative;top:0;width:min(38vw,220px);flex-direction:column;align-items:stretch;flex-shrink:0;overflow-y:auto;max-height:none;border-bottom:none;border-right:1px solid #e0e0e0;}
+  .nbtn{width:100%;text-align:left;}
+  main{flex:1 1 62%;min-width:0;min-height:100dvh;max-height:100dvh;overflow-y:auto;padding:10px;}
 }
 
 /* ===== DARK MODE ===== */
@@ -730,21 +735,21 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.66"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.66"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.66"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.66"></script>
-<script src="shared/kdo-gloss.js?v=3.0.66"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.66"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.66"></script>
-<script src="shared/kdo-tts.js?v=3.0.66"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.66"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.66"></script>
-<script src="shared/kdo-store.js?v=3.0.66"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.66"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.66"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.66"></script>
-<script src="shared/kdo-translate.js?v=3.0.66"></script>
+<script src="shared/kdo-version.js?v=3.0.67"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.67"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.67"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.67"></script>
+<script src="shared/kdo-gloss.js?v=3.0.67"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.67"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.67"></script>
+<script src="shared/kdo-tts.js?v=3.0.67"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.67"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.67"></script>
+<script src="shared/kdo-store.js?v=3.0.67"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.67"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.67"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.67"></script>
+<script src="shared/kdo-translate.js?v=3.0.67"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1256,6 +1261,7 @@ function setLang(lang){
   document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
   document.querySelectorAll('[data-lk-ph]').forEach(el=>{ el.placeholder=s(el.dataset.lkPh); });
   if(typeof KDO_applyBrandHeader==='function') KDO_applyBrandHeader();
+  if(typeof KDO_fitBrandText==='function') KDO_fitBrandText();
   if(typeof KDO_applyBrandDev==='function') KDO_applyBrandDev();
   // Re-render current view
   const vid = (document.querySelector('.view.active')||{}).id||'';
@@ -1555,6 +1561,13 @@ function reloadLessonState() {
   lessonStats = st.lessonStats;
   completedLessons = st.completedLessons;
 }
+window.reloadLessonState = reloadLessonState;
+window.__kdoSyncLessonState = function(st) {
+  starred = st.starred;
+  visitedTabs = st.visitedTabs;
+  lessonStats = st.lessonStats;
+  completedLessons = st.completedLessons;
+};
 function saveCompleted(){ localStorage.setItem(PREFIX+'complete', JSON.stringify(completedLessons)); }
 function isCompleted(num){ return Array.isArray(completedLessons) && completedLessons.includes(num); }
 
@@ -1893,6 +1906,7 @@ function renderLessonList(){
     if (wrap) wrap.innerHTML = '<p style="padding:20px;color:#666;text-align:center">Dersler yüklenemedi. Sayfayı yenileyin veya ayarlardan veriyi sıfırlayın.</p>';
   }
 }
+window.renderLessonList = renderLessonList;
 
 function insertPracticeTab(tabs){
   if(tabs.includes('practice')) return tabs;
@@ -4999,7 +5013,7 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.66"></script>
-<script src="shared/kdo-update.js?v=3.0.66"></script>
+<script src="shared/kdo-analytics.js?v=3.0.67"></script>
+<script src="shared/kdo-update.js?v=3.0.67"></script>
 </body>
 </html>
