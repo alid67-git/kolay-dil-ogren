@@ -2,6 +2,7 @@
 (function () {
   'use strict';
   var APP_VERSION = window.KDO_PLATFORM_VERSION || 'v3.0.1';
+  window.KDO_APP_VERSION = APP_VERSION;
   var storedVersion = localStorage.getItem('app_version');
   if (storedVersion && storedVersion !== APP_VERSION) {
     if ('caches' in window) {
@@ -20,7 +21,6 @@
     console.log('Yeni versiyon: ' + APP_VERSION + ', cache temizlendi.');
   }
   localStorage.setItem('app_version', APP_VERSION);
-  window.KDO_APP_VERSION = APP_VERSION;
 
   function resolveUiLocale() {
     if (typeof appLang !== 'undefined' && appLang) return appLang;
@@ -55,7 +55,7 @@
     var pv = document.getElementById('platform-ver');
     if (pv) pv.textContent = APP_VERSION;
     var hv = document.getElementById('hakkinda-version');
-    if (hv) hv.textContent = APP_VERSION;
+    if (hv) hv.textContent = APP_VERSION + ' ↗';
   }
 
   function applyBrandHeader() {
@@ -79,6 +79,7 @@
 
   window.KDO_applyBrandDev = applyBrandDev;
   window.KDO_applyBrandHeader = applyBrandHeader;
+  window.KDO_applyVersionBadge = applyVersionBadge;
 
   function onReady() {
     applyBrandDev();

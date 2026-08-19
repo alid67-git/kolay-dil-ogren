@@ -19,8 +19,8 @@
     "path": "kdo.keystore",
     "alias": "kdo"
   },
-  "appVersion": "2",
-  "appVersionName": "3.0.59",
+  "appVersion": "3",
+  "appVersionName": "3.0.60",
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
   "webManifestUrl": "https://alid67-git.github.io/kolay-dil-ogren/manifest.json",
