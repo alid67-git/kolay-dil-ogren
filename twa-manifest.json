@@ -24,7 +24,7 @@
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
   "webManifestUrl": "https://alid67-git.github.io/kolay-dil-ogren/manifest.json",
-  "fallbackType": "customtabs",
+  "fallbackType": "webview",
   "features": {
     "locationDelegation": { "enabled": false },
     "playBilling": { "enabled": false }
