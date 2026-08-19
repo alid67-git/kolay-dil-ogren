@@ -1,6 +1,7 @@
 package io.alid67.kolaydilogren;
 
 import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
