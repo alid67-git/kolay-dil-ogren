@@ -18,13 +18,22 @@ h1{font-size:22px;font-weight:800;color:#134e4a;margin-bottom:6px}
 .sub{font-size:14px;color:#667085;margin-bottom:24px;line-height:1.5}
 .btn-install{width:100%;padding:16px;border:0;border-radius:14px;background:#0d9488;
   color:white;font-size:17px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #0a7568;
-  margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px}
+  margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;}
 .btn-install:active{transform:translateY(2px);box-shadow:0 2px 0 #0a7568}
+.btn-apk{width:100%;padding:16px;border:0;border-radius:14px;background:#3b82f6;
+  color:white;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #1d4ed8;
+  margin-bottom:12px;display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;}
+.btn-apk:active{transform:translateY(2px);box-shadow:0 2px 0 #1d4ed8}
 .btn-open{width:100%;padding:14px;border:1.5px solid #e5e7eb;border-radius:14px;
   background:white;color:#134e4a;font-size:15px;font-weight:700;cursor:pointer}
+.divider{display:flex;align-items:center;gap:10px;margin:4px 0 16px;color:#cbd5e1;font-size:12px;}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:#e5e7eb;}
 .steps{margin-top:20px;text-align:left;font-size:13px;color:#667085;line-height:1.8;
   background:#f8fafc;border-radius:12px;padding:14px 16px;display:none}
 .steps strong{color:#0d9488}
+.apk-note{margin-top:10px;font-size:11px;color:#94a3b8;line-height:1.5;text-align:left;
+  background:#f8fafc;border-radius:10px;padding:10px 12px;}
+.apk-note a{color:#3b82f6;text-decoration:none;}
 .badge{display:inline-block;background:#dcfce7;color:#166534;font-size:11px;font-weight:700;
   padding:3px 10px;border-radius:20px;margin-bottom:16px}
 #status{font-size:12px;color:#888;margin-top:10px}
@@ -37,24 +46,59 @@ h1{font-size:22px;font-weight:800;color:#134e4a;margin-bottom:6px}
   <h1>Kolay Dil Öğren</h1>
   <p class="sub">12 dil — tam dersler, detaylı gramer,<br>alıştırma ve SRS. İnternet gerekmez.</p>
 
-  <button class="btn-install" id="btn-install" onclick="doInstall()">
-    <span style="font-size:22px">⬇️</span> Uygulamayı Yükle
-  </button>
-  <button class="btn-open" onclick="location.href='/kolay-dil-ogren/'">
-    Tarayıcıda Aç
-  </button>
-
-  <div class="steps" id="steps">
-    <strong>Manuel yükleme:</strong><br>
-    1. Chrome menüsüne dokun (⋮)<br>
-    2. <strong>"Ana ekrana ekle"</strong> veya <strong>"Uygulamayı yükle"</strong> seç<br>
-    3. Onayla — bitti!
+  <!-- PWA yükleme (iOS / Chrome) -->
+  <div id="pwa-section">
+    <button class="btn-install" id="btn-install" onclick="doInstall()">
+      <span style="font-size:22px">⬇️</span> Uygulamayı Yükle (PWA)
+    </button>
+    <div class="steps" id="steps">
+      <strong>Manuel yükleme:</strong><br>
+      1. Chrome menüsüne dokun (⋮)<br>
+      2. <strong>"Ana ekrana ekle"</strong> veya <strong>"Uygulamayı yükle"</strong> seç<br>
+      3. Onayla — bitti!
+    </div>
+    <div id="status"></div>
   </div>
-  <div id="status"></div>
+
+  <!-- Android APK -->
+  <div id="apk-section" style="margin-top:4px;">
+    <div class="divider">ya da</div>
+    <a class="btn-apk" id="apk-btn"
+       href="https://github.com/alid67-git/kolay-dil-ogren/releases/download/android-latest/KolayDilOgren.apk"
+       download>
+      <span style="font-size:20px">🤖</span> Android APK İndir
+    </a>
+    <div class="apk-note" id="apk-note">
+      <strong>APK kurulumu:</strong><br>
+      İndir → <em>Ayarlar → Güvenlik → Bilinmeyen kaynaklar</em>'a izin ver → APK'ya dokun → Kur
+    </div>
+  </div>
+
+  <div style="margin-top:12px;">
+    <button class="btn-open" onclick="location.href='/kolay-dil-ogren/'">
+      Tarayıcıda Aç
+    </button>
+  </div>
 </div>
 
 <script>
 let deferredPrompt = null;
+
+// iOS kontrolü — APK desteklemez, APK bölümünü gizle
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+if (isIOS) {
+  document.getElementById('apk-section').style.display = 'none';
+}
+
+// Android kontrolü — APK bölümünü öne çıkar
+const isAndroid = /Android/.test(navigator.userAgent);
+if (isAndroid) {
+  // Android'de PWA bölümü aşağıda kalsın, APK üstte göster
+  const apkSection = document.getElementById('apk-section');
+  const pwaSection = document.getElementById('pwa-section');
+  apkSection.parentNode.insertBefore(apkSection, pwaSection);
+  document.querySelector('.divider').style.display = 'none'; // divider'ı geçici gizle — APK zaten üste geldi
+}
 
 window.addEventListener('beforeinstallprompt', e => {
   e.preventDefault();

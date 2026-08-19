@@ -52,6 +52,36 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d948
 .changelog-item{background:#f8f9fa;border-left:3px solid #0d9488;padding:8px 12px;border-radius:0 8px 8px 0;}
 .changelog-ver{font-size:12px;font-weight:700;color:#0d9488;margin-bottom:3px;}
 .changelog-desc{font-size:11px;color:#666;line-height:1.5;}
+
+/* CHANGELOG MODAL */
+#changelog-overlay{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.55);align-items:flex-end;justify-content:center;}
+#changelog-overlay.open{display:flex;}
+#changelog-modal{background:white;border-radius:20px 20px 0 0;width:100%;max-width:600px;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 -4px 32px rgba(0,0,0,.18);}
+#changelog-modal-head{display:flex;align-items:center;padding:16px 18px 12px;border-bottom:1px solid #f0f0f0;flex-shrink:0;}
+#changelog-modal-title{flex:1;font-size:15px;font-weight:800;color:#134e4a;}
+#changelog-modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:#aaa;padding:2px 6px;line-height:1;border-radius:6px;}
+#changelog-modal-close:hover{background:#f3f4f6;color:#555;}
+#changelog-modal-body{overflow-y:auto;padding:14px 16px calc(18px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:8px;}
+.cl-item{background:#f8f9fa;border-left:3px solid #0d9488;padding:10px 14px;border-radius:0 10px 10px 0;}
+.cl-ver{font-size:12px;font-weight:800;color:#0d9488;margin-bottom:3px;letter-spacing:.03em;}
+.cl-desc{font-size:12px;color:#555;line-height:1.55;}
+.cl-item.cl-latest{background:linear-gradient(135deg,#e0f2f1,#f0fdfa);border-left-width:4px;}
+.cl-latest .cl-ver{font-size:13px;}
+.ver-btn{cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;}
+.ver-btn:hover{color:rgba(255,255,255,.9);}
+
+/* UPDATE BANNER */
+#update-banner{display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:50%;transform:translateX(-50%);z-index:9999;
+  background:#134e4a;color:white;border-radius:16px;padding:12px 18px;
+  box-shadow:0 6px 24px rgba(0,0,0,.35);
+  display:none;align-items:center;gap:12px;font-size:13px;font-weight:600;
+  max-width:calc(100vw - 32px);white-space:nowrap;
+  animation:slideUp .3s ease;}
+#update-banner.show{display:flex;}
+@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+#update-btn{background:#0d9488;color:white;border:none;border-radius:10px;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;flex-shrink:0;}
+#update-btn:active{opacity:.8;}
+#update-dismiss{background:none;border:none;color:rgba(255,255,255,.5);font-size:18px;cursor:pointer;padding:0 2px;line-height:1;flex-shrink:0;}
 .pbar-wrap{flex:1;display:flex;flex-direction:column;gap:3px;margin:0 6px;min-width:0;}
 .pbar{height:5px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;}
 .pbar-label{font-size:9px;color:rgba(255,255,255,.55);text-align:right;letter-spacing:.03em;}
@@ -467,6 +497,13 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
   .help-info-row strong{color:#ddd;}
   .changelog-item{background:#1e1e1e;}
   .changelog-desc{color:#999;}
+  #changelog-modal{background:#1e1e1e;}
+  #changelog-modal-head{border-bottom-color:#2a2a2a;}
+  #changelog-modal-title{color:#e0f2f1;}
+  .cl-item{background:#252525;}
+  .cl-latest{background:linear-gradient(135deg,#0f2420,#1a3330)!important;}
+  .cl-desc{color:#aaa;}
+  #changelog-modal-close{color:#555;}
   .htab{color:#555;}
   .htab.active{color:#0d9488;}
 
@@ -1289,7 +1326,7 @@ function setLang(lang){
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
-  <span class="vbadge" id="app-version"></span>
+  <span class="vbadge ver-btn" id="app-version" onclick="openChangelog()" title="Versiyon geçmişi"></span>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
   </div>
@@ -3537,35 +3574,20 @@ function buildHelpContent(){
         </div>
       </div>
       <div class="help-section-header">📋 ${L('Uygulama Bilgisi','App Info','ข้อมูลแอป')}</div>
-      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version">v3.0.47</strong></div>
+      <div class="help-info-row"><span>${L('Versiyon','Version','เวอร์ชัน')}</span><strong id="hakkinda-version" onclick="openChangelog()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px;color:#0d9488;">v3.0.58 ↗</strong></div>
       <div class="help-info-row"><span>${L('Toplam Ders','Total Lessons','บทเรียนทั้งหมด')}</span><strong>19 + 29 ${L('BONUS set','BONUS sets','ชุด BONUS')}</strong></div>
       <div class="help-info-row"><span>${L('Ders Başına','Per Lesson','ต่อบทเรียน')}</span><strong>~10 ${L('kelime, 8 gramer, 4 diyalog','words, 8 grammar, 4 dialogues','~10 คำ 8 ไวยากรณ์ 4 บทสนทนา')}</strong></div>
       <div class="help-info-row"><span>${L('Ses Motoru','Audio','เสียง')}</span><strong>Web Speech API + Google TTS</strong></div>
       <div class="help-info-row"><span>${L('Veri','Data','ข้อมูล')}</span><strong>localStorage (${L('internet gerekmez','works offline','ใช้งานออฟไลน์ได้')})</strong></div>
       <div class="help-info-row"><span>${L('Geliştirici','Developer','นักพัฒนา')}</span><strong>Ali Dinçer, Phuket 🇹🇭</strong></div>
       <div id="help-test-badge" style="display:none;margin:6px 0 2px;padding:7px 14px;background:#7f1d1d;border:2px solid #ef4444;border-radius:10px;color:#fca5a5;font-size:13px;font-weight:800;text-align:center;letter-spacing:.05em;">🚫 TEST MODU AKTİF — Analytics kapalı</div>
-      <div class="help-section-header" style="margin-top:16px;">📦 ${L('Versiyon Geçmişi','Version History','ประวัติเวอร์ชัน')}</div>
-      <div class="help-changelog">
-        <div class="changelog-item"><div class="changelog-ver">v3.0.28</div>
-          <div class="changelog-desc">${L('iOS ses düzeltmesi: setTimeout kaldırıldı (user gesture bağlamını kırıyordu); Google TTS yoksa speakWebSpeech senkron çağrılıyor; playDialogue onend zinciri korunuyor','iOS audio fix: removed setTimeout (broke user gesture context); speakWebSpeech called synchronously when no Google TTS key; playDialogue uses onend chain','แก้เสียง iOS: ลบ setTimeout (ทำลาย user gesture); เรียก speakWebSpeech แบบ sync เมื่อไม่มี Google TTS; playDialogue ใช้ onend chain')}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v3.0.26</div>
-          <div class="changelog-desc">${L('Tayca ses düzeltmesi: diyalog oynatma artık Google TTS kullanıyor; speak() Promise döndürüyor, sıralama güvenilir; sayılar ve hesap makinesi speak() ile güncellendi','Thai audio fix: dialogue playback now uses Google TTS; speak() returns a Promise for reliable sequencing; numbers & calculator updated to use speak()','แก้เสียงภาษาไทย: เล่นบทสนทนาใช้ Google TTS แล้ว speak() คืน Promise เรียงลำดับถูกต้อง')}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v3.56</div>
-          <div class="changelog-desc">${L('Ingilizce uygulama ile menu UX: kart tasarimi, hero baslik, Alistirma sekmesi, karanlik mod kontrast','Lesson menu UX aligned with English app: card redesign, hero header, practice tab (quiz removed from tabs), dark mode contrast','ปรับ UX เมนูบทเรียน: ออกแบบการ์ดใหม่ ส่วนหัว hero แท็บฝึกฝน โหมดมืด')}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v3.55</div>
-          <div class="changelog-desc">${L('Canli surum: Ders 10-19 yayinda, BONUS Thai zenginlestirme, ilerleme cubugu duzeltmesi','Production release: lessons 10-19 live, BONUS Thai enrichment, progress bar fix','เวอร์ชันใช้งานจริง: บท 10-19 BONUS ไทย แก้แถบความคืบหน้า')}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v3.54</div>
-          <div class="changelog-desc">${L('Ders 10-19 icerik eklendi (plaj, hastane, acil vb.); BONUS kelimelere Thai karakter; ilerleme cubugu senaryo/bonus ayri gosterim','Lessons 10–19 content added (beach, hospital, emergency, etc.); BONUS vocab Thai enrichment; progress bar shows scenario/bonus separately','เพิ่มบท 10–19 (ชายหาด โรงพยาบาล ฉุกเฉิน) BONUS ไทย แยกแสดงสถานการณ์/bonus')}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v2.1.0</div>
-          <div class="changelog-desc">${L('Tam İngilizce/Türkçe arayüz; dark mode; BONUS accordion; 1437 kelime CORE 2000 hazinesi, örnek cümleler ve gramer analizi; yukarı çık butonu','Full English/Turkish bilingual UI; dark mode; BONUS accordion; 1437-word CORE 2000 vocabulary with example sentences and grammar analysis; scroll-to-top button','UI สองภาษา โหมดมืด BONUS accordion คำศัพท์ CORE 2000 1437 คำ ปุ่มเลื่อนขึ้น')}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v3.32</div>
-          <div class="changelog-desc">${L('Her sekme için 60 saniyelik zorunlu bekleme — süre dolmadan ders tamamlanamıyor','60-second mandatory wait per tab — lesson can\'t be completed until time is up; progress bar countdown','รอบังคับ 60 วินาทีต่อแท็บ — ทำบทเรียนไม่ได้จนกว่าเวลาจะหมด')}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v3.30</div>
-          <div class="changelog-desc">${L('Ders 10-19 eklendi (tüm 19 ders tamamlandı); listening format düzeltmesi','Lessons 10–19 added (all 19 lessons complete); listening format fix; lesson 17–19 dialogue speaker fix','เพิ่มบท 10–19 (ครบ 19 บท) แก้รูปแบบการฟัง')}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v3.19</div>
-          <div class="changelog-desc">${L('Google Cloud TTS (Chirp3-HD) entegrasyonu — Orus (erkek) ve Aoede (kadın) sesleri','Google Cloud TTS (Chirp3-HD) integration — Orus (male) and Aoede (female) voices, Web Speech API fallback','รวม Google Cloud TTS (Chirp3-HD) — เสียง Orus และ Aoede')}</div></div>
-        <div class="changelog-item"><div class="changelog-ver">v3.00</div>
-          <div class="changelog-desc">${L('SRS sistemi · Test modülü (flashcard + çoktan seçmeli) · Yıldızlama + Liste · Diyalog oynatma · Renk kodlu cümle analizi · 9 tam ders','SRS system (Anki-style spaced repetition) · Test module (flashcard + multiple choice) · Starring + List tab · Dialogue playback · Color-coded sentence analysis · 9 full lessons','ระบบ SRS · โมดูลทดสอบ · ติดดาว + รายการ · เล่นบทสนทนา · วิเคราะห์ประโยค · 9 บทเรียน')}</div></div>
+      <div class="help-info-row" onclick="openChangelog()" style="cursor:pointer;">
+        <span>📦 ${L('Versiyon Geçmişi','Version History','ประวัติเวอร์ชัน')}</span>
+        <strong style="color:#0d9488;">${L('Görüntüle →','View →','ดู →')}</strong>
+      </div>
+      <div class="help-info-row" onclick="location.href='https://github.com/alid67-git/kolay-dil-ogren/releases/download/android-latest/KolayDilOgren.apk'" style="cursor:pointer;">
+        <span>🤖 Android APK</span>
+        <strong style="color:#3b82f6;">${L('İndir ↓','Download ↓','ดาวน์โหลด ↓')}</strong>
       </div>
       <div class="help-card" style="margin-top:14px;background:#fff8e1;border-color:#ffe082;text-align:center;">
         <div style="width:100%;text-align:center;">
@@ -3584,6 +3606,40 @@ function closeModal(id){ document.getElementById(id).classList.remove('open'); }
 document.querySelectorAll('.overlay').forEach(el=>{
   el.addEventListener('click',e=>{ if(e.target===el) el.classList.remove('open'); });
 });
+
+// =================== CHANGELOG MODAL ===================
+const CHANGELOG_DATA = [
+  { ver: 'v3.0.58', tr: 'Safe-area düzeltmesi: iPhone status bar altında kalan sekmeler düzeltildi', en: 'Safe-area fix: iPhone status bar overlapping tabs fixed', th: 'แก้ safe-area: แท็บซ่อนใต้ status bar ของ iPhone' },
+  { ver: 'v3.0.28', tr: 'iOS ses düzeltmesi: setTimeout kaldırıldı; speakWebSpeech senkron çağrılıyor', en: 'iOS audio fix: removed setTimeout; speakWebSpeech called synchronously', th: 'แก้เสียง iOS: ลบ setTimeout; เรียก speakWebSpeech แบบ sync' },
+  { ver: 'v3.0.26', tr: 'Tayca ses: diyalog oynatma Google TTS kullanıyor; speak() Promise döndürüyor', en: 'Thai audio: dialogue uses Google TTS; speak() returns Promise for reliable sequencing', th: 'เสียงไทย: บทสนทนาใช้ Google TTS; speak() คืน Promise' },
+  { ver: 'v3.56',   tr: 'İngilizce uygulama ile menü UX; kart tasarımı; hero başlık; Alıştırma sekmesi; karanlık mod', en: 'Lesson menu UX aligned with English app: card redesign, hero header, practice tab, dark mode', th: 'ปรับ UX เมนูบทเรียน: การ์ดใหม่ ส่วนหัว hero แท็บฝึกฝน โหมดมืด' },
+  { ver: 'v3.55',   tr: 'Canlı sürüm: Ders 10-19 yayında, BONUS Thai zenginleştirme, ilerleme çubuğu düzeltmesi', en: 'Production: lessons 10-19 live, BONUS Thai enrichment, progress bar fix', th: 'เวอร์ชันใช้งานจริง: บท 10-19 BONUS ไทย แก้แถบความคืบหน้า' },
+  { ver: 'v3.54',   tr: 'Ders 10-19 içerik eklendi; BONUS kelimelere Thai karakter; ilerleme çubuğu', en: 'Lessons 10–19 content; BONUS vocab Thai; progress bar scenario/bonus split', th: 'เพิ่มบท 10–19 BONUS ไทย แยกแสดงสถานการณ์/bonus' },
+  { ver: 'v2.1.0',  tr: 'Tam İngilizce/Türkçe arayüz; dark mode; BONUS accordion; 1437 kelime CORE 2000', en: 'Full bilingual UI; dark mode; BONUS accordion; 1437-word CORE 2000', th: 'UI สองภาษา โหมดมืด BONUS accordion คำศัพท์ CORE 2000 1437 คำ' },
+  { ver: 'v3.32',   tr: 'Her sekme için 60 saniyelik zorunlu bekleme', en: '60-second mandatory wait per tab', th: 'รอบังคับ 60 วินาทีต่อแท็บ' },
+  { ver: 'v3.30',   tr: 'Ders 10-19 eklendi (tüm 19 ders tamamlandı); listening format düzeltmesi', en: 'Lessons 10–19 added (all 19 lessons complete); listening format fix', th: 'เพิ่มบท 10–19 (ครบ 19 บท) แก้รูปแบบการฟัง' },
+  { ver: 'v3.19',   tr: 'Google Cloud TTS (Chirp3-HD) entegrasyonu — Orus ve Aoede sesleri', en: 'Google Cloud TTS (Chirp3-HD): Orus & Aoede voices', th: 'รวม Google Cloud TTS (Chirp3-HD) — เสียง Orus และ Aoede' },
+  { ver: 'v3.00',   tr: 'SRS sistemi · Test modülü · Yıldızlama · Diyalog oynatma · 9 tam ders', en: 'SRS system · Test module · Starring · Dialogue playback · 9 full lessons', th: 'ระบบ SRS · โมดูลทดสอบ · ติดดาว · เล่นบทสนทนา · 9 บทเรียน' },
+];
+function openChangelog(){
+  const lang = (typeof appLang !== 'undefined' ? appLang : 'tr');
+  const isTh = lang === 'th', isEn = lang === 'en' || (!isTh && lang !== 'tr');
+  const titles = { tr:'Versiyon Geçmişi', en:'Version History', th:'ประวัติเวอร์ชัน' };
+  const curLabels = { tr:'Güncel', en:'Current', th:'ปัจจุบัน' };
+  const title = titles[lang] || titles.en;
+  document.getElementById('changelog-modal-title').textContent = '📦 ' + title;
+  const body = document.getElementById('changelog-modal-body');
+  body.innerHTML = CHANGELOG_DATA.map((item, i) => {
+    const desc = isTh ? item.th : (isEn ? item.en : item.tr);
+    const latest = i === 0 ? ' cl-latest' : '';
+    const curLabel = i === 0 ? ' — ' + (curLabels[lang] || curLabels.en) : '';
+    return `<div class="cl-item${latest}"><div class="cl-ver">${item.ver}${curLabel}</div><div class="cl-desc">${desc}</div></div>`;
+  }).join('');
+  document.getElementById('changelog-overlay').classList.add('open');
+}
+function closeChangelog(){
+  document.getElementById('changelog-overlay').classList.remove('open');
+}
 function saveKey(){ localStorage.setItem('tayca_api_key',document.getElementById('api-key-input').value); alert(s('ui_saved')); }
 function saveGoogleTTSKey(){ var v=document.getElementById('google-tts-key-input').value; localStorage.setItem('google_tts_key',v); localStorage.setItem('kdo:google_tts_key',v); alert(s('ui_saved')); }
 function saveGist(){
@@ -4357,6 +4413,24 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   </div>
 </div>
 
+<!-- UPDATE BANNER -->
+<div id="update-banner" role="alert" aria-live="polite">
+  <span id="update-banner-text">🆕 Yeni sürüm hazır</span>
+  <button id="update-btn" onclick="applyUpdate()">Güncelle</button>
+  <button id="update-dismiss" onclick="dismissUpdate()" aria-label="Kapat">✕</button>
+</div>
+
+<!-- CHANGELOG OVERLAY -->
+<div id="changelog-overlay" onclick="if(event.target===this)closeChangelog()">
+  <div id="changelog-modal">
+    <div id="changelog-modal-head">
+      <div id="changelog-modal-title">📦 Versiyon Geçmişi</div>
+      <button id="changelog-modal-close" onclick="closeChangelog()">✕</button>
+    </div>
+    <div id="changelog-modal-body"></div>
+  </div>
+</div>
+
 <!-- LESSON STARS OVERLAY -->
 <div id="lstar-overlay" style="display:none;position:fixed;inset:0;background:white;z-index:500;flex-direction:column;overflow:hidden;">
   <div style="display:flex;align-items:center;gap:10px;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));border-bottom:1.5px solid #f0f0f0;flex-shrink:0;">
@@ -4402,5 +4476,64 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
 })();
 </script>
 <script src="shared/kdo-analytics.js?v=3.0.48"></script>
+<script>
+// =================== SERVICE WORKER + UPDATE BANNER ===================
+(function(){
+  if (!('serviceWorker' in navigator)) return;
+
+  let _waitingSW = null;
+
+  function showUpdateBanner() {
+    const banner = document.getElementById('update-banner');
+    const txt = document.getElementById('update-banner-text');
+    if (!banner) return;
+    const lang = (typeof appLang !== 'undefined' ? appLang : 'tr');
+    const msgs = { tr:'🆕 Yeni sürüm hazır', en:'🆕 Update available', th:'🆕 มีการอัปเดต' };
+    const btnMsgs = { tr:'Güncelle', en:'Update', th:'อัปเดต' };
+    if (txt) txt.textContent = msgs[lang] || msgs.tr;
+    const btn = document.getElementById('update-btn');
+    if (btn) btn.textContent = btnMsgs[lang] || btnMsgs.tr;
+    banner.classList.add('show');
+  }
+
+  window.applyUpdate = function() {
+    if (_waitingSW) {
+      _waitingSW.postMessage({ type: 'SKIP_WAITING' });
+    }
+    document.getElementById('update-banner').classList.remove('show');
+  };
+
+  window.dismissUpdate = function() {
+    document.getElementById('update-banner').classList.remove('show');
+  };
+
+  navigator.serviceWorker.register('/kolay-dil-ogren/sw.js').then(reg => {
+    if (reg.waiting) {
+      _waitingSW = reg.waiting;
+      showUpdateBanner();
+    }
+    reg.addEventListener('updatefound', () => {
+      const newSW = reg.installing;
+      newSW.addEventListener('statechange', () => {
+        if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+          _waitingSW = newSW;
+          showUpdateBanner();
+        }
+      });
+    });
+  });
+
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) { refreshing = true; window.location.reload(); }
+  });
+
+  setInterval(() => {
+    navigator.serviceWorker.getRegistration('/kolay-dil-ogren/sw.js').then(reg => {
+      if (reg) reg.update();
+    });
+  }, 60000);
+})();
+</script>
 </body>
 </html>

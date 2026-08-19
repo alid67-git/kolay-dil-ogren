@@ -18,9 +18,11 @@ const CORE = [
   '/kolay-dil-ogren/shared/kdo-analytics-config.js'
 ];
 
+// Install: cache core files, wait for explicit activation signal
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting())
+    caches.open(CACHE).then(c => c.addAll(CORE))
+    // No skipWaiting here — we wait for the app to prompt the user
   );
 });
 
@@ -30,6 +32,13 @@ self.addEventListener('activate', e => {
       Promise.all(keys.filter(k => k !== CACHE).map(k => caches.delete(k)))
     ).then(() => self.clients.claim())
   );
+});
+
+// Listen for the app's "SKIP_WAITING" message to activate the new SW
+self.addEventListener('message', e => {
+  if (e.data && e.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
 self.addEventListener('fetch', e => {
