@@ -371,7 +371,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
   header{padding:calc(10px + env(safe-area-inset-top,0px)) max(8px,env(safe-area-inset-right,0px)) 10px max(8px,env(safe-area-inset-left,0px));gap:6px;}
   .brand{font-size:13px;}
   .brand-dev{font-size:9px;margin-top:3px;}
-  .vbadge{display:none;}
+  .vbadge{font-size:8px;margin-right:2px;}
   .pbar-wrap{max-width:74px;margin:0 2px;}
   .pbar-label{font-size:8px;}
   .header-actions{gap:4px;}
@@ -721,20 +721,20 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.48"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.48"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.48"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.48"></script>
-<script src="shared/kdo-gloss.js?v=3.0.48"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.48"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.48"></script>
-<script src="shared/kdo-tts.js?v=3.0.48"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.48"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.48"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.48"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.48"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.48"></script>
-<script src="shared/kdo-translate.js?v=3.0.48"></script>
+<script src="shared/kdo-version.js?v=3.0.60"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.60"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.60"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.60"></script>
+<script src="shared/kdo-gloss.js?v=3.0.60"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.60"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.60"></script>
+<script src="shared/kdo-tts.js?v=3.0.60"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.60"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.60"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.60"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.60"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.60"></script>
+<script src="shared/kdo-translate.js?v=3.0.60"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -3755,7 +3755,7 @@ function openModal(id){
   // Yardım modalı açılınca versiyon güncelle
   if(id==='help-overlay'){
     const hv = document.getElementById('hakkinda-version');
-    if(hv) hv.textContent = APP_VERSION;
+    if(hv) hv.textContent = APP_VERSION + ' ↗';
   }
 }
 function switchHelpTab(tab, btn){
@@ -3797,6 +3797,9 @@ function buildHelpContent(){
     const targetName = ((KDO_CFG.targetUi||{})[appLang]||{}).ui_col_target || ((targetNames[appLang]||targetNames.en)[targetCode]) || targetCode;
     const fill = x => String(x||'').replace(/\{target\}/g,targetName);
     const appTitle = (appLang==='th' && KDO_CFG.nameTh) ? KDO_CFG.nameTh : (appLang==='tr' ? KDO_CFG.title : (KDO_CFG.nameEn||KDO_CFG.title||'Kolay Dil Öğren'));
+    const verLabel = ({tr:'Versiyon',en:'Version',th:'เวอร์ชัน',de:'Version',fr:'Version',es:'Versión',it:'Versione',ru:'Версия',ar:'الإصدار',zh:'版本'})[appLang] || 'Version';
+    const histLabel = ({tr:'Versiyon Geçmişi',en:'Version History',th:'ประวัติเวอร์ชัน',de:'Versionsverlauf',fr:'Historique des versions',es:'Historial de versiones',it:'Cronologia versioni',ru:'История версий',ar:'سجل الإصدارات',zh:'版本历史'})[appLang] || 'Version History';
+    const viewLabel = ({tr:'Görüntüle →',en:'View →',th:'ดู →',de:'Anzeigen →',fr:'Voir →',es:'Ver →',it:'Vedi →',ru:'Открыть →',ar:'عرض →',zh:'查看 →'})[appLang] || 'View →';
     document.getElementById('htab-btn-genel').textContent = '🏠 '+H.guide;
     document.getElementById('htab-btn-dersler').textContent = '📚 '+H.lessons;
     document.getElementById('htab-btn-tekrar').textContent = '🔄 '+H.review;
@@ -3827,8 +3830,14 @@ function buildHelpContent(){
       </div>
       <div id="htab-hakkinda" class="htab-content">
         <div class="help-card"><div class="help-card-icon">${KDO_CFG.flag||'🌐'}</div><div><div class="help-card-title">${appTitle}</div><div class="help-card-body">${fill(H.body)}</div></div></div>
+        <div class="help-section-header">📋 ${H.about}</div>
+        <div class="help-info-row"><span>${verLabel}</span><strong id="hakkinda-version" onclick="openChangelog()" style="cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px;color:#0d9488;">${APP_VERSION} ↗</strong></div>
         <div class="help-info-row"><span>${H.total}</span><strong>${LESSONS_META.filter(m=>m.hasContent).length}</strong></div>
         <div class="help-info-row"><span>${H.data}</span><strong>localStorage (${H.offline})</strong></div>
+        <div class="help-info-row" onclick="openChangelog()" style="cursor:pointer;">
+          <span>📦 ${histLabel}</span>
+          <strong style="color:#0d9488;">${viewLabel}</strong>
+        </div>
       </div>`;
     const active = document.querySelector('#help-tabs-nav .htab.active');
     if(active){ const tab = active.id.replace('htab-btn-',''); switchHelpTab(tab, active); }
@@ -4851,6 +4860,7 @@ if((KDO_CFG.extras||[]).includes('gram-turkish')){
 if(typeof KDO_applyBrandHeader==='function') KDO_applyBrandHeader();
 if(typeof KDO_applyBrandDev==='function') KDO_applyBrandDev();
 else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit==='function') _bd.textContent=devCredit(appLang); }
+if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
 
 </script>
 
@@ -4929,7 +4939,7 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.48"></script>
+<script src="shared/kdo-analytics.js?v=3.0.60"></script>
 <script>
 // =================== SERVICE WORKER + UPDATE BANNER ===================
 (function(){
