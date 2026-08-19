@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'io.alid67.kolaydilogren'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'io.alid67.kolaydilogren'
+        minSdk 21
+        targetSdk 34
+        versionCode 4
+        versionName '3.0.61'
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('../../kdo.keystore')
+            storePassword 'kdo2024release'
+            keyAlias 'kdo'
+            keyPassword 'kdo2024release'
+        }
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core:1.12.0'
+    implementation 'androidx.activity:activity:1.8.2'
+    implementation 'com.google.android.material:material:1.11.0'
+}

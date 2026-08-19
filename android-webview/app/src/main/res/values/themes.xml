@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.KDO" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/kdo_teal</item>
+        <item name="colorPrimaryDark">@color/kdo_teal_dark</item>
+        <item name="android:statusBarColor">@color/kdo_teal</item>
+        <item name="android:navigationBarColor">@color/kdo_teal_dark</item>
+        <item name="android:windowBackground">@color/kdo_teal</item>
+    </style>
+</resources>

@@ -19,82 +19,20 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         with:
           accept-android-sdk-licenses: true
           packages: 'platform-tools build-tools;34.0.0 platforms;android-34'
 
-      - name: Fix SDK structure for Bubblewrap
+      - name: Build fullscreen WebView APK
+        working-directory: android-webview
+        run: ./gradlew assembleRelease --no-daemon
+
+      - name: Copy release APK
         run: |
-          CT="$ANDROID_HOME/cmdline-tools"
-          if [ -d "$CT/latest" ]; then
-            CTBIN="$CT/latest/bin"
-          else
-            VER=$(ls "$CT" | sort -V | tail -1)
-            CTBIN="$CT/$VER/bin"
-          fi
-          ln -sf "$CTBIN" "$ANDROID_HOME/bin"
-          mkdir -p "$ANDROID_HOME/licenses"
-          echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
-          echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license"
-          echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> "$ANDROID_HOME/licenses/android-sdk-license"
-          echo "84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-          mkdir -p ~/.bubblewrap
-          echo "{\"jdkPath\":\"$JAVA_HOME\",\"androidSdkPath\":\"$ANDROID_HOME\"}" > ~/.bubblewrap/config.json
-
-      - name: Install Bubblewrap
-        run: npm install -g @bubblewrap/cli@1.25.0
-
-      - name: Read keystore fingerprint
-        run: |
-          SHA256=$(keytool -list -v -keystore kdo.keystore -alias kdo \
-            -storepass kdo2024release 2>/dev/null | grep "SHA256:" | awk '{print $2}')
-          echo "SHA256=$SHA256" >> $GITHUB_ENV
-          echo "Signing fingerprint: $SHA256"
-
-      - name: Update assetlinks.json with real fingerprint
-        run: |
-          node -e "
-            const fs = require('fs');
-            const data = [{
-              relation: ['delegate_permission/common.handle_all_urls'],
-              target: {
-                namespace: 'android_app',
-                package_name: 'io.alid67.kolaydilogren',
-                sha256_cert_fingerprints: [process.env.SHA256]
-              }
-            }];
-            fs.writeFileSync('.well-known/assetlinks.json', JSON.stringify(data, null, 2));
-          "
-
-      - name: Generate TWA project
-        run: echo "y" | bubblewrap update --skipPwaValidation --manifest twa-manifest.json || true
-        env:
-          BUBBLEWRAP_KEYSTORE_PASSWORD: kdo2024release
-          BUBBLEWRAP_KEY_PASSWORD: kdo2024release
-
-      - name: Build TWA APK
-        run: echo "y" | bubblewrap build --skipPwaValidation --manifest twa-manifest.json
-        env:
-          BUBBLEWRAP_KEYSTORE_PASSWORD: kdo2024release
-          BUBBLEWRAP_KEY_PASSWORD: kdo2024release
-
-      - name: Locate and rename APK
-        run: |
-          # bubblewrap places the signed APK at ./app-release-signed.apk
-          if [ -f "./app-release-signed.apk" ]; then
-            cp "./app-release-signed.apk" KolayDilOgren.apk
-            echo "Using signed APK"
-          else
-            APK_PATH=$(find . -name "*.apk" | grep -v unsigned | head -1)
-            echo "Found APK: $APK_PATH"
-            cp "$APK_PATH" KolayDilOgren.apk
-          fi
+          APK=$(find android-webview/app/build/outputs/apk/release -name "*.apk" | head -1)
+          cp "$APK" KolayDilOgren.apk
           ls -lh KolayDilOgren.apk
 
       - name: Delete old release if exists
@@ -108,12 +46,15 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: android-latest
-          name: "Android APK — Kolay Dil Öğren"
+          name: "Android APK — Kolay Dil Öğren (WebView)"
           body: |
-            📱 **Kolay Dil Öğren** Android uygulaması
+            📱 **Kolay Dil Öğren** Android uygulaması (tam ekran WebView)
 
             ⬇️ `KolayDilOgren.apk` dosyasını indirin ve kurun.
 
+            Bu sürüm Chrome adres çubuğu göstermez — uygulama tam ekran açılır.
+
             > ℹ️ Kurulum: Ayarlar → Güvenlik → Bilinmeyen kaynaklardan yüklemeye izin ver
+            > ⚠️ Eski APK'yı kaldırıp yeniden kurun veya üzerine yazın.
           files: KolayDilOgren.apk
           token: ${{ secrets.GITHUB_TOKEN }}
