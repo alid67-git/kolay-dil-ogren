@@ -86,9 +86,16 @@ jobs:
 
       - name: Locate and rename APK
         run: |
-          APK_PATH=$(find . -path "*/build/outputs/apk/*/*.apk" | head -1)
-          echo "Found APK: $APK_PATH"
-          cp "$APK_PATH" KolayDilOgren.apk
+          # bubblewrap places the signed APK at ./app-release-signed.apk
+          if [ -f "./app-release-signed.apk" ]; then
+            cp "./app-release-signed.apk" KolayDilOgren.apk
+            echo "Using signed APK"
+          else
+            APK_PATH=$(find . -name "*.apk" | grep -v unsigned | head -1)
+            echo "Found APK: $APK_PATH"
+            cp "$APK_PATH" KolayDilOgren.apk
+          fi
+          ls -lh KolayDilOgren.apk
 
       - name: Delete old release if exists
         run: |
