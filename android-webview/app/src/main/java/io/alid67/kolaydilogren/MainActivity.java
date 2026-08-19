@@ -17,9 +17,9 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.64";
+    private static final String APP_VERSION = "3.0.65";
     private static final String START_URL =
-            "https://alid67-git.github.io/kolay-dil-ogren/tayca-v3.html?v=" + APP_VERSION;
+            "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
     private static final String ALLOWED_PATH_PREFIX = "/kolay-dil-ogren";
 

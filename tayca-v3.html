@@ -6,12 +6,12 @@
 <meta name="color-scheme" content="light dark">
 <link rel="apple-touch-icon" href="/kolay-dil-ogren/apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Kolay Dil Öğren">
+<meta name="apple-mobile-web-app-title" content="Kolay Dil Öğrenme">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title data-lk="app_title_th">เรียนภาษาไทยง่ายๆ</title>
+<title data-lk="app_title">Kolay Dil Öğrenme</title>
 <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -665,18 +665,18 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.64"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.64"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.64"></script>
-<script src="shared/kdo-gloss.js?v=3.0.64"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.64"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.64"></script>
-<script src="shared/kdo-tts.js?v=3.0.64"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.64"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.64"></script>
-<script src="shared/kdo-translate.js?v=3.0.64"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.64"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.64"></script>
+<script src="shared/kdo-version.js?v=3.0.65"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.65"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.65"></script>
+<script src="shared/kdo-gloss.js?v=3.0.65"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.65"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.65"></script>
+<script src="shared/kdo-tts.js?v=3.0.65"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.65"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.65"></script>
+<script src="shared/kdo-translate.js?v=3.0.65"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.65"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.65"></script>
 <script>
 const APP_VERSION = window.KDO_APP_VERSION || window.KDO_PLATFORM_VERSION;
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
@@ -816,8 +816,8 @@ const UI_LOCAL = {
     no_starred_alert:'Bu derse ait yıldızlı öğe yok. Dersin içinde kelime veya cümleleri yıldızlayın.',
     starred_label:'Yıldızlılar', item_label:'öğe',
     help_tab_lessons:'📚 Dersler', help_tab_review:'🔄 Tekrar', help_tab_tips:'💡 İpuçları',
-    help_modal_title:'📖 Nasıl Kullanılır?', help_modal_sub:'Kolay Tayca Öğrenme · Rehber',
-    app_title_th:'Kolay Tayca Öğrenme', test_text_ph:'Test metni',
+    help_modal_title:'📖 Nasıl Kullanılır?', help_modal_sub:'Kolay Dil Öğrenme · Rehber',
+    app_title:'Kolay Dil Öğrenme', test_text_ph:'Test metni',
   },
   en:{
     // Nav
@@ -952,8 +952,8 @@ const UI_LOCAL = {
     no_starred_alert:'No starred items for this lesson yet. Star words or sentences inside the lesson.',
     starred_label:'Starred', item_label:'item',
     help_tab_lessons:'📚 Lessons', help_tab_review:'🔄 Review', help_tab_tips:'💡 Tips',
-    help_modal_title:'📖 How to Use?', help_modal_sub:'Easy Thai Learning · Guide',
-    app_title_th:'Easy Thai Learning', test_text_ph:'Test text',
+    help_modal_title:'📖 How to Use?', help_modal_sub:'Easy Language Learning · Guide',
+    app_title:'Easy Language Learning', test_text_ph:'Test text',
   }
 ,
   de:{
@@ -1232,8 +1232,8 @@ const UI_LOCAL = {
     help_tab_review:'🔄 ทบทวน',
     help_tab_tips:'💡 เคล็ดลับ',
     help_modal_title:'📖 วิธีใช้งาน?',
-    help_modal_sub:'เรียนภาษาไทยง่ายๆ · คู่มือ',
-    app_title_th:'เรียนภาษาไทยง่ายๆ',
+    help_modal_sub:'เรียนภาษาง่ายๆ · คู่มือ',
+    app_title:'เรียนภาษาง่ายๆ',
     test_text_ph:'ข้อความทดสอบ',
   },
 };
@@ -1318,7 +1318,7 @@ function setLang(lang){
   buildHelpContent();
   if(typeof collapseUiLangPanel==='function') collapseUiLangPanel();
   if(typeof KDO_applyBrandHeader==='function') KDO_applyBrandHeader();
-  if(typeof KDO_applyBrandDev==='function') KDO_applyBrandDev();
+  if(typeof s==='function') document.title = s('app_title');
 }
 // =================== DİL SİSTEMİ END ===================
 </script>
@@ -1327,7 +1327,7 @@ function setLang(lang){
 <script type="application/json" id="thai-data">{"words": [{"id": "w1", "th": "สวัสดีครับ", "examples": ["คุณชื่ออะไร", "ยินดีที่ได้รู้จัก", "สบายดีไหม", "ผมชื่ออาลี", "คุณมาจากไหน", "ยินดีต้อนรับ", "ขอโทษที่รอ", "วันนี้เป็นอย่างไร", "เชิญเข้ามา", "ขอบคุณที่มา"]}, {"id": "w2", "th": "สวัสดีค่ะ", "examples": ["ยินดีต้อนรับ", "คุณเป็นใคร", "สบายดีไหมคะ", "ยินดีที่ได้รู้จักค่ะ", "ขอบคุณที่มาค่ะ"]}, {"id": "w3", "th": "ขอบคุณ", "examples": ["ขอบคุณครับ", "ขอบคุณมากครับ", "ขอบคุณมากๆ ครับ", "ขอบคุณสำหรับอาหารครับ", "ขอบคุณที่ช่วยครับ", "ขอบคุณที่รอครับ", "ขอบคุณสำหรับทุกอย่างครับ", "ขอบคุณที่มาครับ", "ขอบคุณที่สอนครับ", "ขอบคุณล่วงหน้าครับ"]}, {"id": "w4", "th": "ยินดีที่ได้รู้จัก", "examples": ["ยินดีที่ได้รู้จักครับ", "ยินดีที่ได้รู้จักค่ะ", "ยินดีที่ได้รู้จักเช่นกันครับ", "ผมยินดีที่ได้รู้จักคุณมากครับ", "ยินดีที่ได้รู้จักครับ", "ยินดีที่ได้รู้จัก", "ผมชื่ออาลี ยินดีที่ได้รู้จักครับ"]}, {"id": "w5", "th": "ไม่เป็นไร", "examples": ["ไม่เป็นไรครับ", "ไม่เป็นไรค่ะ", "ขอโทษครับ ไม่เป็นไร", "ไม่เป็นไร ไม่ต้องเป็นห่วงครับ", "ไม่เป็นไร มันเกิดขึ้นได้", "โอเคครับ ไม่เป็นไร", "ไม่เป็นไรครับ เกิดขึ้นกับทุกคน", "ไม่เป็นไรครับ ผมเข้าใจ"]}, {"id": "w6", "th": "ครับ", "examples": ["ใช่ครับ", "ไม่ครับ", "โอเคครับ", "ได้ครับ", "เข้าใจครับ", "ทราบแล้วครับ", "รอสักครู่ครับ", "ขอโทษครับ", "ขอบคุณครับ", "สวัสดีครับ", "ไม่เป็นไรครับ", "ยินดีที่ได้รู้จักครับ"]}, {"id": "w7", "th": "ค่ะ", "examples": ["ใช่ค่ะ", "ไม่ค่ะ", "ขอบคุณค่ะ", "ได้ค่ะ", "ไม่เป็นไรค่ะ", "เข้าใจค่ะ", "โอเคค่ะ", "ขอโทษค่ะ", "สวัสดีค่ะ", "ยินดีที่ได้รู้จักค่ะ", "รอสักครู่นะคะ", "ไม่ทราบค่ะ"]}], "tones": [{"words": ["กา", "มา", "ปลา", "ดี", "นา"]}, {"words": ["ข่า", "ป่า", "ข่าว", "ยาก", "ล่าง"]}, {"words": ["น้ำ", "ข้าว", "ค่ะ", "น้อย", "ฟ้า"]}, {"words": ["ขา", "ไม่", "ใหม่", "หมา", "นา"]}, {"words": ["ม้า", "หน้า", "ป๊า", "ฝา", "ข้า"]}], "grammar": [{"examples": ["ผมชื่ออาลีครับ", "คุณชื่ออะไร", "ผมมาจากตุรกีครับ", "ผมอยู่ที่ภูเก็ต", "ผมกินข้าวครับ"]}, {"examples": ["ขอบคุณครับ", "ขอบคุณค่ะ", "ใช่ครับ", "ได้ครับ", "สบายดีไหมคะ"]}, {"examples": ["ไม่เป็นไรครับ", "ไม่ครับ", "ไม่ทราบครับ", "ไม่เข้าใจครับ", "ไม่เอาครับ", "ไม่ได้ครับ"]}, {"examples": ["สบายดีไหม", "คุณชื่ออะไร", "ห้องน้ำอยู่ที่ไหน", "คุณมาจากไหน", "นี่เท่าไร", "ทำไมไม่มา"]}, {"examples": ["ผมกำลังกินข้าวครับ", "ผมกินข้าวแล้วครับ", "ผมจะไปภูเก็ตครับ", "ผมยังไม่ไปครับ", "ผมเคยไปภูเก็ตครับ"]}, {"examples": ["สองคนครับ", "สามตัวครับ", "หนึ่งใบครับ", "ร้อยบาทครับ", "ผมมีแฟนหนึ่งคนครับ"]}, {"examples": ["นั่นของผมครับ", "รถของคุณอยู่ที่ไหน", "นี่ของคุณไหม", "บ้านของผมอยู่ภูเก็ต"]}, {"examples": ["อาหารไทยดีกว่าครับ", "ภูเก็ตดีที่สุดครับ", "นี่แพงกว่าครับ", "วันนี้ร้อนกว่าเมื่อวานครับ"]}], "speaking": ["สวัสดีครับ", "ขอบคุณครับ", "ยินดีที่ได้รู้จักครับ", "ขอโทษครับ", "ไม่เป็นไรครับ", "ยินดีที่ได้รู้จัก", "ขอบคุณมากครับ", "ขอบคุณที่ช่วยครับ"], "dialogues": [["สวัสดีครับ", "สวัสดีค่ะ", "ยินดีที่ได้รู้จักครับ", "ยินดีที่ได้รู้จักค่ะ"], ["ขอบคุณมากครับ", "ไม่เป็นไรค่ะ", "คุณใจดีมากครับ", "ขอบคุณค่ะ"], ["ขอโทษครับ", "ไม่เป็นไรค่ะ", "ขอบคุณครับ", "สบายดีไหมคะ", "สบายดีครับ ขอบคุณ"], ["ผมชื่ออาลีครับ", "ยินดีที่ได้รู้จักค่ะ", "ยินดีที่ได้รู้จักเช่นกันครับ", "คุณมาจากไหนคะ", "ผมมาจากตุรกีครับ อยู่ภูเก็ต"], ["สบายดีไหม", "สบายดีค่ะ ขอบคุณค่ะ", "วันนี้อากาศดีมากครับ", "ใช่ค่ะ ร้อนมากเลยค่ะ", "แล้วเจอกันครับ"]], "listening": ["สวัสดีครับ", "ขอบคุณค่ะ", "ยินดีที่ได้รู้จักครับ", "ขอโทษครับ", "สวัสดีครับ", "สวัสดีค่ะ", "ขอบคุณมากครับ", "ไม่เป็นไรค่ะ", "ยินดีที่ได้รู้จักครับ", "ขอบคุณที่ช่วยครับ"]}</script>
 
 <header>
-  <div class="brand-wrap"><div class="brand">🇹🇭 Kolay Tayca</div><div class="brand-dev" id="brand-dev"></div></div>
+  <div class="brand-wrap"><div class="brand">Kolay Dil Öğren</div><div class="brand-dev" id="brand-dev"></div></div>
   <div class="pbar-wrap">
     <div class="pbar"><div class="pfill" id="pbar"></div></div>
     <div class="pbar-label" id="pbar-label">0 / 19</div>
@@ -1394,7 +1394,7 @@ function setLang(lang){
       <div id="target-btn-wrap" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;"></div>
     </div>
     <div class="setting-row"><div class="setting-label" data-lk="settings_api_key">Anthropic API Key</div><input type="password" id="api-key-input" placeholder="sk-ant-..."><button class="setting-btn" onclick="saveKey()" data-lk="settings_save">Kaydet</button></div>
-    <div class="setting-row"><div class="setting-label">Google TTS API Key</div><input type="password" id="google-tts-key-input" placeholder="AIza..."><button class="setting-btn" onclick="saveGoogleTTSKey()">Kaydet</button><div style="font-size:11px;color:#666;margin-top:6px;">Masaüstünde kaliteli Tayca sesi için (ücretsiz kotanız varsa). Boş bırakırsanız cihaz sesi kullanılır.</div></div>
+    <div class="setting-row"><div class="setting-label">Google TTS API Key</div><input type="password" id="google-tts-key-input" placeholder="AIza..."><button class="setting-btn" onclick="saveGoogleTTSKey()">Kaydet</button><div style="font-size:11px;color:#666;margin-top:6px;">Masaüstünde kaliteli ses sentezi için (ücretsiz kotanız varsa). Boş bırakırsanız cihaz sesi kullanılır.</div></div>
     <div class="setting-row">
       <div class="setting-label" data-lk="settings_gist">☁️ Cihazlar Arası Senkron (GitHub Gist)</div>
       <input type="password" id="gist-token-input" data-lk-ph="settings_gist_ph" placeholder="ghp_... (gist yetkisi olmalı)" style="margin-top:6px;">
@@ -1425,7 +1425,7 @@ function setLang(lang){
     <div style="background:linear-gradient(135deg,#0d9488,#06b6d4);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
       <div>
         <div style="color:white;font-size:17px;font-weight:700;" id="help-modal-title">📖 Nasıl Kullanılır?</div>
-        <div style="color:rgba(255,255,255,.7);font-size:11px;margin-top:2px;" id="help-modal-sub">Kolay Tayca Öğrenme · Rehber</div>
+        <div style="color:rgba(255,255,255,.7);font-size:11px;margin-top:2px;" id="help-modal-sub">Kolay Dil Öğrenme · Rehber</div>
       </div>
       <button class="modal-close" onclick="closeModal('help-overlay')" style="background:rgba(255,255,255,.2);border:none;color:white;width:30px;height:30px;border-radius:50%;font-size:16px;cursor:pointer;">✕</button>
     </div>
@@ -3520,10 +3520,10 @@ function buildHelpContent(){
     <!-- GENEL -->
     <div id="htab-genel" class="htab-content active">
       <div class="help-card">
-        <div class="help-card-icon">🇹🇭</div>
+        <div class="help-card-icon">🌐</div>
         <div>
           <div class="help-card-title">${L('Bu uygulama ne için?','What is this app?','แอปนี้ใช้ทำอะไร?')}</div>
-          <div class="help-card-body">${L('Phuket\'te günlük hayatta kullanılan Tayca\'yı hızlıca öğrenmek için tasarlandı. Turistik değil, gerçek konuşma diline odaklanır.','Designed to quickly learn everyday Thai used in Phuket. Focuses on real conversation, not tourist phrases.','ออกแบบมาเพื่อเรียนภาษาไทยที่ใช้ในชีวิตประจำวันที่ภูเก็ตอย่างรวดเร็ว เน้นการสนทนาจริง ไม่ใช่ประโยคนักท่องเที่ยว')}</div>
+          <div class="help-card-body">${L('12 dil öğrenmek için tasarlandı. Tam dersler, detaylı gramer, alıştırma ve SRS ile pratik odaklı öğrenme sunar.','Designed to learn 12 languages with full lessons, detailed grammar, practice and SRS.','ออกแบบมาเพื่อเรียน 12 ภาษา ด้วยบทเรียนครบ ไวยากรณ์ แบบฝึกหัด และ SRS')}</div>
         </div>
       </div>
       <div class="help-section-header">📱 ${L('Ana Sekmeler','Main Tabs','แท็บหลัก')}</div>
@@ -3537,7 +3537,7 @@ function buildHelpContent(){
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#e3f2fd;">🌐</div><div>
         <div class="help-row-title">${L('Çeviri','Translate','แปล')}</div>
-        <div class="help-row-sub">${L('Türkçe → Tayca veya Tayca → Türkçe anında çeviri.','Instant Thai ↔ Turkish/English translation.','แปลไทย ↔ ตุรกี/อังกฤษได้ทันที')}</div>
+        <div class="help-row-sub">${L('Arayüz dili ile hedef dil arasında anında çeviri.','Instant translation between your interface and target language.','แปลระหว่างภาษาอินเทอร์เฟซกับภาษาที่เรียนได้ทันที')}</div>
       </div></div>
       <div class="help-row"><div class="help-row-icon" style="background:#fce4ec;">📋</div><div>
         <div class="help-row-title">${L('Liste','Starred','รายการโปรด')}</div>
@@ -3647,10 +3647,10 @@ function buildHelpContent(){
     <!-- HAKKINDA -->
     <div id="htab-hakkinda" class="htab-content">
       <div class="help-card" style="background:linear-gradient(135deg,#e0f2f1,#f0fdfa);border-color:#b2dfdb;">
-        <div style="font-size:32px">🇹🇭</div>
+        <div style="font-size:32px">🌐</div>
         <div>
-          <div class="help-card-title" style="font-size:16px;">${L('Kolay Tayca Öğrenme','Easy Thai Learning','เรียนภาษาไทยง่ายๆ')}</div>
-          <div class="help-card-body">${L('Phuket\'te yaşayanlar için gerçek konuşma diline odaklı Tayca öğrenme uygulaması.','A Thai learning app focused on real conversation for people living in Phuket.','แอปเรียนภาษาไทยที่เน้นการสนทนาจริงสำหรับผู้ที่อาศัยในภูเก็ต')}</div>
+          <div class="help-card-title" style="font-size:16px;">${L('Kolay Dil Öğrenme','Easy Language Learning','เรียนภาษาง่ายๆ')}</div>
+          <div class="help-card-body">${L('12 dil öğrenme platformu. Gerçek konuşma diline odaklı dersler, gramer, alıştırma ve SRS.','A multi-language learning platform with conversation-focused lessons, grammar, practice and SRS.','แพลตฟอร์มเรียนหลายภาษา บทเรียนเน้นการสนทนา ไวยากรณ์ แบบฝึกหัด และ SRS')}</div>
         </div>
       </div>
       <div class="help-section-header">📋 ${L('Uygulama Bilgisi','App Info','ข้อมูลแอป')}</div>
@@ -3659,7 +3659,7 @@ function buildHelpContent(){
       <div class="help-info-row"><span>${L('Ders Başına','Per Lesson','ต่อบทเรียน')}</span><strong>~10 ${L('kelime, 8 gramer, 4 diyalog','words, 8 grammar, 4 dialogues','~10 คำ 8 ไวยากรณ์ 4 บทสนทนา')}</strong></div>
       <div class="help-info-row"><span>${L('Ses Motoru','Audio','เสียง')}</span><strong>Web Speech API + Google TTS</strong></div>
       <div class="help-info-row"><span>${L('Veri','Data','ข้อมูล')}</span><strong>localStorage (${L('internet gerekmez','works offline','ใช้งานออฟไลน์ได้')})</strong></div>
-      <div class="help-info-row"><span>${L('Geliştirici','Developer','นักพัฒนา')}</span><strong>Ali Dinçer, Phuket 🇹🇭</strong></div>
+      <div class="help-info-row"><span>${L('Geliştirici','Developer','นักพัฒนา')}</span><strong>Ali Dinçer</strong></div>
       <div id="help-test-badge" style="display:none;margin:6px 0 2px;padding:7px 14px;background:#7f1d1d;border:2px solid #ef4444;border-radius:10px;color:#fca5a5;font-size:13px;font-weight:800;text-align:center;letter-spacing:.05em;">🚫 TEST MODU AKTİF — Analytics kapalı</div>
       <div class="help-info-row" onclick="openChangelog()" style="cursor:pointer;">
         <span>📦 ${L('Versiyon Geçmişi','Version History','ประวัติเวอร์ชัน')}</span>
@@ -3672,7 +3672,7 @@ function buildHelpContent(){
       <div class="help-card" style="margin-top:14px;background:#fff8e1;border-color:#ffe082;text-align:center;">
         <div style="width:100%;text-align:center;">
           <div style="font-size:24px;margin-bottom:6px;">🙏</div>
-          <div style="font-size:13px;color:#555;line-height:1.6;">${L('Phuket\'teki Thai komşularınla konuşmaya başlamana yardımcı olmak için yapıldı.<br><strong style="color:#0d9488;">ขอบคุณครับ</strong>','Built to help you start talking to your Thai neighbours in Phuket.<br><strong style="color:#0d9488;">ขอบคุณครับ</strong>','สร้างขึ้นเพื่อช่วยให้คุณเริ่มคุยกับเพื่อนบ้านไทยในภูเก็ต<br><strong style="color:#0d9488;">ขอบคุณครับ</strong>')}</div>
+          <div style="font-size:13px;color:#555;line-height:1.6;">${L('Dil öğrenmeyi kolaylaştırmak için yapıldı.<br><strong style="color:#0d9488;">İyi çalışmalar!</strong>','Built to make language learning easier.<br><strong style="color:#0d9488;">Happy learning!</strong>','สร้างขึ้นเพื่อให้การเรียนภาษาง่ายขึ้น<br><strong style="color:#0d9488;">โชคดี!</strong>')}</div>
         </div>
       </div>
     </div>
@@ -3756,7 +3756,7 @@ async function gistPush(){
       method,
       headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
       body: JSON.stringify({
-        description:'Tayca Ogren v3 - User Data',
+        description:'Kolay Dil Ogren v3 - User Data',
         public: false,
         files:{ [GIST_FILENAME]:{ content: JSON.stringify(gistData(), null, 2) } }
       })
@@ -4482,6 +4482,8 @@ function bootApp(){
     if(gttsEl) gttsEl.value=localStorage.getItem('google_tts_key')||localStorage.getItem('kdo:google_tts_key')||'';
     if(gistEl) gistEl.value=localStorage.getItem('tayca_gist_token')||'';
     if(typeof gistAutoSync==='function') gistAutoSync();
+    if(typeof KDO_applyBrandHeader==='function') KDO_applyBrandHeader();
+    if(typeof s==='function') document.title = s('app_title');
   }catch(err){
     console.error('bootApp', err);
     if(typeof renderLessonList==='function') renderLessonList();
@@ -4575,7 +4577,7 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.64"></script>
-<script src="shared/kdo-update.js?v=3.0.64"></script>
+<script src="shared/kdo-analytics.js?v=3.0.65"></script>
+<script src="shared/kdo-update.js?v=3.0.65"></script>
 </body>
 </html>

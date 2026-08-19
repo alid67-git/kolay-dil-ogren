@@ -3,7 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { LANGS } from './lang-config.mjs';
+import { LANGS, PLATFORM_BRAND } from './lang-config.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
@@ -47,9 +47,12 @@ function toRegistryEntry(L) {
     prefix: L.prefix,
     storageBrand: L.storageBrand,
     flag: L.flag,
-    nameTr: L.nameTr,
-    nameEn: L.nameEn,
-    title: L.title,
+    nameTr: PLATFORM_BRAND.nameTr,
+    nameEn: PLATFORM_BRAND.nameEn,
+    title: PLATFORM_BRAND.title,
+    titleEn: PLATFORM_BRAND.titleEn,
+    nameTh: PLATFORM_BRAND.nameTh,
+    titleTh: PLATFORM_BRAND.titleTh,
     lessonsPath: L.lessonsPath,
     tts: L.tts,
     ttsAlt: L.ttsAlt,

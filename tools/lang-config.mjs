@@ -1,4 +1,13 @@
 /** Language configs for HTML app generation */
+export const PLATFORM_BRAND = {
+  nameTr: 'Kolay Dil Öğren',
+  nameEn: 'Easy Language Learning',
+  title: 'Kolay Dil Öğrenme',
+  titleEn: 'Easy Language Learning',
+  nameTh: 'เรียนภาษาง่ายๆ',
+  titleTh: 'เรียนภาษาง่ายๆ',
+};
+
 export const LANGS = {
   de: {
     code: 'de',
@@ -297,9 +306,9 @@ export const LANGS = {
     prefix: 'tv3_',
     storageBrand: 'thai_',
     flag: '🇹🇭',
-    nameTr: 'Kolay Tayca',
-    nameEn: 'Easy Thai Learning',
-    title: 'Kolay Tayca Öğrenme',
+    nameTr: 'Kolay Dil Öğren',
+    nameEn: 'Easy Language Learning',
+    title: 'Kolay Dil Öğrenme',
     htmlFile: 'tayca-v3.html',
     lessonsPath: 'languages/th/lessons',
     tts: 'th-TH',

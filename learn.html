@@ -7,7 +7,7 @@
 <link rel="apple-touch-icon" href="/kolay-dil-ogren/apple-touch-icon.png">
 <link rel="manifest" href="/kolay-dil-ogren/manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Kolay Dil Öğren">
+<meta name="apple-mobile-web-app-title" content="Kolay Dil Öğrenme">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0d9488">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -730,20 +730,20 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.64"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.64"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.64"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.64"></script>
-<script src="shared/kdo-gloss.js?v=3.0.64"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.64"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.64"></script>
-<script src="shared/kdo-tts.js?v=3.0.64"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.64"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.64"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.64"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.64"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.64"></script>
-<script src="shared/kdo-translate.js?v=3.0.64"></script>
+<script src="shared/kdo-version.js?v=3.0.65"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.65"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.65"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.65"></script>
+<script src="shared/kdo-gloss.js?v=3.0.65"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.65"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.65"></script>
+<script src="shared/kdo-tts.js?v=3.0.65"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.65"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.65"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.65"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.65"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.65"></script>
+<script src="shared/kdo-translate.js?v=3.0.65"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1372,7 +1372,7 @@ function setLang(lang){
     <div style="background:linear-gradient(135deg,#0d9488,#06b6d4);padding:16px 18px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
       <div>
         <div style="color:white;font-size:17px;font-weight:700;" id="help-modal-title">📖 Nasıl Kullanılır?</div>
-        <div style="color:rgba(255,255,255,.7);font-size:11px;margin-top:2px;" id="help-modal-sub">Kolay Almanca · Rehber</div>
+        <div style="color:rgba(255,255,255,.7);font-size:11px;margin-top:2px;" id="help-modal-sub">Kolay Dil Öğrenme · Rehber</div>
       </div>
       <button class="modal-close" onclick="closeModal('help-overlay')" style="background:rgba(255,255,255,.2);border:none;color:white;width:30px;height:30px;border-radius:50%;font-size:16px;cursor:pointer;">✕</button>
     </div>
@@ -3812,7 +3812,7 @@ function buildHelpContent(){
     const H = copy[appLang] || copy.en;
     const targetName = ((KDO_CFG.targetUi||{})[appLang]||{}).ui_col_target || ((targetNames[appLang]||targetNames.en)[targetCode]) || targetCode;
     const fill = x => String(x||'').replace(/\{target\}/g,targetName);
-    const appTitle = (appLang==='th' && KDO_CFG.nameTh) ? KDO_CFG.nameTh : (appLang==='tr' ? KDO_CFG.title : (KDO_CFG.nameEn||KDO_CFG.title||'Kolay Dil Öğren'));
+    const appTitle = (typeof KDO_platformAppTitle==='function') ? KDO_platformAppTitle(appLang) : 'Kolay Dil Öğrenme';
     const verLabel = ({tr:'Versiyon',en:'Version',th:'เวอร์ชัน',de:'Version',fr:'Version',es:'Versión',it:'Versione',ru:'Версия',ar:'الإصدار',zh:'版本'})[appLang] || 'Version';
     const histLabel = ({tr:'Versiyon Geçmişi',en:'Version History',th:'ประวัติเวอร์ชัน',de:'Versionsverlauf',fr:'Historique des versions',es:'Historial de versiones',it:'Cronologia versioni',ru:'История версий',ar:'سجل الإصدارات',zh:'版本历史'})[appLang] || 'Version History';
     const viewLabel = ({tr:'Görüntüle →',en:'View →',th:'ดู →',de:'Anzeigen →',fr:'Voir →',es:'Ver →',it:'Vedi →',ru:'Открыть →',ar:'عرض →',zh:'查看 →'})[appLang] || 'View →';
@@ -4119,7 +4119,7 @@ async function gistPush(){
       method,
       headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
       body: JSON.stringify({
-        description:KDO_CFG.nameTr+' v1 - User Data',
+        description:'Kolay Dil Ogren v3 - User Data',
         public: false,
         files:{ [GIST_FILENAME]:{ content: JSON.stringify(gistData(), null, 2) } }
       })
@@ -4969,7 +4969,7 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.64"></script>
-<script src="shared/kdo-update.js?v=3.0.64"></script>
+<script src="shared/kdo-analytics.js?v=3.0.65"></script>
+<script src="shared/kdo-update.js?v=3.0.65"></script>
 </body>
 </html>
