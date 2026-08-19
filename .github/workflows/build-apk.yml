@@ -31,10 +31,6 @@ jobs:
 
       - name: Fix SDK structure for Bubblewrap
         run: |
-          # Bubblewrap validatePath checks: existsSync(sdk/tools) OR existsSync(sdk/bin)
-          # android-actions puts cmdline-tools at $ANDROID_HOME/cmdline-tools/<version>/
-          # but neither sdk/tools nor sdk/bin exists → validation fails.
-          # Fix: create sdk/bin symlink pointing to cmdline-tools/latest/bin (or highest version)
           CT="$ANDROID_HOME/cmdline-tools"
           if [ -d "$CT/latest" ]; then
             CTBIN="$CT/latest/bin"
@@ -42,54 +38,24 @@ jobs:
             VER=$(ls "$CT" | sort -V | tail -1)
             CTBIN="$CT/$VER/bin"
           fi
-          echo "cmdline-tools bin: $CTBIN"
           ln -sf "$CTBIN" "$ANDROID_HOME/bin"
-
-          # Ensure licenses dir exists with accepted hashes
           mkdir -p "$ANDROID_HOME/licenses"
           echo "8933bad161af4178b1185d1a37fbf41ea5269c55" > "$ANDROID_HOME/licenses/android-sdk-license"
           echo "d56f5187479451eabf01fb78af6dfcb131a6481e" >> "$ANDROID_HOME/licenses/android-sdk-license"
           echo "24333f8a63b6825ea9c5514f83c2829b004d1fee" >> "$ANDROID_HOME/licenses/android-sdk-license"
           echo "84831b9409646a918e30573bab4c9c91346d8abd" > "$ANDROID_HOME/licenses/android-sdk-preview-license"
-
-          echo "SDK structure:"
-          ls -la "$ANDROID_HOME/"
-          echo "bin link target: $(readlink -f $ANDROID_HOME/bin)"
-
-          # Write bubblewrap config
           mkdir -p ~/.bubblewrap
           echo "{\"jdkPath\":\"$JAVA_HOME\",\"androidSdkPath\":\"$ANDROID_HOME\"}" > ~/.bubblewrap/config.json
-          echo "Bubblewrap config: $(cat ~/.bubblewrap/config.json)"
 
       - name: Install Bubblewrap
         run: npm install -g @bubblewrap/cli@1.25.0
 
-      - name: Prepare keystore
+      - name: Read keystore fingerprint
         run: |
-          if [ -n "$KEYSTORE_B64" ]; then
-            echo "$KEYSTORE_B64" | python3 -c \
-              "import base64,sys; d=sys.stdin.read().strip(); d+='='*(-len(d)%4); sys.stdout.buffer.write(base64.b64decode(d))" \
-              > kdo.keystore
-            echo "Keystore size: $(wc -c < kdo.keystore) bytes"
-            KPASS="${KEYSTORE_PASSWORD:-kdo2024release}"
-          else
-            KPASS="android"
-            keytool -genkey -v \
-              -keystore kdo.keystore \
-              -alias kdo \
-              -keyalg RSA -keysize 2048 -validity 10000 \
-              -storepass android \
-              -keypass android \
-              -dname "CN=Kolay Dil Ogren,O=Ali Dincir,C=TR"
-          fi
           SHA256=$(keytool -list -v -keystore kdo.keystore -alias kdo \
-            -storepass "$KPASS" 2>/dev/null | grep "SHA256:" | awk '{print $2}')
+            -storepass kdo2024release 2>/dev/null | grep "SHA256:" | awk '{print $2}')
           echo "SHA256=$SHA256" >> $GITHUB_ENV
-          echo "KPASS=$KPASS" >> $GITHUB_ENV
           echo "Signing fingerprint: $SHA256"
-        env:
-          KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
 
       - name: Update assetlinks.json with real fingerprint
         run: |
@@ -100,30 +66,23 @@ jobs:
               target: {
                 namespace: 'android_app',
                 package_name: 'io.alid67.kolaydilogren',
-                sha256_cert_fingerprints: ['${SHA256}']
+                sha256_cert_fingerprints: [process.env.SHA256]
               }
             }];
             fs.writeFileSync('.well-known/assetlinks.json', JSON.stringify(data, null, 2));
           "
 
       - name: Generate TWA project
-        run: |
-          # bubblewrap build without a checksum.json asks interactively to regenerate.
-          # Run `bubblewrap update` first (non-interactive) to create/update the project
-          # and produce the checksum file, then build without any prompts.
-          echo "y" | bubblewrap update --skipPwaValidation --manifest twa-manifest.json || true
+        run: echo "y" | bubblewrap update --skipPwaValidation --manifest twa-manifest.json || true
         env:
-          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD || 'android' }}
-          BUBBLEWRAP_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD || 'android' }}
+          BUBBLEWRAP_KEYSTORE_PASSWORD: kdo2024release
+          BUBBLEWRAP_KEY_PASSWORD: kdo2024release
 
       - name: Build TWA APK
-        run: |
-          echo "y" | bubblewrap build \
-            --skipPwaValidation \
-            --manifest twa-manifest.json
+        run: echo "y" | bubblewrap build --skipPwaValidation --manifest twa-manifest.json
         env:
-          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD || 'android' }}
-          BUBBLEWRAP_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD || 'android' }}
+          BUBBLEWRAP_KEYSTORE_PASSWORD: kdo2024release
+          BUBBLEWRAP_KEY_PASSWORD: kdo2024release
 
       - name: Locate and rename APK
         run: |

@@ -2,3 +2,4 @@
 Thumbs.db
 *.log
 node_modules/
+# kdo.keystore — committed intentionally (password-protected release keystore)
