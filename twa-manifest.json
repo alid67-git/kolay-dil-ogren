@@ -19,17 +19,23 @@
     "path": "kdo.keystore",
     "alias": "kdo"
   },
-  "appVersion": "1",
-  "appVersionName": "3.0.58",
+  "appVersion": "2",
+  "appVersionName": "3.0.59",
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
   "webManifestUrl": "https://alid67-git.github.io/kolay-dil-ogren/manifest.json",
   "fallbackType": "webview",
   "features": {
-    "locationDelegation": { "enabled": false },
-    "playBilling": { "enabled": false }
+    "locationDelegation": {
+      "enabled": false
+    },
+    "playBilling": {
+      "enabled": false
+    }
   },
-  "alphaDependencies": { "enabled": false },
+  "alphaDependencies": {
+    "enabled": false
+  },
   "enableNotifications": false,
   "isChromeOSOnly": false,
   "isMetaQuest": false,
