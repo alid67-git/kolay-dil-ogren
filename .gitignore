@@ -2,4 +2,8 @@
 Thumbs.db
 *.log
 node_modules/
+android-webview/.gradle/
+android-webview/app/build/
 # kdo.keystore — committed intentionally (password-protected release keystore)
+android-webview/.gradle/
+android-webview/app/build/
