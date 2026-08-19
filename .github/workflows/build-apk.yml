@@ -66,9 +66,12 @@ jobs:
 
       - name: Prepare keystore
         run: |
+          KPASS="${KEYSTORE_PASSWORD:-android}"
           if [ -n "$KEYSTORE_B64" ]; then
             echo "$KEYSTORE_B64" | base64 -d > kdo.keystore
           else
+            # Fallback: generate a temporary keystore (APK won't be upgradeable across builds)
+            KPASS="android"
             keytool -genkey -v \
               -keystore kdo.keystore \
               -alias kdo \
@@ -78,11 +81,13 @@ jobs:
               -dname "CN=Kolay Dil Ogren,O=Ali Dincir,C=TR"
           fi
           SHA256=$(keytool -list -v -keystore kdo.keystore -alias kdo \
-            -storepass android 2>/dev/null | grep "SHA256:" | awk '{print $2}')
+            -storepass "$KPASS" 2>/dev/null | grep "SHA256:" | awk '{print $2}')
           echo "SHA256=$SHA256" >> $GITHUB_ENV
+          echo "KPASS=$KPASS" >> $GITHUB_ENV
           echo "Signing fingerprint: $SHA256"
         env:
           KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
 
       - name: Update assetlinks.json with real fingerprint
         run: |
@@ -106,8 +111,8 @@ jobs:
           # and produce the checksum file, then build without any prompts.
           echo "y" | bubblewrap update --skipPwaValidation --manifest twa-manifest.json || true
         env:
-          BUBBLEWRAP_KEYSTORE_PASSWORD: android
-          BUBBLEWRAP_KEY_PASSWORD: android
+          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD || 'android' }}
+          BUBBLEWRAP_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD || 'android' }}
 
       - name: Build TWA APK
         run: |
@@ -115,8 +120,8 @@ jobs:
             --skipPwaValidation \
             --manifest twa-manifest.json
         env:
-          BUBBLEWRAP_KEYSTORE_PASSWORD: android
-          BUBBLEWRAP_KEY_PASSWORD: android
+          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD || 'android' }}
+          BUBBLEWRAP_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD || 'android' }}
 
       - name: Locate and rename APK
         run: |
