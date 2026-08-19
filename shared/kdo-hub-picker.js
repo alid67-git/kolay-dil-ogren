@@ -18,6 +18,21 @@
     ar: 'ar1_lang', zh: 'zh1_lang', ha: 'ha1_lang', sw: 'sw1_lang',
     pt: 'pt1_lang'
   };
+  var TARGET_LANGS = [
+    { id: 'tk', label: '🇹🇷 Türkçe Öğrenme' },
+    { id: 'th', label: '🇹🇭 Tayca' },
+    { id: 'en', label: '🇬🇧 İngilizce' },
+    { id: 'de', label: '🇩🇪 Almanca' },
+    { id: 'it', label: '🇮🇹 İtalyanca' },
+    { id: 'es', label: '🇪🇸 İspanyolca' },
+    { id: 'fr', label: '🇫🇷 Fransızca' },
+    { id: 'ru', label: '🇷🇺 Rusça' },
+    { id: 'ar', label: '🇸🇦 Arapça' },
+    { id: 'zh', label: '🇨🇳 Çince' },
+    { id: 'ha', label: '🇳🇬 Hausa' },
+    { id: 'sw', label: '🇹🇿 Svahili' },
+    { id: 'pt', label: '🇵🇹 Portekizce' }
+  ];
   var HUB_UI = {
     tr: { title: 'Dil değiştir', locale: 'Arayüz dili', target: 'Öğrenilecek dil', apply: 'Uygula', cancel: 'İptal' },
     en: { title: 'Change language', locale: 'Interface language', target: 'Language to learn', apply: 'Apply', cancel: 'Cancel' },
@@ -79,6 +94,16 @@
       '#lang-hub-overlay .hub-field select{background:#2a2a2a;border-color:#444;color:#e0e0e0;}',
       '#lang-hub-overlay .hub-field label{color:#888;}',
       '#lang-hub-overlay .lang-hub-cancel{background:#2a2a2a;border-color:#444;color:#ccc;}',
+      '}',
+      '.lang-current-btn{width:100%;text-align:left;font-size:13px;padding:10px 12px;margin-top:6px;',
+      'background:#f0fdfa;border:1.5px solid #b2dfdb;color:#134e4a;font-weight:700;cursor:pointer;border-radius:8px;}',
+      '.lang-current-btn.open{border-color:#0d9488;background:#e0f2f1;}',
+      '.target-btn{flex:0 1 auto;min-width:46%;font-size:12px;padding:8px 6px;}',
+      '.target-btn.active{background:#0d9488!important;color:white!important;border-color:#0d9488!important;}',
+      '@media(prefers-color-scheme:dark){',
+      '.lang-current-btn{background:#1a2e2c;border-color:#0d9488;color:#e0f2f1;}',
+      '.target-btn{background:#333!important;color:#aaa!important;border-color:#444!important;}',
+      '.target-btn.active{background:#0d9488!important;color:white!important;border-color:#0d9488!important;}',
       '}'
     ].join('');
     document.head.appendChild(st);
@@ -132,6 +157,98 @@
       if (e.target === el) closeLangHubPicker();
     });
   }
+
+  function refreshUiLangCurrentBtn() {
+    var btn = document.getElementById('ui-lang-current');
+    if (!btn) return;
+    var labels = window.KDO_UI_LABELS || { tr: '🇹🇷 Türkçe', en: '🇬🇧 English' };
+    var lang = (typeof appLang !== 'undefined' && appLang) ? appLang : uiLang();
+    var open = document.getElementById('lang-btn-wrap');
+    var isOpen = open && open.style.display !== 'none';
+    btn.textContent = (labels[lang] || lang) + (isOpen ? ' ▴' : ' ▾');
+    btn.classList.toggle('open', isOpen);
+  }
+
+  function toggleUiLangPanel() {
+    injectStyles();
+    var wrap = document.getElementById('lang-btn-wrap');
+    if (!wrap) return;
+    var show = wrap.style.display === 'none' || !wrap.style.display;
+    wrap.style.display = show ? 'flex' : 'none';
+    refreshUiLangCurrentBtn();
+  }
+
+  function collapseUiLangPanel() {
+    var wrap = document.getElementById('lang-btn-wrap');
+    if (wrap) wrap.style.display = 'none';
+    refreshUiLangCurrentBtn();
+  }
+
+  function initUiLangButtons() {
+    var wrap = document.getElementById('lang-btn-wrap');
+    if (!wrap) return;
+    var langs = window.KDO_UI_LANGS || ['tr', 'en'];
+    var labels = window.KDO_UI_LABELS || { tr: '🇹🇷 Türkçe', en: '🇬🇧 English' };
+    var lang = (typeof appLang !== 'undefined' && appLang) ? appLang : uiLang();
+    wrap.innerHTML = langs.map(function (l) {
+      return '<button type="button" class="setting-btn lang-btn" data-lang="' + l + '" onclick="KDO_pickUiLang(\'' + l + '\')" style="flex:0 1 auto;min-width:46%;font-size:12px;padding:8px 6px;">' + (labels[l] || l) + '</button>';
+    }).join('');
+    wrap.querySelectorAll('.lang-btn').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    wrap.style.display = 'none';
+    refreshUiLangCurrentBtn();
+  }
+
+  function initTargetButtons() {
+    var wrap = document.getElementById('target-btn-wrap');
+    if (!wrap) return;
+    var cur = currentTarget();
+    wrap.innerHTML = TARGET_LANGS.map(function (t) {
+      return '<button type="button" class="setting-btn target-btn" data-target="' + t.id + '" onclick="KDO_pickTargetLang(\'' + t.id + '\')">' + t.label + '</button>';
+    }).join('');
+    wrap.querySelectorAll('.target-btn').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.target === cur);
+    });
+  }
+
+  function initSettingsLangPickers() {
+    injectStyles();
+    initUiLangButtons();
+    initTargetButtons();
+  }
+
+  function pickUiLang(lang) {
+    collapseUiLangPanel();
+    if (typeof setLang === 'function') {
+      setLang(lang);
+      return;
+    }
+    localStorage.setItem(APP + ':locale', lang);
+    localStorage.setItem(APP + ':ui', lang);
+    var tgt = currentTarget();
+    localStorage.setItem(LANG_KEYS[tgt] || 'tv3_lang', lang);
+    location.reload();
+  }
+
+  function pickTargetLang(tgt) {
+    var prev = currentTarget();
+    var loc = (typeof appLang !== 'undefined' && appLang) ? appLang : uiLang();
+    if (tgt === prev) return;
+    localStorage.setItem(APP + ':locale', loc);
+    localStorage.setItem(APP + ':ui', loc);
+    localStorage.setItem(APP + ':base', loc);
+    localStorage.setItem(APP + ':target', tgt);
+    localStorage.setItem(APP + ':setup-done', '1');
+    localStorage.setItem(LANG_KEYS[tgt] || 'tv3_lang', loc);
+    if (typeof closeModal === 'function') closeModal('settings-overlay');
+    location.href = ROUTES[tgt] || ROUTES.th;
+  }
+
+  window.KDO_pickUiLang = pickUiLang;
+  window.KDO_pickTargetLang = pickTargetLang;
+  window.toggleUiLangPanel = toggleUiLangPanel;
+  window.initSettingsLangPickers = initSettingsLangPickers;
 
   function refreshLabels() {
     var p = hubPack();
