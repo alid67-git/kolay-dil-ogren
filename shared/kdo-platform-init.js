@@ -95,12 +95,6 @@
   window.addEventListener('load', onReady);
   applyVersionBadge();
 
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(function (regs) {
-      regs.forEach(function (reg) { reg.unregister(); });
-    });
-  }
-
   window.KDO_fixTv3CrossMigration = function (prefix) {
     if (!prefix) return;
     var mark = 'kdo:purge-tv3-cross:' + prefix;
