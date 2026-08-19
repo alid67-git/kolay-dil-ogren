@@ -1,20 +1,16 @@
 package io.alid67.kolaydilogren;
 
 import android.annotation.SuppressLint;
+import android.content.pm.ActivityInfo;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,25 +25,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        Window window = getWindow();
-        WindowCompat.setDecorFitsSystemWindows(window, false);
-        window.setStatusBarColor(Color.parseColor("#0d9488"));
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
+        getWindow().setStatusBarColor(Color.parseColor("#0d9488"));
         WindowInsetsControllerCompat controller =
-                WindowCompat.getInsetsController(window, window.getDecorView());
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
         if (controller != null) {
             controller.setAppearanceLightStatusBars(false);
         }
 
         webView = new WebView(this);
-        webView.setBackgroundColor(Color.parseColor("#0d9488"));
+        webView.setBackgroundColor(Color.parseColor("#f5f5f5"));
         setContentView(webView);
-
-        ViewCompat.setOnApplyWindowInsetsListener(webView, (view, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
