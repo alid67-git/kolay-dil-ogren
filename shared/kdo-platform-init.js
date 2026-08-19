@@ -3,6 +3,17 @@
   'use strict';
   var APP_VERSION = window.KDO_PLATFORM_VERSION || 'v3.0.1';
   window.KDO_APP_VERSION = APP_VERSION;
+
+  window.KDO_PLATFORM_BRAND = window.KDO_PLATFORM_BRAND || {
+    flag: '',
+    nameTr: 'Kolay Dil Öğren',
+    nameEn: 'Easy Language Learning',
+    nameTh: 'เรียนภาษาง่ายๆ',
+    title: 'Kolay Dil Öğrenme',
+    titleEn: 'Easy Language Learning',
+    titleTh: 'เรียนภาษาง่ายๆ'
+  };
+
   var storedVersion = localStorage.getItem('app_version');
   if (storedVersion && storedVersion !== APP_VERSION) {
     if ('caches' in window) {
@@ -37,6 +48,23 @@
       || 'tr';
   }
 
+  function brandNameForLocale(cfg, lang) {
+    if (lang === 'en' && cfg.nameEn) return cfg.nameEn;
+    if (lang === 'th' && cfg.nameTh) return cfg.nameTh;
+    if (lang !== 'tr' && cfg['name' + lang.charAt(0).toUpperCase() + lang.slice(1)]) {
+      return cfg['name' + lang.charAt(0).toUpperCase() + lang.slice(1)];
+    }
+    if (lang !== 'tr' && cfg.nameEn) return cfg.nameEn;
+    return cfg.nameTr || cfg.title || 'Kolay Dil Öğren';
+  }
+
+  function brandTitleForLocale(cfg, lang) {
+    if (lang === 'en' && cfg.titleEn) return cfg.titleEn;
+    if (lang === 'th' && cfg.titleTh) return cfg.titleTh;
+    if (lang === 'tr') return cfg.title || cfg.nameTr;
+    return cfg.titleEn || cfg.title || cfg.nameEn || cfg.nameTr;
+  }
+
   function applyBrandDev() {
     var el = document.getElementById('brand-dev');
     if (!el) return;
@@ -59,27 +87,22 @@
   }
 
   function applyBrandHeader() {
-    var cfg = window.KDO_CFG;
+    var cfg = window.KDO_PLATFORM_BRAND;
     if (!cfg) return;
     var brand = document.querySelector('.brand');
     if (!brand) return;
     var lang = resolveUiLocale();
-    var name = cfg.nameTr;
-    if (lang === 'en' && cfg.nameEn) name = cfg.nameEn;
-    else if (lang === 'th' && cfg.nameTh) name = cfg.nameTh;
-    else if (lang !== 'tr' && cfg['name' + lang.charAt(0).toUpperCase() + lang.slice(1)]) {
-      name = cfg['name' + lang.charAt(0).toUpperCase() + lang.slice(1)];
-    } else if (lang !== 'tr' && cfg.nameEn) name = cfg.nameEn;
-    brand.textContent = cfg.flag + ' ' + name;
-    if (cfg.title) {
-      var titles = { tr: cfg.title, en: cfg.titleEn, th: cfg.titleTh };
-      document.title = titles[lang] || cfg.titleEn || cfg.title;
-    }
+    var name = brandNameForLocale(cfg, lang);
+    brand.textContent = cfg.flag ? (cfg.flag + ' ' + name) : name;
+    document.title = brandTitleForLocale(cfg, lang);
   }
 
   window.KDO_applyBrandDev = applyBrandDev;
   window.KDO_applyBrandHeader = applyBrandHeader;
   window.KDO_applyVersionBadge = applyVersionBadge;
+  window.KDO_platformAppTitle = function (lang) {
+    return brandTitleForLocale(window.KDO_PLATFORM_BRAND, lang || resolveUiLocale());
+  };
 
   function onReady() {
     applyBrandDev();
