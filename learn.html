@@ -730,20 +730,21 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.65"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.65"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.65"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.65"></script>
-<script src="shared/kdo-gloss.js?v=3.0.65"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.65"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.65"></script>
-<script src="shared/kdo-tts.js?v=3.0.65"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.65"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.65"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.65"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.65"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.65"></script>
-<script src="shared/kdo-translate.js?v=3.0.65"></script>
+<script src="shared/kdo-version.js?v=3.0.66"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.66"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.66"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.66"></script>
+<script src="shared/kdo-gloss.js?v=3.0.66"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.66"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.66"></script>
+<script src="shared/kdo-tts.js?v=3.0.66"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.66"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.66"></script>
+<script src="shared/kdo-store.js?v=3.0.66"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.66"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.66"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.66"></script>
+<script src="shared/kdo-translate.js?v=3.0.66"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1173,9 +1174,10 @@ function runEnLesson2Migration(){
   const sv=localStorage.getItem('app_version');
   if(sv && sv !== 'v1.4'){
     const shiftNum=n=>(n>=2?n+1:n);
-    const cl=JSON.parse(localStorage.getItem(PREFIX+'complete')||'[]');
-    localStorage.setItem(PREFIX+'complete',JSON.stringify([...new Set(cl.map(shiftNum))].sort((a,b)=>a-b)));
-    const vt=JSON.parse(localStorage.getItem(PREFIX+'visited')||'{}');
+    const safe = window.KDO_safeStore || function(k, fb) { try { var r=localStorage.getItem(k); return r ? JSON.parse(r) : fb; } catch(e) { return fb; } };
+    const cl = safe(PREFIX+'complete', []);
+    localStorage.setItem(PREFIX+'complete',JSON.stringify([...new Set((Array.isArray(cl)?cl:[]).map(shiftNum))].sort((a,b)=>a-b)));
+    const vt = safe(PREFIX+'visited', {});
     const newVt={};
     Object.keys(vt).forEach(k=>{
       const m=k.match(/^L(\d+)_(.+)$/);
@@ -1183,7 +1185,7 @@ function runEnLesson2Migration(){
       else newVt[k]=vt[k];
     });
     localStorage.setItem(PREFIX+'visited',JSON.stringify(newVt));
-    const st=JSON.parse(localStorage.getItem(PREFIX+'stats')||'{}');
+    const st = safe(PREFIX+'stats', {});
     const newSt={};
     Object.keys(st).forEach(k=>{
       const n=+k;
@@ -1527,16 +1529,34 @@ async function loadDers(num){
 }
 
 // =================== DURUM ===================
-let starred = JSON.parse(localStorage.getItem(PREFIX+'star')||'{}');
+function initLessonState() {
+  var st = (typeof KDO_normalizeLessonState === 'function')
+    ? KDO_normalizeLessonState(PREFIX)
+    : null;
+  if (st) return st;
+  return {
+    starred: JSON.parse(localStorage.getItem(PREFIX+'star')||'{}'),
+    visitedTabs: JSON.parse(localStorage.getItem(PREFIX+'visited')||'{}'),
+    lessonStats: JSON.parse(localStorage.getItem(PREFIX+'stats')||'{}'),
+    completedLessons: JSON.parse(localStorage.getItem(PREFIX+'complete')||'[]'),
+  };
+}
+var _lessonState = initLessonState();
+let starred = _lessonState.starred;
+let visitedTabs = _lessonState.visitedTabs;
+let lessonStats = _lessonState.lessonStats;
+let completedLessons = _lessonState.completedLessons;
 let currentLesson = {num:1};
-let visitedTabs = JSON.parse(localStorage.getItem(PREFIX+'visited')||'{}');
 
-// ── DERS İSTATİSTİKLERİ ──
-// {lessonNum: {totalSec, quizCorrect, quizTotal, listenCorrect, listenTotal}}
-let lessonStats = JSON.parse(localStorage.getItem(PREFIX+'stats')||'{}');
-let completedLessons = JSON.parse(localStorage.getItem(PREFIX+'complete')||'[]'); // [1,3,5...]
+function reloadLessonState() {
+  var st = initLessonState();
+  starred = st.starred;
+  visitedTabs = st.visitedTabs;
+  lessonStats = st.lessonStats;
+  completedLessons = st.completedLessons;
+}
 function saveCompleted(){ localStorage.setItem(PREFIX+'complete', JSON.stringify(completedLessons)); }
-function isCompleted(num){ return completedLessons.includes(num); }
+function isCompleted(num){ return Array.isArray(completedLessons) && completedLessons.includes(num); }
 
 let bonusOpen = localStorage.getItem(PREFIX+'bonusOpen')==='true';
 function toggleBonus(){ bonusOpen=!bonusOpen; localStorage.setItem(PREFIX+'bonusOpen',bonusOpen); renderLessonList(); }
@@ -1843,29 +1863,35 @@ function renderLessonCard(L){
 }
 
 function renderLessonList(){
-  const regular = LESSONS_META.filter(L=>L.num<21);
-  const bonus   = LESSONS_META.filter(L=>L.num>=21);
-  const bonusDone = bonus.filter(L=>isCompleted(L.num)).length;
-  const bonusSets = bonus.length;
+  try {
+    const wrap = document.getElementById('lesson-list-wrap');
+    if (!wrap) return;
+    const regular = LESSONS_META.filter(L=>L.num<21);
+    const bonus   = LESSONS_META.filter(L=>L.num>=21);
+    const bonusDone = bonus.filter(L=>isCompleted(L.num)).length;
+    const bonusSets = bonus.length;
 
-  // Toplam bonus kelime sayısı (her set ~50 kelime)
-  const totalWords = 1437;
+    const totalWords = 1437;
 
-  const bonusHeader = `
-    <div class="bonus-header" onclick="toggleBonus()">
-      <div class="bonus-star">⭐</div>
-      <div class="bonus-info">
-        <div class="bonus-title">${s('bonus_title')}</div>
-        <div class="bonus-sub">${totalWords} ${s('bonus_words')} · ${bonusSets} ${s('bonus_sets')} · ${bonusDone}/${bonusSets} ${s('bonus_done')}</div>
-      </div>
-      <div class="bonus-toggle">${bonusOpen?'▲':'▼'}</div>
-    </div>`;
+    const bonusHeader = `
+      <div class="bonus-header" onclick="toggleBonus()">
+        <div class="bonus-star">⭐</div>
+        <div class="bonus-info">
+          <div class="bonus-title">${s('bonus_title')}</div>
+          <div class="bonus-sub">${totalWords} ${s('bonus_words')} · ${bonusSets} ${s('bonus_sets')} · ${bonusDone}/${bonusSets} ${s('bonus_done')}</div>
+        </div>
+        <div class="bonus-toggle">${bonusOpen?'▲':'▼'}</div>
+      </div>`;
 
-  const bonusItems = bonusOpen ? bonus.map(L=>`
-    <div class="bonus-lesson">${renderLessonCard(L)}</div>`).join('') : '';
+    const bonusItems = bonusOpen ? bonus.map(L=>`
+      <div class="bonus-lesson">${renderLessonCard(L)}</div>`).join('') : '';
 
-  document.getElementById('lesson-list-wrap').innerHTML =
-    regular.map(renderLessonCard).join('') + bonusHeader + bonusItems;
+    wrap.innerHTML = regular.map(renderLessonCard).join('') + bonusHeader + bonusItems;
+  } catch (err) {
+    console.error('renderLessonList', err);
+    const wrap = document.getElementById('lesson-list-wrap');
+    if (wrap) wrap.innerHTML = '<p style="padding:20px;color:#666;text-align:center">Dersler yüklenemedi. Sayfayı yenileyin veya ayarlardan veriyi sıfırlayın.</p>';
+  }
 }
 
 function insertPracticeTab(tabs){
@@ -4082,14 +4108,17 @@ function saveGist(){
 const GIST_FILENAME = 'english-v1-sync.json';
 
 function gistApplyPayload(payload){
+  if (!payload || typeof payload !== 'object') return;
+  const safe = window.KDO_safeStore || function(k, fb) { try { return JSON.parse(localStorage.getItem(k)||JSON.stringify(fb)); } catch(e) { return fb; } };
   const star     = payload[PREFIX+'star'];
   const complete = payload[PREFIX+'complete'];
   const srs      = payload[PREFIX+'srs'];
   const stats    = payload[PREFIX+'stats'];
-  if(star)     { localStorage.setItem(PREFIX+'star', star);     starred = JSON.parse(star); }
-  if(complete) { localStorage.setItem(PREFIX+'complete', complete); completedLessons = JSON.parse(complete); }
+  if(star)     { localStorage.setItem(PREFIX+'star', star); starred = safe(PREFIX+'star', {}); }
+  if(complete) { localStorage.setItem(PREFIX+'complete', complete); completedLessons = safe(PREFIX+'complete', []); }
   if(srs)      localStorage.setItem(PREFIX+'srs', srs);
-  if(stats)    localStorage.setItem(PREFIX+'stats', stats);
+  if(stats)    { localStorage.setItem(PREFIX+'stats', stats); lessonStats = safe(PREFIX+'stats', {}); }
+  reloadLessonState();
 }
 
 function gistData(){
@@ -4856,6 +4885,7 @@ function showExFailed(){
 // =================== INIT ===================
 function bootApp(){
   try{
+    reloadLessonState();
     document.documentElement.lang = appLang;
     document.documentElement.dir = (appLang === 'ar') ? 'rtl' : 'ltr';
     document.querySelectorAll('[data-lk]').forEach(el=>{ el.textContent=s(el.dataset.lk); });
@@ -4969,7 +4999,7 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.65"></script>
-<script src="shared/kdo-update.js?v=3.0.65"></script>
+<script src="shared/kdo-analytics.js?v=3.0.66"></script>
+<script src="shared/kdo-update.js?v=3.0.66"></script>
 </body>
 </html>
