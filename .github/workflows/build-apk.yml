@@ -66,11 +66,10 @@ jobs:
 
       - name: Prepare keystore
         run: |
-          KPASS="${KEYSTORE_PASSWORD:-android}"
           if [ -n "$KEYSTORE_B64" ]; then
-            echo "$KEYSTORE_B64" | base64 -d > kdo.keystore
+            echo "$KEYSTORE_B64" | tr -d '[:space:]' | base64 -d > kdo.keystore
+            KPASS="${KEYSTORE_PASSWORD:-kdo2024release}"
           else
-            # Fallback: generate a temporary keystore (APK won't be upgradeable across builds)
             KPASS="android"
             keytool -genkey -v \
               -keystore kdo.keystore \
