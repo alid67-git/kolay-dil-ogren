@@ -67,7 +67,8 @@ jobs:
       - name: Prepare keystore
         run: |
           if [ -n "$KEYSTORE_B64" ]; then
-            echo "$KEYSTORE_B64" | tr -d '[:space:]' | base64 -d > kdo.keystore
+            printf '%s' "$KEYSTORE_B64" | tr -d '[:space:]\n\r' | base64 --decode --ignore-garbage > kdo.keystore
+            echo "Keystore size: $(wc -c < kdo.keystore) bytes"
             KPASS="${KEYSTORE_PASSWORD:-kdo2024release}"
           else
             KPASS="android"
