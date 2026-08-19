@@ -68,7 +68,7 @@ jobs:
         run: |
           if [ -n "$KEYSTORE_B64" ]; then
             echo "$KEYSTORE_B64" | python3 -c \
-              "import base64,sys; sys.stdout.buffer.write(base64.b64decode(sys.stdin.read().strip()))" \
+              "import base64,sys; d=sys.stdin.read().strip(); d+='='*(-len(d)%4); sys.stdout.buffer.write(base64.b64decode(d))" \
               > kdo.keystore
             echo "Keystore size: $(wc -c < kdo.keystore) bytes"
             KPASS="${KEYSTORE_PASSWORD:-kdo2024release}"
