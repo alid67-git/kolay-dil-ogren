@@ -71,6 +71,19 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d948
 .cl-latest .cl-ver{font-size:13px;}
 .ver-btn{cursor:pointer;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;}
 .ver-btn:hover{color:rgba(255,255,255,.9);}
+
+/* UPDATE BANNER */
+#update-banner{display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:50%;transform:translateX(-50%);z-index:9999;
+  background:#134e4a;color:white;border-radius:16px;padding:12px 18px;
+  box-shadow:0 6px 24px rgba(0,0,0,.35);
+  display:none;align-items:center;gap:12px;font-size:13px;font-weight:600;
+  max-width:calc(100vw - 32px);white-space:nowrap;
+  animation:slideUp .3s ease;}
+#update-banner.show{display:flex;}
+@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+#update-btn{background:#0d9488;color:white;border:none;border-radius:10px;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;flex-shrink:0;}
+#update-btn:active{opacity:.8;}
+#update-dismiss{background:none;border:none;color:rgba(255,255,255,.5);font-size:18px;cursor:pointer;padding:0 2px;line-height:1;flex-shrink:0;}
 .pbar-wrap{flex:0 1 110px;min-width:46px;display:flex;flex-direction:column;gap:3px;margin:0 4px;}
 .pbar{height:5px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;}
 .pbar-label{font-size:9px;color:rgba(255,255,255,.55);text-align:right;letter-spacing:.03em;}
@@ -4855,6 +4868,13 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
   </div>
 </div>
 
+<!-- UPDATE BANNER -->
+<div id="update-banner" role="alert" aria-live="polite">
+  <span id="update-banner-text">🆕 Yeni sürüm hazır</span>
+  <button id="update-btn" onclick="applyUpdate()">Güncelle</button>
+  <button id="update-dismiss" onclick="dismissUpdate()" aria-label="Kapat">✕</button>
+</div>
+
 <!-- CHANGELOG OVERLAY -->
 <div id="changelog-overlay" onclick="if(event.target===this)closeChangelog()">
   <div id="changelog-modal">
@@ -4910,6 +4930,74 @@ else { const _bd=document.getElementById('brand-dev'); if(_bd&&typeof devCredit=
 })();
 </script>
 <script src="shared/kdo-analytics.js?v=3.0.48"></script>
-<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/kolay-dil-ogren/sw.js');}</script>
+<script>
+// =================== SERVICE WORKER + UPDATE BANNER ===================
+(function(){
+  if (!('serviceWorker' in navigator)) return;
+
+  let _waitingSW = null;
+
+  function showUpdateBanner() {
+    const banner = document.getElementById('update-banner');
+    const txt = document.getElementById('update-banner-text');
+    if (!banner) return;
+    const lang = (typeof appLang !== 'undefined' ? appLang : 'tr');
+    const msgs = { tr:'🆕 Yeni sürüm hazır', en:'🆕 Update available', de:'🆕 Update verfügbar',
+                   fr:'🆕 Mise à jour disponible', es:'🆕 Actualización disponible',
+                   it:'🆕 Aggiornamento disponibile', ru:'🆕 Обновление доступно',
+                   ar:'🆕 يتوفر تحديث', zh:'🆕 有新版本', th:'🆕 มีการอัปเดต' };
+    const btnMsgs = { tr:'Güncelle', en:'Update', de:'Aktualisieren',
+                      fr:'Mettre à jour', es:'Actualizar', it:'Aggiorna',
+                      ru:'Обновить', ar:'تحديث', zh:'更新', th:'อัปเดต' };
+    if (txt) txt.textContent = msgs[lang] || msgs.tr;
+    const btn = document.getElementById('update-btn');
+    if (btn) btn.textContent = btnMsgs[lang] || btnMsgs.tr;
+    banner.classList.add('show');
+  }
+
+  window.applyUpdate = function() {
+    if (_waitingSW) {
+      _waitingSW.postMessage({ type: 'SKIP_WAITING' });
+    }
+    document.getElementById('update-banner').classList.remove('show');
+  };
+
+  window.dismissUpdate = function() {
+    document.getElementById('update-banner').classList.remove('show');
+  };
+
+  navigator.serviceWorker.register('/kolay-dil-ogren/sw.js').then(reg => {
+    // Check immediately if there's already a waiting SW (e.g. page refresh)
+    if (reg.waiting) {
+      _waitingSW = reg.waiting;
+      showUpdateBanner();
+    }
+
+    // New SW found during this session
+    reg.addEventListener('updatefound', () => {
+      const newSW = reg.installing;
+      newSW.addEventListener('statechange', () => {
+        if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+          _waitingSW = newSW;
+          showUpdateBanner();
+        }
+      });
+    });
+  });
+
+  // When the new SW takes over, reload to use fresh cache
+  let refreshing = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!refreshing) { refreshing = true; window.location.reload(); }
+  });
+
+  // Also poll for updates every 60s (for long-running sessions)
+  setInterval(() => {
+    navigator.serviceWorker.getRegistration('/kolay-dil-ogren/sw.js').then(reg => {
+      if (reg) reg.update();
+    });
+  }, 60000);
+})();
+</script>
 </body>
 </html>
