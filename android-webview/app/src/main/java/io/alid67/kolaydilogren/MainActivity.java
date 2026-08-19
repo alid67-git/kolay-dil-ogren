@@ -1,7 +1,9 @@
 package io.alid67.kolaydilogren;
 
 import android.annotation.SuppressLint;
-import android.content.pm.ActivityInfo;
+import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.webkit.WebResourceRequest;
@@ -15,7 +17,9 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String START_URL = "https://alid67-git.github.io/kolay-dil-ogren/";
+    private static final String APP_VERSION = "3.0.64";
+    private static final String START_URL =
+            "https://alid67-git.github.io/kolay-dil-ogren/tayca-v3.html?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
     private static final String ALLOWED_PATH_PREFIX = "/kolay-dil-ogren";
 
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         webView = new WebView(this);
         webView.setBackgroundColor(Color.parseColor("#f5f5f5"));
         setContentView(webView);
+        maybeClearCacheForUpgrade();
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -76,6 +81,20 @@ public class MainActivity extends AppCompatActivity {
             webView.restoreState(savedInstanceState);
         } else {
             webView.loadUrl(START_URL);
+        }
+    }
+
+    private void maybeClearCacheForUpgrade() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
+            int versionCode = info.versionCode;
+            SharedPreferences prefs = getSharedPreferences("kdo_webview", MODE_PRIVATE);
+            int saved = prefs.getInt("version_code", -1);
+            if (saved != versionCode) {
+                webView.clearCache(true);
+                prefs.edit().putInt("version_code", versionCode).apply();
+            }
+        } catch (PackageManager.NameNotFoundException ignored) {
         }
     }
 
