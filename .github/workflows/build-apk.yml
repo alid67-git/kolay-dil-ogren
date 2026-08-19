@@ -97,9 +97,19 @@ jobs:
             fs.writeFileSync('.well-known/assetlinks.json', JSON.stringify(data, null, 2));
           "
 
+      - name: Generate TWA project
+        run: |
+          # bubblewrap build without a checksum.json asks interactively to regenerate.
+          # Run `bubblewrap update` first (non-interactive) to create/update the project
+          # and produce the checksum file, then build without any prompts.
+          echo "y" | bubblewrap update --skipPwaValidation --manifest twa-manifest.json || true
+        env:
+          BUBBLEWRAP_KEYSTORE_PASSWORD: android
+          BUBBLEWRAP_KEY_PASSWORD: android
+
       - name: Build TWA APK
         run: |
-          bubblewrap build \
+          echo "y" | bubblewrap build \
             --skipPwaValidation \
             --manifest twa-manifest.json
         env:
