@@ -841,7 +841,7 @@ const UI_LOCAL = {
     list_empty:'⭐<br><br>Henüz yıldızlanan sözcük yok.',
     list_analysis:'📖 Cümle Analizi',
     // Ayarlar
-    settings_title:'⚙️ Ayarlar', settings_lang:'🌐 Uygulama Dili',
+    settings_title:'⚙️ Ayarlar', settings_lang:'🌐 Uygulama Dili', settings_target:'📚 Öğrenilecek Dil',
     settings_gist:'☁️ Cihazlar Arası Senkron (GitHub Gist)',
     settings_push:'☁️ Buluta Kaydet', settings_pull:'📥 Buluttan Al',
     settings_save:'Kaydet', settings_data:'Veri', settings_backup:'💾 Yedekle',
@@ -963,7 +963,7 @@ const UI_LOCAL = {
     list_empty:'⭐<br><br>No starred words yet.',
     list_analysis:'📖 Sentence Analysis',
     // Settings
-    settings_title:'⚙️ Settings', settings_lang:'🌐 App Language',
+    settings_title:'⚙️ Settings', settings_lang:'🌐 App Language', settings_target:'📚 Language to Learn',
     settings_gist:'☁️ Cross-Device Sync (GitHub Gist)',
     settings_push:'☁️ Save to Cloud', settings_pull:'📥 Load from Cloud',
     settings_save:'Save', settings_data:'Data', settings_backup:'💾 Backup',
@@ -1223,6 +1223,7 @@ function lessonNumLabel(num){
 
 
 function _initLangButtons(){
+  if(typeof initSettingsLangPickers==='function'){ initSettingsLangPickers(); return; }
   const wrap = document.getElementById('lang-btn-wrap');
   if(!wrap) return;
   const langs = window.KDO_UI_LANGS || ['tr','en'];
@@ -1257,6 +1258,7 @@ function setLang(lang){
     if(LD) document.getElementById('detail-content').innerHTML = buildLessonHTML(LD, currentLesson);
   }
   buildHelpContent();
+  if(typeof collapseUiLangPanel==='function') collapseUiLangPanel();
 }
 // =================== DİL SİSTEMİ END ===================
 </script>
@@ -1322,8 +1324,12 @@ function setLang(lang){
     <div class="modal-head"><div class="modal-title" data-lk="settings_title">⚙️ Ayarlar</div><button class="modal-close" onclick="closeModal('settings-overlay')">✕</button></div>
     <div class="setting-row">
       <div class="setting-label" data-lk="settings_lang">🌐 Uygulama Dili</div>
-      <div id="lang-btn-wrap" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;"></div>
-      <button type="button" class="setting-btn" onclick="openLangHubPicker()" style="width:100%;margin-top:6px;background:#0d9488;color:white;border-color:#0d9488;" data-lk="ui_change_lang">🌐 Dil değiştir</button>
+      <button type="button" id="ui-lang-current" class="lang-current-btn" onclick="toggleUiLangPanel()">🇹🇷 Türkçe ▾</button>
+      <div id="lang-btn-wrap" style="display:none;flex-wrap:wrap;gap:6px;margin-top:8px;"></div>
+    </div>
+    <div class="setting-row">
+      <div class="setting-label" data-lk="settings_target">📚 Öğrenilecek Dil</div>
+      <div id="target-btn-wrap" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;"></div>
     </div>
     <div class="setting-row"><div class="setting-label">Anthropic API Key</div><input type="password" id="api-key-input" placeholder="sk-ant-..."><button class="setting-btn" onclick="saveKey()" data-lk="settings_save">Kaydet</button></div>
     <div class="setting-row">
