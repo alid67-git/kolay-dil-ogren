@@ -21,7 +21,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.72";
+    private static final String APP_VERSION = "3.0.73";
     private static final String START_URL =
             "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
