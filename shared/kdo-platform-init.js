@@ -49,13 +49,15 @@
   }
 
   function brandNameForLocale(cfg, lang) {
-    if (!cfg) return 'Kolay Dil Öğren';
-    if (lang === 'tr' && cfg.targetLabelTr) {
-      return 'Kolay ' + cfg.targetLabelTr + ' Öğren';
+    if (!cfg) return 'Kolay Dil';
+    // Kısa başlık (sol header): "Kolay İngilizce" — "Öğren/Öğrenme" yok
+    if (lang === 'tr') {
+      if (cfg.nameTr) return cfg.nameTr.replace(/\s+Öğren(me)?$/u, '');
+      if (cfg.targetLabelTr) return 'Kolay ' + cfg.targetLabelTr;
     }
     if (lang === 'en') {
-      if (cfg.nameEn) return cfg.nameEn.replace(/ Learning$/, ' Learn').replace(/ Öğrenme$/, ' Learn');
-      if (cfg.targetLabelEn) return 'Easy ' + cfg.targetLabelEn + ' Learn';
+      if (cfg.nameEn) return cfg.nameEn.replace(/\s+Learning$/i, '').replace(/\s+Learn$/i, '');
+      if (cfg.targetLabelEn) return 'Easy ' + cfg.targetLabelEn;
     }
     if (lang === 'th') {
       if (cfg.nameTh) return cfg.nameTh;
@@ -64,9 +66,9 @@
     if (lang !== 'tr' && cfg['name' + lang.charAt(0).toUpperCase() + lang.slice(1)]) {
       return cfg['name' + lang.charAt(0).toUpperCase() + lang.slice(1)];
     }
-    if (cfg.nameTr && lang === 'tr') return cfg.nameTr + ' Öğren';
-    if (cfg.nameEn) return cfg.nameEn;
-    return cfg.nameTr || cfg.title || 'Kolay Dil Öğren';
+    if (cfg.nameTr) return cfg.nameTr.replace(/\s+Öğren(me)?$/u, '');
+    if (cfg.nameEn) return cfg.nameEn.replace(/\s+Learning$/i, '');
+    return cfg.title || 'Kolay Dil';
   }
 
   function brandTitleForLocale(cfg, lang) {
