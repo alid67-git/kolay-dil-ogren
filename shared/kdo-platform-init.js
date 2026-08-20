@@ -82,17 +82,7 @@
   }
 
   function fitBrandText() {
-    var el = document.querySelector('.brand');
-    if (!el) return;
-    el.style.fontSize = '';
-    var size = parseFloat(window.getComputedStyle(el).fontSize) || 17;
-    var min = 10;
-    var guard = 0;
-    while (el.scrollWidth > el.clientWidth + 1 && size > min && guard < 40) {
-      size -= 0.5;
-      el.style.fontSize = size + 'px';
-      guard++;
-    }
+    /* Başlık çok satıra izin verildi — ek küçültme yok */
   }
 
   function applyBrandDev() {

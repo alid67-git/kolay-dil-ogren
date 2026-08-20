@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
 <link rel="apple-touch-icon" href="/kolay-dil-ogren/apple-touch-icon.png">
+<link rel="manifest" href="/kolay-dil-ogren/manifest.json">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0d9488">
 <meta name="apple-mobile-web-app-title" content="Kolay Dil Öğrenme">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -23,10 +25,13 @@ header,nav{flex-shrink:0;}
 .thai{font-family:'Sarabun',sans-serif;}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:calc(14px + env(safe-area-inset-top,0px)) max(18px,env(safe-area-inset-right,0px)) 14px max(12px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:8px;border-bottom:3px solid #0f766e;}
-.brand-wrap{display:flex;flex-direction:column;line-height:1.2;min-width:0;flex:0 1 auto;}
-.brand{font-size:17px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;line-height:1.15;}
-.brand-dev{font-size:10px;font-weight:600;color:#fef9c3;letter-spacing:.04em;margin-top:6px;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.18);} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:calc(10px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) 10px max(12px,env(safe-area-inset-left,0px));display:grid;grid-template-columns:minmax(0,1fr) auto auto auto auto;grid-template-rows:auto auto;align-items:center;gap:6px 8px;border-bottom:3px solid #0f766e;}
+.brand-wrap{grid-column:1/-1;grid-row:1;display:flex;flex-direction:column;line-height:1.2;min-width:0;width:100%;}
+.pbar-wrap{grid-row:2;grid-column:1;}
+.ltimer-wrap{display:none !important;}
+#app-version,#update-badge,.hbtn{grid-row:2;}
+.brand{font-size:clamp(14px,4vw,17px);font-weight:700;white-space:normal;overflow:visible;text-overflow:unset;overflow-wrap:anywhere;line-height:1.25;max-width:100%;}
+.brand-dev{font-size:9px;font-weight:600;color:#fef9c3;letter-spacing:.03em;margin-top:2px;line-height:1.3;text-shadow:0 1px 3px rgba(0,0,0,.18);overflow-wrap:anywhere;}
 /* YARDIM MODALİ */
 .htab{background:none;border:none;padding:9px 13px;font-size:12px;font-weight:700;color:#888;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:.15s;}
 .htab.active{color:#0d9488;border-bottom-color:#0d9488;}
@@ -123,6 +128,7 @@ nav{position:sticky;top:calc(54px + env(safe-area-inset-top,0px));z-index:49;dis
     width:auto;
     min-height:0;
     height:auto;
+    display:flex;
     flex-direction:column;
     align-items:flex-start;
     gap:8px;
@@ -130,8 +136,9 @@ nav{position:sticky;top:calc(54px + env(safe-area-inset-top,0px));z-index:49;dis
     border-bottom:none;
     border-right:3px solid #0f766e;
   }
-  .brand-wrap{width:100%;}
-  .pbar-wrap{width:100%;flex:0 0 auto;max-width:none;}
+  .brand-wrap{width:100%;grid-column:auto;grid-row:auto;}
+  .pbar-wrap{width:100%;flex:0 0 auto;max-width:none;grid-row:auto;grid-column:auto;}
+  #app-version,#update-badge,.hbtn{grid-row:auto;}
   .header-actions{flex-wrap:wrap;width:100%;}
   nav{
     grid-area:nav;
@@ -181,7 +188,6 @@ main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0
 .lbadge-done{background:#0d9488;color:white;}
 @keyframes popIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
 .lesson-card.done{border-left-color:#0d9488;background:#f0fdf9;}
-.ltimer-wrap{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.75);}
 .ltimer-icon{font-size:13px;}
 #lesson-live-timer{font-family:'Courier New',monospace;font-weight:700;font-size:12px;color:white;}
 .larrow-wrap{width:34px;height:34px;border-radius:50%;background:#f0fdf9;border:1.5px solid #b2dfdb;display:flex;align-items:center;justify-content:center;color:#0d9488;font-size:18px;font-weight:700;flex-shrink:0;transition:.15s;}
@@ -220,10 +226,7 @@ main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0
 .lcontent.active{display:block;}
 .lang-btn{background:#e0e0e0!important;color:#555!important;border:2px solid #ccc!important;}
 .lang-btn.active{background:#0d9488!important;color:white!important;border-color:#0d9488!important;}
-.tab-timer-wrap{background:#f0fdf9;border:1.5px solid #b2dfdb;border-radius:10px;padding:8px 12px;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
-.tab-timer-track{flex:1;height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden;}
-.tab-timer-fill{height:100%;width:0%;background:#0d9488;border-radius:3px;transition:width 1s linear;}
-.tab-timer-text{font-size:11px;color:#0d9488;font-weight:700;min-width:28px;text-align:right;}
+.tab-timer-wrap{display:none !important;}
 .ltab.timing::before{content:'⏳';font-size:9px;}
 
 /* WORD CARD — Thai soluk, Romanizasyon net */
@@ -710,19 +713,19 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.70"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.70"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.70"></script>
-<script src="shared/kdo-gloss.js?v=3.0.70"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.70"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.70"></script>
-<script src="shared/kdo-tts.js?v=3.0.70"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.70"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.70"></script>
-<script src="shared/kdo-translate.js?v=3.0.70"></script>
-<script src="shared/kdo-store.js?v=3.0.70"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.70"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.70"></script>
+<script src="shared/kdo-version.js?v=3.0.71"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.71"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.71"></script>
+<script src="shared/kdo-gloss.js?v=3.0.71"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.71"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.71"></script>
+<script src="shared/kdo-tts.js?v=3.0.71"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.71"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.71"></script>
+<script src="shared/kdo-translate.js?v=3.0.71"></script>
+<script src="shared/kdo-store.js?v=3.0.71"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.71"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.71"></script>
 <script>
 const APP_VERSION = window.KDO_APP_VERSION || window.KDO_PLATFORM_VERSION;
 window.KDO_PREFIX = 'tv3_';
@@ -1390,7 +1393,7 @@ function setLang(lang){
     <div class="pbar-label" id="pbar-label">0 / 19</div>
   </div>
   <div class="header-actions">
-  <div class="ltimer-wrap" id="lesson-timer-wrap" style="display:none">
+  <div class="ltimer-wrap" id="lesson-timer-wrap" style="display:none !important">
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
@@ -1672,33 +1675,22 @@ let _timerStart = null;
 let _timerLessonNum = null;
 
 function startLessonTimer(num){
-  stopLessonTimer(); // önceki varsa durdur
+  stopLessonTimer();
   _timerStart = Date.now();
   _timerLessonNum = num;
-  document.getElementById('lesson-timer-wrap').style.display = 'flex';
-  _timerInterval = setInterval(()=>{
-    const elapsed = Math.floor((Date.now() - _timerStart) / 1000);
-    const m = String(Math.floor(elapsed/60)).padStart(2,'0');
-    const s = String(elapsed%60).padStart(2,'0');
-    const el = document.getElementById('lesson-live-timer');
-    if(el) el.textContent = m+':'+s;
-  }, 1000);
 }
 
 function stopLessonTimer(){
   if(_timerInterval){
     clearInterval(_timerInterval);
     _timerInterval = null;
-    if(_timerLessonNum !== null && _timerStart !== null){
-      const elapsed = Math.floor((Date.now() - _timerStart) / 1000);
-      const st = getStats(_timerLessonNum);
-      st.totalSec += elapsed;
-      saveLessonStats();
-    }
   }
-  document.getElementById('lesson-timer-wrap').style.display = 'none';
-  const el = document.getElementById('lesson-live-timer');
-  if(el) el.textContent = '00:00';
+  if(_timerLessonNum !== null && _timerStart !== null){
+    const elapsed = Math.floor((Date.now() - _timerStart) / 1000);
+    const st = getStats(_timerLessonNum);
+    st.totalSec += elapsed;
+    saveLessonStats();
+  }
   _timerStart = null;
   _timerLessonNum = null;
 }
@@ -2509,26 +2501,7 @@ function startTabTimer(tab){
 }
 
 function _renderTimerBar(tab, elapsed, total){
-  const el = document.getElementById('lc-'+tab);
-  if(!el) return;
-  let wrap = el.querySelector('.tab-timer-wrap');
-  if(!wrap){
-    wrap = document.createElement('div');
-    wrap.className = 'tab-timer-wrap';
-    wrap.innerHTML = '<div class="tab-timer-track"><div class="tab-timer-fill"></div></div><div class="tab-timer-text"></div>';
-    el.insertBefore(wrap, el.firstChild);
-  }
-  const fill = wrap.querySelector('.tab-timer-fill');
-  const txt  = wrap.querySelector('.tab-timer-text');
-  const pct  = Math.min(100, Math.round((elapsed/total)*100));
-  fill.style.width = pct+'%';
-  if(elapsed >= total){
-    fill.style.background = '#22c55e';
-    txt.textContent = '✅';
-    setTimeout(()=>{ wrap.style.display='none'; }, 1200);
-  } else {
-    txt.textContent = (total-elapsed)+'s';
-  }
+  /* Sekme ziyaret sayacı arka planda — UI gösterme */
 }
 
 
@@ -4648,7 +4621,7 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.70"></script>
-<script src="shared/kdo-update.js?v=3.0.70"></script>
+<script src="shared/kdo-analytics.js?v=3.0.71"></script>
+<script src="shared/kdo-update.js?v=3.0.71"></script>
 </body>
 </html>
