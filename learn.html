@@ -25,10 +25,13 @@ main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0
 .english{}
 
 /* HEADER */
-header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:calc(14px + env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:10px;border-bottom:3px solid #0f766e;max-width:100%;min-width:0;}
-.brand-wrap{display:flex;flex:1 1 auto;min-width:0;flex-direction:column;line-height:1.2;}
-.brand{font-size:17px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;line-height:1.15;}
-.brand-dev{font-size:10px;font-weight:600;color:#fef9c3;letter-spacing:.04em;margin-top:6px;line-height:1.35;text-shadow:0 1px 3px rgba(0,0,0,.18);} .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.65);letter-spacing:.04em;white-space:nowrap;margin-right:4px;}
+header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d9488,#06b6d4);color:white;padding:calc(10px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) 10px max(12px,env(safe-area-inset-left,0px));display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;grid-template-rows:auto auto;align-items:center;gap:6px 8px;border-bottom:3px solid #0f766e;max-width:100%;min-width:0;}
+.brand-wrap{grid-column:1/-1;grid-row:1;display:flex;min-width:0;flex-direction:column;line-height:1.2;width:100%;}
+.pbar-wrap{grid-row:2;grid-column:1;}
+.ltimer-wrap{display:none !important;}
+#app-version,.hbtn{grid-row:2;}
+.brand{font-size:clamp(14px,4vw,17px);font-weight:700;white-space:normal;overflow:visible;text-overflow:unset;overflow-wrap:anywhere;line-height:1.25;max-width:100%;}
+.brand-dev{font-size:9px;font-weight:600;color:#fef9c3;letter-spacing:.03em;margin-top:2px;line-height:1.3;text-shadow:0 1px 3px rgba(0,0,0,.18);overflow-wrap:anywhere;}
 /* YARDIM MODALİ */
 .htab{background:none;border:none;padding:9px 13px;font-size:12px;font-weight:700;color:#888;cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:.15s;}
 .htab.active{color:#0d9488;border-bottom-color:#0d9488;}
@@ -87,7 +90,7 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d948
 #update-btn{background:#0d9488;color:white;border:none;border-radius:10px;padding:8px 16px;font-size:13px;font-weight:800;cursor:pointer;white-space:nowrap;flex-shrink:0;}
 #update-btn:active{opacity:.8;}
 #update-dismiss{background:none;border:none;color:rgba(255,255,255,.5);font-size:18px;cursor:pointer;padding:0 2px;line-height:1;flex-shrink:0;}
-.pbar-wrap{flex:0 1 110px;min-width:46px;display:flex;flex-direction:column;gap:3px;margin:0 4px;}
+.pbar-wrap{flex:0 1 110px;min-width:46px;display:flex;flex-direction:column;gap:3px;margin:0 4px;justify-self:stretch;}
 .pbar{height:5px;background:rgba(255,255,255,.25);border-radius:99px;overflow:hidden;}
 .pbar-label{font-size:9px;color:rgba(255,255,255,.55);text-align:right;letter-spacing:.03em;}
 
@@ -103,7 +106,7 @@ header{position:sticky;top:0;z-index:50;background:linear-gradient(135deg,#0d948
 .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.04em;white-space:nowrap;margin-right:2px;}
 
 /* NAV */
-nav{position:sticky;top:calc(54px + env(safe-area-inset-top,0px));z-index:49;display:flex;gap:6px;padding:10px max(14px,env(safe-area-inset-right,0px)) 10px max(14px,env(safe-area-inset-left,0px));background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06);max-width:100%;}
+nav{position:sticky;top:calc(72px + env(safe-area-inset-top,0px));z-index:49;display:flex;gap:6px;padding:10px max(14px,env(safe-area-inset-right,0px)) 10px max(14px,env(safe-area-inset-left,0px));background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06);max-width:100%;}
 .nbtn{padding:8px 12px;border:none;background:#f0f0f0;border-radius:16px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;}
 .nbtn.active{background:#0d9488;color:white;}
 
@@ -132,16 +135,15 @@ main{padding:14px;max-width:100%;min-width:0;}
 .lbadge-done{background:#0d9488;color:white;}
 @keyframes popIn{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
 .lesson-card.done{border-left-color:#0d9488;background:#f0fdf9;}
-.ltimer-wrap{display:flex;align-items:center;gap:6px;font-size:11px;color:rgba(255,255,255,.75);margin-left:auto;}
 .ltimer-icon{font-size:13px;}
 #lesson-live-timer{font-family:'Courier New',monospace;font-weight:700;font-size:12px;color:white;}
 .larrow-wrap{width:34px;height:34px;border-radius:50%;background:#f0fdf9;border:1.5px solid #b2dfdb;display:flex;align-items:center;justify-content:center;color:#0d9488;font-size:18px;font-weight:700;flex-shrink:0;transition:.15s;}
 .lesson-card:hover .larrow-wrap{background:#0d9488;color:white;border-color:#0d9488;}
 
 /* LESSON DETAIL */
-.lesson-back-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-bottom:12px;padding:10px 16px;background:#f0fdf9;border:1.5px solid #99d5cf;border-radius:12px;color:#0d6b63;font-weight:800;font-size:14px;cursor:pointer;transition:.15s;}
-.lesson-back-btn:hover{background:#e0f2f1;border-color:#0d9488;}
-.lesson-back-btn:active{transform:scale(.98);}
+.lesson-back-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-bottom:12px;padding:12px 16px;background:#ea580c;border:none;border-radius:12px;color:#fff;font-weight:800;font-size:15px;letter-spacing:.01em;cursor:pointer;transition:.15s;box-shadow:0 2px 8px rgba(234,88,12,.35);}
+.lesson-back-btn:hover{background:#c2410c;}
+.lesson-back-btn:active{transform:scale(.98);background:#9a3412;}
 .lesson-back-icon{font-size:20px;line-height:1;font-weight:900;}
 .lesson-hero{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,#f0fdf9 0%,#fff 55%);border:1.5px solid #b2dfdb;border-radius:16px;padding:14px 16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(13,148,136,.08);max-width:100%;min-width:0;}
 .lesson-hero-emoji{font-size:34px;width:58px;height:58px;display:flex;align-items:center;justify-content:center;background:white;border-radius:14px;box-shadow:0 2px 8px rgba(13,148,136,.1);flex-shrink:0;line-height:1;}
@@ -171,10 +173,7 @@ main{padding:14px;max-width:100%;min-width:0;}
 .lcontent.active{display:block;}
 .lang-btn{background:#e0e0e0!important;color:#555!important;border:2px solid #ccc!important;}
 .lang-btn.active{background:#0d9488!important;color:white!important;border-color:#0d9488!important;}
-.tab-timer-wrap{background:#f0fdf9;border:1.5px solid #b2dfdb;border-radius:10px;padding:8px 12px;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
-.tab-timer-track{flex:1;height:6px;background:#e0e0e0;border-radius:3px;overflow:hidden;}
-.tab-timer-fill{height:100%;width:0%;background:#0d9488;border-radius:3px;transition:width 1s linear;}
-.tab-timer-text{font-size:11px;color:#0d9488;font-weight:700;min-width:28px;text-align:right;}
+.tab-timer-wrap{display:none !important;}
 .ltab.timing::before{content:'⏳';font-size:9px;}
 
 /* WORD CARD — Ingilizce metin, Romanizasyon net */
@@ -379,7 +378,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
   .pbar-label{font-size:8px;}
   .header-actions{gap:4px;}
   .hbtn{padding:6px 8px;font-size:13px;}
-  nav{top:calc(45px + env(safe-area-inset-top,0px));padding:8px max(10px,env(safe-area-inset-right,0px)) 8px max(10px,env(safe-area-inset-left,0px));}
+  nav{top:calc(64px + env(safe-area-inset-top,0px));padding:8px max(10px,env(safe-area-inset-right,0px)) 8px max(10px,env(safe-area-inset-left,0px));}
   main{padding:10px;}
   .lesson-card{padding:12px 10px;gap:9px;border-radius:12px;}
   .lthumb{width:42px;height:42px;font-size:23px;border-radius:12px;}
@@ -409,6 +408,7 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
     width:auto;
     min-height:0;
     height:auto;
+    display:flex;
     flex-direction:column;
     align-items:flex-start;
     gap:8px;
@@ -416,8 +416,9 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
     border-bottom:none;
     border-right:3px solid #0f766e;
   }
-  .brand-wrap{width:100%;}
-  .pbar-wrap{width:100%;flex:0 0 auto;max-width:none;}
+  .brand-wrap{width:100%;grid-column:auto;grid-row:auto;}
+  .pbar-wrap{width:100%;flex:0 0 auto;max-width:none;grid-row:auto;grid-column:auto;}
+  #app-version,.hbtn{grid-row:auto;}
   .header-actions{flex-wrap:wrap;width:100%;}
   nav{
     grid-area:nav;
@@ -459,8 +460,8 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
   .lnum-badge{background:#0f2420;color:#4db6ac;}
   .larrow-wrap{background:#0f2420;border-color:#1a5040;color:#4db6ac;}
   .lesson-card:hover .larrow-wrap{background:#0d9488;color:white;}
-  .lesson-back-btn{background:#0f2420;border-color:#1a5040;color:#4db6ac;}
-  .lesson-back-btn:hover{background:#143530;border-color:#0d9488;}
+  .lesson-back-btn{background:#ea580c;color:#fff;box-shadow:0 2px 8px rgba(234,88,12,.4);}
+  .lesson-back-btn:hover{background:#c2410c;}
   .lesson-hero{background:linear-gradient(135deg,#0f2420 0%,#1e1e1e 55%);border-color:#1a5040;}
   .lesson-hero-emoji{background:#1e1e1e;}
   .lesson-hero-title{color:#e0f2f1;}
@@ -775,21 +776,21 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.70"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.70"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.70"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.70"></script>
-<script src="shared/kdo-gloss.js?v=3.0.70"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.70"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.70"></script>
-<script src="shared/kdo-tts.js?v=3.0.70"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.70"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.70"></script>
-<script src="shared/kdo-store.js?v=3.0.70"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.70"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.70"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.70"></script>
-<script src="shared/kdo-translate.js?v=3.0.70"></script>
+<script src="shared/kdo-version.js?v=3.0.73"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.73"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.73"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.73"></script>
+<script src="shared/kdo-gloss.js?v=3.0.73"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.73"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.73"></script>
+<script src="shared/kdo-tts.js?v=3.0.73"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.73"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.73"></script>
+<script src="shared/kdo-store.js?v=3.0.73"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.73"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.73"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.73"></script>
+<script src="shared/kdo-translate.js?v=3.0.73"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1329,12 +1330,11 @@ function setLang(lang){
     <div class="pbar"><div class="pfill" id="pbar"></div></div>
     <div class="pbar-label" id="pbar-label">0 / 49</div>
   </div>
-  <div class="ltimer-wrap" id="lesson-timer-wrap" style="display:none">
+  <div class="ltimer-wrap" id="lesson-timer-wrap" style="display:none !important">
     <span class="ltimer-icon">⏱️</span>
     <span id="lesson-live-timer">00:00</span>
   </div>
   <span class="vbadge ver-btn" id="app-version" onclick="openChangelog()" title="Versiyon geçmişi"></span>
-  <button type="button" id="update-badge" onclick="applyUpdate()" title="Güncelle" aria-label="Güncelle">⬆️</button>
   <button class="hbtn" onclick="openModal('help-overlay')">❓</button>
   <button class="hbtn" onclick="openModal('settings-overlay')">⚙️</button>
 </header>
@@ -1625,33 +1625,22 @@ let _timerStart = null;
 let _timerLessonNum = null;
 
 function startLessonTimer(num){
-  stopLessonTimer(); // önceki varsa durdur
+  stopLessonTimer();
   _timerStart = Date.now();
   _timerLessonNum = num;
-  document.getElementById('lesson-timer-wrap').style.display = 'flex';
-  _timerInterval = setInterval(()=>{
-    const elapsed = Math.floor((Date.now() - _timerStart) / 1000);
-    const m = String(Math.floor(elapsed/60)).padStart(2,'0');
-    const s = String(elapsed%60).padStart(2,'0');
-    const el = document.getElementById('lesson-live-timer');
-    if(el) el.textContent = m+':'+s;
-  }, 1000);
 }
 
 function stopLessonTimer(){
   if(_timerInterval){
     clearInterval(_timerInterval);
     _timerInterval = null;
-    if(_timerLessonNum !== null && _timerStart !== null){
-      const elapsed = Math.floor((Date.now() - _timerStart) / 1000);
-      const st = getStats(_timerLessonNum);
-      st.totalSec += elapsed;
-      saveLessonStats();
-    }
   }
-  document.getElementById('lesson-timer-wrap').style.display = 'none';
-  const el = document.getElementById('lesson-live-timer');
-  if(el) el.textContent = '00:00';
+  if(_timerLessonNum !== null && _timerStart !== null){
+    const elapsed = Math.floor((Date.now() - _timerStart) / 1000);
+    const st = getStats(_timerLessonNum);
+    st.totalSec += elapsed;
+    saveLessonStats();
+  }
   _timerStart = null;
   _timerLessonNum = null;
 }
@@ -2762,26 +2751,7 @@ function startTabTimer(tab){
 }
 
 function _renderTimerBar(tab, elapsed, total){
-  const el = document.getElementById('lc-'+tab);
-  if(!el) return;
-  let wrap = el.querySelector('.tab-timer-wrap');
-  if(!wrap){
-    wrap = document.createElement('div');
-    wrap.className = 'tab-timer-wrap';
-    wrap.innerHTML = '<div class="tab-timer-track"><div class="tab-timer-fill"></div></div><div class="tab-timer-text"></div>';
-    el.insertBefore(wrap, el.firstChild);
-  }
-  const fill = wrap.querySelector('.tab-timer-fill');
-  const txt  = wrap.querySelector('.tab-timer-text');
-  const pct  = Math.min(100, Math.round((elapsed/total)*100));
-  fill.style.width = pct+'%';
-  if(elapsed >= total){
-    fill.style.background = '#22c55e';
-    txt.textContent = '✅';
-    setTimeout(()=>{ wrap.style.display='none'; }, 1200);
-  } else {
-    txt.textContent = (total-elapsed)+'s';
-  }
+  /* Sekme ziyaret sayacı arka planda — UI gösterme */
 }
 
 
@@ -5053,7 +5023,7 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.70"></script>
-<script src="shared/kdo-update.js?v=3.0.70"></script>
+<script src="shared/kdo-analytics.js?v=3.0.73"></script>
+<script src="shared/kdo-update.js?v=3.0.73"></script>
 </body>
 </html>
