@@ -10,8 +10,8 @@ android {
         applicationId 'io.alid67.kolaydilogren'
         minSdk 21
         targetSdk 34
-        versionCode 9
-        versionName '3.0.68'
+        versionCode 10
+        versionName '3.0.69'
     }
 
     signingConfigs {
