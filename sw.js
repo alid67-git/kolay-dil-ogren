@@ -1,4 +1,4 @@
-const CACHE = 'kdo-v3.0.78';
+const CACHE = 'kdo-v3.0.79';
 const CORE = [
   '/kolay-dil-ogren/',
   '/kolay-dil-ogren/index.html',
@@ -23,6 +23,8 @@ const CORE = [
 ];
 
 self.addEventListener('install', e => {
+  // Yeni SW hemen aktif olsun — kullanıcı "Güncelle" beklemesin
+  self.skipWaiting();
   e.waitUntil(
     caches.open(CACHE).then(c => c.addAll(CORE))
   );
@@ -55,7 +57,16 @@ self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (!url.origin.includes('github.io') && !url.hostname.includes('localhost')) return;
 
-  if (isHtmlRequest(e.request, url)) {
+  // HTML + version/taps: her zaman ağdan (eski bozuk layout/tap kodu kalmasın)
+  const path = url.pathname;
+  const networkFirst =
+    isHtmlRequest(e.request, url) ||
+    path.endsWith('/kdo-version.js') ||
+    path.endsWith('/kdo-android-taps.js') ||
+    path.endsWith('/kdo-update.js') ||
+    path.endsWith('/sw.js');
+
+  if (networkFirst) {
     e.respondWith(
       fetch(e.request).then(res => {
         if (res.ok) {

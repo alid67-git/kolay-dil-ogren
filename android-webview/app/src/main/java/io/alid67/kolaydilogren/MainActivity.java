@@ -21,7 +21,7 @@ import io.alid67.kolaydilogren.prefs.KdoPrefs;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.78";
+    private static final String APP_VERSION = "3.0.79";
     private static final String START_URL =
             "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
@@ -90,11 +90,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                // Android WebView dokunma yardımcısı + sürüm sınıfı
+                // Eski önbellekli HTML'de bile viewport + tap bağlama (ders kartı hit-test)
                 view.evaluateJavascript(
                         "(function(){try{"
                                 + "document.documentElement.classList.add('kdo-android-wv');"
+                                + "if(window.KDO_fixViewportLayout) window.KDO_fixViewportLayout();"
                                 + "if(window.KDO_bindAndroidTaps) window.KDO_bindAndroidTaps();"
+                                + "else if(window.KDO_bindLessonCards) window.KDO_bindLessonCards();"
                                 + "}catch(e){}})();",
                         null);
             }
