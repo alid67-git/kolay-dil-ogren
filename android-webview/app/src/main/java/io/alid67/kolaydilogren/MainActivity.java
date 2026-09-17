@@ -1,6 +1,7 @@
 package io.alid67.kolaydilogren;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
@@ -15,10 +16,12 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
+import io.alid67.kolaydilogren.billing.KdoPromoCode;
+import io.alid67.kolaydilogren.prefs.KdoPrefs;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.75";
+    private static final String APP_VERSION = "3.0.76";
     private static final String START_URL =
             "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
@@ -30,6 +33,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (BuildConfig.PAYWALL_ENABLED
+                && !new KdoPrefs(this).isSubscriptionActive()
+                && !KdoPromoCode.isActive(this)) {
+            startActivity(new Intent(this, PaywallActivity.class));
+            finish();
+            return;
+        }
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         // decorFits=true: sistem çubukları WebView dışına yerleşir.
@@ -132,6 +144,29 @@ public class MainActivity extends AppCompatActivity {
             return path.startsWith(ALLOWED_PATH_PREFIX);
         } catch (IllegalArgumentException e) {
             return false;
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (isFinishing()) return;
+        if (BuildConfig.PAYWALL_ENABLED) {
+            KdoPrefs prefs = new KdoPrefs(this);
+            if (!prefs.isSubscriptionActive() && !KdoPromoCode.isActive(this)) {
+                startActivity(new Intent(this, PaywallActivity.class));
+                finish();
+                return;
+            }
+            io.alid67.kolaydilogren.billing.KdoSubscriptionManager.INSTANCE
+                    .refreshEntitlement(this, entitled -> {
+                        if (!entitled && !KdoPromoCode.isActive(this)) {
+                            runOnUiThread(() -> {
+                                startActivity(new Intent(this, PaywallActivity.class));
+                                finish();
+                            });
+                        }
+                    });
         }
     }
 
