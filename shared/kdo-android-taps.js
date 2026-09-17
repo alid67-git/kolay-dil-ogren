@@ -1,8 +1,8 @@
-/** Android WebView + mobil dokunma: ders kartı / alt sekme güvenilir açılış */
+/** Android WebView: ders kartı / sekme dokunma yedekleri (layout düzgünken hafif) */
 (function () {
   'use strict';
 
-  var MOVE_PX = 16;
+  var MOVE_PX = 18;
   var bound = false;
   var sx = 0;
   var sy = 0;
@@ -11,54 +11,45 @@
   var lastAt = 0;
 
   function markAndroid() {
-    var ua = navigator.userAgent || '';
-    if (/Android/i.test(ua)) {
+    if (/Android/i.test(navigator.userAgent || '')) {
       document.documentElement.classList.add('kdo-android-wv');
     }
   }
 
   function once(key, fn) {
     var now = Date.now();
-    if (key === lastKey && now - lastAt < 400) return false;
+    if (key === lastKey && now - lastAt < 450) return false;
     lastKey = key;
     lastAt = now;
     try { fn(); } catch (err) { console.warn('KDO tap', key, err); }
     return true;
   }
 
-  function openCard(card) {
-    if (!card || card.classList.contains('empty')) return false;
-    if (typeof openLesson !== 'function') return false;
-    var num = parseInt(card.getAttribute('data-num'), 10);
-    if (!num) return false;
-    return once('lesson-' + num, function () { openLesson(num); });
-  }
-
-  function openLtab(btn) {
-    if (!btn || typeof switchLessonTab !== 'function') return false;
-    var tab = btn.getAttribute('data-tab');
-    if (!tab) return false;
-    return once('ltab-' + tab, function () { switchLessonTab(tab, btn); });
-  }
-
-  function onClickCapture(e) {
-    var t = e.target;
-    if (!t || !t.closest) return;
-    var card = t.closest('.lesson-card[data-num]');
-    if (card) {
-      if (openCard(card)) {
-        e.preventDefault();
-        e.stopPropagation();
+  function openFromEl(el) {
+    if (!el || !el.closest) return false;
+    var card = el.closest('.lesson-card[data-num]');
+    if (card && !card.classList.contains('empty')) {
+      var num = parseInt(card.getAttribute('data-num'), 10);
+      var opener = window.openLesson || (typeof openLesson === 'function' ? openLesson : null);
+      if (num && opener) {
+        return once('lesson-' + num, function () { opener(num); });
       }
-      return;
     }
+    var ltab = el.closest('.ltab[data-tab]');
+    if (ltab) {
+      var tab = ltab.getAttribute('data-tab');
+      var switcher = window.switchLessonTab || (typeof switchLessonTab === 'function' ? switchLessonTab : null);
+      if (tab && switcher) {
+        return once('ltab-' + tab, function () { switcher(tab, ltab); });
+      }
+    }
+    return false;
   }
 
   function onTouchStart(e) {
     if (!e.touches || !e.touches.length) return;
-    var touch = e.touches[0];
-    sx = touch.clientX;
-    sy = touch.clientY;
+    sx = e.touches[0].clientX;
+    sy = e.touches[0].clientY;
     startEl = e.target;
   }
 
@@ -67,43 +58,29 @@
       startEl = null;
       return;
     }
-    var touch = e.changedTouches[0];
+    var t = e.changedTouches[0];
     var el = startEl;
     startEl = null;
-    if (Math.abs(touch.clientX - sx) > MOVE_PX || Math.abs(touch.clientY - sy) > MOVE_PX) return;
-    if (!el || !el.closest) return;
-
-    var card = el.closest('.lesson-card[data-num]');
-    if (card && openCard(card)) {
+    if (Math.abs(t.clientX - sx) > MOVE_PX || Math.abs(t.clientY - sy) > MOVE_PX) return;
+    // Sadece gerçekten açtıysak native click'i engelle (çift açılışı önler)
+    if (openFromEl(el)) {
       e.preventDefault();
-      e.stopPropagation();
-      return;
     }
+  }
 
-    var ltab = el.closest('.ltab[data-tab]');
-    if (ltab && openLtab(ltab)) {
-      e.preventDefault();
-      e.stopPropagation();
-      return;
-    }
-
-    var nbtn = el.closest('.nbtn');
-    if (nbtn && !nbtn.disabled) {
-      e.preventDefault();
-      e.stopPropagation();
-      once('nbtn-' + (nbtn.dataset.view || nbtn.textContent), function () {
-        nbtn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
-      });
-    }
+  function onClick(e) {
+    // Capture yok — bubble. Inline onclick / diğer delegasyonlarla çakışmasın diye
+    // sadece henüz açılmadıysa (debounce) yedek olarak çalışır.
+    openFromEl(e.target);
   }
 
   function bind() {
     markAndroid();
     if (bound) return;
     bound = true;
-    document.addEventListener('click', onClickCapture, true);
-    document.addEventListener('touchstart', onTouchStart, { passive: true, capture: true });
-    document.addEventListener('touchend', onTouchEnd, { passive: false, capture: true });
+    document.addEventListener('touchstart', onTouchStart, { passive: true });
+    document.addEventListener('touchend', onTouchEnd, { passive: false });
+    document.addEventListener('click', onClick, false);
   }
 
   window.KDO_bindAndroidTaps = bind;

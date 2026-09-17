@@ -19,8 +19,8 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100%;max-width:100%;overflow-x:hidden;}
-html{height:100%;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f5f5f5;max-width:600px;margin:0 auto;color:#333;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;overflow:hidden;}
+html{height:100%;height:100dvh;overflow:hidden;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f5f5f5;max-width:600px;margin:0 auto;color:#333;height:100%;height:100dvh;max-height:100dvh;min-height:0;display:flex;flex-direction:column;overflow:hidden;}
 header,nav{flex-shrink:0;position:relative;}
 .thai{font-family:'Sarabun',sans-serif;}
 
@@ -169,7 +169,7 @@ nav{position:relative;z-index:49;display:flex;gap:6px;padding:10px max(14px,env(
 }
 
 /* MAIN */
-main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;padding:14px;position:relative;z-index:1;touch-action:manipulation;}
+main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;padding:14px;position:relative;z-index:1;touch-action:manipulation;overscroll-behavior:contain;}
 html.kdo-android-wv .lesson-card,
 html.kdo-android-wv .ltab,
 html.kdo-android-wv .nbtn{
@@ -1581,16 +1581,22 @@ const LESSONS_META = [
 // =================== DERS VERİLERİ (lazy load) ===================
 // Her ders ilk açılışta ders{n}.js dosyasından yüklenir
 const LESSONS = {};
+window.LESSONS = LESSONS;
 const _lessonLoading = {};
 
 async function loadDers(num){
-  if(LESSONS[num]) return; // zaten yüklü
-  if(_lessonLoading[num]) return _lessonLoading[num]; // yükleniyor
+  if(LESSONS[num]) return;
+  if(_lessonLoading[num]) return _lessonLoading[num];
   _lessonLoading[num] = new Promise((resolve, reject)=>{
     const script = document.createElement('script');
     script.src = `languages/th/lessons/ders${num}.js?v=${APP_VERSION}`;
-    script.onload = ()=>{ resolve(); delete _lessonLoading[num]; };
-    script.onerror = ()=>{ reject(new Error('Ders '+num+' yüklenemedi')); };
+    script.onload = ()=>{
+      delete _lessonLoading[num];
+      if(!LESSONS[num] && window.LESSONS && window.LESSONS[num]) LESSONS[num] = window.LESSONS[num];
+      if(!LESSONS[num]) reject(new Error('Ders '+num+' yüklendi ama veri yok'));
+      else resolve();
+    };
+    script.onerror = ()=>{ delete _lessonLoading[num]; reject(new Error('Ders '+num+' yüklenemedi')); };
     document.head.appendChild(script);
   });
   return _lessonLoading[num];
@@ -1840,6 +1846,11 @@ document.addEventListener('click', function(e){
   if(gramEl){ showGramIdx(parseInt(gramEl.dataset.gram)); return; }
   const dlineEl = e.target.closest('[data-dline-idx]');
   if(dlineEl){ showGramIdx(parseInt(dlineEl.dataset.dlineIdx)); return; }
+  const cardEl = e.target.closest('.lesson-card[data-num]');
+  if(cardEl && !cardEl.classList.contains('empty')){
+    const num = parseInt(cardEl.dataset.num, 10);
+    if(num && typeof openLesson==='function'){ openLesson(num); return; }
+  }
 });
 
 // =================== DİYALOG OYNAT ===================
@@ -1946,7 +1957,7 @@ function renderLessonCard(L){
   if(timeStr) badges.push('<span class="lbadge lbadge-time">⏱ '+timeStr+'</span>');
 
   return `
-    <div class="lesson-card ${isDone?'done':''}" data-num="${L.num}" role="button" tabindex="0">
+    <div class="lesson-card ${isDone?'done':''}" data-num="${L.num}" role="button" tabindex="0" onclick="openLesson(${L.num})">
       <div class="lthumb" aria-hidden="true">${L.emoji}</div>
       <div class="linfo">
         <span class="lnum-badge">${lessonNumLabel(L.num)}</span>
@@ -2124,11 +2135,14 @@ async function openLesson(num){
   switchLessonTab(firstTab);
   startLessonTimer(num);
   try{ history.pushState({kdoView:'detail',lesson:num}, '', '#ders'+num); }catch(_){}
+  const mainEl = document.querySelector('main');
+  if(mainEl) mainEl.scrollTop = 0;
   } catch(err) {
     switchView('detail', null);
     document.getElementById('detail-content').innerHTML = '<div style="padding:20px;color:red;font-size:13px;">⚠️ Ders '+num+' yüklenirken hata: '+err.message+'<br><small>'+err.stack+'</small></div>';
   }
 }
+window.openLesson = openLesson;
 
 function closeLessonDetail(){
   if(!document.getElementById('detail-view').classList.contains('active')) return;
@@ -2595,6 +2609,7 @@ function switchLessonTab(tab, btn){
   if(btn) btn.classList.add('active');
   else{ const first=document.querySelector('.ltab'); if(first) first.classList.add('active'); }
 }
+window.switchLessonTab = switchLessonTab;
 
 // =================== L2 HESAPLAYICI ===================
 const L2_UNITS = [

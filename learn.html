@@ -18,10 +18,11 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{width:100%;max-width:100%;overflow-x:hidden;}
-html{height:100%;}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f5f5f5;max-width:600px;margin:0 auto;color:#333;min-height:100vh;min-height:100dvh;display:flex;flex-direction:column;overflow:hidden;}
+html{height:100%;height:100dvh;overflow:hidden;}
+/* height (not only min-height): flex child main must be bounded or Android WebView eats taps */
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f5f5f5;max-width:600px;margin:0 auto;color:#333;height:100%;height:100dvh;max-height:100dvh;min-height:0;display:flex;flex-direction:column;overflow:hidden;}
 header,nav{flex-shrink:0;position:relative;}
-main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;position:relative;z-index:1;touch-action:manipulation;}
+main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;position:relative;z-index:1;touch-action:manipulation;overscroll-behavior:contain;}
 html.kdo-android-wv .lesson-card,
 html.kdo-android-wv .ltab,
 html.kdo-android-wv .nbtn{
@@ -788,21 +789,21 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.77"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.77"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.77"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.77"></script>
-<script src="shared/kdo-gloss.js?v=3.0.77"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.77"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.77"></script>
-<script src="shared/kdo-tts.js?v=3.0.77"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.77"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.77"></script>
-<script src="shared/kdo-store.js?v=3.0.77"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.77"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.77"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.77"></script>
-<script src="shared/kdo-translate.js?v=3.0.77"></script>
+<script src="shared/kdo-version.js?v=3.0.78"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.78"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.78"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.78"></script>
+<script src="shared/kdo-gloss.js?v=3.0.78"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.78"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.78"></script>
+<script src="shared/kdo-tts.js?v=3.0.78"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.78"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.78"></script>
+<script src="shared/kdo-store.js?v=3.0.78"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.78"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.78"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.78"></script>
+<script src="shared/kdo-translate.js?v=3.0.78"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1571,16 +1572,23 @@ runEnLesson2Migration();
 // =================== DERS VERİLERİ (lazy load) ===================
 // Her ders ilk açılışta ders{n}.js dosyasından yüklenir
 const LESSONS = {};
+window.LESSONS = LESSONS;
 const _lessonLoading = {};
 
 async function loadDers(num){
-  if(LESSONS[num]) return; // zaten yüklü
-  if(_lessonLoading[num]) return _lessonLoading[num]; // yükleniyor
+  if(LESSONS[num]) return;
+  if(_lessonLoading[num]) return _lessonLoading[num];
   _lessonLoading[num] = new Promise((resolve, reject)=>{
     const script = document.createElement('script');
-    script.src = `${KDO_CFG.lessonsPath}/ders${num}.js?v=${APP_VERSION}`;
-    script.onload = ()=>{ resolve(); delete _lessonLoading[num]; };
-    script.onerror = ()=>{ reject(new Error('Ders '+num+' yüklenemedi')); };
+    const base = (KDO_CFG && KDO_CFG.lessonsPath) ? KDO_CFG.lessonsPath : 'languages/en/lessons';
+    script.src = `${base}/ders${num}.js?v=${APP_VERSION}`;
+    script.onload = ()=>{
+      delete _lessonLoading[num];
+      if(!LESSONS[num] && window.LESSONS && window.LESSONS[num]) LESSONS[num] = window.LESSONS[num];
+      if(!LESSONS[num]) reject(new Error('Ders '+num+' yüklendi ama veri yok'));
+      else resolve();
+    };
+    script.onerror = ()=>{ delete _lessonLoading[num]; reject(new Error('Ders '+num+' yüklenemedi')); };
     document.head.appendChild(script);
   });
   return _lessonLoading[num];
@@ -1914,7 +1922,7 @@ function renderLessonCard(L){
   if(timeStr) badges.push('<span class="lbadge lbadge-time">⏱ '+timeStr+'</span>');
 
   return `
-    <div class="lesson-card ${isDone?'done':''}" data-num="${L.num}" role="button" tabindex="0">
+    <div class="lesson-card ${isDone?'done':''}" data-num="${L.num}" role="button" tabindex="0" onclick="openLesson(${L.num})">
       <div class="lthumb" aria-hidden="true">${L.emoji}</div>
       <div class="linfo">
         <span class="lnum-badge">${lessonNumLabel(L.num)}</span>
@@ -2097,11 +2105,14 @@ async function openLesson(num){
   switchLessonTab(firstTab);
   startLessonTimer(num);
   try{ history.pushState({kdoView:'detail',lesson:num}, '', '#ders'+num); }catch(_){}
+  const mainEl = document.querySelector('main');
+  if(mainEl) mainEl.scrollTop = 0;
   } catch(err) {
     switchView('detail', null);
     document.getElementById('detail-content').innerHTML = '<div style="padding:20px;color:red;font-size:13px;">⚠️ Ders '+num+' yüklenirken hata: '+err.message+'<br><small>'+err.stack+'</small></div>';
   }
 }
+window.openLesson = openLesson;
 
 function closeLessonDetail(){
   if(!document.getElementById('detail-view').classList.contains('active')) return;
@@ -2849,6 +2860,7 @@ function switchLessonTab(tab, btn){
   if(btn) btn.classList.add('active');
   else{ const first=document.querySelector('.ltab'); if(first) first.classList.add('active'); }
 }
+window.switchLessonTab = switchLessonTab;
 
 // =================== L3 SAYI HESAPLAYICI ===================
 const NUM_WORDS = {
@@ -5042,8 +5054,8 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.77"></script>
-<script src="shared/kdo-update.js?v=3.0.77"></script>
-<script src="shared/kdo-android-taps.js?v=3.0.77"></script>
+<script src="shared/kdo-analytics.js?v=3.0.78"></script>
+<script src="shared/kdo-update.js?v=3.0.78"></script>
+<script src="shared/kdo-android-taps.js?v=3.0.78"></script>
 </body>
 </html>
