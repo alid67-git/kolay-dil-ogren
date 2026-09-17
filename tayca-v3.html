@@ -172,41 +172,6 @@ nav{position:relative;z-index:49;display:flex;gap:6px;padding:10px max(14px,env(
 
 /* MAIN */
 main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;padding:14px;position:relative;z-index:1;touch-action:manipulation;overscroll-behavior:contain;}
-html.kdo-android-wv,
-html.kdo-android-wv body{
-  height:auto !important;
-  max-height:none !important;
-  min-height:100% !important;
-  overflow-x:hidden !important;
-  overflow-y:auto !important;
-  display:block !important;
-}
-html.kdo-android-wv header,
-html.kdo-android-wv nav{
-  position:relative !important;
-  overflow:visible !important;
-  pointer-events:auto !important;
-  z-index:60;
-}
-html.kdo-android-wv nav{
-  display:flex !important;
-  flex-wrap:wrap !important;
-  flex-direction:row !important;
-  touch-action:manipulation !important;
-}
-html.kdo-android-wv main{
-  overflow:visible !important;
-  height:auto !important;
-  max-height:none !important;
-  min-height:0 !important;
-  flex:none !important;
-  pointer-events:auto !important;
-  touch-action:manipulation !important;
-}
-html.kdo-android-wv .ltabs{
-  overflow:visible !important;
-  flex-wrap:wrap !important;
-}
 html.kdo-android-wv .lesson-card,
 html.kdo-android-wv .ltab,
 html.kdo-android-wv .nbtn,
@@ -218,6 +183,15 @@ html.kdo-android-wv .lesson-back-btn{
   pointer-events:auto;
   position:relative;
   z-index:2;
+}
+html.kdo-android-wv nav{
+  touch-action:pan-x;
+  pointer-events:auto;
+  z-index:55;
+}
+html.kdo-android-wv header{
+  pointer-events:auto;
+  z-index:60;
 }
 @media (orientation:landscape){
   main{padding:10px;}
@@ -400,36 +374,6 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 /* GRAMMAR DETAIL MODAL */
 .gram-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:flex-end;justify-content:center;}
 .gram-modal-overlay.open{display:flex;}
-/* WebView: kapalı fixed overlay display:none olsa da dokunmayı yer — ekran dışına al */
-.overlay:not(.open),
-#changelog-overlay:not(.open),
-#exercise-overlay:not(.open),
-.gram-modal-overlay:not(.open),
-#lstar-overlay:not(.open){
-  display:none !important;
-  visibility:hidden !important;
-  pointer-events:none !important;
-  width:0 !important;
-  height:0 !important;
-  overflow:hidden !important;
-  inset:auto !important;
-  left:-100vw !important;
-  top:-100vh !important;
-  background:transparent !important;
-  z-index:-1 !important;
-}
-.overlay.open,
-#changelog-overlay.open,
-#exercise-overlay.open,
-.gram-modal-overlay.open,
-#lstar-overlay.open{
-  display:flex !important;
-  visibility:visible !important;
-  pointer-events:auto !important;
-  inset:0 !important;
-  width:auto !important;
-  height:auto !important;
-}
 .gram-modal{background:white;border-radius:16px 16px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom,0px));width:100%;max-height:85vh;overflow-y:auto;}
 .gram-modal-title{font-size:13px;font-weight:700;color:#7c3aed;margin-bottom:4px;}
 .gram-modal-sentence{font-size:16px;font-weight:700;margin-bottom:4px;font-family:'Sarabun',sans-serif;color:#bbb;}
@@ -801,19 +745,19 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.82"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.82"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.82"></script>
-<script src="shared/kdo-gloss.js?v=3.0.82"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.82"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.82"></script>
-<script src="shared/kdo-tts.js?v=3.0.82"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.82"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.82"></script>
-<script src="shared/kdo-translate.js?v=3.0.82"></script>
-<script src="shared/kdo-store.js?v=3.0.82"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.82"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.82"></script>
+<script src="shared/kdo-version.js?v=3.0.83"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.83"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.83"></script>
+<script src="shared/kdo-gloss.js?v=3.0.83"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.83"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.83"></script>
+<script src="shared/kdo-tts.js?v=3.0.83"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.83"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.83"></script>
+<script src="shared/kdo-translate.js?v=3.0.83"></script>
+<script src="shared/kdo-store.js?v=3.0.83"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.83"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.83"></script>
 <script>
 const APP_VERSION = window.KDO_APP_VERSION || window.KDO_PLATFORM_VERSION;
 window.KDO_PREFIX = 'tv3_';
@@ -2161,14 +2105,11 @@ function showLessonStars(num, event){
     </div>`;
   }).join('');
   const ov = document.getElementById('lstar-overlay');
-  ov.classList.add('open');
   ov.style.display='flex';
   document.body.style.overflow='hidden';
 }
 function closeLessonStars(){
-  const ov = document.getElementById('lstar-overlay');
-  ov.classList.remove('open');
-  ov.style.display='none';
+  document.getElementById('lstar-overlay').style.display='none';
   document.body.style.overflow='';
 }
 let _lessonStarFilter = null;
@@ -4732,8 +4673,8 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.82"></script>
-<script src="shared/kdo-update.js?v=3.0.82"></script>
-<script src="shared/kdo-android-taps.js?v=3.0.82"></script>
+<script src="shared/kdo-analytics.js?v=3.0.83"></script>
+<script src="shared/kdo-update.js?v=3.0.83"></script>
+<script src="shared/kdo-android-taps.js?v=3.0.83"></script>
 </body>
 </html>
