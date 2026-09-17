@@ -6,10 +6,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.view.WindowManager;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -21,7 +18,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.74";
+    private static final String APP_VERSION = "3.0.75";
     private static final String START_URL =
             "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
@@ -35,11 +32,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            getWindow().getAttributes().layoutInDisplayCutoutMode =
-                    WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
-        }
+        // decorFits=true: sistem çubukları WebView dışına yerleşir.
+        // Immersive sticky (v3.0.71) Android'de dokunma hedeflerini bozuyordu.
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
         getWindow().setStatusBarColor(Color.parseColor("#0d9488"));
         getWindow().setNavigationBarColor(Color.parseColor("#0f766e"));
         WindowInsetsControllerCompat controller =
@@ -51,10 +46,10 @@ public class MainActivity extends AppCompatActivity {
 
         webView = new WebView(this);
         webView.setBackgroundColor(Color.parseColor("#f5f5f5"));
-        webView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+        webView.setFocusable(true);
+        webView.setFocusableInTouchMode(true);
         setContentView(webView);
         maybeClearCacheForUpgrade();
-        hideSystemUI();
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -62,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
         settings.setDatabaseEnabled(true);
         settings.setMediaPlaybackRequiresUserGesture(false);
         settings.setAllowFileAccess(false);
+        settings.setSupportZoom(false);
+        settings.setBuiltInZoomControls(false);
+        settings.setDisplayZoomControls(false);
+        settings.setLoadWithOverviewMode(true);
+        settings.setUseWideViewPort(true);
         settings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
         webView.setWebViewClient(new WebViewClient() {
@@ -78,7 +78,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                hideSystemUI();
+                // Android WebView dokunma yardımcısı + sürüm sınıfı
+                view.evaluateJavascript(
+                        "(function(){try{"
+                                + "document.documentElement.classList.add('kdo-android-wv');"
+                                + "if(window.KDO_bindAndroidTaps) window.KDO_bindAndroidTaps();"
+                                + "}catch(e){}})();",
+                        null);
             }
         });
 
@@ -101,26 +107,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void hideSystemUI() {
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                        | View.SYSTEM_UI_FLAG_FULLSCREEN
-        );
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if (hasFocus) {
-            hideSystemUI();
-        }
-    }
-
     private void maybeClearCacheForUpgrade() {
         try {
             PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
@@ -129,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
             int saved = prefs.getInt("version_code", -1);
             if (saved != versionCode) {
                 webView.clearCache(true);
+                webView.clearHistory();
                 prefs.edit().putInt("version_code", versionCode).apply();
             }
         } catch (PackageManager.NameNotFoundException ignored) {

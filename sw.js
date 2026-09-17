@@ -1,4 +1,4 @@
-const CACHE = 'kdo-v3.0.74';
+const CACHE = 'kdo-v3.0.75';
 const CORE = [
   '/kolay-dil-ogren/',
   '/kolay-dil-ogren/index.html',
@@ -17,6 +17,7 @@ const CORE = [
   '/kolay-dil-ogren/shared/kdo-store.js',
   '/kolay-dil-ogren/shared/kdo-geo-locale.js',
   '/kolay-dil-ogren/shared/kdo-update.js',
+  '/kolay-dil-ogren/shared/kdo-android-taps.js',
   '/kolay-dil-ogren/shared/kdo-analytics.js',
   '/kolay-dil-ogren/shared/kdo-analytics-config.js'
 ];
