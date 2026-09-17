@@ -1,19 +1,24 @@
-/** Android WebView: belge kaydırma + native/JS tap → element.click() */
+/** Android WebView: tüm menü / ders / sekme dokunmaları */
 (function () {
   'use strict';
 
-  var MOVE_PX = 32;
+  var MOVE_PX = 28;
   var boundDoc = false;
   var sx = 0;
   var sy = 0;
+  var startEl = null;
   var lastKey = '';
   var lastAt = 0;
-  var STYLE_ID = 'kdo-android-tap-css';
 
-  function isAndroid() {
-    return /Android/i.test(navigator.userAgent || '') ||
-      document.documentElement.classList.contains('kdo-android-wv');
-  }
+  var NAV_MAP = {
+    nav_lessons: 'lessons',
+    nav_test: 'test',
+    nav_translate: 'translate',
+    nav_list: 'list',
+    nav_review: 'review',
+    nav_add: 'add',
+    nav_settings: null
+  };
 
   function markAndroid() {
     if (/Android/i.test(navigator.userAgent || '')) {
@@ -21,106 +26,158 @@
     }
   }
 
+  function fixViewportLayout() {
+    try {
+      var html = document.documentElement;
+      var body = document.body;
+      if (!html || !body) return;
+      html.style.setProperty('height', '100%', 'important');
+      html.style.setProperty('height', '100vh', 'important');
+      html.style.setProperty('max-height', '100vh', 'important');
+      html.style.setProperty('overflow', 'hidden', 'important');
+      body.style.setProperty('height', '100%', 'important');
+      body.style.setProperty('height', '100vh', 'important');
+      body.style.setProperty('max-height', '100vh', 'important');
+      body.style.setProperty('min-height', '0', 'important');
+      body.style.setProperty('overflow', 'hidden', 'important');
+      // Landscape grid'i bozma — sadece portrait flex
+      var landscape = window.matchMedia && window.matchMedia('(orientation:landscape)').matches;
+      if (!landscape) {
+        body.style.setProperty('display', 'flex', 'important');
+        body.style.setProperty('flex-direction', 'column', 'important');
+      }
+      var header = document.querySelector('header');
+      var nav = document.querySelector('nav');
+      var main = document.querySelector('main');
+      if (header) {
+        header.style.setProperty('position', 'relative', 'important');
+        header.style.setProperty('z-index', '60', 'important');
+        header.style.setProperty('flex-shrink', '0', 'important');
+        header.style.setProperty('pointer-events', 'auto', 'important');
+      }
+      if (nav) {
+        nav.style.setProperty('position', 'relative', 'important');
+        nav.style.setProperty('z-index', '55', 'important');
+        nav.style.setProperty('flex-shrink', '0', 'important');
+        nav.style.setProperty('pointer-events', 'auto', 'important');
+        nav.style.setProperty('touch-action', 'pan-x', 'important');
+      }
+      if (main) {
+        main.style.setProperty('flex', '1 1 auto', 'important');
+        main.style.setProperty('min-height', '0', 'important');
+        main.style.setProperty('overflow-y', 'auto', 'important');
+        main.style.setProperty('-webkit-overflow-scrolling', 'touch', 'important');
+        main.style.setProperty('position', 'relative', 'important');
+        main.style.setProperty('z-index', '1', 'important');
+        main.style.setProperty('touch-action', 'pan-y', 'important');
+        main.style.setProperty('pointer-events', 'auto', 'important');
+      }
+    } catch (_) {}
+  }
+
   function once(key, fn) {
     var now = Date.now();
-    if (key === lastKey && now - lastAt < 400) return false;
+    if (key === lastKey && now - lastAt < 450) return false;
     lastKey = key;
     lastAt = now;
     try { fn(); } catch (err) { console.warn('KDO tap', key, err); }
     return true;
   }
 
-  /**
-   * İç içe overflow Android WebView'da hit-test'i öldürür.
-   * Belge kaydırsın; main/nav scrollport olmasın.
-   */
-  function fixViewportLayout() {
-    try {
-      if (!isAndroid()) return;
-      document.documentElement.classList.add('kdo-android-wv');
-      if (document.getElementById(STYLE_ID)) return;
-      var st = document.createElement('style');
-      st.id = STYLE_ID;
-      st.textContent = [
-        'html.kdo-android-wv,html.kdo-android-wv body{',
-        'height:auto!important;max-height:none!important;min-height:100%!important;',
-        'overflow-x:hidden!important;overflow-y:auto!important;',
-        'display:block!important;position:static!important;',
-        '}',
-        'html.kdo-android-wv header,html.kdo-android-wv nav{',
-        'position:relative!important;overflow:visible!important;',
-        'max-height:none!important;flex:none!important;',
-        'pointer-events:auto!important;z-index:60!important;',
-        '}',
-        'html.kdo-android-wv nav{',
-        'display:flex!important;flex-wrap:wrap!important;',
-        'flex-direction:row!important;touch-action:manipulation!important;',
-        '}',
-        'html.kdo-android-wv main{',
-        'overflow:visible!important;height:auto!important;max-height:none!important;',
-        'min-height:0!important;flex:none!important;',
-        'position:relative!important;pointer-events:auto!important;',
-        'touch-action:manipulation!important;',
-        '}',
-        'html.kdo-android-wv .lesson-card,html.kdo-android-wv .nbtn,',
-        'html.kdo-android-wv .ltab,html.kdo-android-wv .hbtn,',
-        'html.kdo-android-wv .lesson-back-btn,html.kdo-android-wv .filter-btn{',
-        'pointer-events:auto!important;touch-action:manipulation!important;',
-        '}',
-        'html.kdo-android-wv .ltabs{overflow:visible!important;flex-wrap:wrap!important;}',
-        'html.kdo-android-wv .overlay:not(.open),html.kdo-android-wv #changelog-overlay:not(.open),',
-        'html.kdo-android-wv #exercise-overlay:not(.open),html.kdo-android-wv .gram-modal-overlay:not(.open),',
-        'html.kdo-android-wv #lstar-overlay:not(.open){',
-        'display:none!important;visibility:hidden!important;pointer-events:none!important;',
-        'width:0!important;height:0!important;inset:auto!important;left:-100vw!important;top:-100vh!important;',
-        'background:transparent!important;z-index:-1!important;}',
-        'html.kdo-android-wv .overlay.open,html.kdo-android-wv #changelog-overlay.open,',
-        'html.kdo-android-wv #exercise-overlay.open,html.kdo-android-wv .gram-modal-overlay.open,',
-        'html.kdo-android-wv #lstar-overlay.open{',
-        'display:flex!important;visibility:visible!important;pointer-events:auto!important;inset:0!important;}'
-      ].join('');
-      (document.head || document.documentElement).appendChild(st);
-    } catch (_) {}
+  function getFn(name, fallback) {
+    if (typeof window[name] === 'function') return window[name];
+    if (typeof fallback === 'function') return fallback;
+    return null;
   }
 
-  function clickableFrom(el) {
-    if (!el || !el.closest) return null;
-    return el.closest(
-      'button, a[href], [onclick], [role="button"],' +
-      '.lesson-card[data-num], .nbtn, .ltab, .hbtn, .bonus-header,' +
-      '.filter-btn, .setting-btn, .lang-btn, .target-btn, .ver-btn,' +
-      '.lesson-back-btn, .modal-close, .lang-hub-close, .ex-check-btn'
-    );
+  function activateNav(btn) {
+    var switcher = getFn('switchView', typeof switchView === 'function' ? switchView : null);
+    var lk = btn.getAttribute('data-lk') || '';
+    var view = NAV_MAP[lk];
+    if (lk === 'nav_settings' || (btn.getAttribute('onclick') || '').indexOf('settings') >= 0) {
+      var openM = getFn('openModal', typeof openModal === 'function' ? openModal : null);
+      if (openM) return once('nav-settings', function () { openM('settings-overlay'); });
+      return once('nav-settings-click', function () { btn.click(); });
+    }
+    if (view && switcher) {
+      return once('nav-' + view, function () { switcher(view, btn); });
+    }
+    return once('nav-click-' + lk, function () { btn.click(); });
   }
 
-  function activateEl(el) {
-    var clickable = clickableFrom(el);
-    if (!clickable) return false;
-    if (clickable.classList && clickable.classList.contains('empty')) return false;
-    var key = (clickable.id || clickable.className || clickable.tagName || 'el').toString().slice(0, 48);
-    return once(key, function () { clickable.click(); });
-  }
-
-  function isClosedOverlay(el) {
+  function activateFromEl(el) {
     if (!el || !el.closest) return false;
-    var ov = el.closest('.overlay, #changelog-overlay, #exercise-overlay, #lstar-overlay, .gram-modal-overlay');
-    if (!ov) return false;
-    return !ov.classList.contains('open');
-  }
 
-  function handleTapAt(x, y) {
-    fixViewportLayout();
-    var stack = (document.elementsFromPoint && document.elementsFromPoint(x, y)) || [];
-    if (!stack.length) {
-      var one = document.elementFromPoint(x, y);
-      if (one) stack = [one];
+    // Açık overlay üstünde sadece overlay içi
+    var openOv = document.querySelector('.overlay.open, .gram-modal-overlay.open, #exercise-overlay.open, #changelog-overlay.open, #lstar-overlay[style*="flex"]');
+    if (openOv && !openOv.contains(el)) {
+      // Dışarı tık: kapatmayı dene
+      var closer = openOv.id && getFn('closeModal');
+      if (closer && openOv.classList.contains('overlay')) {
+        return once('close-' + openOv.id, function () { closer(openOv.id); });
+      }
+      return false;
     }
-    for (var i = 0; i < stack.length; i++) {
-      var el = stack[i];
-      if (!el || el === document.documentElement || el === document.body) continue;
-      if (isClosedOverlay(el)) continue;
-      if (activateEl(el)) return true;
+
+    var card = el.closest('.lesson-card[data-num]');
+    if (card && !card.classList.contains('empty')) {
+      var num = parseInt(card.getAttribute('data-num'), 10);
+      var opener = getFn('openLesson', typeof openLesson === 'function' ? openLesson : null);
+      if (num && opener) return once('lesson-' + num, function () { opener(num); });
     }
+
+    var ltab = el.closest('.ltab[data-tab]');
+    if (ltab) {
+      var tab = ltab.getAttribute('data-tab');
+      var tabSwitch = getFn('switchLessonTab', typeof switchLessonTab === 'function' ? switchLessonTab : null);
+      if (tab && tabSwitch) return once('ltab-' + tab, function () { tabSwitch(tab, ltab); });
+    }
+
+    var nbtn = el.closest('button.nbtn, .nbtn');
+    if (nbtn) return activateNav(nbtn);
+
+    var hbtn = el.closest('button.hbtn, .hbtn');
+    if (hbtn) {
+      var oc = hbtn.getAttribute('onclick') || '';
+      if (oc.indexOf('help') >= 0) {
+        var oh = getFn('openModal');
+        if (oh) return once('help', function () { oh('help-overlay'); });
+      }
+      if (oc.indexOf('settings') >= 0) {
+        var os = getFn('openModal');
+        if (os) return once('settings', function () { os('settings-overlay'); });
+      }
+      return once('hbtn', function () { hbtn.click(); });
+    }
+
+    var back = el.closest('.lesson-back-btn, [onclick*="closeLessonDetail"]');
+    if (back) {
+      var closerL = getFn('closeLessonDetail', typeof closeLessonDetail === 'function' ? closeLessonDetail : null);
+      if (closerL) return once('lesson-back', function () { closerL(); });
+      return once('lesson-back-click', function () { back.click(); });
+    }
+
+    var bonus = el.closest('.bonus-header');
+    if (bonus) {
+      var tb = getFn('toggleBonus', typeof toggleBonus === 'function' ? toggleBonus : null);
+      if (tb) return once('bonus', function () { tb(); });
+      return once('bonus-click', function () { bonus.click(); });
+    }
+
+    var filter = el.closest('.filter-btn, .setting-btn, .lang-btn, .target-btn, .ex-check-btn, .ex-finish-btn, .lang-hub-apply, .lang-hub-cancel, .lang-hub-close, .modal-close, #update-btn, #update-dismiss, .ver-btn');
+    if (filter) {
+      return once('btn-' + (filter.id || filter.className).toString().slice(0, 40), function () {
+        filter.click();
+      });
+    }
+
+    var clickable = el.closest('button, [role="button"], a[href]');
+    if (clickable && clickable.tagName === 'BUTTON') {
+      return once('anybtn-' + (clickable.id || clickable.textContent || '').toString().slice(0, 24), function () {
+        clickable.click();
+      });
+    }
+
     return false;
   }
 
@@ -128,31 +185,92 @@
     if (!e.touches || !e.touches.length) return;
     sx = e.touches[0].clientX;
     sy = e.touches[0].clientY;
+    startEl = e.target;
   }
 
   function onTouchEnd(e) {
-    if (!e.changedTouches || !e.changedTouches.length) return;
+    if (!e.changedTouches || !e.changedTouches.length) {
+      startEl = null;
+      return;
+    }
     var t = e.changedTouches[0];
-    if (Math.abs(t.clientX - sx) > MOVE_PX || Math.abs(t.clientY - sy) > MOVE_PX) return;
-    handleTapAt(t.clientX, t.clientY);
+    var moved = Math.abs(t.clientX - sx) > MOVE_PX || Math.abs(t.clientY - sy) > MOVE_PX;
+    var el = startEl;
+    startEl = null;
+    if (moved) return;
+
+    // elementFromPoint: overflow-x scroll (nav/ltabs) içinde daha güvenilir
+    var top = document.elementFromPoint(t.clientX, t.clientY);
+    if (top) el = top;
+
+    if (activateFromEl(el)) {
+      // Native click sentezi güvenilmez; biz hallettik — çift tetiklemeyi kes
+      try { e.preventDefault(); } catch (_) {}
+    }
+  }
+
+  function onClick(e) {
+    // Yedek: touchend kaçırdıysa. .click() çağırma — döngü riski.
+    if (activateFromEl(e.target)) {
+      try {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+      } catch (_) {}
+    }
+  }
+
+  function bindInteractive() {
+    var sels = [
+      '.lesson-card[data-num]:not(.empty)',
+      'button.nbtn', 'button.hbtn', 'button.ltab',
+      '.lesson-back-btn', '.bonus-header', '.filter-btn',
+      '.setting-btn', '.lang-btn', '.ver-btn'
+    ];
+    for (var s = 0; s < sels.length; s++) {
+      var nodes = document.querySelectorAll(sels[s]);
+      for (var i = 0; i < nodes.length; i++) {
+        var node = nodes[i];
+        if (node.getAttribute('data-kdo-bound') === '1') continue;
+        node.setAttribute('data-kdo-bound', '1');
+        node.style.touchAction = 'manipulation';
+        node.style.cursor = 'pointer';
+        node.style.pointerEvents = 'auto';
+      }
+    }
   }
 
   function bindDoc() {
     markAndroid();
     fixViewportLayout();
-    if (boundDoc) return;
-    boundDoc = true;
-    document.addEventListener('touchstart', onTouchStart, { passive: true });
-    document.addEventListener('touchend', onTouchEnd, { passive: true });
+    if (!boundDoc) {
+      boundDoc = true;
+      document.addEventListener('touchstart', onTouchStart, { passive: true, capture: true });
+      document.addEventListener('touchend', onTouchEnd, { passive: false, capture: true });
+      document.addEventListener('click', onClick, true);
+    }
+    bindInteractive();
   }
 
   window.KDO_bindAndroidTaps = bindDoc;
-  window.KDO_bindLessonCards = bindDoc;
+  window.KDO_bindLessonCards = bindInteractive;
   window.KDO_fixViewportLayout = fixViewportLayout;
-  window.KDO_handleTapAt = handleTapAt;
+
+  function hookRender() {
+    if (typeof window.renderLessonList !== 'function') return;
+    if (window.renderLessonList._kdoHooked) return;
+    var orig = window.renderLessonList;
+    window.renderLessonList = function () {
+      var r = orig.apply(this, arguments);
+      try { bindInteractive(); } catch (_) {}
+      return r;
+    };
+    window.renderLessonList._kdoHooked = true;
+  }
 
   function boot() {
     bindDoc();
+    hookRender();
   }
 
   if (document.readyState === 'loading') {
@@ -160,5 +278,9 @@
   } else {
     boot();
   }
-  window.addEventListener('load', boot);
+  window.addEventListener('load', function () {
+    boot();
+    setTimeout(boot, 200);
+    setTimeout(boot, 800);
+  });
 })();
