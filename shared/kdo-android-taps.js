@@ -67,7 +67,17 @@
         'html.kdo-android-wv .lesson-back-btn,html.kdo-android-wv .filter-btn{',
         'pointer-events:auto!important;touch-action:manipulation!important;',
         '}',
-        'html.kdo-android-wv .ltabs{overflow:visible!important;flex-wrap:wrap!important;}'
+        'html.kdo-android-wv .ltabs{overflow:visible!important;flex-wrap:wrap!important;}',
+        'html.kdo-android-wv .overlay:not(.open),html.kdo-android-wv #changelog-overlay:not(.open),',
+        'html.kdo-android-wv #exercise-overlay:not(.open),html.kdo-android-wv .gram-modal-overlay:not(.open),',
+        'html.kdo-android-wv #lstar-overlay:not(.open){',
+        'display:none!important;visibility:hidden!important;pointer-events:none!important;',
+        'width:0!important;height:0!important;inset:auto!important;left:-100vw!important;top:-100vh!important;',
+        'background:transparent!important;z-index:-1!important;}',
+        'html.kdo-android-wv .overlay.open,html.kdo-android-wv #changelog-overlay.open,',
+        'html.kdo-android-wv #exercise-overlay.open,html.kdo-android-wv .gram-modal-overlay.open,',
+        'html.kdo-android-wv #lstar-overlay.open{',
+        'display:flex!important;visibility:visible!important;pointer-events:auto!important;inset:0!important;}'
       ].join('');
       (document.head || document.documentElement).appendChild(st);
     } catch (_) {}
@@ -91,11 +101,27 @@
     return once(key, function () { clickable.click(); });
   }
 
+  function isClosedOverlay(el) {
+    if (!el || !el.closest) return false;
+    var ov = el.closest('.overlay, #changelog-overlay, #exercise-overlay, #lstar-overlay, .gram-modal-overlay');
+    if (!ov) return false;
+    return !ov.classList.contains('open');
+  }
+
   function handleTapAt(x, y) {
     fixViewportLayout();
-    var el = document.elementFromPoint(x, y);
-    if (!el) return false;
-    return activateEl(el);
+    var stack = (document.elementsFromPoint && document.elementsFromPoint(x, y)) || [];
+    if (!stack.length) {
+      var one = document.elementFromPoint(x, y);
+      if (one) stack = [one];
+    }
+    for (var i = 0; i < stack.length; i++) {
+      var el = stack[i];
+      if (!el || el === document.documentElement || el === document.body) continue;
+      if (isClosedOverlay(el)) continue;
+      if (activateEl(el)) return true;
+    }
+    return false;
   }
 
   function onTouchStart(e) {
