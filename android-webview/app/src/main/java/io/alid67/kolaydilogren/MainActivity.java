@@ -3,11 +3,10 @@ package io.alid67.kolaydilogren;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.SharedPreferences;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -21,13 +20,38 @@ import io.alid67.kolaydilogren.prefs.KdoPrefs;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.80";
+    private static final String APP_VERSION = "3.0.81";
     private static final String START_URL =
             "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
     private static final String ALLOWED_PATH_PREFIX = "/kolay-dil-ogren";
 
+    /**
+     * WebView hit-test bozuk olsa bile native MotionEvent koordinatından
+     * element.click() tetikler. SW önbelleği Android kabuğunda gerekmez.
+     */
+    private static final String TAP_BOOT =
+            "(function(){try{"
+                    + "var d=document.documentElement;d.classList.add('kdo-android-wv');"
+                    + "if(!document.getElementById('kdo-android-tap-css')){"
+                    + "var s=document.createElement('style');s.id='kdo-android-tap-css';"
+                    + "s.textContent='html.kdo-android-wv,html.kdo-android-wv body{height:auto!important;max-height:none!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important;display:block!important}html.kdo-android-wv header,html.kdo-android-wv nav{position:relative!important;overflow:visible!important;pointer-events:auto!important}html.kdo-android-wv nav{display:flex!important;flex-wrap:wrap!important}html.kdo-android-wv main{overflow:visible!important;height:auto!important;max-height:none!important;flex:none!important}html.kdo-android-wv .ltabs{overflow:visible!important;flex-wrap:wrap!important}';"
+                    + "(document.head||d).appendChild(s);}"
+                    + "window.KDO_handleTapAt=function(x,y){"
+                    + "var el=document.elementFromPoint(x,y);if(!el)return false;"
+                    + "var c=el.closest('button,a[href],[onclick],[role=button],.lesson-card,.nbtn,.ltab,.hbtn,.bonus-header,.filter-btn,.setting-btn,.lang-btn,.lesson-back-btn');"
+                    + "if(!c||(c.classList&&c.classList.contains('empty')))return false;"
+                    + "c.click();return true;};"
+                    + "if(navigator.serviceWorker){"
+                    + "navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister()});});}"
+                    + "if(window.caches){caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});});}"
+                    + "if(window.KDO_fixViewportLayout)window.KDO_fixViewportLayout();"
+                    + "if(window.KDO_bindAndroidTaps)window.KDO_bindAndroidTaps();"
+                    + "}catch(e){}})();";
+
     private WebView webView;
+    private float downX;
+    private float downY;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -44,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        // decorFits=true: sistem çubukları WebView dışına yerleşir.
-        // Immersive sticky (v3.0.71) Android'de dokunma hedeflerini bozuyordu.
         WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
         getWindow().setStatusBarColor(Color.parseColor("#0d9488"));
         getWindow().setNavigationBarColor(Color.parseColor("#0f766e"));
@@ -60,8 +82,11 @@ public class MainActivity extends AppCompatActivity {
         webView.setBackgroundColor(Color.parseColor("#f5f5f5"));
         webView.setFocusable(true);
         webView.setFocusableInTouchMode(true);
+        webView.setClickable(true);
         setContentView(webView);
-        maybeClearCacheForUpgrade();
+
+        webView.clearCache(true);
+        webView.clearHistory();
 
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
@@ -73,11 +98,35 @@ public class MainActivity extends AppCompatActivity {
         settings.setBuiltInZoomControls(false);
         settings.setDisplayZoomControls(false);
         settings.setLoadWithOverviewMode(false);
-        settings.setUseWideViewPort(true);
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
-        // Dokunma koordinatlarının ölçek kaymasından kaçın
+        settings.setUseWideViewPort(false);
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         webView.setInitialScale(100);
         webView.setHorizontalScrollBarEnabled(false);
+
+        webView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            @SuppressLint("ClickableViewAccessibility")
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    downX = event.getX();
+                    downY = event.getY();
+                    return false;
+                }
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    float dx = Math.abs(event.getX() - downX);
+                    float dy = Math.abs(event.getY() - downY);
+                    if (dx < 40 && dy < 40) {
+                        float scale = webView.getScale() <= 0 ? 1f : webView.getScale();
+                        float x = event.getX() / scale;
+                        float y = event.getY() / scale;
+                        webView.evaluateJavascript(
+                                "window.KDO_handleTapAt&&window.KDO_handleTapAt(" + x + "," + y + ")",
+                                null);
+                    }
+                }
+                return false;
+            }
+        });
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
@@ -93,15 +142,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageFinished(WebView view, String url) {
-                // Eski önbellekli HTML'de bile viewport + tap bağlama (ders kartı hit-test)
-                view.evaluateJavascript(
-                        "(function(){try{"
-                                + "document.documentElement.classList.add('kdo-android-wv');"
-                                + "if(window.KDO_fixViewportLayout) window.KDO_fixViewportLayout();"
-                                + "if(window.KDO_bindAndroidTaps) window.KDO_bindAndroidTaps();"
-                                + "else if(window.KDO_bindLessonCards) window.KDO_bindLessonCards();"
-                                + "}catch(e){}})();",
-                        null);
+                view.evaluateJavascript(TAP_BOOT, null);
             }
         });
 
@@ -121,21 +162,6 @@ public class MainActivity extends AppCompatActivity {
             webView.restoreState(savedInstanceState);
         } else {
             webView.loadUrl(START_URL);
-        }
-    }
-
-    private void maybeClearCacheForUpgrade() {
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
-            int versionCode = info.versionCode;
-            SharedPreferences prefs = getSharedPreferences("kdo_webview", MODE_PRIVATE);
-            int saved = prefs.getInt("version_code", -1);
-            if (saved != versionCode) {
-                webView.clearCache(true);
-                webView.clearHistory();
-                prefs.edit().putInt("version_code", versionCode).apply();
-            }
-        } catch (PackageManager.NameNotFoundException ignored) {
         }
     }
 
