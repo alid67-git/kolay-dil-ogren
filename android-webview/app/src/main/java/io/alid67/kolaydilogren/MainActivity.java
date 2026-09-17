@@ -20,7 +20,7 @@ import io.alid67.kolaydilogren.prefs.KdoPrefs;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.81";
+    private static final String APP_VERSION = "3.0.82";
     private static final String START_URL =
             "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
@@ -35,13 +35,20 @@ public class MainActivity extends AppCompatActivity {
                     + "var d=document.documentElement;d.classList.add('kdo-android-wv');"
                     + "if(!document.getElementById('kdo-android-tap-css')){"
                     + "var s=document.createElement('style');s.id='kdo-android-tap-css';"
-                    + "s.textContent='html.kdo-android-wv,html.kdo-android-wv body{height:auto!important;max-height:none!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important;display:block!important}html.kdo-android-wv header,html.kdo-android-wv nav{position:relative!important;overflow:visible!important;pointer-events:auto!important}html.kdo-android-wv nav{display:flex!important;flex-wrap:wrap!important}html.kdo-android-wv main{overflow:visible!important;height:auto!important;max-height:none!important;flex:none!important}html.kdo-android-wv .ltabs{overflow:visible!important;flex-wrap:wrap!important}';"
+                    + "s.textContent='html.kdo-android-wv,html.kdo-android-wv body{height:auto!important;max-height:none!important;min-height:100%!important;overflow-x:hidden!important;overflow-y:auto!important;display:block!important}html.kdo-android-wv header,html.kdo-android-wv nav{position:relative!important;overflow:visible!important;pointer-events:auto!important}html.kdo-android-wv nav{display:flex!important;flex-wrap:wrap!important}html.kdo-android-wv main{overflow:visible!important;height:auto!important;max-height:none!important;flex:none!important}html.kdo-android-wv .ltabs{overflow:visible!important;flex-wrap:wrap!important}html.kdo-android-wv .overlay:not(.open),html.kdo-android-wv #changelog-overlay:not(.open),html.kdo-android-wv #exercise-overlay:not(.open),html.kdo-android-wv .gram-modal-overlay:not(.open),html.kdo-android-wv #lstar-overlay:not(.open){display:none!important;visibility:hidden!important;pointer-events:none!important;width:0!important;height:0!important;inset:auto!important;left:-100vw!important;top:-100vh!important;background:transparent!important;z-index:-1!important}html.kdo-android-wv .overlay.open,html.kdo-android-wv #changelog-overlay.open,html.kdo-android-wv #exercise-overlay.open,html.kdo-android-wv .gram-modal-overlay.open,html.kdo-android-wv #lstar-overlay.open{display:flex!important;visibility:visible!important;pointer-events:auto!important;inset:0!important}';"
                     + "(document.head||d).appendChild(s);}"
                     + "window.KDO_handleTapAt=function(x,y){"
-                    + "var el=document.elementFromPoint(x,y);if(!el)return false;"
+                    + "var stack=(document.elementsFromPoint&&document.elementsFromPoint(x,y))||[];"
+                    + "if(!stack.length){var one=document.elementFromPoint(x,y);if(one)stack=[one];}"
+                    + "for(var i=0;i<stack.length;i++){"
+                    + "var el=stack[i];if(!el||el===document.documentElement||el===document.body)continue;"
+                    + "var ov=el.closest&&el.closest('.overlay,#changelog-overlay,#exercise-overlay,#lstar-overlay,.gram-modal-overlay');"
+                    + "if(ov&&!ov.classList.contains('open'))continue;"
                     + "var c=el.closest('button,a[href],[onclick],[role=button],.lesson-card,.nbtn,.ltab,.hbtn,.bonus-header,.filter-btn,.setting-btn,.lang-btn,.lesson-back-btn');"
-                    + "if(!c||(c.classList&&c.classList.contains('empty')))return false;"
-                    + "c.click();return true;};"
+                    + "if(!c||(c.classList&&c.classList.contains('empty')))continue;"
+                    + "var cov=c.closest&&c.closest('.overlay,#changelog-overlay,#exercise-overlay,#lstar-overlay,.gram-modal-overlay');"
+                    + "if(cov&&!cov.classList.contains('open'))continue;"
+                    + "c.click();return true;}return false;};"
                     + "if(navigator.serviceWorker){"
                     + "navigator.serviceWorker.getRegistrations().then(function(rs){rs.forEach(function(r){r.unregister()});});}"
                     + "if(window.caches){caches.keys().then(function(ks){ks.forEach(function(k){caches.delete(k);});});}"
