@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Kolay Dil Öğrenme</string>
+    <string name="paywall_tagline">Dil öğrenmek hiç bu kadar kolay olmamıştı</string>
+    <string name="paywall_description">Yıllık %s abonelik ile tüm içeriklere sınırsız erişim.\n7 günlük ücretsiz deneme hakkı var.</string>
+    <string name="paywall_description_fallback">Yıllık abonelik ile tüm içeriklere sınırsız erişim.\n7 günlük ücretsiz deneme hakkı var.</string>
+    <string name="paywall_subscribe">Abone Ol</string>
+    <string name="paywall_restore">Aboneliği Geri Yükle</string>
+    <string name="paywall_promo_label">Promosyon kodu var mı?</string>
+    <string name="paywall_promo_hint">Kodu girin</string>
+    <string name="paywall_promo_redeem">Kodu Kullan</string>
+    <string name="paywall_promo_success">Promosyon kodu kabul edildi! 30 günlük erişim hakkı kazandınız.</string>
+    <string name="paywall_promo_invalid">Geçersiz promosyon kodu.</string>
+    <string name="paywall_no_active_subscription">Aktif bir abonelik bulunamadı.</string>
 </resources>
