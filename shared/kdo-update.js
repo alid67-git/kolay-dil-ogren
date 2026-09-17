@@ -37,6 +37,10 @@
 
   function trackWaiting(worker) {
     _waitingSW = worker;
+    // Otomatik uygula — ders açmayı bozan eski SW'de kalmayı önler
+    try {
+      worker.postMessage({ type: 'SKIP_WAITING' });
+    } catch (_) {}
     showUpdateUI();
   }
 
@@ -54,6 +58,8 @@
           }
         });
       });
+      // Kurulu SW varsa hemen güncelleme kontrolü
+      try { reg.update(); } catch (_) {}
     }).catch(function (err) {
       console.warn('SW register failed', err);
     });
