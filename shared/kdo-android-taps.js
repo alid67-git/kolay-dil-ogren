@@ -32,14 +32,10 @@
       var body = document.body;
       if (!html || !body) return;
       html.style.setProperty('height', '100%', 'important');
-      html.style.setProperty('height', '100vh', 'important');
-      html.style.setProperty('max-height', '100vh', 'important');
-      html.style.setProperty('overflow', 'hidden', 'important');
       body.style.setProperty('height', '100%', 'important');
-      body.style.setProperty('height', '100vh', 'important');
-      body.style.setProperty('max-height', '100vh', 'important');
       body.style.setProperty('min-height', '0', 'important');
-      body.style.setProperty('overflow', 'hidden', 'important');
+      // NOT: overflow:hidden body/html üzerinde bazı Android WebView sürümlerinde
+      // touch eventlarını keserek tıklamayı engeller — kullanılmıyor.
       // Landscape grid'i bozma — sadece portrait flex
       var landscape = window.matchMedia && window.matchMedia('(orientation:landscape)').matches;
       if (!landscape) {
@@ -209,17 +205,6 @@
     }
   }
 
-  function onClick(e) {
-    // Yedek: touchend kaçırdıysa. .click() çağırma — döngü riski.
-    if (activateFromEl(e.target)) {
-      try {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-      } catch (_) {}
-    }
-  }
-
   function bindInteractive() {
     var sels = [
       '.lesson-card[data-num]:not(.empty)',
@@ -247,7 +232,6 @@
       boundDoc = true;
       document.addEventListener('touchstart', onTouchStart, { passive: true, capture: true });
       document.addEventListener('touchend', onTouchEnd, { passive: false, capture: true });
-      document.addEventListener('click', onClick, true);
     }
     bindInteractive();
   }
