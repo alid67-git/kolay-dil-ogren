@@ -84,6 +84,16 @@
     if (ltab && openLtab(ltab)) {
       e.preventDefault();
       e.stopPropagation();
+      return;
+    }
+
+    var nbtn = el.closest('.nbtn');
+    if (nbtn && !nbtn.disabled) {
+      e.preventDefault();
+      e.stopPropagation();
+      once('nbtn-' + (nbtn.dataset.view || nbtn.textContent), function () {
+        nbtn.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, view: window }));
+      });
     }
   }
 
