@@ -26,9 +26,24 @@ header,nav{flex-shrink:0;position:relative;}
 main{flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;position:relative;z-index:1;touch-action:manipulation;overscroll-behavior:contain;}
 html.kdo-android-wv .lesson-card,
 html.kdo-android-wv .ltab,
-html.kdo-android-wv .nbtn{
+html.kdo-android-wv .nbtn,
+html.kdo-android-wv .hbtn,
+html.kdo-android-wv .filter-btn,
+html.kdo-android-wv .lesson-back-btn{
   -webkit-tap-highlight-color:rgba(13,148,136,.18);
   touch-action:manipulation;
+  pointer-events:auto;
+  position:relative;
+  z-index:2;
+}
+html.kdo-android-wv nav{
+  touch-action:pan-x;
+  pointer-events:auto;
+  z-index:55;
+}
+html.kdo-android-wv header{
+  pointer-events:auto;
+  z-index:60;
 }
 .english{}
 
@@ -792,21 +807,21 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.79"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.79"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.79"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.79"></script>
-<script src="shared/kdo-gloss.js?v=3.0.79"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.79"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.79"></script>
-<script src="shared/kdo-tts.js?v=3.0.79"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.79"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.79"></script>
-<script src="shared/kdo-store.js?v=3.0.79"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.79"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.79"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.79"></script>
-<script src="shared/kdo-translate.js?v=3.0.79"></script>
+<script src="shared/kdo-version.js?v=3.0.80"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.80"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.80"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.80"></script>
+<script src="shared/kdo-gloss.js?v=3.0.80"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.80"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.80"></script>
+<script src="shared/kdo-tts.js?v=3.0.80"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.80"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.80"></script>
+<script src="shared/kdo-store.js?v=3.0.80"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.80"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.80"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.80"></script>
+<script src="shared/kdo-translate.js?v=3.0.80"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1905,6 +1920,7 @@ function switchView(v, btn){
   if(v==='test') initTestView();
   if(v==='translate') initTranslateView();
 }
+window.switchView = switchView;
 
 // =================== DERS LİSTESİ ===================
 function renderLessonCard(L){
@@ -2128,6 +2144,7 @@ async function openLesson(num){
   }
 }
 window.openLesson = openLesson;
+window.closeLessonDetail = closeLessonDetail;
 
 function closeLessonDetail(){
   if(!document.getElementById('detail-view').classList.contains('active')) return;
@@ -4135,6 +4152,8 @@ function buildHelpContent(){
   else switchHelpTab('genel', document.getElementById('htab-btn-genel'));
 }
 function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+window.openModal = openModal;
+window.closeModal = closeModal;
 document.querySelectorAll('.overlay').forEach(el=>{
   el.addEventListener('click',e=>{ if(e.target===el) el.classList.remove('open'); });
 });
@@ -5069,8 +5088,8 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.79"></script>
-<script src="shared/kdo-update.js?v=3.0.79"></script>
-<script src="shared/kdo-android-taps.js?v=3.0.79"></script>
+<script src="shared/kdo-analytics.js?v=3.0.80"></script>
+<script src="shared/kdo-update.js?v=3.0.80"></script>
+<script src="shared/kdo-android-taps.js?v=3.0.80"></script>
 </body>
 </html>
