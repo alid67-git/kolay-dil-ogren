@@ -114,7 +114,7 @@ const L20 = {
           tr:'how are you?', tr_th:'สบายดีไหม?'
         }
       ],
-      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
+      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.', note_en:'Practise patterns in short dialogues, not in isolation.'
     }
   ],
   speaking:[
@@ -166,7 +166,7 @@ const L20 = {
               ro:'mer-ha-ba',
               tr:'hello', tr_th:'สวัสดี',
               role:'phrase',
-              note:'Örnek kullanım.'
+              note:'Örnek kullanım.', note_en:'Example usage.'
             }
           ]
         },
@@ -181,7 +181,7 @@ const L20 = {
               ro:'na-suhl-suhn',
               tr:'how are you?', tr_th:'สบายดีไหม?',
               role:'phrase',
-              note:'Doğal cevap.'
+              note:'Doğal cevap.', note_en:'Natural response.'
             }
           ]
         },

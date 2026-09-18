@@ -129,7 +129,9 @@ header{position:relative;z-index:50;background:linear-gradient(135deg,#1565c0,#1
 .vbadge{font-size:10px;font-weight:700;color:rgba(255,255,255,.6);letter-spacing:.04em;white-space:nowrap;margin-right:2px;}
 
 /* NAV */
-nav{position:relative;z-index:49;display:flex;gap:6px;padding:10px max(14px,env(safe-area-inset-right,0px)) 10px max(14px,env(safe-area-inset-left,0px));background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06);max-width:100%;-webkit-overflow-scrolling:touch;}
+nav{position:relative;z-index:49;display:flex;gap:6px;padding:10px max(14px,env(safe-area-inset-right,0px)) 10px max(14px,env(safe-area-inset-left,0px));background:white;border-bottom:1px solid #e0e0e0;overflow-x:auto;box-shadow:0 2px 8px rgba(0,0,0,.06);max-width:100%;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+nav::-webkit-scrollbar{display:none;}
+nav::after{content:'';position:sticky;right:0;top:0;bottom:0;min-width:28px;background:linear-gradient(to right,transparent,white 70%);pointer-events:none;flex-shrink:0;}
 .nbtn{padding:8px 12px;border:none;background:#f0f0f0;border-radius:16px;cursor:pointer;font-size:12px;font-weight:600;white-space:nowrap;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
 .nbtn.active{background:#1565c0;color:white;}
 
@@ -807,21 +809,21 @@ h2{font-size:15px;color:#1565c0;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.87"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.87"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.87"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.87"></script>
-<script src="shared/kdo-gloss.js?v=3.0.87"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.87"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.87"></script>
-<script src="shared/kdo-tts.js?v=3.0.87"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.87"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.87"></script>
-<script src="shared/kdo-store.js?v=3.0.87"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.87"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.87"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.87"></script>
-<script src="shared/kdo-translate.js?v=3.0.87"></script>
+<script src="shared/kdo-version.js?v=3.0.88"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.88"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.88"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.88"></script>
+<script src="shared/kdo-gloss.js?v=3.0.88"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.88"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.88"></script>
+<script src="shared/kdo-tts.js?v=3.0.88"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.88"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.88"></script>
+<script src="shared/kdo-store.js?v=3.0.88"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.88"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.88"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.88"></script>
+<script src="shared/kdo-translate.js?v=3.0.88"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -853,6 +855,18 @@ const APP_VERSION = window.KDO_APP_VERSION || window.KDO_PLATFORM_VERSION;
 
 // =================== DİL SİSTEMİ / LANGUAGE SYSTEM ===================
 let appLang = localStorage.getItem('kdo:locale') || localStorage.getItem(PREFIX+'lang') || 'tr';
+
+const KDO_PRONOUN_EN = {
+  'Genel':'General','Sabah':'Morning','Akşam':'Evening','Veda':'Farewell',
+  'Soru':'Question','Cevap':'Answer','Nezaket':'Politeness',
+  'Ben':'I (1sg)','Sen':'You (2sg)','O':'He/She/It',
+  'Biz':'We','Siz':'You (pl.)','Onlar':'They',
+  'Kalın':'Back vowel','İnce':'Front vowel',
+  'Sert ünsüz':'Hard consonant','Büyük sayı':'Large number',
+  'Değerlendirme':'Evaluation','Ödeme':'Payment',
+  'Örnek':'Example','Örnek 1':'Example 1','Örnek 2':'Example 2',
+  '1-5':'1–5','10+':'10+'
+};
 
 const UI_LOCAL = {
   tr:{
@@ -1386,7 +1400,7 @@ function setLang(lang){
   <button class="nbtn" onclick="switchView('test',this)" data-lk="nav_test">📝 Test</button>
   <button class="nbtn" onclick="switchView('translate',this)" data-lk="nav_translate">🌐 Çeviri</button>
   <button class="nbtn" onclick="switchView('list',this)" data-lk="nav_list">📋 Liste</button>
-  <button class="nbtn" onclick="switchView('review',this)" id="review-nav-btn" data-lk="nav_review">🔄 Tekrar <span id="review-badge" style="display:none;background:#ef4444;color:white;border-radius:8px;padding:0 5px;font-size:10px;margin-left:2px;">0</span></button>
+  <button class="nbtn" onclick="switchView('review',this)" id="review-nav-btn"><span data-lk="nav_review">🔄 Tekrar</span><span id="review-badge" style="display:none;background:#ef4444;color:white;border-radius:8px;padding:0 5px;font-size:10px;margin-left:2px;">0</span></button>
 </nav>
 
 <main>
@@ -1727,7 +1741,7 @@ function updateProgressBar(){
   const fill = document.getElementById('pbar');
   const label = document.getElementById('pbar-label');
   if(fill) fill.style.width = Math.max(2, pct) + '%';
-  if(label) label.textContent = completed + ' / ' + total + ' ders';
+  if(label) label.textContent = completed + ' / ' + total + ' ' + s('lesson_count_unit');
 }
 
 // =================== SES (Google TTS + cihaz) ===================
@@ -2520,13 +2534,17 @@ function buildLessonHTML(L, meta){
     if(g.table && g.table.length){
       exHtml = `<table style="width:100%;border-collapse:collapse;font-size:12px;margin-top:8px;">
         <tr style="background:#f5f3ff;"><th style="padding:6px;text-align:left;color:#7c3aed;">${s('ui_col_form')}</th><th style="padding:6px;text-align:left;color:#7c3aed;">${s('ui_col_rule')}</th><th style="padding:6px;text-align:left;color:#7c3aed;">${s('ui_col_example')}</th><th style="padding:6px;text-align:left;color:#7c3aed;">TR</th></tr>
-        ${g.table.map(row=>`<tr style="border-bottom:1px solid #f0f0f0;">
-          <td style="padding:6px;font-weight:700;color:#333;">${row.pronoun||''}</td>
+        ${g.table.map(row=>{const _pron=Lf(row,'pronoun')||(appLang!=='tr'&&KDO_PRONOUN_EN[row.pronoun||''])||row.pronoun||'';return`<tr style="border-bottom:1px solid #f0f0f0;">
+          <td style="padding:6px;font-weight:700;color:#333;">${_pron}</td>
+          <td style="padding:6px;color:#888;">${row.form||''}</td>
+          <td style="padding:6px;font-weight:600;">${row.example||''}</td>
+          <td style="padding:6px;color:#555;">${row.tr||''}</td>
+        </tr>`}).join('')}
           <td style="padding:6px;color:#888;">${row.form||''}</td>
           <td style="padding:6px;font-weight:600;">${row.example||''}</td>
           <td style="padding:6px;color:#555;">${row.tr||''}</td>
         </tr>`).join('')}
-      </table>${g.note?`<div class="gram-note-box" style="font-size:12px;margin-top:8px;line-height:1.6;">💡 ${g.note}</div>`:''}`;
+      </table>${(Lf(g,'note')||g.note)?`<div class="gram-note-box" style="font-size:12px;margin-top:8px;line-height:1.6;">💡 ${Lf(g,'note')||g.note}</div>`:''}`;
     } else {
     exHtml = (g.examples||[]).map((e,ei)=>{
       const _etxt = getWordText(e)||e.ro||'';
@@ -5086,8 +5104,8 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.87"></script>
-<script src="shared/kdo-update.js?v=3.0.87"></script>
-<script src="shared/kdo-android-taps.js?v=3.0.87"></script>
+<script src="shared/kdo-analytics.js?v=3.0.88"></script>
+<script src="shared/kdo-update.js?v=3.0.88"></script>
+<script src="shared/kdo-android-taps.js?v=3.0.88"></script>
 </body>
 </html>
