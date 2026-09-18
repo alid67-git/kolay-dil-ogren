@@ -21,7 +21,7 @@ import io.alid67.kolaydilogren.prefs.KdoPrefs;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.84";
+    private static final String APP_VERSION = "3.0.85";
     private static final String START_URL =
             "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
@@ -47,8 +47,8 @@ public class MainActivity extends AppCompatActivity {
         // decorFits=true: sistem çubukları WebView dışına yerleşir.
         // Immersive sticky (v3.0.71) Android'de dokunma hedeflerini bozuyordu.
         WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
-        getWindow().setStatusBarColor(Color.parseColor("#0d9488"));
-        getWindow().setNavigationBarColor(Color.parseColor("#0f766e"));
+        getWindow().setStatusBarColor(Color.parseColor("#1565c0"));
+        getWindow().setNavigationBarColor(Color.parseColor("#0d47a1"));
         WindowInsetsControllerCompat controller =
                 WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
         if (controller != null) {
