@@ -1,4 +1,4 @@
-const CACHE = 'kdo-v3.0.85';
+const CACHE = 'kdo-v3.0.86';
 const CORE = [
   '/kolay-dil-ogren/',
   '/kolay-dil-ogren/index.html',
