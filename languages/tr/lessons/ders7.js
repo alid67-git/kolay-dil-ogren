@@ -114,7 +114,7 @@ const L7 = {
           tr:'street', tr_th:'ถนน'
         }
       ],
-      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
+      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.', note_en:'Practise patterns in short dialogues, not in isolation.'
     }
   ],
   speaking:[
@@ -166,7 +166,7 @@ const L7 = {
               ro:'ne-re-de',
               tr:'where?', tr_th:'ที่ไหน?',
               role:'phrase',
-              note:'Örnek kullanım.'
+              note:'Örnek kullanım.', note_en:'Example usage.'
             }
           ]
         },
@@ -181,7 +181,7 @@ const L7 = {
               ro:'jad-de',
               tr:'street', tr_th:'ถนน',
               role:'phrase',
-              note:'Doğal cevap.'
+              note:'Doğal cevap.', note_en:'Natural response.'
             }
           ]
         },

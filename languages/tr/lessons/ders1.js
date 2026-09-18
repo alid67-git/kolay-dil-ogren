@@ -115,7 +115,7 @@ const L1 = {
           tr:'goodbye', tr_th:'ลาก่อน'
         }
       ],
-      note:'Aynı kalıpları farklı kişilerle sesli tekrar ederek otomatikleştir.'
+      note:'Aynı kalıpları farklı kişilerle sesli tekrar ederek otomatikleştir.', note_en:'Repeat the same patterns aloud with different people until they become automatic.'
     },
     {
       id:'g2',
@@ -144,7 +144,7 @@ const L1 = {
           tr:'thanks', tr_th:'ขอบคุณ'
         }
       ],
-      note:'Ali erkek öğrenci örneklerinde birinci tekil konuşur formu kullanılır.'
+      note:'Ali erkek öğrenci örneklerinde birinci tekil konuşur formu kullanılır.', note_en:'In examples with Ali as a male student, the first-person singular speaker form is used.'
     },
     {
       id:'g3',
@@ -212,7 +212,7 @@ const L1 = {
               ro:'mer-ha-ba',
               tr:'hello', tr_th:'สวัสดี',
               role:'greeting',
-              note:'Genel selamlaşma.'
+              note:'Genel selamlaşma.', note_en:'General greeting.'
             }
           ]
         },
@@ -227,7 +227,7 @@ const L1 = {
               ro:'gue-naidun',
               tr:'good morning', tr_th:'สวัสดีตอนเช้า',
               role:'greeting',
-              note:'Sabah saatlerinde kullanılır.'
+              note:'Sabah saatlerinde kullanılır.', note_en:'Used in the morning hours.'
             }
           ]
         },

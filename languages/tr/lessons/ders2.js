@@ -100,7 +100,7 @@ const L2 = {
           tr:'Ali is at home.'
         }
       ],
-      note:'Kelimeyi ezberlerken son ünlüyü fark et; doğru ek seçimi otomatikleşir.'
+      note:'Kelimeyi ezberlerken son ünlüyü fark et; doğru ek seçimi otomatikleşir.', note_en:'When memorising a word, notice its final vowel — correct suffix selection becomes automatic.'
     },
     {
       id:'g2',
@@ -127,7 +127,7 @@ const L2 = {
           tr:'in the park'
         }
       ],
-      note:'Ali erkek öğrenci örneklerinde konum bildirirken bu eki düzenli kullanır.'
+      note:'Ali erkek öğrenci örneklerinde konum bildirirken bu eki düzenli kullanır.', note_en:'In examples with Ali as a male student, this suffix consistently expresses location.'
     }
   ],
   speaking:[
@@ -179,7 +179,7 @@ const L2 = {
               ro:'ne-re-de-sin',
               tr:'where are you?',
               role:'question',
-              note:'Konum sorusu.'
+              note:'Konum sorusu.', note_en:'Location question.'
             }
           ]
         },

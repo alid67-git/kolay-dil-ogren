@@ -114,7 +114,7 @@ const L13 = {
           tr:'party', tr_th:'ปาร์ตี้'
         }
       ],
-      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
+      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.', note_en:'Practise patterns in short dialogues, not in isolation.'
     }
   ],
   speaking:[
@@ -166,7 +166,7 @@ const L13 = {
               ro:'ar-ka-dash',
               tr:'friend', tr_th:'เพื่อน',
               role:'phrase',
-              note:'Örnek kullanım.'
+              note:'Örnek kullanım.', note_en:'Example usage.'
             }
           ]
         },
@@ -181,7 +181,7 @@ const L13 = {
               ro:'par-ti',
               tr:'party', tr_th:'ปาร์ตี้',
               role:'phrase',
-              note:'Doğal cevap.'
+              note:'Doğal cevap.', note_en:'Natural response.'
             }
           ]
         },

@@ -114,7 +114,7 @@ const L14 = {
           tr:'apartment', tr_th:'อพาร์ตเมนต์'
         }
       ],
-      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
+      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.', note_en:'Practise patterns in short dialogues, not in isolation.'
     }
   ],
   speaking:[
@@ -166,7 +166,7 @@ const L14 = {
               ro:'ev',
               tr:'house', tr_th:'บ้าน',
               role:'phrase',
-              note:'Örnek kullanım.'
+              note:'Örnek kullanım.', note_en:'Example usage.'
             }
           ]
         },
@@ -181,7 +181,7 @@ const L14 = {
               ro:'da-i-re',
               tr:'apartment', tr_th:'อพาร์ตเมนต์',
               role:'phrase',
-              note:'Doğal cevap.'
+              note:'Doğal cevap.', note_en:'Natural response.'
             }
           ]
         },

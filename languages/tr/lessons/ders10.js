@@ -114,7 +114,7 @@ const L10 = {
           tr:'office', tr_th:'สำนักงาน'
         }
       ],
-      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
+      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.', note_en:'Practise patterns in short dialogues, not in isolation.'
     }
   ],
   speaking:[
@@ -166,7 +166,7 @@ const L10 = {
               ro:'ish',
               tr:'work', tr_th:'งาน',
               role:'phrase',
-              note:'Örnek kullanım.'
+              note:'Örnek kullanım.', note_en:'Example usage.'
             }
           ]
         },
@@ -181,7 +181,7 @@ const L10 = {
               ro:'o-fis',
               tr:'office', tr_th:'สำนักงาน',
               role:'phrase',
-              note:'Doğal cevap.'
+              note:'Doğal cevap.', note_en:'Natural response.'
             }
           ]
         },

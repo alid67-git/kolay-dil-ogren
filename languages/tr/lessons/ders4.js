@@ -114,7 +114,7 @@ const L4 = {
           tr:'today', tr_th:'วันนี้'
         }
       ],
-      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
+      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.', note_en:'Practise patterns in short dialogues, not in isolation.'
     }
   ],
   speaking:[
@@ -166,7 +166,7 @@ const L4 = {
               ro:'sa-at kach',
               tr:'what time is it?', tr_th:'กี่โมงแล้ว?',
               role:'phrase',
-              note:'Örnek kullanım.'
+              note:'Örnek kullanım.', note_en:'Example usage.'
             }
           ]
         },
@@ -181,7 +181,7 @@ const L4 = {
               ro:'bu-guen',
               tr:'today', tr_th:'วันนี้',
               role:'phrase',
-              note:'Doğal cevap.'
+              note:'Doğal cevap.', note_en:'Natural response.'
             }
           ]
         },

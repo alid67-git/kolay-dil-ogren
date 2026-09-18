@@ -142,7 +142,7 @@ const L3 = {
           tr:'one hundred lira'
         }
       ],
-      note:'Sayıları mutlaka sesli söyle; ritim telaffuzu hızlandırır.'
+      note:'Sayıları mutlaka sesli söyle; ritim telaffuzu hızlandırır.', note_en:'Always say numbers aloud — the rhythm speeds up pronunciation.'
     },
     {
       id:'g2',
@@ -169,7 +169,7 @@ const L3 = {
           tr:'This is very expensive.'
         }
       ],
-      note:'Fiyat + para birimi + ödeme yöntemini tek cümlede birleştir.'
+      note:'Fiyat + para birimi + ödeme yöntemini tek cümlede birleştir.', note_en:'Combine price + currency + payment method in one sentence.'
     }
   ],
   speaking:[
@@ -221,7 +221,7 @@ const L3 = {
               ro:'bu ne ka-dar',
               tr:'how much is this?',
               role:'question',
-              note:'Temel fiyat sorusu.'
+              note:'Temel fiyat sorusu.', note_en:'Basic price question.'
             }
           ]
         },

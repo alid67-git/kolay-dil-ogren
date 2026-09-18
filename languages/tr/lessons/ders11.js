@@ -114,7 +114,7 @@ const L11 = {
           tr:'hospital', tr_th:'โรงพยาบาล'
         }
       ],
-      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.'
+      note:'Kalıpları tek tek değil, kısa diyalog içinde tekrar ederek çalış.', note_en:'Practise patterns in short dialogues, not in isolation.'
     }
   ],
   speaking:[
@@ -166,7 +166,7 @@ const L11 = {
               ro:'dok-tor',
               tr:'doctor', tr_th:'หมอ',
               role:'phrase',
-              note:'Örnek kullanım.'
+              note:'Örnek kullanım.', note_en:'Example usage.'
             }
           ]
         },
@@ -181,7 +181,7 @@ const L11 = {
               ro:'has-ta-ne',
               tr:'hospital', tr_th:'โรงพยาบาล',
               role:'phrase',
-              note:'Doğal cevap.'
+              note:'Doğal cevap.', note_en:'Natural response.'
             }
           ]
         },
