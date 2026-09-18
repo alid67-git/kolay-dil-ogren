@@ -44,7 +44,7 @@
         main.style.setProperty('-webkit-overflow-scrolling', 'touch', 'important');
         main.style.setProperty('position', 'relative', 'important');
         main.style.setProperty('z-index', '1', 'important');
-        main.style.setProperty('touch-action', 'pan-y', 'important');
+        main.style.setProperty('touch-action', 'manipulation', 'important');
         main.style.setProperty('pointer-events', 'auto', 'important');
       }
     } catch (_) {}
