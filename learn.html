@@ -2540,10 +2540,6 @@ function buildLessonHTML(L, meta){
           <td style="padding:6px;font-weight:600;">${row.example||''}</td>
           <td style="padding:6px;color:#555;">${row.tr||''}</td>
         </tr>`}).join('')}
-          <td style="padding:6px;color:#888;">${row.form||''}</td>
-          <td style="padding:6px;font-weight:600;">${row.example||''}</td>
-          <td style="padding:6px;color:#555;">${row.tr||''}</td>
-        </tr>`).join('')}
       </table>${(Lf(g,'note')||g.note)?`<div class="gram-note-box" style="font-size:12px;margin-top:8px;line-height:1.6;">💡 ${Lf(g,'note')||g.note}</div>`:''}`;
     } else {
     exHtml = (g.examples||[]).map((e,ei)=>{
