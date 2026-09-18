@@ -2,7 +2,7 @@
 (function () {
   'use strict';
 
-  var MOVE_PX = 28;
+  var MOVE_PX = 10;
   var boundDoc = false;
   var sx = 0;
   var sy = 0;
@@ -15,9 +15,7 @@
     nav_test: 'test',
     nav_translate: 'translate',
     nav_list: 'list',
-    nav_review: 'review',
-    nav_add: 'add',
-    nav_settings: null
+    nav_review: 'review'
   };
 
   function markAndroid() {
@@ -90,11 +88,6 @@
     var switcher = getFn('switchView', typeof switchView === 'function' ? switchView : null);
     var lk = btn.getAttribute('data-lk') || '';
     var view = NAV_MAP[lk];
-    if (lk === 'nav_settings' || (btn.getAttribute('onclick') || '').indexOf('settings') >= 0) {
-      var openM = getFn('openModal', typeof openModal === 'function' ? openModal : null);
-      if (openM) return once('nav-settings', function () { openM('settings-overlay'); });
-      return once('nav-settings-click', function () { btn.click(); });
-    }
     if (view && switcher) {
       return once('nav-' + view, function () { switcher(view, btn); });
     }
