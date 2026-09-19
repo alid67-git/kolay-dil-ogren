@@ -9,32 +9,30 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Kolay Dil Öğrenme">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#0d9488">
+<meta name="theme-color" content="#1565c0">
 <title>Kolay Dil Öğrenme</title>
 <style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#0d9488,#2563eb);padding:max(20px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) max(20px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:linear-gradient(135deg,#1565c0,#0d47a1);padding:max(20px,env(safe-area-inset-top,0px)) max(20px,env(safe-area-inset-right,0px)) max(20px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px))}
 .card{background:#fff;border-radius:16px;padding:28px 24px;max-width:400px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.2)}
-h1{margin:0 0 2px;font-size:22px;color:#134e4a}
+h1{margin:0 0 2px;font-size:22px;color:#1565c0}
 .sub{margin:0 0 10px;font-size:13px;color:#667085;line-height:1.5}
-.dev-credit{margin:0 0 20px;font-size:11px;font-weight:600;color:#0d9488;letter-spacing:.03em;line-height:1.4}
+.dev-credit{margin:0 0 20px;font-size:11px;font-weight:600;color:#1565c0;letter-spacing:.03em;line-height:1.4}
 .field{margin-bottom:14px}
 .field label{display:block;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#667085;margin-bottom:5px}
 .field select{width:100%;padding:11px 12px;border:1.5px solid #e5e7eb;border-radius:10px;font-size:14px;font-weight:700;color:#172033;background:#fff}
-.btn{width:100%;margin-top:8px;padding:14px;border:0;border-radius:12px;background:#0d9488;color:#fff;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #0a7568}
-.btn:active{transform:translateY(2px);box-shadow:0 2px 0 #0a7568}
+.btn{width:100%;margin-top:8px;padding:14px;border:0;border-radius:12px;background:#1565c0;color:#fff;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #0d47a1}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 #0d47a1}
 .note{margin-top:16px;font-size:11px;color:#98a2b3;text-align:center;line-height:1.5}
 .ver{text-align:center;margin-top:12px;font-size:10px;color:#cbd5e1}
-@media(prefers-color-scheme:dark){.card{background:#1e1e1e}h1{color:#e0f2f1}.sub{color:#aaa}.dev-credit{color:#5eead4}.field select{background:#2a2a2a;border-color:#444;color:#e0e0e0}.field label{color:#888}}
+@media(prefers-color-scheme:dark){.card{background:#1e1e1e}h1{color:#90caf9}.sub{color:#aaa}.dev-credit{color:#90caf9}.field select{background:#2a2a2a;border-color:#444;color:#e0e0e0}.field label{color:#888}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.83"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.83"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.83"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.83"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.83"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.83"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.83"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.83"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.83"></script>
+<script src="shared/kdo-version.js?v=3.0.89"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.89"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.89"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.89"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.89"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.89"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.89"></script>
 </head>
 <body>
 <div class="card">
@@ -72,6 +70,7 @@ h1{margin:0 0 2px;font-size:22px;color:#134e4a}
       <option value="ha">🇳🇬 Hausa — Hausa</option>
       <option value="sw">🇹🇿 Svahili — Kiswahili</option>
       <option value="pt">🇵🇹 Portekizce — Português</option>
+      <option value="vi">🇻🇳 Vietnamca — Tiếng Việt</option>
     </select>
   </div>
   <button class="btn" id="go">Basla</button>
@@ -80,8 +79,8 @@ h1{margin:0 0 2px;font-size:22px;color:#134e4a}
 </div>
 <script>
 const APP='kdo';
-const ROUTES={tk:'learn.html?t=tk',th:'tayca-v3.html',en:'learn.html?t=en',de:'learn.html?t=de',it:'learn.html?t=it',es:'learn.html?t=es',fr:'learn.html?t=fr',ru:'learn.html?t=ru',ar:'learn.html?t=ar',zh:'learn.html?t=zh',ha:'learn.html?t=ha',sw:'learn.html?t=sw',pt:'learn.html?t=pt'};
-const LANG_KEYS={tk:'tk1_lang',th:'tv3_lang',en:'en1_lang',de:'de1_lang',it:'it1_lang',es:'es1_lang',fr:'fr1_lang',ru:'ru1_lang',ar:'ar1_lang',zh:'zh1_lang',ha:'ha1_lang',sw:'sw1_lang',pt:'pt1_lang'};
+const ROUTES={tk:'learn.html?t=tk',th:'tayca-v3.html',en:'learn.html?t=en',de:'learn.html?t=de',it:'learn.html?t=it',es:'learn.html?t=es',fr:'learn.html?t=fr',ru:'learn.html?t=ru',ar:'learn.html?t=ar',zh:'learn.html?t=zh',ha:'learn.html?t=ha',sw:'learn.html?t=sw',pt:'learn.html?t=pt',vi:'learn.html?t=vi'};
+const LANG_KEYS={tk:'tk1_lang',th:'tv3_lang',en:'en1_lang',de:'de1_lang',it:'it1_lang',es:'es1_lang',fr:'fr1_lang',ru:'ru1_lang',ar:'ar1_lang',zh:'zh1_lang',ha:'ha1_lang',sw:'sw1_lang',pt:'pt1_lang',vi:'vi1_lang'};
 const HUB_UI={
   tr:{title:'Kolay Dil Öğrenme',intro:'12 dil öğrenme + Türkçe öğretme — tam sürümler, detaylı gramer.',welcome:'Hoş geldiniz! Arayüz dilini ve öğrenmek istediğiniz dili seçin.',changeHint:'Dil tercihlerinizi buradan değiştirebilirsiniz.',locale:'Arayüz dili',target:'Öğrenilecek dil',go:'Başla',note:'Tam dersler, detaylı gramer, alıştırma ve SRS.',dev:'Geliştiren: Ali Dinçer'},
   en:{title:'Easy Language Learning',intro:'12 languages to learn + Turkish teaching — full apps with grammar.',welcome:'Welcome! Choose your interface language and the language you want to learn.',changeHint:'Change your language preferences here.',locale:'Interface language',target:'Language to learn',go:'Start',note:'Full lessons, grammar, practice and SRS.',dev:'Developed by: Ali Dinçer'},
@@ -162,9 +161,9 @@ function launch(){
   location.href=ROUTES[tgt]||ROUTES.th;
 }
 document.getElementById('go').addEventListener('click',launch);
-if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
+var _pv=document.getElementById('platform-ver');if(_pv&&window.KDO_PLATFORM_VERSION)_pv.textContent=window.KDO_PLATFORM_VERSION;
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.83"></script>
+<script src="shared/kdo-analytics.js?v=3.0.89"></script>
 <script>if('serviceWorker' in navigator){navigator.serviceWorker.register('/kolay-dil-ogren/sw.js');}</script>
 </body>
 </html>
