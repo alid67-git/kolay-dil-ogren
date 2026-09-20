@@ -809,21 +809,21 @@ h2{font-size:15px;color:#1565c0;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.90"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.90"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.90"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.90"></script>
-<script src="shared/kdo-gloss.js?v=3.0.90"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.90"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.90"></script>
-<script src="shared/kdo-tts.js?v=3.0.90"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.90"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.90"></script>
-<script src="shared/kdo-store.js?v=3.0.90"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.90"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.90"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.90"></script>
-<script src="shared/kdo-translate.js?v=3.0.90"></script>
+<script src="shared/kdo-version.js?v=3.0.91"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.91"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.91"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.91"></script>
+<script src="shared/kdo-gloss.js?v=3.0.91"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.91"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.91"></script>
+<script src="shared/kdo-tts.js?v=3.0.91"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.91"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.91"></script>
+<script src="shared/kdo-store.js?v=3.0.91"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.91"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.91"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.91"></script>
+<script src="shared/kdo-translate.js?v=3.0.91"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1235,7 +1235,7 @@ function applyTargetUi(){
   }
   for(const loc of (window.KDO_UI_LANGS||Object.keys(names))){
     if(!UI_LOCAL[loc]) UI_LOCAL[loc]={};
-    const n=(names[loc]||names.en)[targetCode]||KDO_CFG.targetLabelEn||targetCode;
+    const n=(names[loc]||names.en)[targetCode]||(loc==='tr' ? KDO_CFG.targetLabelTr : KDO_CFG.targetLabelEn)||targetCode;
     const m=meaning[loc]||meaning.en;
     Object.assign(UI_LOCAL[loc], {
       ui_col_target:n,
@@ -1719,7 +1719,7 @@ function saveVisited(){
 }
 
 function updateProgressBar(){
-  const total = LESSONS_META.length; // 49
+  const total = LESSONS_META.filter(m=>m.hasContent).length;
   let completed = 0;
   let partialScore = 0;
 
@@ -1736,7 +1736,7 @@ function updateProgressBar(){
   });
 
   const activeLessons = LESSONS_META.filter(m=>m.hasContent).length;
-  const pct = Math.round((partialScore / activeLessons) * 100);
+  const pct = activeLessons ? Math.round((partialScore / activeLessons) * 100) : 0;
 
   const fill = document.getElementById('pbar');
   const label = document.getElementById('pbar-label');
@@ -2463,11 +2463,12 @@ function buildLessonHTML(L, meta){
     sw:{tk_pron_ben:'mimi',tk_pron_sen:'wewe',tk_pron_siz:'ninyi',tk_pron_o:'yeye',tk_pron_biz:'sisi',tk_pron_onlar:'wao'},
     pt:{tk_pron_ben:'eu',tk_pron_sen:'tu',tk_pron_siz:'você',tk_pron_o:'ele/ela',tk_pron_biz:'nós',tk_pron_onlar:'eles/elas'}
   };
-  const targetPron = PRON_TARGETS[(KDO_CFG&&KDO_CFG.kdoTarget)||'de'] || PRON_TARGETS.de;
+  // Never substitute another language's teaching content for a missing table.
+  const targetPron = PRON_TARGETS[KDO_CFG && KDO_CFG.kdoTarget];
   const meaningPron = (window.KDO_UI&&window.KDO_UI[appLang]) || {};
   function tgt(key){ return targetPron[key]||key; }
   function mean(key, fallback){ return meaningPron[key]||fallback||''; }
-  const pronounTable = meta.num===1 ? `
+  const pronounTable = meta.num===1 && targetPron ? `
     <div style="background:#fff8e1;border:1.5px solid #ffe082;border-radius:12px;padding:12px 14px;margin-bottom:12px;font-size:13px;color:#555;line-height:1.6;">
       <strong style="color:#b45309;">${s('ui_start_here')}</strong>
       ${s('ui_learn_words')}
@@ -5103,8 +5104,8 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.90"></script>
-<script src="shared/kdo-update.js?v=3.0.90"></script>
-<script src="shared/kdo-android-taps.js?v=3.0.90"></script>
+<script src="shared/kdo-analytics.js?v=3.0.91"></script>
+<script src="shared/kdo-update.js?v=3.0.91"></script>
+<script src="shared/kdo-android-taps.js?v=3.0.91"></script>
 </body>
 </html>

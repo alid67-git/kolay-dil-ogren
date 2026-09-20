@@ -40,6 +40,12 @@ const server = http.createServer((req, res) => {
       });
       assert.ok((await page.locator('#detail-content').innerText()).length > 100);
       if (target === 'vi') {
+        assert.match(await page.locator('#pbar-label').innerText(), /\/ 20\b/);
+        assert.equal(await page.evaluate(() => s('ui_col_target')), 'Vietnamca');
+        const referenceCells = await page.locator('#detail-content td').allTextContents();
+        for (const german of ['ich', 'du', 'Sie', 'er/sie', 'wir', 'sie']) {
+          assert.ok(!referenceCells.some(cell => cell.trim() === german), `Unexpected German pronoun: ${german}`);
+        }
         assert.ok((await page.locator('#detail-content').textContent()).includes('Xin chào'));
         assert.ok(await page.locator('#detail-content .dialog-card').count() > 0);
         assert.ok((await page.locator('#detail-content .speak-en').first().textContent()).trim());
