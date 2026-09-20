@@ -6,8 +6,8 @@
   "scope": "/kolay-dil-ogren/",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#0d9488",
-  "theme_color": "#0d9488",
+  "background_color": "#1565c0",
+  "theme_color": "#1565c0",
   "lang": "tr",
   "icons": [
     {

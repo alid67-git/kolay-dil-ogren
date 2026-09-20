@@ -707,6 +707,66 @@ window.KDO_LANG_REGISTRY = {
     "cjk": false,
     "lessonsCount": 20
   },
+  "vi": {
+    "code": "vi",
+    "kdoTarget": "vi",
+    "prefix": "vi1_",
+    "storageBrand": "vietnamese_",
+    "flag": "🇻🇳",
+    "nameTr": "Kolay Vietnamca",
+    "nameEn": "Easy Vietnamese Learning",
+    "title": "Kolay Vietnamca Öğrenme",
+    "titleEn": "Easy Language Learning",
+    "nameTh": "เรียนภาษาง่ายๆ",
+    "titleTh": "เรียนภาษาง่ายๆ",
+    "lessonsPath": "languages/vi/lessons",
+    "tts": "vi-VN",
+    "ttsAlt": "vi",
+    "ttsPrefix": "vi",
+    "googleVoiceF": "",
+    "googleVoiceM": "",
+    "targetLabelTr": "Vietnamca",
+    "targetLabelEn": "Vietnamese",
+    "l2Meta": {
+      "title": "Sayılar ve Para",
+      "title_en": "Numbers & Money",
+      "subtitle": "Số và tiền",
+      "subtitle_en": "Numbers and money"
+    },
+    "targetUi": {
+      "tr": {
+        "test_dir_en2tr": "Vietnamca → Anlam",
+        "test_dir_tr2en": "Anlam → Vietnamca",
+        "translate_placeholder": "Vietnamca veya Türkçe yaz...",
+        "translate_tip": "Vietnamca veya Türkçe bir kelime veya cümle yaz.",
+        "settings_voices": "🔊 Vietnamca Sesleri",
+        "pron_col_english": "Vietnamca",
+        "num_info": "Vietnamca sayılar. Karta dokun → sesini duy 🔊",
+        "calc_info": "Herhangi bir sayıyı gir — Vietnamca karşılığı anında çıkar. 🔊 ile seslendir.",
+        "review_q_en2tr": "🇻🇳 Vietnamca → Türkçe",
+        "review_q_tr2en": "🇹🇷 Türkçe → Vietnamca"
+      },
+      "en": {
+        "test_dir_en2tr": "Vietnamese → Meaning",
+        "test_dir_tr2en": "Meaning → Vietnamese",
+        "translate_placeholder": "Type Vietnamese or Turkish...",
+        "translate_tip": "Type a Vietnamese or Turkish word or sentence.",
+        "settings_voices": "🔊 Vietnamese Voices",
+        "pron_col_english": "Vietnamese",
+        "num_info": "Vietnamese numbers. Tap a card to hear it 🔊",
+        "calc_info": "Enter any number — instant Vietnamese equivalent. Tap 🔊 to hear.",
+        "review_q_en2tr": "🇻🇳 Vietnamese → Turkish",
+        "review_q_tr2en": "🇹🇷 Turkish → Vietnamese"
+      }
+    },
+    "legacy": false,
+    "legacyUrl": null,
+    "enLesson2Migration": false,
+    "extras": [],
+    "rtl": false,
+    "cjk": false,
+    "lessonsCount": 20
+  },
   "pt": {
     "code": "pt",
     "kdoTarget": "pt",
@@ -839,6 +899,14 @@ window.KDO_TRANSLATE_BY_LANG = {
     "flags": "i",
     "fallback": "en",
     "lessonTargetField": "sw",
+    "lessonBaseField": "tr"
+  },
+  "vi": {
+    "target": "vi",
+    "pattern": "[ăâđêôơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]",
+    "flags": "i",
+    "fallback": "tr",
+    "lessonTargetField": "vi",
     "lessonBaseField": "tr"
   },
   "pt": {

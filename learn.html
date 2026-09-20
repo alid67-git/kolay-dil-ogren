@@ -809,21 +809,21 @@ h2{font-size:15px;color:#1565c0;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.88"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.88"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.88"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.88"></script>
-<script src="shared/kdo-gloss.js?v=3.0.88"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.88"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.88"></script>
-<script src="shared/kdo-tts.js?v=3.0.88"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.88"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.88"></script>
-<script src="shared/kdo-store.js?v=3.0.88"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.88"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.88"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.88"></script>
-<script src="shared/kdo-translate.js?v=3.0.88"></script>
+<script src="shared/kdo-version.js?v=3.0.90"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.90"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.90"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.90"></script>
+<script src="shared/kdo-gloss.js?v=3.0.90"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.90"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.90"></script>
+<script src="shared/kdo-tts.js?v=3.0.90"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.90"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.90"></script>
+<script src="shared/kdo-store.js?v=3.0.90"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.90"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.90"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.90"></script>
+<script src="shared/kdo-translate.js?v=3.0.90"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1834,7 +1834,9 @@ function openGramModal(th, tr, bd){
   showGramModal(th, tr, prep.bd, prep.summary);
 }
 function closeGramModal(e){ if(e.target===document.getElementById('gram-modal-overlay')) document.getElementById('gram-modal-overlay').classList.remove('open'); }
-window.speechSynthesis.onvoiceschanged = ()=>window.speechSynthesis.getVoices();
+if(window.speechSynthesis){
+  window.speechSynthesis.onvoiceschanged = ()=>window.speechSynthesis.getVoices();
+}
 window.addEventListener('scroll',()=>{
   document.getElementById('scroll-top-btn').classList.toggle('show', window.scrollY>300);
 });
@@ -1860,6 +1862,7 @@ document.addEventListener('click', function(e){
 
 // =================== DİYALOG OYNAT ===================
 function playDialogue(di){
+  if(!window.speechSynthesis) return;
   const lessonData = LESSONS[currentLesson.num];
   const lines = lessonData.dialogues[di].lines;
   const btn = document.getElementById('dplay-'+di);
@@ -5100,8 +5103,8 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.88"></script>
-<script src="shared/kdo-update.js?v=3.0.88"></script>
-<script src="shared/kdo-android-taps.js?v=3.0.88"></script>
+<script src="shared/kdo-analytics.js?v=3.0.90"></script>
+<script src="shared/kdo-update.js?v=3.0.90"></script>
+<script src="shared/kdo-android-taps.js?v=3.0.90"></script>
 </body>
 </html>

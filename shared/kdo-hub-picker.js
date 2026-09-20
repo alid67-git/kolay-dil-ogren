@@ -10,13 +10,13 @@
     de: 'learn.html?t=de', it: 'learn.html?t=it', es: 'learn.html?t=es',
     fr: 'learn.html?t=fr', ru: 'learn.html?t=ru', ar: 'learn.html?t=ar',
     zh: 'learn.html?t=zh', ha: 'learn.html?t=ha', sw: 'learn.html?t=sw',
-    pt: 'learn.html?t=pt'
+    pt: 'learn.html?t=pt', vi: 'learn.html?t=vi'
   };
   var LANG_KEYS = {
     tk: 'tk1_lang', th: 'tv3_lang', en: 'en1_lang', de: 'de1_lang',
     it: 'it1_lang', es: 'es1_lang', fr: 'fr1_lang', ru: 'ru1_lang',
     ar: 'ar1_lang', zh: 'zh1_lang', ha: 'ha1_lang', sw: 'sw1_lang',
-    pt: 'pt1_lang'
+    pt: 'pt1_lang', vi: 'vi1_lang'
   };
   var TARGET_LANGS = [
     { id: 'tk', label: '🇹🇷 Türkçe Öğrenme' },
@@ -31,7 +31,8 @@
     { id: 'zh', label: '🇨🇳 Çince' },
     { id: 'ha', label: '🇳🇬 Hausa' },
     { id: 'sw', label: '🇹🇿 Svahili' },
-    { id: 'pt', label: '🇵🇹 Portekizce' }
+    { id: 'pt', label: '🇵🇹 Portekizce' },
+    { id: 'vi', label: '🇻🇳 Vietnamca — Tiếng Việt' }
   ];
   var HUB_UI = {
     tr: { title: 'Dil değiştir', locale: 'Arayüz dili', target: 'Öğrenilecek dil', apply: 'Uygula', cancel: 'İptal' },

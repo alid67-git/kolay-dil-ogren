@@ -1510,7 +1510,9 @@ function openGramModal(th, tr, bd){
   showGramModal(th, tr, prep.bd, prep.summary);
 }
 function closeGramModal(e){ if(e.target===document.getElementById('gram-modal-overlay')) document.getElementById('gram-modal-overlay').classList.remove('open'); }
-window.speechSynthesis.onvoiceschanged = ()=>window.speechSynthesis.getVoices();
+if(window.speechSynthesis){
+  window.speechSynthesis.onvoiceschanged = ()=>window.speechSynthesis.getVoices();
+}
 window.addEventListener('scroll',()=>{
   document.getElementById('scroll-top-btn').classList.toggle('show', window.scrollY>300);
 });
@@ -1530,6 +1532,7 @@ document.addEventListener('click', function(e){
 
 // =================== DİYALOG OYNAT ===================
 function playDialogue(di){
+  if(!window.speechSynthesis) return;
   const lessonData = LESSONS[currentLesson.num];
   const lines = lessonData.dialogues[di].lines;
   const btn = document.getElementById('dplay-'+di);
