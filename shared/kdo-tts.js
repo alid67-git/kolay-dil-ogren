@@ -86,7 +86,8 @@
 
   function hasAndroidTts() {
     try {
-      return !!(window.KdoAndroidTts && typeof window.KdoAndroidTts.speak === 'function');
+      // WebView inject: typeof .speak === 'function' bazı sürümlerde false döner.
+      return !!(window.KDO_HAS_NATIVE_TTS || window.KdoAndroidTts);
     } catch (_) {
       return false;
     }
@@ -112,9 +113,18 @@
       var rate = slow ? (p.slowRate || 0.55) : (p.rate || 0.95);
       var pitch = slow ? (p.slowPitch || 0.9) : (p.pitch || 1);
       var lang = (cfg && cfg.tts) || 'en-US';
+      var ok = false;
       try {
-        window.KdoAndroidTts.speak(String(text), lang, rate, pitch);
-      } catch (_) {}
+        // String imza — JS number/float WebView'da metodu kaçırıyor.
+        window.KdoAndroidTts.speak(String(text), String(lang), String(rate), String(pitch));
+        ok = true;
+      } catch (_) {
+        ok = false;
+      }
+      if (!ok) {
+        speakWebSpeech(text, slow, gender, cfg).then(resolve);
+        return;
+      }
       var ms = Math.max(700, String(text).length * (slow ? 140 : 85));
       _webSpeakTimer = setTimeout(function () {
         _webSpeakTimer = null;
@@ -123,21 +133,24 @@
     });
   }
 
-  // Android Chrome: utterance GC + speak() yutulması. Referansı tut, kısa gecikmeyle söyle.
+  // iOS Web Speech çalışır. Android Chrome: cancel()+setTimeout jesti kırar, ses gitmez.
+  // Utterance'ı tut; durmuyorsa cancel etme; speak() tıklama yığınında kalsın.
   function speakWebSpeech(text, slow, gender, cfg) {
     return new Promise(function (resolve) {
       if (!window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined') {
         resolve();
         return;
       }
+      var synth = window.speechSynthesis;
       var prof = profile(cfg);
       var g = gender === 'm' ? 'm' : (gender === 'f' ? 'f' : 'd');
       var p = prof[g] || prof.d;
-      var u = new SpeechSynthesisUtterance(text);
-      u.lang = cfg.tts || 'en-US';
+      var u = new SpeechSynthesisUtterance(String(text));
+      u.lang = (cfg && cfg.tts) || 'en-US';
+      u.volume = 1;
       u.pitch = slow ? p.slowPitch : p.pitch;
       u.rate = slow ? p.slowRate : p.rate;
-      var voices = window.speechSynthesis.getVoices() || [];
+      var voices = synth.getVoices() || [];
       var pick = prof.pick || PROFILES.default.pick;
       var voice = pick(voices, gender, cfg);
       if (voice) u.voice = voice;
@@ -150,19 +163,15 @@
       u.onend = finish;
       u.onerror = finish;
       _heldUtterance = u;
-      try { window.speechSynthesis.cancel(); } catch (_) {}
-      var start = function () {
-        try {
-          window.speechSynthesis.speak(u);
-          if (window.speechSynthesis.paused) window.speechSynthesis.resume();
-        } catch (_) {
-          finish();
-        }
-      };
-      if (/Android/i.test(navigator.userAgent || '')) {
-        setTimeout(start, 40);
-      } else {
-        start();
+      try {
+        if (synth.speaking || synth.pending) synth.cancel();
+      } catch (_) {}
+      try {
+        synth.speak(u);
+        if (synth.paused) synth.resume();
+      } catch (_) {
+        finish();
+        return;
       }
       var fallbackMs = Math.max(2500, String(text).length * 120);
       setTimeout(finish, fallbackMs);
@@ -208,12 +217,18 @@
   function speak(text, slow, gender, cfg) {
     if (!text || !String(text).trim()) return Promise.resolve();
     cfg = cfg || window.KDO_CFG || {};
-    speakStop();
-    if (hasAndroidTts()) {
+    if (_webSpeakTimer) { clearTimeout(_webSpeakTimer); _webSpeakTimer = null; }
+    if (_audio) { try { _audio.pause(); _audio = null; } catch (_) {} }
+
+    if (hasAndroidTts() && window.KdoAndroidTts) {
+      try { window.KdoAndroidTts.stop(); } catch (_) {}
       return speakAndroidNative(text, slow, gender, cfg);
     }
     if (!googleKey()) {
       return speakWebSpeech(text, slow, gender, cfg);
+    }
+    if (window.speechSynthesis) {
+      try { window.speechSynthesis.cancel(); } catch (_) {}
     }
     return speakGoogle(text, slow, gender, cfg).then(function (ok) {
       if (!ok) return speakWebSpeech(text, slow, gender, cfg);
