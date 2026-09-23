@@ -22,7 +22,7 @@ import io.alid67.kolaydilogren.prefs.KdoPrefs;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.92";
+    private static final String APP_VERSION = "3.0.93";
     private static final String START_URL =
             "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 // Eski önbellekli HTML'de bile viewport + tap bağlama (ders kartı hit-test)
                 view.evaluateJavascript(
                         "(function(){try{"
+                                + "window.KDO_HAS_NATIVE_TTS=true;"
                                 + "document.documentElement.classList.add('kdo-android-wv');"
                                 + "if(window.KDO_fixViewportLayout) window.KDO_fixViewportLayout();"
                                 + "if(window.KDO_bindAndroidTaps) window.KDO_bindAndroidTaps();"
