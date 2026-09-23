@@ -8,6 +8,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -21,13 +22,14 @@ import io.alid67.kolaydilogren.prefs.KdoPrefs;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.91";
+    private static final String APP_VERSION = "3.0.92";
     private static final String START_URL =
             "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
     private static final String ALLOWED_PATH_PREFIX = "/kolay-dil-ogren";
 
     private WebView webView;
+    private KdoTtsBridge ttsBridge;
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -60,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
         webView.setBackgroundColor(Color.parseColor("#f5f5f5"));
         webView.setFocusable(true);
         webView.setFocusableInTouchMode(true);
+        ttsBridge = new KdoTtsBridge(this);
+        webView.addJavascriptInterface(ttsBridge, "KdoAndroidTts");
+        webView.setWebChromeClient(new WebChromeClient());
         setContentView(webView);
         maybeClearCacheForUpgrade();
 
@@ -183,6 +188,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        if (ttsBridge != null) {
+            ttsBridge.shutdown();
+            ttsBridge = null;
+        }
         if (webView != null) {
             webView.destroy();
         }

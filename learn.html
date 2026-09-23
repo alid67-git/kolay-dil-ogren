@@ -809,21 +809,21 @@ h2{font-size:15px;color:#1565c0;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.91"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.91"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.91"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.91"></script>
-<script src="shared/kdo-gloss.js?v=3.0.91"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.91"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.91"></script>
-<script src="shared/kdo-tts.js?v=3.0.91"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.91"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.91"></script>
-<script src="shared/kdo-store.js?v=3.0.91"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.91"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.91"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.91"></script>
-<script src="shared/kdo-translate.js?v=3.0.91"></script>
+<script src="shared/kdo-version.js?v=3.0.92"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.92"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.92"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.92"></script>
+<script src="shared/kdo-gloss.js?v=3.0.92"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.92"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.92"></script>
+<script src="shared/kdo-tts.js?v=3.0.92"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.92"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.92"></script>
+<script src="shared/kdo-store.js?v=3.0.92"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.92"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.92"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.92"></script>
+<script src="shared/kdo-translate.js?v=3.0.92"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -1751,10 +1751,11 @@ function speakStop(){
 }
 
 function speak(text, slow, gender){
-  if(!text||!text.trim()) return;
-  if(typeof KDO_speak==='function'){ KDO_speak(text, slow, gender, KDO_CFG); return; }
+  if(!text||!String(text).trim()) return Promise.resolve();
+  if(typeof KDO_speak==='function'){ return KDO_speak(text, slow, gender, KDO_CFG); }
   speakStop();
   speakWebSpeech(text, slow, gender);
+  return Promise.resolve();
 }
 
 function speakWebSpeech(text, slow, gender){
@@ -1862,29 +1863,27 @@ document.addEventListener('click', function(e){
 
 // =================== DİYALOG OYNAT ===================
 function playDialogue(di){
-  if(!window.speechSynthesis) return;
   const lessonData = LESSONS[currentLesson.num];
   const lines = lessonData.dialogues[di].lines;
   const btn = document.getElementById('dplay-'+di);
-  window.speechSynthesis.cancel();
+  speakStop();
   clearDialogHighlight(di);
+  let stopped = false;
   let i=0;
-  if(btn){ btn.textContent='⏹ Durdur'; btn.onclick=()=>{ window.speechSynthesis.cancel(); clearDialogHighlight(di); if(btn){btn.textContent='▶ Tümü';btn.onclick=()=>playDialogue(di);} }; }
+  if(btn){ btn.textContent='⏹ Durdur'; btn.onclick=()=>{ stopped=true; speakStop(); clearDialogHighlight(di); if(btn){btn.textContent='▶ Tümü';btn.onclick=()=>playDialogue(di);} }; }
   function next(){
-    if(i>=lines.length){ clearDialogHighlight(di); if(btn){btn.textContent='▶ Tümü';btn.onclick=()=>playDialogue(di);} return; }
+    if(stopped || i>=lines.length){
+      if(!stopped){ clearDialogHighlight(di); if(btn){btn.textContent='▶ Tümü';btn.onclick=()=>playDialogue(di);} }
+      return;
+    }
     clearDialogHighlight(di);
     const lineEl = document.getElementById('dline-'+di+'-'+i);
     if(lineEl) lineEl.classList.add('active-line');
     const gender = dialogueGender(lines[i]);
-    const u = new SpeechSynthesisUtterance(getWordText(lines[i])||lines[i].ro||'');
-    u.lang = KDO_CFG.tts;
-    u.pitch = gender==='m' ? 0.90 : 1.10;
-    u.rate = 0.95;
-    const voices = window.speechSynthesis.getVoices();
-    const engVoices = voices.filter(x => x.lang===KDO_CFG.tts || x.lang===KDO_CFG.ttsAlt || x.lang.startsWith(KDO_CFG.ttsPrefix));
-    if(engVoices.length>0) u.voice = engVoices[0];
-    u.onend = ()=>{ i++; setTimeout(next, 650); };
-    window.speechSynthesis.speak(u);
+    const p = speak(getWordText(lines[i])||lines[i].ro||'', false, gender);
+    i++;
+    if(p && typeof p.then==='function'){ p.then(function(){ if(!stopped) next(); }); }
+    else { setTimeout(function(){ if(!stopped) next(); }, 800); }
   }
   next();
 }
@@ -2699,7 +2698,7 @@ function buildLessonHTML(L, meta){
         <div style="font-weight:700;color:#1565c0;margin:14px 0 8px;font-size:13px;border-left:3px solid #1565c0;padding-left:8px">${g.title}</div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:8px;margin-bottom:4px">
           ${g.data.map(d=>`
-            <div onclick="if(window.speechSynthesis){const u=new SpeechSynthesisUtterance('${d.word}');u.lang=KDO_CFG.tts;u.rate=0.92;speechSynthesis.cancel();speechSynthesis.speak(u);this.style.borderColor='#1565c0';setTimeout(()=>this.style.borderColor='#e0e0e0',1200)}"
+            <div onclick='speak(${JSON.stringify(d.word)},false,"");this.style.borderColor="#1565c0";setTimeout(()=>this.style.borderColor="#e0e0e0",1200)'
               style="background:white;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;transition:border-color .2s">
               <div style="font-size:22px;font-weight:700;color:#1565c0;line-height:1.1">${d.n}</div>
               <div style="font-size:13px;font-weight:700;color:#222;margin-top:4px">${d.word}</div>
@@ -2712,7 +2711,7 @@ function buildLessonHTML(L, meta){
           ${s('num_compound_info')}
         </div>
         ${compoundItems.map(c=>`
-          <div onclick="if(window.speechSynthesis){const u=new SpeechSynthesisUtterance('${c.word}');u.lang=KDO_CFG.tts;u.rate=0.92;speechSynthesis.cancel();speechSynthesis.speak(u)}"
+          <div onclick='speak(${JSON.stringify(c.word)},false,"")'
             style="background:white;border:1.5px solid #e0e0e0;border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer;transition:border-color .2s"
             onmouseenter="this.style.borderColor='#1565c0'" onmouseleave="this.style.borderColor='#e0e0e0'">
             <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px">
@@ -2996,7 +2995,7 @@ function l2CalcNumber(val){
   ).join('');
 }
 function l2SpeakCalc(){
-  if(l2CalcWord && window.speechSynthesis){ const u=new SpeechSynthesisUtterance(l2CalcWord); u.lang=l2TargetTts(); u.rate=0.92; speechSynthesis.cancel(); speechSynthesis.speak(u); }
+  if(l2CalcWord) speak(l2CalcWord, false, '');
 }
 
 // =================== KONTROL ===================
@@ -5104,8 +5103,8 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.91"></script>
-<script src="shared/kdo-update.js?v=3.0.91"></script>
-<script src="shared/kdo-android-taps.js?v=3.0.91"></script>
+<script src="shared/kdo-analytics.js?v=3.0.92"></script>
+<script src="shared/kdo-update.js?v=3.0.92"></script>
+<script src="shared/kdo-android-taps.js?v=3.0.92"></script>
 </body>
 </html>
