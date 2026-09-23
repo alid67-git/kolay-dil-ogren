@@ -1,10 +1,13 @@
 /**
- * Ortak seslendirme: Google Cloud TTS (anahtar varsa) + cihaz Web Speech API.
+ * Ortak seslendirme: Android native TTS + Google Cloud TTS + Web Speech.
+ * Android WebView'da speechSynthesis çoğu cihazda sessizdir (iOS çalışır).
  */
 (function () {
   'use strict';
 
   var _audio = null;
+  var _heldUtterance = null;
+  var _webSpeakTimer = null;
 
   var PROFILES = {
     ha: {
@@ -81,16 +84,52 @@
       || '';
   }
 
-  function speakStop() {
-    if (_audio) { try { _audio.pause(); _audio = null; } catch (_) {} }
-    if (window.speechSynthesis) window.speechSynthesis.cancel();
+  function hasAndroidTts() {
+    try {
+      return !!(window.KdoAndroidTts && typeof window.KdoAndroidTts.speak === 'function');
+    } catch (_) {
+      return false;
+    }
   }
 
-  // iOS: speechSynthesis.speak() kullanıcı dokunma bağlamında (user gesture)
-  // senkron olarak çağrılmalı. Promise içinde bile olsa onend zinciri devam eder.
+  function speakStop() {
+    if (_webSpeakTimer) { clearTimeout(_webSpeakTimer); _webSpeakTimer = null; }
+    if (_audio) { try { _audio.pause(); _audio = null; } catch (_) {} }
+    if (hasAndroidTts()) {
+      try { window.KdoAndroidTts.stop(); } catch (_) {}
+    }
+    if (window.speechSynthesis) {
+      try { window.speechSynthesis.cancel(); } catch (_) {}
+    }
+    _heldUtterance = null;
+  }
+
+  function speakAndroidNative(text, slow, gender, cfg) {
+    return new Promise(function (resolve) {
+      var prof = profile(cfg);
+      var g = gender === 'm' ? 'm' : (gender === 'f' ? 'f' : 'd');
+      var p = prof[g] || prof.d;
+      var rate = slow ? (p.slowRate || 0.55) : (p.rate || 0.95);
+      var pitch = slow ? (p.slowPitch || 0.9) : (p.pitch || 1);
+      var lang = (cfg && cfg.tts) || 'en-US';
+      try {
+        window.KdoAndroidTts.speak(String(text), lang, rate, pitch);
+      } catch (_) {}
+      var ms = Math.max(700, String(text).length * (slow ? 140 : 85));
+      _webSpeakTimer = setTimeout(function () {
+        _webSpeakTimer = null;
+        resolve();
+      }, ms);
+    });
+  }
+
+  // Android Chrome: utterance GC + speak() yutulması. Referansı tut, kısa gecikmeyle söyle.
   function speakWebSpeech(text, slow, gender, cfg) {
     return new Promise(function (resolve) {
-      if (!window.speechSynthesis) { resolve(); return; }
+      if (!window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined') {
+        resolve();
+        return;
+      }
       var prof = profile(cfg);
       var g = gender === 'm' ? 'm' : (gender === 'f' ? 'f' : 'd');
       var p = prof[g] || prof.d;
@@ -98,13 +137,35 @@
       u.lang = cfg.tts || 'en-US';
       u.pitch = slow ? p.slowPitch : p.pitch;
       u.rate = slow ? p.slowRate : p.rate;
-      var voices = window.speechSynthesis.getVoices();
+      var voices = window.speechSynthesis.getVoices() || [];
       var pick = prof.pick || PROFILES.default.pick;
       var voice = pick(voices, gender, cfg);
       if (voice) u.voice = voice;
-      u.onend = resolve;
-      u.onerror = resolve;
-      window.speechSynthesis.speak(u);
+      var done = false;
+      var finish = function () {
+        if (done) return;
+        done = true;
+        resolve();
+      };
+      u.onend = finish;
+      u.onerror = finish;
+      _heldUtterance = u;
+      try { window.speechSynthesis.cancel(); } catch (_) {}
+      var start = function () {
+        try {
+          window.speechSynthesis.speak(u);
+          if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+        } catch (_) {
+          finish();
+        }
+      };
+      if (/Android/i.test(navigator.userAgent || '')) {
+        setTimeout(start, 40);
+      } else {
+        start();
+      }
+      var fallbackMs = Math.max(2500, String(text).length * 120);
+      setTimeout(finish, fallbackMs);
     });
   }
 
@@ -148,7 +209,9 @@
     if (!text || !String(text).trim()) return Promise.resolve();
     cfg = cfg || window.KDO_CFG || {};
     speakStop();
-    // Google TTS anahtarı yoksa senkron yol — iOS user gesture bağlamını korur
+    if (hasAndroidTts()) {
+      return speakAndroidNative(text, slow, gender, cfg);
+    }
     if (!googleKey()) {
       return speakWebSpeech(text, slow, gender, cfg);
     }
@@ -163,4 +226,5 @@
 
   window.KDO_speakStop = speakStop;
   window.KDO_speak = speak;
+  window.KDO_hasAndroidTts = hasAndroidTts;
 })();
