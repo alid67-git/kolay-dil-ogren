@@ -22,7 +22,7 @@ import io.alid67.kolaydilogren.prefs.KdoPrefs;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.92";
+    private static final String APP_VERSION = "3.0.93";
     private static final String START_URL =
             "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
@@ -79,7 +79,8 @@ public class MainActivity extends AppCompatActivity {
         settings.setDisplayZoomControls(false);
         settings.setLoadWithOverviewMode(false);
         settings.setUseWideViewPort(true);
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        // GitHub Pages HTML uzun cache'leniyor; LOAD_DEFAULT eski v3.0.92'de takılı kalıyordu
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
         // Dokunma koordinatlarının ölçek kaymasından kaçın
         webView.setInitialScale(100);
         webView.setHorizontalScrollBarEnabled(false);
@@ -101,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
                 // Eski önbellekli HTML'de bile viewport + tap bağlama (ders kartı hit-test)
                 view.evaluateJavascript(
                         "(function(){try{"
+                                + "window.KDO_HAS_NATIVE_TTS=true;"
+                                + "window.KDO_NATIVE_APP_VERSION='" + APP_VERSION + "';"
                                 + "document.documentElement.classList.add('kdo-android-wv');"
                                 + "if(window.KDO_fixViewportLayout) window.KDO_fixViewportLayout();"
                                 + "if(window.KDO_bindAndroidTaps) window.KDO_bindAndroidTaps();"
@@ -125,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
         if (savedInstanceState != null) {
             webView.restoreState(savedInstanceState);
         } else {
-            webView.loadUrl(START_URL);
+            webView.loadUrl(START_URL + "&t=" + System.currentTimeMillis());
         }
     }
 

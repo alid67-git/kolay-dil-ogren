@@ -1,8 +1,10 @@
-/** Service Worker güncelleme — alt banner (RideAtlas tarzı) */
+/** Service Worker + uzak sürüm kontrolü — alt banner (RideAtlas tarzı) */
 (function () {
   'use strict';
 
   var _waitingSW = null;
+  var _remoteVersion = '';
+  var APK_URL = 'https://github.com/alid67-git/kolay-dil-ogren/releases/download/android-latest/KolayDilOgren.apk';
 
   function uiLang() {
     if (typeof appLang !== 'undefined' && appLang) return appLang;
@@ -26,9 +28,26 @@
     if (banner) banner.classList.remove('show');
   }
 
+  function bustAndReload() {
+    if ('caches' in window) {
+      caches.keys().then(function (names) {
+        names.forEach(function (name) { caches.delete(name); });
+      });
+    }
+    var sep = location.search ? '&' : '?';
+    location.replace(location.pathname + location.search + sep + '_u=' + Date.now() + (location.hash || ''));
+  }
+
   window.applyUpdate = function () {
-    if (_waitingSW) _waitingSW.postMessage({ type: 'SKIP_WAITING' });
+    if (_waitingSW) {
+      try { _waitingSW.postMessage({ type: 'SKIP_WAITING' }); } catch (_) {}
+    }
     hideUpdateUI();
+    if (/Android/i.test(navigator.userAgent || '') && window.KdoAndroidTts) {
+      location.href = APK_URL;
+      return;
+    }
+    bustAndReload();
   };
 
   window.dismissUpdate = function () {
@@ -37,14 +56,51 @@
 
   function trackWaiting(worker) {
     _waitingSW = worker;
-    // Otomatik uygula — ders açmayı bozan eski SW'de kalmayı önler
     try {
       worker.postMessage({ type: 'SKIP_WAITING' });
     } catch (_) {}
     showUpdateUI();
   }
 
+  function localVersion() {
+    return String(window.KDO_PLATFORM_VERSION || window.KDO_APP_VERSION || '').replace(/^v/, '');
+  }
+
+  function parseRemoteVersion(text) {
+    var m = String(text || '').match(/KDO_PLATFORM_VERSION\s*=\s*['"]v?([^'"]+)['"]/);
+    return m ? m[1] : '';
+  }
+
+  function checkRemotePlatform() {
+    var href;
+    try {
+      href = new URL('shared/kdo-version.js?t=' + Date.now(), location.href).href;
+    } catch (_) {
+      href = '/kolay-dil-ogren/shared/kdo-version.js?t=' + Date.now();
+    }
+    fetch(href, { cache: 'no-store' }).then(function (r) {
+      if (!r.ok) return '';
+      return r.text();
+    }).then(function (text) {
+      if (!text) return;
+      var remote = parseRemoteVersion(text);
+      var local = localVersion();
+      if (!remote || !local || remote === local) return;
+      var reloadKey = 'kdo:ver-reload-' + remote;
+      if (sessionStorage.getItem(reloadKey)) {
+        showUpdateUI();
+        return;
+      }
+      sessionStorage.setItem(reloadKey, '1');
+      showUpdateUI();
+      bustAndReload();
+    }).catch(function () {});
+  }
+
   function initUpdateChecker() {
+    checkRemotePlatform();
+    setInterval(checkRemotePlatform, 30000);
+
     if (!('serviceWorker' in navigator)) return;
 
     navigator.serviceWorker.register('/kolay-dil-ogren/sw.js').then(function (reg) {
@@ -58,7 +114,6 @@
           }
         });
       });
-      // Kurulu SW varsa hemen güncelleme kontrolü
       try { reg.update(); } catch (_) {}
     }).catch(function (err) {
       console.warn('SW register failed', err);
@@ -66,10 +121,9 @@
 
     var refreshing = false;
     navigator.serviceWorker.addEventListener('controllerchange', function () {
-      if (!refreshing) {
-        refreshing = true;
-        window.location.reload();
-      }
+      if (refreshing) return;
+      refreshing = true;
+      window.location.reload();
     });
 
     setInterval(function () {

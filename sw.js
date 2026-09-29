@@ -1,4 +1,4 @@
-const CACHE = 'kdo-v3.0.92';
+const CACHE = 'kdo-v3.0.93';
 const CORE = [
   '/kolay-dil-ogren/',
   '/kolay-dil-ogren/index.html',
@@ -14,6 +14,7 @@ const CORE = [
   '/kolay-dil-ogren/shared/kdo-ui-helpers.js',
   '/kolay-dil-ogren/shared/kdo-ui-extra.js',
   '/kolay-dil-ogren/shared/kdo-platform-init.js',
+  '/kolay-dil-ogren/shared/kdo-tts.js',
   '/kolay-dil-ogren/shared/kdo-store.js',
   '/kolay-dil-ogren/shared/kdo-geo-locale.js',
   '/kolay-dil-ogren/shared/kdo-update.js',
@@ -62,6 +63,7 @@ self.addEventListener('fetch', e => {
   const networkFirst =
     isHtmlRequest(e.request, url) ||
     path.endsWith('/kdo-version.js') ||
+    path.endsWith('/kdo-tts.js') ||
     path.endsWith('/kdo-android-taps.js') ||
     path.endsWith('/kdo-update.js') ||
     path.endsWith('/sw.js');
