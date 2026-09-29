@@ -23,8 +23,8 @@ android {
         applicationId 'io.alid67.kolaydilogren'
         minSdk 21
         targetSdk 36
-        versionCode 35
-        versionName '3.0.94'
+        versionCode 36
+        versionName '3.0.95'
         // Sideload/debug builds have no paywall. Only playRelease flips this on.
         buildConfigField 'boolean', 'PAYWALL_ENABLED', 'false'
     }
