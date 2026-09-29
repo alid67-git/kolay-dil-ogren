@@ -60,7 +60,14 @@ public class KdoTtsBridge {
                 });
                 return;
             }
-            if (ready && tts != null) {
+            if (!ready) {
+                // Her iki TTS girişimi de başarısız — pending isteği düşür (JS fallback'e döner)
+                if (retriedGoogle || engine != null) {
+                    pendingJson = null;
+                }
+                return;
+            }
+            if (tts != null) {
                 applyAudioAttrs();
                 tts.setOnUtteranceProgressListener(new UtteranceProgressListener() {
                     @Override
@@ -122,7 +129,7 @@ public class KdoTtsBridge {
 
     @JavascriptInterface
     public boolean isAvailable() {
-        return tts != null;
+        return ready;
     }
 
     @JavascriptInterface
