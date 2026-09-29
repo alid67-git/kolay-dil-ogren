@@ -7,7 +7,9 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.webkit.JsPromptResult;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
@@ -22,7 +24,7 @@ import io.alid67.kolaydilogren.prefs.KdoPrefs;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String APP_VERSION = "3.0.93";
+    private static final String APP_VERSION = "3.0.94";
     private static final String START_URL =
             "https://alid67-git.github.io/kolay-dil-ogren/?v=" + APP_VERSION;
     private static final String ALLOWED_HOST = "alid67-git.github.io";
@@ -64,7 +66,24 @@ public class MainActivity extends AppCompatActivity {
         webView.setFocusableInTouchMode(true);
         ttsBridge = new KdoTtsBridge(this);
         webView.addJavascriptInterface(ttsBridge, "KdoAndroidTts");
-        webView.setWebChromeClient(new WebChromeClient());
+        webView.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public boolean onJsPrompt(
+                    WebView view,
+                    String url,
+                    String message,
+                    String defaultValue,
+                    JsPromptResult result) {
+                if (message != null && message.startsWith("kdo-tts:")) {
+                    if (ttsBridge != null) {
+                        ttsBridge.speakJson(message.substring("kdo-tts:".length()));
+                    }
+                    result.confirm("ok");
+                    return true;
+                }
+                return super.onJsPrompt(view, url, message, defaultValue, result);
+            }
+        });
         setContentView(webView);
         maybeClearCacheForUpgrade();
 
@@ -88,12 +107,15 @@ public class MainActivity extends AppCompatActivity {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                return !isAllowedUrl(request.getUrl().toString());
+                String url = request.getUrl() != null ? request.getUrl().toString() : "";
+                if (handleTtsUrl(url)) return true;
+                return !isAllowedUrl(url);
             }
 
             @Override
             @SuppressWarnings("deprecation")
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                if (handleTtsUrl(url)) return true;
                 return !isAllowedUrl(url);
             }
 
@@ -145,6 +167,27 @@ public class MainActivity extends AppCompatActivity {
             }
         } catch (PackageManager.NameNotFoundException ignored) {
         }
+    }
+
+    private boolean handleTtsUrl(String url) {
+        if (url == null || !url.startsWith("kdo-tts:")) return false;
+        try {
+            String payload = url.substring("kdo-tts:".length());
+            if (payload.startsWith("//")) payload = payload.substring(2);
+            int q = payload.indexOf('?');
+            if (q >= 0) {
+                Uri uri = Uri.parse(url);
+                String j = uri.getQueryParameter("j");
+                if (j != null && !j.isEmpty()) {
+                    payload = j;
+                } else {
+                    payload = java.net.URLDecoder.decode(payload.substring(q + 1), "UTF-8");
+                }
+            }
+            if (ttsBridge != null) ttsBridge.speakJson(payload);
+        } catch (Exception ignored) {
+        }
+        return true;
     }
 
     private boolean isAllowedUrl(String url) {

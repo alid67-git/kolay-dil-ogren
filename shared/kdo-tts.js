@@ -86,11 +86,14 @@
 
   function hasAndroidTts() {
     try {
-      // WebView inject: typeof .speak === 'function' bazı sürümlerde false döner.
       return !!(window.KDO_HAS_NATIVE_TTS || window.KdoAndroidTts);
     } catch (_) {
       return false;
     }
+  }
+
+  function isAndroidUa() {
+    return /Android/i.test(navigator.userAgent || '');
   }
 
   function speakStop() {
@@ -105,24 +108,73 @@
     _heldUtterance = null;
   }
 
+  function androidPayload(text, slow, gender, cfg) {
+    var prof = profile(cfg);
+    var g = gender === 'm' ? 'm' : (gender === 'f' ? 'f' : 'd');
+    var p = prof[g] || prof.d;
+    return JSON.stringify({
+      t: String(text),
+      l: String((cfg && cfg.tts) || 'en-US'),
+      r: String(slow ? (p.slowRate || 0.55) : (p.rate || 0.95)),
+      p: String(slow ? (p.slowPitch || 0.9) : (p.pitch || 1))
+    });
+  }
+
+  function sendAndroidNative(payload) {
+    try {
+      if (window.KdoAndroidTts && window.KdoAndroidTts.speakJson) {
+        window.KdoAndroidTts.speakJson(payload);
+        return true;
+      }
+    } catch (_) {}
+    try {
+      if (window.KdoAndroidTts && window.KdoAndroidTts.speak) {
+        var d = JSON.parse(payload);
+        window.KdoAndroidTts.speak(String(d.t || ''), String(d.l || 'en-US'), String(d.r || '1'), String(d.p || '1'));
+        return true;
+      }
+    } catch (_) {}
+    if (window.KDO_HAS_NATIVE_TTS) {
+      try {
+        if (window.prompt('kdo-tts:' + payload, '') === 'ok') return true;
+      } catch (_) {}
+      try {
+        var i = document.createElement('iframe');
+        i.setAttribute('aria-hidden', 'true');
+        i.style.cssText = 'position:fixed;width:0;height:0;opacity:0;border:0;left:-9999px;top:-9999px';
+        i.src = 'kdo-tts://speak?j=' + encodeURIComponent(payload);
+        document.documentElement.appendChild(i);
+        setTimeout(function () { try { i.parentNode.removeChild(i); } catch (e) {} }, 200);
+        return true;
+      } catch (_) {}
+    }
+    return false;
+  }
+
+  function speakHttpAudio(text, lang) {
+    return new Promise(function (resolve) {
+      var tl = String(lang || 'en').replace('_', '-');
+      var url = 'https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl='
+        + encodeURIComponent(tl) + '&q=' + encodeURIComponent(String(text).slice(0, 180));
+      try {
+        if (_audio) { try { _audio.pause(); } catch (_) {} }
+        _audio = new Audio(url);
+        var done = function () { resolve(); };
+        _audio.onended = done;
+        _audio.onerror = function () { speakWebSpeech(text, false, '', { tts: lang }).then(resolve); };
+        var p = _audio.play();
+        if (p && p.catch) p.catch(function () { speakWebSpeech(text, false, '', { tts: lang }).then(resolve); });
+      } catch (_) {
+        speakWebSpeech(text, false, '', { tts: lang }).then(resolve);
+      }
+    });
+  }
+
   function speakAndroidNative(text, slow, gender, cfg) {
     return new Promise(function (resolve) {
-      var prof = profile(cfg);
-      var g = gender === 'm' ? 'm' : (gender === 'f' ? 'f' : 'd');
-      var p = prof[g] || prof.d;
-      var rate = slow ? (p.slowRate || 0.55) : (p.rate || 0.95);
-      var pitch = slow ? (p.slowPitch || 0.9) : (p.pitch || 1);
-      var lang = (cfg && cfg.tts) || 'en-US';
-      var ok = false;
-      try {
-        // String imza — JS number/float WebView'da metodu kaçırıyor.
-        window.KdoAndroidTts.speak(String(text), String(lang), String(rate), String(pitch));
-        ok = true;
-      } catch (_) {
-        ok = false;
-      }
+      var ok = sendAndroidNative(androidPayload(text, slow, gender, cfg));
       if (!ok) {
-        speakWebSpeech(text, slow, gender, cfg).then(resolve);
+        speakHttpAudio(text, (cfg && cfg.tts) || 'en-US').then(resolve);
         return;
       }
       var ms = Math.max(700, String(text).length * (slow ? 140 : 85));
@@ -220,11 +272,12 @@
     if (_webSpeakTimer) { clearTimeout(_webSpeakTimer); _webSpeakTimer = null; }
     if (_audio) { try { _audio.pause(); _audio = null; } catch (_) {} }
 
-    if (hasAndroidTts() && window.KdoAndroidTts) {
+    if (hasAndroidTts()) {
       try { window.KdoAndroidTts.stop(); } catch (_) {}
       return speakAndroidNative(text, slow, gender, cfg);
     }
     if (!googleKey()) {
+      if (isAndroidUa()) return speakHttpAudio(text, cfg.tts || 'en-US');
       return speakWebSpeech(text, slow, gender, cfg);
     }
     if (window.speechSynthesis) {
