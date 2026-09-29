@@ -86,12 +86,13 @@
 
   function hasAndroidTts() {
     try {
-      if (!window.KdoAndroidTts && !window.KDO_HAS_NATIVE_TTS) return false;
-      // Köprü varsa isAvailable() ile TTS'in gerçekten hazır olduğunu doğrula
-      if (window.KdoAndroidTts && typeof window.KdoAndroidTts.isAvailable === 'function') {
+      if (!window.KdoAndroidTts) return false;
+      // WebView'da typeof === 'function' yalan söyleyebilir; metodu çağır.
+      try {
         return !!window.KdoAndroidTts.isAvailable();
+      } catch (_) {
+        return true;
       }
-      return !!window.KdoAndroidTts;
     } catch (_) {
       return false;
     }
