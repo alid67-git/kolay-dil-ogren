@@ -809,21 +809,21 @@ h2{font-size:15px;color:#1565c0;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.95"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.95"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.95"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.95"></script>
-<script src="shared/kdo-gloss.js?v=3.0.95"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.95"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.95"></script>
-<script src="shared/kdo-tts.js?v=3.0.95"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.95"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.95"></script>
-<script src="shared/kdo-store.js?v=3.0.95"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.95"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.95"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.95"></script>
-<script src="shared/kdo-translate.js?v=3.0.95"></script>
+<script src="shared/kdo-version.js?v=3.0.96"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.96"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.96"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.96"></script>
+<script src="shared/kdo-gloss.js?v=3.0.96"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.96"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.96"></script>
+<script src="shared/kdo-tts.js?v=3.0.96"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.96"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.96"></script>
+<script src="shared/kdo-store.js?v=3.0.96"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.96"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.96"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.96"></script>
+<script src="shared/kdo-translate.js?v=3.0.96"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -872,7 +872,7 @@ const UI_LOCAL = {
   tr:{
     // Nav
     nav_lessons:'📚 Dersler', nav_test:'📝 Test', nav_translate:'🌐 Çeviri',
-    nav_list:'📋 Liste', nav_review:'🔄 Tekrar', nav_add:'➕ Ekle', nav_settings:'⚙️ Ayarlar',
+    nav_list:'⭐ Yıldızlılar', nav_review:'🔄 Tekrar', nav_add:'➕ Ekle', nav_settings:'⚙️ Ayarlar',
     // Sekmeler
     tab_words:'Sözcükler', tab_tones:'Telaffuz', tab_grammar:'Gramer',
     tab_speaking:'Konuşma', tab_dialogue:'Diyalog', tab_listening:'Dinleme',
@@ -994,7 +994,7 @@ const UI_LOCAL = {
   en:{
     // Nav
     nav_lessons:'📚 Lessons', nav_test:'📝 Test', nav_translate:'🌐 Translate',
-    nav_list:'📋 Starred', nav_review:'🔄 Review', nav_add:'➕ Add', nav_settings:'⚙️ Settings',
+    nav_list:'⭐ Starred', nav_review:'🔄 Review', nav_add:'➕ Add', nav_settings:'⚙️ Settings',
     // Tabs
     tab_words:'Words', tab_tones:'Pronunciation', tab_grammar:'Grammar',
     tab_speaking:'Speaking', tab_dialogue:'Dialogue', tab_listening:'Listening',
@@ -1399,7 +1399,7 @@ function setLang(lang){
   <button class="nbtn active" id="nav-lessons-btn" onclick="switchView('lessons',this)" data-lk="nav_lessons">📚 Dersler</button>
   <button class="nbtn" onclick="switchView('test',this)" data-lk="nav_test">📝 Test</button>
   <button class="nbtn" onclick="switchView('translate',this)" data-lk="nav_translate">🌐 Çeviri</button>
-  <button class="nbtn" onclick="switchView('list',this)" data-lk="nav_list">📋 Liste</button>
+  <button class="nbtn" onclick="switchView('list',this)" data-lk="nav_list">⭐ Yıldızlılar</button>
   <button class="nbtn" onclick="switchView('review',this)" id="review-nav-btn"><span data-lk="nav_review">🔄 Tekrar</span><span id="review-badge" style="display:none;background:#ef4444;color:white;border-radius:8px;padding:0 5px;font-size:10px;margin-left:2px;">0</span></button>
 </nav>
 
@@ -1841,6 +1841,14 @@ if(window.speechSynthesis){
 window.addEventListener('scroll',()=>{
   document.getElementById('scroll-top-btn').classList.toggle('show', window.scrollY>300);
 });
+(function(){
+  var mainEl = document.querySelector('main');
+  if(mainEl){
+    mainEl.addEventListener('scroll',()=>{
+      document.getElementById('scroll-top-btn').classList.toggle('show', mainEl.scrollTop>300);
+    });
+  }
+})();
 
 document.addEventListener('click', function(e){
   const speakEl = e.target.closest('[data-speak]');
@@ -5071,7 +5079,7 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
 </div>
 
 <!-- GRAMMAR DETAIL MODAL -->
-<button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button id="scroll-top-btn" onclick="(document.querySelector('main')||window).scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <div id="gram-modal-overlay" class="gram-modal-overlay" onclick="closeGramModal(event)">
   <div class="gram-modal">
@@ -5103,8 +5111,8 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.95"></script>
-<script src="shared/kdo-update.js?v=3.0.95"></script>
-<script src="shared/kdo-android-taps.js?v=3.0.95"></script>
+<script src="shared/kdo-analytics.js?v=3.0.96"></script>
+<script src="shared/kdo-update.js?v=3.0.96"></script>
+<script src="shared/kdo-android-taps.js?v=3.0.96"></script>
 </body>
 </html>

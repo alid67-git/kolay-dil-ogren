@@ -778,7 +778,7 @@ const UI_LOCAL = {
   tr:{
     // Nav
     nav_lessons:'📚 Dersler', nav_test:'📝 Test', nav_translate:'🌐 Çeviri',
-    nav_list:'📋 Liste', nav_review:'🔄 Tekrar', nav_add:'➕ Ekle',
+    nav_list:'⭐ Yıldızlılar', nav_review:'🔄 Tekrar', nav_add:'➕ Ekle',
     // Sekmeler
     tab_words:'Sözcükler', tab_tones:'Tonlar', tab_grammar:'Gramer',
     tab_speaking:'Konuşma', tab_dialogue:'Diyalog', tab_listening:'Dinleme',
@@ -914,7 +914,7 @@ const UI_LOCAL = {
   en:{
     // Nav
     nav_lessons:'📚 Lessons', nav_test:'📝 Test', nav_translate:'🌐 Translate',
-    nav_list:'📋 Starred', nav_review:'🔄 Review', nav_add:'➕ Add',
+    nav_list:'⭐ Starred', nav_review:'🔄 Review', nav_add:'➕ Add',
     // Tabs
     tab_words:'Words', tab_tones:'Tones', tab_grammar:'Grammar',
     tab_speaking:'Speaking', tab_dialogue:'Dialogue', tab_listening:'Listening',
@@ -1122,7 +1122,7 @@ const UI_LOCAL = {
     nav_lessons:'📚 บทเรียน',
     nav_test:'📝 ทดสอบ',
     nav_translate:'🌐 แปล',
-    nav_list:'📋 รายการโปรด',
+    nav_list:'⭐ รายการโปรด',
     nav_review:'🔄 ทบทวน',
     nav_add:'➕ เพิ่ม',
     tab_words:'คำศัพท์',
@@ -1439,7 +1439,7 @@ function setLang(lang){
   <button class="nbtn active" id="nav-lessons-btn" onclick="switchView('lessons',this)" data-lk="nav_lessons">📚 Dersler</button>
   <button class="nbtn" onclick="switchView('test',this)" data-lk="nav_test">📝 Test</button>
   <button class="nbtn" onclick="switchView('translate',this)" data-lk="nav_translate">🌐 Çeviri</button>
-  <button class="nbtn" onclick="switchView('list',this)" data-lk="nav_list">📋 Liste</button>
+  <button class="nbtn" onclick="switchView('list',this)" data-lk="nav_list">⭐ Yıldızlılar</button>
   <button class="nbtn" onclick="switchView('review',this)" id="review-nav-btn" data-lk="nav_review">🔄 Tekrar <span id="review-badge" style="display:none;background:#ef4444;color:white;border-radius:8px;padding:0 5px;font-size:10px;margin-left:2px;">0</span></button>
   <button class="nbtn" onclick="switchView('add',this)" data-lk="nav_add">➕ Ekle</button>
 </nav>
@@ -1853,6 +1853,14 @@ if(window.speechSynthesis){
 window.addEventListener('scroll',()=>{
   document.getElementById('scroll-top-btn').classList.toggle('show', window.scrollY>300);
 });
+(function(){
+  var mainEl = document.querySelector('main');
+  if(mainEl){
+    mainEl.addEventListener('scroll',()=>{
+      document.getElementById('scroll-top-btn').classList.toggle('show', mainEl.scrollTop>300);
+    });
+  }
+})();
 
 document.addEventListener('click', function(e){
   const speakEl = e.target.closest('[data-speak]');
@@ -4642,7 +4650,7 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
 </div>
 
 <!-- GRAMMAR DETAIL MODAL -->
-<button id="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<button id="scroll-top-btn" onclick="(document.querySelector('main')||window).scrollTo({top:0,behavior:'smooth'})">↑</button>
 
 <div id="gram-modal-overlay" class="gram-modal-overlay" onclick="closeGramModal(event)">
   <div class="gram-modal">
