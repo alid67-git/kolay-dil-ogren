@@ -1,6 +1,6 @@
 {
-  "name": "Kolay Dil Öğrenme",
-  "short_name": "KDO",
+  "name": "Kolay Dil Öğren",
+  "short_name": "Kolay Dil Öğren",
   "description": "12 dil öğrenme uygulaması — tam dersler, detaylı gramer, alıştırma ve SRS.",
   "start_url": "/kolay-dil-ogren/",
   "scope": "/kolay-dil-ogren/",

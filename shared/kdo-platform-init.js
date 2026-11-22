@@ -106,6 +106,24 @@
     if (hv) hv.textContent = APP_VERSION + ' ↗';
   }
 
+  var HOME_SCREEN_NAMES = {
+    tr: 'Kolay Dil Öğren',
+    en: 'Easy Language',
+    ar: 'لغة سهلة',
+    de: 'Leicht Lernen',
+    es: 'Idioma Fácil',
+    fr: 'Langue Facile',
+    it: 'Lingua Facile',
+    pt: 'Língua Fácil',
+    ru: 'Лёгкий Язык',
+    zh: '易学语言',
+    ja: '簡単語学',
+    th: 'ภาษาง่าย',
+    ha: 'Saukin Harshe',
+    sw: 'Lugha Rahisi',
+    vi: 'Ngôn Ngữ Dễ'
+  };
+
   function applyBrandHeader() {
     var cfg = window.KDO_PLATFORM_BRAND;
     if (!cfg) return;
@@ -115,6 +133,9 @@
     var name = brandNameForLocale(cfg, lang);
     brand.textContent = cfg.flag ? (cfg.flag + ' ' + name) : name;
     document.title = brandTitleForLocale(cfg, lang);
+    var homeTitle = HOME_SCREEN_NAMES[lang] || HOME_SCREEN_NAMES.en;
+    var metaTitle = document.querySelector('meta[name="apple-mobile-web-app-title"]');
+    if (metaTitle) metaTitle.setAttribute('content', homeTitle);
     fitBrandText();
   }
 
