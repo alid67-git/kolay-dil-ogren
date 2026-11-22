@@ -323,6 +323,15 @@ const L1 = {
   ],
 
   dialogues:[
+    {title:'💬 Tanisma Sobbeti',
+     lines:[
+       {s:'Tom', th:'สบายดีไหมครับ',ro:'sa-bai-dee-mai-khrap',tr:'Nasilsiniz?',bd:[{ro:'sa-bai-dee',tr:'iyi/rahat',role:'V - Yuklem'},{ro:'mai',tr:'soru eki',role:'Soru/Olumsuz'},{ro:'khrap',tr:'erkek kibar eki',role:'Kibar'}]},
+       {s:'Lucy',th:'สบายดีค่ะ ขอบคุณค่ะ',ro:'sa-bai-dee-kha khob-khun-kha',tr:'Iyiyim, tesekkurler.',bd:[{ro:'sa-bai-dee',tr:'iyiyim',role:'V - Yuklem'},{ro:'kha',tr:'kadin kibar eki',role:'Kibar'},{ro:'khob-khun',tr:'tesekkurler',role:'Kelime'}]},
+       {s:'Lucy',th:'คุณมาจากไหนคะ',ro:'khun-maa-jaak-nai-kha',tr:'Nerelisiniz?',bd:[{ro:'khun',tr:'siz',role:'S - Ozne'},{ro:'maa-jaak-nai',tr:'nerelisiniz',role:'V - Yuklem'},{ro:'kha',tr:'kadin kibar eki',role:'Kibar'}]},
+       {s:'Tom', th:'ผมมาจากตุรกีครับ',ro:'pom-maa-jaak-tur-gii-khrap',tr:'Turkiyeden geliyorum.',bd:[{ro:'pom',tr:'ben',role:'S - Ozne'},{ro:'maa-jaak',tr:'geliyorum',role:'V - Yuklem'},{ro:'tur-gii',tr:'Turkiye',role:'O - Nesne'},{ro:'khrap',tr:'erkek kibar eki',role:'Kibar'}]},
+       {s:'Lucy',th:'คุณอยู่ที่ไหนคะ',ro:'khun-yuu-thii-nai-kha',tr:'Nerede oturuyorsunuz?',bd:[{ro:'khun',tr:'siz',role:'S - Ozne'},{ro:'yuu-thii-nai',tr:'nerede oturuyorsunuz',role:'V - Yuklem'},{ro:'kha',tr:'kadin kibar eki',role:'Kibar'}]},
+       {s:'Tom', th:'ผมอยู่ภูเก็ตครับ',ro:'pom-yuu-phu-get-khrap',tr:'Phuket te oturuyorum.',bd:[{ro:'pom',tr:'ben',role:'S - Ozne'},{ro:'yuu',tr:'oturuyorum',role:'V - Yuklem'},{ro:'phu-get',tr:'Phuket',role:'O - Nesne'},{ro:'khrap',tr:'erkek kibar eki',role:'Kibar'}]},
+     ]},
     {title:'🏪 Markette Karsilasma',
      lines:[
        {s:'Tom', th:'สวัสดีครับ',ro:'sa-wat-dee-khrap',tr:'Merhaba.',bd:[{ro:'sa-wat-dee',tr:'merhaba',role:'Kelime'},{ro:'khrap',tr:'erkek kibar eki',role:'Kibar'}]},
