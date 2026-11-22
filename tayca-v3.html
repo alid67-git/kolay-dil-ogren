@@ -371,6 +371,45 @@ html.kdo-android-wv header{
 
 h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 
+/* DİL NOTLARI */
+.notes-section{background:white;padding:14px;margin-bottom:12px;border-radius:12px;border-left:4px solid #0d9488;box-shadow:0 1px 4px rgba(13,148,136,.07);}
+.notes-head{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.notes-icon{font-size:20px;line-height:1;flex-shrink:0;}
+.notes-title{font-size:14px;font-weight:800;color:#134e4a;line-height:1.3;}
+.notes-body{font-size:13px;color:#444;line-height:1.75;margin-bottom:10px;}
+.notes-table{width:100%;border-collapse:collapse;margin-bottom:10px;font-size:12px;}
+.notes-table th{background:#e0f2f1;color:#00695c;font-weight:700;padding:7px 9px;text-align:left;border-bottom:2px solid #b2dfdb;}
+.notes-table td{padding:7px 9px;border-bottom:1px solid #f0f0f0;color:#333;vertical-align:top;}
+.notes-table tr:last-child td{border-bottom:none;}
+.notes-table tr:nth-child(even) td{background:#fafffe;}
+.notes-words{display:flex;flex-direction:column;gap:8px;margin-bottom:8px;}
+.notes-word-item{background:#f8fffe;border:1px solid #d1fae5;border-radius:8px;padding:10px 12px;}
+.notes-word-thai{font-size:18px;font-family:'Sarabun',sans-serif;color:#bbb;margin-bottom:1px;}
+.notes-word-ro{font-size:14px;font-weight:800;color:#134e4a;}
+.notes-word-tr{font-size:12px;color:#0d9488;font-weight:600;margin-bottom:4px;}
+.notes-word-note{font-size:11px;color:#777;font-style:italic;margin-bottom:4px;}
+.notes-word-examples{display:flex;flex-direction:column;gap:2px;margin-top:4px;}
+.notes-ex{font-size:12px;color:#555;padding-left:8px;border-left:2px solid #b2dfdb;line-height:1.5;}
+.notes-ex-single{font-size:12px;color:#555;margin-top:4px;font-style:italic;}
+.notes-glossary{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.notes-gloss-item{background:#e0f2f1;border-radius:6px;padding:3px 8px;font-size:11px;color:#004d40;}
+.notes-gloss-ro{font-weight:700;}
+.notes-tip{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:9px 12px;font-size:12px;color:#78350f;line-height:1.6;margin-top:8px;}
+.notes-tip::before{content:'💡 ';font-size:13px;}
+@media(prefers-color-scheme:dark){
+  .notes-section{background:#1e1e1e;border-left-color:#0d9488;}
+  .notes-title{color:#4db6ac;}
+  .notes-body{color:#c0c0c0;}
+  .notes-table th{background:#0f2420;color:#4db6ac;border-bottom-color:#1a5040;}
+  .notes-table td{color:#c8c8c8;border-bottom-color:#2a2a2a;}
+  .notes-table tr:nth-child(even) td{background:#1a2420;}
+  .notes-word-item{background:#1a2420;border-color:#1a5040;}
+  .notes-word-ro{color:#4db6ac;}
+  .notes-word-tr{color:#26a69a;}
+  .notes-gloss-item{background:#0f2420;color:#4db6ac;}
+  .notes-tip{background:#2a1a00;border-color:#7a4f00;color:#fbbf24;}
+}
+
 /* GRAMMAR DETAIL MODAL */
 .gram-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:flex-end;justify-content:center;}
 .gram-modal-overlay.open{display:flex;}
@@ -780,7 +819,7 @@ const UI_LOCAL = {
     nav_lessons:'📚 Dersler', nav_test:'📝 Test', nav_translate:'🌐 Çeviri',
     nav_list:'⭐ Yıldızlılar', nav_review:'🔄 Tekrar', nav_add:'➕ Ekle',
     // Sekmeler
-    tab_words:'Sözcükler', tab_tones:'Tonlar', tab_grammar:'Gramer',
+    tab_words:'Sözcükler', tab_tones:'Tonlar', tab_notes:'Dil Notları', tab_grammar:'Gramer',
     tab_speaking:'Konuşma', tab_dialogue:'Diyalog', tab_listening:'Dinleme',
     tab_quiz:'Quiz', tab_practice:'Alıştırma', tab_numbers:'Sayılar', tab_calc:'Hesapla',
     practice_intro:'Kelime ve cümle alıştırmaları. Kısa egzersiz modu.',
@@ -916,7 +955,7 @@ const UI_LOCAL = {
     nav_lessons:'📚 Lessons', nav_test:'📝 Test', nav_translate:'🌐 Translate',
     nav_list:'⭐ Starred', nav_review:'🔄 Review', nav_add:'➕ Add',
     // Tabs
-    tab_words:'Words', tab_tones:'Tones', tab_grammar:'Grammar',
+    tab_words:'Words', tab_tones:'Tones', tab_notes:'Language Notes', tab_grammar:'Grammar',
     tab_speaking:'Speaking', tab_dialogue:'Dialogue', tab_listening:'Listening',
     tab_quiz:'Quiz', tab_practice:'Practice', tab_numbers:'Numbers', tab_calc:'Calculator',
     practice_intro:'Word and sentence drills in a quick exercise mode.',
@@ -1127,6 +1166,7 @@ const UI_LOCAL = {
     nav_add:'➕ เพิ่ม',
     tab_words:'คำศัพท์',
     tab_tones:'วรรณยุกต์',
+    tab_notes:'บันทึกภาษา',
     tab_grammar:'ไวยากรณ์',
     tab_speaking:'การพูด',
     tab_dialogue:'บทสนทนา',
@@ -2041,14 +2081,14 @@ function insertPracticeTab(tabs){
 
 function getTabsForLesson(meta){
   if(meta.num>=20) return insertPracticeTab(['words']);
-  const base = ['words','grammar','speaking','dialogue','listening'];
-  if(meta.hasTones) return insertPracticeTab(['words','tones','grammar','speaking','dialogue','listening']);
-  if(meta.num===2) return insertPracticeTab(['numbers','calc','words','grammar','speaking','dialogue','listening']);
+  const base = ['words','notes','grammar','speaking','dialogue','listening'];
+  if(meta.hasTones) return insertPracticeTab(['words','tones','notes','grammar','speaking','dialogue','listening']);
+  if(meta.num===2) return insertPracticeTab(['numbers','calc','words','notes','grammar','speaking','dialogue','listening']);
   return insertPracticeTab(base);
 }
 function getTabLabels(){
   return {
-    words:s('tab_words'), tones:s('tab_tones'), grammar:s('tab_grammar'),
+    words:s('tab_words'), tones:s('tab_tones'), notes:s('tab_notes'), grammar:s('tab_grammar'),
     speaking:s('tab_speaking'), dialogue:s('tab_dialogue'), listening:s('tab_listening'),
     practice:s('tab_practice'), numbers:s('tab_numbers'), calc:s('tab_calc')
   };
@@ -2293,6 +2333,43 @@ function buildLessonHTML(L, meta){
       </div>
     </div>`).join('') : `<div style="text-align:center;padding:30px;color:#bbb;">${s('tones_ref')}</div>`;
 
+  // DİL NOTLARI
+  const notesHtml = (function(){
+    const notesList = L.notes||[];
+    if(!notesList.length) return '<div style="text-align:center;padding:30px;color:#bbb;font-size:13px;">Bu ders için henüz dil notu eklenmedi.</div>';
+    return notesList.map(n=>{
+      let h = '<div class="notes-section">';
+      h += '<div class="notes-head"><span class="notes-icon">'+(n.icon||'📝')+'</span><span class="notes-title">'+esc(n.title)+'</span></div>';
+      if(n.body) h += '<div class="notes-body">'+esc(n.body)+'</div>';
+      if(n.table){
+        h += '<table class="notes-table"><thead><tr>'+n.table.cols.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr></thead><tbody>';
+        h += n.table.rows.map(r=>'<tr>'+r.map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('');
+        h += '</tbody></table>';
+      }
+      if(n.items){
+        h += '<div class="notes-words">';
+        h += n.items.map(item=>{
+          let ih = '<div class="notes-word-item">';
+          if(item.th) ih += '<div class="notes-word-thai">'+item.th+'</div>';
+          if(item.ro) ih += '<div class="notes-word-ro">'+esc(item.ro)+'</div>';
+          if(item.tr) ih += '<div class="notes-word-tr">'+esc(item.tr)+'</div>';
+          if(item.note) ih += '<div class="notes-word-note">'+esc(item.note)+'</div>';
+          if(item.examples&&item.examples.length) ih += '<div class="notes-word-examples">'+item.examples.map(e=>'<div class="notes-ex">'+esc(e)+'</div>').join('')+'</div>';
+          if(item.example) ih += '<div class="notes-ex-single">'+esc(item.example)+'</div>';
+          ih += '</div>';
+          return ih;
+        }).join('');
+        h += '</div>';
+      }
+      if(n.glossary){
+        h += '<div class="notes-glossary">'+n.glossary.map(g=>'<span class="notes-gloss-item"><span class="notes-gloss-ro">'+esc(g.ro)+'</span> = '+esc(g.tr)+'</span>').join('')+'</div>';
+      }
+      if(n.tip) h += '<div class="notes-tip">'+esc(n.tip)+'</div>';
+      h += '</div>';
+      return h;
+    }).join('');
+  })();
+
   // GRAMER
   const grammar = (L.grammar||[]).map((g,gi)=>{
     const exHtml = g.examples.map((e,ei)=>{
@@ -2509,7 +2586,7 @@ function buildLessonHTML(L, meta){
     </div>
     <div class="ltabs" id="ltabs-wrap">${tabs}</div>
     ${tabNames.map(t=>`<div id="lc-${t}" class="lcontent">${
-      t==='words'?(pronounTable+words):t==='tones'?tones:t==='grammar'?grammar:
+      t==='words'?(pronounTable+words):t==='tones'?tones:t==='notes'?notesHtml:t==='grammar'?grammar:
       t==='speaking'?speaking:t==='dialogue'?dialogues:
       t==='listening'?listening:t==='practice'?practiceHtml:
       t==='numbers'?numbersHtml:
