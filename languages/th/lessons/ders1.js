@@ -408,6 +408,110 @@ const L1 = {
   ],
 };
 
+L1.notes = [
+  {
+    icon:'📐',
+    title:'Cümle Yapısı: Özne + Fiil + Nesne',
+    body:'Taycada cümle sıralaması İngilizce gibi Özne + Fiil + Nesne\'dir. Türkçeden önemli bir fark: fiiller kişiye göre DEĞİŞMEZ — gidiyorum, gidiyorsun, gidiyor diye çekim yapılmaz. Aynı kelime herkese uyar.',
+    table:{
+      cols:['Türkçe','Tayca Okunuşu'],
+      rows:[
+        ['Ben yemek yiyorum.','Phom gin khao.'],
+        ['Ben su içiyorum.','Phom duem nam.'],
+        ['Ben Phuket\'e gidiyorum.','Phom pai Phuket.'],
+        ['Ben seni seviyorum.','Phom rak khun.'],
+      ]
+    },
+    glossary:[
+      {ro:'Phom',tr:'Ben (erkek)'},
+      {ro:'Khun',tr:'Sen / Siz'},
+      {ro:'Gin',tr:'Yemek'},
+      {ro:'Pai',tr:'Gitmek'},
+      {ro:'Rak',tr:'Sevmek'},
+      {ro:'Nam',tr:'Su'},
+    ]
+  },
+  {
+    icon:'❓',
+    title:'Soru Kelimeleri: Arai, Nai, Mai, Khrai, Thao Rai',
+    body:'Bu beş kelime günlük Taycada en sık duyacağın soru ifadeleridir. Soru kelimeleri Türkçenin aksine cümlenin SONUNA gelir.',
+    items:[
+      {th:'อะไร', ro:'Arai', tr:'Ne? / Nedir?', examples:['Gin arai? — Ne yiyorsun?','Tham arai? — Ne yapıyorsun?','Ni arai? — Bu ne?']},
+      {th:'ไหน', ro:'Nai', tr:'Nerede? / Nereye? / Hangi?', examples:['Pai nai? — Nereye gidiyorsun?','Yu nai? — Neredesin?','An nai? — Hangisi?']},
+      {th:'ไหม', ro:'Mai?', tr:'Mı / Mi? (soru eki)', note:'Cümle sonuna eklenir, evet/hayır sorusu yapar.', examples:['Aroi mai? — Lezzetli mi?','Paeng mai? — Pahalı mı?','Pai mai? — Gidiyor musun?']},
+      {th:'ใคร', ro:'Khrai', tr:'Kim?', examples:['Khrai? — Kim?','Pai kap khrai? — Kiminle gidiyorsun?']},
+      {th:'เท่าไหร่', ro:'Thao rai', tr:'Ne kadar?', examples:['Thao rai? — Ne kadar?','Rakha thao rai? — Fiyatı ne kadar?']},
+    ],
+    tip:'Taylandlılar hızlı konuşurken "arai" kelimesini sadece "rai" diye söylerler. Duyduğun "rai" büyük ihtimalle budur.'
+  },
+  {
+    icon:'🙏',
+    title:'Khrap ve Kha — Kibar Ekleri',
+    body:'Tayland\'da kibarlık çok önemlidir. Her cümlenin sonuna bu eklerden biri gelir. Phuket\'te bu eki kullanmayan yabancı kaba görünür.',
+    table:{
+      cols:['Kelime','Kullanımı','Örnek'],
+      rows:[
+        ['Khrap (ครับ)','Erkekler söyler','Sawatdee khrap — Merhaba'],
+        ['Kha (ค่ะ / คะ)','Kadınlar söyler','Khob khun kha — Teşekkürler'],
+      ]
+    }
+  },
+  {
+    icon:'⚠️',
+    title:'Mai Kelimesinin 4 Farklı Anlamı',
+    body:'Taycada ses tonu anlam belirler. Aynı harf kombinasyonu farklı tonlarla tamamen başka anlam taşıyabilir. "Mai" bunun en çarpıcı örneğidir.',
+    items:[
+      {th:'ไม่',ro:'mâi (inen ton)',tr:'Hayır / Olumsuzluk',example:'Mai pai = Gitmiyorum.'},
+      {th:'ไหม',ro:'mǎi (yükselen ton)',tr:'Mı / Mi? (soru eki)',example:'Pai mai? = Gidiyor musun?'},
+      {th:'ใหม่',ro:'mài (alçalan ton)',tr:'Yeni',example:'Mai = Yeni'},
+      {th:'ไม้',ro:'mái (yüksek ton)',tr:'Ağaç / Tahta',example:''},
+    ],
+    tip:'Mai fiilden ÖNCE gelirse olumsuzluk; cümle SONUNDA gelirse soru. "Mai pai" = Gitmiyorum. | "Pai mai?" = Gidiyor musun?'
+  },
+  {
+    icon:'⏱️',
+    title:'Zaman İfadeleri: Ja, Laeo, Kamlang, Yang',
+    body:'Taycada fiil asla çekilmez. Zaman, fiilin önüne veya arkasına eklenen ayrı kelimelerle belirtilir.',
+    table:{
+      cols:['Türkçe','Tayca'],
+      rows:[
+        ['Ben gidiyorum.','Phom pai'],
+        ['Ben gideceğim.','Phom ja pai'],
+        ['Ben gittim.','Phom pai laeo'],
+        ['Şu anda gidiyorum.','Phom kamlang pai'],
+        ['Henüz gitmedim.','Phom yang mai pai'],
+      ]
+    },
+    glossary:[
+      {ro:'Ja',tr:'Gelecek zaman'},
+      {ro:'Laeo',tr:'Tamamlandı'},
+      {ro:'Kamlang',tr:'Şu an devam ediyor'},
+      {ro:'Yang mai',tr:'Henüz ... değil'},
+    ]
+  },
+  {
+    icon:'💬',
+    title:'Günlük Hayatta İşe Yarayacak Kalıplar',
+    body:'Özellikle Phuket\'te restoranda, alışverişte ve ulaşımda sık kullanılan ifadeler:',
+    table:{
+      cols:['Tayca Okunuşu','Türkçe'],
+      rows:[
+        ['Hong nam yu nai?','Tuvalet nerede?'],
+        ['Pai nai?','Nereye gidiyorsun?'],
+        ['Tham arai?','Ne yapıyorsun?'],
+        ['Chue arai?','Adın ne?'],
+        ['Thao rai?','Ne kadar?'],
+        ['Lot dai mai?','İndirim yapabilir misin?'],
+        ['Mi mai?','Var mı?'],
+        ['Dai mai?','Olur mu?'],
+        ['Aroi mai?','Lezzetli mi?'],
+        ['Thammai?','Neden?'],
+        ['Yang ngai?','Nasıl?'],
+      ]
+    }
+  },
+];
+
 LESSONS[1] = L1;
 
 // words, speaking, dialogues: th degerleri yukarida dogrudan tanimli
