@@ -9,8 +9,6 @@ const L1 = {
       {th:'ผมชื่อทอม',ro:'pom-chue-Tom',tr:'benim adim Tom.',bd:[{ro:'pom',tr:'ben',role:'S - Ozne'},{ro:'chue',tr:'adi',role:'V - Yuklem'},{ro:'Tom',tr:'Tom',role:'O - Nesne'}]},
       {th:'คุณชื่ออะไร',ro:'khun-chue-a-rai',tr:'adin ne?',bd:[{ro:'khun',tr:'sen',role:'S - Ozne'},{ro:'chue',tr:'adi',role:'V - Yuklem'},{ro:'a-rai',tr:'ne',role:'Soru/Olumsuz'}]},
       {th:'ยินดีที่ได้รู้จัก',ro:'yin-dee-tii-dai-ruu-jak',tr:'tanistigima memnun.',bd:[{ro:'yin-dee',tr:'hoslanmak',role:'V - Yuklem'},{ro:'tii',tr:'sebebi gosteren',role:'Edat'},{ro:'dai',tr:'basarili/tamamlanan',role:'Aspect'},{ro:'ruu-jak',tr:'tanismak',role:'O - Nesne'}]},
-      {th:'สบายดีไหม',ro:'sa-bai-dee-mai',tr:'nasilsin?',bd:[{ro:'sa-bai-dee',tr:'iyi',role:'V - Yuklem'},{ro:'mai',tr:'soru eki',role:'Soru/Olumsuz'}]},
-      {th:'คุณมาจากไหน',ro:'khun-maa-jaak-nai',tr:'nerelisin?',bd:[{ro:'khun',tr:'sen',role:'S - Ozne'},{ro:'maa-jaak',tr:'geliyorsun',role:'V - Yuklem'},{ro:'nai',tr:'nereden',role:'Soru/Olumsuz'}]},
      ]},
     {id:'w3',th:'ขอบคุณ',ro:'khob-khun',tr:'Teşekkür ederim',
      tip:'KHOBp kisaltilir; KHUN uzun ve yumusak.',
