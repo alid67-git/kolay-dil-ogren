@@ -131,6 +131,7 @@ const L14 = {
       {s:'Nada',th:'ยินดีเช่นกันค่ะ คุณมาจากไหนคะ',ro:'yin-dii chen-gan kha khun maa jaak nai kha',tr:'Ben de memnun oldum, nerelisiniz?',bd:[{ro:'khun maa jaak nai',tr:'nerelisiniz',role:'Soru/Olumsuz'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
       {s:'Ali',th:'ผมมาจากตุรกีครับ',ro:'pom maa jaak tur-kee khrap',tr:'Turkiyeden geldim.',bd:[{ro:'pom maa jaak tur-kee',tr:'turkiyeden geldim',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
       {s:'Nada',th:'ขอเบอร์โทรไว้ได้ไหมคะ',ro:'khor boe-tho wai dai mai kha',tr:'Numaranizi kaydedebilir miyim?',bd:[{ro:'khor boe-tho wai dai mai',tr:'numaranizi kaydedebilir miyim',role:'Soru/Olumsuz'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
+      {s:'Ali',th:'ได้เลยครับ เบอร์ผมคือ 0812345678 ครับ',ro:'dai loey khrap boe pom khue soon-paet-nueng-song-saam-sii-haa-hok-jet-paet khrap',tr:'Tabii, numaram 0812345678.',bd:[{ro:'dai loey',tr:'tabii ki',role:'Kelime'},{ro:'boe pom khue',tr:'numaram',role:'Kelime'},{ro:'soon-paet-nueng-song-saam-sii-haa-hok-jet-paet',tr:'0812345678',role:'Kelime'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
      ]},
     {title:'🎁 Kucuk Hediye',
      lines:[

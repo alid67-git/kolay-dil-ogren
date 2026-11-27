@@ -55,6 +55,7 @@ const L18 = {
        {s:'Nada',th:'ได้รับแล้วค่ะ เดี๋ยวโทรกลับนะ',ro:'dai-rap laeo kha diao tho klap na',tr:'Aldim, birazdan geri arayayim.',bd:[{ro:'dai-rap laeo',tr:'aldim',role:'V - Yuklem'},{ro:'tho klap',tr:'geri ara',role:'V - Yuklem'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
        {s:'Ali',th:'โอเคครับ ผมรอสาย',ro:'o-kee khrap pom ro saai',tr:'Tamam, aramayi bekliyorum.',bd:[{ro:'pom ro saai',tr:'aramayi bekliyorum',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
        {s:'Nada',th:'โทรแล้วค่ะ ได้ยินไหมคะ',ro:'tho laeo kha dai-yin mai kha',tr:'Aradim, duyuyor musunuz?',bd:[{ro:'tho laeo',tr:'aradim',role:'V - Yuklem'},{ro:'dai-yin mai',tr:'duyuyor musun',role:'Soru/Olumsuz'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Ali',th:'ครับ ได้ยินชัดเจนครับ',ro:'khrap dai-yin chat-jen khrap',tr:'Evet, net duyuyorum.',bd:[{ro:'dai-yin',tr:'duyuyorum',role:'V - Yuklem'},{ro:'chat-jen',tr:'net/açık',role:'Kelime'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
      ]},
   ],
   listening:[
