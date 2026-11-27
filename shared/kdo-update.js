@@ -29,13 +29,18 @@
   }
 
   function bustAndReload() {
+    var url = location.pathname + '?_u=' + Date.now();
     if ('caches' in window) {
       caches.keys().then(function (names) {
-        names.forEach(function (name) { caches.delete(name); });
+        return Promise.all(names.map(function (name) { return caches.delete(name); }));
+      }).then(function () {
+        location.replace(url);
+      }).catch(function () {
+        location.replace(url);
       });
+    } else {
+      location.replace(url);
     }
-    var sep = location.search ? '&' : '?';
-    location.replace(location.pathname + location.search + sep + '_u=' + Date.now() + (location.hash || ''));
   }
 
   window.applyUpdate = function () {
@@ -47,6 +52,12 @@
       location.href = APK_URL;
       return;
     }
+    // sessionStorage flag'ini temizle ki yeni yüklemede otomatik güncelleme tekrar çalışsın
+    try {
+      Object.keys(sessionStorage).forEach(function (k) {
+        if (k.indexOf('kdo:ver-reload-') === 0) sessionStorage.removeItem(k);
+      });
+    } catch (_) {}
     bustAndReload();
   };
 
