@@ -219,52 +219,5 @@ const L0 = {
   listening:[],
   quiz:[],
 
-  notes:[
-    {
-      title:'Zaman Ekleri — Özet Tablosu',
-      body:'Taycada fiil çekilmez. Zaman ayrı sözcüklerle belirtilir:\n\n' +
-           'กำลัง (gam-lang) + fiil → Şu an yapıyor\n' +
-           'fiil + แล้ว (laeo) → Yaptı / Bitti\n' +
-           'จะ (ja) + fiil → Yapacak\n' +
-           'เคย (koey) + fiil → Daha önce yaptı\n' +
-           'ยังไม่ (yang-mai) + fiil → Henüz yapmadı'
-    },
-    {
-      title:'Soru Sözcükleri — WH Tablosu',
-      body:'Tüm WH soru sözcükleri cümlenin SONUNA gelir:\n\n' +
-           'อะไร (a-rai) → Ne?\n' +
-           'ที่ไหน (thii-nai) → Nerede?\n' +
-           'ใคร (khrai) → Kim?\n' +
-           'เมื่อไร (meua-rai) → Ne zaman?\n' +
-           'ทำไม (tham-mai) → Neden?\n' +
-           'ยังไง (yang-ngai) → Nasıl?\n' +
-           'เท่าไร (thao-rai) → Ne kadar / Kaç?'
-    },
-    {
-      title:'Günlük Selamlama İfadeleri',
-      body:'Taylandlılar günün büyük bölümünde sadece สวัสดีครับ (sa-wat-dii khrap) der.\n\n' +
-           'สวัสดีครับ (sa-wat-dii khrap) → Merhaba / Günaydın / İyi akşamlar\n' +
-           'อรุณสวัสดิ์ครับ (a-run sa-wat khrap) → Günaydın (resmi)\n' +
-           'สวัสดีตอนเย็นครับ (sa-wat-dii ton-yen khrap) → İyi akşamlar\n' +
-           'ฝันดีนะครับ (fan-dii na khrap) → İyi geceler / Tatlı rüyalar\n' +
-           'ลาก่อนครับ (la-gon khrap) → Hoşça kal\n' +
-           'แล้วเจอกันครับ (laeo joe-kan khrap) → Görüşürüz\n' +
-           'โชคดีครับ (chok-dii khrap) → İyi şanslar\n' +
-           'สู้ ๆ นะครับ (suu-suu na khrap) → Kolay gelsin\n' +
-           'เดินทางปลอดภัยนะครับ (doen-thang plot-phai na khrap) → İyi yolculuklar\n' +
-           'พักผ่อนนะครับ (phak-phon na khrap) → İyi dinlenmeler\n' +
-           'สบาย ๆ (sa-bai sa-bai) → Rahat ol / Acele etme'
-    },
-    {
-      title:'ไม่ vs ไหม — Karıştırılmaması Gereken İkili',
-      body:'Görünüşleri farklı, sesleri benzer — dikkat!\n\n' +
-           'ไม่ (mai — yüksek ton) = Değil / Yok\n' +
-           '→ Fiilin ÖNÜNE gelir\n' +
-           '→ Örnek: ไม่เข้าใจ (anlamıyorum)\n\n' +
-           'ไหม (mai — yükselen ton) = ...mı/mi? (soru eki)\n' +
-           '→ Cümlenin SONUNA gelir\n' +
-           '→ Örnek: สบายดีไหม (iyi misiniz?)'
-    },
-  ],
 };
-window.L0 = L0;
+LESSONS[0] = L0;
