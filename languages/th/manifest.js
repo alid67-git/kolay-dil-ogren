@@ -25,6 +25,14 @@ window.KDO_LANGUAGE_MANIFEST = {
   },
   "lessons": [
     {
+      "num": 0,
+      "emoji": "📖",
+      "title": "Temel Dilbilgisi",
+      "title_en": "Grammar Basics",
+      "hasContent": true,
+      "hasTones": false
+    },
+    {
       "num": 1,
       "emoji": "👋",
       "title": "Temel İfadeler ve Tanışma",
