@@ -134,6 +134,7 @@ const L8 = {
        {s:'Ali',th:'สองคืนครับ',ro:'song khueng khrap',tr:'İki gece.',bd:[{ro:'song khueng',tr:'iki gece',role:'Kelime'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
        {s:'Nada',th:'ห้องอยู่ชั้นสามค่ะ นี่คือกุญแจห้องค่ะ',ro:'hong yuu chan-saam kha nii khue gun-jae hong kha',tr:'Oda üçüncü katta. Bu oda anahtarı.',bd:[{ro:'hong yuu chan-saam',tr:'oda 3. katta',role:'Kelime'},{ro:'nii khue gun-jae hong',tr:'bu oda anahtarı',role:'Kelime'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
        {s:'Ali',th:'ขอรหัสไวไฟด้วยครับ',ro:'khor ra-hat wi-fai duay khrap',tr:'WiFi şifresi de alabilir miyim?',bd:[{ro:'khor ra-hat wi-fai duay',tr:'WiFi şifresi lütfen',role:'V - Yuklem'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {s:'Nada',th:'ได้เลยค่ะ รหัสคือ Hotel2024 ค่ะ',ro:'dai loey kha ra-hat khue Hotel2024 kha',tr:'Tabii, şifre Hotel2024.',bd:[{ro:'dai loey',tr:'tabii ki',role:'Kelime'},{ro:'ra-hat khue Hotel2024',tr:'şifre Hotel2024',role:'Kelime'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
      ]},
     {title:'🔧 Oda Sorunu',
      lines:[

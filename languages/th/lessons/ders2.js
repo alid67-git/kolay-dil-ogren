@@ -105,6 +105,7 @@ const L2 = {
     {title:'🛒 Markette Fiyat Sorma',
      lines:[
        {s:'Ali',th:'นี่เท่าไรครับ',ro:'nii thao-rai khrap',tr:'Bu kac para?',bd:[{ro:'nii thao-rai khrap',tr:'Bu ne kadar?',role:'Kelime'}]},
+       {s:'Nada',th:'ร้อยบาทค่ะ',ro:'roi baht kha',tr:'100 Baht.',bd:[{ro:'roi baht',tr:'100 Baht',role:'Kelime'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
        {s:'Ali',th:'ลดราคาได้ไหมครับ',ro:'lot raa-khaa dai mai khrap',tr:'Indirim yapabilir misiniz?',bd:[{ro:'lot raa-khaa dai mai khrap',tr:'Indirim var mi?',role:'Kelime'}]},
        {s:'Nada',th:'ได้ค่ะ แปดสิบบาทค่ะ',ro:'dai kha paet-sip baht kha',tr:'Olur, 80 Baht.',bd:[{ro:'dai',tr:'olur',role:'Kelime'},{ro:'paet-sip baht',tr:'80 Baht',role:'Kelime'},{ro:'kha',tr:'kibar eki',role:'Kibar'}]},
      ]},

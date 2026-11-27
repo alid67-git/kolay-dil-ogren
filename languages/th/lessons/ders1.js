@@ -95,9 +95,9 @@ const L1 = {
      tip:'"Pom ayu [sayi] pii" = "Ben [sayi] yasindayim"',
      ctx:'"Pii" = yil. Yas sorarken "thao-rai" = ne kadar.',
      examples:[
-       {th:'ผมอายุ 35 ปีครับ',ro:'pom ayu 35 pii khrap',tr:'35 yasindayim.',bd:[{ro:'pom',tr:'ben',role:'S - Ozne'},{ro:'ayu',tr:'yasinda',role:'V - Yuklem'},{ro:'35 pii',tr:'35 yas',role:'O - Nesne'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
        {th:'คุณอายุเท่าไรครับ',ro:'khun ayu thao-rai khrap',tr:'Kac yasindasiniz?',bd:[{ro:'khun',tr:'siz',role:'S - Ozne'},{ro:'ayu',tr:'yasindasiniz',role:'V - Yuklem'},{ro:'thao-rai',tr:'kac',role:'Soru'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
-       {th:'ผมอายุสามสิบห้าปีครับ',ro:'pom ayu saam-sip-haa pii khrap',tr:'35 yasindayim.',bd:[{ro:'pom',tr:'ben',role:'S - Ozne'},{ro:'ayu',tr:'yasinda',role:'V - Yuklem'},{ro:'saam-sip-haa pii',tr:'35 yas',role:'O - Nesne'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ผมอายุ 35 ปีครับ',ro:'pom ayu 35 pii khrap',tr:'35 yasindayim.',bd:[{ro:'pom',tr:'ben',role:'S - Ozne'},{ro:'ayu',tr:'yasinda',role:'V - Yuklem'},{ro:'35 pii',tr:'35 yas',role:'O - Nesne'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
+       {th:'ผมอายุสามสิบห้าปีครับ',ro:'pom ayu saam-sip-haa pii khrap',tr:'35 yasindayim (Tay yazimiyla).',bd:[{ro:'pom',tr:'ben',role:'S - Ozne'},{ro:'ayu',tr:'yasinda',role:'V - Yuklem'},{ro:'saam-sip-haa pii',tr:'35 yas',role:'O - Nesne'},{ro:'khrap',tr:'kibar eki',role:'Kibar'}]},
      ]},
   {id:'w15',th:'ฉัน',ro:'chan',tr:'Ben (kadın)',
      tip:'Kadin konusmacilar pom yerine chan der. Erkekler pom kullanir.',
