@@ -432,3 +432,95 @@ const L0 = {
 
 };
 LESSONS[0] = L0;
+
+L0.notes = [
+  {
+    icon:'🙋',
+    title:'Kişi Zamirleri — Hızlı Referans',
+    body:'Tayca zamirlerinde cinsiyet ayrımı yoktur — "o" hem erkek hem kadın için aynı kelimedir. Konuşmacının cinsiyeti kibar ekten belli olur (erkek khrap, kadın kha).',
+    table:{
+      cols:['Kişi','Thai','Okunuş','Not'],
+      rows:[
+        ['Ben (E)','ผม','pom','Erkek'],
+        ['Ben (K)','ฉัน','chan','Kadın'],
+        ['Sen/Siz','คุณ','khun','Kibar, herkese'],
+        ['O','เขา','khao','E+K aynı kelime'],
+        ['Biz','เรา','rao','+ samimi "ben"'],
+        ['Siz(çoğul)','พวกคุณ','phuak-khun','Grup hitabı'],
+        ['Onlar','พวกเขา','phuak-khao','phuak=grup'],
+      ]
+    },
+    tip:'💡 Detaylı örnekler → Gramer sekmesi → Kural 3'
+  },
+  {
+    icon:'📐',
+    title:'Cümle Yapısı: Özne + Fiil + Nesne (SVO)',
+    body:'Tayca cümle sırası Türkçeden çok farklıdır. Fiiller kişiye göre DEĞİŞMEZ — "gidiyorum", "gidiyor", "gidiyorsunuz" hepsi aynı fiil "pai". Soru sözcükleri cümlenin SONUNA gelir.',
+    table:{
+      cols:['Türkçe','Tayca Okunuşu'],
+      rows:[
+        ['Ben gidiyorum.','Pom pai khrap.'],
+        ['O yemek yiyor.','Khao kin khao khrap.'],
+        ['Adınız ne? (ne SONDA!)','Khun chue a-rai?'],
+        ['Nereye gidiyorsunuz?','Khun pai nai khrap?'],
+      ]
+    },
+    tip:'💡 Detaylı örnekler → Gramer sekmesi → Kural 1'
+  },
+  {
+    icon:'⏱️',
+    title:'Zaman İfadeleri: gam-lang / laeo / ja',
+    body:'Taycada fiil asla çekilmez. Zaman ayrı kelimelerle belirtilir. Türkçedeki "-iyor", "-di", "-ecek" ekleri yerine ayrı sözcükler kullanılır.',
+    table:{
+      cols:['Tayca Okunuşu','Anlamı','Konumu'],
+      rows:[
+        ['กำลัง  gam-lang','Şu an / -iyor','Fiilden ÖNCE'],
+        ['แล้ว  laeo','Bitti / geçti','Fiilden SONRA'],
+        ['จะ  ja','Yapacak / gelecek','Fiilden ÖNCE'],
+        ['เคย  koey','Daha önce yaptı','Fiilden ÖNCE'],
+        ['ยังไม่  yang mai','Henüz ... değil','Fiilden ÖNCE'],
+      ]
+    },
+    glossary:[
+      {ro:'Pom gam-lang pai',tr:'Ben şu an gidiyorum.'},
+      {ro:'Pom pai laeo',tr:'Ben gittim.'},
+      {ro:'Pom ja pai',tr:'Ben gideceğim.'},
+      {ro:'Pom koey pai',tr:'Ben daha önce gittim.'},
+      {ro:'Pom yang mai pai',tr:'Ben henüz gitmedim.'},
+    ],
+    tip:'💡 Detaylı örnekler → Gramer sekmesi → Kural 7'
+  },
+  {
+    icon:'❓',
+    title:'Soru Sözcükleri — Hızlı Referans',
+    body:'Tayca soru sözcükleri cümlenin SONUNA gelir — Türkçenin aksine başa değil! "Adın ne?" → "Khun chue A-RAI?" (a-rai sonda)',
+    table:{
+      cols:['Tayca','Okunuş','Türkçe','Örnek'],
+      rows:[
+        ['อะไร','a-rai','Ne?','Chue a-rai? — Adın ne?'],
+        ['ที่ไหน','thii-nai','Nerede?','Yu thii-nai? — Neredesin?'],
+        ['ใคร','khrai','Kim?','Khrai? — Kim?'],
+        ['เมื่อไร','meua-rai','Ne zaman?','Maa meua-rai? — Ne zaman geldi?'],
+        ['ทำไม','tham-mai','Neden?','Tham-mai? — Neden?'],
+        ['ยังไง','yang-ngai','Nasıl?','Yang-ngai? — Nasıl?'],
+        ['เท่าไร','thao-rai','Ne kadar?','Thao-rai? — Ne kadar?'],
+        ['ไหม','mai','Mı/Mi?','Aroi mai? — Lezzetli mi?'],
+      ]
+    },
+    tip:'💡 Detaylı örnekler → Gramer sekmesi → Kural 5'
+  },
+  {
+    icon:'🙏',
+    title:'Kibar Ekler: ครับ Khrap (Erkek) / ค่ะ Kha (Kadın)',
+    body:'Taylandlılar her cümlenin sonuna kibar ek koyar. Phuket\'te bu eki kullanmayan yabancı kaba görünür. Hızlı konuşmada "krap" veya "kap" gibi duyulur.',
+    table:{
+      cols:['Kelime','Kullanımı','Örnek'],
+      rows:[
+        ['ครับ  khrap','Erkekler her cümlede','Sawatdee khrap — Merhaba'],
+        ['ค่ะ  kha','Kadınlar kesin ifadelerde','Khob khun kha — Teşekkürler'],
+        ['คะ  ka','Kadınlar soru cümlelerinde','Sabai dee mai ka? — İyi misiniz?'],
+      ]
+    },
+    tip:'💡 Detaylı örnekler → Gramer sekmesi → Kural 2'
+  },
+];
