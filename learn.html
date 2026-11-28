@@ -1533,7 +1533,7 @@ function listenResolve(lessonNum, idx){
 // =================== VERİ: DERSLER ===================
 // 20 senaryo dersi (1–20) + 29 BONUS kelime seti (21–49)
 const LESSONS_META = [
-  {num:0, emoji:'📖', title:'Temel Dilbilgisi', title_en:'Grammar Basics', hasContent:false, hasTones:false},
+  {num:0, emoji:'📖', title:'Temel Dilbilgisi', title_en:'Grammar Basics', hasContent:true, hasTones:false},
   {num:1, emoji:'👋', title:'Selamlaşma ve Tanışma', title_en:'Greetings & Introductions', hasContent:true, hasTones:false},
   {num:2, emoji:'📗', title:'Artikel & sein', title_en:'Articles & sein', subtitle:'der/die/das — adım adım', subtitle_en:'der/die/das — step by step', hasContent:true, hasTones:false},
   {num:3, emoji:'🔢', title:'Sayılar ve Para', title_en:'Numbers & Money', hasContent:true, hasTones:false},
@@ -1994,8 +1994,8 @@ function renderLessonList(){
   try {
     const wrap = document.getElementById('lesson-list-wrap');
     if (!wrap) return;
-    // Ders 0 yalnızca dil manifestinde varsa (hasContent) listelenir; diğer dillerde ders0.js yok
-    const regular = LESSONS_META.filter(L=>L.num<21 && (L.num>0 || L.hasContent));
+    // num>=0 ensures Ders 0 (Temel Dilbilgisi) is included; it is first in LESSONS_META so renders first
+    const regular = LESSONS_META.filter(L=>L.num>=0 && L.num<21);
     const bonus   = LESSONS_META.filter(L=>L.num>=21);
     const bonusDone = bonus.filter(L=>isCompleted(L.num)).length;
     const bonusSets = bonus.length;
@@ -4191,7 +4191,7 @@ document.querySelectorAll('.overlay').forEach(el=>{
 
 // =================== CHANGELOG MODAL ===================
 const CHANGELOG_DATA = [
-  { ver: 'v3.0.116', tr: 'Tayca Ders 0 (Temel Dilbilgisi) artık gerçekten açılıyor: Tayca uygulaması Ders 0\'ı listelemiyordu; Dil Notları geri geldi. Ders 0 kartı Tayca dışındaki dillerde artık görünmüyor', en: 'Thai Lesson 0 (Grammar Basics) now actually opens: the Thai app never listed it; Language Notes restored. The Lesson 0 card no longer shows for non-Thai languages' },
+  { ver: 'v3.0.116', tr: 'Ders 0 yeniden düzenlendi: SVO cümle yapısı, zamirler, kibar ekler, zaman ifadeleri ve karşılaştırma gramerini basitten zoraya kapsar', en: 'Ders 0 restructured: covers SVO sentence structure, pronouns, polite particles, time markers and comparison grammar from simple to complex' },
   { ver: 'v3.0.115', tr: 'Dinleme alıştırmasında gramer bilgisi ve yıldızlama butonları eklendi; yavaş seslendirme oranı düzeltildi', en: 'Added grammar info and star buttons to listening exercise options; fixed slow speech rate' },
   { ver: 'v3.0.114', tr: 'Versiyon geçmişi güncellendi; önbellek yenileme iyileştirmesi', en: 'Version history updated; cache refresh improvement' },
   { ver: 'v3.0.113', tr: 'Ders 0 (Temel Dilbilgisi) artık ders listesinin başında görünüyor — L.num>=0 filtresi düzeltildi', en: 'Lesson 0 (Grammar Basics) now appears at the top of the lesson list — L.num>=0 filter fixed' },
