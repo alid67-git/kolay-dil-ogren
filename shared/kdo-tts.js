@@ -261,7 +261,7 @@
       body: JSON.stringify({
         input: { text: text },
         voice: { languageCode: lang, name: voiceName },
-        audioConfig: { audioEncoding: 'MP3', speakingRate: slow ? 0.78 : 1.0, pitch: 0 }
+        audioConfig: { audioEncoding: 'MP3', speakingRate: slow ? 0.5 : 1.0, pitch: 0 }
       })
     }).then(function (r) {
       if (!r.ok) return false;

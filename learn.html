@@ -692,6 +692,8 @@ h2{font-size:15px;color:#1565c0;margin:4px 0 12px;font-weight:700;}
 .ex-prompt-box{display:flex;align-items:center;gap:12px;background:#f7f7f7;border:2px solid #e5e5e5;border-radius:14px;padding:14px 16px;margin-bottom:24px;}
 .ex-prompt-th{font-size:15px;font-weight:700;color:#3c3c3c;flex:1;}
 .ex-speak-sm{background:none;border:2px solid #e5e5e5;border-radius:8px;padding:6px 8px;cursor:pointer;font-size:16px;color:#1cb0f6;}
+.ex-gram-btn{background:none;border:2px solid #e5e5e5;border-radius:8px;padding:5px 7px;cursor:pointer;font-size:14px;color:#8b5cf6;line-height:1;flex-shrink:0;}
+.ex-gram-btn:active{opacity:.7;}
 .ex-word-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .ex-word-card{border:2px solid #e5e5e5;border-radius:14px;padding:20px 12px;text-align:center;cursor:pointer;transition:.15s;background:white;box-shadow:0 3px 0 #e5e5e5;user-select:none;}
 .ex-word-card:active{transform:translateY(2px);box-shadow:none;}
@@ -809,21 +811,21 @@ h2{font-size:15px;color:#1565c0;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.114"></script>
-<script src="shared/kdo-lang-registry.js?v=3.0.114"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.114"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.114"></script>
-<script src="shared/kdo-gloss.js?v=3.0.114"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.114"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.114"></script>
-<script src="shared/kdo-tts.js?v=3.0.114"></script>
-<script src="shared/kdo-lesson-i18n.js?v=3.0.114"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.114"></script>
-<script src="shared/kdo-store.js?v=3.0.114"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.114"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.114"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.114"></script>
-<script src="shared/kdo-translate.js?v=3.0.114"></script>
+<script src="shared/kdo-version.js?v=3.0.115"></script>
+<script src="shared/kdo-lang-registry.js?v=3.0.115"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.115"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.115"></script>
+<script src="shared/kdo-gloss.js?v=3.0.115"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.115"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.115"></script>
+<script src="shared/kdo-tts.js?v=3.0.115"></script>
+<script src="shared/kdo-lesson-i18n.js?v=3.0.115"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.115"></script>
+<script src="shared/kdo-store.js?v=3.0.115"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.115"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.115"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.115"></script>
+<script src="shared/kdo-translate.js?v=3.0.115"></script>
 <script>
 if (!window.KDO_bootLang || !KDO_bootLang()) { /* legacy redirect */ }
 // Dil manifestini dinamik yükle — ders başlıklarını günceller
@@ -4189,6 +4191,7 @@ document.querySelectorAll('.overlay').forEach(el=>{
 
 // =================== CHANGELOG MODAL ===================
 const CHANGELOG_DATA = [
+  { ver: 'v3.0.115', tr: 'Dinleme alıştırmasında gramer bilgisi ve yıldızlama butonları eklendi; yavaş seslendirme oranı düzeltildi', en: 'Added grammar info and star buttons to listening exercise options; fixed slow speech rate' },
   { ver: 'v3.0.114', tr: 'Versiyon geçmişi güncellendi; önbellek yenileme iyileştirmesi', en: 'Version history updated; cache refresh improvement' },
   { ver: 'v3.0.113', tr: 'Ders 0 (Temel Dilbilgisi) artık ders listesinin başında görünüyor — L.num>=0 filtresi düzeltildi', en: 'Lesson 0 (Grammar Basics) now appears at the top of the lesson list — L.num>=0 filter fixed' },
   { ver: 'v3.0.111', tr: 'Güncelle butonu cache\'i düzgün temizleyip yeniliyor', en: 'Update button now clears cache properly before reloading' },
@@ -4613,8 +4616,8 @@ function buildExercises(LD, lessonNum){
       const dist = exShuffle(allExamples.filter(x=>(getWordText(x)||x.ro)!==audio)).slice(0,3);
       if(dist.length<1) return;
       const opts = exShuffle([
-        {th:audio, ro:e.ro||'', correct:true},
-        ...dist.map(d=>({th:getWordText(d)||d.ro||'', ro:d.ro||'', correct:false}))
+        {th:audio, ro:e.ro||'', tr:e.tr||'', correct:true},
+        ...dist.map(d=>({th:getWordText(d)||d.ro||'', ro:d.ro||'', tr:d.tr||'', correct:false}))
       ]);
       ex.push({type:'listen-choice', audioEn:audio, options:opts});
     });
@@ -4802,11 +4805,17 @@ function renderExercise(){
       <div class="ex-q-label">${s('ex_q_listen')}</div>
       <button class="ex-listen-big-btn" onclick="speakExEnglish('${e.audioEn.replace(/'/g,"\\'")}')">🔊</button>
       <div class="ex-options" id="ex-opts">
-        ${e.options.map((o,i)=>`
-          <div class="ex-option" data-idx="${i}" data-correct="${o.correct}" onclick="exSelectOpt(this,${i})">
-            <div class="ex-option-th">${esc(o.th)}</div>
-            <div class="ex-option-ro">${esc(o.ro)}</div>
-          </div>`).join('')}
+        ${e.options.map((o,i)=>{const osk=starKey('exchoice',o.th);return`
+          <div class="ex-option" style="display:flex;align-items:center;gap:8px;" data-idx="${i}" data-correct="${o.correct}" onclick="exSelectOpt(this,${i})">
+            <div style="flex:1;min-width:0;">
+              <div class="ex-option-th">${esc(o.th)}</div>
+              <div class="ex-option-ro">${esc(o.ro)}</div>
+            </div>
+            <div style="display:flex;gap:4px;flex-shrink:0;align-items:center;">
+              <button class="ex-gram-btn" data-th="${esc(o.th)}" data-tr="${esc(o.tr||'')}" onclick="event.stopPropagation();openGramModal(this.dataset.th,this.dataset.tr,null)" title="${appLang!=='tr'?'Grammar':'Gramer'}">📖</button>
+              <button class="sbtn ${starred[osk]?'on':''}" data-star="${esc(osk)}" data-stype="example" data-th="${esc(o.th)}" data-ro="${esc(o.ro||'')}" data-tr="${esc(o.tr||'')}" onclick="event.stopPropagation();toggleStar(this.dataset.star,'example',this.dataset.th,this.dataset.ro,this.dataset.tr,this,'')">⭐</button>
+            </div>
+          </div>`}).join('')}
       </div>
       <div class="ex-skip-listen" onclick="speakExEnglish('${e.audioEn.replace(/'/g,"\\'")}',true)">🐢 ${s('ex_play_slow')}</div>`;
     // Auto-play audio
@@ -5118,8 +5127,8 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.114"></script>
-<script src="shared/kdo-update.js?v=3.0.114"></script>
-<script src="shared/kdo-android-taps.js?v=3.0.114"></script>
+<script src="shared/kdo-analytics.js?v=3.0.115"></script>
+<script src="shared/kdo-update.js?v=3.0.115"></script>
+<script src="shared/kdo-android-taps.js?v=3.0.115"></script>
 </body>
 </html>
