@@ -363,5 +363,72 @@ const L0 = {
   listening:[],
   quiz:[],
 
+  notes:[
+    {
+      icon:'⏱️',
+      title:'Zaman Ekleri — Özet Tablosu',
+      body:'Taycada fiil çekilmez. Zaman, fiilin yanına konan ayrı sözcüklerle belirtilir.',
+      table:{
+        cols:['Sözcük','Okunuş','Yeri','Anlamı'],
+        rows:[
+          ['กำลัง','gam-lang','fiilden ÖNCE','Şu an yapıyor'],
+          ['แล้ว','laeo','fiilden SONRA','Yaptı / Bitti'],
+          ['จะ','ja','fiilden ÖNCE','Yapacak'],
+          ['เคย','koey','fiilden ÖNCE','Daha önce yaptı'],
+          ['ยังไม่','yang-mai','fiilden ÖNCE','Henüz yapmadı'],
+        ]
+      },
+      tip:'Zaman belli ise (dün, yarın, bugün) zaman eki zorunlu değildir; zaman sözcüğü yeterlidir.'
+    },
+    {
+      icon:'❓',
+      title:'Soru Sözcükleri — WH Tablosu',
+      body:'Tüm WH soru sözcükleri cümlenin SONUNA gelir (Türkçedeki gibi başa değil).',
+      table:{
+        cols:['Tayca','Okunuş','Anlamı'],
+        rows:[
+          ['อะไร','a-rai','Ne?'],
+          ['ที่ไหน','thii-nai','Nerede?'],
+          ['ใคร','khrai','Kim?'],
+          ['เมื่อไร','meua-rai','Ne zaman?'],
+          ['ทำไม','tham-mai','Neden?'],
+          ['ยังไง','yang-ngai','Nasıl?'],
+          ['เท่าไร','thao-rai','Ne kadar / Kaç?'],
+        ]
+      }
+    },
+    {
+      icon:'👋',
+      title:'Günlük Selamlama ve Veda İfadeleri',
+      body:'Taylandlılar günün büyük bölümünde sadece สวัสดีครับ / ค่ะ der. Aşağıdakiler duruma göre kullanılır.',
+      table:{
+        cols:['Tayca','Okunuş','Anlamı'],
+        rows:[
+          ['สวัสดีครับ','sa-wat-dii khrap','Merhaba / Günaydın / İyi akşamlar'],
+          ['อรุณสวัสดิ์ครับ','a-run sa-wat khrap','Günaydın (resmi)'],
+          ['ฝันดีนะครับ','fan-dii na khrap','İyi geceler / Tatlı rüyalar'],
+          ['ลาก่อนครับ','la-gon khrap','Hoşça kal'],
+          ['แล้วเจอกันครับ','laeo joe-kan khrap','Görüşürüz'],
+          ['โชคดีครับ','chok-dii khrap','İyi şanslar'],
+          ['สู้ ๆ นะครับ','suu-suu na khrap','Kolay gelsin'],
+          ['พักผ่อนนะครับ','phak-phon na khrap','İyi dinlenmeler'],
+        ]
+      }
+    },
+    {
+      icon:'⚠️',
+      title:'ไม่ ve ไหม — Karıştırılmaması Gereken İkili',
+      body:'Yazılışları farklı, okunuşları benzer (mai). Yerleri ve görevleri tamamen farklıdır.',
+      table:{
+        cols:['Sözcük','Görevi','Yeri','Örnek'],
+        rows:[
+          ['ไม่ (mai, düşen ton)','Değil / Yok (olumsuzluk)','fiilin ÖNÜNE','ไม่เข้าใจ — anlamıyorum'],
+          ['ไหม (mai, yükselen ton)','...mı/mi? (soru eki)','cümlenin SONUNA','สบายดีไหม — iyi misiniz?'],
+        ]
+      },
+      tip:'Fiilin önünde mai görürsen olumsuzluk, cümle sonunda görürsen sorudur.'
+    },
+  ],
+
 };
 LESSONS[0] = L0;
