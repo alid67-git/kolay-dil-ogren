@@ -803,19 +803,19 @@ h2{font-size:15px;color:#0d9488;margin:4px 0 12px;font-weight:700;}
 }
 @keyframes popIn{0%{transform:scale(.5);opacity:0}80%{transform:scale(1.1)}100%{transform:scale(1);opacity:1}}
 </style>
-<script src="shared/kdo-version.js?v=3.0.95"></script>
-<script src="shared/kdo-ui-i18n.js?v=3.0.95"></script>
-<script src="shared/kdo-ui-extra.js?v=3.0.95"></script>
-<script src="shared/kdo-gloss.js?v=3.0.95"></script>
-<script src="shared/kdo-content-locale.js?v=3.0.95"></script>
-<script src="shared/kdo-ui-helpers.js?v=3.0.95"></script>
-<script src="shared/kdo-tts.js?v=3.0.95"></script>
-<script src="shared/kdo-analytics-config.js?v=3.0.95"></script>
-<script src="shared/kdo-geo-locale.js?v=3.0.95"></script>
-<script src="shared/kdo-translate.js?v=3.0.95"></script>
-<script src="shared/kdo-store.js?v=3.0.95"></script>
-<script src="shared/kdo-platform-init.js?v=3.0.95"></script>
-<script src="shared/kdo-hub-picker.js?v=3.0.95"></script>
+<script src="shared/kdo-version.js?v=3.0.116"></script>
+<script src="shared/kdo-ui-i18n.js?v=3.0.116"></script>
+<script src="shared/kdo-ui-extra.js?v=3.0.116"></script>
+<script src="shared/kdo-gloss.js?v=3.0.116"></script>
+<script src="shared/kdo-content-locale.js?v=3.0.116"></script>
+<script src="shared/kdo-ui-helpers.js?v=3.0.116"></script>
+<script src="shared/kdo-tts.js?v=3.0.116"></script>
+<script src="shared/kdo-analytics-config.js?v=3.0.116"></script>
+<script src="shared/kdo-geo-locale.js?v=3.0.116"></script>
+<script src="shared/kdo-translate.js?v=3.0.116"></script>
+<script src="shared/kdo-store.js?v=3.0.116"></script>
+<script src="shared/kdo-platform-init.js?v=3.0.116"></script>
+<script src="shared/kdo-hub-picker.js?v=3.0.116"></script>
 <script>
 const APP_VERSION = window.KDO_APP_VERSION || window.KDO_PLATFORM_VERSION;
 window.KDO_PREFIX = 'tv3_';
@@ -1462,7 +1462,7 @@ function setLang(lang){
   else if(vid==='review-view') renderReview();
   else if(vid==='test-view') renderTestView();
   else if(vid==='translate-view') initTranslateView();
-  else if(vid==='detail-view' && currentLesson && currentLesson.num){
+  else if(vid==='detail-view' && currentLesson && currentLesson.num!=null){
     const LD = LESSONS[currentLesson.num];
     if(LD) document.getElementById('detail-content').innerHTML = buildLessonHTML(LD, currentLesson);
   }
@@ -1603,6 +1603,7 @@ function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').rep
 // L1+L2 birleşti → Ders 1: "Temel İfadeler ve Tanışma"
 // Eski L3 → Ders 2, diğerleri kaydı
 const LESSONS_META = [
+  {num:0, emoji:'📖', title:'Temel Dilbilgisi', title_en:'Grammar Basics', title_th:'ไวยากรณ์พื้นฐาน', hasContent:true, hasTones:false},
   {num:1, emoji:'👋', title:'Temel İfadeler ve Tanışma', title_en:'Greetings & Basics', title_th:'ทักทายและพื้นฐาน', hasContent:true, hasTones:true},
   {num:2, emoji:'🔢', title:'Sayılar ve Para', title_en:'Numbers & Money', title_th:'ตัวเลขและเงิน', hasContent:true, hasTones:false},
   {num:3, emoji:'🕐', title:'Tarih ve Saat', title_en:'Date & Time', title_th:'วันที่และเวลา', hasContent:true, hasTones:false},
@@ -1935,7 +1936,7 @@ document.addEventListener('click', function(e){
   const cardEl = e.target.closest('.lesson-card[data-num]');
   if(cardEl && !cardEl.classList.contains('empty')){
     const num = parseInt(cardEl.dataset.num, 10);
-    if(num && typeof openLesson==='function'){ openLesson(num); return; }
+    if(!isNaN(num) && typeof openLesson==='function'){ openLesson(num); return; }
   }
 });
 
@@ -2100,6 +2101,7 @@ function insertPracticeTab(tabs){
 
 function getTabsForLesson(meta){
   if(meta.num>=20) return insertPracticeTab(['words']);
+  if(meta.num===0) return insertPracticeTab(['words','notes','grammar','speaking','dialogue']);
   const base = ['words','notes','grammar','speaking','dialogue','listening'];
   if(meta.hasTones) return insertPracticeTab(['words','tones','notes','grammar','speaking','dialogue','listening']);
   if(meta.num===2) return insertPracticeTab(['numbers','calc','words','notes','grammar','speaking','dialogue','listening']);
@@ -2238,7 +2240,7 @@ function closeLessonDetail(){
   stopTabTimer();
   stopLessonTimer();
   const returnNum = currentLesson ? currentLesson.num : null;
-  if(returnNum && returnNum>=20) bonusOpen = true;
+  if(returnNum!=null && returnNum>=20) bonusOpen = true;
   currentLesson = null;
   document.getElementById('detail-content').innerHTML = '';
   switchView('lessons', document.getElementById('nav-lessons-btn'));
@@ -2248,7 +2250,7 @@ function closeLessonDetail(){
   try{
     if(location.hash) history.replaceState({kdoView:'lessons'}, '', location.pathname+location.search);
   }catch(_){}
-  if(returnNum){
+  if(returnNum!=null){
     requestAnimationFrame(()=>{
       const card = document.querySelector(`.lesson-card[data-num="${returnNum}"]`);
       if(card) card.scrollIntoView({block:'nearest', behavior:'smooth'});
@@ -4779,8 +4781,8 @@ if(typeof KDO_applyVersionBadge==='function') KDO_applyVersionBadge();
   }catch(_){}
 })();
 </script>
-<script src="shared/kdo-analytics.js?v=3.0.95"></script>
-<script src="shared/kdo-update.js?v=3.0.95"></script>
-<script src="shared/kdo-android-taps.js?v=3.0.95"></script>
+<script src="shared/kdo-analytics.js?v=3.0.116"></script>
+<script src="shared/kdo-update.js?v=3.0.116"></script>
+<script src="shared/kdo-android-taps.js?v=3.0.116"></script>
 </body>
 </html>
